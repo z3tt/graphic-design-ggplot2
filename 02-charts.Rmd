@@ -4,9 +4,9 @@
 
 A box plot is probably the most commonly used chart type to compare distribution of several groups, at least in the scientific literature. Box plots are great, but they can be so incredibly boring. Also, even if you are used to looking at box plots, remember there might be plenty people looking at your plot that have never seen a box and whisker plot before.
 
-A box-and-whisker plot (sometimes called simply a box plot) is a histogram-like method of displaying data, invented by J. Tukey.  The thick **middle line** notates the median, also known as quartile. The limits of the **box** are determined by the lower and upper quartiles, *Q¹* and *Q³*. The box contains thus 50% of the data and is called *"interquartile range"* (IQR). The length of the **whiskers** is determined by the most extreme values that are not considered as outliers (i.e. values that are within 3/2 times the interquartile range).
+A box-and-whisker plot (sometimes called simply a box plot) is a histogram-like method of displaying data, invented by J. Tukey.  The thick *middle line* notates the median, also known as quartile. The limits of the *box* are determined by the lower and upper quartiles, *Q¹* and *Q³*. The box contains thus 50% of the data and is called *interquartile range* (IQR). The length of the *whiskers* is determined by the most extreme values that are not considered as outliers (i.e. values that are within 3/2 times the interquartile range).
 
-```{r img-boxplot, out.width="100%", fig.cap="A boxplot is a standardized way of displaying the dataset based on a five-number summary: the minimum, the maximum, the sample median, and the first and third quartiles."}
+```{r img-boxplot, echo=FALSE, out.width="100%", fig.cap="A boxplot is a standardized way of displaying the dataset based on a five-number summary: the minimum, the maximum, the sample median, and the first and third quartiles."}
 knitr::include_graphics("img/boxplot.png")
 ```
 

@@ -298,7 +298,7 @@ The book was written with the \textbf{knitr}\index{knitr} package \citep{xie2015
 ##   yaml_2.2.1
 \end{verbatim}
 
-Package names are in bold text (e.g., \textbf{ggplot2}), and inline code and filenames are formatted in a typewriter font (e.g., \texttt{readr::read\_csv(\textquotesingle{}data.csv\textquotesingle{})}). Function names are followed by parentheses (e.g., \texttt{ggplot2::ggplot()}).
+Package names are in bold text (e.g., \textbf{ggplot2}), and inline code and filenames are formatted in a monospaced typewriter font (e.g., \texttt{readr::read\_csv(\textquotesingle{}data.csv\textquotesingle{})}). Function names are followed by parentheses (e.g., \texttt{ggplot2::ggplot()}).
 
 \hypertarget{acknowledgments}{%
 \section*{Acknowledgments}\label{acknowledgments}}
@@ -306,10 +306,10 @@ Package names are in bold text (e.g., \textbf{ggplot2}), and inline code and fil
 
 A lot of people helped me when I was writing the book.
 
-\begin{verbatim}
-Cédric Scherer  
+\begin{flushright}
+Cédric Scherer\\
 Berlin, Germany
-\end{verbatim}
+\end{flushright}
 
 \hypertarget{about-the-author}{%
 \chapter*{About the Author}\label{about-the-author}}
@@ -601,13 +601,7 @@ To see which details of a ggplot theme can be modified have a look \href{https:/
 
 A box plot is probably the most commonly used chart type to compare distribution of several groups, at least in the scientific literature. Box plots are great, but they can be so incredibly boring. Also, even if you are used to looking at box plots, remember there might be plenty people looking at your plot that have never seen a box and whisker plot before.
 
-A box-and-whisker plot (sometimes called simply a box plot) is a histogram-like method of displaying data, invented by J. Tukey. The thick \textbf{middle line} notates the median, also known as quartile. The limits of the \textbf{box} are determined by the lower and upper quartiles, \emph{Q¹} and \emph{Q³}. The box contains thus 50\% of the data and is called \emph{``interquartile range''} (IQR). The length of the \textbf{whiskers} is determined by the most extreme values that are not considered as outliers (i.e.~values that are within 3/2 times the interquartile range).
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"img/boxplot.png"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+A box-and-whisker plot (sometimes called simply a box plot) is a histogram-like method of displaying data, invented by J. Tukey. The thick \emph{middle line} notates the median, also known as quartile. The limits of the \emph{box} are determined by the lower and upper quartiles, \emph{Q¹} and \emph{Q³}. The box contains thus 50\% of the data and is called \emph{interquartile range} (IQR). The length of the \emph{whiskers} is determined by the most extreme values that are not considered as outliers (i.e.~values that are within 3/2 times the interquartile range).
 
 \begin{figure}
 \includegraphics[width=1\linewidth]{img/boxplot} \caption{A boxplot is a standardized way of displaying the dataset based on a five-number summary: the minimum, the maximum, the sample median, and the first and third quartiles.}\label{fig:img-boxplot}
@@ -904,15 +898,15 @@ I like to have a diverging color palette, centered at zero correlation, with whi
 \hypertarget{themes}{%
 \chapter{Themes}\label{themes}}
 
-You can change the entire look of the plots by using themes. \textbf{ggplot2} comes with eight built-in themes:
+You can change the entire look of the plots by using themes. \texttt{\{ggplot2\}} comes with eight built-in themes:
 
 \begin{figure}
 \centering
 \includegraphics{bookdown_files/figure-latex/ggplot2-theme-gallery-1.pdf}
-\caption{\label{fig:ggplot2-theme-gallery}An overview of all in-build themes that are contained in the \textbf{ggplot2} package.}
+\caption{\label{fig:ggplot2-theme-gallery}An overview of all in-build themes that are contained in the \texttt{\{ggplot2\}} package.}
 \end{figure}
 
-There are several packages that provide additional themes, some even with different default color palettes. As an example, Jeffrey Arnold has put together the R package \textbf{ggthemes} with several custom themes imitating popular designs. For a list you can visit the \href{https://github.com/jrnold/ggthemes}{\textbf{ggthemes} package site}. Without any coding you can just adapt several styles, some of them well known for their style and aesthetics.
+There are several packages that provide additional themes, some even with different default color palettes. As an example, Jeffrey Arnold has put together the library \texttt{\{ggthemes\}} with several custom themes imitating popular designs. For a list you can visit the \href{https://github.com/jrnold/ggthemes}{\texttt{\{ggthemes\}} package site}. Without any coding you can just adapt several styles, some of them well known for their style and aesthetics.
 
 \cleardoublepage
 

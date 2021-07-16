@@ -1,0 +1,928 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[
+]{krantz}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Graphic Design with ggplot2},
+  pdfauthor={Cédric Scherer},
+  colorlinks=true,
+  linkcolor=Maroon,
+  filecolor=Maroon,
+  citecolor=Blue,
+  urlcolor=Blue,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.33,0.33,0.33}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.61,0.61,0.61}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.06,0.06,0.06}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.5,0.5,0.5}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0,0,0}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.27,0.27,0.27}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.27,0.27,0.27}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.06,0.06,0.06}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.14,0.14,0.14}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.06,0.06,0.06}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0,0,0}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.27,0.27,0.27}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.43,0.43,0.43}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0,0,0}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.5,0.5,0.5}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.5,0.5,0.5}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0,0,0}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.5,0.5,0.5}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[bf,singlelinecheck=off]{caption}
+\usepackage[scale=.8]{sourcecodepro}
+
+\usepackage{framed,color}
+\definecolor{shadecolor}{RGB}{248,248,248}
+
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.8}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\floatpagefraction}{0.75}
+
+\renewenvironment{quote}{\begin{VF}}{\end{VF}}
+\let\oldhref\href
+\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+
+\makeatletter
+\newenvironment{kframe}{%
+\medskip{}
+\setlength{\fboxsep}{.8em}
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\renewenvironment{Shaded}{\begin{kframe}}{\end{kframe}}
+
+\usepackage{makeidx}
+\makeindex
+
+\urlstyle{tt}
+
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+
+\frontmatter
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{Graphic Design with ggplot2}
+\author{Cédric Scherer}
+\date{2021-07-16}
+
+\begin{document}
+\maketitle
+
+% you may need to leave a few empty pages before the dedication page
+
+%\cleardoublepage\newpage\thispagestyle{empty}\null
+%\cleardoublepage\newpage\thispagestyle{empty}\null
+%\cleardoublepage\newpage
+\thispagestyle{empty}
+
+\begin{center}
+To my son,
+
+without whom I should have finished this book two years earlier
+%\includegraphics{images/dedication.pdf}
+\end{center}
+
+\setlength{\abovedisplayskip}{-5pt}
+\setlength{\abovedisplayshortskip}{-5pt}
+
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\listoftables
+\listoffigures
+\hypertarget{preface}{%
+\chapter*{Preface}\label{preface}}
+
+
+Back in 2016, I had to prepare my PhD introductory talk. I planned to create a visualization using small multiples to show various outcomes of the scenarios I ran with my simulation model. I was already using the R programming language for years and quickly came across the graphics library \textbf{ggplot2} which comes with the functionality to easily create small multiples.to visualize my data. I never liked the syntax and style of base plots in R, so I immediately fell in love with the idea and implementation of \textbf{ggplot2}'s \emph{Grammar of Graphics}. But because I was short on time, I plotted these figures by trial and error and with the help of lots of googling. The resource I came always back to was a blog entry called \href{http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/}{``Beautiful plotting in R: A \textbf{ggplot2} cheatsheet'' by Zev Ross}. After giving the talk which contained some decent plots thanks to the blog post, I decided to go through this tutorial step-by-step. I learned so much from it and directly started modifying the codes and adding additional code snippets, chart types, and resources.
+
+Fast forward to 2019. I successfully finished my PhD and started participating in a weekly data visualization challenge called \href{https://github.com/rfordatascience/tidytuesday/blob/master/README.md}{\#TidyTuesday}. TidyTuesday is an initiative grown out of Jesse Mostipak and the \href{https://www.rfordatasci.com/}{R4DS Online Learning Community}, started by Thomas Mock. Every week, a raw data set is with the aim to explore and visualize the data with \textbf{ggplot2}. Thanks to my experience with the \textbf{tidyverse} and especially \textbf{ggplot2} during my PhD and the open-source approach of the challenge that made it possible to learn from other participants, my visualizations quickly became more advanced and complex.
+
+A few months later, I started working as a freelance data visualization specialist. I am now using \textbf{ggplot2} every day: for my scientific work, design requests, reproducible reports, and personal data visualization projects. Since the blog entry by Zev Ross was not updated sine January 2016, I decided to add more examples and tricks to my version, which was now hosted on my \href{https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/}{personal blog}. It became step by step a unique tutorial that now contains also the fantastic \textbf{patchwork}, \textbf{ggtext} and \textbf{ggforce} packages, a section of custom fonts and colors, a collection of R packages tailored to create interactive charts, and several new chart types. The updated version now contains \textasciitilde3.000 lines of code and 188 plots and received a lot of interest from \textbf{ggplot2} users from a wide range of fields.
+
+Today, on a sunny day in August 2021, this tutorial serves as the basis for the book you hold in your hands. I hope you enjoy it as much as I enjoyed learning and sharing \textbf{ggplot2} wizardry!
+
+\hypertarget{why-read-this-book}{%
+\section*{Why read this book}\label{why-read-this-book}}
+
+
+Often, people that use common graphic design and charting tools or have basic experience experience with \textbf{ggplot2} cannot believe what one can achieve with this graphics library---and I want to show you how one can create a publication-ready graphic that goes beyond the traditional scientific scatter or box plot.
+
+\textbf{ggplot2} is already used by a large and diverse group of graduates, researchers, and analysts and the current rise of R and the tidyverse will likely lead to an even increasing interest in this great plotting library. While there are many tutorials on \textbf{ggplot2} tips and tricks provided by the R community, to my knowledge there is no book that specifically addresses the complete design of specific details up to building an ambitious multi-panel graphic with \textbf{ggplot2}. As a blend of strong grounding in academic foundations of data visualization and hands-on, practical codes, and implementation material, the book can be used as introductory material as well as a reference for more experienced \textbf{ggplot2} practitioners.
+
+The book is intended for students and professionals that are interested in learning \textbf{ggplot2} and/or taking their default ggplots to the next level. Thus, the book is potentially interesting for \textbf{ggplot2} novices and beginners, but hopefully also helpful and educational for proficient users.
+
+Among other things, the book covers the following:
+
+\begin{itemize}
+\tightlist
+\item
+  Look-up resource for every-day and more specific ggplot adjustments and design options
+\item
+  Practical hands-on introduction to \textbf{ggplot2} to quickly build appealing visualization
+\item
+  Discussion of best practices in data visualization (e.g.~color choice, direct labelling, chart type selection) along the way
+\item
+  Coverage of useful \textbf{ggplot2} extension packages
+\item
+  Ready-to-start code examples
+\item
+  Reference implementations illustrating code solutions and design choices
+\end{itemize}
+
+\hypertarget{structure-of-the-book}{%
+\section*{Structure of the book}\label{structure-of-the-book}}
+
+
+Chapters \ref{introduction} introduces a new topic, and \ldots{}
+
+\hypertarget{software-information-and-conventions}{%
+\section*{Software information and conventions}\label{software-information-and-conventions}}
+
+
+The book was written with the \textbf{knitr}\index{knitr} package \citep{xie2015} and the \textbf{bookdown}\index{bookdown} package \citep{R-bookdown} with the following setup:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{xfun}\SpecialCharTok{::}\FunctionTok{session\_info}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## R version 4.1.0 (2021-05-18)
+## Platform: x86_64-w64-mingw32/x64 (64-bit)
+## Running under: Windows 10 x64 (build 19041)
+## 
+## Locale:
+##   LC_COLLATE=German_Germany.1252 
+##   LC_CTYPE=German_Germany.1252   
+##   LC_MONETARY=German_Germany.1252
+##   LC_NUMERIC=C                   
+##   LC_TIME=German_Germany.1252    
+## system code page: 65001
+## 
+## Package version:
+##   base64enc_0.1.3   bookdown_0.22    
+##   compiler_4.1.0    digest_0.6.27    
+##   evaluate_0.14     glue_1.4.2       
+##   graphics_4.1.0    grDevices_4.1.0  
+##   highr_0.9         htmltools_0.5.1.1
+##   jsonlite_1.7.2    knitr_1.33       
+##   magrittr_2.0.1    markdown_1.1     
+##   methods_4.1.0     mime_0.11        
+##   rlang_0.4.11      rmarkdown_2.9    
+##   rstudioapi_0.13   stats_4.1.0      
+##   stringi_1.7.3     stringr_1.4.0    
+##   tinytex_0.32      tools_4.1.0      
+##   utils_4.1.0       xfun_0.24        
+##   yaml_2.2.1
+\end{verbatim}
+
+Package names are in bold text (e.g., \textbf{ggplot2}), and inline code and filenames are formatted in a monospaced typewriter font (e.g., \texttt{readr::read\_csv(\textquotesingle{}data.csv\textquotesingle{})}). Function names are followed by parentheses (e.g., \texttt{ggplot2::ggplot()}).
+
+\hypertarget{acknowledgments}{%
+\section*{Acknowledgments}\label{acknowledgments}}
+
+
+A lot of people helped me when I was writing the book.
+
+\begin{flushright}
+Cédric Scherer\\
+Berlin, Germany
+\end{flushright}
+
+\hypertarget{about-the-author}{%
+\chapter*{About the Author}\label{about-the-author}}
+
+
+Cédric Scherer is a graduated computational ecologist with a passion for design. In 2020, he combined his expertise in analyzing and visualizing large data sets in R with his interest in design and his perfectionism to become a freelance data visualization specialist.
+
+Cédric has created visualizations across all disciplines, purposes, and styles. Due to regular participation to social data challenges, he is now well known for complex and visually appealing figures, entirely made with ggplot2, that look as they have been created with a vector design tool.
+
+As a data visualization specialist, he does rarely create dashboards but acts as a consultant and designer improving chart and design choices and workshop coach teaching data visualization principles and courses on R and \{ggplot2\}. He also uses R and the tidyverse to automate data analyses and plot generation, following the philosophy of a reproducible workflow.
+
+\mainmatter
+
+\hypertarget{introduction}{%
+\chapter{Introduction}\label{introduction}}
+
+\hypertarget{data}{%
+\section{The Dataset}\label{data}}
+
+We are using data from the \emph{National Morbidity and Mortality Air Pollution Study} (NMMAPS). To make the plots manageable we are limiting the data to Chicago and 1997--2000. For more detail on this data set, consult Roger Peng's book \href{http://www.springer.com/de/book/9780387781662}{Statistical Methods in Environmental Epidemiology with R}.
+You can download the data we are using during this tutorial here: \url{http://cedricscherer.com/data/chicago-nmmaps.csv} (but you don't have to).
+
+We can import the data into our R session for example with \texttt{read\_csv()} from the \textbf{readr} package which allows to import data directly from a web URL. To access the data later, we are storing it in a variable called \texttt{chic} by using the \emph{assignment arrow} \texttt{\textless{}-}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{url\_data }\OtherTok{\textless{}{-}} \StringTok{"http://cedricscherer.com/data/chicago{-}nmmaps.csv"}
+\NormalTok{chic }\OtherTok{\textless{}{-}}\NormalTok{ readr}\SpecialCharTok{::}\FunctionTok{read\_csv}\NormalTok{(url\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## -- Column specification -------------------------------
+## cols(
+##   city = col_character(),
+##   date = col_date(format = ""),
+##   death = col_double(),
+##   temp = col_double(),
+##   dewpoint = col_double(),
+##   pm10 = col_double(),
+##   o3 = col_double(),
+##   time = col_double(),
+##   season = col_character(),
+##   year = col_double()
+## )
+\end{verbatim}
+
+\emph{Note: The \texttt{::} is called ``namespace'' and can be used to access a function without loading the package. Here, you could also run \texttt{library(readr)} first and \texttt{chic\ \textless{}-\ read\_csv(...)} afterwards.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tibble}\SpecialCharTok{::}\FunctionTok{glimpse}\NormalTok{(chic)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 1,461
+## Columns: 10
+## $ city     <chr> "chic", "chic", "chic", "chic", "chi~
+## $ date     <date> 1997-01-01, 1997-01-02, 1997-01-03,~
+## $ death    <dbl> 137, 123, 127, 146, 102, 127, 116, 1~
+## $ temp     <dbl> 36.0, 45.0, 40.0, 51.5, 27.0, 17.0, ~
+## $ dewpoint <dbl> 37.500, 47.250, 38.000, 45.500, 11.2~
+## $ pm10     <dbl> 13.052, 41.949, 27.042, 25.073, 15.3~
+## $ o3       <dbl> 5.659, 5.525, 6.289, 7.538, 20.761, ~
+## $ time     <dbl> 3654, 3655, 3656, 3657, 3658, 3659, ~
+## $ season   <chr> "Winter", "Winter", "Winter", "Winte~
+## $ year     <dbl> 1997, 1997, 1997, 1997, 1997, 1997, ~
+\end{verbatim}
+
+\hypertarget{ggplot}{%
+\section{\texorpdfstring{The \textbf{ggplot2} Package}{The ggplot2 Package}}\label{ggplot}}
+
+When looking into the package description of the \textbf{ggplot2} package, it states the following:
+
+\begin{quote}
+\textbf{ggplot2} is a system for declaratively creating graphics, based on \href{https://link.springer.com/chapter/10.1007/978-3-642-21551-3_13}{The Grammar of Graphics}. You provide the data, tell \textbf{ggplot2} how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
+\end{quote}
+
+Consequently, a ggplot is built up from a few basic elements:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Data}:\\
+  The raw data that you want to plot.
+\item
+  \textbf{Geometries} \texttt{geom\_}:\\
+  The geometric shapes that will represent the data.
+\item
+  \textbf{Aesthetics} \texttt{aes()}:\\
+  Aesthetics of the geometric and statistical objects, such as position, color, size, shape, and transparency
+\item
+  \textbf{Scales} \texttt{scale\_}:\\
+  Maps between the data and the aesthetic dimensions, such as data range to plot width or factor values to colors.
+\item
+  \textbf{Statistical transformations} \texttt{stat\_}:\\
+  Statistical summaries of the data, such as quantiles, fitted curves, and sums.
+\item
+  \textbf{Coordinate system} \texttt{coord\_}:\\
+  The transformation used for mapping data coordinates into the plane of the data rectangle.
+\item
+  \textbf{Facets} \texttt{facet\_}:\\
+  The arrangement of the data into a grid of plots.
+\item
+  \textbf{Visual themes} \texttt{theme()}:\\
+  The overall visual defaults of a plot, such as background, grids, axes, default typeface, sizes and colors.
+\end{enumerate}
+
+\emph{Note: The number of elements may vary depending on how you group them and whom you ask.}
+
+\hypertarget{default}{%
+\section{A Basic ggplot}\label{default}}
+
+First, to be able to use the functionality of \textbf{ggplot2} we have to load the package (which we can also load via the \href{https://www.tidyverse.org/}{tidyverse package collection}):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching packages -------------- tidyverse 1.3.1 --
+\end{verbatim}
+
+\begin{verbatim}
+## v ggplot2 3.3.5     v purrr   0.3.4
+## v tibble  3.1.2     v dplyr   1.0.7
+## v tidyr   1.1.3     v stringr 1.4.0
+## v readr   1.4.0     v forcats 0.5.1
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ----------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+\end{verbatim}
+
+The syntax of \textbf{ggplot2} is different from base R. In accordance with the basic elements, a default ggplot needs three things that you have to specify: the \emph{data}, \emph{aesthetics}, and a \emph{geometry}. We always start to define a plotting object by calling \texttt{ggplot(data\ =\ df)} which just tells \textbf{ggplot2} that we are going to work with that data. In most cases, you might want to plot two variables---one on the x and one on the y axis. These are \emph{positional aesthetics} and thus we add \texttt{aes(x\ =\ var1,\ y\ =\ var2)} to the \texttt{ggplot()} call (yes, the \texttt{aes()} stands for aesthetics). However, there are also cases where one has to specify one or even three or more variables.
+
+\emph{Note: We specify the data }outside* \texttt{aes()} and add the variables that ggplot maps the aesthetics to \emph{inside} \texttt{aes()}.*
+
+Here, we map the variable \texttt{date} to the x position and the variable \texttt{temp} to the y position. Later, we will also map variables to all kind of other aesthetics such as color, size, and shape.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(g }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(chic, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ temp)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/ggplot-1.pdf}
+\caption{\label{fig:ggplot}A default plot generated with the \textbf{ggplot2} package with variables mapped to \texttt{x} and \texttt{y}.}
+\end{figure}
+
+Hm, only a panel is created when running this. Why? This is because \textbf{ggplot2} does not know \emph{how} we want to plot that data---we still need to provide a geometry!
+
+\textbf{ggplot2} allows you to store the current \texttt{ggobject} in a variable of your choice by assigning it to a variable, in our case called \texttt{g}. You can extend this \texttt{ggobject} later by adding other layers, either all at once or by assigning it to the same or another variable.
+
+\emph{Note: By using parentheses while assigning an object, the object will be printed immediately (instead of writing \texttt{g\ \textless{}-\ ggplot(...)} and then \texttt{g} we simply write \texttt{(g\ \textless{}-\ ggplot(...))}).}
+
+There are many, many different geometries (called \emph{geoms} because each function usually starts with \texttt{geom\_}) one can add to a ggplot by default (see \href{https://ggplot2.tidyverse.org/reference/}{here} for a full list) and even more provided by extension packages (see \href{https://exts.ggplot2.tidyverse.org/}{here} for a collection of extension packages). Let's tell \textbf{ggplot2} which style we want to use, for example by adding \texttt{geom\_point()} to create a scatter plot:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/ggplot-default-1.pdf}
+\caption{\label{fig:ggplot-default}A default scatter plot of temperature measured in Chicago created with the \textbf{ggplot2} package.}
+\end{figure}
+
+Nice! But this data could be also visualized as a line plot (not optimal, but people do things like this all the time). So we simply add \texttt{geom\_line()} instead and voilá:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/ggplot-default-line-1.pdf}
+\caption{\label{fig:ggplot-default-line}The same data shown as a line chart.}
+\end{figure}
+
+One can also combine several geometric layers---and this is where the magic and fun starts!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/ggplot-default-line-point-1.pdf}
+\caption{\label{fig:ggplot-default-line-point}Again, the same data, now shown as a connected scatterplot as a combination of points and lines.}
+\end{figure}
+
+That's it for now about geometries. No worries, we are going to learn several plot types in Chapter \texttt{charts}.
+
+\hypertarget{prop}{%
+\section{Change Properties of Geometries}\label{prop}}
+
+Within the \texttt{geom\_*} command, you already can manipulate visual aesthetics such as the color, shape, and size of your points. Let's turn all points to large fire-red diamonds!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"firebrick"}\NormalTok{, }\AttributeTok{shape =} \StringTok{"diamond"}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/ggplot-default-col-size-shape-1.pdf}
+\caption{\label{fig:ggplot-default-col-size-shape}We can change the appearance of the geometry, here illustrated by turning the black dots in larger, red diamonds.}
+\end{figure}
+
+\emph{Note: \textbf{ggplot2} understands both \texttt{color} and \texttt{colour} as well as the short version \texttt{col}.}
+
+You can use preset colors (here is a \href{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}{full list}) or \href{https://www.techopedia.com/definition/29788/color-hex-code}{hex color codes}, both in quotes, and even RGB/RGBA colors by using the \texttt{rgb()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"\#b22222"}\NormalTok{, }\AttributeTok{shape =} \StringTok{"diamond"}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}\NormalTok{)}
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \FunctionTok{rgb}\NormalTok{(}\DecValTok{178}\NormalTok{, }\DecValTok{34}\NormalTok{, }\DecValTok{34}\NormalTok{, }\AttributeTok{maxColorValue =} \DecValTok{255}\NormalTok{), }\AttributeTok{shape =} \StringTok{"diamond"}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/ggplot-default-col-size-hex-rgb-plot-1.pdf}
+\caption{\label{fig:ggplot-default-col-size-hex-rgb-plot}Comparing two ways of specifying the color in \textbf{ggplot2}.}
+\end{figure}
+
+Each geom comes with its own properties (called \emph{arguments}) and the same argument may result in a different change depending on the geom you are using.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"firebrick"}\NormalTok{, }\AttributeTok{shape =} \StringTok{"diamond"}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{"firebrick"}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dotted"}\NormalTok{, }\AttributeTok{size =}\NormalTok{ .}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/ggplot-default-line-col-size-shape-1.pdf}
+\caption{\label{fig:ggplot-default-line-col-size-shape}You can style each geometrical layer on its own. Each geometry also comes with a set of individual properties.}
+\end{figure}
+
+\hypertarget{theme}{%
+\section{\texorpdfstring{Replace the default \textbf{ggplot2} theme}{Replace the default ggplot2 theme}}\label{theme}}
+
+And to illustrate some more of ggplot's versatility, let's get rid of the grayish default \textbf{ggplot2} look by setting a different built-in theme, e.g.~\texttt{theme\_bw()}---by calling \texttt{theme\_set()} all following plots will have the same black'n'white theme. The red points look way better now!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{theme\_set}\NormalTok{(}\FunctionTok{theme\_bw}\NormalTok{())}
+
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"firebrick"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/remove-gray-background-1.pdf}
+\caption{\label{fig:remove-gray-background}We can change the appearance for all following plots generated with \textbf{ggplot2} by globally setting another theme via \texttt{theme\_set()}.}
+\end{figure}
+
+You can find more on how to use built-in themes and how to customize themes in the section \texttt{themes}. From the next chapter on, we will also use the \texttt{theme()} function to customize particular elements of the theme.
+
+\emph{Note: \texttt{theme()} is an essential command to manually modify all kinds of theme elements (texts, rectangles, and lines).}
+
+To see which details of a ggplot theme can be modified have a look \href{https://ggplot2.tidyverse.org/reference/theme.html}{here}---and take some time, this is a looong list.
+
+\hypertarget{charts}{%
+\chapter{Chart types}\label{charts}}
+
+\hypertarget{alternatives-to-a-box-plot}{%
+\section{Alternatives to a Box Plot}\label{alternatives-to-a-box-plot}}
+
+A box plot is probably the most commonly used chart type to compare distribution of several groups, at least in the scientific literature. Box plots are great, but they can be so incredibly boring. Also, even if you are used to looking at box plots, remember there might be plenty people looking at your plot that have never seen a box and whisker plot before.
+
+A box-and-whisker plot (sometimes called simply a box plot) is a histogram-like method of displaying data, invented by J. Tukey. The thick \textbf{middle line} notates the median, also known as quartile. The limits of the \textbf{box} are determined by the lower and upper quartiles, \emph{Q¹} and \emph{Q³}. The box contains thus 50\% of the data and is called \emph{``interquartile range''} (IQR). The length of the \textbf{whiskers} is determined by the most extreme values that are not considered as outliers (i.e.~values that are within 3/2 times the interquartile range).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"img/boxplot.png"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{img/boxplot} \caption{A boxplot is a standardized way of displaying the dataset based on a five-number summary: the minimum, the maximum, the sample median, and the first and third quartiles.}\label{fig:img-boxplot}
+\end{figure}
+
+There are alternatives, but first we are plotting a common box plot:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\OtherTok{\textless{}{-}}
+  \FunctionTok{ggplot}\NormalTok{(chic, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ season, }\AttributeTok{y =}\NormalTok{ o3,}
+                   \AttributeTok{color =}\NormalTok{ season)) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Season"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Ozone"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{scale\_color\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"Dark2"}\NormalTok{, }\AttributeTok{guide =} \StringTok{"none"}\NormalTok{)}
+
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_boxplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/boxplot-1.pdf}
+\caption{\label{fig:boxplot}A box plot generated with \textbf{ggplot2} with customized axis labels and colors.}
+\end{figure}
+
+\hypertarget{dot-plots}{%
+\subsection{Dot Plots}\label{dot-plots}}
+
+Let's plot just each data point of the raw data:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/point-1.pdf}
+\caption{\label{fig:point}A dot plot visualizing the distribution of the raw data as an alternative to boxplots. However, the summary statistics are not shown anymore.}
+\end{figure}
+
+Not only boring but uninformative. To improve the plot, one could add transparency to deal with overplotting:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/point-alpha-1.pdf}
+\caption{\label{fig:point-alpha}A dot plot with added transparency as an approach to make overlapping data points visible.}
+\end{figure}
+
+However, setting transparency is difficult here since either the overlap is still too high or the extreme values are not visible. Bad, so let's try something else.
+
+\hypertarget{strip-plots}{%
+\subsection{Strip Plots}\label{strip-plots}}
+
+Try adding a little jitter to the data. I like this for in-house visualization but be careful using jittering because you are purposely adding noise to your data and this can result in misinterpretation of your data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_jitter}\NormalTok{(}\AttributeTok{width =}\NormalTok{ .}\DecValTok{3}\NormalTok{, }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/jitter-1.pdf}
+\caption{\label{fig:jitter}A jittered dot plot, also known as strip plot.}
+\end{figure}
+
+\hypertarget{violin-plots}{%
+\subsection{Violin Plots}\label{violin-plots}}
+
+Violin plots, similar to box plots except you are using a kernel density to show where you have the most data, are a useful visualization.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_violin}\NormalTok{(}\AttributeTok{fill =} \StringTok{"gray80"}\NormalTok{, }\AttributeTok{size =} \DecValTok{1}\NormalTok{, }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/violin-1.pdf}
+\caption{\label{fig:violin}Violin plots are a great way to visualize the distribution values, especially in case of large sample sizes.}
+\end{figure}
+
+\hypertarget{combining-violin-plots-with-strip-charts}{%
+\subsection{Combining Violin Plots with Strip Charts}\label{combining-violin-plots-with-strip-charts}}
+
+We can of course combine both, estimated densities and the raw data points:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_violin}\NormalTok{(}\AttributeTok{fill =} \StringTok{"gray80"}\NormalTok{, }\AttributeTok{size =} \DecValTok{1}\NormalTok{, }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{geom\_jitter}\NormalTok{(}\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{25}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{coord\_flip}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/violin-jitter-1.pdf}
+\caption{\label{fig:violin-jitter}A combination of violin and strip plots to visualize the distribution and the raw values at the same time.}
+\end{figure}
+
+The \href{https://ggforce.data-imaginist.com/}{\textbf{ggforce} package} provides so-called sina functions where the width of the jitter is controlled by the density distribution of the data---that makes the jittering a bit more visually appealing:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggforce)}
+
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_violin}\NormalTok{(}\AttributeTok{fill =} \StringTok{"gray80"}\NormalTok{, }\AttributeTok{size =} \DecValTok{1}\NormalTok{, }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{geom\_sina}\NormalTok{(}\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{25}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{coord\_flip}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/violin-sina-1.pdf}
+\caption{\label{fig:violin-sina}A sina plot places the dots according to the distribution and is basically a \emph{raw data violin plot}.}
+\end{figure}
+
+\hypertarget{combining-violin-and-box-plots}{%
+\subsection{Combining Violin and Box Plots}\label{combining-violin-and-box-plots}}
+
+To allow for easy estimation of quantiles, we can also add the box of the box plot inside the violins to indicate 25\%-quartile, median and 75\%-quartile:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_violin}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ season), }\AttributeTok{size =} \DecValTok{1}\NormalTok{, }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{outlier.alpha =} \DecValTok{0}\NormalTok{, }\AttributeTok{coef =} \DecValTok{0}\NormalTok{,}
+                 \AttributeTok{color =} \StringTok{"gray40"}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"Dark2"}\NormalTok{, }\AttributeTok{guide =} \StringTok{"none"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{coord\_flip}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/violin-jitter-box-1.pdf}
+\caption{\label{fig:violin-jitter-box}A combination of violin and box plots to visualize the distribution and the summary statistics of each group.}
+\end{figure}
+
+\hypertarget{create-a-rug-representation-to-a-plot}{%
+\section{Create a Rug Representation to a Plot}\label{create-a-rug-representation-to-a-plot}}
+
+A rug represents the data of a single quantitative variable, displayed as marks along an axis. In most cases, it is used in addition to scatter plots or heatmaps to visualize the overall distribution of one or both of the variables:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(chic, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ temp,}
+                 \AttributeTok{color =}\NormalTok{ season)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_rug}\NormalTok{(}\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Year"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Temperature (°F)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/rug-1.pdf}
+\caption{\label{fig:rug}A so-called rug or bardcode plot is a powerful way to highlight the distribution along one axis without requiring much more space.}
+\end{figure}
+
+\hypertarget{create-a-correlation-matrix}{%
+\section{Create a Correlation Matrix}\label{create-a-correlation-matrix}}
+
+There are several packages that allow to create correlation matrix plots, some also using the \textbf{ggplot2} infrastructure and thus returning ggplots. I am going to show you how to do this without extension packages.
+
+First step is to create the correlation matrix. Here, we use the \textbf{corrr} package that works nicely with pipes but there are also many others out there. We are using Pearson because all the variables are fairly normally distributed (but you may consider Spearman if your variables follow a different pattern). Note that since a correlation matrix has redundant information we are setting half of it to \texttt{NA}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+
+\NormalTok{corm }\OtherTok{\textless{}{-}}
+\NormalTok{  chic }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(death, temp, dewpoint, pm10, o3) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  corrr}\SpecialCharTok{::}\FunctionTok{correlate}\NormalTok{(}\AttributeTok{diagonal =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  corrr}\SpecialCharTok{::}\FunctionTok{shave}\NormalTok{(}\AttributeTok{upper =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Correlation method: 'pearson'
+## Missing treated using: 'pairwise.complete.obs'
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 5 x 6
+##   term     death   temp dewpoint     pm10     o3
+##   <chr>    <dbl>  <dbl>    <dbl>    <dbl>  <dbl>
+## 1 death        1 -0.486   -0.465 -0.00294 -0.238
+## 2 temp        NA  1        0.958  0.368    0.535
+## 3 dewpoint    NA NA        1      0.327    0.454
+## 4 pm10        NA NA       NA      1        0.206
+## 5 o3          NA NA       NA     NA        1
+\end{verbatim}
+
+Now we put the resulting matrix in \emph{long} format using the \texttt{pivot\_longer()} function from the \textbf{tidyr} package:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{corm }\OtherTok{\textless{}{-}}\NormalTok{ corm }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}
+    \AttributeTok{cols =} \SpecialCharTok{{-}}\NormalTok{term,}
+    \AttributeTok{names\_to =} \StringTok{"colname"}\NormalTok{,}
+    \AttributeTok{values\_to =} \StringTok{"corr"}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{rowname =} \FunctionTok{fct\_inorder}\NormalTok{(term),}
+         \AttributeTok{colname =} \FunctionTok{fct\_inorder}\NormalTok{(colname))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 25 x 4
+##    term  colname      corr rowname
+##    <chr> <fct>       <dbl> <fct>  
+##  1 death death     1       death  
+##  2 death temp     -0.486   death  
+##  3 death dewpoint -0.465   death  
+##  4 death pm10     -0.00294 death  
+##  5 death o3       -0.238   death  
+##  6 temp  death    NA       temp   
+##  7 temp  temp      1       temp   
+##  8 temp  dewpoint  0.958   temp   
+##  9 temp  pm10      0.368   temp   
+## 10 temp  o3        0.535   temp   
+## # ... with 15 more rows
+\end{verbatim}
+
+For the plot we will use \texttt{geom\_tile()} for the heatmap and \texttt{geom\_text()} for the labels:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(corm, }\FunctionTok{aes}\NormalTok{(rowname, }\FunctionTok{fct\_rev}\NormalTok{(colname),}
+                 \AttributeTok{fill =}\NormalTok{ corr)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_tile}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =} \FunctionTok{round}\NormalTok{(corr, }\DecValTok{2}\NormalTok{))) }\SpecialCharTok{+}
+  \FunctionTok{coord\_fixed}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{y =} \ConstantTok{NULL}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 10 rows containing missing values
+## (geom_text).
+\end{verbatim}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/tile-corr-plot-1.pdf}
+\caption{\label{fig:tile-corr-plot}A basic correlation plot, created with our prepared correlation data set and the help of \texttt{geom\_tile()}.}
+\end{figure}
+
+I like to have a diverging color palette, centered at zero correlation, with white indicating missing data. Also I like to have no grid lines and padding around the heatmap as well as nicely formatted labels that are colored depending on the underlying fill:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(corm, }\FunctionTok{aes}\NormalTok{(rowname, }\FunctionTok{fct\_rev}\NormalTok{(colname),}
+                 \AttributeTok{fill =}\NormalTok{ corr)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_tile}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}
+    \AttributeTok{label =} \FunctionTok{format}\NormalTok{(}\FunctionTok{round}\NormalTok{(corr, }\DecValTok{2}\NormalTok{), }\AttributeTok{nsmall =} \DecValTok{2}\NormalTok{),}
+    \AttributeTok{color =} \FunctionTok{abs}\NormalTok{(corr) }\SpecialCharTok{\textless{}}\NormalTok{ .}\DecValTok{75}
+\NormalTok{  )) }\SpecialCharTok{+}
+  \FunctionTok{coord\_fixed}\NormalTok{(}\AttributeTok{expand =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"white"}\NormalTok{, }\StringTok{"black"}\NormalTok{),}
+                     \AttributeTok{guide =} \StringTok{"none"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_distiller}\NormalTok{(}
+    \AttributeTok{palette =} \StringTok{"PuOr"}\NormalTok{, }\AttributeTok{na.value =} \StringTok{"white"}\NormalTok{,}
+    \AttributeTok{direction =} \DecValTok{1}\NormalTok{, }\AttributeTok{limits =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{y =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{panel.border =} \FunctionTok{element\_rect}\NormalTok{(}\AttributeTok{color =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{fill =} \ConstantTok{NA}\NormalTok{),}
+        \AttributeTok{legend.position =} \FunctionTok{c}\NormalTok{(.}\DecValTok{85}\NormalTok{, .}\DecValTok{8}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/tile-corr-plot-polished-1.pdf}
+\caption{\label{fig:tile-corr-plot-polished}A polished version of the same correlation plot with custom color palettes and theme adjustments.}
+\end{figure}
+
+\hypertarget{themes}{%
+\chapter{Themes}\label{themes}}
+
+You can change the entire look of the plots by using themes. \texttt{\{ggplot2\}} comes with eight built-in themes:
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/ggplot2-theme-gallery-1.pdf}
+\caption{\label{fig:ggplot2-theme-gallery}An overview of all in-build themes that are contained in the \texttt{\{ggplot2\}} package.}
+\end{figure}
+
+There are several packages that provide additional themes, some even with different default color palettes. As an example, Jeffrey Arnold has put together the library \texttt{\{ggthemes\}} with several custom themes imitating popular designs. For a list you can visit the \href{https://github.com/jrnold/ggthemes}{\texttt{\{ggthemes\}} package site}. Without any coding you can just adapt several styles, some of them well known for their style and aesthetics.
+
+\cleardoublepage
+
+\hypertarget{appendix-appendix}{%
+\appendix \addcontentsline{toc}{chapter}{\appendixname}}
+
+
+\hypertarget{more-to-say}{%
+\chapter{More to Say}\label{more-to-say}}
+
+Yeah! I have finished my book, but I have more to say about some topics. Let me explain them in this appendix.
+
+To know more about \textbf{bookdown}, see \url{https://bookdown.org}.
+
+  \bibliography{book.bib,packages.bib}
+
+\backmatter
+\printindex
+
+\end{document}
