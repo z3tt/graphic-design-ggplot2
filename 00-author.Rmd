@@ -4,4 +4,4 @@ Cédric Scherer is a graduated computational ecologist with a passion for design
 
 Cédric has created visualizations across all disciplines, purposes, and styles. Due to regular participation to social data challenges, he is now well known for complex and visually appealing figures, entirely made with ggplot2, that look as they have been created with a vector design tool.
 
-As a data visualization specialist, he does rarely create dashboards but acts as a consultant and designer improving chart and design choices and workshop coach teaching data visualization principles and courses on R and {ggplot2}. He also uses R and the tidyverse to automate data analyses and plot generation, following the philosophy of a reproducible workflow.
+As a data visualization specialist, he does rarely create dashboards but acts as a consultant and designer improving chart and design choices and workshop coach teaching data visualization principles and courses on R and **ggplot2**. He also uses R and the **tidyverse** packages to automate data analyses and plot generation, following the philosophy of a reproducible workflow.

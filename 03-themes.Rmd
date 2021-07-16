@@ -1,8 +1,8 @@
 # Themes {#themes}
 
-You can change the entire look of the plots by using themes. `{ggplot2}` comes with eight built-in themes:
+You can change the entire look of the plots by using themes. **ggplot2** comes with eight built-in themes:
 
-```{r ggplot2-theme-gallery, echo=FALSE, warning = FALSE, fig.width=11, fig.height=7, fig.cap="An overview of all in-build themes that are contained in the `{ggplot2}` package."}
+```{r ggplot2-theme-gallery, echo=FALSE, warning = FALSE, fig.width=11, fig.height=7, fig.cap="An overview of all in-build themes that are contained in the **ggplot2** package."}
 p <- ggplot(chic, aes(x = date, y = temp)) +
        geom_point(color = "gray30", alpha = .3) +
        labs(x = "Year", y = "Temperature (°F)")
