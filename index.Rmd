@@ -1,0 +1,73 @@
+--- 
+title: "Graphic Design with ggplot2"
+author: "Cédric Scherer"
+date: "`r Sys.Date()`"
+documentclass: krantz
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+colorlinks: yes
+lot: yes
+lof: yes
+site: bookdown::bookdown_site
+description: "How to Create Beautiful, Publication–Ready Data Visualization with R"
+#github-repo: yihui/bookdown-crc
+graphics: yes
+#cover-image: images/cover.jpg
+---
+
+```{r setup, include=FALSE}
+options(
+  htmltools.dir.version = FALSE, formatR.indent = 2, width = 55, digits = 4
+)
+
+# install the packages needed by this book; you fill out c(), e.g. c('ggplot2', 'dplyr')
+lapply(c('xfun'), function(pkg) {
+  if (system.file(package = pkg) == '') install.packages(pkg)
+})
+```
+
+# Preface {-}
+
+Back in 2016, I had to prepare my PhD introductory talk. I planned to create a visualization using small multiples to visualize the outcomes of my simulation model. I was already using the R programing language for years and quickly came across the graphics library {ggplot2} which comes with the functionality to easily create small multiples.to visualize my data. I never liked the syntax and style of base plots in R, so I immediately felt in love with the idea of ggplot's *Grammar of Graphics*. But because I was short on time, I plotted these figures by trial and error and with the help of lots of googling. The resource I came always back to was a blog entry called [Beautiful plotting in R: A ggplot2 cheatsheet by Zev Ross](http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/). After giving the talk which contained some decent plots thanks to the blog post, I decided to go through this tutorial step-by-step. I learned so much from it and directly started modifying the codes and over the time I added additional code snippets, chart types and resources.
+
+Fast forward to 2019. I successfully finished my PhD and started participating in a weekly data visualization challenge called [#TidyTuesday](https://github.com/rfordatascience/tidytuesday/blob/master/README.md). TidyTuesday is an initative grown out of [Jesse Mostipak](https://www.twitter.com/kierisi) and the [R4DS Online Learning Community](https://www.rfordatasci.com/), started by [Thomas Mock](https://www.twitter.com/thomas_mock). Every week, a raw data set is with the aim to explore and visualize the data with {ggplot2}. Thanks to my experience with the {tidyverse} and especially {ggplot2} during my PhD and the open-source approach of the challenge that made it possible to learn from other participants, my visualizations quickly became more advanced and complex. 
+
+A few months later, I started working as a freelance data visualization specialist. I am now using ggplot2 every day: for my scientific work, design requests, reproducible reports, and personal data visualization projects. Since the blog entry by Zev Ross was not updated sine January 2016, I decided to add more examples and tricks to my version, which was now hosted on my [personal blog](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/). It became step by step a unique tutorial that now contains also the fantastic {patchwork}, {ggtext} and {ggforce} packages, a section of custom fonts and colors, a collection of R packages tailored to create interactive charts, and several new chart types. The updated version now contains ~3.000 lines of code and 188 plots and received a lot of interest from ggplot2 users from a wide range of fields.
+
+Today, on a sunny day in August 2021, this tutorial serves as the basis for the book you hold in your hands. I hope you enjoy it as much as I enjoyed learning and sharing ggplot2 wizardry!
+
+## Why read this book {-}
+
+Often, people that use common graphic design and charting tools cannot believe what one can achieve with ggplot2—and I want to show them how one can create a publication-ready graphic that goes beyond the traditional scientific scatter or box plot.
+
+ggplot2 is already used by a large and diverse group of graduates, researchers, and analysts and the current rise of R and the tidyverse will likely lead to an even increasing interest in this great plotting library. While there are many tutorials on ggplot2 tips and tricks provided by the R community, to my knowledge there is no book that specifically addresses the complete design of specific details up to building an ambitious multi-panel graphic with ggplot2. As a blend of strong grounding in academic foundations of data visualization and hands-on, practical codes, and implementation material, the book can be used as introductory material as well as a reference for more experienced ggplot2 practitioners. 
+
+The goal is to offer a book that contains everything needed to create appealing data visualizations with the help of the R library “ggplot2”. The aim is to include the basics of ggplot2, a detailed how-to section on improving the overall design and readability, an overview of useful extension packages, and unique reference implementations of high-quality, state-of-the-art data visualizations. The book will also include a comprehensive inventory of data visualization techniques and good practice along the code examples. 
+
+The book is intended for students and professionals that are interested in learning ggplot2 and/or taking their default ggplots to the next level. Thus, the book is potentially interesting for ggplot2 novices and beginners, but hopefully also helpful and educational for proficient users.
+
+## Structure of the book {-}
+
+Chapters \@ref(introduction) introduces a new topic, and ...
+
+## Software information and conventions {-}
+
+The book was written with the **knitr**\index{knitr} package [@xie2015] and the **bookdown**\index{bookdown} package [@R-bookdown] with the following setup:
+
+```{r session}
+xfun::session_info()
+```
+
+Package names are in bold text (e.g., **rmarkdown**), and inline code and filenames are formatted in a typewriter font (e.g., `knitr::knit('foo.Rmd')`). Function names are followed by parentheses (e.g., `bookdown::render_book()`).
+
+## Acknowledgments {-}
+
+A lot of people helped me when I was writing the book.  
+  
+
+```{block2, type='flushright', html.tag='p'}
+Cédric Scherer  
+Berlin, Germany
+```
+

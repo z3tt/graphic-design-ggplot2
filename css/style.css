@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@400;700&display=swap');
+@font-face {
+    font-family: 'Input Mono Condensed';
+    src: "/fonts/InputMonoCondensed-Regular.ttf" format("truetype");
+}
+@font-face {
+    font-family: 'Input Mono Condensed';
+    src: "/fonts/InputMonoCondensed-Bold.ttf" format("truetype");
+    font-weight:bold;
+}
+@font-face {
+    font-family: 'Input Mono';
+    src: url("../fonts/InputMono-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'Input Mono';
+    src: url("../fonts/InputMono-Bold.ttf") format("truetype");
+    font-weight:bold;
+}
+
+*{
+  font-family: DM Sans;
+}
+
+h1, h2, h3, h4, h5{
+  font-family: DM Serif Display;
+}
+
+code{
+  font-family: Overpass Mono;
+}
+
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  font-family:  Overpass Mono;
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  font-family: Overpass Mono;
+  white-space: inherit;
+}
+p.flushright {
+  text-align: right;
+}
+blockquote > p:last-child {
+  text-align: right;
+}
+blockquote > p:first-child {
+  text-align: inherit;
+}

@@ -1,0 +1,142 @@
+\mainmatter
+
+# Introduction
+
+## The Dataset {#data}
+
+We are using data from the *National Morbidity and Mortality Air Pollution Study* (NMMAPS). To make the plots manageable we are limiting the data to Chicago and 1997–2000. For more detail on this data set, consult Roger Peng's book [Statistical Methods in Environmental Epidemiology with R](http://www.springer.com/de/book/9780387781662).
+You can download the data we are using during this tutorial here: https://github.com/z3tt/R-Tutorials/blob/master/ggplot2/chicago-nmmaps.csv (but you don't have to).
+
+We can import the data into our R session for example with `read_csv()` from the `{readr}` package. To access the data later, we are storing it in a variable called `chic` by using the *assignment arrow* `<-`.
+
+```{r data-import}
+chic <- readr::read_csv("https://raw.githubusercontent.com/z3tt/R-Tutorials/master/ggplot2/chicago-nmmaps.csv")
+```
+
+💡 **The `::` is called *namespace* and can be used to access a function without loading the package. Here, you could also run `library(readr)` first and `chic <- read_csv(...)` afterwards.**
+
+```{r data-inspection}
+tibble::glimpse(chic)
+head(chic, 10)
+```
+
+
+## The `{ggplot2}` Package {#ggplot}
+
+> `ggplot2` is a system for declaratively creating graphics, based on [The Grammar of Graphics](https://link.springer.com/chapter/10.1007/978-3-642-21551-3_13). You provide the data, tell `ggplot2` how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
+
+A ggplot is built up from a few basic elements:
+
+1.	**Data**:
+The raw data that you want to plot.
+2.	**Geometries** `geom_`:
+The geometric shapes that will represent the data.
+3.	**Aesthetics** `aes()`:
+Aesthetics of the geometric and statistical objects, such as position, color, size, shape, and transparency
+4.	**Scales** `scale_`:
+Maps between the data and the aesthetic dimensions, such as data range to plot width or factor values to colors.
+5.	**Statistical transformations** `stat_`:
+Statistical summaries of the data, such as quantiles, fitted curves, and sums.
+6.	**Coordinate system** `coord_`:
+The transformation used for mapping data coordinates into the plane of the data rectangle.
+7.	**Facets** `facet_`:
+The arrangement of the data into a grid of plots.
+8.	**Visual themes** `theme()`:
+The overall visual defaults of a plot, such as background, grids, axes, default typeface, sizes and colors.
+
+💡 **The number of elements may vary depending on how you group them and whom you ask.**
+
+## A Default ggplot {#default}
+
+First, to be able to use the functionality of `{ggplot2}` we have to load the package (which we can also load via the [tidyverse package collection](https://www.tidyverse.org/)):
+
+```{r library}
+#library(ggplot2)
+library(tidyverse)
+```
+
+The syntax of `{ggplot2}` is different from base R. In accordance with the basic elements, a default ggplot needs three things that you have to specify: the *data*, *aesthetics*, and a *geometry*. We always start to define a plotting object by calling `ggplot(data = df)` which just tells `{ggplot2}` that we are going to work with that data. In most cases, you might want to plot two variables—one on the x and one on the y axis. These are *positional aesthetics* and thus we add `aes(x = var1, y = var2)` to the `ggplot()` call (yes, the `aes()` stands for aesthetics). However, there are also cases where one has to specify one or even three or more variables.
+
+💡 **We specify the data *outside* `aes()` and add the variables that ggplot maps the aesthetics to *inside* `aes()`.**
+
+Here, we map the variable `date` to the x position and the variable `temp` to the y position. Later, we will also map variables to all kind of other aesthetics such as color, size, and shape.
+
+```{r ggplot}
+(g <- ggplot(chic, aes(x = date, y = temp)))
+```
+
+Hm, only a panel is created when running this. Why? This is because `{ggplot2}` does not know *how* we want to plot that data—we still need to provide a geometry!
+
+`ggplot2` allows you to store the current `ggobject` in a variable of your choice by assigning it to a variable, in our case called `g`. You can extend this `ggobject` later by adding other layers, either all at once or by assigning it to the same or another variable.
+
+💡 **By using parentheses while assigning an object, the object will be printed immediately (instead of writing `g <- ggplot(...)` and then `g` we simply write `(g <- ggplot(...))`).**
+
+There are many, many different geometries (called *geoms* because each function usually starts with `geom_`) one can add to a ggplot by default (see [here](https://ggplot2.tidyverse.org/reference/) for a full list) and even more provided by extension packages (see [here](https://exts.ggplot2.tidyverse.org/) for a collection of extension packages). Let's tell `{ggplot2}` which style we want to use, for example by adding `geom_point()` to create a scatter plot:
+
+```{r ggplot-default}
+g + geom_point()
+```
+
+Nice! But this data could be also visualized as a line plot (not optimal, but people do things like this all the time). So we simply add `geom_line()` instead and voilá:
+
+```{r ggplot-default-line}
+g + geom_line()
+```
+
+One can also combine several geometric layers—and this is where the magic and fun starts!
+
+```{r ggplot-default-line-point}
+g + geom_line() + geom_point()
+```
+
+That's it for now about geometries. No worries, we are going to learn several plot types in \@ref(foo).
+
+
+##### Change Properties of Geometries
+
+Within the `geom_*` command, you already can manipulate visual aesthetics such as the color, shape, and size of your points. Let's turn all points to large fire-red diamonds!
+
+```{r ggplot-default-col-size-shape}
+g + geom_point(color = "firebrick", shape = "diamond", size = 2)
+```
+
+💡 **`{ggplot2}` understands both `color` and `colour` as well as the short version `col`.**
+
+You can use preset colors (here is a [full list](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)) or [hex color codes](https://www.techopedia.com/definition/29788/color-hex-code), both in quotes, and even RGB/RGBA colors by using the `rgb()` function.
+
+```{r ggplot-default-col-size-hex-rgb, eval=FALSE}
+g + geom_point(color = "#b22222", shape = "diamond", size = 2)
+g + geom_point(color = rgb(178, 34, 34, maxColorValue = 255), shape = "diamond", size = 2)
+```
+
+```{r ggplot-default-col-size-hex-rgb-plot, echo=FALSE, purl=FALSE}
+library(patchwork)
+a <- g + geom_point(color = "#b22222", shape = "diamond", size = 2)
+b <- g + geom_point(color = rgb(178, 34, 34, maxColorValue = 255), shape = "diamond", size = 2)
+a + b
+```
+
+
+Each geom comes with its own properties (called *arguments*) and the same argument may result in a different change depending on the geom you are using.
+
+```{r ggplot-default-line_col-size-shape}
+g + geom_point(color = "firebrick", shape = "diamond", size = 2) +
+    geom_line(color = "firebrick", linetype = "dotted", size = .3)
+```
+
+
+##### Replace the default `ggplot2` theme
+
+And to illustrate some more of ggplot's versatility, let's get rid of the grayish default `{ggplot2}` look by setting a different built-in theme, e.g. `theme_bw()`—by calling `theme_set()` all following plots will have the same black'n'white theme. The red points look way better now!
+
+```{r remove-gray-background}
+theme_set(theme_bw())
+
+g + geom_point(color = "firebrick")
+```
+
+You can find more on how to use built-in themes and how to customize themes in the section ["Working with Themes"](#themes). From the next chapter on, we will also use the `theme()` function to customize particular elements of the theme.
+
+💡 **`theme()` is an essential command to manually modify all kinds of theme elements (texts, rectangles, and lines).**
+
+To see which details of a ggplot theme can be modified have a look [here](https://ggplot2.tidyverse.org/reference/theme.html)—and take some time, this is a looong list.
