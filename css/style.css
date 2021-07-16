@@ -41,6 +41,10 @@ p.flushright {
   text-align: right;
 }
 
+a, .st-hover, .st-current {
+  fill: #28A87D;
+}
+
 blockquote {
   font-style: italic;
 }
@@ -54,6 +58,11 @@ blockquote > p:first-child {
 .header-section-number, .subtitle{
   font-family: DM Serif Display;
 }
+
+.csl-entry {
+  font-family: DM Sans;
+}
+
 .title, .subtitle {
   line-height: 130%;
 }

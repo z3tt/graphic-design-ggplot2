@@ -11,7 +11,7 @@ bookdown::gitbook:
     download: [pdf, epub]
     edit: https://github.com/yihui/bookdown-crc/edit/master/%s
     sharing:
-      github: true
+      github: false
       facebook: false
 bookdown::pdf_book:
   includes:
