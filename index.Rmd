@@ -1,5 +1,6 @@
 --- 
 title: "Graphic Design with ggplot2"
+subtitle: "Create Beautiful Data Visualizations in R"
 author: "Cédric Scherer"
 date: "`r Sys.Date()`"
 documentclass: krantz
@@ -10,8 +11,8 @@ colorlinks: yes
 lot: yes
 lof: yes
 site: bookdown::bookdown_site
-description: "How to Create Beautiful, Publication–Ready Data Visualization with R"
-#github-repo: yihui/bookdown-crc
+description: "Create Beautiful, Publication–Ready Data Visualizations in R"
+github-repo: z3tt/graphic-design-ggplot2
 graphics: yes
 #cover-image: images/cover.jpg
 ---
@@ -31,7 +32,7 @@ lapply(c('xfun'), function(pkg) {
 
 Back in 2016, I had to prepare my PhD introductory talk. I planned to create a visualization using small multiples to visualize the outcomes of my simulation model. I was already using the R programing language for years and quickly came across the graphics library {ggplot2} which comes with the functionality to easily create small multiples.to visualize my data. I never liked the syntax and style of base plots in R, so I immediately felt in love with the idea of ggplot's *Grammar of Graphics*. But because I was short on time, I plotted these figures by trial and error and with the help of lots of googling. The resource I came always back to was a blog entry called [Beautiful plotting in R: A ggplot2 cheatsheet by Zev Ross](http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/). After giving the talk which contained some decent plots thanks to the blog post, I decided to go through this tutorial step-by-step. I learned so much from it and directly started modifying the codes and over the time I added additional code snippets, chart types and resources.
 
-Fast forward to 2019. I successfully finished my PhD and started participating in a weekly data visualization challenge called [#TidyTuesday](https://github.com/rfordatascience/tidytuesday/blob/master/README.md). TidyTuesday is an initative grown out of [Jesse Mostipak](https://www.twitter.com/kierisi) and the [R4DS Online Learning Community](https://www.rfordatasci.com/), started by [Thomas Mock](https://www.twitter.com/thomas_mock). Every week, a raw data set is with the aim to explore and visualize the data with {ggplot2}. Thanks to my experience with the {tidyverse} and especially {ggplot2} during my PhD and the open-source approach of the challenge that made it possible to learn from other participants, my visualizations quickly became more advanced and complex. 
+Fast forward to 2019. I successfully finished my PhD and started participating in a weekly data visualization challenge called [#TidyTuesday](https://github.com/rfordatascience/tidytuesday/blob/master/README.md). TidyTuesday is an initiative grown out of Jesse Mostipak and the [R4DS Online Learning Community](https://www.rfordatasci.com/), started by Thomas Mock. Every week, a raw data set is with the aim to explore and visualize the data with {ggplot2}. Thanks to my experience with the {tidyverse} and especially {ggplot2} during my PhD and the open-source approach of the challenge that made it possible to learn from other participants, my visualizations quickly became more advanced and complex. 
 
 A few months later, I started working as a freelance data visualization specialist. I am now using ggplot2 every day: for my scientific work, design requests, reproducible reports, and personal data visualization projects. Since the blog entry by Zev Ross was not updated sine January 2016, I decided to add more examples and tricks to my version, which was now hosted on my [personal blog](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/). It became step by step a unique tutorial that now contains also the fantastic {patchwork}, {ggtext} and {ggforce} packages, a section of custom fonts and colors, a collection of R packages tailored to create interactive charts, and several new chart types. The updated version now contains ~3.000 lines of code and 188 plots and received a lot of interest from ggplot2 users from a wide range of fields.
 
@@ -46,6 +47,15 @@ ggplot2 is already used by a large and diverse group of graduates, researchers, 
 The goal is to offer a book that contains everything needed to create appealing data visualizations with the help of the R library “ggplot2”. The aim is to include the basics of ggplot2, a detailed how-to section on improving the overall design and readability, an overview of useful extension packages, and unique reference implementations of high-quality, state-of-the-art data visualizations. The book will also include a comprehensive inventory of data visualization techniques and good practice along the code examples. 
 
 The book is intended for students and professionals that are interested in learning ggplot2 and/or taking their default ggplots to the next level. Thus, the book is potentially interesting for ggplot2 novices and beginners, but hopefully also helpful and educational for proficient users.
+
+Among other things, the book covers the following aspects:
+
+*	Look-up resource for every-day and more specific ggplot adjustments and design options
+*	Includes a practical hands-on introduction to ggplot2 to quickly build appealing visualization
+*	Discussion of best practices in data visualization (e.g. colour choice, direct labelling, chart type selection) along the way
+*	Coverage of useful ggplot2 extension packages
+*	Ready-to-start code examples
+*	Reference implementations illustrating code solutions and design choices
 
 ## Structure of the book {-}
 

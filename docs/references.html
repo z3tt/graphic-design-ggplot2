@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Graphic Design with ggplot2</title>
-  <meta name="description" content="How to Create Beautiful, Publication–Ready Data Visualization with R" />
+  <title>References | Graphic Design with ggplot2</title>
+  <meta name="description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Graphic Design with ggplot2" />
+  <meta property="og:title" content="References | Graphic Design with ggplot2" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="How to Create Beautiful, Publication–Ready Data Visualization with R" />
-  
+  <meta property="og:description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
+  <meta name="github-repo" content="z3tt/graphic-design-ggplot2" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Graphic Design with ggplot2" />
+  <meta name="twitter:title" content="References | Graphic Design with ggplot2" />
   
-  <meta name="twitter:description" content="How to Create Beautiful, Publication–Ready Data Visualization with R" />
+  <meta name="twitter:description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
   
 
 <meta name="author" content="Cédric Scherer" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="more-to-say.html"/>
 
-<link rel="next" href="about-the-author.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -171,9 +171,24 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#data"><i class="fa fa-check"></i><b>1.1</b> The Dataset</a></li>
 <li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#ggplot"><i class="fa fa-check"></i><b>1.2</b> The <code>{ggplot2}</code> Package</a></li>
-<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#default"><i class="fa fa-check"></i><b>1.3</b> A Default ggplot</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#default"><i class="fa fa-check"></i><b>1.3</b> A Basic ggplot</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#prop"><i class="fa fa-check"></i><b>1.4</b> Change Properties of Geometries</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#theme"><i class="fa fa-check"></i><b>1.5</b> Replace the default <code>ggplot2</code> theme</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="the-foo-method.html"><a href="the-foo-method.html"><i class="fa fa-check"></i><b>2</b> The FOO Method</a></li>
+<li class="chapter" data-level="2" data-path="charts.html"><a href="charts.html"><i class="fa fa-check"></i><b>2</b> Chart types</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="charts.html"><a href="charts.html#alternatives-to-a-box-plot"><i class="fa fa-check"></i><b>2.1</b> Alternatives to a Box Plot</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="charts.html"><a href="charts.html#dot-plots"><i class="fa fa-check"></i><b>2.1.1</b> Dot Plots</a></li>
+<li class="chapter" data-level="2.1.2" data-path="charts.html"><a href="charts.html#strip-plots"><i class="fa fa-check"></i><b>2.1.2</b> Strip Plots</a></li>
+<li class="chapter" data-level="2.1.3" data-path="charts.html"><a href="charts.html#violin-plots"><i class="fa fa-check"></i><b>2.1.3</b> Violin Plots</a></li>
+<li class="chapter" data-level="2.1.4" data-path="charts.html"><a href="charts.html#combining-violin-plots-with-strip-charts"><i class="fa fa-check"></i><b>2.1.4</b> Combining Violin Plots with Strip Charts</a></li>
+<li class="chapter" data-level="2.1.5" data-path="charts.html"><a href="charts.html#combining-violin-and-box-plots"><i class="fa fa-check"></i><b>2.1.5</b> Combining Violin and Box Plots</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="charts.html"><a href="charts.html#create-a-rug-representation-to-a-plot"><i class="fa fa-check"></i><b>2.2</b> Create a Rug Representation to a Plot</a></li>
+<li class="chapter" data-level="2.3" data-path="charts.html"><a href="charts.html#create-a-correlation-matrix"><i class="fa fa-check"></i><b>2.3</b> Create a Correlation Matrix</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="themes.html"><a href="themes.html"><i class="fa fa-check"></i><b>3</b> Themes</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="more-to-say.html"><a href="more-to-say.html"><i class="fa fa-check"></i><b>A</b> More to Say</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -197,82 +212,16 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Graphic Design with ggplot2</h1>
-<p class="author"><em>Cédric Scherer</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>2021-07-16</em></p>
-</div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>Back in 2016, I had to prepare my PhD introductory talk. I planned to create a visualization using small multiples to visualize the outcomes of my simulation model. I was already using the R programing language for years and quickly came across the graphics library {ggplot2} which comes with the functionality to easily create small multiples.to visualize my data. I never liked the syntax and style of base plots in R, so I immediately felt in love with the idea of ggplot’s <em>Grammar of Graphics</em>. But because I was short on time, I plotted these figures by trial and error and with the help of lots of googling. The resource I came always back to was a blog entry called <a href="http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/">Beautiful plotting in R: A ggplot2 cheatsheet by Zev Ross</a>. After giving the talk which contained some decent plots thanks to the blog post, I decided to go through this tutorial step-by-step. I learned so much from it and directly started modifying the codes and over the time I added additional code snippets, chart types and resources.</p>
-<p>Fast forward to 2019. I successfully finished my PhD and started participating in a weekly data visualization challenge called <a href="https://github.com/rfordatascience/tidytuesday/blob/master/README.md">#TidyTuesday</a>. TidyTuesday is an initative grown out of <a href="https://www.twitter.com/kierisi">Jesse Mostipak</a> and the <a href="https://www.rfordatasci.com/">R4DS Online Learning Community</a>, started by <a href="https://www.twitter.com/thomas_mock">Thomas Mock</a>. Every week, a raw data set is with the aim to explore and visualize the data with {ggplot2}. Thanks to my experience with the {tidyverse} and especially {ggplot2} during my PhD and the open-source approach of the challenge that made it possible to learn from other participants, my visualizations quickly became more advanced and complex.</p>
-<p>A few months later, I started working as a freelance data visualization specialist. I am now using ggplot2 every day: for my scientific work, design requests, reproducible reports, and personal data visualization projects. Since the blog entry by Zev Ross was not updated sine January 2016, I decided to add more examples and tricks to my version, which was now hosted on my <a href="https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/">personal blog</a>. It became step by step a unique tutorial that now contains also the fantastic {patchwork}, {ggtext} and {ggforce} packages, a section of custom fonts and colors, a collection of R packages tailored to create interactive charts, and several new chart types. The updated version now contains ~3.000 lines of code and 188 plots and received a lot of interest from ggplot2 users from a wide range of fields.</p>
-<p>Today, on a sunny day in August 2021, this tutorial serves as the basis for the book you hold in your hands. I hope you enjoy it as much as I enjoyed learning and sharing ggplot2 wizardry!</p>
-<div id="why-read-this-book" class="section level2 unnumbered">
-<h2>Why read this book</h2>
-<p>Often, people that use common graphic design and charting tools cannot believe what one can achieve with ggplot2—and I want to show them how one can create a publication-ready graphic that goes beyond the traditional scientific scatter or box plot.</p>
-<p>ggplot2 is already used by a large and diverse group of graduates, researchers, and analysts and the current rise of R and the tidyverse will likely lead to an even increasing interest in this great plotting library. While there are many tutorials on ggplot2 tips and tricks provided by the R community, to my knowledge there is no book that specifically addresses the complete design of specific details up to building an ambitious multi-panel graphic with ggplot2. As a blend of strong grounding in academic foundations of data visualization and hands-on, practical codes, and implementation material, the book can be used as introductory material as well as a reference for more experienced ggplot2 practitioners.</p>
-<p>The goal is to offer a book that contains everything needed to create appealing data visualizations with the help of the R library “ggplot2.” The aim is to include the basics of ggplot2, a detailed how-to section on improving the overall design and readability, an overview of useful extension packages, and unique reference implementations of high-quality, state-of-the-art data visualizations. The book will also include a comprehensive inventory of data visualization techniques and good practice along the code examples.</p>
-<p>The book is intended for students and professionals that are interested in learning ggplot2 and/or taking their default ggplots to the next level. Thus, the book is potentially interesting for ggplot2 novices and beginners, but hopefully also helpful and educational for proficient users.</p>
-</div>
-<div id="structure-of-the-book" class="section level2 unnumbered">
-<h2>Structure of the book</h2>
-<p>Chapters <a href="introduction.html#introduction">1</a> introduces a new topic, and …</p>
-</div>
-<div id="software-information-and-conventions" class="section level2 unnumbered">
-<h2>Software information and conventions</h2>
-<p>The book was written with the <strong>knitr</strong> package <span class="citation">(<a href="#ref-xie2015" role="doc-biblioref">Xie 2015</a>)</span> and the <strong>bookdown</strong> package <span class="citation">(<a href="#ref-R-bookdown" role="doc-biblioref">Xie 2021</a>)</span> with the following setup:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a>xfun<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
-<pre><code>## R version 4.1.0 (2021-05-18)
-## Platform: x86_64-w64-mingw32/x64 (64-bit)
-## Running under: Windows 10 x64 (build 19041)
-## 
-## Locale:
-##   LC_COLLATE=German_Germany.1252 
-##   LC_CTYPE=German_Germany.1252   
-##   LC_MONETARY=German_Germany.1252
-##   LC_NUMERIC=C                   
-##   LC_TIME=German_Germany.1252    
-## system code page: 65001
-## 
-## Package version:
-##   base64enc_0.1.3   bookdown_0.22    
-##   bslib_0.2.5.1     compiler_4.1.0   
-##   digest_0.6.27     evaluate_0.14    
-##   fs_1.5.0          glue_1.4.2       
-##   graphics_4.1.0    grDevices_4.1.0  
-##   highr_0.9         htmltools_0.5.1.1
-##   jquerylib_0.1.4   jsonlite_1.7.2   
-##   knitr_1.33        magrittr_2.0.1   
-##   markdown_1.1      methods_4.1.0    
-##   mime_0.11         R6_2.5.0         
-##   rappdirs_0.3.3    rlang_0.4.11     
-##   rmarkdown_2.9     rstudioapi_0.13  
-##   sass_0.4.0        stats_4.1.0      
-##   stringi_1.7.3     stringr_1.4.0    
-##   tinytex_0.32      tools_4.1.0      
-##   utils_4.1.0       xfun_0.24        
-##   yaml_2.2.1</code></pre>
-<p>Package names are in bold text (e.g., <strong>rmarkdown</strong>), and inline code and filenames are formatted in a typewriter font (e.g., <code>knitr::knit('foo.Rmd')</code>). Function names are followed by parentheses (e.g., <code>bookdown::render_book()</code>).</p>
-</div>
-<div id="acknowledgments" class="section level2 unnumbered">
-<h2>Acknowledgments</h2>
-<p>A lot of people helped me when I was writing the book.</p>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
 
-<p class="flushright">
-Cédric Scherer<br />
-Berlin, Germany
-</p>
-
-</div>
-</div>
-<h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-xie2015" class="csl-entry">
+<div class="csl-entry">
 Xie, Yihui. 2015. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/">http://yihui.name/knitr/</a>.
 </div>
-<div id="ref-R-bookdown" class="csl-entry">
+<div class="csl-entry">
 ———. 2021. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.
+</div>
 </div>
 </div>
             </section>
@@ -280,8 +229,8 @@ Xie, Yihui. 2015. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd 
           </div>
         </div>
       </div>
+<a href="more-to-say.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="about-the-author.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -313,7 +262,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/yihui/bookdown-crc/edit/master/index.Rmd",
+"link": "https://github.com/yihui/bookdown-crc/edit/master/99-references.Rmd",
 "text": "Edit"
 },
 "history": {

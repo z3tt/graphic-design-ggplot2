@@ -1,5 +1,6 @@
 book_filename: bookdown
 clean: [packages.bib, bookdown.bbl]
+output_dir: "docs"
 delete_merged_file: true
 language:
   label:

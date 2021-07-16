@@ -1,8 +1,0 @@
-introduction
-data
-ggplot
-default
-change-properties-of-geometries
-replace-the-default-ggplot2-theme
-the-foo-method
-more-to-say

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 2.9.7400 64-bit) (preloaded format=xelatex 2020.10.23)  16 JUL 2021 15:59
+This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 2.9.7400 64-bit) (preloaded format=xelatex 2020.10.23)  16 JUL 2021 19:59
 entering extended mode
 **./bookdown.tex
 (bookdown.tex
@@ -816,36 +816,36 @@ LaTeX Info: Redefining \cite on input line 694.
 ) (bookdown.aux)
 \openout1 = `bookdown.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 179.
-LaTeX Font Info:    ... okay on input line 179.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 179.
-LaTeX Font Info:    ... okay on input line 179.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 179.
-LaTeX Font Info:    ... okay on input line 179.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 179.
-LaTeX Font Info:    ... okay on input line 179.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 179.
-LaTeX Font Info:    ... okay on input line 179.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 179.
-LaTeX Font Info:    ... okay on input line 179.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 179.
-LaTeX Font Info:    ... okay on input line 179.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 179.
-LaTeX Font Info:    ... okay on input line 179.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 179.
-LaTeX Font Info:    ... okay on input line 179.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 179.
-LaTeX Font Info:    ... okay on input line 179.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 186.
+LaTeX Font Info:    ... okay on input line 186.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 186.
+LaTeX Font Info:    ... okay on input line 186.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 186.
+LaTeX Font Info:    ... okay on input line 186.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 186.
+LaTeX Font Info:    ... okay on input line 186.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 186.
+LaTeX Font Info:    ... okay on input line 186.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 186.
+LaTeX Font Info:    ... okay on input line 186.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 186.
+LaTeX Font Info:    ... okay on input line 186.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 186.
+LaTeX Font Info:    ... okay on input line 186.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 186.
+LaTeX Font Info:    ... okay on input line 186.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 186.
+LaTeX Font Info:    ... okay on input line 186.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 179.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 186.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 179.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 186.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 179.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 186.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 179.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 186.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 179.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 186.
 
 Package fontspec Info: Font family 'latinmodern-math.otf(0)' created for font
 (fontspec)             'latinmodern-math.otf' with options
@@ -886,16 +886,16 @@ latinmodern-math.otf]/OT:script=math;language=dflt;+ssty=1;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 179.
+(Font)              `operators' in the math version `normal' on input line 186.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input
- line 179.
+ line 186.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 179.
+(Font)              `operators' in the math version `bold' on input line 186.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on inpu
-t line 179.
+t line 186.
 
 Package fontspec Info: latinmodern-math scale = 1.0001.
 
@@ -966,15 +966,15 @@ uage=dflt;"
 (fontspec)             \fontdimen 21\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 179.
+(Font)              `symbols' in the math version `normal' on input line 186.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
 (Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on inpu
-t line 179.
+t line 186.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 179.
+(Font)              `symbols' in the math version `bold' on input line 186.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on inpu
-t line 179.
+t line 186.
 
 Package fontspec Info: latinmodern-math scale = 0.9999.
 
@@ -1028,17 +1028,17 @@ uage=dflt;"
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
 (Font)              `largesymbols' in the math version `normal' on input line 1
-79.
+86.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on inpu
-t line 179.
+t line 186.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 179
+(Font)              `largesymbols' in the math version `bold' on input line 186
 .
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on inpu
-t line 179.
-LaTeX Info: Redefining \microtypecontext on input line 179.
+t line 186.
+LaTeX Info: Redefining \microtypecontext on input line 186.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: No adjustment of tracking.
@@ -1051,7 +1051,7 @@ File: mt-LatinModernRoman.cfg 2013/03/13 v1.0 microtype config. file: Latin Mod
 ern Roman (RS)
 )
 \AtBeginShipoutBox=\box82
-Package hyperref Info: Link coloring ON on input line 179.
+Package hyperref Info: Link coloring ON on input line 186.
 ("C:\Program Files\MiKTeX 2.9\tex/latex/hyperref\nameref.sty"
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
@@ -1064,9 +1064,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count308
 )
-LaTeX Info: Redefining \ref on input line 179.
-LaTeX Info: Redefining \pageref on input line 179.
-LaTeX Info: Redefining \nameref on input line 179.
+LaTeX Info: Redefining \ref on input line 186.
+LaTeX Info: Redefining \pageref on input line 186.
+LaTeX Info: Redefining \nameref on input line 186.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
@@ -1148,43 +1148,43 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [2]
-Underfull \vbox (badness 10000) detected at line 202
+Underfull \vbox (badness 10000) detected at line 209
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 202
+Overfull \hbox (336.25pt too wide) detected at line 209
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 202
+Underfull \vbox (badness 10000) detected at line 209
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 202
+Overfull \hbox (336.25pt too wide) detected at line 209
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 202
+Underfull \vbox (badness 10000) detected at line 209
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 202
+Overfull \hbox (336.25pt too wide) detected at line 209
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 202
+Underfull \vbox (badness 10000) detected at line 209
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 202
+Overfull \hbox (336.25pt too wide) detected at line 209
 []
  []
 
 
-Underfull \hbox (badness 10000) detected at line 202
+Underfull \hbox (badness 10000) detected at line 209
 []
  []
 
@@ -1273,43 +1273,43 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [4
 
 ]
-Underfull \vbox (badness 10000) detected at line 204
+Underfull \vbox (badness 10000) detected at line 211
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 204
+Overfull \hbox (336.25pt too wide) detected at line 211
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 204
+Underfull \vbox (badness 10000) detected at line 211
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 204
+Overfull \hbox (336.25pt too wide) detected at line 211
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 204
+Underfull \vbox (badness 10000) detected at line 211
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 204
+Overfull \hbox (336.25pt too wide) detected at line 211
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 204
+Underfull \vbox (badness 10000) detected at line 211
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 204
+Overfull \hbox (336.25pt too wide) detected at line 211
 []
  []
 
 
-Underfull \hbox (badness 10000) detected at line 204
+Underfull \hbox (badness 10000) detected at line 211
 []
  []
 
@@ -1367,151 +1367,108 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [6
 
 ]
-Underfull \vbox (badness 10000) detected at line 205
+Underfull \vbox (badness 10000) detected at line 212
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 205
+Overfull \hbox (336.25pt too wide) detected at line 212
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 205
+Underfull \vbox (badness 10000) detected at line 212
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 205
+Overfull \hbox (336.25pt too wide) detected at line 212
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 205
+Underfull \vbox (badness 10000) detected at line 212
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 205
+Overfull \hbox (336.25pt too wide) detected at line 212
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 205
+Underfull \vbox (badness 10000) detected at line 212
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 205
+Overfull \hbox (336.25pt too wide) detected at line 212
 []
  []
 
 
-Underfull \hbox (badness 10000) detected at line 205
+Underfull \hbox (badness 10000) detected at line 212
 []
  []
 
-(bookdown.lof)
-\tf@lof=\write7
-\openout7 = `bookdown.lof'.
-
-
+(bookdown.lof
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
 [7
 
-]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+])
+\tf@lof=\write7
+\openout7 = `bookdown.lof'.
+
+[8]
+Underfull \vbox (badness 10000) detected at line 214
+ []
 
 
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
+Overfull \hbox (336.25pt too wide) detected at line 214
 []
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 10000) detected at line 214
+ []
 
 
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
+Overfull \hbox (336.25pt too wide) detected at line 214
 []
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 10000) detected at line 214
+ []
 
 
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
+Overfull \hbox (336.25pt too wide) detected at line 214
 []
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 10000) detected at line 214
+ []
 
 
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
+Overfull \hbox (336.25pt too wide) detected at line 214
 []
  []
 
 
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[8
-
-]
-Underfull \vbox (badness 10000) detected at line 207
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 207
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 207
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 207
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 207
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 207
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 207
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 207
-[]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 207
+Underfull \hbox (badness 10000) detected at line 214
 []
  []
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.00085pt on input line 210.
+(Font)              scaled to size 8.00085pt on input line 217.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00064pt on input line 210.
+(Font)              scaled to size 6.00064pt on input line 217.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 210.
+(Font)              scaled to size 7.99915pt on input line 217.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 210.
+(Font)              scaled to size 5.99936pt on input line 217.
 LaTeX Font Info:    Font shape `TU/SourceCodePro(0)/m/n' will be
-(Font)              scaled to size 6.40002pt on input line 210.
-LaTeX Font Info:    Font shape `TU/SourceCodePro(0)/m/n' will be
-(Font)              scaled to size 4.80002pt on input line 212.
-LaTeX Font Info:    Font shape `TU/SourceCodePro(0)/m/n' will be
-(Font)              scaled to size 4.00002pt on input line 212.
+(Font)              scaled to size 6.40002pt on input line 217.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
@@ -1519,44 +1476,45 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [9
 
+
 ] [10] [11] [12]
-Underfull \vbox (badness 10000) detected at line 292
+Underfull \vbox (badness 10000) detected at line 317
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 292
+Overfull \hbox (336.25pt too wide) detected at line 317
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 292
+Underfull \vbox (badness 10000) detected at line 317
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 292
+Overfull \hbox (336.25pt too wide) detected at line 317
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 292
+Underfull \vbox (badness 10000) detected at line 317
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 292
+Overfull \hbox (336.25pt too wide) detected at line 317
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 292
+Underfull \vbox (badness 10000) detected at line 317
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 292
+Overfull \hbox (336.25pt too wide) detected at line 317
 []
  []
 
 
-Underfull \hbox (badness 10000) detected at line 292
+Underfull \hbox (badness 10000) detected at line 317
 []
  []
 
@@ -1608,45 +1566,44 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [14
 
 ]
-Underfull \vbox (badness 10000) detected at line 300
+Underfull \vbox (badness 10000) detected at line 333
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 300
+Overfull \hbox (336.25pt too wide) detected at line 333
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 300
+Underfull \vbox (badness 10000) detected at line 333
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 300
+Overfull \hbox (336.25pt too wide) detected at line 333
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 300
+Underfull \vbox (badness 10000) detected at line 333
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 300
+Overfull \hbox (336.25pt too wide) detected at line 333
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 300
+Underfull \vbox (badness 10000) detected at line 333
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 300
+Overfull \hbox (336.25pt too wide) detected at line 333
 []
  []
 
 Chapter 1.
-Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-LaTeX Font Info:    Font shape `TU/SourceCodePro(0)/b/n' will be
-(Font)              scaled to size 8.00003pt on input line 333.
+LaTeX Font Info:    Font shape `TU/SourceCodePro(0)/m/it' will be
+(Font)              scaled to size 8.00003pt on input line 367.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
@@ -1657,53 +1614,17 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 ]
 LaTeX Font Info:    Font shape `TU/SourceCodePro(0)/b/n' will be
-(Font)              scaled to size 9.60004pt on input line 381.
-[2]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 385--385
+(Font)              scaled to size 9.60004pt on input line 391.
+LaTeX Font Info:    Font shape `TU/SourceCodePro(0)/m/n' will be
+(Font)              scaled to size 4.80002pt on input line 396.
+LaTeX Font Info:    Font shape `TU/SourceCodePro(0)/m/n' will be
+(Font)              scaled to size 4.00002pt on input line 396.
+
+Overfull \hbox (30.0pt too wide) in paragraph at lines 397--397
 |  
  []
 
 
-Underfull \hbox (badness 10000) detected at line 393
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 393
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 396
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 396
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 399
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 399
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 402
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 402
-[][][]
- []
-
-
 Underfull \hbox (badness 10000) detected at line 405
  [][]
  []
@@ -1743,128 +1664,209 @@ Underfull \hbox (badness 10000) detected at line 414
 [][][]
  []
 
-Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-LaTeX Font Info:    Font shape `TU/SourceCodePro(0)/m/it' will be
-(Font)              scaled to size 8.00003pt on input line 427.
+[2]
+Underfull \hbox (badness 10000) detected at line 417
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 417
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 420
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 420
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 423
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 423
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 426
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 426
+[][][]
+ []
+
 [3]
-Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
 File: bookdown_files/figure-latex/ggplot-1.pdf Graphic file (type pdf)
 <use bookdown_files/figure-latex/ggplot-1.pdf>
 [4]
-Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
 File: bookdown_files/figure-latex/ggplot-default-1.pdf Graphic file (type pdf)
 <use bookdown_files/figure-latex/ggplot-default-1.pdf>
-[5]
 File: bookdown_files/figure-latex/ggplot-default-line-1.pdf Graphic file (type 
 pdf)
 <use bookdown_files/figure-latex/ggplot-default-line-1.pdf>
-[6]
 File: bookdown_files/figure-latex/ggplot-default-line-point-1.pdf Graphic file 
 (type pdf)
 <use bookdown_files/figure-latex/ggplot-default-line-point-1.pdf>
-
-LaTeX Warning: Reference `foo' on page 7 undefined on input line 499.
-
-[7]
+[5] [6]
 File: bookdown_files/figure-latex/ggplot-default-col-size-shape-1.pdf Graphic f
 ile (type pdf)
 <use bookdown_files/figure-latex/ggplot-default-col-size-shape-1.pdf>
-Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
+[7]
 File: bookdown_files/figure-latex/ggplot-default-col-size-hex-rgb-plot-1.pdf Gr
 aphic file (type pdf)
 <use bookdown_files/figure-latex/ggplot-default-col-size-hex-rgb-plot-1.pdf>
-[8]
 File: bookdown_files/figure-latex/ggplot-default-line_col-size-shape-1.pdf Grap
 hic file (type pdf)
 <use bookdown_files/figure-latex/ggplot-default-line_col-size-shape-1.pdf>
-[9]
+[8]
 File: bookdown_files/figure-latex/remove-gray-background-1.pdf Graphic file (ty
 pe pdf)
 <use bookdown_files/figure-latex/remove-gray-background-1.pdf>
-[10]
-Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-[11]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[9] [10]
+Underfull \vbox (badness 10000) detected at line 603
+ []
 
 
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
+Overfull \hbox (336.25pt too wide) detected at line 603
 []
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 10000) detected at line 603
+ []
 
 
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
+Overfull \hbox (336.25pt too wide) detected at line 603
 []
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 10000) detected at line 603
+ []
 
 
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
+Overfull \hbox (336.25pt too wide) detected at line 603
 []
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
+Underfull \vbox (badness 10000) detected at line 603
  []
 
 
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[12
-
-]
-Underfull \vbox (badness 10000) detected at line 560
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 560
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 560
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 560
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 560
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 560
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 560
- []
-
-
-Overfull \hbox (336.25pt too wide) detected at line 560
+Overfull \hbox (336.25pt too wide) detected at line 603
 []
  []
 
 Chapter 2.
+File: img/boxplot.png Graphic file (type bmp)
+<img/boxplot.png>
+
+Overfull \hbox (615.92065pt too wide) in paragraph at lines 619--619
+[][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 46.05495pt on input line 620.
+
+File: bookdown_files/figure-latex/boxplot-1.pdf Graphic file (type pdf)
+<use bookdown_files/figure-latex/boxplot-1.pdf>
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[13
+[11
+
+
+] [12]
+File: bookdown_files/figure-latex/point-1.pdf Graphic file (type pdf)
+<use bookdown_files/figure-latex/point-1.pdf>
+File: bookdown_files/figure-latex/point-alpha-1.pdf Graphic file (type pdf)
+<use bookdown_files/figure-latex/point-alpha-1.pdf>
+File: bookdown_files/figure-latex/jitter-1.pdf Graphic file (type pdf)
+<use bookdown_files/figure-latex/jitter-1.pdf>
+[13]
+File: bookdown_files/figure-latex/violin-1.pdf Graphic file (type pdf)
+<use bookdown_files/figure-latex/violin-1.pdf>
+File: bookdown_files/figure-latex/violin-jitter-1.pdf Graphic file (type pdf)
+<use bookdown_files/figure-latex/violin-jitter-1.pdf>
+[14] [15]
+File: bookdown_files/figure-latex/violin-sina-1.pdf Graphic file (type pdf)
+<use bookdown_files/figure-latex/violin-sina-1.pdf>
+File: bookdown_files/figure-latex/violin-jitter-box-1.pdf Graphic file (type pd
+f)
+<use bookdown_files/figure-latex/violin-jitter-box-1.pdf>
+[16]
+File: bookdown_files/figure-latex/rug-1.pdf Graphic file (type pdf)
+<use bookdown_files/figure-latex/rug-1.pdf>
+[17]
+Underfull \vbox (badness 1394) detected at line 805
+ []
+
+[18] [19] [20]
+File: bookdown_files/figure-latex/tile-corr-plot-1.pdf Graphic file (type pdf)
+<use bookdown_files/figure-latex/tile-corr-plot-1.pdf>
+[21]
+File: bookdown_files/figure-latex/tile-corr-plot-polished-1.pdf Graphic file (t
+ype pdf)
+<use bookdown_files/figure-latex/tile-corr-plot-polished-1.pdf>
+[22]
+Underfull \vbox (badness 10000) detected at line 911
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 911
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 911
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 911
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 911
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 911
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 911
+ []
+
+
+Overfull \hbox (336.25pt too wide) detected at line 911
+[]
+ []
+
+Chapter 3.
+File: bookdown_files/figure-latex/ggplot2-theme-gallery-1.pdf Graphic file (typ
+e pdf)
+<use bookdown_files/figure-latex/ggplot2-theme-gallery-1.pdf>
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[23
+
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1903,41 +1905,41 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[14
+[24
 
 ]
-Underfull \vbox (badness 10000) detected at line 571
+Underfull \vbox (badness 10000) detected at line 930
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 571
+Overfull \hbox (336.25pt too wide) detected at line 930
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 571
+Underfull \vbox (badness 10000) detected at line 930
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 571
+Overfull \hbox (336.25pt too wide) detected at line 930
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 571
+Underfull \vbox (badness 10000) detected at line 930
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 571
+Overfull \hbox (336.25pt too wide) detected at line 930
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 571
+Underfull \vbox (badness 10000) detected at line 930
  []
 
 
-Overfull \hbox (336.25pt too wide) detected at line 571
+Overfull \hbox (336.25pt too wide) detected at line 930
 []
  []
 
@@ -1947,7 +1949,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[15
+[25
 
 
 ]
@@ -1987,7 +1989,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[16
+[26
 
 ]
 Underfull \vbox (badness 10000) detected at line 1
@@ -2035,7 +2037,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[17
+[27
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2074,7 +2076,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[18
+[28
 
 ] (bookdown.ind
 Underfull \hbox (badness 10000) detected at line 1
@@ -2086,27 +2088,24 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[19
+[29
 
 
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 582.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 582.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 941.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 941.
 (bookdown.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 582.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 582.
-
-LaTeX Warning: There were undefined references.
-
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 941.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 941.
  ) 
 Here is how much of TeX's memory you used:
- 21334 strings out of 414218
- 374624 string characters out of 2902542
- 843859 words of memory out of 3000000
- 38499 multiletter control sequences out of 15000+200000
- 538068 words of font info for 101 fonts, out of 3000000 for 9000
+ 21471 strings out of 414218
+ 378864 string characters out of 2902542
+ 844879 words of memory out of 3000000
+ 38617 multiletter control sequences out of 15000+200000
+ 538076 words of font info for 102 fonts, out of 3000000 for 9000
  1348 hyphenation exceptions out of 8191
- 60i,8n,112p,1168b,616s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 60i,8n,112p,1168b,639s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on bookdown.pdf (33 pages).
+Output written on bookdown.pdf (43 pages).

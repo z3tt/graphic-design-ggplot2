@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Introduction | Graphic Design with ggplot2</title>
-  <meta name="description" content="How to Create Beautiful, Publication–Ready Data Visualization with R" />
+  <meta name="description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Introduction | Graphic Design with ggplot2" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="How to Create Beautiful, Publication–Ready Data Visualization with R" />
-  
+  <meta property="og:description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
+  <meta name="github-repo" content="z3tt/graphic-design-ggplot2" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 1 Introduction | Graphic Design with ggplot2" />
   
-  <meta name="twitter:description" content="How to Create Beautiful, Publication–Ready Data Visualization with R" />
+  <meta name="twitter:description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
   
 
 <meta name="author" content="Cédric Scherer" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="about-the-author.html"/>
-<link rel="next" href="the-foo-method.html"/>
+<link rel="next" href="charts.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -171,9 +171,24 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#data"><i class="fa fa-check"></i><b>1.1</b> The Dataset</a></li>
 <li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#ggplot"><i class="fa fa-check"></i><b>1.2</b> The <code>{ggplot2}</code> Package</a></li>
-<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#default"><i class="fa fa-check"></i><b>1.3</b> A Default ggplot</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#default"><i class="fa fa-check"></i><b>1.3</b> A Basic ggplot</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#prop"><i class="fa fa-check"></i><b>1.4</b> Change Properties of Geometries</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#theme"><i class="fa fa-check"></i><b>1.5</b> Replace the default <code>ggplot2</code> theme</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="the-foo-method.html"><a href="the-foo-method.html"><i class="fa fa-check"></i><b>2</b> The FOO Method</a></li>
+<li class="chapter" data-level="2" data-path="charts.html"><a href="charts.html"><i class="fa fa-check"></i><b>2</b> Chart types</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="charts.html"><a href="charts.html#alternatives-to-a-box-plot"><i class="fa fa-check"></i><b>2.1</b> Alternatives to a Box Plot</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="charts.html"><a href="charts.html#dot-plots"><i class="fa fa-check"></i><b>2.1.1</b> Dot Plots</a></li>
+<li class="chapter" data-level="2.1.2" data-path="charts.html"><a href="charts.html#strip-plots"><i class="fa fa-check"></i><b>2.1.2</b> Strip Plots</a></li>
+<li class="chapter" data-level="2.1.3" data-path="charts.html"><a href="charts.html#violin-plots"><i class="fa fa-check"></i><b>2.1.3</b> Violin Plots</a></li>
+<li class="chapter" data-level="2.1.4" data-path="charts.html"><a href="charts.html#combining-violin-plots-with-strip-charts"><i class="fa fa-check"></i><b>2.1.4</b> Combining Violin Plots with Strip Charts</a></li>
+<li class="chapter" data-level="2.1.5" data-path="charts.html"><a href="charts.html#combining-violin-and-box-plots"><i class="fa fa-check"></i><b>2.1.5</b> Combining Violin and Box Plots</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="charts.html"><a href="charts.html#create-a-rug-representation-to-a-plot"><i class="fa fa-check"></i><b>2.2</b> Create a Rug Representation to a Plot</a></li>
+<li class="chapter" data-level="2.3" data-path="charts.html"><a href="charts.html#create-a-correlation-matrix"><i class="fa fa-check"></i><b>2.3</b> Create a Correlation Matrix</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="themes.html"><a href="themes.html"><i class="fa fa-check"></i><b>3</b> Themes</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="more-to-say.html"><a href="more-to-say.html"><i class="fa fa-check"></i><b>A</b> More to Say</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -202,9 +217,10 @@ div.csl-indent {
 <div id="data" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> The Dataset</h2>
 <p>We are using data from the <em>National Morbidity and Mortality Air Pollution Study</em> (NMMAPS). To make the plots manageable we are limiting the data to Chicago and 1997–2000. For more detail on this data set, consult Roger Peng’s book <a href="http://www.springer.com/de/book/9780387781662">Statistical Methods in Environmental Epidemiology with R</a>.
-You can download the data we are using during this tutorial <a href="https://github.com/Z3tt/R-Tutorials/blob/master/ggplot2/chicago-nmmaps.csv">here</a> (but you don’t have to).</p>
-<p>We can import the data into our R session for example with <code>read_csv()</code> from the <code>{readr}</code> package. To access the data later, we are storing it in a variable called <code>chic</code> by using the <em>assignment arrow</em> <code>&lt;-</code>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="introduction.html#cb3-1" aria-hidden="true" tabindex="-1"></a>chic <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/Z3tt/R-Tutorials/master/ggplot2/chicago-nmmaps.csv&quot;</span>)</span></code></pre></div>
+You can download the data we are using during this tutorial here: <a href="http://cedricscherer.com/data/chicago-nmmaps.csv" class="uri">http://cedricscherer.com/data/chicago-nmmaps.csv</a> (but you don’t have to).</p>
+<p>We can import the data into our R session for example with <code>read_csv()</code> from the <code>{readr}</code> package which allows to import data directly from a web URL. To access the data later, we are storing it in a variable called <code>chic</code> by using the <em>assignment arrow</em> <code>&lt;-</code>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="introduction.html#cb3-1" aria-hidden="true" tabindex="-1"></a>url_data <span class="ot">&lt;-</span> <span class="st">&quot;http://cedricscherer.com/data/chicago-nmmaps.csv&quot;</span></span>
+<span id="cb3-2"><a href="introduction.html#cb3-2" aria-hidden="true" tabindex="-1"></a>chic <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(url_data)</span></code></pre></div>
 <pre><code>## 
 ## -- Column specification -------------------------------
 ## cols(
@@ -219,7 +235,7 @@ You can download the data we are using during this tutorial <a href="https://git
 ##   season = col_character(),
 ##   year = col_double()
 ## )</code></pre>
-<p>💡 <strong>The <code>::</code> is called <em>namespace</em> and can be used to access a function without loading the package. Here, you could also run <code>library(readr)</code> first and <code>chic &lt;- read_csv(...)</code> afterwards.</strong></p>
+<p><em>Note: The <code>::</code> is called <strong>namespace</strong> and can be used to access a function without loading the package. Here, you could also run <code>library(readr)</code> first and <code>chic &lt;- read_csv(...)</code> afterwards.</em></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="introduction.html#cb5-1" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">glimpse</span>(chic)</span></code></pre></div>
 <pre><code>## Rows: 1,461
 ## Columns: 10
@@ -233,29 +249,14 @@ You can download the data we are using during this tutorial <a href="https://git
 ## $ time     &lt;dbl&gt; 3654, 3655, 3656, 3657, 3658, 3659, ~
 ## $ season   &lt;chr&gt; &quot;Winter&quot;, &quot;Winter&quot;, &quot;Winter&quot;, &quot;Winte~
 ## $ year     &lt;dbl&gt; 1997, 1997, 1997, 1997, 1997, 1997, ~</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="introduction.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chic, <span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 10 x 10
-##    city  date       death  temp dewpoint  pm10    o3
-##    &lt;chr&gt; &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1 chic  1997-01-01   137  36      37.5  13.1   5.66
-##  2 chic  1997-01-02   123  45      47.2  41.9   5.53
-##  3 chic  1997-01-03   127  40      38    27.0   6.29
-##  4 chic  1997-01-04   146  51.5    45.5  25.1   7.54
-##  5 chic  1997-01-05   102  27      11.2  15.3  20.8 
-##  6 chic  1997-01-06   127  17       5.75  9.36 14.9 
-##  7 chic  1997-01-07   116  16       7    20.2  11.9 
-##  8 chic  1997-01-08   118  19      17.8  33.1   8.68
-##  9 chic  1997-01-09   148  26      24    12.1  13.4 
-## 10 chic  1997-01-10   121  16       5.38 24.8  10.4 
-## # ... with 3 more variables: time &lt;dbl&gt;, season &lt;chr&gt;,
-## #   year &lt;dbl&gt;</code></pre>
 </div>
 <div id="ggplot" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> The <code>{ggplot2}</code> Package</h2>
+<p>When looking into the package description of the <code>{ggplot2}</code> package, it states the following:</p>
 <blockquote>
-<p><code>ggplot2</code> is a system for declaratively creating graphics, based on <a href="https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448/ref=as_li_ss_tl?ie=UTF8&amp;qid=1477928463&amp;sr=8-1&amp;keywords=the+grammar+of+graphics&amp;linkCode=sl1&amp;tag=ggplot2-20&amp;linkId=f0130e557161b83fbe97ba0e9175c431">The Grammar of Graphics</a>. You provide the data, tell <code>ggplot2</code> how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.</p>
+<p><code>ggplot2</code> is a system for declaratively creating graphics, based on <a href="https://link.springer.com/chapter/10.1007/978-3-642-21551-3_13">The Grammar of Graphics</a>. You provide the data, tell <code>ggplot2</code> how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.</p>
 </blockquote>
-<p>A ggplot is built up from a few basic elements:</p>
+<p>Consequently, a ggplot is built up from a few basic elements:</p>
 <ol style="list-style-type: decimal">
 <li><strong>Data</strong>:
 The raw data that you want to plot.</li>
@@ -274,13 +275,12 @@ The arrangement of the data into a grid of plots.</li>
 <li><strong>Visual themes</strong> <code>theme()</code>:
 The overall visual defaults of a plot, such as background, grids, axes, default typeface, sizes and colors.</li>
 </ol>
-<p>💡 <strong>The number of elements may vary depending on how you group them and whom you ask.</strong></p>
+<p><em>Note: The number of elements may vary depending on how you group them and whom you ask.</em></p>
 </div>
 <div id="default" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> A Default ggplot</h2>
+<h2><span class="header-section-number">1.3</span> A Basic ggplot</h2>
 <p>First, to be able to use the functionality of <code>{ggplot2}</code> we have to load the package (which we can also load via the <a href="https://www.tidyverse.org/">tidyverse package collection</a>):</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="introduction.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(ggplot2)</span></span>
-<span id="cb9-2"><a href="introduction.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="introduction.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <pre><code>## -- Attaching packages -------------- tidyverse 1.3.1 --</code></pre>
 <pre><code>## v ggplot2 3.3.5     v purrr   0.3.4
 ## v tibble  3.1.2     v dplyr   1.0.7
@@ -290,50 +290,90 @@ The overall visual defaults of a plot, such as background, grids, axes, default 
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <p>The syntax of <code>{ggplot2}</code> is different from base R. In accordance with the basic elements, a default ggplot needs three things that you have to specify: the <em>data</em>, <em>aesthetics</em>, and a <em>geometry</em>. We always start to define a plotting object by calling <code>ggplot(data = df)</code> which just tells <code>{ggplot2}</code> that we are going to work with that data. In most cases, you might want to plot two variables—one on the x and one on the y axis. These are <em>positional aesthetics</em> and thus we add <code>aes(x = var1, y = var2)</code> to the <code>ggplot()</code> call (yes, the <code>aes()</code> stands for aesthetics). However, there are also cases where one has to specify one or even three or more variables.</p>
-<p>💡 <strong>We specify the data <em>outside</em> <code>aes()</code> and add the variables that ggplot maps the aesthetics to <em>inside</em> <code>aes()</code>.</strong></p>
+<p><em>Note: We specify the data </em>outside* <code>aes()</code> and add the variables that ggplot maps the aesthetics to <em>inside</em> <code>aes()</code>.*</p>
 <p>Here, we map the variable <code>date</code> to the x position and the variable <code>temp</code> to the y position. Later, we will also map variables to all kind of other aesthetics such as color, size, and shape.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="introduction.html#cb13-1" aria-hidden="true" tabindex="-1"></a>(g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(chic, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> temp)))</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/ggplot-1.png" width="672" /></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="introduction.html#cb11-1" aria-hidden="true" tabindex="-1"></a>(g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(chic, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> temp)))</span></code></pre></div>
+<div class="figure"><span id="fig:ggplot"></span>
+<img src="bookdown_files/figure-html/ggplot-1.png" alt="A default plot generated with the `{ggplot2}` package with variables mapped to `x` and `y`." width="672" />
+<p class="caption">
+FIGURE 1.1: A default plot generated with the <code>{ggplot2}</code> package with variables mapped to <code>x</code> and <code>y</code>.
+</p>
+</div>
 <p>Hm, only a panel is created when running this. Why? This is because <code>{ggplot2}</code> does not know <em>how</em> we want to plot that data—we still need to provide a geometry!</p>
 <p><code>ggplot2</code> allows you to store the current <code>ggobject</code> in a variable of your choice by assigning it to a variable, in our case called <code>g</code>. You can extend this <code>ggobject</code> later by adding other layers, either all at once or by assigning it to the same or another variable.</p>
-<p>💡 <strong>By using parentheses while assigning an object, the object will be printed immediately (instead of writing <code>g &lt;- ggplot(...)</code> and then <code>g</code> we simply write <code>(g &lt;- ggplot(...))</code>).</strong></p>
+<p><em>Note: By using parentheses while assigning an object, the object will be printed immediately (instead of writing <code>g &lt;- ggplot(...)</code> and then <code>g</code> we simply write <code>(g &lt;- ggplot(...))</code>).</em></p>
 <p>There are many, many different geometries (called <em>geoms</em> because each function usually starts with <code>geom_</code>) one can add to a ggplot by default (see <a href="https://ggplot2.tidyverse.org/reference/">here</a> for a full list) and even more provided by extension packages (see <a href="https://exts.ggplot2.tidyverse.org/">here</a> for a collection of extension packages). Let’s tell <code>{ggplot2}</code> which style we want to use, for example by adding <code>geom_point()</code> to create a scatter plot:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="introduction.html#cb14-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/ggplot-default-1.png" width="672" /></p>
-<p>Nice! But this data could be also visualized as a line plot (not optimal, but people do things like this all the time). So we simply add <code>geom_line()</code> instead and voilá:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="introduction.html#cb15-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/ggplot-default-line-1.png" width="672" /></p>
-<p>One can also combine several geometric layers—and this is where the magic and fun starts!</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="introduction.html#cb16-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/ggplot-default-line-point-1.png" width="672" /></p>
-<p>That’s it for now about geometries. No worries, we are going to learn several plot types in <a href="#foo"><strong>??</strong></a>.</p>
-<div id="change-properties-of-geometries" class="section level5" number="1.3.0.0.1">
-<h5><span class="header-section-number">1.3.0.0.1</span> Change Properties of Geometries</h5>
-<p>Within the <code>geom_*</code> command, you already can manipulate visual aesthetics such as the color, shape, and size of your points. Let’s turn all points to large fire-red diamonds!</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="introduction.html#cb17-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;firebrick&quot;</span>, <span class="at">shape =</span> <span class="st">&quot;diamond&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/ggplot-default-col-size-shape-1.png" width="672" /></p>
-<p>💡 <strong><code>{ggplot2}</code> understands both <code>color</code> and <code>colour</code> as well as the short version <code>col</code>.</strong></p>
-<p>You can use preset colors (here is a <a href="http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf">full list</a>) or <a href="https://www.techopedia.com/definition/29788/color-hex-code">hex color codes</a>, both in quotes, and even RGB/RGBA colors by using the <code>rgb()</code> function.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="introduction.html#cb18-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#b22222&quot;</span>, <span class="at">shape =</span> <span class="st">&quot;diamond&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>)</span>
-<span id="cb18-2"><a href="introduction.html#cb18-2" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="fu">rgb</span>(<span class="dv">178</span>, <span class="dv">34</span>, <span class="dv">34</span>, <span class="at">maxColorValue =</span> <span class="dv">255</span>), <span class="at">shape =</span> <span class="st">&quot;diamond&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/ggplot-default-col-size-hex-rgb-plot-1.png" width="672" /></p>
-<p>Each geom comes with its own properties (called <em>arguments</em>) and the same argument may result in a different change depending on the geom you are using.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="introduction.html#cb19-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;firebrick&quot;</span>, <span class="at">shape =</span> <span class="st">&quot;diamond&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb19-2"><a href="introduction.html#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">&quot;firebrick&quot;</span>, <span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>, <span class="at">size =</span> .<span class="dv">3</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/ggplot-default-line_col-size-shape-1.png" width="672" /></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="introduction.html#cb12-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="figure"><span id="fig:ggplot-default"></span>
+<img src="bookdown_files/figure-html/ggplot-default-1.png" alt="A default scatter plot of temperature measured in Chicago created with the `{ggplot2}` package." width="672" />
+<p class="caption">
+FIGURE 1.2: A default scatter plot of temperature measured in Chicago created with the <code>{ggplot2}</code> package.
+</p>
 </div>
-<div id="replace-the-default-ggplot2-theme" class="section level5" number="1.3.0.0.2">
-<h5><span class="header-section-number">1.3.0.0.2</span> Replace the default <code>ggplot2</code> theme</h5>
+<p>Nice! But this data could be also visualized as a line plot (not optimal, but people do things like this all the time). So we simply add <code>geom_line()</code> instead and voilá:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="introduction.html#cb13-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
+<div class="figure"><span id="fig:ggplot-default-line"></span>
+<img src="bookdown_files/figure-html/ggplot-default-line-1.png" alt="The same data shown as a line chart." width="672" />
+<p class="caption">
+FIGURE 1.3: The same data shown as a line chart.
+</p>
+</div>
+<p>One can also combine several geometric layers—and this is where the magic and fun starts!</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="introduction.html#cb14-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="figure"><span id="fig:ggplot-default-line-point"></span>
+<img src="bookdown_files/figure-html/ggplot-default-line-point-1.png" alt="Again, the same data, now shown as a connected scatterplot as a combination of a points and lines." width="672" />
+<p class="caption">
+FIGURE 1.4: Again, the same data, now shown as a connected scatterplot as a combination of a points and lines.
+</p>
+</div>
+<p>That’s it for now about geometries. No worries, we are going to learn several plot types in Chapter <code>charts</code>.</p>
+</div>
+<div id="prop" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Change Properties of Geometries</h2>
+<p>Within the <code>geom_*</code> command, you already can manipulate visual aesthetics such as the color, shape, and size of your points. Let’s turn all points to large fire-red diamonds!</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="introduction.html#cb15-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;firebrick&quot;</span>, <span class="at">shape =</span> <span class="st">&quot;diamond&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="figure"><span id="fig:ggplot-default-col-size-shape"></span>
+<img src="bookdown_files/figure-html/ggplot-default-col-size-shape-1.png" alt="We can change the appearance of the geometry, here illustrated by turning the black dots in larger, red diamonds." width="672" />
+<p class="caption">
+FIGURE 1.5: We can change the appearance of the geometry, here illustrated by turning the black dots in larger, red diamonds.
+</p>
+</div>
+<p><em>Note: <code>{ggplot2}</code> understands both <code>color</code> and <code>colour</code> as well as the short version <code>col</code>.</em></p>
+<p>You can use preset colors (here is a <a href="http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf">full list</a>) or <a href="https://www.techopedia.com/definition/29788/color-hex-code">hex color codes</a>, both in quotes, and even RGB/RGBA colors by using the <code>rgb()</code> function.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="introduction.html#cb16-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#b22222&quot;</span>, <span class="at">shape =</span> <span class="st">&quot;diamond&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>)</span>
+<span id="cb16-2"><a href="introduction.html#cb16-2" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="fu">rgb</span>(<span class="dv">178</span>, <span class="dv">34</span>, <span class="dv">34</span>, <span class="at">maxColorValue =</span> <span class="dv">255</span>), <span class="at">shape =</span> <span class="st">&quot;diamond&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="figure"><span id="fig:ggplot-default-col-size-hex-rgb-plot"></span>
+<img src="bookdown_files/figure-html/ggplot-default-col-size-hex-rgb-plot-1.png" alt="Comparing two ways of specifying the color in `{ggplot2}`." width="672" />
+<p class="caption">
+FIGURE 1.6: Comparing two ways of specifying the color in <code>{ggplot2}</code>.
+</p>
+</div>
+<p>Each geom comes with its own properties (called <em>arguments</em>) and the same argument may result in a different change depending on the geom you are using.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="introduction.html#cb17-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;firebrick&quot;</span>, <span class="at">shape =</span> <span class="st">&quot;diamond&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb17-2"><a href="introduction.html#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">&quot;firebrick&quot;</span>, <span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>, <span class="at">size =</span> .<span class="dv">3</span>)</span></code></pre></div>
+<div class="figure">
+<img src="bookdown_files/figure-html/ggplot-default-line_col-size-shape-1.png" alt="You can style each geometrical layer on its own. Each geometry also comes with a set of individual properties." width="672" />
+<p class="caption">
+(#fig:ggplot-default-line_col-size-shape)You can style each geometrical layer on its own. Each geometry also comes with a set of individual properties.
+</p>
+</div>
+</div>
+<div id="theme" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Replace the default <code>ggplot2</code> theme</h2>
 <p>And to illustrate some more of ggplot’s versatility, let’s get rid of the grayish default <code>{ggplot2}</code> look by setting a different built-in theme, e.g. <code>theme_bw()</code>—by calling <code>theme_set()</code> all following plots will have the same black’n’white theme. The red points look way better now!</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="introduction.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())</span>
-<span id="cb20-2"><a href="introduction.html#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="introduction.html#cb20-3" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;firebrick&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/remove-gray-background-1.png" width="672" /></p>
-<p>You can find more on how to use built-in themes and how to customize themes in the section <a href="#themes">“Working with Themes”</a>. From the next chapter on, we will also use the <code>theme()</code> function to customize particular elements of the theme.</p>
-<p>💡 <strong><code>theme()</code> is an essential command to manually modify all kinds of theme elements (texts, rectangles, and lines).</strong></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="introduction.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())</span>
+<span id="cb18-2"><a href="introduction.html#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="introduction.html#cb18-3" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;firebrick&quot;</span>)</span></code></pre></div>
+<div class="figure"><span id="fig:remove-gray-background"></span>
+<img src="bookdown_files/figure-html/remove-gray-background-1.png" alt="We can change the appearance for all following plots generated with `{ggplot2}` by globally setting another theme via `theme_set()`." width="672" />
+<p class="caption">
+FIGURE 1.7: We can change the appearance for all following plots generated with <code>{ggplot2}</code> by globally setting another theme via <code>theme_set()</code>.
+</p>
+</div>
+<p>You can find more on how to use built-in themes and how to customize themes in the section <code>themes</code>. From the next chapter on, we will also use the <code>theme()</code> function to customize particular elements of the theme.</p>
+<p><em>Note: <code>theme()</code> is an essential command to manually modify all kinds of theme elements (texts, rectangles, and lines).</em></p>
 <p>To see which details of a ggplot theme can be modified have a look <a href="https://ggplot2.tidyverse.org/reference/theme.html">here</a>—and take some time, this is a looong list.</p>
 
-</div>
 </div>
 </div>
             </section>
@@ -342,7 +382,7 @@ The overall visual defaults of a plot, such as background, grids, axes, default 
         </div>
       </div>
 <a href="about-the-author.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="the-foo-method.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="charts.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>

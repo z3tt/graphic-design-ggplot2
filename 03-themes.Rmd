@@ -1,0 +1,29 @@
+# Themes {#themes}
+
+You can change the entire look of the plots by using themes. `{ggplot2}` comes with eight built-in themes:
+
+```{r ggplot2-theme-gallery, echo=FALSE, fig.width=11, fig.height=7, fig.cap="An overview of all in-build themes that are contained in the `{ggplot2}` package."}
+p <- ggplot(chic, aes(x = date, y = temp)) +
+       geom_point(color = "gray30", alpha = .3) +
+       labs(x = "Year", y = "Temperature (°F)")
+
+p1 <- p + theme_gray() + ggtitle("theme_gray()")
+p2 <- p + theme_bw() + ggtitle("theme_bw()")
+p3 <- p + theme_classic() + ggtitle("theme_classic()")
+p4 <- p + theme_dark() + ggtitle("theme_dark()")
+p5 <- p + theme_light() + ggtitle("theme_light()")
+p6 <- p + theme_linedraw() + ggtitle("theme_linedraw()")
+p7 <- p + theme_minimal() + ggtitle("theme_minimal()")
+p8 <- p + theme_void() + ggtitle("theme_void()") + theme(plot.title = element_text(color = "black", margin = margin(b = 11/2)))
+
+library(ragg)
+#font_add_google("Roboto Mono", "Roboto Mono")
+
+(p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8) *
+  theme(plot.title = element_text(family = "Roboto Mono", hjust = .5, face = "bold", size = 16),
+        plot.margin = margin(rep(15, 5))) +
+  plot_layout(ncol = 4)
+```
+
+
+There are several packages that provide additional themes, some even with different default color palettes. As an example, Jeffrey Arnold has put together the library `{ggthemes}` with several custom themes imitating popular designs. For a list you can visit the [`{ggthemes}` package site](https://github.com/jrnold/ggthemes). Without any coding you can just adapt several styles, some of them well known for their style and aesthetics.
