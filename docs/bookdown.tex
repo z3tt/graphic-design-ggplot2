@@ -214,38 +214,36 @@ without whom I should have finished this book two years earlier
 \chapter*{Preface}\label{preface}}
 
 
-Back in 2016, I had to prepare my PhD introductory talk. I planned to create a visualization using small multiples to visualize the outcomes of my simulation model. I was already using the R programing language for years and quickly came across the graphics library \{ggplot2\} which comes with the functionality to easily create small multiples.to visualize my data. I never liked the syntax and style of base plots in R, so I immediately felt in love with the idea of ggplot's \emph{Grammar of Graphics}. But because I was short on time, I plotted these figures by trial and error and with the help of lots of googling. The resource I came always back to was a blog entry called \href{http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/}{Beautiful plotting in R: A ggplot2 cheatsheet by Zev Ross}. After giving the talk which contained some decent plots thanks to the blog post, I decided to go through this tutorial step-by-step. I learned so much from it and directly started modifying the codes and over the time I added additional code snippets, chart types and resources.
+Back in 2016, I had to prepare my PhD introductory talk. I planned to create a visualization using small multiples to show various outcomes of the scenarios I ran with my simulation model. I was already using the R programming language for years and quickly came across the graphics library \textbf{ggplot2} which comes with the functionality to easily create small multiples.to visualize my data. I never liked the syntax and style of base plots in R, so I immediately fell in love with the idea and implementation of \textbf{ggplot2}'s \emph{Grammar of Graphics}. But because I was short on time, I plotted these figures by trial and error and with the help of lots of googling. The resource I came always back to was a blog entry called \href{http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/}{``Beautiful plotting in R: A \textbf{ggplot2} cheatsheet'' by Zev Ross}. After giving the talk which contained some decent plots thanks to the blog post, I decided to go through this tutorial step-by-step. I learned so much from it and directly started modifying the codes and adding additional code snippets, chart types, and resources.
 
-Fast forward to 2019. I successfully finished my PhD and started participating in a weekly data visualization challenge called \href{https://github.com/rfordatascience/tidytuesday/blob/master/README.md}{\#TidyTuesday}. TidyTuesday is an initiative grown out of Jesse Mostipak and the \href{https://www.rfordatasci.com/}{R4DS Online Learning Community}, started by Thomas Mock. Every week, a raw data set is with the aim to explore and visualize the data with \{ggplot2\}. Thanks to my experience with the \{tidyverse\} and especially \{ggplot2\} during my PhD and the open-source approach of the challenge that made it possible to learn from other participants, my visualizations quickly became more advanced and complex.
+Fast forward to 2019. I successfully finished my PhD and started participating in a weekly data visualization challenge called \href{https://github.com/rfordatascience/tidytuesday/blob/master/README.md}{\#TidyTuesday}. TidyTuesday is an initiative grown out of Jesse Mostipak and the \href{https://www.rfordatasci.com/}{R4DS Online Learning Community}, started by Thomas Mock. Every week, a raw data set is with the aim to explore and visualize the data with \textbf{ggplot2}. Thanks to my experience with the \textbf{tidyverse} and especially \textbf{ggplot2} during my PhD and the open-source approach of the challenge that made it possible to learn from other participants, my visualizations quickly became more advanced and complex.
 
-A few months later, I started working as a freelance data visualization specialist. I am now using ggplot2 every day: for my scientific work, design requests, reproducible reports, and personal data visualization projects. Since the blog entry by Zev Ross was not updated sine January 2016, I decided to add more examples and tricks to my version, which was now hosted on my \href{https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/}{personal blog}. It became step by step a unique tutorial that now contains also the fantastic \{patchwork\}, \{ggtext\} and \{ggforce\} packages, a section of custom fonts and colors, a collection of R packages tailored to create interactive charts, and several new chart types. The updated version now contains \textasciitilde3.000 lines of code and 188 plots and received a lot of interest from ggplot2 users from a wide range of fields.
+A few months later, I started working as a freelance data visualization specialist. I am now using \textbf{ggplot2} every day: for my scientific work, design requests, reproducible reports, and personal data visualization projects. Since the blog entry by Zev Ross was not updated sine January 2016, I decided to add more examples and tricks to my version, which was now hosted on my \href{https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/}{personal blog}. It became step by step a unique tutorial that now contains also the fantastic \textbf{patchwork}, \textbf{ggtext} and \textbf{ggforce} packages, a section of custom fonts and colors, a collection of R packages tailored to create interactive charts, and several new chart types. The updated version now contains \textasciitilde3.000 lines of code and 188 plots and received a lot of interest from \textbf{ggplot2} users from a wide range of fields.
 
-Today, on a sunny day in August 2021, this tutorial serves as the basis for the book you hold in your hands. I hope you enjoy it as much as I enjoyed learning and sharing ggplot2 wizardry!
+Today, on a sunny day in August 2021, this tutorial serves as the basis for the book you hold in your hands. I hope you enjoy it as much as I enjoyed learning and sharing \textbf{ggplot2} wizardry!
 
 \hypertarget{why-read-this-book}{%
 \section*{Why read this book}\label{why-read-this-book}}
 
 
-Often, people that use common graphic design and charting tools cannot believe what one can achieve with ggplot2---and I want to show them how one can create a publication-ready graphic that goes beyond the traditional scientific scatter or box plot.
+Often, people that use common graphic design and charting tools or have basic experience experience with \textbf{ggplot2} cannot believe what one can achieve with this graphics library---and I want to show you how one can create a publication-ready graphic that goes beyond the traditional scientific scatter or box plot.
 
-ggplot2 is already used by a large and diverse group of graduates, researchers, and analysts and the current rise of R and the tidyverse will likely lead to an even increasing interest in this great plotting library. While there are many tutorials on ggplot2 tips and tricks provided by the R community, to my knowledge there is no book that specifically addresses the complete design of specific details up to building an ambitious multi-panel graphic with ggplot2. As a blend of strong grounding in academic foundations of data visualization and hands-on, practical codes, and implementation material, the book can be used as introductory material as well as a reference for more experienced ggplot2 practitioners.
+\textbf{ggplot2} is already used by a large and diverse group of graduates, researchers, and analysts and the current rise of R and the tidyverse will likely lead to an even increasing interest in this great plotting library. While there are many tutorials on \textbf{ggplot2} tips and tricks provided by the R community, to my knowledge there is no book that specifically addresses the complete design of specific details up to building an ambitious multi-panel graphic with \textbf{ggplot2}. As a blend of strong grounding in academic foundations of data visualization and hands-on, practical codes, and implementation material, the book can be used as introductory material as well as a reference for more experienced \textbf{ggplot2} practitioners.
 
-The goal is to offer a book that contains everything needed to create appealing data visualizations with the help of the R library ``ggplot2''. The aim is to include the basics of ggplot2, a detailed how-to section on improving the overall design and readability, an overview of useful extension packages, and unique reference implementations of high-quality, state-of-the-art data visualizations. The book will also include a comprehensive inventory of data visualization techniques and good practice along the code examples.
+The book is intended for students and professionals that are interested in learning \textbf{ggplot2} and/or taking their default ggplots to the next level. Thus, the book is potentially interesting for \textbf{ggplot2} novices and beginners, but hopefully also helpful and educational for proficient users.
 
-The book is intended for students and professionals that are interested in learning ggplot2 and/or taking their default ggplots to the next level. Thus, the book is potentially interesting for ggplot2 novices and beginners, but hopefully also helpful and educational for proficient users.
-
-Among other things, the book covers the following aspects:
+Among other things, the book covers the following:
 
 \begin{itemize}
 \tightlist
 \item
   Look-up resource for every-day and more specific ggplot adjustments and design options
 \item
-  Includes a practical hands-on introduction to ggplot2 to quickly build appealing visualization
+  Practical hands-on introduction to \textbf{ggplot2} to quickly build appealing visualization
 \item
-  Discussion of best practices in data visualization (e.g.~colour choice, direct labelling, chart type selection) along the way
+  Discussion of best practices in data visualization (e.g.~color choice, direct labelling, chart type selection) along the way
 \item
-  Coverage of useful ggplot2 extension packages
+  Coverage of useful \textbf{ggplot2} extension packages
 \item
   Ready-to-start code examples
 \item
@@ -300,7 +298,7 @@ The book was written with the \textbf{knitr}\index{knitr} package \citep{xie2015
 ##   yaml_2.2.1
 \end{verbatim}
 
-Package names are in bold text (e.g., \textbf{rmarkdown}), and inline code and filenames are formatted in a typewriter font (e.g., \texttt{knitr::knit(\textquotesingle{}foo.Rmd\textquotesingle{})}). Function names are followed by parentheses (e.g., \texttt{bookdown::render\_book()}).
+Package names are in bold text (e.g., \textbf{ggplot2}), and inline code and filenames are formatted in a typewriter font (e.g., \texttt{readr::read\_csv(\textquotesingle{}data.csv\textquotesingle{})}). Function names are followed by parentheses (e.g., \texttt{ggplot2::ggplot()}).
 
 \hypertarget{acknowledgments}{%
 \section*{Acknowledgments}\label{acknowledgments}}
@@ -308,10 +306,10 @@ Package names are in bold text (e.g., \textbf{rmarkdown}), and inline code and f
 
 A lot of people helped me when I was writing the book.
 
-\begin{flushright}
-Cédric Scherer\\
+\begin{verbatim}
+Cédric Scherer  
 Berlin, Germany
-\end{flushright}
+\end{verbatim}
 
 \hypertarget{about-the-author}{%
 \chapter*{About the Author}\label{about-the-author}}
@@ -322,10 +320,6 @@ Cédric Scherer is a graduated computational ecologist with a passion for design
 Cédric has created visualizations across all disciplines, purposes, and styles. Due to regular participation to social data challenges, he is now well known for complex and visually appealing figures, entirely made with ggplot2, that look as they have been created with a vector design tool.
 
 As a data visualization specialist, he does rarely create dashboards but acts as a consultant and designer improving chart and design choices and workshop coach teaching data visualization principles and courses on R and \{ggplot2\}. He also uses R and the tidyverse to automate data analyses and plot generation, following the philosophy of a reproducible workflow.
-
-Webpage: cedricscherer.com\\
-Twitter: @CedScherer\\
-GitHub: z3tt
 
 \mainmatter
 
@@ -338,7 +332,7 @@ GitHub: z3tt
 We are using data from the \emph{National Morbidity and Mortality Air Pollution Study} (NMMAPS). To make the plots manageable we are limiting the data to Chicago and 1997--2000. For more detail on this data set, consult Roger Peng's book \href{http://www.springer.com/de/book/9780387781662}{Statistical Methods in Environmental Epidemiology with R}.
 You can download the data we are using during this tutorial here: \url{http://cedricscherer.com/data/chicago-nmmaps.csv} (but you don't have to).
 
-We can import the data into our R session for example with \texttt{read\_csv()} from the \texttt{\{readr\}} package which allows to import data directly from a web URL. To access the data later, we are storing it in a variable called \texttt{chic} by using the \emph{assignment arrow} \texttt{\textless{}-}.
+We can import the data into our R session for example with \texttt{read\_csv()} from the \textbf{readr} package which allows to import data directly from a web URL. To access the data later, we are storing it in a variable called \texttt{chic} by using the \emph{assignment arrow} \texttt{\textless{}-}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -364,7 +358,7 @@ We can import the data into our R session for example with \texttt{read\_csv()} 
 ## )
 \end{verbatim}
 
-\emph{Note: The \texttt{::} is called \textbf{namespace} and can be used to access a function without loading the package. Here, you could also run \texttt{library(readr)} first and \texttt{chic\ \textless{}-\ read\_csv(...)} afterwards.}
+\emph{Note: The \texttt{::} is called ``namespace'' and can be used to access a function without loading the package. Here, you could also run \texttt{library(readr)} first and \texttt{chic\ \textless{}-\ read\_csv(...)} afterwards.}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -388,12 +382,12 @@ We can import the data into our R session for example with \texttt{read\_csv()} 
 \end{verbatim}
 
 \hypertarget{ggplot}{%
-\section{\texorpdfstring{The \texttt{\{ggplot2\}} Package}{The \{ggplot2\} Package}}\label{ggplot}}
+\section{\texorpdfstring{The \textbf{ggplot2} Package}{The ggplot2 Package}}\label{ggplot}}
 
-When looking into the package description of the \texttt{\{ggplot2\}} package, it states the following:
+When looking into the package description of the \textbf{ggplot2} package, it states the following:
 
 \begin{quote}
-\texttt{ggplot2} is a system for declaratively creating graphics, based on \href{https://link.springer.com/chapter/10.1007/978-3-642-21551-3_13}{The Grammar of Graphics}. You provide the data, tell \texttt{ggplot2} how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
+\textbf{ggplot2} is a system for declaratively creating graphics, based on \href{https://link.springer.com/chapter/10.1007/978-3-642-21551-3_13}{The Grammar of Graphics}. You provide the data, tell \textbf{ggplot2} how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
 \end{quote}
 
 Consequently, a ggplot is built up from a few basic elements:
@@ -402,28 +396,28 @@ Consequently, a ggplot is built up from a few basic elements:
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{Data}:
+  \textbf{Data}:\\
   The raw data that you want to plot.
 \item
-  \textbf{Geometries} \texttt{geom\_}:
+  \textbf{Geometries} \texttt{geom\_}:\\
   The geometric shapes that will represent the data.
 \item
-  \textbf{Aesthetics} \texttt{aes()}:
+  \textbf{Aesthetics} \texttt{aes()}:\\
   Aesthetics of the geometric and statistical objects, such as position, color, size, shape, and transparency
 \item
-  \textbf{Scales} \texttt{scale\_}:
+  \textbf{Scales} \texttt{scale\_}:\\
   Maps between the data and the aesthetic dimensions, such as data range to plot width or factor values to colors.
 \item
-  \textbf{Statistical transformations} \texttt{stat\_}:
+  \textbf{Statistical transformations} \texttt{stat\_}:\\
   Statistical summaries of the data, such as quantiles, fitted curves, and sums.
 \item
-  \textbf{Coordinate system} \texttt{coord\_}:
+  \textbf{Coordinate system} \texttt{coord\_}:\\
   The transformation used for mapping data coordinates into the plane of the data rectangle.
 \item
-  \textbf{Facets} \texttt{facet\_}:
+  \textbf{Facets} \texttt{facet\_}:\\
   The arrangement of the data into a grid of plots.
 \item
-  \textbf{Visual themes} \texttt{theme()}:
+  \textbf{Visual themes} \texttt{theme()}:\\
   The overall visual defaults of a plot, such as background, grids, axes, default typeface, sizes and colors.
 \end{enumerate}
 
@@ -432,7 +426,7 @@ Consequently, a ggplot is built up from a few basic elements:
 \hypertarget{default}{%
 \section{A Basic ggplot}\label{default}}
 
-First, to be able to use the functionality of \texttt{\{ggplot2\}} we have to load the package (which we can also load via the \href{https://www.tidyverse.org/}{tidyverse package collection}):
+First, to be able to use the functionality of \textbf{ggplot2} we have to load the package (which we can also load via the \href{https://www.tidyverse.org/}{tidyverse package collection}):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -457,7 +451,7 @@ First, to be able to use the functionality of \texttt{\{ggplot2\}} we have to lo
 ## x dplyr::lag()    masks stats::lag()
 \end{verbatim}
 
-The syntax of \texttt{\{ggplot2\}} is different from base R. In accordance with the basic elements, a default ggplot needs three things that you have to specify: the \emph{data}, \emph{aesthetics}, and a \emph{geometry}. We always start to define a plotting object by calling \texttt{ggplot(data\ =\ df)} which just tells \texttt{\{ggplot2\}} that we are going to work with that data. In most cases, you might want to plot two variables---one on the x and one on the y axis. These are \emph{positional aesthetics} and thus we add \texttt{aes(x\ =\ var1,\ y\ =\ var2)} to the \texttt{ggplot()} call (yes, the \texttt{aes()} stands for aesthetics). However, there are also cases where one has to specify one or even three or more variables.
+The syntax of \textbf{ggplot2} is different from base R. In accordance with the basic elements, a default ggplot needs three things that you have to specify: the \emph{data}, \emph{aesthetics}, and a \emph{geometry}. We always start to define a plotting object by calling \texttt{ggplot(data\ =\ df)} which just tells \textbf{ggplot2} that we are going to work with that data. In most cases, you might want to plot two variables---one on the x and one on the y axis. These are \emph{positional aesthetics} and thus we add \texttt{aes(x\ =\ var1,\ y\ =\ var2)} to the \texttt{ggplot()} call (yes, the \texttt{aes()} stands for aesthetics). However, there are also cases where one has to specify one or even three or more variables.
 
 \emph{Note: We specify the data }outside* \texttt{aes()} and add the variables that ggplot maps the aesthetics to \emph{inside} \texttt{aes()}.*
 
@@ -472,16 +466,16 @@ Here, we map the variable \texttt{date} to the x position and the variable \text
 \begin{figure}
 \centering
 \includegraphics{bookdown_files/figure-latex/ggplot-1.pdf}
-\caption{\label{fig:ggplot}A default plot generated with the \texttt{\{ggplot2\}} package with variables mapped to \texttt{x} and \texttt{y}.}
+\caption{\label{fig:ggplot}A default plot generated with the \textbf{ggplot2} package with variables mapped to \texttt{x} and \texttt{y}.}
 \end{figure}
 
-Hm, only a panel is created when running this. Why? This is because \texttt{\{ggplot2\}} does not know \emph{how} we want to plot that data---we still need to provide a geometry!
+Hm, only a panel is created when running this. Why? This is because \textbf{ggplot2} does not know \emph{how} we want to plot that data---we still need to provide a geometry!
 
-\texttt{ggplot2} allows you to store the current \texttt{ggobject} in a variable of your choice by assigning it to a variable, in our case called \texttt{g}. You can extend this \texttt{ggobject} later by adding other layers, either all at once or by assigning it to the same or another variable.
+\textbf{ggplot2} allows you to store the current \texttt{ggobject} in a variable of your choice by assigning it to a variable, in our case called \texttt{g}. You can extend this \texttt{ggobject} later by adding other layers, either all at once or by assigning it to the same or another variable.
 
 \emph{Note: By using parentheses while assigning an object, the object will be printed immediately (instead of writing \texttt{g\ \textless{}-\ ggplot(...)} and then \texttt{g} we simply write \texttt{(g\ \textless{}-\ ggplot(...))}).}
 
-There are many, many different geometries (called \emph{geoms} because each function usually starts with \texttt{geom\_}) one can add to a ggplot by default (see \href{https://ggplot2.tidyverse.org/reference/}{here} for a full list) and even more provided by extension packages (see \href{https://exts.ggplot2.tidyverse.org/}{here} for a collection of extension packages). Let's tell \texttt{\{ggplot2\}} which style we want to use, for example by adding \texttt{geom\_point()} to create a scatter plot:
+There are many, many different geometries (called \emph{geoms} because each function usually starts with \texttt{geom\_}) one can add to a ggplot by default (see \href{https://ggplot2.tidyverse.org/reference/}{here} for a full list) and even more provided by extension packages (see \href{https://exts.ggplot2.tidyverse.org/}{here} for a collection of extension packages). Let's tell \textbf{ggplot2} which style we want to use, for example by adding \texttt{geom\_point()} to create a scatter plot:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -492,7 +486,7 @@ There are many, many different geometries (called \emph{geoms} because each func
 \begin{figure}
 \centering
 \includegraphics{bookdown_files/figure-latex/ggplot-default-1.pdf}
-\caption{\label{fig:ggplot-default}A default scatter plot of temperature measured in Chicago created with the \texttt{\{ggplot2\}} package.}
+\caption{\label{fig:ggplot-default}A default scatter plot of temperature measured in Chicago created with the \textbf{ggplot2} package.}
 \end{figure}
 
 Nice! But this data could be also visualized as a line plot (not optimal, but people do things like this all the time). So we simply add \texttt{geom\_line()} instead and voilá:
@@ -520,7 +514,7 @@ One can also combine several geometric layers---and this is where the magic and 
 \begin{figure}
 \centering
 \includegraphics{bookdown_files/figure-latex/ggplot-default-line-point-1.pdf}
-\caption{\label{fig:ggplot-default-line-point}Again, the same data, now shown as a connected scatterplot as a combination of a points and lines.}
+\caption{\label{fig:ggplot-default-line-point}Again, the same data, now shown as a connected scatterplot as a combination of points and lines.}
 \end{figure}
 
 That's it for now about geometries. No worries, we are going to learn several plot types in Chapter \texttt{charts}.
@@ -542,7 +536,7 @@ Within the \texttt{geom\_*} command, you already can manipulate visual aesthetic
 \caption{\label{fig:ggplot-default-col-size-shape}We can change the appearance of the geometry, here illustrated by turning the black dots in larger, red diamonds.}
 \end{figure}
 
-\emph{Note: \texttt{\{ggplot2\}} understands both \texttt{color} and \texttt{colour} as well as the short version \texttt{col}.}
+\emph{Note: \textbf{ggplot2} understands both \texttt{color} and \texttt{colour} as well as the short version \texttt{col}.}
 
 You can use preset colors (here is a \href{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}{full list}) or \href{https://www.techopedia.com/definition/29788/color-hex-code}{hex color codes}, both in quotes, and even RGB/RGBA colors by using the \texttt{rgb()} function.
 
@@ -556,7 +550,7 @@ You can use preset colors (here is a \href{http://www.stat.columbia.edu/~tzheng/
 \begin{figure}
 \centering
 \includegraphics{bookdown_files/figure-latex/ggplot-default-col-size-hex-rgb-plot-1.pdf}
-\caption{\label{fig:ggplot-default-col-size-hex-rgb-plot}Comparing two ways of specifying the color in \texttt{\{ggplot2\}}.}
+\caption{\label{fig:ggplot-default-col-size-hex-rgb-plot}Comparing two ways of specifying the color in \textbf{ggplot2}.}
 \end{figure}
 
 Each geom comes with its own properties (called \emph{arguments}) and the same argument may result in a different change depending on the geom you are using.
@@ -570,14 +564,14 @@ Each geom comes with its own properties (called \emph{arguments}) and the same a
 
 \begin{figure}
 \centering
-\includegraphics{bookdown_files/figure-latex/ggplot-default-line_col-size-shape-1.pdf}
-\caption{(\#fig:ggplot-default-line\_col-size-shape)You can style each geometrical layer on its own. Each geometry also comes with a set of individual properties.}
+\includegraphics{bookdown_files/figure-latex/ggplot-default-line-col-size-shape-1.pdf}
+\caption{\label{fig:ggplot-default-line-col-size-shape}You can style each geometrical layer on its own. Each geometry also comes with a set of individual properties.}
 \end{figure}
 
 \hypertarget{theme}{%
-\section{\texorpdfstring{Replace the default \texttt{ggplot2} theme}{Replace the default ggplot2 theme}}\label{theme}}
+\section{\texorpdfstring{Replace the default \textbf{ggplot2} theme}{Replace the default ggplot2 theme}}\label{theme}}
 
-And to illustrate some more of ggplot's versatility, let's get rid of the grayish default \texttt{\{ggplot2\}} look by setting a different built-in theme, e.g.~\texttt{theme\_bw()}---by calling \texttt{theme\_set()} all following plots will have the same black'n'white theme. The red points look way better now!
+And to illustrate some more of ggplot's versatility, let's get rid of the grayish default \textbf{ggplot2} look by setting a different built-in theme, e.g.~\texttt{theme\_bw()}---by calling \texttt{theme\_set()} all following plots will have the same black'n'white theme. The red points look way better now!
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -590,7 +584,7 @@ And to illustrate some more of ggplot's versatility, let's get rid of the grayis
 \begin{figure}
 \centering
 \includegraphics{bookdown_files/figure-latex/remove-gray-background-1.pdf}
-\caption{\label{fig:remove-gray-background}We can change the appearance for all following plots generated with \texttt{\{ggplot2\}} by globally setting another theme via \texttt{theme\_set()}.}
+\caption{\label{fig:remove-gray-background}We can change the appearance for all following plots generated with \textbf{ggplot2} by globally setting another theme via \texttt{theme\_set()}.}
 \end{figure}
 
 You can find more on how to use built-in themes and how to customize themes in the section \texttt{themes}. From the next chapter on, we will also use the \texttt{theme()} function to customize particular elements of the theme.
@@ -616,7 +610,7 @@ A box-and-whisker plot (sometimes called simply a box plot) is a histogram-like 
 \end{Shaded}
 
 \begin{figure}
-\includegraphics[width=23.83in]{img/boxplot} \caption{A boxplot is a standardized way of displaying the dataset based on a five-number summary: the minimum, the maximum, the sample median, and the first and third quartiles.}\label{fig:img-boxplot}
+\includegraphics[width=1\linewidth]{img/boxplot} \caption{A boxplot is a standardized way of displaying the dataset based on a five-number summary: the minimum, the maximum, the sample median, and the first and third quartiles.}\label{fig:img-boxplot}
 \end{figure}
 
 There are alternatives, but first we are plotting a common box plot:
@@ -636,7 +630,7 @@ There are alternatives, but first we are plotting a common box plot:
 \begin{figure}
 \centering
 \includegraphics{bookdown_files/figure-latex/boxplot-1.pdf}
-\caption{\label{fig:boxplot}A box plot generated with \texttt{\{ggplot2\}} with customized axis labels and colors.}
+\caption{\label{fig:boxplot}A box plot generated with \textbf{ggplot2} with customized axis labels and colors.}
 \end{figure}
 
 \hypertarget{dot-plots}{%
@@ -725,7 +719,7 @@ We can of course combine both, estimated densities and the raw data points:
 \caption{\label{fig:violin-jitter}A combination of violin and strip plots to visualize the distribution and the raw values at the same time.}
 \end{figure}
 
-The \href{https://ggforce.data-imaginist.com/}{\texttt{\{ggforce\}} package} provides so-called sina functions where the width of the jitter is controlled by the density distribution of the data---that makes the jittering a bit more visually appealing:
+The \href{https://ggforce.data-imaginist.com/}{\textbf{ggforce} package} provides so-called sina functions where the width of the jitter is controlled by the density distribution of the data---that makes the jittering a bit more visually appealing:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -788,9 +782,9 @@ A rug represents the data of a single quantitative variable, displayed as marks 
 \hypertarget{create-a-correlation-matrix}{%
 \section{Create a Correlation Matrix}\label{create-a-correlation-matrix}}
 
-There are several packages that allow to create correlation matrix plots, some also using the\texttt{\{ggplot2\}} infrastructure and thus returning ggplots. I am going to show you how to do this without extension packages.
+There are several packages that allow to create correlation matrix plots, some also using the \textbf{ggplot2} infrastructure and thus returning ggplots. I am going to show you how to do this without extension packages.
 
-First step is to create the correlation matrix. Here, we use the \texttt{\{corrr\}} package that works nicely with pipes but there are also many others out there. We are using Pearson because all the variables are fairly normally distributed (but you may consider Spearman if your variables follow a different pattern). Note that since a correlation matrix has redundant information we are setting half of it to \texttt{NA}.
+First step is to create the correlation matrix. Here, we use the \textbf{corrr} package that works nicely with pipes but there are also many others out there. We are using Pearson because all the variables are fairly normally distributed (but you may consider Spearman if your variables follow a different pattern). Note that since a correlation matrix has redundant information we are setting half of it to \texttt{NA}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -821,7 +815,7 @@ First step is to create the correlation matrix. Here, we use the \texttt{\{corrr
 ## 5 o3          NA NA       NA     NA        1
 \end{verbatim}
 
-Now we put the resulting matrix in \textbf{long} format using the \texttt{pivot\_longer()} function from the \texttt{\{tidyr\}} package:
+Now we put the resulting matrix in \emph{long} format using the \texttt{pivot\_longer()} function from the \textbf{tidyr} package:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -910,15 +904,15 @@ I like to have a diverging color palette, centered at zero correlation, with whi
 \hypertarget{themes}{%
 \chapter{Themes}\label{themes}}
 
-You can change the entire look of the plots by using themes. \texttt{\{ggplot2\}} comes with eight built-in themes:
+You can change the entire look of the plots by using themes. \textbf{ggplot2} comes with eight built-in themes:
 
 \begin{figure}
 \centering
 \includegraphics{bookdown_files/figure-latex/ggplot2-theme-gallery-1.pdf}
-\caption{\label{fig:ggplot2-theme-gallery}An overview of all in-build themes that are contained in the \texttt{\{ggplot2\}} package.}
+\caption{\label{fig:ggplot2-theme-gallery}An overview of all in-build themes that are contained in the \textbf{ggplot2} package.}
 \end{figure}
 
-There are several packages that provide additional themes, some even with different default color palettes. As an example, Jeffrey Arnold has put together the library \texttt{\{ggthemes\}} with several custom themes imitating popular designs. For a list you can visit the \href{https://github.com/jrnold/ggthemes}{\texttt{\{ggthemes\}} package site}. Without any coding you can just adapt several styles, some of them well known for their style and aesthetics.
+There are several packages that provide additional themes, some even with different default color palettes. As an example, Jeffrey Arnold has put together the R package \textbf{ggthemes} with several custom themes imitating popular designs. For a list you can visit the \href{https://github.com/jrnold/ggthemes}{\textbf{ggthemes} package site}. Without any coding you can just adapt several styles, some of them well known for their style and aesthetics.
 
 \cleardoublepage
 

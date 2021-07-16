@@ -4,6 +4,7 @@ fig:ggplot-default-line
 fig:ggplot-default-line-point
 fig:ggplot-default-col-size-shape
 fig:ggplot-default-col-size-hex-rgb-plot
+fig:ggplot-default-line-col-size-shape
 fig:remove-gray-background
 fig:img-boxplot
 fig:boxplot

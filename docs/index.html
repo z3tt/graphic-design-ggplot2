@@ -156,7 +156,7 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Book Example</a></li>
+<li><a href="./">Graphic Design with ggplot2</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
@@ -170,10 +170,10 @@ div.csl-indent {
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#data"><i class="fa fa-check"></i><b>1.1</b> The Dataset</a></li>
-<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#ggplot"><i class="fa fa-check"></i><b>1.2</b> The <code>{ggplot2}</code> Package</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#ggplot"><i class="fa fa-check"></i><b>1.2</b> The <strong>ggplot2</strong> Package</a></li>
 <li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#default"><i class="fa fa-check"></i><b>1.3</b> A Basic ggplot</a></li>
 <li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#prop"><i class="fa fa-check"></i><b>1.4</b> Change Properties of Geometries</a></li>
-<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#theme"><i class="fa fa-check"></i><b>1.5</b> Replace the default <code>ggplot2</code> theme</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#theme"><i class="fa fa-check"></i><b>1.5</b> Replace the default <strong>ggplot2</strong> theme</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="charts.html"><a href="charts.html"><i class="fa fa-check"></i><b>2</b> Chart types</a>
 <ul>
@@ -193,6 +193,7 @@ div.csl-indent {
 <li class="chapter" data-level="A" data-path="more-to-say.html"><a href="more-to-say.html"><i class="fa fa-check"></i><b>A</b> More to Say</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
+<li><a href="https://cedricscherer.com target="blank">Written by Cédric Scherer</a></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
 
 </ul>
@@ -220,22 +221,21 @@ div.csl-indent {
 </div>
 <div id="preface" class="section level1 unnumbered">
 <h1>Preface</h1>
-<p>Back in 2016, I had to prepare my PhD introductory talk. I planned to create a visualization using small multiples to visualize the outcomes of my simulation model. I was already using the R programing language for years and quickly came across the graphics library {ggplot2} which comes with the functionality to easily create small multiples.to visualize my data. I never liked the syntax and style of base plots in R, so I immediately felt in love with the idea of ggplot’s <em>Grammar of Graphics</em>. But because I was short on time, I plotted these figures by trial and error and with the help of lots of googling. The resource I came always back to was a blog entry called <a href="http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/">Beautiful plotting in R: A ggplot2 cheatsheet by Zev Ross</a>. After giving the talk which contained some decent plots thanks to the blog post, I decided to go through this tutorial step-by-step. I learned so much from it and directly started modifying the codes and over the time I added additional code snippets, chart types and resources.</p>
-<p>Fast forward to 2019. I successfully finished my PhD and started participating in a weekly data visualization challenge called <a href="https://github.com/rfordatascience/tidytuesday/blob/master/README.md">#TidyTuesday</a>. TidyTuesday is an initiative grown out of Jesse Mostipak and the <a href="https://www.rfordatasci.com/">R4DS Online Learning Community</a>, started by Thomas Mock. Every week, a raw data set is with the aim to explore and visualize the data with {ggplot2}. Thanks to my experience with the {tidyverse} and especially {ggplot2} during my PhD and the open-source approach of the challenge that made it possible to learn from other participants, my visualizations quickly became more advanced and complex.</p>
-<p>A few months later, I started working as a freelance data visualization specialist. I am now using ggplot2 every day: for my scientific work, design requests, reproducible reports, and personal data visualization projects. Since the blog entry by Zev Ross was not updated sine January 2016, I decided to add more examples and tricks to my version, which was now hosted on my <a href="https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/">personal blog</a>. It became step by step a unique tutorial that now contains also the fantastic {patchwork}, {ggtext} and {ggforce} packages, a section of custom fonts and colors, a collection of R packages tailored to create interactive charts, and several new chart types. The updated version now contains ~3.000 lines of code and 188 plots and received a lot of interest from ggplot2 users from a wide range of fields.</p>
-<p>Today, on a sunny day in August 2021, this tutorial serves as the basis for the book you hold in your hands. I hope you enjoy it as much as I enjoyed learning and sharing ggplot2 wizardry!</p>
+<p>Back in 2016, I had to prepare my PhD introductory talk. I planned to create a visualization using small multiples to show various outcomes of the scenarios I ran with my simulation model. I was already using the R programming language for years and quickly came across the graphics library <strong>ggplot2</strong> which comes with the functionality to easily create small multiples.to visualize my data. I never liked the syntax and style of base plots in R, so I immediately fell in love with the idea and implementation of <strong>ggplot2</strong>’s <em>Grammar of Graphics</em>. But because I was short on time, I plotted these figures by trial and error and with the help of lots of googling. The resource I came always back to was a blog entry called <a href="http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/">“Beautiful plotting in R: A <strong>ggplot2</strong> cheatsheet” by Zev Ross</a>. After giving the talk which contained some decent plots thanks to the blog post, I decided to go through this tutorial step-by-step. I learned so much from it and directly started modifying the codes and adding additional code snippets, chart types, and resources.</p>
+<p>Fast forward to 2019. I successfully finished my PhD and started participating in a weekly data visualization challenge called <a href="https://github.com/rfordatascience/tidytuesday/blob/master/README.md">#TidyTuesday</a>. TidyTuesday is an initiative grown out of Jesse Mostipak and the <a href="https://www.rfordatasci.com/">R4DS Online Learning Community</a>, started by Thomas Mock. Every week, a raw data set is with the aim to explore and visualize the data with <strong>ggplot2</strong>. Thanks to my experience with the <strong>tidyverse</strong> and especially <strong>ggplot2</strong> during my PhD and the open-source approach of the challenge that made it possible to learn from other participants, my visualizations quickly became more advanced and complex.</p>
+<p>A few months later, I started working as a freelance data visualization specialist. I am now using <strong>ggplot2</strong> every day: for my scientific work, design requests, reproducible reports, and personal data visualization projects. Since the blog entry by Zev Ross was not updated sine January 2016, I decided to add more examples and tricks to my version, which was now hosted on my <a href="https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/">personal blog</a>. It became step by step a unique tutorial that now contains also the fantastic <strong>patchwork</strong>, <strong>ggtext</strong> and <strong>ggforce</strong> packages, a section of custom fonts and colors, a collection of R packages tailored to create interactive charts, and several new chart types. The updated version now contains ~3.000 lines of code and 188 plots and received a lot of interest from <strong>ggplot2</strong> users from a wide range of fields.</p>
+<p>Today, on a sunny day in August 2021, this tutorial serves as the basis for the book you hold in your hands. I hope you enjoy it as much as I enjoyed learning and sharing <strong>ggplot2</strong> wizardry!</p>
 <div id="why-read-this-book" class="section level2 unnumbered">
 <h2>Why read this book</h2>
-<p>Often, people that use common graphic design and charting tools cannot believe what one can achieve with ggplot2—and I want to show them how one can create a publication-ready graphic that goes beyond the traditional scientific scatter or box plot.</p>
-<p>ggplot2 is already used by a large and diverse group of graduates, researchers, and analysts and the current rise of R and the tidyverse will likely lead to an even increasing interest in this great plotting library. While there are many tutorials on ggplot2 tips and tricks provided by the R community, to my knowledge there is no book that specifically addresses the complete design of specific details up to building an ambitious multi-panel graphic with ggplot2. As a blend of strong grounding in academic foundations of data visualization and hands-on, practical codes, and implementation material, the book can be used as introductory material as well as a reference for more experienced ggplot2 practitioners.</p>
-<p>The goal is to offer a book that contains everything needed to create appealing data visualizations with the help of the R library “ggplot2.” The aim is to include the basics of ggplot2, a detailed how-to section on improving the overall design and readability, an overview of useful extension packages, and unique reference implementations of high-quality, state-of-the-art data visualizations. The book will also include a comprehensive inventory of data visualization techniques and good practice along the code examples.</p>
-<p>The book is intended for students and professionals that are interested in learning ggplot2 and/or taking their default ggplots to the next level. Thus, the book is potentially interesting for ggplot2 novices and beginners, but hopefully also helpful and educational for proficient users.</p>
-<p>Among other things, the book covers the following aspects:</p>
+<p>Often, people that use common graphic design and charting tools or have basic experience experience with <strong>ggplot2</strong> cannot believe what one can achieve with this graphics library—and I want to show you how one can create a publication-ready graphic that goes beyond the traditional scientific scatter or box plot.</p>
+<p><strong>ggplot2</strong> is already used by a large and diverse group of graduates, researchers, and analysts and the current rise of R and the tidyverse will likely lead to an even increasing interest in this great plotting library. While there are many tutorials on <strong>ggplot2</strong> tips and tricks provided by the R community, to my knowledge there is no book that specifically addresses the complete design of specific details up to building an ambitious multi-panel graphic with <strong>ggplot2</strong>. As a blend of strong grounding in academic foundations of data visualization and hands-on, practical codes, and implementation material, the book can be used as introductory material as well as a reference for more experienced <strong>ggplot2</strong> practitioners.</p>
+<p>The book is intended for students and professionals that are interested in learning <strong>ggplot2</strong> and/or taking their default ggplots to the next level. Thus, the book is potentially interesting for <strong>ggplot2</strong> novices and beginners, but hopefully also helpful and educational for proficient users.</p>
+<p>Among other things, the book covers the following:</p>
 <ul>
 <li>Look-up resource for every-day and more specific ggplot adjustments and design options</li>
-<li>Includes a practical hands-on introduction to ggplot2 to quickly build appealing visualization</li>
-<li>Discussion of best practices in data visualization (e.g. colour choice, direct labelling, chart type selection) along the way</li>
-<li>Coverage of useful ggplot2 extension packages</li>
+<li>Practical hands-on introduction to <strong>ggplot2</strong> to quickly build appealing visualization</li>
+<li>Discussion of best practices in data visualization (e.g. color choice, direct labelling, chart type selection) along the way</li>
+<li>Coverage of useful <strong>ggplot2</strong> extension packages</li>
 <li>Ready-to-start code examples</li>
 <li>Reference implementations illustrating code solutions and design choices</li>
 </ul>
@@ -278,16 +278,13 @@ div.csl-indent {
 ##   tinytex_0.32      tools_4.1.0      
 ##   utils_4.1.0       xfun_0.24        
 ##   yaml_2.2.1</code></pre>
-<p>Package names are in bold text (e.g., <strong>rmarkdown</strong>), and inline code and filenames are formatted in a typewriter font (e.g., <code>knitr::knit('foo.Rmd')</code>). Function names are followed by parentheses (e.g., <code>bookdown::render_book()</code>).</p>
+<p>Package names are in bold text (e.g., <strong>ggplot2</strong>), and inline code and filenames are formatted in a typewriter font (e.g., <code>readr::read_csv('data.csv')</code>). Function names are followed by parentheses (e.g., <code>ggplot2::ggplot()</code>).</p>
 </div>
 <div id="acknowledgments" class="section level2 unnumbered">
 <h2>Acknowledgments</h2>
 <p>A lot of people helped me when I was writing the book.</p>
-
-<p class="flushright">
-Cédric Scherer<br />
-Berlin, Germany
-</p>
+<pre class="signature"><code>Cédric Scherer  
+Berlin, Germany</code></pre>
 
 </div>
 </div>

@@ -156,7 +156,7 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Book Example</a></li>
+<li><a href="./">Graphic Design with ggplot2</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
@@ -170,10 +170,10 @@ div.csl-indent {
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#data"><i class="fa fa-check"></i><b>1.1</b> The Dataset</a></li>
-<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#ggplot"><i class="fa fa-check"></i><b>1.2</b> The <code>{ggplot2}</code> Package</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#ggplot"><i class="fa fa-check"></i><b>1.2</b> The <strong>ggplot2</strong> Package</a></li>
 <li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#default"><i class="fa fa-check"></i><b>1.3</b> A Basic ggplot</a></li>
 <li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#prop"><i class="fa fa-check"></i><b>1.4</b> Change Properties of Geometries</a></li>
-<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#theme"><i class="fa fa-check"></i><b>1.5</b> Replace the default <code>ggplot2</code> theme</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#theme"><i class="fa fa-check"></i><b>1.5</b> Replace the default <strong>ggplot2</strong> theme</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="charts.html"><a href="charts.html"><i class="fa fa-check"></i><b>2</b> Chart types</a>
 <ul>
@@ -193,6 +193,7 @@ div.csl-indent {
 <li class="chapter" data-level="A" data-path="more-to-say.html"><a href="more-to-say.html"><i class="fa fa-check"></i><b>A</b> More to Say</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
+<li><a href="https://cedricscherer.com target="blank">Written by Cédric Scherer</a></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
 
 </ul>
@@ -218,31 +219,31 @@ div.csl-indent {
 <h2><span class="header-section-number">2.1</span> Alternatives to a Box Plot</h2>
 <p>A box plot is probably the most commonly used chart type to compare distribution of several groups, at least in the scientific literature. Box plots are great, but they can be so incredibly boring. Also, even if you are used to looking at box plots, remember there might be plenty people looking at your plot that have never seen a box and whisker plot before.</p>
 <p>A box-and-whisker plot (sometimes called simply a box plot) is a histogram-like method of displaying data, invented by J. Tukey. The thick <strong>middle line</strong> notates the median, also known as quartile. The limits of the <strong>box</strong> are determined by the lower and upper quartiles, <em>Q¹</em> and <em>Q³</em>. The box contains thus 50% of the data and is called <em>“interquartile range”</em> (IQR). The length of the <strong>whiskers</strong> is determined by the most extreme values that are not considered as outliers (i.e. values that are within 3/2 times the interquartile range).</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="charts.html#cb19-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;img/boxplot.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="charts.html#cb20-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;img/boxplot.png&quot;</span>)</span></code></pre></div>
 <div class="figure"><span id="fig:img-boxplot"></span>
-<img src="img/boxplot.png" alt="A boxplot is a standardized way of displaying the dataset based on a five-number summary: the minimum, the maximum, the sample median, and the first and third quartiles." width="858" />
+<img src="img/boxplot.png" alt="A boxplot is a standardized way of displaying the dataset based on a five-number summary: the minimum, the maximum, the sample median, and the first and third quartiles." width="100%" />
 <p class="caption">
 FIGURE 2.1: A boxplot is a standardized way of displaying the dataset based on a five-number summary: the minimum, the maximum, the sample median, and the first and third quartiles.
 </p>
 </div>
 <p>There are alternatives, but first we are plotting a common box plot:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="charts.html#cb20-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span></span>
-<span id="cb20-2"><a href="charts.html#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(chic, <span class="fu">aes</span>(<span class="at">x =</span> season, <span class="at">y =</span> o3,</span>
-<span id="cb20-3"><a href="charts.html#cb20-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">color =</span> season)) <span class="sc">+</span></span>
-<span id="cb20-4"><a href="charts.html#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Season&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Ozone&quot;</span>) <span class="sc">+</span></span>
-<span id="cb20-5"><a href="charts.html#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Dark2&quot;</span>, <span class="at">guide =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb20-6"><a href="charts.html#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="charts.html#cb20-7" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="charts.html#cb21-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span></span>
+<span id="cb21-2"><a href="charts.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(chic, <span class="fu">aes</span>(<span class="at">x =</span> season, <span class="at">y =</span> o3,</span>
+<span id="cb21-3"><a href="charts.html#cb21-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">color =</span> season)) <span class="sc">+</span></span>
+<span id="cb21-4"><a href="charts.html#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Season&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Ozone&quot;</span>) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="charts.html#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Dark2&quot;</span>, <span class="at">guide =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb21-6"><a href="charts.html#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="charts.html#cb21-7" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
 <div class="figure"><span id="fig:boxplot"></span>
-<img src="bookdown_files/figure-html/boxplot-1.png" alt="A box plot generated with `{ggplot2}` with customized axis labels and colors." width="672" />
+<img src="bookdown_files/figure-html/boxplot-1.png" alt="A box plot generated with **ggplot2** with customized axis labels and colors." width="672" />
 <p class="caption">
-FIGURE 2.2: A box plot generated with <code>{ggplot2}</code> with customized axis labels and colors.
+FIGURE 2.2: A box plot generated with <strong>ggplot2</strong> with customized axis labels and colors.
 </p>
 </div>
 <div id="dot-plots" class="section level3" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> Dot Plots</h3>
 <p>Let’s plot just each data point of the raw data:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="charts.html#cb21-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="charts.html#cb22-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
 <div class="figure"><span id="fig:point"></span>
 <img src="bookdown_files/figure-html/point-1.png" alt="A dot plot visualizing the distribution of the raw data as an alternative to boxplots. However, the summary statistics are not shown anymore." width="672" />
 <p class="caption">
@@ -250,7 +251,7 @@ FIGURE 2.3: A dot plot visualizing the distribution of the raw data as an altern
 </p>
 </div>
 <p>Not only boring but uninformative. To improve the plot, one could add transparency to deal with overplotting:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="charts.html#cb22-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="charts.html#cb23-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">1</span>)</span></code></pre></div>
 <div class="figure"><span id="fig:point-alpha"></span>
 <img src="bookdown_files/figure-html/point-alpha-1.png" alt="A dot plot with added transparency as an approach to make overlapping data points visible." width="672" />
 <p class="caption">
@@ -262,7 +263,7 @@ FIGURE 2.4: A dot plot with added transparency as an approach to make overlappin
 <div id="strip-plots" class="section level3" number="2.1.2">
 <h3><span class="header-section-number">2.1.2</span> Strip Plots</h3>
 <p>Try adding a little jitter to the data. I like this for in-house visualization but be careful using jittering because you are purposely adding noise to your data and this can result in misinterpretation of your data.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="charts.html#cb23-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">3</span>, <span class="at">alpha =</span> .<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="charts.html#cb24-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">3</span>, <span class="at">alpha =</span> .<span class="dv">5</span>)</span></code></pre></div>
 <div class="figure"><span id="fig:jitter"></span>
 <img src="bookdown_files/figure-html/jitter-1.png" alt="A jittered dot plot, also known as strip plot." width="672" />
 <p class="caption">
@@ -273,7 +274,7 @@ FIGURE 2.5: A jittered dot plot, also known as strip plot.
 <div id="violin-plots" class="section level3" number="2.1.3">
 <h3><span class="header-section-number">2.1.3</span> Violin Plots</h3>
 <p>Violin plots, similar to box plots except you are using a kernel density to show where you have the most data, are a useful visualization.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="charts.html#cb24-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_violin</span>(<span class="at">fill =</span> <span class="st">&quot;gray80&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="charts.html#cb25-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_violin</span>(<span class="at">fill =</span> <span class="st">&quot;gray80&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">5</span>)</span></code></pre></div>
 <div class="figure"><span id="fig:violin"></span>
 <img src="bookdown_files/figure-html/violin-1.png" alt="Violin plots are a great way to visualize the distribution values, especially in case of large sample sizes." width="672" />
 <p class="caption">
@@ -284,21 +285,21 @@ FIGURE 2.6: Violin plots are a great way to visualize the distribution values, e
 <div id="combining-violin-plots-with-strip-charts" class="section level3" number="2.1.4">
 <h3><span class="header-section-number">2.1.4</span> Combining Violin Plots with Strip Charts</h3>
 <p>We can of course combine both, estimated densities and the raw data points:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="charts.html#cb25-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_violin</span>(<span class="at">fill =</span> <span class="st">&quot;gray80&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb25-2"><a href="charts.html#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> .<span class="dv">25</span>, <span class="at">width =</span> .<span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb25-3"><a href="charts.html#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="charts.html#cb26-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_violin</span>(<span class="at">fill =</span> <span class="st">&quot;gray80&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb26-2"><a href="charts.html#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> .<span class="dv">25</span>, <span class="at">width =</span> .<span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb26-3"><a href="charts.html#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>()</span></code></pre></div>
 <div class="figure"><span id="fig:violin-jitter"></span>
 <img src="bookdown_files/figure-html/violin-jitter-1.png" alt="A combination of violin and strip plots to visualize the distribution and the raw values at the same time." width="672" />
 <p class="caption">
 FIGURE 2.7: A combination of violin and strip plots to visualize the distribution and the raw values at the same time.
 </p>
 </div>
-<p>The <a href="https://ggforce.data-imaginist.com/"><code>{ggforce}</code> package</a> provides so-called sina functions where the width of the jitter is controlled by the density distribution of the data—that makes the jittering a bit more visually appealing:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="charts.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggforce)</span>
-<span id="cb26-2"><a href="charts.html#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="charts.html#cb26-3" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_violin</span>(<span class="at">fill =</span> <span class="st">&quot;gray80&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb26-4"><a href="charts.html#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sina</span>(<span class="at">alpha =</span> .<span class="dv">25</span>) <span class="sc">+</span></span>
-<span id="cb26-5"><a href="charts.html#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>()</span></code></pre></div>
+<p>The <a href="https://ggforce.data-imaginist.com/"><strong>ggforce</strong> package</a> provides so-called sina functions where the width of the jitter is controlled by the density distribution of the data—that makes the jittering a bit more visually appealing:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="charts.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggforce)</span>
+<span id="cb27-2"><a href="charts.html#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="charts.html#cb27-3" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_violin</span>(<span class="at">fill =</span> <span class="st">&quot;gray80&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb27-4"><a href="charts.html#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sina</span>(<span class="at">alpha =</span> .<span class="dv">25</span>) <span class="sc">+</span></span>
+<span id="cb27-5"><a href="charts.html#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>()</span></code></pre></div>
 <div class="figure"><span id="fig:violin-sina"></span>
 <img src="bookdown_files/figure-html/violin-sina-1.png" alt="A sina plot places the dots according to the distribution and is basically a *raw data violin plot*." width="672" />
 <p class="caption">
@@ -309,11 +310,11 @@ FIGURE 2.8: A sina plot places the dots according to the distribution and is bas
 <div id="combining-violin-and-box-plots" class="section level3" number="2.1.5">
 <h3><span class="header-section-number">2.1.5</span> Combining Violin and Box Plots</h3>
 <p>To allow for easy estimation of quantiles, we can also add the box of the box plot inside the violins to indicate 25%-quartile, median and 75%-quartile:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="charts.html#cb27-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">fill =</span> season), <span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb27-2"><a href="charts.html#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">outlier.alpha =</span> <span class="dv">0</span>, <span class="at">coef =</span> <span class="dv">0</span>,</span>
-<span id="cb27-3"><a href="charts.html#cb27-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color =</span> <span class="st">&quot;gray40&quot;</span>, <span class="at">width =</span> .<span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb27-4"><a href="charts.html#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Dark2&quot;</span>, <span class="at">guide =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb27-5"><a href="charts.html#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="charts.html#cb28-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">fill =</span> season), <span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb28-2"><a href="charts.html#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">outlier.alpha =</span> <span class="dv">0</span>, <span class="at">coef =</span> <span class="dv">0</span>,</span>
+<span id="cb28-3"><a href="charts.html#cb28-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color =</span> <span class="st">&quot;gray40&quot;</span>, <span class="at">width =</span> .<span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb28-4"><a href="charts.html#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Dark2&quot;</span>, <span class="at">guide =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb28-5"><a href="charts.html#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>()</span></code></pre></div>
 <div class="figure"><span id="fig:violin-jitter-box"></span>
 <img src="bookdown_files/figure-html/violin-jitter-box-1.png" alt="A combination of violin and box plots to visualize the distribution and the summary statistics of each group." width="672" />
 <p class="caption">
@@ -325,11 +326,11 @@ FIGURE 2.9: A combination of violin and box plots to visualize the distribution 
 <div id="create-a-rug-representation-to-a-plot" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Create a Rug Representation to a Plot</h2>
 <p>A rug represents the data of a single quantitative variable, displayed as marks along an axis. In most cases, it is used in addition to scatter plots or heatmaps to visualize the overall distribution of one or both of the variables:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="charts.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(chic, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> temp,</span>
-<span id="cb28-2"><a href="charts.html#cb28-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color =</span> season)) <span class="sc">+</span></span>
-<span id="cb28-3"><a href="charts.html#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb28-4"><a href="charts.html#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb28-5"><a href="charts.html#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Year&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Temperature (°F)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="charts.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(chic, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> temp,</span>
+<span id="cb29-2"><a href="charts.html#cb29-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color =</span> season)) <span class="sc">+</span></span>
+<span id="cb29-3"><a href="charts.html#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb29-4"><a href="charts.html#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb29-5"><a href="charts.html#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Year&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Temperature (°F)&quot;</span>)</span></code></pre></div>
 <div class="figure"><span id="fig:rug"></span>
 <img src="bookdown_files/figure-html/rug-1.png" alt="A so-called rug or bardcode plot is a powerful way to highlight the distribution along one axis without requiring much more space." width="672" />
 <p class="caption">
@@ -339,15 +340,15 @@ FIGURE 2.10: A so-called rug or bardcode plot is a powerful way to highlight the
 </div>
 <div id="create-a-correlation-matrix" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Create a Correlation Matrix</h2>
-<p>There are several packages that allow to create correlation matrix plots, some also using the<code>{ggplot2}</code> infrastructure and thus returning ggplots. I am going to show you how to do this without extension packages.</p>
-<p>First step is to create the correlation matrix. Here, we use the <code>{corrr}</code> package that works nicely with pipes but there are also many others out there. We are using Pearson because all the variables are fairly normally distributed (but you may consider Spearman if your variables follow a different pattern). Note that since a correlation matrix has redundant information we are setting half of it to <code>NA</code>.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="charts.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb29-2"><a href="charts.html#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="charts.html#cb29-3" aria-hidden="true" tabindex="-1"></a>corm <span class="ot">&lt;-</span></span>
-<span id="cb29-4"><a href="charts.html#cb29-4" aria-hidden="true" tabindex="-1"></a>  chic <span class="sc">%&gt;%</span></span>
-<span id="cb29-5"><a href="charts.html#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(death, temp, dewpoint, pm10, o3) <span class="sc">%&gt;%</span></span>
-<span id="cb29-6"><a href="charts.html#cb29-6" aria-hidden="true" tabindex="-1"></a>  corrr<span class="sc">::</span><span class="fu">correlate</span>(<span class="at">diagonal =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb29-7"><a href="charts.html#cb29-7" aria-hidden="true" tabindex="-1"></a>  corrr<span class="sc">::</span><span class="fu">shave</span>(<span class="at">upper =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>There are several packages that allow to create correlation matrix plots, some also using the <strong>ggplot2</strong> infrastructure and thus returning ggplots. I am going to show you how to do this without extension packages.</p>
+<p>First step is to create the correlation matrix. Here, we use the <strong>corrr</strong> package that works nicely with pipes but there are also many others out there. We are using Pearson because all the variables are fairly normally distributed (but you may consider Spearman if your variables follow a different pattern). Note that since a correlation matrix has redundant information we are setting half of it to <code>NA</code>.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="charts.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb30-2"><a href="charts.html#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="charts.html#cb30-3" aria-hidden="true" tabindex="-1"></a>corm <span class="ot">&lt;-</span></span>
+<span id="cb30-4"><a href="charts.html#cb30-4" aria-hidden="true" tabindex="-1"></a>  chic <span class="sc">%&gt;%</span></span>
+<span id="cb30-5"><a href="charts.html#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(death, temp, dewpoint, pm10, o3) <span class="sc">%&gt;%</span></span>
+<span id="cb30-6"><a href="charts.html#cb30-6" aria-hidden="true" tabindex="-1"></a>  corrr<span class="sc">::</span><span class="fu">correlate</span>(<span class="at">diagonal =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-7"><a href="charts.html#cb30-7" aria-hidden="true" tabindex="-1"></a>  corrr<span class="sc">::</span><span class="fu">shave</span>(<span class="at">upper =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## 
 ## Correlation method: &#39;pearson&#39;
 ## Missing treated using: &#39;pairwise.complete.obs&#39;</code></pre>
@@ -359,15 +360,15 @@ FIGURE 2.10: A so-called rug or bardcode plot is a powerful way to highlight the
 ## 3 dewpoint    NA NA        1      0.327    0.454
 ## 4 pm10        NA NA       NA      1        0.206
 ## 5 o3          NA NA       NA     NA        1</code></pre>
-<p>Now we put the resulting matrix in <strong>long</strong> format using the <code>pivot_longer()</code> function from the <code>{tidyr}</code> package:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="charts.html#cb32-1" aria-hidden="true" tabindex="-1"></a>corm <span class="ot">&lt;-</span> corm <span class="sc">%&gt;%</span></span>
-<span id="cb32-2"><a href="charts.html#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb32-3"><a href="charts.html#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span>term,</span>
-<span id="cb32-4"><a href="charts.html#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;colname&quot;</span>,</span>
-<span id="cb32-5"><a href="charts.html#cb32-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;corr&quot;</span></span>
-<span id="cb32-6"><a href="charts.html#cb32-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb32-7"><a href="charts.html#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rowname =</span> <span class="fu">fct_inorder</span>(term),</span>
-<span id="cb32-8"><a href="charts.html#cb32-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">colname =</span> <span class="fu">fct_inorder</span>(colname))</span></code></pre></div>
+<p>Now we put the resulting matrix in <em>long</em> format using the <code>pivot_longer()</code> function from the <strong>tidyr</strong> package:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="charts.html#cb33-1" aria-hidden="true" tabindex="-1"></a>corm <span class="ot">&lt;-</span> corm <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a href="charts.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb33-3"><a href="charts.html#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span>term,</span>
+<span id="cb33-4"><a href="charts.html#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;colname&quot;</span>,</span>
+<span id="cb33-5"><a href="charts.html#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;corr&quot;</span></span>
+<span id="cb33-6"><a href="charts.html#cb33-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb33-7"><a href="charts.html#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rowname =</span> <span class="fu">fct_inorder</span>(term),</span>
+<span id="cb33-8"><a href="charts.html#cb33-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">colname =</span> <span class="fu">fct_inorder</span>(colname))</span></code></pre></div>
 <pre><code>## # A tibble: 25 x 4
 ##    term  colname      corr rowname
 ##    &lt;chr&gt; &lt;fct&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -383,12 +384,12 @@ FIGURE 2.10: A so-called rug or bardcode plot is a powerful way to highlight the
 ## 10 temp  o3        0.535   temp   
 ## # ... with 15 more rows</code></pre>
 <p>For the plot we will use <code>geom_tile()</code> for the heatmap and <code>geom_text()</code> for the labels:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="charts.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(corm, <span class="fu">aes</span>(rowname, <span class="fu">fct_rev</span>(colname),</span>
-<span id="cb34-2"><a href="charts.html#cb34-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> corr)) <span class="sc">+</span></span>
-<span id="cb34-3"><a href="charts.html#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
-<span id="cb34-4"><a href="charts.html#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(corr, <span class="dv">2</span>))) <span class="sc">+</span></span>
-<span id="cb34-5"><a href="charts.html#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
-<span id="cb34-6"><a href="charts.html#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="charts.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(corm, <span class="fu">aes</span>(rowname, <span class="fu">fct_rev</span>(colname),</span>
+<span id="cb35-2"><a href="charts.html#cb35-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> corr)) <span class="sc">+</span></span>
+<span id="cb35-3"><a href="charts.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
+<span id="cb35-4"><a href="charts.html#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(corr, <span class="dv">2</span>))) <span class="sc">+</span></span>
+<span id="cb35-5"><a href="charts.html#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
+<span id="cb35-6"><a href="charts.html#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span></code></pre></div>
 <pre><code>## Warning: Removed 10 rows containing missing values
 ## (geom_text).</code></pre>
 <div class="figure"><span id="fig:tile-corr-plot"></span>
@@ -398,23 +399,23 @@ FIGURE 2.11: A basic correlation plot, created with our prepared correlation dat
 </p>
 </div>
 <p>I like to have a diverging color palette, centered at zero correlation, with white indicating missing data. Also I like to have no grid lines and padding around the heatmap as well as nicely formatted labels that are colored depending on the underlying fill:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="charts.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(corm, <span class="fu">aes</span>(rowname, <span class="fu">fct_rev</span>(colname),</span>
-<span id="cb36-2"><a href="charts.html#cb36-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> corr)) <span class="sc">+</span></span>
-<span id="cb36-3"><a href="charts.html#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
-<span id="cb36-4"><a href="charts.html#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(</span>
-<span id="cb36-5"><a href="charts.html#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">format</span>(<span class="fu">round</span>(corr, <span class="dv">2</span>), <span class="at">nsmall =</span> <span class="dv">2</span>),</span>
-<span id="cb36-6"><a href="charts.html#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">abs</span>(corr) <span class="sc">&lt;</span> .<span class="dv">75</span></span>
-<span id="cb36-7"><a href="charts.html#cb36-7" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">+</span></span>
-<span id="cb36-8"><a href="charts.html#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="at">expand =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb36-9"><a href="charts.html#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;black&quot;</span>),</span>
-<span id="cb36-10"><a href="charts.html#cb36-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">guide =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb36-11"><a href="charts.html#cb36-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_distiller</span>(</span>
-<span id="cb36-12"><a href="charts.html#cb36-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="st">&quot;PuOr&quot;</span>, <span class="at">na.value =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb36-13"><a href="charts.html#cb36-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb36-14"><a href="charts.html#cb36-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb36-15"><a href="charts.html#cb36-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb36-16"><a href="charts.html#cb36-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="cn">NA</span>, <span class="at">fill =</span> <span class="cn">NA</span>),</span>
-<span id="cb36-17"><a href="charts.html#cb36-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="fu">c</span>(.<span class="dv">85</span>, .<span class="dv">8</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="charts.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(corm, <span class="fu">aes</span>(rowname, <span class="fu">fct_rev</span>(colname),</span>
+<span id="cb37-2"><a href="charts.html#cb37-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> corr)) <span class="sc">+</span></span>
+<span id="cb37-3"><a href="charts.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
+<span id="cb37-4"><a href="charts.html#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(</span>
+<span id="cb37-5"><a href="charts.html#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">format</span>(<span class="fu">round</span>(corr, <span class="dv">2</span>), <span class="at">nsmall =</span> <span class="dv">2</span>),</span>
+<span id="cb37-6"><a href="charts.html#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">abs</span>(corr) <span class="sc">&lt;</span> .<span class="dv">75</span></span>
+<span id="cb37-7"><a href="charts.html#cb37-7" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">+</span></span>
+<span id="cb37-8"><a href="charts.html#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="at">expand =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb37-9"><a href="charts.html#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;black&quot;</span>),</span>
+<span id="cb37-10"><a href="charts.html#cb37-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">guide =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb37-11"><a href="charts.html#cb37-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_distiller</span>(</span>
+<span id="cb37-12"><a href="charts.html#cb37-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="st">&quot;PuOr&quot;</span>, <span class="at">na.value =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb37-13"><a href="charts.html#cb37-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb37-14"><a href="charts.html#cb37-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb37-15"><a href="charts.html#cb37-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb37-16"><a href="charts.html#cb37-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="cn">NA</span>, <span class="at">fill =</span> <span class="cn">NA</span>),</span>
+<span id="cb37-17"><a href="charts.html#cb37-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="fu">c</span>(.<span class="dv">85</span>, .<span class="dv">8</span>))</span></code></pre></div>
 <div class="figure"><span id="fig:tile-corr-plot-polished"></span>
 <img src="bookdown_files/figure-html/tile-corr-plot-polished-1.png" alt="A polished version of the same correlation plot with custom color palettes and theme adjustments." width="672" />
 <p class="caption">
