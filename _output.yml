@@ -6,7 +6,7 @@ bookdown::gitbook:
       before: |
         <li><a href="./">Graphic Design with ggplot2</a></li>
       after: |
-        <li><a href="https://cedricscherer.com target="blank">Written by Cédric Scherer</a></li>
+        <li><a href="https://cedricscherer.com">Written by Cédric Scherer</a></li>
         <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
     download: [pdf, epub]
     edit: https://github.com/yihui/bookdown-crc/edit/master/%s
