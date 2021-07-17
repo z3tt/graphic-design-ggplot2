@@ -24,7 +24,7 @@
 <meta name="author" content="Cédric Scherer" />
 
 
-<meta name="date" content="2021-07-16" />
+<meta name="date" content="2021-07-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -218,9 +218,9 @@ div.csl-indent {
 <div id="data" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> The Dataset</h2>
 <p>We are using data from the <em>National Morbidity and Mortality Air Pollution Study</em> (NMMAPS). To make the plots manageable we are limiting the data to Chicago and 1997–2000. For more detail on this data set, consult Roger Peng’s book <a href="http://www.springer.com/de/book/9780387781662">Statistical Methods in Environmental Epidemiology with R</a>.
-You can download the data we are using during this tutorial here: <a href="http://cedricscherer.com/data/chicago-nmmaps.csv" class="uri">http://cedricscherer.com/data/chicago-nmmaps.csv</a> (but you don’t have to).</p>
+You can download the data we are using during this tutorial here: <a href="https://cedricscherer.com/data/chicago-nmmaps.csv" class="uri">https://cedricscherer.com/data/chicago-nmmaps.csv</a> (but you don’t have to).</p>
 <p>We can import the data into our R session for example with <code>read_csv()</code> from the <strong>readr</strong> package which allows to import data directly from a web URL. To access the data later, we are storing it in a variable called <code>chic</code> by using the <em>assignment arrow</em> <code>&lt;-</code>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="introduction.html#cb3-1" aria-hidden="true" tabindex="-1"></a>url_data <span class="ot">&lt;-</span> <span class="st">&quot;http://cedricscherer.com/data/chicago-nmmaps.csv&quot;</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="introduction.html#cb3-1" aria-hidden="true" tabindex="-1"></a>url_data <span class="ot">&lt;-</span> <span class="st">&quot;https://cedricscherer.com/data/chicago-nmmaps.csv&quot;</span></span>
 <span id="cb3-2"><a href="introduction.html#cb3-2" aria-hidden="true" tabindex="-1"></a>chic <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(url_data)</span></code></pre></div>
 <pre><code>## 
 ## -- Column specification -------------------------------
@@ -290,8 +290,8 @@ The overall visual defaults of a plot, such as background, grids, axes, default 
 <pre><code>## -- Conflicts ----------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
-<p>The syntax of <strong>ggplot2</strong> is different from base R. In accordance with the basic elements, a default ggplot needs three things that you have to specify: the <em>data</em>, <em>aesthetics</em>, and a <em>geometry</em>. We always start to define a plotting object by calling <code>ggplot(data = df)</code> which just tells <strong>ggplot2</strong> that we are going to work with that data. In most cases, you might want to plot two variables—one on the x and one on the y axis. These are <em>positional aesthetics</em> and thus we add <code>aes(x = var1, y = var2)</code> to the <code>ggplot()</code> call (yes, the <code>aes()</code> stands for aesthetics). However, there are also cases where one has to specify one or even three or more variables.</p>
-<p><em>Note: We specify the data </em>outside* <code>aes()</code> and add the variables that ggplot maps the aesthetics to <em>inside</em> <code>aes()</code>.*</p>
+<p>The syntax of <strong>ggplot2</strong> is different from base R. In accordance with the basic elements, a default ggplot needs three things that you have to specify: the <em>data</em>, <em>aesthetics</em>, and a <em>geometry</em>. We always start to define a plotting object by calling <code>ggplot(data = df)</code> which just tells <strong>ggplot2</strong> that we are going to work with that data. In most cases, you might want to plot two variables—one on the x and one on the y axis. These are <em>positional aesthetics</em> and thus we add <code>aes(x = var1, y = var2)</code> to the <code>ggplot()</code> call (yes, the <code>aes()</code> stands for aesthetics). However, there are also cases where one has to specify onkly one or even three or more variables.</p>
+<p><em>Note: We specify the data outside <code>aes()</code> and add the variables that ggplot maps the aesthetics to inside <code>aes()</code>.</em></p>
 <p>Here, we map the variable <code>date</code> to the x position and the variable <code>temp</code> to the y position. Later, we will also map variables to all kind of other aesthetics such as color, size, and shape.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="introduction.html#cb11-1" aria-hidden="true" tabindex="-1"></a>(g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(chic, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> temp)))</span></code></pre></div>
 <div class="figure"><span id="fig:ggplot"></span>

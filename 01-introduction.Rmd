@@ -5,12 +5,12 @@
 ## The Dataset {#data}
 
 We are using data from the *National Morbidity and Mortality Air Pollution Study* (NMMAPS). To make the plots manageable we are limiting the data to Chicago and 1997–2000. For more detail on this data set, consult Roger Peng's book [Statistical Methods in Environmental Epidemiology with R](http://www.springer.com/de/book/9780387781662).
-You can download the data we are using during this tutorial here: http://cedricscherer.com/data/chicago-nmmaps.csv (but you don't have to).
+You can download the data we are using during this tutorial here: https://cedricscherer.com/data/chicago-nmmaps.csv (but you don't have to).
 
 We can import the data into our R session for example with `read_csv()` from the **readr** package which allows to import data directly from a web URL. To access the data later, we are storing it in a variable called `chic` by using the *assignment arrow* `<-`.
 
 ```{r data-import}
-url_data <- "http://cedricscherer.com/data/chicago-nmmaps.csv"
+url_data <- "https://cedricscherer.com/data/chicago-nmmaps.csv"
 chic <- readr::read_csv(url_data)
 ```
 
@@ -56,9 +56,9 @@ First, to be able to use the functionality of **ggplot2** we have to load the pa
 library(tidyverse)
 ```
 
-The syntax of **ggplot2** is different from base R. In accordance with the basic elements, a default ggplot needs three things that you have to specify: the *data*, *aesthetics*, and a *geometry*. We always start to define a plotting object by calling `ggplot(data = df)` which just tells **ggplot2** that we are going to work with that data. In most cases, you might want to plot two variables—one on the x and one on the y axis. These are *positional aesthetics* and thus we add `aes(x = var1, y = var2)` to the `ggplot()` call (yes, the `aes()` stands for aesthetics). However, there are also cases where one has to specify one or even three or more variables.
+The syntax of **ggplot2** is different from base R. In accordance with the basic elements, a default ggplot needs three things that you have to specify: the *data*, *aesthetics*, and a *geometry*. We always start to define a plotting object by calling `ggplot(data = df)` which just tells **ggplot2** that we are going to work with that data. In most cases, you might want to plot two variables—one on the x and one on the y axis. These are *positional aesthetics* and thus we add `aes(x = var1, y = var2)` to the `ggplot()` call (yes, the `aes()` stands for aesthetics). However, there are also cases where one has to specify onkly one or even three or more variables.
 
-*Note: We specify the data *outside* `aes()` and add the variables that ggplot maps the aesthetics to *inside* `aes()`.*
+*Note: We specify the data outside `aes()` and add the variables that ggplot maps the aesthetics to inside `aes()`.*
 
 Here, we map the variable `date` to the x position and the variable `temp` to the y position. Later, we will also map variables to all kind of other aesthetics such as color, size, and shape.
 

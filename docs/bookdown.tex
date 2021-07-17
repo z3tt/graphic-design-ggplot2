@@ -181,7 +181,7 @@
 \makeatother
 \subtitle{Create Beautiful Data Visualizations in R}
 \author{Cédric Scherer}
-\date{2021-07-16}
+\date{2021-07-17}
 
 \begin{document}
 \maketitle
@@ -330,13 +330,13 @@ As a data visualization specialist, he does rarely create dashboards but acts as
 \section{The Dataset}\label{data}}
 
 We are using data from the \emph{National Morbidity and Mortality Air Pollution Study} (NMMAPS). To make the plots manageable we are limiting the data to Chicago and 1997--2000. For more detail on this data set, consult Roger Peng's book \href{http://www.springer.com/de/book/9780387781662}{Statistical Methods in Environmental Epidemiology with R}.
-You can download the data we are using during this tutorial here: \url{http://cedricscherer.com/data/chicago-nmmaps.csv} (but you don't have to).
+You can download the data we are using during this tutorial here: \url{https://cedricscherer.com/data/chicago-nmmaps.csv} (but you don't have to).
 
 We can import the data into our R session for example with \texttt{read\_csv()} from the \textbf{readr} package which allows to import data directly from a web URL. To access the data later, we are storing it in a variable called \texttt{chic} by using the \emph{assignment arrow} \texttt{\textless{}-}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{url\_data }\OtherTok{\textless{}{-}} \StringTok{"http://cedricscherer.com/data/chicago{-}nmmaps.csv"}
+\NormalTok{url\_data }\OtherTok{\textless{}{-}} \StringTok{"https://cedricscherer.com/data/chicago{-}nmmaps.csv"}
 \NormalTok{chic }\OtherTok{\textless{}{-}}\NormalTok{ readr}\SpecialCharTok{::}\FunctionTok{read\_csv}\NormalTok{(url\_data)}
 \end{Highlighting}
 \end{Shaded}
@@ -451,9 +451,9 @@ First, to be able to use the functionality of \textbf{ggplot2} we have to load t
 ## x dplyr::lag()    masks stats::lag()
 \end{verbatim}
 
-The syntax of \textbf{ggplot2} is different from base R. In accordance with the basic elements, a default ggplot needs three things that you have to specify: the \emph{data}, \emph{aesthetics}, and a \emph{geometry}. We always start to define a plotting object by calling \texttt{ggplot(data\ =\ df)} which just tells \textbf{ggplot2} that we are going to work with that data. In most cases, you might want to plot two variables---one on the x and one on the y axis. These are \emph{positional aesthetics} and thus we add \texttt{aes(x\ =\ var1,\ y\ =\ var2)} to the \texttt{ggplot()} call (yes, the \texttt{aes()} stands for aesthetics). However, there are also cases where one has to specify one or even three or more variables.
+The syntax of \textbf{ggplot2} is different from base R. In accordance with the basic elements, a default ggplot needs three things that you have to specify: the \emph{data}, \emph{aesthetics}, and a \emph{geometry}. We always start to define a plotting object by calling \texttt{ggplot(data\ =\ df)} which just tells \textbf{ggplot2} that we are going to work with that data. In most cases, you might want to plot two variables---one on the x and one on the y axis. These are \emph{positional aesthetics} and thus we add \texttt{aes(x\ =\ var1,\ y\ =\ var2)} to the \texttt{ggplot()} call (yes, the \texttt{aes()} stands for aesthetics). However, there are also cases where one has to specify onkly one or even three or more variables.
 
-\emph{Note: We specify the data }outside* \texttt{aes()} and add the variables that ggplot maps the aesthetics to \emph{inside} \texttt{aes()}.*
+\emph{Note: We specify the data outside \texttt{aes()} and add the variables that ggplot maps the aesthetics to inside \texttt{aes()}.}
 
 Here, we map the variable \texttt{date} to the x position and the variable \texttt{temp} to the y position. Later, we will also map variables to all kind of other aesthetics such as color, size, and shape.
 
