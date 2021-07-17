@@ -121,8 +121,8 @@ a + b
 Each geom comes with its own properties (called *arguments*) and the same argument may result in a different change depending on the geom you are using.
 
 ```{r ggplot-default-line-col-size-shape, fig.cap="You can style each geometrical layer on its own. Each geometry also comes with a set of individual properties."}
-g + geom_point(color = "firebrick", shape = "diamond", size = 2) +
-    geom_line(color = "firebrick", linetype = "dotted", size = .3)
+g + geom_line(color = "gray40", linetype = "dotted", size = .6) + 
+   geom_point(color = "firebrick", shape = "diamond", size = 2)
 ```
 
 
