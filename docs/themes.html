@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Themes | Graphic Design with ggplot2</title>
+  <title>Chapter 4 Themes | Graphic Design with ggplot2</title>
   <meta name="description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Themes | Graphic Design with ggplot2" />
+  <meta property="og:title" content="Chapter 4 Themes | Graphic Design with ggplot2" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="z3tt/graphic-design-ggplot2" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Themes | Graphic Design with ggplot2" />
+  <meta name="twitter:title" content="Chapter 4 Themes | Graphic Design with ggplot2" />
   
   <meta name="twitter:description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Cédric Scherer" />
 
 
-<meta name="date" content="2021-07-17" />
+<meta name="date" content="2021-09-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -162,33 +162,35 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#why-read-this-book"><i class="fa fa-check"></i>Why read this book</a></li>
+<li><a href="index.html#why-r-and-ggplot2">Why R and <strong>ggplot2</strong></a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#structure-of-the-book"><i class="fa fa-check"></i>Structure of the book</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#software-information-and-conventions"><i class="fa fa-check"></i>Software information and conventions</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i>Acknowledgments</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i><b>2</b> Setup</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#data"><i class="fa fa-check"></i><b>1.1</b> The Dataset</a></li>
-<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#ggplot"><i class="fa fa-check"></i><b>1.2</b> The <strong>ggplot2</strong> Package</a></li>
-<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#default"><i class="fa fa-check"></i><b>1.3</b> A Basic ggplot</a></li>
-<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#prop"><i class="fa fa-check"></i><b>1.4</b> Change Properties of Geometries</a></li>
-<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#theme"><i class="fa fa-check"></i><b>1.5</b> Replace the default <strong>ggplot2</strong> theme</a></li>
+<li class="chapter" data-level="2.1" data-path="setup.html"><a href="setup.html#data"><i class="fa fa-check"></i><b>2.1</b> The Dataset</a></li>
+<li class="chapter" data-level="2.2" data-path="setup.html"><a href="setup.html#ggplot"><i class="fa fa-check"></i><b>2.2</b> The <strong>ggplot2</strong> Package</a></li>
+<li class="chapter" data-level="2.3" data-path="setup.html"><a href="setup.html#default"><i class="fa fa-check"></i><b>2.3</b> A Basic ggplot</a></li>
+<li class="chapter" data-level="2.4" data-path="setup.html"><a href="setup.html#prop"><i class="fa fa-check"></i><b>2.4</b> Change Properties of Geometries</a></li>
+<li class="chapter" data-level="2.5" data-path="setup.html"><a href="setup.html#theme"><i class="fa fa-check"></i><b>2.5</b> Replace the default <strong>ggplot2</strong> theme</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="charts.html"><a href="charts.html"><i class="fa fa-check"></i><b>2</b> Chart types</a>
+<li class="chapter" data-level="3" data-path="charts.html"><a href="charts.html"><i class="fa fa-check"></i><b>3</b> Chart types</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="charts.html"><a href="charts.html#alternatives-to-a-box-plot"><i class="fa fa-check"></i><b>2.1</b> Alternatives to a Box Plot</a>
+<li class="chapter" data-level="3.1" data-path="charts.html"><a href="charts.html#alternatives-to-a-box-plot"><i class="fa fa-check"></i><b>3.1</b> Alternatives to a Box Plot</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="charts.html"><a href="charts.html#dot-plots"><i class="fa fa-check"></i><b>2.1.1</b> Dot Plots</a></li>
-<li class="chapter" data-level="2.1.2" data-path="charts.html"><a href="charts.html#strip-plots"><i class="fa fa-check"></i><b>2.1.2</b> Strip Plots</a></li>
-<li class="chapter" data-level="2.1.3" data-path="charts.html"><a href="charts.html#violin-plots"><i class="fa fa-check"></i><b>2.1.3</b> Violin Plots</a></li>
-<li class="chapter" data-level="2.1.4" data-path="charts.html"><a href="charts.html#combining-violin-plots-with-strip-charts"><i class="fa fa-check"></i><b>2.1.4</b> Combining Violin Plots with Strip Charts</a></li>
-<li class="chapter" data-level="2.1.5" data-path="charts.html"><a href="charts.html#combining-violin-and-box-plots"><i class="fa fa-check"></i><b>2.1.5</b> Combining Violin and Box Plots</a></li>
+<li class="chapter" data-level="3.1.1" data-path="charts.html"><a href="charts.html#dot-plots"><i class="fa fa-check"></i><b>3.1.1</b> Dot Plots</a></li>
+<li class="chapter" data-level="3.1.2" data-path="charts.html"><a href="charts.html#strip-plots"><i class="fa fa-check"></i><b>3.1.2</b> Strip Plots</a></li>
+<li class="chapter" data-level="3.1.3" data-path="charts.html"><a href="charts.html#violin-plots"><i class="fa fa-check"></i><b>3.1.3</b> Violin Plots</a></li>
+<li class="chapter" data-level="3.1.4" data-path="charts.html"><a href="charts.html#combining-violin-plots-with-strip-charts"><i class="fa fa-check"></i><b>3.1.4</b> Combining Violin Plots with Strip Charts</a></li>
+<li class="chapter" data-level="3.1.5" data-path="charts.html"><a href="charts.html#combining-violin-and-box-plots"><i class="fa fa-check"></i><b>3.1.5</b> Combining Violin and Box Plots</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="charts.html"><a href="charts.html#create-a-rug-representation-to-a-plot"><i class="fa fa-check"></i><b>2.2</b> Create a Rug Representation to a Plot</a></li>
-<li class="chapter" data-level="2.3" data-path="charts.html"><a href="charts.html#create-a-correlation-matrix"><i class="fa fa-check"></i><b>2.3</b> Create a Correlation Matrix</a></li>
+<li class="chapter" data-level="3.2" data-path="charts.html"><a href="charts.html#create-a-rug-representation-to-a-plot"><i class="fa fa-check"></i><b>3.2</b> Create a Rug Representation to a Plot</a></li>
+<li class="chapter" data-level="3.3" data-path="charts.html"><a href="charts.html#create-a-correlation-matrix"><i class="fa fa-check"></i><b>3.3</b> Create a Correlation Matrix</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="themes.html"><a href="themes.html"><i class="fa fa-check"></i><b>3</b> Themes</a></li>
+<li class="chapter" data-level="4" data-path="themes.html"><a href="themes.html"><i class="fa fa-check"></i><b>4</b> Themes</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="more-to-say.html"><a href="more-to-say.html"><i class="fa fa-check"></i><b>A</b> More to Say</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -213,13 +215,13 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="themes" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Themes</h1>
+<div id="themes" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Themes</h1>
 <p>You can change the entire look of the plots by using themes. <strong>ggplot2</strong> comes with eight built-in themes:</p>
 <div class="figure"><span id="fig:ggplot2-theme-gallery"></span>
 <img src="bookdown_files/figure-html/ggplot2-theme-gallery-1.png" alt="An overview of all in-build themes that are contained in the **ggplot2** package." width="1056" />
 <p class="caption">
-FIGURE 3.1: An overview of all in-build themes that are contained in the <strong>ggplot2</strong> package.
+FIGURE 4.1: An overview of all in-build themes that are contained in the <strong>ggplot2</strong> package.
 </p>
 </div>
 <p>There are several packages that provide additional themes, some even with different default color palettes. As an example, Jeffrey Arnold has put together the library <code>{ggthemes}</code> with several custom themes imitating popular designs. For a list you can visit the <a href="https://github.com/jrnold/ggthemes"><code>{ggthemes}</code> package site</a>. Without any coding you can just adapt several styles, some of them well known for their style and aesthetics.</p>
@@ -266,7 +268,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/yihui/bookdown-crc/edit/master/03-themes.Rmd",
+"link": "https://github.com/yihui/bookdown-crc/edit/master/04-themes.Rmd",
 "text": "Edit"
 },
 "history": {

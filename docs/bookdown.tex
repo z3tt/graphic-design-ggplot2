@@ -181,7 +181,7 @@
 \makeatother
 \subtitle{Create Beautiful Data Visualizations in R}
 \author{Cédric Scherer}
-\date{2021-07-17}
+\date{2021-09-22}
 
 \begin{document}
 \maketitle
@@ -214,13 +214,15 @@ without whom I should have finished this book two years earlier
 \chapter*{Preface}\label{preface}}
 
 
-Back in 2016, I had to prepare my PhD introductory talk. I planned to create a visualization using small multiples to show various outcomes of the scenarios I ran with my simulation model. I was already using the R programming language for years and quickly came across the graphics library \textbf{ggplot2} which comes with the functionality to easily create small multiples.to visualize my data. I never liked the syntax and style of base plots in R, so I immediately fell in love with the idea and implementation of \textbf{ggplot2}'s \emph{Grammar of Graphics}. But because I was short on time, I plotted these figures by trial and error and with the help of lots of googling. The resource I came always back to was a blog entry called \href{http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/}{``Beautiful plotting in R: A \textbf{ggplot2} cheatsheet'' by Zev Ross}. After giving the talk which contained some decent plots thanks to the blog post, I decided to go through this tutorial step-by-step. I learned so much from it and directly started modifying the codes and adding additional code snippets, chart types, and resources.
+Back in 2016, I had to prepare my PhD introductory talk to inform about my plans for the next three years and to showcase my first preliminary results. I planned to create a visualization using small multiples to show various outcomes of the scenarios I ran with my simulation model. I was already using the R programming language for years and quickly came across the graphics library \textbf{ggplot2} which comes with the functionality to easily create small multiples.to visualize my data. I never liked the syntax and style of base plots in R, so I immediately fell in love with the idea and implementation of \textbf{ggplot2}'s \emph{Grammar of Graphics}. But because I was short on time, I plotted these figures by trial and error and with the help of lots of googling. The resource I came always back to was a blog entry called \href{http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/}{``Beautiful plotting in R: A \textbf{ggplot2} cheatsheet'' by Zev Ross}. After giving the talk which contained some decent plots thanks to the blog post, I decided to go through this tutorial step-by-step. I learned so much from it and directly started modifying the codes and adding additional code snippets, chart types, and resources.
 
-Fast forward to 2019. I successfully finished my PhD and started participating in a weekly data visualization challenge called \href{https://github.com/rfordatascience/tidytuesday/blob/master/README.md}{\#TidyTuesday}. TidyTuesday is an initiative grown out of Jesse Mostipak and the \href{https://www.rfordatasci.com/}{R4DS Online Learning Community}, started by Thomas Mock. Every week, a raw data set is shared with the aim to explore and visualize the data with \textbf{ggplot2}. Thanks to my experience with the \textbf{tidyverse} and especially \textbf{ggplot2} during my PhD and the open-source approach of the challenge that made it possible to learn from other participants, my visualizations quickly became more advanced and complex.
+Fast forward to 2019. I successfully finished my PhD and started participating in a weekly data visualization challenge called \href{https://github.com/rfordatascience/tidytuesday/blob/master/README.md}{\#TidyTuesday}.Every week, a raw data set is shared with the aim to explore and visualize the data with \textbf{ggplot2}. Thanks to my experience with the \textbf{tidyverse} and especially \textbf{ggplot2} during my PhD and the open-source approach of the challenge that made it possible to learn from other participants, my visualizations quickly became more advanced and complex.
 
-A few months later, I started working as a freelance data visualization specialist. I am now using \textbf{ggplot2} every day: for my scientific work, design requests, reproducible reports, and personal data visualization projects. Since the blog entry by Zev Ross was not updated sine January 2016, I decided to add more examples and tricks to my version, which was now hosted on my \href{https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/}{personal blog}. It became step by step a unique tutorial that now contains also the fantastic \textbf{patchwork}, \textbf{ggtext} and \textbf{ggforce} packages, a section of custom fonts and colors, a collection of R packages tailored to create interactive charts, and several new chart types. The updated version now contains \textasciitilde3.000 lines of code and 188 plots and received a lot of interest from \textbf{ggplot2} users from a wide range of fields.
+A few months later, I had built a portfolio ofvarious charts and maps and decided to start working as an independent data visualization specialist. I am now using \textbf{ggplot2} every day: for my academic work, design requests, reproducible reports, educational purposes, and personal data visualization projects. What I especially love about my current job specification: It challenges and satisfies my creativity on different levels. Beside the creativity one can express in terms of chart choice and design, there is also creativity needed to come up with solutions and tricks to bring the most venturous ideas to life. At the same time, there is the gratification when your code works and \emph{magically} translates code snippets to visuals.
 
-Today, on a sunny day in July 2021, this tutorial serves as the basis for the book you hold in your hands. I hope you enjoy it as much as I enjoyed learning and sharing \textbf{ggplot2} wizardry!
+The blog entry by Zev Ross was not updated since January 2016, so I decided to add more examples and tricks to my version, which was now hosted on my \href{https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/}{personal blog}. It became step by step a unique tutorial that now contains also the fantastic \textbf{patchwork}, \textbf{ggtext} and \textbf{ggforce} packages, a section of custom fonts and colors, a collection of R packages tailored to create interactive charts, and several new chart types. The updated version now contains \textasciitilde3.000 lines of code and 188 plots and received a lot of interest from \textbf{ggplot2} users from a wide range of fields.
+
+Today, on a sunny day in July 2021, this tutorial serves as the starting point for the book you hold in your hands. I hope you enjoy it as much as I enjoyed learning and sharing \textbf{ggplot2} wizardry!
 
 \hypertarget{why-read-this-book}{%
 \section*{Why read this book}\label{why-read-this-book}}
@@ -250,6 +252,32 @@ Among other things, the book covers the following:
   Reference implementations illustrating code solutions and design choices
 \end{itemize}
 
+\hypertarget{why-r-and-ggplot2}{%
+\section*{\texorpdfstring{Why R and \textbf{ggplot2}}{Why R and ggplot2}}\label{why-r-and-ggplot2}}
+
+
+As a computational ecologist, I've learned and used a range of different tools and programming languages for various purposes such as data wrangling, statistical analyses, and model building. The open-source language R was and is the programming language most widely used by ecologists to handle and analyze ecological data \citep{sciaini2018}. Consequently, I was \emph{of course} using R in my daily life as an scientific researcher.
+
+Nowadays, R plays crucial part in many data-related workflows, no matter if for scientific, educational, or industrial use cases. Thanks to the ever growing R community and the rich collection of libraries that add additional functionality and simplify workflows, R is an attractive programming language that has outgrown of its original purpose: statistical analyses. Today, R can serve as tool to generate automated reports, develop stand-alone web apps, and draft presentation slides, books, and web pages. And to design high-level, publication--ready visualizations.
+
+Even though R---similar to most programming languages---has a steep learning curve, the level of functionality, flexibility, automation, and reproducibility offered can be a major benefit also in a design context:
+
+\begin{itemize}
+\tightlist
+\item
+  The layered approach of \textbf{ggplot2} opens the possibility to build any type of visualisation.
+\item
+  Various extension packages add missing functionality.
+\item
+  Script-based workflows instead of \emph{point--and--click} approaches allow for reproducibility---which means you can simply (in theory) run the code again after receiving new data or create thousands of visualizations for various data sets in no time.
+\item
+  Sharing code is becoming the golden standard in many fields and thus facilitates transparency and credibility as well as modification and creative advancement.
+\item
+  A helpful community and many free resources simplify learning experiences and the search for solutions.
+\item
+  The visualisations created in R can be exported as vector files and thus allow for post--processing with graphic design tools.
+\end{itemize}
+
 \hypertarget{structure-of-the-book}{%
 \section*{Structure of the book}\label{structure-of-the-book}}
 
@@ -271,7 +299,7 @@ The book was written with the \textbf{knitr}\index{knitr} package \citep{xie2015
 \begin{verbatim}
 ## R version 4.1.0 (2021-05-18)
 ## Platform: x86_64-w64-mingw32/x64 (64-bit)
-## Running under: Windows 10 x64 (build 19041)
+## Running under: Windows 10 x64 (build 19043)
 ## 
 ## Locale:
 ##   LC_COLLATE=German_Germany.1252 
@@ -304,7 +332,7 @@ Package names are in bold text (e.g., \textbf{ggplot2}), and inline code and fil
 \section*{Acknowledgments}\label{acknowledgments}}
 
 
-A lot of people helped me when I was writing the book.
+Thanks to David Grubbs, Alberto Cairo, Emily Riederer, Oscar Baruffa, and Malcolm Barrett for all your constructive feedback.
 
 \begin{flushright}
 Cédric Scherer\\
@@ -315,7 +343,7 @@ Berlin, Germany
 \chapter*{About the Author}\label{about-the-author}}
 
 
-Cédric Scherer is a graduated computational ecologist with a passion for design. In 2020, he combined his expertise in analyzing and visualizing large data sets in R with his interest in design and his perfectionism to become a freelance data visualization specialist.
+Cédric Scherer is a graduated computational ecologist with a passion for good design. In 2020, he combined his expertise in analyzing and visualizing large data sets in R with his interest in design and his perfectionism to become a freelance data visualization specialist.
 
 Cédric has created visualizations across all disciplines, purposes, and styles. Due to regular participation to social data challenges, he is now well known for complex and visually appealing figures, entirely made with ggplot2, that look as they have been created with a vector design tool.
 
@@ -325,6 +353,9 @@ As a data visualization specialist, he does rarely create dashboards but acts as
 
 \hypertarget{introduction}{%
 \chapter{Introduction}\label{introduction}}
+
+\hypertarget{setup}{%
+\chapter{Setup}\label{setup}}
 
 \hypertarget{data}{%
 \section{The Dataset}\label{data}}
@@ -592,321 +623,6 @@ You can find more on how to use built-in themes and how to customize themes in t
 \emph{Note: \texttt{theme()} is an essential command to manually modify all kinds of theme elements (texts, rectangles, and lines).}
 
 To see which details of a ggplot theme can be modified have a look \href{https://ggplot2.tidyverse.org/reference/theme.html}{here}---and take some time, this is a looong list.
-
-\hypertarget{charts}{%
-\chapter{Chart types}\label{charts}}
-
-\hypertarget{alternatives-to-a-box-plot}{%
-\section{Alternatives to a Box Plot}\label{alternatives-to-a-box-plot}}
-
-A box plot is probably the most commonly used chart type to compare distribution of several groups, at least in the scientific literature. Box plots are great, but they can be so incredibly boring. Also, even if you are used to looking at box plots, remember there might be plenty people looking at your plot that have never seen a box and whisker plot before.
-
-A box-and-whisker plot (sometimes called simply a box plot) is a histogram-like method of displaying data, invented by J. Tukey. The thick \emph{middle line} notates the median, also known as quartile. The limits of the \emph{box} are determined by the lower and upper quartiles, \emph{Q¹} and \emph{Q³}. The box contains thus 50\% of the data and is called \emph{interquartile range} (IQR). The length of the \emph{whiskers} is determined by the most extreme values that are not considered as outliers (i.e.~values that are within 3/2 times the interquartile range).
-
-\begin{figure}
-\includegraphics[width=1\linewidth]{img/boxplot} \caption{A boxplot is a standardized way of displaying the dataset based on a five-number summary: the minimum, the maximum, the sample median, and the first and third quartiles.}\label{fig:img-boxplot}
-\end{figure}
-
-There are alternatives, but first we are plotting a common box plot:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{g }\OtherTok{\textless{}{-}}
-  \FunctionTok{ggplot}\NormalTok{(chic, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ season, }\AttributeTok{y =}\NormalTok{ o3,}
-                   \AttributeTok{color =}\NormalTok{ season)) }\SpecialCharTok{+}
-    \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Season"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Ozone"}\NormalTok{) }\SpecialCharTok{+}
-    \FunctionTok{scale\_color\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"Dark2"}\NormalTok{, }\AttributeTok{guide =} \StringTok{"none"}\NormalTok{)}
-
-\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_boxplot}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{bookdown_files/figure-latex/boxplot-1.pdf}
-\caption{\label{fig:boxplot}A box plot generated with \textbf{ggplot2} with customized axis labels and colors.}
-\end{figure}
-
-\hypertarget{dot-plots}{%
-\subsection{Dot Plots}\label{dot-plots}}
-
-Let's plot just each data point of the raw data:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{bookdown_files/figure-latex/point-1.pdf}
-\caption{\label{fig:point}A dot plot visualizing the distribution of the raw data as an alternative to boxplots. However, the summary statistics are not shown anymore.}
-\end{figure}
-
-Not only boring but uninformative. To improve the plot, one could add transparency to deal with overplotting:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{1}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{bookdown_files/figure-latex/point-alpha-1.pdf}
-\caption{\label{fig:point-alpha}A dot plot with added transparency as an approach to make overlapping data points visible.}
-\end{figure}
-
-However, setting transparency is difficult here since either the overlap is still too high or the extreme values are not visible. Bad, so let's try something else.
-
-\hypertarget{strip-plots}{%
-\subsection{Strip Plots}\label{strip-plots}}
-
-Try adding a little jitter to the data. I like this for in-house visualization but be careful using jittering because you are purposely adding noise to your data and this can result in misinterpretation of your data.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_jitter}\NormalTok{(}\AttributeTok{width =}\NormalTok{ .}\DecValTok{3}\NormalTok{, }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{bookdown_files/figure-latex/jitter-1.pdf}
-\caption{\label{fig:jitter}A jittered dot plot, also known as strip plot.}
-\end{figure}
-
-\hypertarget{violin-plots}{%
-\subsection{Violin Plots}\label{violin-plots}}
-
-Violin plots, similar to box plots except you are using a kernel density to show where you have the most data, are a useful visualization.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_violin}\NormalTok{(}\AttributeTok{fill =} \StringTok{"gray80"}\NormalTok{, }\AttributeTok{size =} \DecValTok{1}\NormalTok{, }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{bookdown_files/figure-latex/violin-1.pdf}
-\caption{\label{fig:violin}Violin plots are a great way to visualize the distribution values, especially in case of large sample sizes.}
-\end{figure}
-
-\hypertarget{combining-violin-plots-with-strip-charts}{%
-\subsection{Combining Violin Plots with Strip Charts}\label{combining-violin-plots-with-strip-charts}}
-
-We can of course combine both, estimated densities and the raw data points:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_violin}\NormalTok{(}\AttributeTok{fill =} \StringTok{"gray80"}\NormalTok{, }\AttributeTok{size =} \DecValTok{1}\NormalTok{, }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
-    \FunctionTok{geom\_jitter}\NormalTok{(}\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{25}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
-    \FunctionTok{coord\_flip}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{bookdown_files/figure-latex/violin-jitter-1.pdf}
-\caption{\label{fig:violin-jitter}A combination of violin and strip plots to visualize the distribution and the raw values at the same time.}
-\end{figure}
-
-The \href{https://ggforce.data-imaginist.com/}{\textbf{ggforce} package} provides so-called sina functions where the width of the jitter is controlled by the density distribution of the data---that makes the jittering a bit more visually appealing:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(ggforce)}
-
-\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_violin}\NormalTok{(}\AttributeTok{fill =} \StringTok{"gray80"}\NormalTok{, }\AttributeTok{size =} \DecValTok{1}\NormalTok{, }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
-    \FunctionTok{geom\_sina}\NormalTok{(}\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{25}\NormalTok{) }\SpecialCharTok{+}
-    \FunctionTok{coord\_flip}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{bookdown_files/figure-latex/violin-sina-1.pdf}
-\caption{\label{fig:violin-sina}A sina plot places the dots according to the distribution and is basically a \emph{raw data violin plot}.}
-\end{figure}
-
-\hypertarget{combining-violin-and-box-plots}{%
-\subsection{Combining Violin and Box Plots}\label{combining-violin-and-box-plots}}
-
-To allow for easy estimation of quantiles, we can also add the box of the box plot inside the violins to indicate 25\%-quartile, median and 75\%-quartile:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{g }\SpecialCharTok{+} \FunctionTok{geom\_violin}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ season), }\AttributeTok{size =} \DecValTok{1}\NormalTok{, }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
-    \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{outlier.alpha =} \DecValTok{0}\NormalTok{, }\AttributeTok{coef =} \DecValTok{0}\NormalTok{,}
-                 \AttributeTok{color =} \StringTok{"gray40"}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
-    \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"Dark2"}\NormalTok{, }\AttributeTok{guide =} \StringTok{"none"}\NormalTok{) }\SpecialCharTok{+}
-    \FunctionTok{coord\_flip}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{bookdown_files/figure-latex/violin-jitter-box-1.pdf}
-\caption{\label{fig:violin-jitter-box}A combination of violin and box plots to visualize the distribution and the summary statistics of each group.}
-\end{figure}
-
-\hypertarget{create-a-rug-representation-to-a-plot}{%
-\section{Create a Rug Representation to a Plot}\label{create-a-rug-representation-to-a-plot}}
-
-A rug represents the data of a single quantitative variable, displayed as marks along an axis. In most cases, it is used in addition to scatter plots or heatmaps to visualize the overall distribution of one or both of the variables:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(chic, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ temp,}
-                 \AttributeTok{color =}\NormalTok{ season)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{geom\_rug}\NormalTok{(}\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Year"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Temperature (°F)"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{bookdown_files/figure-latex/rug-1.pdf}
-\caption{\label{fig:rug}A so-called rug or bardcode plot is a powerful way to highlight the distribution along one axis without requiring much more space.}
-\end{figure}
-
-\hypertarget{create-a-correlation-matrix}{%
-\section{Create a Correlation Matrix}\label{create-a-correlation-matrix}}
-
-There are several packages that allow to create correlation matrix plots, some also using the \textbf{ggplot2} infrastructure and thus returning ggplots. I am going to show you how to do this without extension packages.
-
-First step is to create the correlation matrix. Here, we use the \textbf{corrr} package that works nicely with pipes but there are also many others out there. We are using Pearson because all the variables are fairly normally distributed (but you may consider Spearman if your variables follow a different pattern). Note that since a correlation matrix has redundant information we are setting half of it to \texttt{NA}.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(tidyverse)}
-
-\NormalTok{corm }\OtherTok{\textless{}{-}}
-\NormalTok{  chic }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{select}\NormalTok{(death, temp, dewpoint, pm10, o3) }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{  corrr}\SpecialCharTok{::}\FunctionTok{correlate}\NormalTok{(}\AttributeTok{diagonal =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{  corrr}\SpecialCharTok{::}\FunctionTok{shave}\NormalTok{(}\AttributeTok{upper =} \ConstantTok{FALSE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 
-## Correlation method: 'pearson'
-## Missing treated using: 'pairwise.complete.obs'
-\end{verbatim}
-
-\begin{verbatim}
-## # A tibble: 5 x 6
-##   term     death   temp dewpoint     pm10     o3
-##   <chr>    <dbl>  <dbl>    <dbl>    <dbl>  <dbl>
-## 1 death        1 -0.486   -0.465 -0.00294 -0.238
-## 2 temp        NA  1        0.958  0.368    0.535
-## 3 dewpoint    NA NA        1      0.327    0.454
-## 4 pm10        NA NA       NA      1        0.206
-## 5 o3          NA NA       NA     NA        1
-\end{verbatim}
-
-Now we put the resulting matrix in \emph{long} format using the \texttt{pivot\_longer()} function from the \textbf{tidyr} package:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{corm }\OtherTok{\textless{}{-}}\NormalTok{ corm }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{pivot\_longer}\NormalTok{(}
-    \AttributeTok{cols =} \SpecialCharTok{{-}}\NormalTok{term,}
-    \AttributeTok{names\_to =} \StringTok{"colname"}\NormalTok{,}
-    \AttributeTok{values\_to =} \StringTok{"corr"}
-\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{rowname =} \FunctionTok{fct\_inorder}\NormalTok{(term),}
-         \AttributeTok{colname =} \FunctionTok{fct\_inorder}\NormalTok{(colname))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 25 x 4
-##    term  colname      corr rowname
-##    <chr> <fct>       <dbl> <fct>  
-##  1 death death     1       death  
-##  2 death temp     -0.486   death  
-##  3 death dewpoint -0.465   death  
-##  4 death pm10     -0.00294 death  
-##  5 death o3       -0.238   death  
-##  6 temp  death    NA       temp   
-##  7 temp  temp      1       temp   
-##  8 temp  dewpoint  0.958   temp   
-##  9 temp  pm10      0.368   temp   
-## 10 temp  o3        0.535   temp   
-## # ... with 15 more rows
-\end{verbatim}
-
-For the plot we will use \texttt{geom\_tile()} for the heatmap and \texttt{geom\_text()} for the labels:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(corm, }\FunctionTok{aes}\NormalTok{(rowname, }\FunctionTok{fct\_rev}\NormalTok{(colname),}
-                 \AttributeTok{fill =}\NormalTok{ corr)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_tile}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =} \FunctionTok{round}\NormalTok{(corr, }\DecValTok{2}\NormalTok{))) }\SpecialCharTok{+}
-  \FunctionTok{coord\_fixed}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{y =} \ConstantTok{NULL}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: Removed 10 rows containing missing values
-## (geom_text).
-\end{verbatim}
-
-\begin{figure}
-\centering
-\includegraphics{bookdown_files/figure-latex/tile-corr-plot-1.pdf}
-\caption{\label{fig:tile-corr-plot}A basic correlation plot, created with our prepared correlation data set and the help of \texttt{geom\_tile()}.}
-\end{figure}
-
-I like to have a diverging color palette, centered at zero correlation, with white indicating missing data. Also I like to have no grid lines and padding around the heatmap as well as nicely formatted labels that are colored depending on the underlying fill:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(corm, }\FunctionTok{aes}\NormalTok{(rowname, }\FunctionTok{fct\_rev}\NormalTok{(colname),}
-                 \AttributeTok{fill =}\NormalTok{ corr)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_tile}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}
-    \AttributeTok{label =} \FunctionTok{format}\NormalTok{(}\FunctionTok{round}\NormalTok{(corr, }\DecValTok{2}\NormalTok{), }\AttributeTok{nsmall =} \DecValTok{2}\NormalTok{),}
-    \AttributeTok{color =} \FunctionTok{abs}\NormalTok{(corr) }\SpecialCharTok{\textless{}}\NormalTok{ .}\DecValTok{75}
-\NormalTok{  )) }\SpecialCharTok{+}
-  \FunctionTok{coord\_fixed}\NormalTok{(}\AttributeTok{expand =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"white"}\NormalTok{, }\StringTok{"black"}\NormalTok{),}
-                     \AttributeTok{guide =} \StringTok{"none"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{scale\_fill\_distiller}\NormalTok{(}
-    \AttributeTok{palette =} \StringTok{"PuOr"}\NormalTok{, }\AttributeTok{na.value =} \StringTok{"white"}\NormalTok{,}
-    \AttributeTok{direction =} \DecValTok{1}\NormalTok{, }\AttributeTok{limits =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
-\NormalTok{  ) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{y =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{theme}\NormalTok{(}\AttributeTok{panel.border =} \FunctionTok{element\_rect}\NormalTok{(}\AttributeTok{color =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{fill =} \ConstantTok{NA}\NormalTok{),}
-        \AttributeTok{legend.position =} \FunctionTok{c}\NormalTok{(.}\DecValTok{85}\NormalTok{, .}\DecValTok{8}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{bookdown_files/figure-latex/tile-corr-plot-polished-1.pdf}
-\caption{\label{fig:tile-corr-plot-polished}A polished version of the same correlation plot with custom color palettes and theme adjustments.}
-\end{figure}
-
-\hypertarget{themes}{%
-\chapter{Themes}\label{themes}}
-
-You can change the entire look of the plots by using themes. \textbf{ggplot2} comes with eight built-in themes:
-
-\begin{figure}
-\centering
-\includegraphics{bookdown_files/figure-latex/ggplot2-theme-gallery-1.pdf}
-\caption{\label{fig:ggplot2-theme-gallery}An overview of all in-build themes that are contained in the \textbf{ggplot2} package.}
-\end{figure}
-
-There are several packages that provide additional themes, some even with different default color palettes. As an example, Jeffrey Arnold has put together the library \texttt{\{ggthemes\}} with several custom themes imitating popular designs. For a list you can visit the \href{https://github.com/jrnold/ggthemes}{\texttt{\{ggthemes\}} package site}. Without any coding you can just adapt several styles, some of them well known for their style and aesthetics.
 
 \cleardoublepage
 
