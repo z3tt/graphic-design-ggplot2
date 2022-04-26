@@ -4,10 +4,9 @@ bookdown::gitbook:
     toc:
       collapse: none
       before: |
-        <li><a href="./">Graphic Design with ggplot2</a></li>
+        <li><a href="./"><b>“Graphic Design with ggplot2”</b><br>Written by Cédric Scherer</a></li>
       after: |
-        <li><a href="https://cedricscherer.com">Written by Cédric Scherer</a></li>
-        <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+        <hr class="grey"><li><i><a href="https://bookdown.org" target="blank">Published with bookdown</a></i></li>
     download: [pdf, epub]
     edit: https://github.com/yihui/bookdown-crc/edit/master/%s
     sharing:

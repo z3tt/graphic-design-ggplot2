@@ -22,6 +22,11 @@ options(
   htmltools.dir.version = FALSE, formatR.indent = 2, width = 55, digits = 4
 )
 
+knitr::opts_chunk$set(
+  echo = TRUE, message = FALSE, warning = FALSE, dev = "ragg_png", 
+  res = 1000, retina = 1, fig.width = 9, fig.heigth = 5
+)
+
 # install the packages needed by this book; you fill out c(), e.g. c('ggplot2', 'dplyr')
 lapply(c('xfun', 'tidyverse', 'patchwork', 'corrr', 'ggforce', 'ragg'), function(pkg) {
   if (system.file(package = pkg) == '') install.packages(pkg)
@@ -30,11 +35,11 @@ lapply(c('xfun', 'tidyverse', 'patchwork', 'corrr', 'ggforce', 'ragg'), function
 
 # Preface {-}
 
-Back in 2016, I had to prepare my PhD introductory talk to inform about my plans for the next three years and to showcase my first preliminary results. I planned to create a visualization using small multiples to show various outcomes of the scenarios I ran with my simulation model. I was already using the R programming language for years and quickly came across the graphics library **ggplot2** which comes with the functionality to easily create small multiples.to visualize my data. I never liked the syntax and style of base plots in R, so I immediately fell in love with the idea and implementation of **ggplot2**'s *Grammar of Graphics*. But because I was short on time, I plotted these figures by trial and error and with the help of lots of googling. The resource I came always back to was a blog entry called [“Beautiful plotting in R: A **ggplot2** cheatsheet” by Zev Ross](http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/). After giving the talk which contained some decent plots thanks to the blog post, I decided to go through this tutorial step-by-step. I learned so much from it and directly started modifying the codes and adding additional code snippets, chart types, and resources.
+Back in 2016, I had to prepare my PhD introductory talk to inform about my plans for the next three years and to showcase my first preliminary results. I planned to create a visualization using small multiples to show various outcomes of the scenarios I ran with my simulation model. I was already using the R programming language for years and quickly came across the graphics library **ggplot2** which comes with the functionality to easily create small multiples. I never liked the syntax and style of base plots in R, so I immediately fell in love with the idea and implementation of **ggplot2**'s *Grammar of Graphics*. But because I was short on time, I plotted these figures by trial and error and with the help of lots of googling. The resource I came always back to was a blog entry called [“Beautiful plotting in R: A **ggplot2** cheatsheet” by Zev Ross](http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/). After giving the talk which contained some decent plots thanks to the blog post, I decided to go through this tutorial step-by-step. I learned so much from it and directly started modifying the codes and adding additional code snippets, chart types, and resources.
 
-Fast forward to 2019. I successfully finished my PhD and started participating in a weekly data visualization challenge called [#TidyTuesday](https://github.com/rfordatascience/tidytuesday/blob/master/README.md).Every week, a raw data set is shared with the aim to explore and visualize the data with **ggplot2**. Thanks to my experience with the **tidyverse** and especially **ggplot2** during my PhD and the open-source approach of the challenge that made it possible to learn from other participants, my visualizations quickly became more advanced and complex. 
+Fast forward to 2019. I successfully finished my PhD and started participating in a weekly data visualization challenge called [#TidyTuesday](https://github.com/rfordatascience/tidytuesday/blob/master/README.md). Every week, a raw data set is shared with the aim to explore and visualize the data with **ggplot2**. Thanks to my experience with the **tidyverse** and especially **ggplot2** during my PhD and the open-source approach of the challenge that made it possible to learn from other participants, my visualizations quickly became more advanced and complex. 
 
-A few months later, I had built a portfolio of various charts and maps and decided to start working as an independent data visualization specialist. I am now using **ggplot2** every day: for my academic work, design requests, reproducible reports, educational purposes, and personal data visualization projects. What I especially love about my current job specification: It challenges and satisfies my creativity on different levels. Beside the creativity one can express in terms of chart choice and design, there is also creativity needed to come up with solutions and tricks to bring the most venturous ideas to life. At the same time, there is the gratification when your code works and *magically* translates code snippets to visuals.
+A few months later, I had built a portfolio of various charts and maps and decided to start working as an independent data visualization specialist. I am now using **ggplot2** every day: for my academic work, design requests, reproducible reports, educational purposes, and personal data visualization projects. What I especially love about my current job specification: It challenges and satisfies my creativity on different levels. Besides the creativity one can express in terms of chart choice and design, there is also creativity needed to come up with solutions and tricks to bring the most venturous ideas to life. At the same time, there is the gratification when your code works and *magically* translates code snippets to visuals.
 
 The blog entry by Zev Ross was not updated since January 2016, so I decided to add more examples and tricks to my version, which was now hosted on my [personal blog](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/). Step by step, my version became a unique tutorial that now contains for example also the fantastic **patchwork**, **ggtext** and **ggforce** packages, a section of custom fonts and colors, a collection of R packages tailored to create interactive charts, and several new chart types. The updated version now contains ~3.000 lines of code and 188 plots and received a lot of interest from **ggplot2** users from many different professional fields.
 
@@ -45,7 +50,7 @@ Today, on a sunny day in July 2021, this tutorial serves as the starting point f
 
 Often, people that use common graphic design and charting tools or have basic experience experience with **ggplot2** cannot believe what one can achieve with this graphics library—and I want to show you how one can create a publication-ready graphic that goes beyond the traditional scientific scatter or box plot.
 
-**ggplot2** is already used by a large and diverse group of graduates, researchers, and analysts and the current rise of R and the tidyverse will likely lead to an even increasing interest in this great plotting library. While there are many tutorials on **ggplot2** tips and tricks provided by the R community, to my knowledge there is no book that specifically addresses the complete design of specific details up to building an ambitious multi-panel graphic with **ggplot2**. As a blend of strong grounding in academic foundations of data visualization and hands-on, practical codes, and implementation material, the book can be used as introductory material as well as a reference for more experienced **ggplot2** practitioners. 
+**ggplot2** is already used by a large and diverse group of graduates, researchers, and analysts and the current rise of R and the tidyverse will likely lead to an even increasing interest in this great plotting library. While there are many tutorials on **ggplot2** tips and tricks provided by the R community, to my knowledge there is no book that specifically addresses the complete design of specific details up to building an ambitious multipanel graphic with **ggplot2**. As a blend of strong grounding in academic foundations of data visualization and hands-on, practical codes, and implementation material, the book can be used as introductory material as well as a reference for more experienced **ggplot2** practitioners. 
 
 The book is intended for students and professionals that are interested in learning **ggplot2** and/or taking their default ggplots to the next level. Thus, the book is potentially interesting for **ggplot2** novices and beginners, but hopefully also helpful and educational for proficient users.
 
@@ -53,7 +58,7 @@ Among other things, the book covers the following:
 
 *	Look-up resource for every-day and more specific ggplot adjustments and design options
 *	Practical hands-on introduction to **ggplot2** to quickly build appealing visualization
-*	Discussion of best practices in data visualization (e.g. color choice, direct labelling, chart type selection) along the way
+*	Discussion of best practices in data visualization (e.g. color choice, direct labeling, chart type selection) along the way
 *	Coverage of useful **ggplot2** extension packages
 *	Ready-to-start code examples
 *	Reference implementations illustrating code solutions and design choices
@@ -63,32 +68,60 @@ Among other things, the book covers the following:
 
 As a computational ecologist, I've learned and used a range of different tools and programming languages for various purposes such as data wrangling, statistical analyses, and model building. The open-source language R was and is the programming language most widely used by ecologists to handle and analyze ecological data [@sciaini2018]. Consequently, I was *of course* using R in my daily life as an scientific researcher.
 
-Nowadays, R plays crucial part in many data-related workflows, no matter if for scientific, educational, or industrial use cases. Thanks to the ever growing R community and the rich collection of libraries that add additional functionality and simplify workflows, R is an attractive programming language that has outgrown of its original purpose: statistical analyses. Today, R can serve as tool to generate automated reports, develop stand-alone web apps, and draft presentation slides, books, and web pages. And to design high-level, publication–ready visualizations.
+Nowadays, R plays a crucial part in many data-related workflows, no matter if for scientific, educational, or industrial use cases. Thanks to the ever growing R community and the rich collection of libraries that add additional functionality and simplify workflows, R is an attractive programming language that has outgrown of its original purpose: statistical analyses. Today, R can serve as tool to generate automated reports, develop stand-alone web apps, and draft presentation slides, books, and web pages. And to design high-level, publication–ready visualizations.
 
 Even though R—similar to most programming languages—has a steep learning curve, the level of functionality, flexibility, automation, and reproducibility offered can be a major benefit also in a design context:
 
-* The layered approach of **ggplot2** opens the possibility to build any type of visualisation.
+* The layered approach of **ggplot2** opens the possibility to build any type of visualization.
 * Various extension packages add missing functionality.
 * Script-based workflows instead of *point–and–click* approaches allow for reproducibility—which means you can simply (in theory) run the code again after receiving new data or create thousands of visualizations for various data sets in no time.
 * Sharing code is becoming the golden standard in many fields and thus facilitates transparency and credibility as well as modification and creative advancement.
 * A helpful community and many free resources simplify learning experiences and the search for solutions.
-* The visualisations created in R can be exported as vector files and thus allow for post–processing with graphic design tools. 
+* The visualizations created in R can be exported as vector files and thus allow for post–processing with graphic design tools. 
 
+## How to read this book {-}
 
-## Structure of the book {-}
+This book can either serve as a textbook or as a reference. Depending on your skill level, some codes and tricks may already be known or not helpful at the moment. In case you want to directly jump to the chapters you find most promising or helpful, here are some suggestions:
 
-Chapters \@ref(introduction) introduces a new topic, and ...
+* How do I get started with the code? → Chapter \@ref(get-started)
+* I have no idea how **ggplot2** actually works and need a quick introduction → Chapter \@ref(ggplot)
 
+## Prerequisites {-}
+
+To run any of the materials locally on your own machine, you will need the following:
+
+* A recent version of R (download from [here](https://cloud.r-project.org/)) 
+* Preferably an *Integrated Development Environment* (IDE) to store scripts and run code, e.g. RStudio (download from [here](https://rstudio.com/products/rstudio/download/#download)) or Visual Studio Code (download from [here](https://code.visualstudio.com/download))
+* A set of R packages installed:
+  + [**tidyverse**](https://www.tidyverse.org/) that includes [**ggplot2**](https://ggplot2.tidyverse.org/)
+  + [**ggforce**](https://ggforce.data-imaginist.com/)
+  + [**ggrepel**](https://ggrepel.slowkow.com/)
+  + [**ggtext**](https://wilkelab.org/ggtext/)
+  + [**magick**](https://docs.ropensci.org/magick/)
+  + [**patchwork**](https://patchwork.data-imaginist.com/)
+  + [**ragg**](https://ragg.r-lib.org/)
+  + [**rnaturalearth**](https://docs.ropensci.org/rnaturalearth/)
+  + [**scico**](https://github.com/thomasp85/scico)
+  + [**sf**](https://r-spatial.github.io/sf/)
+  
+To install all packages in one go, run the following code in the R console:
+
+```{r install-packages, eval=FALSE}
+install.packages(c(
+  "tidyverse", "ggforce", "ggtext", "magick", "patchwork", 
+  "ragg", "rnaturalearth", "scico", "sf"
+))
+```
 
 ## Software information and conventions {-}
 
 The book was written with the **knitr**\index{knitr} package [@xie2015] and the **bookdown**\index{bookdown} package [@R-bookdown] with the following setup:
 
-```{r session}
+```{r session, echo=FALSE}
 xfun::session_info()
 ```
 
-Package names are in bold text (e.g., **ggplot2**), and inline code and filenames are formatted in a monospaced typewriter font (e.g., `readr::read_csv('data.csv')`). Function names are followed by parentheses (e.g., `ggplot2::ggplot()`).
+Package names are in bold text (e.g. **ggplot2**), and inline code and file names are formatted in a monospaced typewriter font (e.g. `read_csv("data.csv")`). Function names are followed by parentheses (e.g. `ggplot2::ggplot()`).
 
 
 ## Acknowledgments {-}

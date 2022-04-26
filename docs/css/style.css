@@ -3,20 +3,39 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@400;700&display=swap');
 
+.book.font-family-0 {
+  font-family: "DM Serif Text", Georgia, "Times New Roman, serif;
+}
+.book.font-family-1 {
+  font-family: "DM Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.book .book-header h1 {
+  font-family: "DM Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight:700;
+}
+
 p, li{
-  font-family: DM Sans;
+  font-family: "DM Sans
 }
 
 h1, h2, h3, h4, h5{
-  font-family: DM Serif Display;
+  font-family: "DM Serif Display";
 }
 
 code{
-  font-family: Overpass Mono;
+  font-family: "Overpass Mono";
 }
 
-.sourceCode{
-  font-family: Overpass Mono;
+sourceCode{
+  font-family: "Overpass Mono";
+}
+
+r{
+  font-family: "Overpass Mono";
+}
+
+.code .sourceCode .r{
+  font-family: "Overpass Mono";
 }
 
 p.caption {
@@ -24,7 +43,7 @@ p.caption {
   margin-top: 10px;
 }
 p code {
-  font-family:  Overpass Mono;
+  font-family: "Overpass Mono";
   white-space: inherit;
 }
 
@@ -33,7 +52,7 @@ pre {
   word-wrap: normal;
 }
 pre code {
-  font-family: Overpass Mono;
+  font-family: "Overpass Mono";
   white-space: inherit;
 }
 
@@ -56,19 +75,57 @@ blockquote > p:first-child {
 }
 
 .header-section-number, .subtitle{
-  font-family: DM Serif Display;
+  font-family: "DM Serif Display";
 }
 
 .csl-entry {
-  font-family: DM Sans;
+  font-family: "DM Sans";
 }
 
 .title, .subtitle {
   line-height: 130%;
 }
 
-.caption {
-  font-family: DM Serif Text;
+caption {
+  font-family: "DM Serif Text";
   font-style: italic;
-  color: #949494;
+  color: #767676;
 }
+
+.caption {
+  font-family: "DM Serif Text";
+  font-style: italic;
+  color: #767676;
+}
+
+p.note{
+  font-family: "DM Sans";
+  color:#28A87D;
+  font-weight:400;
+  font-style:italic;
+}
+
+p.comment{
+  font-family: "DM Sans";
+  color:#E2A121;
+  font-weight:800;
+  font-style:italic;
+}
+
+/* The next two rules make the horizontal line DISAPPEAR in top navbar */
+ /* https://rstudio4edu.github.io/rstudio4edu-book/book-fancy.html#align-tool */
+
+ .summary > li:first-child {
+     height: 60px;
+     padding-top: 10px;
+     border-bottom: 0px solid rgba(0,0,0,0);
+ }
+
+ .book .book-summary ul.summary li.divider {
+     height: 0px;
+ }
+
+ /* Rounded border */
+ hr.grey {
+   border-top: 1px solid rgba(0,0,0,.07);
+ }

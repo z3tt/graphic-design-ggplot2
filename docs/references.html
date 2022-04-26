@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>References | Graphic Design with ggplot2</title>
   <meta name="description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="References | Graphic Design with ggplot2" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Cédric Scherer" />
 
 
-<meta name="date" content="2021-09-22" />
+<meta name="date" content="2022-04-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,7 +34,8 @@
 <link rel="prev" href="more-to-say.html"/>
 
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,9 +51,10 @@
 
 
 
-
 <link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections/anchor-sections.js"></script>
+<script src="libs/kePrint/kePrint.js"></script>
+<link href="libs/lightable/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -156,33 +158,42 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Graphic Design with ggplot2</a></li>
+<li><a href="./"><b>“Graphic Design with ggplot2”</b><br>Written by Cédric Scherer</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#why-read-this-book"><i class="fa fa-check"></i>Why read this book</a></li>
 <li><a href="index.html#why-r-and-ggplot2">Why R and <strong>ggplot2</strong></a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#structure-of-the-book"><i class="fa fa-check"></i>Structure of the book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#how-to-read-this-book"><i class="fa fa-check"></i>How to read this book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i>Prerequisites</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#software-information-and-conventions"><i class="fa fa-check"></i>Software information and conventions</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i>Acknowledgments</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i><b>2</b> Setup</a>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="setup.html"><a href="setup.html#data"><i class="fa fa-check"></i><b>2.1</b> The Dataset</a></li>
-<li class="chapter" data-level="2.2" data-path="setup.html"><a href="setup.html#ggplot"><i class="fa fa-check"></i><b>2.2</b> The <strong>ggplot2</strong> Package</a></li>
-<li class="chapter" data-level="2.3" data-path="setup.html"><a href="setup.html#default"><i class="fa fa-check"></i><b>2.3</b> A Basic ggplot</a></li>
-<li class="chapter" data-level="2.4" data-path="setup.html"><a href="setup.html#prop"><i class="fa fa-check"></i><b>2.4</b> Change Properties of Geometries</a></li>
-<li class="chapter" data-level="2.5" data-path="setup.html"><a href="setup.html#theme"><i class="fa fa-check"></i><b>2.5</b> Replace the default <strong>ggplot2</strong> theme</a></li>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#communicating-data"><i class="fa fa-check"></i><b>1.1</b> Communicating Data</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#coding-visualizations"><i class="fa fa-check"></i><b>1.2</b> Coding Visualizations</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="get-started.html"><a href="get-started.html"><i class="fa fa-check"></i><b>2</b> Get Started</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="get-started.html"><a href="get-started.html#data"><i class="fa fa-check"></i><b>2.1</b> The Data</a></li>
+<li class="chapter" data-level="2.2" data-path="get-started.html"><a href="get-started.html#rstats"><i class="fa fa-check"></i><b>2.2</b> Working in R</a></li>
+<li class="chapter" data-level="2.3" data-path="get-started.html"><a href="get-started.html#rmarkdown"><i class="fa fa-check"></i><b>2.3</b> Working with Rmarkdown</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>3</b> The ggplot2 Package</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ggplot.html"><a href="ggplot.html#default"><i class="fa fa-check"></i><b>3.1</b> A Basic ggplot</a></li>
+<li class="chapter" data-level="3.2" data-path="ggplot.html"><a href="ggplot.html#prop"><i class="fa fa-check"></i><b>3.2</b> Change Properties of Geometries</a></li>
+<li class="chapter" data-level="3.3" data-path="ggplot.html"><a href="ggplot.html#mapping-data-to-aesthetics"><i class="fa fa-check"></i><b>3.3</b> Mapping Data to Aesthetics</a></li>
+<li class="chapter" data-level="3.4" data-path="ggplot.html"><a href="ggplot.html#theme"><i class="fa fa-check"></i><b>3.4</b> Replace the default <strong>ggplot2</strong> theme</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="more-to-say.html"><a href="more-to-say.html"><i class="fa fa-check"></i><b>A</b> More to Say</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
-<li><a href="https://cedricscherer.com">Written by Cédric Scherer</a></li>
-<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+<hr class="grey"><li><i><a href="https://bookdown.org" target="blank">Published with bookdown</a></i></li>
 
 </ul>
 
@@ -206,16 +217,37 @@ div.csl-indent {
 
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div class="csl-entry">
-Sciaini, Marco, Matthias Fritsch, Cédric Scherer, and Craig Eric Simpkins. 2018. <span>“NLMR and Landscapetools: An Integrated Environment for Simulating and Modifying Neutral Landscape Models in r.”</span> <em>Methods in Ecology and Evolution</em> 9 (11): 2240–48.
+Cairo, Alberto. 2021. <span>“Orthodoxy and Eccentricity.”</span> In <em>Data Sketches by Nadieh Bremer and Shirley Wu</em>, 12–13. Boca Raton, Florida, United States: Chapman; Hall/CRC.
 </div>
 <div class="csl-entry">
-Xie, Yihui. 2015. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/">http://yihui.name/knitr/</a>.
+Koponen, Juuso, and Jonatan Hildén. 2019. <em>Data Visualization Handbook</em>. 1st ed. Espoo, Finland: Aalto ARTS Books.
+</div>
+<div class="csl-entry">
+Kosara, Robert. 2007. <span>“Visualization Criticism - the Missing Link Between Information Visualization and Art.”</span> In <em>2007 11th International Conference Information Visualization (IV ’07)</em>, 631–36. <a href="https://doi.org/10.1109/IV.2007.130">https://doi.org/10.1109/IV.2007.130</a>.
+</div>
+<div class="csl-entry">
+Sciaini, Marco, Matthias Fritsch, Cédric Scherer, and Craig Eric Simpkins. 2018. <span>“NLMR and Landscapetools: An Integrated Environment for Simulating and Modifying Neutral Landscape Models in r.”</span> <em>Methods in Ecology and Evolution</em> 9 (11): 2240–48. <a href="https://doi.org/10.1111/2041-210X.13076">https://doi.org/10.1111/2041-210X.13076</a>.
+</div>
+<div class="csl-entry">
+Xie, Yihui. 2015. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd ed. Boca Raton, Florida, United States: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/">http://yihui.name/knitr/</a>.
 </div>
 <div class="csl-entry">
 ———. 2021. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.
 </div>
 </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
             </section>
 
           </div>
@@ -226,7 +258,6 @@ Xie, Yihui. 2015. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd 
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -266,6 +297,10 @@ gitbook.start({
 "text": null
 },
 "download": ["bookdown.pdf", "bookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "none"
 }

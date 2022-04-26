@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Get Started | Graphic Design with ggplot2</title>
+  <meta name="description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Get Started | Graphic Design with ggplot2" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
+  <meta name="github-repo" content="z3tt/graphic-design-ggplot2" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Get Started | Graphic Design with ggplot2" />
+  
+  <meta name="twitter:description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
+  
+
+<meta name="author" content="Cédric Scherer" />
+
+
+<meta name="date" content="2022-04-26" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction.html"/>
+<link rel="next" href="ggplot.html"/>
+<script src="libs/header-attrs/header-attrs.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+<script src="libs/kePrint/kePrint.js"></script>
+<link href="libs/lightable/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><b>“Graphic Design with ggplot2”</b><br>Written by Cédric Scherer</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#why-read-this-book"><i class="fa fa-check"></i>Why read this book</a></li>
+<li><a href="index.html#why-r-and-ggplot2">Why R and <strong>ggplot2</strong></a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#how-to-read-this-book"><i class="fa fa-check"></i>How to read this book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#software-information-and-conventions"><i class="fa fa-check"></i>Software information and conventions</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i>Acknowledgments</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#communicating-data"><i class="fa fa-check"></i><b>1.1</b> Communicating Data</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#coding-visualizations"><i class="fa fa-check"></i><b>1.2</b> Coding Visualizations</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="get-started.html"><a href="get-started.html"><i class="fa fa-check"></i><b>2</b> Get Started</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="get-started.html"><a href="get-started.html#data"><i class="fa fa-check"></i><b>2.1</b> The Data</a></li>
+<li class="chapter" data-level="2.2" data-path="get-started.html"><a href="get-started.html#rstats"><i class="fa fa-check"></i><b>2.2</b> Working in R</a></li>
+<li class="chapter" data-level="2.3" data-path="get-started.html"><a href="get-started.html#rmarkdown"><i class="fa fa-check"></i><b>2.3</b> Working with Rmarkdown</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>3</b> The ggplot2 Package</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ggplot.html"><a href="ggplot.html#default"><i class="fa fa-check"></i><b>3.1</b> A Basic ggplot</a></li>
+<li class="chapter" data-level="3.2" data-path="ggplot.html"><a href="ggplot.html#prop"><i class="fa fa-check"></i><b>3.2</b> Change Properties of Geometries</a></li>
+<li class="chapter" data-level="3.3" data-path="ggplot.html"><a href="ggplot.html#mapping-data-to-aesthetics"><i class="fa fa-check"></i><b>3.3</b> Mapping Data to Aesthetics</a></li>
+<li class="chapter" data-level="3.4" data-path="ggplot.html"><a href="ggplot.html#theme"><i class="fa fa-check"></i><b>3.4</b> Replace the default <strong>ggplot2</strong> theme</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="more-to-say.html"><a href="more-to-say.html"><i class="fa fa-check"></i><b>A</b> More to Say</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<hr class="grey"><li><i><a href="https://bookdown.org" target="blank">Published with bookdown</a></i></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Graphic Design with ggplot2</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="get-started" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Get Started</h1>
+<div id="data" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> The Data</h2>
+<p>We are using historical data for bike sharing in London in 2015 and 2016, provided by <a href="https://tfl.gov.uk/modes/cycling/santander-cycles"><em>TfL (Transport for London)</em></a>. The data was collected from the TfL data base and is ‘Powered by TfL Open Data.’ The processed data set contains hourly information on the number of rented bikes and was combined with weather data acquired from freemeteo.com. The data was contributed to the <a href="https://www.kaggle.com/hmavrodiev/london-bike-sharing-dataset">Kaggle online community</a> by Hristo Mavrodiev.</p>
+<p>To make the visualizations manageable and patterns more insightful, we are using a modified data set with all variables aggregated for day (6:00am–5:59pm) and night (6:00pm–5:59am). The bike counts were summarized while all weather-related variables where averaged. Finally, for the weather types, the most common was used and, in case of a tie, one of the most common types was randomly chosen.</p>
+<div class="figure"><span style="display:block;" id="fig:img-data-comparison"></span>
+<img src="img/setup-data-comparison-raw-aggregated.png" alt="The original and aggregated data sets in direct comparison: counts of bike shares registered by TfL over time  with month encoded by colour. The left panel shows counts for every hour of the day, while in the right panel the hourly data was aggregated into two periods of the day (day and night)."  />
+<p class="caption">
+FIGURE 2.1: The original and aggregated data sets in direct comparison: counts of bike shares registered by TfL over time with month encoded by colour. The left panel shows counts for every hour of the day, while in the right panel the hourly data was aggregated into two periods of the day (day and night).
+</p>
+</div>
+<p>We can import the data into our R session for example with the <code>read_csv()</code> function from the <strong>readr</strong> package. We can import the data set either from a local source or directly from a web URL. To access the data later, we are storing it in a variable called <code>bikes</code> by using the <em>assignment arrow</em> <code>&lt;-</code>. The <code>col_types</code> argument allows to specify the column types, e.g. <code>i</code> are integer values, <code>f</code> encodes factors, and <code>l</code> turns a column into logical, boolean variables that are either <code>TRUE</code> or <code>FALSE</code>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="get-started.html#cb3-1" aria-hidden="true" tabindex="-1"></a>url_data <span class="ot">&lt;-</span> <span class="st">&quot;https://cedricscherer.com/data/london-bikes.csv&quot;</span></span>
+<span id="cb3-2"><a href="get-started.html#cb3-2" aria-hidden="true" tabindex="-1"></a>bikes <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(url_data, <span class="at">col_types =</span> <span class="st">&quot;Dcfffilllddddfc&quot;</span>)</span></code></pre></div>
+<p class="note">
+<p>Note: The <code>::</code> is called “namespace” and can be used to access a function without loading the package. Here, you could also run <code>library(readr)</code> first and <code>bikes &lt;- read_csv(url_data)</code> afterwards. Alternatively, you can also use the base R function: <code>bikes &lt;- read.csv(url_data)</code>.</p>
+</p>
+<p>If you inspect the data, e.g. with the help of <code>str()</code>, <code>summary()</code>, or <code>tibble::glimpse()</code>, you’ll see the following 15 variables contained in the data frame with 1454 entries for each:</p>
+<p class="comment">
+<p>COMMENT: Decide on a version to provide and overview of the variables as table or list.</p>
+</p>
+<!--
+* `date` — encoded as `YYY-MM-DD`
+* `timeperiod` — `prenoon` (6am–12am), `afternoon` (1pm–7pm), or `night` (8pm–5am)
+* `year` — either `2015` or `2016`
+* `month` — `1` (January) to `12` (December)
+* `season` — `0` (spring), `1` (summer), `2` (autumn), or `3` (winter)
+* `count` — sum of new bikes shares
+* `is_workday` — `TRUE` being a workday
+* `is_weekend` — `TRUE` being a Saturday or Sunday
+* `is_holiday` — `TRUE` being a official holiday in the UK
+* `temp` — average air temperature in °C
+* `temp_feel` — feels like temperature in °C
+* `humidity` — average humidity in % (0–100)
+* `wind_speed` — average wind speeds in km/h
+* `weather_code` — encoded as number
+* `weather_type` — encoded as category
+<br> -->
+<table class="table table-hover table-condensed" style="font-size: 13px; font-family: DM Sans; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:data-table">TABLE 2.1: </span>Overview of the 15 variables contained in the cleaned and aggregated bike sharing data set.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+Meaning
+</th>
+<th style="text-align:left;">
+Class
+</th>
+<th style="text-align:left;">
+Values / Units
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>date</code>
+</td>
+<td style="text-align:left;">
+Date
+</td>
+<td style="text-align:left;">
+<code>date</code>
+</td>
+<td style="text-align:left;">
+<code>YYYY-MM-DD</code> format
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>day_night</code>
+</td>
+<td style="text-align:left;">
+Period of the day
+</td>
+<td style="text-align:left;">
+<code>character</code>
+</td>
+<td style="text-align:left;">
+day (6:00am–5:59pm) or night (6:00pm–5:59am)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>year</code>
+</td>
+<td style="text-align:left;">
+Year
+</td>
+<td style="text-align:left;">
+<code>factor</code>
+</td>
+<td style="text-align:left;">
+<code>2015</code> or <code>2016</code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>month</code>
+</td>
+<td style="text-align:left;">
+Month as number
+</td>
+<td style="text-align:left;">
+<code>factor</code>
+</td>
+<td style="text-align:left;">
+<code>1</code> (January) to <code>12</code> (December)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>season</code>
+</td>
+<td style="text-align:left;">
+Season as number
+</td>
+<td style="text-align:left;">
+<code>factor</code>
+</td>
+<td style="text-align:left;">
+<code>0</code> (spring), <code>1</code> (summer), <code>2</code> (autumn), or <code>3</code> (winter)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>count</code>
+</td>
+<td style="text-align:left;">
+Bike count
+</td>
+<td style="text-align:left;">
+<code>integer</code>
+</td>
+<td style="text-align:left;">
+sum of bikes rented
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>is_workday</code>
+</td>
+<td style="text-align:left;">
+Is workday?
+</td>
+<td style="text-align:left;">
+<code>logical</code>
+</td>
+<td style="text-align:left;">
+<code>TRUE</code> being Monday to Friday
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>is_weekend</code>
+</td>
+<td style="text-align:left;">
+Is weekend?
+</td>
+<td style="text-align:left;">
+<code>logical</code>
+</td>
+<td style="text-align:left;">
+<code>TRUE</code> being Saturday or Sunday
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>is_holiday</code>
+</td>
+<td style="text-align:left;">
+Is holiday?
+</td>
+<td style="text-align:left;">
+<code>logical</code>
+</td>
+<td style="text-align:left;">
+<code>TRUE</code> being an official holiday in the UK
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>temp</code>
+</td>
+<td style="text-align:left;">
+Air temperature
+</td>
+<td style="text-align:left;">
+<code>double</code>
+</td>
+<td style="text-align:left;">
+average in degree Celsius
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>temp_feel</code>
+</td>
+<td style="text-align:left;">
+Feels like temperature
+</td>
+<td style="text-align:left;">
+<code>double</code>
+</td>
+<td style="text-align:left;">
+average in degree Celsius
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>humidity</code>
+</td>
+<td style="text-align:left;">
+Humidity
+</td>
+<td style="text-align:left;">
+<code>double</code>
+</td>
+<td style="text-align:left;">
+average in percentage (0-100)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>wind_speed</code>
+</td>
+<td style="text-align:left;">
+Wind speed
+</td>
+<td style="text-align:left;">
+<code>double</code>
+</td>
+<td style="text-align:left;">
+average in kilometres per hour
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>weather_code</code>
+</td>
+<td style="text-align:left;">
+Weather type as code
+</td>
+<td style="text-align:left;">
+<code>factor</code>
+</td>
+<td style="text-align:left;">
+most common type
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>weather_type</code>
+</td>
+<td style="text-align:left;">
+Weather type as category
+</td>
+<td style="text-align:left;">
+<code>character</code>
+</td>
+<td style="text-align:left;">
+most common type
+</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>To give you a better idea what the data set contains, here is an graphical overview of the variables contained in the data set and their distributions. Note that I have excluded the variables <code>date</code>, <code>year</code>, <code>month</code>, and <code>season</code> as they are all distributed almost uniform.</p>
+<div class="figure"><span style="display:block;" id="fig:img-data-overview-vars"></span>
+<img src="img/setup-data-comparison-all-dodge.png" alt="Overview of the distribution of the boolean variables `is_workday`, `is_weekend`, and `is_holiday` (A), the categorical variable `weather_type` (B), and the continuous variables `count`, `temp`, `temp_feel`, `humidity`, and `wind_speed` (C) of the cleaned and aggregated bike sharing data set. In panel C, the correlation between the variables is shown as scatterplot encoded by `timeperiod` (upper triangle) and encoded by point density (lower triangle), highlighting the level of overlap of data points."  />
+<p class="caption">
+FIGURE 2.2: Overview of the distribution of the boolean variables <code>is_workday</code>, <code>is_weekend</code>, and <code>is_holiday</code> (A), the categorical variable <code>weather_type</code> (B), and the continuous variables <code>count</code>, <code>temp</code>, <code>temp_feel</code>, <code>humidity</code>, and <code>wind_speed</code> (C) of the cleaned and aggregated bike sharing data set. In panel C, the correlation between the variables is shown as scatterplot encoded by <code>timeperiod</code> (upper triangle) and encoded by point density (lower triangle), highlighting the level of overlap of data points.
+</p>
+</div>
+<p class="comment">
+<p>COMMENT: A version with overlapping distributions could be used and is available as well.</p>
+</p>
+</div>
+<div id="rstats" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Working in R</h2>
+<p><strong>ggplot2</strong> can be used even if you know little about the R programming language. However, the knowledge of certain basic principles is at least helpful and probably indispensable for advanced plots. This section will give you a short overview of workflows and the</p>
+</div>
+<div id="rmarkdown" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Working with Rmarkdown</h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ggplot.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-crc/edit/master/02-get-started.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown.pdf", "bookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

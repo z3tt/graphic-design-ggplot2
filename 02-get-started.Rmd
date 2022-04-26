@@ -1,0 +1,118 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# Get Started {#get-started}
+
+## The Data {#data}
+
+We are using historical data for bike sharing in London in 2015 and 2016, provided by [*TfL (Transport for London)*](https://tfl.gov.uk/modes/cycling/santander-cycles). The data was collected from the TfL data base and is 'Powered by TfL Open Data'. The processed data set contains hourly information on the number of rented bikes and was combined with weather data acquired from freemeteo.com. The data was contributed to the [Kaggle online community](https://www.kaggle.com/hmavrodiev/london-bike-sharing-dataset) by Hristo Mavrodiev.
+
+To make the visualizations manageable and patterns more insightful, we are using a modified data set with all variables aggregated for day (6:00am--5:59pm) and night (6:00pm--5:59am). The bike counts were summarized while all weather-related variables where averaged. Finally, for the weather types, the most common was used and, in case of a tie, one of the most common types was randomly chosen.
+
+```{r img-data-comparison, echo=FALSE, fig.cap="The original and aggregated data sets in direct comparison: counts of bike shares registered by TfL over time  with month encoded by colour. The left panel shows counts for every hour of the day, while in the right panel the hourly data was aggregated into two periods of the day (day and night)."}
+knitr::include_graphics("./img/setup-data-comparison-raw-aggregated.png", dpi = NA)
+```
+
+We can import the data into our R session for example with the `read_csv()` function from the **readr** package. We can import the data set either from a local source or directly from a web URL. To access the data later, we are storing it in a variable called `bikes` by using the *assignment arrow* `<-`. The `col_types` argument allows to specify the column types, e.g. `i` are integer values, `f` encodes factors, and `l` turns a column into logical, boolean variables that are either `TRUE` or `FALSE`.
+
+```{r data-import-url, eval=FALSE, message=FALSE, warning=FALSE}
+url_data <- "https://cedricscherer.com/data/london-bikes.csv"
+bikes <- readr::read_csv(url_data, col_types = "Dcfffilllddddfc")
+```
+
+```{r data-import-local, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+path <- "data/london-bikes.csv"
+bikes <- readr::read_csv(path, col_types = "Dcfffilllddddfc")
+```
+
+<p class="note">
+
+Note: The `::` is called "namespace" and can be used to access a function without loading the package. Here, you could also run `library(readr)` first and `bikes <- read_csv(url_data)` afterwards. Alternatively, you can also use the base R function: `bikes <- read.csv(url_data)`.
+
+</p>
+
+If you inspect the data, e.g. with the help of `str()`, `summary()`, or `tibble::glimpse()`, you'll see the following `r length(bikes)` variables contained in the data frame with `r nrow(bikes)` entries for each:
+
+<p class="comment">
+
+COMMENT: Decide on a version to provide and overview of the variables as table or list.
+
+</p>
+
+```{=html}
+<!--
+* `date` — encoded as `YYY-MM-DD`
+* `timeperiod` — `prenoon` (6am–12am), `afternoon` (1pm–7pm), or `night` (8pm–5am)
+* `year` — either `2015` or `2016`
+* `month` — `1` (January) to `12` (December)
+* `season` — `0` (spring), `1` (summer), `2` (autumn), or `3` (winter)
+* `count` — sum of new bikes shares
+* `is_workday` — `TRUE` being a workday
+* `is_weekend` — `TRUE` being a Saturday or Sunday
+* `is_holiday` — `TRUE` being a official holiday in the UK
+* `temp` — average air temperature in °C
+* `temp_feel` — feels like temperature in °C
+* `humidity` — average humidity in % (0–100)
+* `wind_speed` — average wind speeds in km/h
+* `weather_code` — encoded as number
+* `weather_type` — encoded as category
+<br> -->
+```
+```{r data-table, echo=FALSE}
+data_tbl <- tibble(
+   Variable = paste0("`", names(bikes), "`"),
+   Meaning = c("Date", "Period of the day", "Year", "Month as number", "Season as number", "Bike count", "Is workday?", "Is weekend?", "Is holiday?", "Air temperature", "Feels like temperature", "Humidity", "Wind speed", "Weather type as code", "Weather type as category"),
+   Class = c("`date`", "`character`", "`factor`", "`factor`", "`factor`", "`integer`", "`logical`", "`logical`", "`logical`", "`double`", "`double`", "`double`", "`double`", "`factor`", "`character`"),
+   `Values / Units` = c("`YYYY-MM-DD` format", "day (6:00am–5:59pm) or night (6:00pm–5:59am)", "`2015` or `2016`", "`1` (January) to `12` (December)", "`0` (spring), `1` (summer), `2` (autumn), or `3` (winter)", "sum of bikes rented", "`TRUE` being Monday to Friday", "`TRUE` being Saturday or Sunday", "`TRUE` being an official holiday in the UK", "average in degree Celsius", "average in degree Celsius", "average in percentage (0-100)", "average in kilometres per hour", "most common type", "most common type")
+)
+
+# knitr::kable(
+#   data_tbl, booktabs = TRUE,
+#   caption = 'Overview of the 15 variables contained in the cleaned and aggregated bike sharing data set.'
+# )
+
+data_tbl %>% 
+  kableExtra::kbl(
+    booktabs = TRUE,
+    caption = 'Overview of the 15 variables contained in the cleaned and aggregated bike sharing data set.'
+  ) %>%
+  kableExtra::kable_styling(
+    bootstrap_options = c("hover", "condensed"), 
+    html_font = "DM Sans", font_size = 13
+  )
+```
+
+<br>
+
+```{r skimr, echo=FALSE}
+#skimr::skim(bikes) %>%  skimr::partition()
+```
+
+To give you a better idea what the data set contains, here is an graphical overview of the variables contained in the data set and their distributions. Note that I have excluded the variables `date`, `year`, `month`, and `season` as they are all distributed almost uniform.
+
+```{r img-data-overview-vars, echo=FALSE, fig.cap="Overview of the distribution of the boolean variables `is_workday`, `is_weekend`, and `is_holiday` (A), the categorical variable `weather_type` (B), and the continuous variables `count`, `temp`, `temp_feel`, `humidity`, and `wind_speed` (C) of the cleaned and aggregated bike sharing data set. In panel C, the correlation between the variables is shown as scatterplot encoded by `timeperiod` (upper triangle) and encoded by point density (lower triangle), highlighting the level of overlap of data points."}
+knitr::include_graphics("./img/setup-data-comparison-all-dodge.png", dpi = NA)
+```
+
+<p class="comment">
+
+COMMENT: A version with overlapping distributions could be used and is available as well.
+
+</p>
+
+
+## Working in R {#rstats}
+
+**ggplot2** can be used even if you know little about the R programming language. However, the knowledge of certain basic principles is at least helpful and probably indispensable for advanced plots. This section will give you a short overview of workflows and the 
+
+
+## Working with Rmarkdown {#rmarkdown}
+
+
+
+
+
