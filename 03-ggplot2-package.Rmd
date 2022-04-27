@@ -1,10 +1,4 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
-
-```{r setuo, echo=FALSE}
+```{r setup-section-ggplot, echo=FALSE, include=FALSE}
 bikes <- readr::read_csv("https://www.cedricscherer.com/data/london-bikes.csv", col_types = "Dcfffilllddddfc")
 ```
 
@@ -38,11 +32,7 @@ A ggplot is built up from a few components:
 7.  **Visual themes** `theme()`:\
     The overall visual (non-data) details of a plot, such as background, grid lines, axes, typefaces, sizes, and colors.
 
-<p class="note">
-
-Note: The number of elements may vary depending on how you group them and whom you ask. This list is based on the list provided in the ["ggplot2" book by Hadley Wickham](https://ggplot2-book.org/introduction.html).
-
-</p>
+<p class="note">The number of elements may vary depending on how you group them and whom you ask. This list is based on the list provided in the ["ggplot2" book by Hadley Wickham](https://ggplot2-book.org/introduction.html).</p>
 
 A basic ggplot needs three things that you have to specify: the *data*, *aesthetics*, and a *geometry*. All other components can be added to customize the graphic.
 
@@ -57,11 +47,7 @@ library(ggplot2)
 
 The syntax of **ggplot2** is very different from plotting functionality of provided by base R. We always start to define a plotting object by calling `ggplot(data = df)` which just tells **ggplot2** that we are going to work with that data. In most cases, you might want to plot two variables---one on the x and one on the y axis. These are *positional aesthetics* and thus we add `aes(x = var1, y = var2)` to the `ggplot()` call (yes, the `aes()` stands for aesthetics). However, there are also cases where one has to specify only one or even three or more variables.
 
-<p class="note">
-
-Note: We specify the data outside `aes()` and add the variables that ggplot maps the aesthetics to inside `aes()`.
-
-</p>
+<p class="note">We specify the data outside `aes()` and add the variables that ggplot maps the aesthetics to inside `aes()`.</p>
 
 Here, we map the variable `date` to the x position and the variable `temp` to the y position. Later, we will also map variables to all kind of other aesthetics such as color, size, and shape.
 
@@ -73,17 +59,13 @@ Only a panel is created when running this. Why? This is because **ggplot2** does
 
 **ggplot2** allows you to store the current `ggobject` in a variable of your choice by assigning it to a variable, in our case called `g`. You can extend this `ggobject` later by adding other layers, either all at once or by assigning it to the same or another variable.
 
-<p class="note">
-
-Note: Thanks to *implicit matching* we can rewrite the code as follows: `ggplot(bikes, aes(date, count))`. But be aware that the order matters! I suggest to use a mixture if you feel confident to do so:
+<p class="note">Thanks to *implicit matching* we can rewrite the code as follows: `ggplot(bikes, aes(date, count))`. But be aware that the order matters! I suggest to use a mixture if you feel confident to do so.</p>
 
 ```{r ggplot-implciit-explicit, eval=FALSE}
 ggplot(bikes, aes(x = date, y = count))
 ```
 
-Omitting the arguments `data` and `mapping` saves you a ton of typing when creating dozens to hundreds ggplot's per day but being specific about `x` and `y` is a good idea. This is the syntax I am using throughout the book.
-
-</p>
+<p class="note">Omitting the arguments `data` and `mapping` saves you a ton of typing when creating dozens to hundreds ggplot's per day but being specific about `x` and `y` is a good idea. This is the syntax I am using throughout the book.</p>
 
 There are many, many different geometries (called *geoms* because each function usually starts with `geom_`) one can add to a ggplot by default (see [here](https://ggplot2.tidyverse.org/reference/) for a full list) and even more provided by extension packages (see [here](https://exts.ggplot2.tidyverse.org/) for a collection of extension packages). Let's tell **ggplot2** which style we want to use, for example by adding `geom_point()` to create a scatter plot:
 
@@ -111,7 +93,7 @@ ggplot(bikes, aes(x = date, y = count)) +
   geom_point(color = "firebrick", shape = "diamond", size = 2)
 ```
 
-*Note: **ggplot2** understands both `color` and `colour` as well as the short version `col`.*
+<p class="note">**ggplot2** understands both `color` and `colour` as well as the short version `col`.</p>
 
 You can use preset colors (here is a [full list](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)) or [hex color codes](https://www.techopedia.com/definition/29788/color-hex-code), both in quotes, and even RGB/RGBA colors by using the `rgb()` function.
 
@@ -168,7 +150,7 @@ ggplot(bikes, aes(x = date, y = count, color = day_night)) +
   geom_smooth(color = "black")
 ```
 
-```{r ggplot-aes-parent-overwrite-plot, fig.cap="Overwriting the color encoding in the point (left) or the smoothing (right). Note that the grouping is removed as well which changes the behaviour of the smoothing geom."}
+```{r ggplot-aes-parent-overwrite-plot, echo=FALSE, fig.cap="Overwriting the color encoding in the point (left) or the smoothing (right). Note that the grouping is removed as well which changes the behaviour of the smoothing geom."}
 a <- ggplot(bikes, aes(x = date, y = count, color = day_night)) + 
   geom_point(size = .5, color = "black") +
   geom_smooth()
@@ -182,14 +164,12 @@ a + plot_spacer() + b + plot_layout(widths = c(1, .02, 1))
 ```
 
 
-
-
 ## Replace the default **ggplot2** theme {#theme}
 
-And to illustrate some more of ggplot's versatility, let's get rid of the grayish default **ggplot2** look by setting a different built-in theme, e.g. `theme_bw()`. One can add a theme directly to a ggplot composition or setting a theme globally---by calling `theme_set()` all following plots will have the same black'n'white theme.
+And to illustrate some more of ggplot's versatility, let's get rid of the grayish default **ggplot2** look by setting a different built-in theme, e.g. `theme_bw()`. One can add a theme directly to a ggplot composition or setting a theme globally---by calling `theme_set()` all following plots will have the same black'n'white theme. In the same step, we can also increase the `base_size` of the plot elements. The default base size is 11 and tends to be too small, at least for my workflow.
 
 ```{r remove-gray-background, fig.cap="We can change the appearance for all following plots generated with **ggplot2** by globally setting another theme via `theme_set()`."}
-theme_set(theme_bw())
+theme_set(theme_bw(base_size = 16))
 
 ggplot(bikes, aes(x = date, y = count, color = day_night)) + 
   geom_point()
@@ -197,6 +177,10 @@ ggplot(bikes, aes(x = date, y = count, color = day_night)) +
 
 You can find more on how to use built-in themes and how to customize themes in the section `themes`. From the next chapter on, we will also use the `theme()` function to customize particular elements of the theme.
 
-*Note: `theme()` is an essential command to manually modify all kinds of theme elements (texts, rectangles, and lines).*
+<p class="note">`theme()` is an essential command to manually modify all kinds of theme elements (texts, rectangles, and lines). To see which details of a ggplot theme can be modified have a look [here](https://ggplot2.tidyverse.org/reference/theme.html)---and take some time, this is a looong list.</p>
 
-To see which details of a ggplot theme can be modified have a look [here](https://ggplot2.tidyverse.org/reference/theme.html)---and take some time, this is a looong list.
+
+## Export **ggplot2** as graphic files {#export}
+
+
+

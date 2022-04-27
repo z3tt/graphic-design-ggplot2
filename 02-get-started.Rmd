@@ -1,8 +1,7 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
+```{r setup-section-start, echo=FALSE}
+library(tidyverse)
+bikes <- readr::read_csv("https://www.cedricscherer.com/data/london-bikes.csv", col_types = "Dcfffilllddddfc")
+```
 
 # Get Started {#get-started}
 
@@ -10,43 +9,24 @@ editor_options:
 
 We are using historical data for bike sharing in London in 2015 and 2016, provided by [*TfL (Transport for London)*](https://tfl.gov.uk/modes/cycling/santander-cycles). The data was collected from the TfL data base and is 'Powered by TfL Open Data'. The processed data set contains hourly information on the number of rented bikes and was combined with weather data acquired from freemeteo.com. The data was contributed to the [Kaggle online community](https://www.kaggle.com/hmavrodiev/london-bike-sharing-dataset) by Hristo Mavrodiev.
 
-To make the visualizations manageable and patterns more insightful, we are using a modified data set with all variables aggregated for day (6:00am--5:59pm) and night (6:00pm--5:59am). The bike counts were summarized while all weather-related variables where averaged. Finally, for the weather types, the most common was used and, in case of a tie, one of the most common types was randomly chosen.
-
 ```{r img-data-comparison, echo=FALSE, fig.cap="The original and aggregated data sets in direct comparison: counts of bike shares registered by TfL over time  with month encoded by colour. The left panel shows counts for every hour of the day, while in the right panel the hourly data was aggregated into two periods of the day (day and night)."}
 knitr::include_graphics("./img/setup-data-comparison-raw-aggregated.png", dpi = NA)
 ```
 
-We can import the data into our R session for example with the `read_csv()` function from the **readr** package. We can import the data set either from a local source or directly from a web URL. To access the data later, we are storing it in a variable called `bikes` by using the *assignment arrow* `<-`. The `col_types` argument allows to specify the column types, e.g. `i` are integer values, `f` encodes factors, and `l` turns a column into logical, boolean variables that are either `TRUE` or `FALSE`.
+To make the visualizations manageable and patterns more insightful, we are using a modified data set with all variables aggregated for day (6:00am--5:59pm) and night (6:00pm--5:59am) (\@ref(fig:img-data-comparison). The bike counts were summarized while all weather-related variables where averaged. Finally, for the weather type, the most common was used and, in case of a tie, one of the most common types was randomly chosen. The modified data sets contains 14 variables (columns) with 1,454 observations (rows). To give you a better idea what the data set contains, a visual overview of the variables is provided in table \@ref(tab:table-bikes-data) and figure \@ref(fig:img-data-overview-vars).
 
-```{r data-import-url, eval=FALSE, message=FALSE, warning=FALSE}
-url_data <- "https://cedricscherer.com/data/london-bikes.csv"
-bikes <- readr::read_csv(url_data, col_types = "Dcfffilllddddfc")
+<p class="comment">COMMENT: Decide on a version to provide and overview of the variables as table or list.</p>
+
+```{r img-data-overview-vars, echo=FALSE, fig.cap="Overview of the distribution of the boolean variables `is_workday`, `is_weekend`, and `is_holiday` (A), the categorical variable `weather_type` (B), and the continuous variables `count`, `temp`, `temp_feel`, `humidity`, and `wind_speed` (C) of the cleaned and aggregated bike sharing data set. In panel C, the correlation between the variables is shown as scatterplot encoded by `timeperiod` (upper triangle) and encoded by point density (lower triangle), highlighting the level of overlap of data points."}
+knitr::include_graphics("./img/setup-data-comparison-all-dodge.png", dpi = NA)
 ```
 
-```{r data-import-local, echo=FALSE, message=FALSE, warning=FALSE}
-library(tidyverse)
-path <- "data/london-bikes.csv"
-bikes <- readr::read_csv(path, col_types = "Dcfffilllddddfc")
-```
-
-<p class="note">
-
-Note: The `::` is called "namespace" and can be used to access a function without loading the package. Here, you could also run `library(readr)` first and `bikes <- read_csv(url_data)` afterwards. Alternatively, you can also use the base R function: `bikes <- read.csv(url_data)`.
-
-</p>
-
-If you inspect the data, e.g. with the help of `str()`, `summary()`, or `tibble::glimpse()`, you'll see the following `r length(bikes)` variables contained in the data frame with `r nrow(bikes)` entries for each:
-
-<p class="comment">
-
-COMMENT: Decide on a version to provide and overview of the variables as table or list.
-
-</p>
+<br>
 
 ```{=html}
 <!--
 * `date` — encoded as `YYY-MM-DD`
-* `timeperiod` — `prenoon` (6am–12am), `afternoon` (1pm–7pm), or `night` (8pm–5am)
+* `timeperiod` — `day` (6:00am--5:59pm) and `night` (6:00pm--5:59am)
 * `year` — either `2015` or `2016`
 * `month` — `1` (January) to `12` (December)
 * `season` — `0` (spring), `1` (summer), `2` (autumn), or `3` (winter)
@@ -58,26 +38,27 @@ COMMENT: Decide on a version to provide and overview of the variables as table o
 * `temp_feel` — feels like temperature in °C
 * `humidity` — average humidity in % (0–100)
 * `wind_speed` — average wind speeds in km/h
-* `weather_code` — encoded as number
 * `weather_type` — encoded as category
 <br> -->
 ```
-```{r data-table, echo=FALSE}
-data_tbl <- tibble(
-   Variable = paste0("`", names(bikes), "`"),
-   Meaning = c("Date", "Period of the day", "Year", "Month as number", "Season as number", "Bike count", "Is workday?", "Is weekend?", "Is holiday?", "Air temperature", "Feels like temperature", "Humidity", "Wind speed", "Weather type as code", "Weather type as category"),
-   Class = c("`date`", "`character`", "`factor`", "`factor`", "`factor`", "`integer`", "`logical`", "`logical`", "`logical`", "`double`", "`double`", "`double`", "`double`", "`factor`", "`character`"),
-   `Values / Units` = c("`YYYY-MM-DD` format", "day (6:00am–5:59pm) or night (6:00pm–5:59am)", "`2015` or `2016`", "`1` (January) to `12` (December)", "`0` (spring), `1` (summer), `2` (autumn), or `3` (winter)", "sum of bikes rented", "`TRUE` being Monday to Friday", "`TRUE` being Saturday or Sunday", "`TRUE` being an official holiday in the UK", "average in degree Celsius", "average in degree Celsius", "average in percentage (0-100)", "average in kilometres per hour", "most common type", "most common type")
-)
-
-# knitr::kable(
-#   data_tbl, booktabs = TRUE,
-#   caption = 'Overview of the 15 variables contained in the cleaned and aggregated bike sharing data set.'
+```{r table-bikes-data, echo=FALSE}
+## extensive table, too wide for PDF
+# data_tbl <- tibble(
+#    Variable = names(bikes),
+#    Meaning = c("Date", "Period of the day", "Year", "Month as number", "Season as number", "Bike count", "Is a work day?", "Is a weekend?", "Is a holiday?", "Air temperature", "Feels like temperature", "Humidity", "Wind speed", "Weather category"),
+#    Class = c("`date`", "`character`", "`factor`", "`factor`", "`factor`", "`integer`", "`logical`", "`logical`", "`logical`", "`double`", "`double`", "`double`", "`double`", "`character`"),
+#    `Values / Units` = c("`YYYY-MM-DD` format", "day (6:00am–5:59pm) or night (6:00pm–5:59am)", "`2015` or `2016`", "`1` (January) to `12` (December)", "`0` (spring) to `3` (winter)", "sum of bikes rented", "`TRUE` being Monday to Friday", "`TRUE` being Saturday or Sunday", "`TRUE` being an official holiday in the UK", "average in degree Celsius", "average in degree Celsius", "average in percentage (0-100)", "average in kilometres per hour", "most common type")
 # )
+
+data_tbl <- tibble(
+   Variable = names(bikes),
+   Description = c("Date encoded as `YYYY-MM-DD`", "`day` (6:00am–5:59pm) or `night` (6:00pm–5:59am)", "`2015` or `2016`", "`1` (January) to `12` (December)", "`0` (spring), `1` (summer), `2` (autumn) or `3` (winter)", "Sum of bikes rented", "`TRUE` being Monday to Friday and no official holiday", "`TRUE` being Saturday or Sunday", "`TRUE` being an official holiday in the UK", "Average air temperature (°C)", "Average feels like temperature (°C)", "Average air humidity (%)", "Average wind speed (km/h)", "Most common weather typed")#,
+   #Class = c("`date`", "`character`", "`factor`", "`factor`", "`factor`", "`integer`", "`logical`", "`logical`", "`logical`", "`double`", "`double`", "`double`", "`double`", "`character`"),
+)
 
 data_tbl %>% 
   kableExtra::kbl(
-    booktabs = TRUE,
+    booktabs = TRUE, longtable = TRUE,
     caption = 'Overview of the 15 variables contained in the cleaned and aggregated bike sharing data set.'
   ) %>%
   kableExtra::kable_styling(
@@ -86,28 +67,82 @@ data_tbl %>%
   )
 ```
 
-<br>
-
 ```{r skimr, echo=FALSE}
 #skimr::skim(bikes) %>%  skimr::partition()
 ```
 
-To give you a better idea what the data set contains, here is an graphical overview of the variables contained in the data set and their distributions. Note that I have excluded the variables `date`, `year`, `month`, and `season` as they are all distributed almost uniform.
-
-```{r img-data-overview-vars, echo=FALSE, fig.cap="Overview of the distribution of the boolean variables `is_workday`, `is_weekend`, and `is_holiday` (A), the categorical variable `weather_type` (B), and the continuous variables `count`, `temp`, `temp_feel`, `humidity`, and `wind_speed` (C) of the cleaned and aggregated bike sharing data set. In panel C, the correlation between the variables is shown as scatterplot encoded by `timeperiod` (upper triangle) and encoded by point density (lower triangle), highlighting the level of overlap of data points."}
-knitr::include_graphics("./img/setup-data-comparison-all-dodge.png", dpi = NA)
-```
-
-<p class="comment">
-
-COMMENT: A version with overlapping distributions could be used and is available as well.
-
-</p>
-
 
 ## Working in R {#rstats}
 
-**ggplot2** can be used even if you know little about the R programming language. However, the knowledge of certain basic principles is at least helpful and probably indispensable for advanced plots. This section will give you a short overview of workflows and the 
+**ggplot2** can be used even if you know little about the R programming language. However, the knowledge of certain basic principles is at least helpful and probably indispensable for advanced plots. This section will give you a short overview of workflows and the very basics needed. The overview makes use of the **tidyverse**, a package collection designed for data science in R. However, multiple other options exist to import, inspect, and wrangle your data if you prefer not to work with the **tidyverse** for these steps[^started-1].
+
+[^started-1]: Note that the **ggplot2** package itself belongs to the **tidyverse** as well.
+
+
+### Import data
+
+You need to import data to be able to work with it in the current session. The data can be imported from a local directory or directly from a web source. Nowadays, all common and some less common data formats can easily be imported. For traditional tabular data as .txt or .csv one can use the **readr** package. 
+
+We use the `read_csv()` function to load the TfL data as .csv file directly from a web URL. To access the URL and data later, we are storing it in variables called `url_data` and `bikes` by using the *assignment arrow* `<-`. The `col_types` argument allows to specify the column types, e.g. `i` are integer values, `f` encodes factors, and `l` turns a column into logical, boolean variable that is either `TRUE` or `FALSE`.
+
+```{r data-import-url, eval=FALSE, message=FALSE, warning=FALSE}
+url_data <- "https://cedricscherer.com/data/london-bikes.csv"
+bikes <- readr::read_csv(file = url_data, col_types = "Dcfffilllddddfc")
+```
+
+<p class="note">The `::` is called "namespace" and can be used to access a function without loading the package. Here, you could also run `library(readr)` first and `bikes <- read_csv(url_data)` afterwards.</p>
+
+If you want to load data that is stored locally, you specify the path to the file instead.
+
+```{r data-import-local, eval=FALSE, message=FALSE, warning=FALSE}
+path_data <- "C://path/to/my/data/london-bikes.csv" ## mocked-up name for Win users
+bikes <- readr::read_csv(file = path_data, col_types = "Dcfffilllddddfc")
+```
+
+
+### Inspect data
+
+After importing the data, it is advisable to have a look at the data. Does the object stored in R match the dimensions of your original data file? Are the variables displayed correctly? You can print the data by simply running the name of the object, here `bikes`. 
+
+```{r print-data}
+bikes
+```
+
+As we have used the **readr** package, our data is stored as a *tibble* (class `tbl_df` and related) which is the **tidyverse** subclass of a data frame (class `data.frame`). On the top of the output, you can directly see that our data set consists of `r length(bikes)` variables (columns) frame with `r nrow(bikes)` observations (rows). Also, it will show you the first ten rows. Alternatively you can inspect the data with the help of `str()` or `tibble::glimpse()` to print a transposed version.
+
+If you have looked carefully, you may have noticed that a tibble prints also the class of each column, e.g. `<chr>`. We have specified the class of the columns manually when importing the data; if not specified, `readr::read_csv()` as most other import functions guess the class. Thus, it is always worth to check the classes of the columns. The data encoding is especially important when exploring chart options and writing ggplot code. You should be familiar if the data is encoded as quantitative (i.e. class integer, numeric, date) or qualitative (i.e. class character, factor, boolean). By using the `$` symbol one can access single columns of a data frame, e.g. `bikes$date`. 
+
+```{r, inspect-data-class}
+class(bikes)
+class(bikes$date) 
+class(bikes$count)
+class(bikes$temp)
+class(bikes$day_night)
+class(bikes$weather_type)
+class(bikes$is_holiday) 
+```
+
+To explore individual variables, the following functions are useful:
+
+* `min()`, `max()`, `range()` to extract extreme values
+* `quantile()` to get an idea of the distribution numerical data
+* `unique()` to get all unique entries, helpful for categorical data
+* `length(unique())` to count all unique entries
+
+```{r, inspect-data-vars}
+min(bikes$temp) ## add na.rm = TRUE in case it returns `NA`
+range(bikes$date)
+quantile(bikes$count)
+unique(bikes$weather_type)
+length(unique(bikes$year))
+```
+
+
+### Data types
+
+
+
+### Data wrangling
 
 
 ## Working with Rmarkdown {#rmarkdown}

@@ -98,14 +98,14 @@ caption {
   color: #767676;
 }
 
-p.note{
+.note{
   font-family: "DM Sans";
   color:#28A87D;
   font-weight:400;
   font-style:italic;
 }
 
-p.comment{
+.comment{
   font-family: "DM Sans";
   color:#E2A121;
   font-weight:800;
