@@ -25,7 +25,7 @@ knitr::include_graphics("./img/setup-data-comparison-all-dodge.png", dpi = NA)
 
 ```{=html}
 <!--
-* `date` — encoded as `YYY-MM-DD`
+* `date` — encoded as `YYYY-MM-DD`
 * `timeperiod` — `day` (6:00am--5:59pm) and `night` (6:00pm--5:59am)
 * `year` — either `2015` or `2016`
 * `month` — `1` (January) to `12` (December)
