@@ -5,17 +5,6 @@
 %
 \documentclass[
 ]{krantz}
-\title{Graphic Design with ggplot2}
-\usepackage{etoolbox}
-\makeatletter
-\providecommand{\subtitle}[1]{% add subtitle to \maketitle
-  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
-}
-\makeatother
-\subtitle{Create Beautiful Data Visualizations in R}
-\author{Cédric Scherer}
-\date{2022-04-27}
-
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
 \usepackage{iftex}
@@ -45,18 +34,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={Graphic Design with ggplot2},
-  pdfauthor={Cédric Scherer},
-  colorlinks=true,
-  linkcolor={Maroon},
-  filecolor={Maroon},
-  citecolor={Blue},
-  urlcolor={Blue},
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -138,6 +115,7 @@
 \renewcommand{\floatpagefraction}{0.75}
 
 \renewenvironment{quote}{\begin{VF}}{\end{VF}}
+\usepackage{hyperref}
 \let\oldhref\href
 \renewcommand{\href}[2]{#2\footnote{\url{#1}}}
 
@@ -196,6 +174,29 @@
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Graphic Design with ggplot2},
+  pdfauthor={Cédric Scherer},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Graphic Design with ggplot2}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Create Beautiful Data Visualizations in R}
+\author{Cédric Scherer}
+\date{2022-12-22}
 
 \begin{document}
 \maketitle
@@ -340,7 +341,7 @@ The book was written with the \textbf{knitr}\index{knitr} package \citep{xie2015
 \begin{verbatim}
 ## R version 4.1.0 (2021-05-18)
 ## Platform: x86_64-w64-mingw32/x64 (64-bit)
-## Running under: Windows 10 x64 (build 19043)
+## Running under: Windows 10 x64 (build 22621)
 ## 
 ## Locale:
 ##   LC_COLLATE=German_Germany.1252 
@@ -351,25 +352,67 @@ The book was written with the \textbf{knitr}\index{knitr} package \citep{xie2015
 ## system code page: 65001
 ## 
 ## Package version:
-##   base64enc_0.1.3   bookdown_0.24    
-##   compiler_4.1.0    cpp11_0.4.2      
-##   digest_0.6.29     evaluate_0.14    
-##   fastmap_1.1.0     glue_1.4.2       
-##   graphics_4.1.0    grDevices_4.1.0  
-##   highr_0.9         htmltools_0.5.2  
-##   jquerylib_0.1.4   jsonlite_1.7.2   
-##   knitr_1.36        magrittr_2.0.1   
-##   methods_4.1.0     ragg_1.1.3       
-##   rlang_0.4.12      rmarkdown_2.11   
-##   rstudioapi_0.13   stats_4.1.0      
-##   stringi_1.7.5     stringr_1.4.0    
-##   systemfonts_1.0.3 textshaping_0.3.6
-##   tinytex_0.35      tools_4.1.0      
-##   utils_4.1.0       xfun_0.27        
-##   yaml_2.2.1
+##   askpass_1.1         assertthat_0.2.1   
+##   backports_1.2.1     base64enc_0.1.3    
+##   bit_4.0.4           bit64_4.0.5        
+##   blob_1.2.2          bookdown_0.28      
+##   broom_1.0.0         bslib_0.4.0        
+##   cachem_1.0.6        callr_3.7.2        
+##   cellranger_1.1.0    cli_3.3.0          
+##   clipr_0.7.1         colorspace_2.0-3   
+##   compiler_4.1.0      cpp11_0.4.2        
+##   crayon_1.5.1        curl_4.3.2         
+##   data.table_1.14.2   DBI_1.1.2          
+##   dbplyr_2.1.1        digest_0.6.29      
+##   dplyr_1.0.9         dtplyr_1.2.0       
+##   ellipsis_0.3.2      evaluate_0.16      
+##   fansi_0.5.0         farver_2.1.0       
+##   fastmap_1.1.0       forcats_0.5.2      
+##   fs_1.5.2            gargle_1.2.0       
+##   generics_0.1.3      ggplot2_3.3.6      
+##   glue_1.6.2          googledrive_2.0.0  
+##   googlesheets4_1.0.0 graphics_4.1.0     
+##   grDevices_4.1.0     grid_4.1.0         
+##   gtable_0.3.0        haven_2.4.3        
+##   highr_0.9           hms_1.1.2          
+##   htmltools_0.5.2     httr_1.4.2         
+##   ids_1.0.1           isoband_0.2.5      
+##   jquerylib_0.1.4     jsonlite_1.7.2     
+##   knitr_1.39          labeling_0.4.2     
+##   lattice_0.20.44     lifecycle_1.0.1    
+##   lubridate_1.8.0     magrittr_2.0.3     
+##   MASS_7.3.54         Matrix_1.3.3       
+##   memoise_2.0.1       methods_4.1.0      
+##   mgcv_1.8.35         mime_0.12          
+##   modelr_0.1.8        munsell_0.5.0      
+##   nlme_3.1.152        openssl_2.0.2      
+##   patchwork_1.1.2     pillar_1.8.1       
+##   pkgconfig_2.0.3     prettyunits_1.1.1  
+##   processx_3.7.0      progress_1.2.2     
+##   ps_1.6.0            purrr_0.3.4        
+##   R6_2.5.1            ragg_1.2.2         
+##   rappdirs_0.3.3      RColorBrewer_1.1.3 
+##   readr_2.1.2         readxl_1.4.1       
+##   rematch_1.0.1       rematch2_2.1.2     
+##   reprex_2.0.2        rlang_1.0.4        
+##   rmarkdown_2.16      rstudioapi_0.14    
+##   rvest_1.0.2         sass_0.4.2         
+##   scales_1.2.1        selectr_0.4.2      
+##   splines_4.1.0       stats_4.1.0        
+##   stringi_1.7.5       stringr_1.4.1      
+##   sys_3.4             systemfonts_1.0.3  
+##   textshaping_0.3.6   tibble_3.1.8       
+##   tidyr_1.2.0         tidyselect_1.1.2   
+##   tidyverse_1.3.2     tinytex_0.41       
+##   tools_4.1.0         tzdb_0.1.2         
+##   utf8_1.2.2          utils_4.1.0        
+##   uuid_1.0.3          vctrs_0.4.1        
+##   viridisLite_0.4.1   vroom_1.5.7        
+##   withr_2.5.0         xfun_0.31          
+##   xml2_1.3.3          yaml_2.2.1
 \end{verbatim}
 
-Package names are in bold text (e.g.~\textbf{ggplot2}), and inline code and file names are formatted in a monospaced typewriter font (e.g.~\texttt{read\_csv("data.csv")}). Function names are followed by parentheses (e.g.~\texttt{ggplot2::ggplot()}). Notes are formatted as {coloured, italic text}.
+Package names are in bold text and wrapped into curly brackets (e.g.~\textbf{\{ggplot2\}}), and inline code and file names are formatted in a monospaced typewriter font (e.g.~\texttt{read\_csv("data.csv")}). Function names are followed by parentheses (e.g.~\texttt{ggplot2::ggplot()}). Notes are formatted as {coloured, italic text}.
 
 \hypertarget{acknowledgments}{%
 \section*{Acknowledgments}\label{acknowledgments}}
@@ -551,26 +594,49 @@ beneficial in any data-related field.
 \hypertarget{why}{%
 \section{\texorpdfstring{Why R and \textbf{ggplot2}}{Why R and ggplot2}}\label{why}}
 
-As a computational ecologist, I've learned and used a range of different tools and programming languages for various purposes such as data wrangling, statistical analyses, and model building. The open-source language R was and is the programming language most widely used by ecologists to handle and analyze ecological data \citep{sciaini2018}. Consequently, I was \emph{of course} using R in my daily life as an scientific researcher.
+As a computational ecologist, I've learned and used a range of different
+tools and programming languages for various purposes such as data wrangling,
+statistical analyses, and model building. The open-source language R was and
+is the programming language most widely used by ecologists to handle and
+analyze ecological data \citep{sciaini2018}. Consequently, I was \emph{of course}
+using R in my daily life as an scientific researcher.
 
-Nowadays, R plays a crucial part in many data-related workflows, no matter if for scientific, educational, or industrial use cases. Thanks to the ever growing R community and the rich collection of libraries that add additional functionality and simplify workflows, R is an attractive programming language that has outgrown of its original purpose: statistical analyses. Today, R can serve as tool to generate automated reports, develop stand-alone web apps, and draft presentation slides, books, and web pages. And to design high-level, publication--ready visualizations.
+Nowadays, R plays a crucial part in many data-related workflows, no matter
+if for scientific, educational, or industrial use cases. Thanks to the
+ever growing R community and the rich collection of libraries that add
+additional functionality and simplify workflows, R is an attractive
+programming language that has outgrown of its original purpose: statistical
+analyses. Today, R can serve as tool to generate automated reports, develop
+stand-alone web apps, and draft presentation slides, books, and web pages.
+And to design high-level, publication--ready visualizations.
 
-Even though R---similar to most programming languages---has a steep learning curve, the level of functionality, flexibility, automation, and reproducibility offered can be a major benefit also in a design context:
+Even though R---similar to most programming languages---has a steep learning
+curve, the level of functionality, flexibility, automation, and
+reproducibility offered can be a major benefit also in a design context:
 
 \begin{itemize}
 \tightlist
 \item
-  The layered approach of \textbf{ggplot2} opens the possibility to build any type of visualization.
+  The layered approach of \textbf{ggplot2} opens the possibility to build any
+  type of visualization.
 \item
   Various extension packages add missing functionality.
 \item
-  Script-based workflows instead of \emph{point--and--click} approaches allow for reproducibility---which means you can simply (in theory) run the code again after receiving new data or create thousands of visualizations for various data sets in no time.
+  Script-based workflows instead of \emph{point--and--click} approaches allow for
+  reproducibility---which means you can simply (in theory) run the code again
+  after receiving new data or create thousands of visualizations for various
+  data sets in no time.
 \item
-  Sharing code is becoming the golden standard in many fields and thus facilitates transparency and credibility as well as modification and creative advancement.
+  Sharing code is becoming the golden standard in many fields and thus
+  facilitates transparency and credibility as well as modification and
+  creative advancement.
 \item
-  A helpful community and many free resources simplify learning experiences and the search for solutions.
+  A helpful community and many free resources simplify learning experiences
+  and the search for solutions.
 \item
-  The visualizations created in R can be exported as vector files and thus allow for post--processing with graphic design tools.
+  The visualizations created in R can be exported as vector files and thus
+  allow for post--processing with vector graphics software like Adobe
+  Illustrator, Inkscape or Figma.
 \end{itemize}
 
 \hypertarget{get-started}{%
@@ -627,14 +693,14 @@ weather\_type & Most common weather typed\\
 \hypertarget{rstats}{%
 \section{Working in R}\label{rstats}}
 
-\textbf{ggplot2} can be used even if you know little about the R programming language. However, the knowledge of certain basic principles is at least helpful and probably indispensable for advanced plots. This section will give you a short overview of workflows and the very basics needed. The overview makes use of the \textbf{tidyverse}, a package collection designed for data science in R. However, multiple other options exist to import, inspect, and wrangle your data if you prefer not to work with the \textbf{tidyverse} for these steps\footnote{Note that the \textbf{ggplot2} package itself belongs to the \textbf{tidyverse} as well.}.
+\textbf{\{ggplot2\}} can be used even if you know little about the R programming language. However, the knowledge of certain basic principles is at least helpful and probably indispensable for advanced plots. This section will give you a short overview of workflows and the very basics needed. The overview makes use of the \textbf{\{tidyverse\}}, a package collection designed for data science in R. However, multiple other options exist to import, inspect, and wrangle your data if you prefer not to work with the \textbf{\{tidyverse\}} for these steps\footnote{Note that the \textbf{\{ggplot2\}} package itself belongs to the \textbf{\{tidyverse\}} as well.}.
 
-\hypertarget{import-data}{%
-\subsection{Import data}\label{import-data}}
+\hypertarget{import}{%
+\subsection{Import data}\label{import}}
 
-You need to import data to be able to work with it in the current session. The data can be imported from a local directory or directly from a web source. Nowadays, all common and some less common data formats can easily be imported. For traditional tabular data as .txt or .csv one can use the \textbf{readr} package.
+You need to import data to be able to work with it in the current session. The data can be imported from a local directory or directly from a web source. Nowadays, all common and some less common data formats can easily be imported. For traditional tabular data as .txt or .csv one can use the \textbf{\{readr\}} package.
 
-We use the \texttt{read\_csv()} function to load the TfL data as .csv file directly from a web URL. To access the URL and data later, we are storing it in variables called \texttt{url\_data} and \texttt{bikes} by using the \emph{assignment arrow} \texttt{\textless{}-}. The \texttt{col\_types} argument allows to specify the column types, e.g.~\texttt{i} are integer values, \texttt{f} encodes factors, and \texttt{l} turns a column into logical, boolean variable that is either \texttt{TRUE} or \texttt{FALSE}.
+We use the \texttt{read\_csv()} function to load the TfL data as .csv file directly from a web URL. To access the URL and data later, we are storing the link as \texttt{url\_data} and the data set as \texttt{bikes} by using the \emph{assignment arrow} \texttt{\textless{}-}. The \texttt{col\_types} argument within the `read\_csv()` function allows to specify the column types. For example, \texttt{i} represents integer values, \texttt{f} encodes factors, and \texttt{l} turns a column into a logical, boolean variable that only can have two states, \texttt{TRUE} or \texttt{FALSE}. You'll find more on the different \emph{data types} later in this chapter.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -645,7 +711,7 @@ We use the \texttt{read\_csv()} function to load the TfL data as .csv file direc
 
 The \texttt{::} is called ``namespace'' and can be used to access a function without loading the package. Here, you could also run \texttt{library(readr)} first and \texttt{bikes\ \textless{}-\ read\_csv(url\_data)} afterwards.
 
-If you want to load data that is stored locally, you specify the path to the file instead.
+If you want to load data that is stored locally, you specify the path to the file instead:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -654,8 +720,28 @@ If you want to load data that is stored locally, you specify the path to the fil
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{inspect-data}{%
-\subsection{Inspect data}\label{inspect-data}}
+Note that the syntax of the path differs between operating systems. While in Windows subdirectories are separated with backslashes, Mac and Linux uses slashes. Also, absolute paths differ in their syntax: Windows machines specify the drive letter, here\texttt{C://}, or the server name; on Mac/Linux machines absolute paths start with \texttt{/users/}.
+
+Instead of relying on the absolute path, which likely differs between users and operating systems, you can also use relative paths. Those are specified with a leading dot, e.g.~as \texttt{./data/london-bikes.csv}, and look for the file relative from the working directory. You can retrieve and change your working directory with \texttt{getwd()} and \texttt{setwd()}. However, relying on the default working directory or setting a custom one will likely cause problems the moment someone else wants to run your code\footnote{A detailed reasoning why you should not use \texttt{setwd()} is provided in \href{https://rstats.wtf/project-oriented-workflow.html}{Chapter 2 of ``What they forgot you to teach about R'')}.}.
+
+\hypertarget{workflows}{%
+\subsection{Project-oriented workflows}\label{workflows}}
+
+Preferably, we do not want to rely on absolute paths and the default or manually set working directories. So-called project-oriented workflows aim to organize each piece of work in a self-contained, bundled directory. This directory includes all relevant files needed for the project, such as scripts and images. By ensuring that paths are set relative and in a way that they are understood by any operating system, we guarantee that the project will run on any machine and can easily moved around.
+
+If you are working in Rstudio, \emph{Rstudio projects} provide such a project-oriented workflow. When opening the project via the associated \texttt{.Rproj} file, it ensures that the working directory is correctly set and points to the project's top-level directory (i.e.~the folder that contains the \texttt{.Rproj} file).
+
+When using Rstudio projects, a helpful package to navigate to files of interest is the \href{https://here.r-lib.org/}{\textbf{\{here\}} package}. The function \texttt{here()} will create paths relative to the top-level directory:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# point to the csv inside the "data" subdirectory of the project directory}
+\NormalTok{path\_data }\OtherTok{\textless{}{-}}\NormalTok{ here}\SpecialCharTok{::}\FunctionTok{here}\NormalTok{(}\StringTok{"data"}\NormalTok{, }\StringTok{"london{-}bikes.csv"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{inspect}{%
+\subsection{Inspect data}\label{inspect}}
 
 After importing the data, it is advisable to have a look at the data. Does the object stored in R match the dimensions of your original data file? Are the variables displayed correctly? You can print the data by simply running the name of the object, here \texttt{bikes}.
 
@@ -667,106 +753,199 @@ After importing the data, it is advisable to have a look at the data. Does the o
 
 \begin{verbatim}
 ## # A tibble: 1,454 x 14
-##    date       day_night year  month season count
-##    <date>     <chr>     <fct> <fct> <fct>  <int>
-##  1 2015-01-04 day       2015  1     3       6830
-##  2 2015-01-04 night     2015  1     3       2404
-##  3 2015-01-05 day       2015  1     3      14763
-##  4 2015-01-05 night     2015  1     3       5609
-##  5 2015-01-06 day       2015  1     3      14501
-##  6 2015-01-06 night     2015  1     3       6112
-##  7 2015-01-07 day       2015  1     3      16358
-##  8 2015-01-07 night     2015  1     3       4706
-##  9 2015-01-08 day       2015  1     3       9971
-## 10 2015-01-08 night     2015  1     3       5630
-## # ... with 1,444 more rows, and 8 more variables:
-## #   is_workday <lgl>, is_weekend <lgl>,
-## #   is_holiday <lgl>, temp <dbl>, temp_feel <dbl>,
-## #   humidity <dbl>, wind_speed <dbl>,
-## #   weather_type <fct>
+##    date       day_ni~1 year  month season count is_wo~2
+##    <date>     <chr>    <fct> <fct> <fct>  <int> <lgl>  
+##  1 2015-01-04 day      2015  1     3       6830 FALSE  
+##  2 2015-01-04 night    2015  1     3       2404 FALSE  
+##  3 2015-01-05 day      2015  1     3      14763 TRUE   
+##  4 2015-01-05 night    2015  1     3       5609 TRUE   
+##  5 2015-01-06 day      2015  1     3      14501 TRUE   
+##  6 2015-01-06 night    2015  1     3       6112 TRUE   
+##  7 2015-01-07 day      2015  1     3      16358 TRUE   
+##  8 2015-01-07 night    2015  1     3       4706 TRUE   
+##  9 2015-01-08 day      2015  1     3       9971 TRUE   
+## 10 2015-01-08 night    2015  1     3       5630 TRUE   
+## # ... with 1,444 more rows, 7 more variables:
+## #   is_weekend <lgl>, is_holiday <lgl>, temp <dbl>,
+## #   temp_feel <dbl>, humidity <dbl>, wind_speed <dbl>,
+## #   weather_type <fct>, and abbreviated variable names
+## #   1: day_night, 2: is_workday
 \end{verbatim}
 
-As we have used the \textbf{readr} package, our data is stored as a \emph{tibble} (class \texttt{tbl\_df} and related) which is the \textbf{tidyverse} subclass of a data frame (class \texttt{data.frame}). On the top of the output, you can directly see that our data set consists of 14 variables (columns) frame with 1454 observations (rows). Also, it will show you the first ten rows. Alternatively you can inspect the data with the help of \texttt{str()} or \texttt{tibble::glimpse()} to print a transposed version.
+As we have used the \textbf{\{readr\}} package, our data is stored as a \emph{tibble} (class \texttt{tbl\_df} and related) which is the \textbf{\{tidyverse\}} subclass of a traditional data frame (class \texttt{data.frame}). There are other data structures in R such as lists and matrices; however, in this book we are going to use only data frames, more precisely tibbles (besides spatial data formats in Chapter XYZ).
 
-If you have looked carefully, you may have noticed that a tibble prints also the class of each column, e.g.~\texttt{\textless{}chr\textgreater{}}. We have specified the class of the columns manually when importing the data; if not specified, \texttt{readr::read\_csv()} as most other import functions guess the class. Thus, it is always worth to check the classes of the columns. The data encoding is especially important when exploring chart options and writing ggplot code. You should be familiar if the data is encoded as quantitative (i.e.~class integer, numeric, date) or qualitative (i.e.~class character, factor, boolean). By using the \texttt{\$} symbol one can access single columns of a data frame, e.g.~\texttt{bikes\$date}.
+On the top of the output, you can directly see that our data set consists of \texttt{format(length(bikes),\ big.mark\ =\ ",")} variables (columns) frame with 1,454 observations (rows). Also, the tibble output shows you the first ten rows. Alternatively you can inspect the data with the help of \texttt{str()} or \texttt{tibble::glimpse()} to print a transposed version.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{class}\NormalTok{(bikes)}
-\end{Highlighting}
-\end{Shaded}
+\hypertarget{classes}{%
+\subsection{Data types}\label{classes}}
 
-\begin{verbatim}
-## [1] "spec_tbl_df" "tbl_df"      "tbl"        
-## [4] "data.frame"
-\end{verbatim}
+If you have looked carefully, you may have noticed that a tibble prints also the data type of each column, e.g.~\texttt{\textless{}chr\textgreater{}}. In our case, we have specified the types of the columns manually when importing the data; if not specified, \texttt{readr::read\_csv()} as most other import functions will guess the data type for each column based on the first x observations.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{class}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{date) }
-\end{Highlighting}
-\end{Shaded}
+The data encoding is especially important when exploring chart options and writing ggplot code. You should be familiar if the data is encoded as quantitative or qualitative, if it contains missing or unusual values. Thus, it is always worth to check the classes and the values of the columns.
 
-\begin{verbatim}
-## [1] "Date"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{class}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{count)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] "integer"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{class}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{temp)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] "numeric"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{class}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{day\_night)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] "character"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{class}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{weather\_type)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] "factor"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{class}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{is\_holiday) }
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] "logical"
-\end{verbatim}
-
-To explore individual variables, the following functions are useful:
+In R there are multiple low-level data types, and some of the \textbf{\{ggplot2\}} behavior will depend on the type of the variable(s) used for plotting. The six basic data types are:
 
 \begin{itemize}
 \tightlist
 \item
-  \texttt{min()}, \texttt{max()}, \texttt{range()} to extract extreme values
+  character
+\item
+  factor
+\item
+  numeric
+\item
+  integer
+\item
+  logical
+\item
+  complex
+\end{itemize}
+
+To examine the data type of an object, use the \texttt{class()} function. The \texttt{\$} symbol allows you to access single columns of a data frame, e.g.~\texttt{bikes\$day\_night}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{day\_night)}
+\DocumentationTok{\#\# [1] "character"}
+
+\FunctionTok{class}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{weather\_type)}
+\DocumentationTok{\#\# [1] "factor"}
+
+\FunctionTok{class}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{temp)}
+\DocumentationTok{\#\# [1] "numeric"}
+
+\FunctionTok{class}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{count)}
+\DocumentationTok{\#\# [1] "integer"}
+
+\FunctionTok{class}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{is\_weekend)}
+\DocumentationTok{\#\# [1] "logical"}
+\end{Highlighting}
+\end{Shaded}
+
+Variables of type \texttt{character}, \texttt{factor}, and \texttt{logical} will be handled as \textbf{categorical, qualitative data} while \texttt{numeric}, \texttt{integer}, and \texttt{complex}\footnote{As variables of type \texttt{complex} are rarely used in a data visualization context, we are going to ignore this data type.} are treated as \textbf{numerical, quantitative data}.
+
+The most important difference between the categorical types is their sorting: while \texttt{character} and also \texttt{logical} values are sorted alphabetically, \texttt{factor} variables have a specified order, defined by the so-called \emph{levels}. Note that numbers can be treated as well and thus we can change their intrinsic order, too. We can inspect the order with the \texttt{levels()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{levels}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{weather\_type) }\DocumentationTok{\#\# an example of a factor with strings}
+\DocumentationTok{\#\# [1] "broken clouds"    "clear"           }
+\DocumentationTok{\#\# [3] "cloudy"           "scattered clouds"}
+\DocumentationTok{\#\# [5] "rain"             "snowfall"}
+\FunctionTok{levels}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{season) }\DocumentationTok{\#\# an example of a factor with numbers}
+\DocumentationTok{\#\# [1] "3" "0" "1" "2"}
+\end{Highlighting}
+\end{Shaded}
+
+Also, we can manually change the order of a factor by supplying a vector of level names to the \texttt{factor()} function:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bikes}\SpecialCharTok{$}\NormalTok{season\_type\_mix }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{season, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"2"}\NormalTok{, }\StringTok{"0"}\NormalTok{, }\StringTok{"3"}\NormalTok{, }\StringTok{"1"}\NormalTok{))}
+\FunctionTok{levels}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{season\_type\_mix)}
+\DocumentationTok{\#\# [1] "2" "0" "3" "1"}
+\end{Highlighting}
+\end{Shaded}
+
+The \href{https://forcats.tidyverse.org/}{\textbf{\{forcats\}} package} provides a set of useful functions to reorder factor levels. Important functions to quickly change to order of variables include \texttt{fct\_rev()}, \texttt{fct\_reorder()}, \texttt{fct\_infreq()}, \texttt{fct\_inorder()}, and \texttt{fct\_lump()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bikes}\SpecialCharTok{$}\NormalTok{weather\_type\_rev }\OtherTok{\textless{}{-}}\NormalTok{ forcats}\SpecialCharTok{::}\FunctionTok{fct\_rev}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{weather\_type)}
+\FunctionTok{levels}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{weather\_type\_rev)}
+\DocumentationTok{\#\# [1] "snowfall"         "rain"            }
+\DocumentationTok{\#\# [3] "scattered clouds" "cloudy"          }
+\DocumentationTok{\#\# [5] "clear"            "broken clouds"}
+
+\NormalTok{bikes}\SpecialCharTok{$}\NormalTok{weather\_type\_rank }\OtherTok{\textless{}{-}}\NormalTok{ forcats}\SpecialCharTok{::}\FunctionTok{fct\_infreq}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{weather\_type)}
+\FunctionTok{levels}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{weather\_type\_rank)}
+\DocumentationTok{\#\# [1] "clear"            "scattered clouds"}
+\DocumentationTok{\#\# [3] "broken clouds"    "rain"            }
+\DocumentationTok{\#\# [5] "cloudy"           "snowfall"}
+\end{Highlighting}
+\end{Shaded}
+
+The single difference between the two numerical types \texttt{numeric} and \texttt{integer} is simply-speaking the existence of floating point numbers: while \texttt{numeric} variables store decimals, \texttt{integer} variables are stored as whole numbers. If you want to force integer values, you can specify them as \texttt{1L}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{temp) }\DocumentationTok{\#\# numeric}
+\DocumentationTok{\#\# [1] 2.167 2.792 8.958 7.125 9.000 6.708}
+
+\FunctionTok{as.integer}\NormalTok{(}\FunctionTok{head}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{temp)) }\DocumentationTok{\#\# integer}
+\DocumentationTok{\#\# [1] 2 2 8 7 9 6}
+\end{Highlighting}
+\end{Shaded}
+
+As shown in the last command, we can also convert data types. Be careful though, as R has internal rules how to \emph{coerce} one data type into another. The same also happens if you specify a vector with different data types. In the following example, the \texttt{integer}, \texttt{numeric}, and \texttt{logical} values are coerced to \texttt{character} values. Afterwards, we explore the coercion behavior by converting the vector to other data types:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_vector }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(1L, }\FloatTok{0.2}\NormalTok{, }\StringTok{"ggplot"}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{my\_vector}
+\DocumentationTok{\#\# [1] "1"      "0.2"    "ggplot" "FALSE"}
+
+\FunctionTok{class}\NormalTok{(my\_vector)}
+\DocumentationTok{\#\# [1] "character"}
+
+\FunctionTok{as.numeric}\NormalTok{(my\_vector)}
+\DocumentationTok{\#\# [1] 1.0 0.2  NA  NA}
+
+\FunctionTok{as.integer}\NormalTok{(my\_vector)}
+\DocumentationTok{\#\# [1]  1  0 NA NA}
+
+\FunctionTok{as.factor}\NormalTok{(my\_vector)}
+\DocumentationTok{\#\# [1] 1      0.2    ggplot FALSE }
+\DocumentationTok{\#\# Levels: 0.2 1 FALSE ggplot}
+
+\FunctionTok{as.logical}\NormalTok{(my\_vector)}
+\DocumentationTok{\#\# [1]    NA    NA    NA FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+When changing the data type of our \texttt{character} vector, some values are successfully converted (e.g.~\texttt{1L} and \texttt{0.2} as \texttt{numeric} or \texttt{FALSE} as \texttt{logical}) while some are ``wrongly'' interpreted (e.g.~\texttt{0.2} is converted into \texttt{0L} as \texttt{integer} or \texttt{FALSE} into \texttt{"FALSE"} as \texttt{character}). Some others are stored as \texttt{NA} representing \emph{unknown, not available values} (e.g.~\texttt{"ggplot"} as \texttt{numeric} or \texttt{1} as \texttt{logical}). Conversion between different data types is very useful but be careful and always inspect the output of the conversion for potential coercion mistakes.
+
+Another important data type is the \texttt{Date} class. Dates are either represented as the number of days since a specified origin or converted \texttt{character} type with a structure of YYYY-MM-DD:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{date)}
+\DocumentationTok{\#\# [1] "Date"}
+
+\FunctionTok{as.Date}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{origin =} \StringTok{"1970{-}01{-}01"}\NormalTok{)}
+\DocumentationTok{\#\# [1] "1970{-}01{-}02"}
+
+\FunctionTok{as.Date}\NormalTok{(}\StringTok{"2007{-}06{-}10"}\NormalTok{)}
+\DocumentationTok{\#\# [1] "2007{-}06{-}10"}
+
+\FunctionTok{as.Date}\NormalTok{(}\StringTok{"2022{-}09{-}16"}\NormalTok{) }\SpecialCharTok{{-}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2007{-}06{-}10"}\NormalTok{)}
+\DocumentationTok{\#\# Time difference of 5577 days}
+\end{Highlighting}
+\end{Shaded}
+
+Furthermore, \texttt{POSIXct} and \texttt{POSIXlt} are able to represent full time stamps including a date and time. The two POSIX date/time classes only differ in the way that the values are stored internally.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.POSIXct}\NormalTok{(}\StringTok{"2007{-}06{-}10 12:34:56"}\NormalTok{)}
+\DocumentationTok{\#\# [1] "2007{-}06{-}10 12:34:56 CEST"}
+
+\FunctionTok{as.POSIXlt}\NormalTok{(}\StringTok{"2007{-}06{-}10 12:34:56"}\NormalTok{)}
+\DocumentationTok{\#\# [1] "2007{-}06{-}10 12:34:56 CEST"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{wrangling}{%
+\subsection{Data wrangling}\label{wrangling}}
+
+Often, the data imported might not be in the right format to plot it with \textbf{\{ggplot2\}}. The preparation of the data---e.g.~converting data types and setting factor levels, aggregating values, estimating data summaries, reshaping the data set or combining it with another source---is called \emph{data wrangling}, \emph{data munging}, or \textbf{data manipulation}.
+
+To explore and retrieve summary estimates of individual variables, the following functions are useful:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{min()}, \texttt{max()}, \texttt{range()} to extract extremes of numerical data
 \item
   \texttt{quantile()} to get an idea of the distribution numerical data
 \item
@@ -778,77 +957,173 @@ To explore individual variables, the following functions are useful:
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{min}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{temp) }\DocumentationTok{\#\# add na.rm = TRUE in case it returns \textasciigrave{}NA\textasciigrave{}}
-\end{Highlighting}
-\end{Shaded}
+\DocumentationTok{\#\# [1] 0.125}
 
-\begin{verbatim}
-## [1] 0.125
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{range}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{date)}
-\end{Highlighting}
-\end{Shaded}
+\DocumentationTok{\#\# [1] "2015{-}01{-}04" "2016{-}12{-}31"}
 
-\begin{verbatim}
-## [1] "2015-01-04" "2016-12-31"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{quantile}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{count)}
+\DocumentationTok{\#\#    0\%   25\%   50\%   75\%  100\% }
+\DocumentationTok{\#\#   953  7508 11965 19412 51870}
+
+\FunctionTok{unique}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{day\_night)}
+\DocumentationTok{\#\# [1] "day"   "night"}
+
+\FunctionTok{length}\NormalTok{(}\FunctionTok{unique}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{weather\_type))}
+\DocumentationTok{\#\# [1] 6}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-##    0%   25%   50%   75%  100% 
-##   953  7508 11965 19412 51870
-\end{verbatim}
+The \href{https://dplyr.tidyverse.org/}{\textbf{\{dplyr\}}} and other \textbf{\{tidyverse\}} packages provide a simple and intuitive syntax to wrangle data. There are a ton of unique functions, but knowing a handful is enough to empower you to bring your data in the right format.
+
+There are five main functions of \textbf{\{dplyr\}}, called \emph{verbs} in this context:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{filter()}: Pick rows with matching criteria
+\item
+  \texttt{select()}: Pick columns with matching criteria
+\item
+  \texttt{arrange()}: Reorder rows
+\item
+  \texttt{mutate()}: Create new variables
+\item
+  \texttt{summarize()} or \texttt{summarise()}: Sum up variables
+\end{itemize}
+
+All of these functions follow a consistent syntax: \texttt{verb(data,\ condition)}. Note that we specify the data and columns individually and that within the tidyverse, column names are referred to without quotation marks:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{unique}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{weather\_type)}
+\DocumentationTok{\#\# only keep more than 1000 shares during the night}
+\FunctionTok{filter}\NormalTok{(bikes, day\_night }\SpecialCharTok{==} \StringTok{"night"}\NormalTok{, count }\SpecialCharTok{\textgreater{}} \DecValTok{1000}\NormalTok{) }
+
+\DocumentationTok{\#\# only keep 4 columns and reorder those}
+\FunctionTok{select}\NormalTok{(bikes, date, count, weather\_type, temp) }
+
+\DocumentationTok{\#\# order by day\_night and decreasing bike shares}
+\FunctionTok{arrange}\NormalTok{(bikes, day\_night, }\SpecialCharTok{{-}}\NormalTok{count) }
+
+\DocumentationTok{\#\# add a column with temperature encoded as °F}
+\FunctionTok{mutate}\NormalTok{(bikes, }\AttributeTok{temp\_fahrenheit =}\NormalTok{ temp }\SpecialCharTok{*} \FloatTok{1.8} \SpecialCharTok{+} \DecValTok{32}\NormalTok{)}
+
+\DocumentationTok{\#\# calculate the mean count across all observations}
+\FunctionTok{summarize}\NormalTok{(bikes, }\AttributeTok{count\_avg =} \FunctionTok{mean}\NormalTok{(count)) }
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## [1] broken clouds    clear            cloudy          
-## [4] scattered clouds rain             snowfall        
-## 6 Levels: broken clouds clear ... snowfall
-\end{verbatim}
+Another important and very powerful function from the \textbf{\{dplyr\}} package is \texttt{group\_by()}: when a data set is grouped into subsets, we can apply any operation for each group \emph{within a single data frame}. While you could nest those functions, the common approach within the tidyverse is the use of \emph{pipes}. Pipes take the output of one function and send it directly to the next which avoids nested operations and allows for a more logical order of functions and their arguments. The \textbf{\{tidyverse\}} pipe is encoded as \texttt{\%\textgreater{}\%}; a base R pipe is available as \texttt{\textbar{}\textgreater{}} as well. Have a look at the following silly example:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{length}\NormalTok{(}\FunctionTok{unique}\NormalTok{(bikes}\SpecialCharTok{$}\NormalTok{year))}
+\DocumentationTok{\#\# nested functions, read inside out + disconnected function inputs}
+\FunctionTok{go\_to\_work}\NormalTok{(}
+  \FunctionTok{breakfast}\NormalTok{(}
+    \FunctionTok{wake\_up}\NormalTok{(}
+\NormalTok{      Cedric, }\AttributeTok{alarm =} \StringTok{"06:30"}\NormalTok{)}
+\NormalTok{    ), }
+    \FunctionTok{c}\NormalTok{(}\StringTok{"coffee"}\NormalTok{, }\StringTok{"croissant"}\NormalTok{)}
+\NormalTok{  ),}
+\NormalTok{  mode }\OtherTok{=} \StringTok{"bus"}\NormalTok{, delay }\OtherTok{=} \DecValTok{10}
+\ErrorTok{)}
+
+\DocumentationTok{\#\# piped version with "Cedric" passed to the next function call}
+\NormalTok{Cedric }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{wake\_up}\NormalTok{(}\AttributeTok{alarm =} \StringTok{"06:30"}\NormalTok{)}\ErrorTok{)} \SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{breakfast}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"coffee"}\NormalTok{, }\StringTok{"croissant"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{go\_to\_work}\NormalTok{(}\AttributeTok{mode =} \StringTok{"bus"}\NormalTok{, }\AttributeTok{delay =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Let's create the workflow for some serious data preparation: In a first step, we are going to estimate the average temperature for night rents per year and season:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bikes\_summarized }\OtherTok{\textless{}{-}} 
+\NormalTok{  bikes }\SpecialCharTok{\%\textgreater{}\%} 
+  \DocumentationTok{\#\# only keep night observations}
+  \FunctionTok{filter}\NormalTok{(day\_night }\SpecialCharTok{==} \StringTok{"night"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \DocumentationTok{\#\# create 8 subsets (4 seasons x 2 years)}
+  \FunctionTok{group\_by}\NormalTok{(season, year) }\SpecialCharTok{\%\textgreater{}\%} 
+  \DocumentationTok{\#\# calculate total counts and mean temperature per subgroup}
+  \FunctionTok{summarize}\NormalTok{(}
+    \AttributeTok{count =} \FunctionTok{sum}\NormalTok{(count), }
+    \AttributeTok{temp\_avg =} \FunctionTok{mean}\NormalTok{(temp)}
+\NormalTok{  )}
+
+\NormalTok{bikes\_summarized}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2
+## # A tibble: 8 x 4
+## # Groups:   season [4]
+##   season year    count temp_avg
+##   <fct>  <fct>   <int>    <dbl>
+## 1 3      2015   459469     7.65
+## 2 3      2016   489136     6.91
+## 3 0      2015   693703     9.93
+## 4 0      2016   676427     9.43
+## 5 1      2015  1020524    17.2 
+## 6 1      2016  1044592    17.7 
+## 7 2      2015   685534    12.4 
+## 8 2      2016   744827    12.3
 \end{verbatim}
 
-\hypertarget{data-types}{%
-\subsection{Data types}\label{data-types}}
+After filtering out ``day'' cases, the grouping by \texttt{season} and \texttt{year} allows us to summarize counts and average temperatures for each of the eight groups. Note that the resulting tibble is still grouped by \texttt{season} (as shown in the output with the \texttt{{[}4{]}} explicitly stating the number of current subsets).
 
-\hypertarget{data-wrangling}{%
-\subsection{Data wrangling}\label{data-wrangling}}
+In a next step, we regroup our data to add a column with shares of nightly bike rents per season on a yearly basis. Afterwards, we remove all subsets by calling \texttt{ungroup()} and clean our data set by reordering and removing columns and sorting rows by year and season:
 
-\hypertarget{rmarkdown}{%
-\section{Working with Rmarkdown}\label{rmarkdown}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bikes\_summarized }\SpecialCharTok{\%\textgreater{}\%} 
+  \DocumentationTok{\#\# add column with relative shares per year}
+  \FunctionTok{group\_by}\NormalTok{(year) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{share\_year =}\NormalTok{ count }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(count)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \DocumentationTok{\#\# remove grouping}
+  \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \DocumentationTok{\#\# reorder columns and remove days column}
+  \FunctionTok{select}\NormalTok{(year, season, count, share\_year, temp\_avg) }\SpecialCharTok{\%\textgreater{}\%} 
+  \DocumentationTok{\#\# sort by year and season}
+  \FunctionTok{arrange}\NormalTok{(year, season) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 8 x 5
+##   year  season   count share_year temp_avg
+##   <fct> <fct>    <int>      <dbl>    <dbl>
+## 1 2015  3       459469      0.161     7.65
+## 2 2015  0       693703      0.243     9.93
+## 3 2015  1      1020524      0.357    17.2 
+## 4 2015  2       685534      0.240    12.4 
+## 5 2016  3       489136      0.166     6.91
+## 6 2016  0       676427      0.229     9.43
+## 7 2016  1      1044592      0.354    17.7 
+## 8 2016  2       744827      0.252    12.3
+\end{verbatim}
+
+\hypertarget{quarto-rmd}{%
+\subsection{Quarto and Rmarkdown}\label{quarto-rmd}}
 
 \hypertarget{ggplot}{%
-\chapter{The ggplot2 Package}\label{ggplot}}
+\chapter{The \{ggplot2\} Package}\label{ggplot}}
 
 ADD SHORT HISTORY OF GGPLOT2
 
-When looking into the package description of the \textbf{ggplot2} package, it states the following:
+When looking into the package description of the \textbf{\{ggplot2\}} package, it states the following:
 
 \begin{quote}
-\textbf{ggplot2} is a system for declaratively creating graphics, based on \href{https://link.springer.com/chapter/10.1007/978-3-642-21551-3_13}{The Grammar of Graphics}. You provide the data, tell \textbf{ggplot2} how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
+\textbf{\{ggplot2\}} is a system for declaratively creating graphics, based on \href{https://link.springer.com/chapter/10.1007/978-3-642-21551-3_13}{The Grammar of Graphics}. You provide the data, tell \textbf{\{ggplot2\}} how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
 \end{quote}
 
-A ggplot is built up from a few components:
+The most important insight from that technical description is that (1) it relies on a framework called the grammar of graphics (hence the gg in \textbf{\{ggplot2\}}) and (2) we map variables to aesthetics. This is an important concept when writing \textbf{\{ggplot2\}} code.
+
+\hypertarget{the-structure-of-a-ggplot}{%
+\section{The Structure of a ggplot}\label{the-structure-of-a-ggplot}}
+
+In general, a ggplot is built up from the following components:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -858,13 +1133,13 @@ A ggplot is built up from a few components:
   The raw data that you want to plot.
 \item
   \textbf{Aesthetics} \texttt{aes()}:\\
-  Aesthetics that variables are mapped to such as position, color, size, shape, and transparency
+  The mapping of variables to visual properties, such as position, color, size, shape, and transparency.
 \item
   \textbf{Layers:}\\
-  The geometric shapes (\texttt{geom\_}) that will represent the data or statistical transformation ( `stat\_`)of the data, such as quantiles, fitted curves, and counts.
+  The representation of the data on the plot panel which is a combination of the geometric shapes (\texttt{geom\_}) representing the data and the statistical transformation ( `stat\_`) of the data, such as fitted curves, counts, and data summaries.
 \item
   \textbf{Scales} \texttt{scale\_}:\\
-  Maps between the data and the aesthetic dimensions, such as data range to positional aesthetics or qualitative or quantitative values to colors.
+  The control of the mapping between the data and the aesthetic dimensions, such as data range to positional aesthetics or qualitative or quantitative values to colors.
 \item
   \textbf{Coordinate system} \texttt{coord\_}:\\
   The transformation used for mapping data coordinates into the plane of the graphic.
@@ -878,12 +1153,371 @@ A ggplot is built up from a few components:
 
 The number of elements may vary depending on how you group them and whom you ask. This list is based on the list provided in the \href{https://ggplot2-book.org/introduction.html}{``ggplot2'' book by Hadley Wickham}.
 
-A basic ggplot needs three things that you have to specify: the \emph{data}, \emph{aesthetics}, and a \emph{geometry}. All other components can be added to customize the graphic.
+A basic ggplot needs three things that you have to specify: the \emph{data}, \emph{aesthetics}, and a \emph{layer}. All other components can be further combined and modified to customize your chart.
 
-\hypertarget{default}{%
-\section{A Basic ggplot}\label{default}}
+You can think of a ggplot as a receipt for a dish: it can be based on a few or a diversity of ingredients. Also, you are free to add additional ingredients to spice-up your creation (literally and visually).
 
-First, to be able to use the functionality of \textbf{ggplot2} we have to load the package (which we can also load via the \href{https://www.tidyverse.org/}{tidyverse package collection}):
+Similarly, you can build rather basic charts such as scatter plots or histograms with only a few lines code. But \texttt{\{ggplot2\}} also allows to create rather complex charts that combine multiple geometries, statistical transformations and maybe even data sets. On top, it is up to you how much effort you take to polish the plot. You can rely on the defaults used for data-related aesthetics (e.g.~default axis breaks and color palettes) and non-data aspects (e.g.~complete themes). Or you decide to modify the data-related aesthetics such as axes and color palettes and/or customize the theme elements of your graphic to your needs.
+
+\hypertarget{data-1}{%
+\subsection{Data}\label{data-1}}
+
+No data visualization without data.
+
+\hypertarget{a-walk-through-example}{%
+\chapter{A walk-through example}\label{a-walk-through-example}}
+
+To illustrate the utility and flexibility of \textbf{\{ggplot2\}} to create complex, well-designed visualizations with a handful of components, we are going to create a set of four plots. For each combination of year and time of the day, we draw a scatter plot of bike rents including a linear fitting to show overall trends with feels-like temperature.
+
+The creation of the plot itself will require only four lines of code! One to specify the data and global aesthetics, two for the scatter and fitting, and another one to create small multiples.
+
+With a few more lines of code, we will adjust the labels, add annotations, and apply a custom color palette. Finally, we apply a personalized theme using custom typefaces.
+
+\hypertarget{basics}{%
+\section{Create a basic ggplot}\label{basics}}
+
+Once the \textbf{\{ggplot2\}} package is loaded, we can create a basic ggplot by specifying the \emph{data}, \emph{aesthetics}---the positional mapping of the variables---, and a \emph{geometry} (Fig. \ref{fig:ggplotBasic}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ bikes) }\SpecialCharTok{+} \DocumentationTok{\#\# data}
+  \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count) }\SpecialCharTok{+} \DocumentationTok{\#\# aesthetics}
+  \FunctionTok{geom\_point}\NormalTok{() }\DocumentationTok{\#\# geometric layer}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/ggplotBasic-1.png}
+\caption{\label{fig:ggplotBasic}A basic scatter plot of feels-like temperature and reported TfL bike rents, created with the \{ggplot2\} package.}
+\end{figure}
+
+In most cases, you'll find ggplot code in which the aesthetics are supplied inside the \texttt{ggplot()} call; however, both versions are valid.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ bikes, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+Due to so-called \emph{implicit matching}, we can omit the argument names \texttt{data} and \texttt{mapping} in the \texttt{ggplot()} call as long as we first add the data object and afterwards the \texttt{aes()} function. You can read more about how to specify data and aesthetics in Chapter XYZ.
+
+\hypertarget{layers}{%
+\section{Combine multiple layers}\label{layers}}
+
+One can also add several layers, no matter if geometric shapes or statistical transformations (Fig. \ref{fig:ggplotBasicSmooth})---and this is where the magic and fun starts!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} 
+  \DocumentationTok{\#\# add a GAM smoothing}
+  \FunctionTok{stat\_smooth}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/ggplotBasicSmooth-1.png}
+\caption{\label{fig:ggplotBasicSmooth}The same scatter plot, now with an additional GAM smoothing.}
+\end{figure}
+
+By looking at these scatter plots, we can actually identify two different trends for day and night. We can highlight both groups by mapping the \texttt{day\_night} variable to \texttt{color} (Fig. \ref{fig:ggplotBasicColor}). Note that the mapping is applied to both, \texttt{geom\_point()} and \texttt{geom\_smooth()} and consequently the latter creates two separate smoothings.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count, }\AttributeTok{color =}\NormalTok{ day\_night)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{stat\_smooth}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/ggplotBasicColor-1.png}
+\caption{\label{fig:ggplotBasicColor}The points and smoothing lines colored by the time of the day.}
+\end{figure}
+
+Aesthetics can also be defined for each layer and are then applied locally to the respective geometry or statistical transformation only. The \texttt{group} aesthetics allows to create subsets without changing the visual appearance (in contrast to aesthetics such as \texttt{color} or \texttt{shape}).
+
+Furthermore, each layer has its own arguments to change their behavior and appearance. Let's also add some transparency to the points and turn the smoothing into a linear fitting (Fig. \ref{fig:ggplotBasicAdjustLayers}). As we are not mapping aesthetics but setting properties, we have to place those adjustments outside the \texttt{aes()} call.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{(}
+    \DocumentationTok{\#\# color mapping only applied to points}
+    \FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ day\_night), }
+    \DocumentationTok{\#\# larger points with 50\% opacity}
+    \AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}
+\NormalTok{  ) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_smooth}\NormalTok{(}
+    \DocumentationTok{\#\# invisible grouping to create two trend lines}
+    \FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ day\_night), }
+    \DocumentationTok{\#\# use linear fitting + black smoothing lines}
+    \AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/ggplotBasicAdjustLayers-1.png}
+\caption{\label{fig:ggplotBasicAdjustLayers}We can map aesthetics and define properties for each layer individually.}
+\end{figure}
+
+More information on the different geometries is provided in Chapter XYZ and a deep-dive into the power of statistical transformation is Chapter XYZ. The different aesthetics and the differences of global versus local mapping of aesthetics is explained in Chapter XYZ.
+
+\hypertarget{facets}{%
+\section{Create small multiples}\label{facets}}
+
+A fantastic feature of \textbf{\{ggplot2\}} is it's ability to quickly split a single visualization in a set of so-called \emph{small multiples}: the same visualization, no matter how complex it is, is applied to subsets contained in the same data set. In \textbf{\{ggplot2\}}, such small multiples are called \emph{facets} wich are conditional on the variables defined in the \texttt{facet\_*()} function (Fig. \ref{fig:ggplotFacet}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}
+    \AttributeTok{color =}\NormalTok{ day\_night), }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}
+\NormalTok{  ) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_smooth}\NormalTok{(}
+    \FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ day\_night), }\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \DocumentationTok{\#\# small multiples based on time of the day (rows) and year (columns)}
+  \FunctionTok{facet\_grid}\NormalTok{(day\_night }\SpecialCharTok{\textasciitilde{}}\NormalTok{ year)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/ggplotFacet-1.png}
+\caption{\label{fig:ggplotFacet}With the \texttt{facet} functions, a visualization can quickly be split into small multiples.}
+\end{figure}
+
+Consistency across axes is considered good practice as varying axis ranges are harder to compare and the potential of misleading viewers increases in case the differences keep unnoticed---or even worse are not noticeable. The implementation of facet in \textbf{\{ggplot2\}} ensures consistency across all small multiples by default, as illustrated by the empty space in the lower row as there are no values above \textasciitilde21,000 reported rents during night.
+
+The \texttt{facet} functionality also comes with the option to overwrite the default behavior by ``freeing'' the positional scales. Furthermore, one can ensure equal axis spacing by freeing the space as well (Fig. \ref{fig:ggplotFacetGrid}). This setting allows to efficiently use the available space while ensuring comparability across plots and decreasing the potential of misleading the viewer. The differences between the two ways to create small multiples, namely \texttt{facet\_grid()} and \texttt{facet\_wrap()}, as well as ways to adjust and annotate facets are explained in Chapter XYZ.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{(}
+    \FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ day\_night), }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}
+\NormalTok{  ) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_smooth}\NormalTok{(}
+    \FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ day\_night), }\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{facet\_grid}\NormalTok{(}
+    \DocumentationTok{\#\# free y axis range + scale heights respectively}
+\NormalTok{    day\_night }\SpecialCharTok{\textasciitilde{}}\NormalTok{ year, }\AttributeTok{scales =} \StringTok{"free\_y"}\NormalTok{, }\AttributeTok{space =} \StringTok{"free\_y"}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/ggplotFacetGrid-1.png}
+\caption{\label{fig:ggplotFacetGrid}\{ggplot2\} even allows to free the axis range---while ensuring equal axis spacing.}
+\end{figure}
+
+\hypertarget{axes}{%
+\section{Change the axis scaling}\label{axes}}
+
+For every aesthetic, \textbf{\{ggplot2\}} applies so-called \emph{scales} that translate between variable ranges (data) and property ranges (aesthetic). For the positional axes, a set of \texttt{scale\_x\_*()} and \texttt{scale\_y\_*()} controls their behavior. The \texttt{breaks} argument defines the placement of the axes ticks while the \texttt{labels} argument controls the labels next to those ticks. The labels can be either overwritten by a vector of the same length as the breaks (as for x in our example) or a function that returns a vector based on the breaks (as for y in our example). There are many more arguments such as \texttt{expand} to control the padding towards the ends of the respective axis or \texttt{trans} to transform the scale. You can read more about how to control \texttt{scales} in Chapter XYZ and about label adjustment and styling in Chapter XYZ.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{(}
+    \FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ season), }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}
+\NormalTok{  ) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_smooth}\NormalTok{(}
+    \FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ day\_night), }\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{facet\_grid}\NormalTok{(}
+\NormalTok{    day\_night }\SpecialCharTok{\textasciitilde{}}\NormalTok{ year, }\AttributeTok{scales =} \StringTok{"free\_y"}\NormalTok{, }\AttributeTok{space =} \StringTok{"free\_y"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \DocumentationTok{\#\# x axis: add °C symbol + 5°C spacing}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}
+    \AttributeTok{breaks =} \SpecialCharTok{{-}}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\SpecialCharTok{*}\DecValTok{5}\NormalTok{, }\AttributeTok{labels =} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{paste0}\NormalTok{(x, }\StringTok{"°C"}\NormalTok{), }\AttributeTok{expand =} \FunctionTok{c}\NormalTok{(}\AttributeTok{mult =} \DecValTok{0}\NormalTok{, }\AttributeTok{add =} \DecValTok{1}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \DocumentationTok{\#\# y axis: add a thousand separator + consistent spacing across rows}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}
+    \AttributeTok{breaks =} \DecValTok{0}\SpecialCharTok{:}\DecValTok{5}\SpecialCharTok{*}\DecValTok{10000}\NormalTok{, }\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{label\_comma}\NormalTok{(), }\AttributeTok{expand =} \FunctionTok{c}\NormalTok{(}\AttributeTok{mult =}\NormalTok{ .}\DecValTok{1}\NormalTok{, }\AttributeTok{add =} \DecValTok{0}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/ggplotLabelsAxes-1.png}
+\caption{\label{fig:ggplotLabelsAxes}To adjust the formatting of axis labels, the respective axis needs to be addressed via the \texttt{scale\_*()} functions.}
+\end{figure}
+
+\hypertarget{colors}{%
+\section{Use a custom color palette}\label{colors}}
+
+The \texttt{scales} do not only control the behavior of the axes but also all other aesthetics such as \texttt{color}, \texttt{shape} or \texttt{alpha}. In case of categorical colors, scale\_color\_manual() enables us to overwrite the default color set by passing a vector of colors.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g1 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{(}
+    \FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ season), }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}
+\NormalTok{  ) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_smooth}\NormalTok{(}
+    \FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ day\_night), }\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{facet\_grid}\NormalTok{(}
+\NormalTok{    day\_night }\SpecialCharTok{\textasciitilde{}}\NormalTok{ year, }\AttributeTok{scales =} \StringTok{"free\_y"}\NormalTok{, }\AttributeTok{space =} \StringTok{"free\_y"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}
+    \AttributeTok{breaks =} \SpecialCharTok{{-}}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\SpecialCharTok{*}\DecValTok{5}\NormalTok{, }\AttributeTok{labels =} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{paste0}\NormalTok{(x, }\StringTok{"°C"}\NormalTok{), }\AttributeTok{expand =} \FunctionTok{c}\NormalTok{(}\AttributeTok{mult =} \DecValTok{0}\NormalTok{, }\AttributeTok{add =} \DecValTok{1}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}
+    \AttributeTok{breaks =} \DecValTok{0}\SpecialCharTok{:}\DecValTok{5}\SpecialCharTok{*}\DecValTok{10000}\NormalTok{, }\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{label\_comma}\NormalTok{(), }\AttributeTok{expand =} \FunctionTok{c}\NormalTok{(}\AttributeTok{mult =}\NormalTok{ .}\DecValTok{1}\NormalTok{, }\AttributeTok{add =} \DecValTok{0}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \DocumentationTok{\#\# use a custom color palette for season colors}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}
+    \AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#3c89d9"}\NormalTok{, }\StringTok{"\#1ec99b"}\NormalTok{, }\StringTok{"\#F7B01B"}\NormalTok{, }\StringTok{"\#a26e7c"}\NormalTok{)}
+\NormalTok{  )}
+
+\NormalTok{g1}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown_files/figure-latex/ggplotColors-1.png}
+
+The colors will be applied in order, i.e.~the levels of the factor or alphabetical in case of character variables. To ensure correct mapping, one can also use a named vector.
+
+You will learn more about the different color and fill scales and how to manipulate colors in Chapter XYZ. The chapter also features an example how to create a corporate color or fill scale to ensure consistent color use.
+
+Furthermore, we are storing the current plot in an object named \texttt{g1}. This \texttt{ggplot} object can be extended afterwards. Storing intermediate ggplot outputs is especially helpful if the code becomes rather long and in case you have multiple variants of the same chart, for example when building up a chart stepwise. Another common use case is the creation of graphics in multiple languages.
+
+\hypertarget{labels}{%
+\section{Adjust labels}\label{labels}}
+
+For now, we have ignored that \textbf{\{ggplot2\}} uses the variable names as specified in our \texttt{bikes} object for data-related labels. Resist the temptation to change the variable names in your original data set! We can easily overwrite those by referring to the respective aesthetic (\texttt{x}, \texttt{y}, and \texttt{color}) in the \texttt{labs()} function which we add to our plot. Here, we can also specify a title, subtitle, caption, and tag (subtitle and tag are not shown in the following example; Fig. \ref{fig:ggplotLabels}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g2 }\OtherTok{\textless{}{-}}\NormalTok{ g1 }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \DocumentationTok{\#\# overwrite axis and legend titles}
+    \AttributeTok{x =} \StringTok{"Average Feels{-}Like Temperature"}\NormalTok{, }\AttributeTok{y =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{color =} \ConstantTok{NULL}\NormalTok{,}
+    \DocumentationTok{\#\# add plot title and caption}
+    \AttributeTok{title =} \StringTok{"Trends of reported bike rents versus feels{-}like temperature in London."}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"Data: TfL (Transport for London), Jan 2015–Dec 2016"}
+\NormalTok{  )}
+
+\NormalTok{g2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/ggplotLabels-1.png}
+\caption{\label{fig:ggplotLabels}We can overwrite the default labels with the \texttt{labs()} which also allows to add a title, subtitle, caption, and tag to the graphic.}
+\end{figure}
+
+Let's also overwrite the cryptic numeric encoding of the seasons. Similar to the positional scales, we can pass a vector or function to the \texttt{labels} argument in the \texttt{scale\_color\_*()} component:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g3 }\OtherTok{\textless{}{-}}\NormalTok{ g2 }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}
+    \AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#3c89d9"}\NormalTok{, }\StringTok{"\#1ec99b"}\NormalTok{, }\StringTok{"\#F7B01B"}\NormalTok{, }\StringTok{"\#a26e7c"}\NormalTok{),}
+    \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Winter"}\NormalTok{, }\StringTok{"Spring"}\NormalTok{, }\StringTok{"Summer"}\NormalTok{, }\StringTok{"Autumn"}\NormalTok{)}
+\NormalTok{  )}
+
+\NormalTok{g3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/legendLabels-1.png}
+\caption{\label{fig:legendLabels}By passing a vector of the same length as there are seasons to the \texttt{labels} argument of the \texttt{scale\_color\_*()} function, we can overwrite the labels used in the legend.}
+\end{figure}
+
+Note that the code is returning a message informing you that the present color scale has been replaced. As you can only apply one scale per aesthetic, we also have to pass the color vector again to use the custom colors from before.
+
+\hypertarget{themes}{%
+\section{Apply a complete theme}\label{themes}}
+
+\textbf{\{ggplot2\}} comes with a set of so-called \emph{complete themes}. We can add one of these to overwrite the default theme\_grey() by one of the others (run \texttt{?theme\_grey} for a full list of available complete themes).
+
+When adding a theme to a ggplot, we can already overwrite the \texttt{base\_size} of the theme elements, which translates to the size of text labels and line widths. Furthermore, we can set a non-default typeface by supplying a locally installed typeface in the \texttt{base\_family} argument.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g3 }\SpecialCharTok{+}
+  \DocumentationTok{\#\# add theme with a custom font + larger element sizes}
+  \FunctionTok{theme\_light}\NormalTok{(}
+    \AttributeTok{base\_size =} \DecValTok{12}\NormalTok{, }\AttributeTok{base\_family =} \StringTok{"Cabinet Grotesk"}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/ggplotThemeComplete-1.png}
+\caption{\label{fig:ggplotThemeComplete}The graphic now comes with a new look and a non-default font used for all text labels.}
+\end{figure}
+
+\hypertarget{theming}{%
+\section{Customize the theme}\label{theming}}
+
+The complete themes follow a set of rules that overwrite the choices made for the default \texttt{theme\_grey()}. By using a \texttt{theme()} call after (!) adding a complete theme, one can adjust the appearance of single elements (e.g.~\texttt{plot.title} or \texttt{panel.grid.major.x}) as well as set some pre-set options such as the positions of titles, captions and legends (\texttt{plot.title.position}, \texttt{plot.caption.position} and \texttt{legend.position}).
+
+In general, theme elements can be of class text (e.g.~\texttt{plot.title}), line (e.g.~\texttt{panel.grid.major.x}), or rectangle (e.g.~\texttt{panel.background}). In addition, we can use \texttt{element\_blank()} to remove an element entirely as set for \texttt{panel.grid.minor} in our example.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g3 }\SpecialCharTok{+}
+  \FunctionTok{theme\_light}\NormalTok{(}
+    \AttributeTok{base\_size =} \DecValTok{12}\NormalTok{, }\AttributeTok{base\_family =} \StringTok{"Cabinet Grotesk"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \DocumentationTok{\#\# theme adjustments}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{plot.title.position =} \StringTok{"plot"}\NormalTok{, }\DocumentationTok{\#\# left{-}align title}
+    \AttributeTok{plot.caption.position =} \StringTok{"plot"}\NormalTok{, }\DocumentationTok{\#\# right{-}align title}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{face =} \StringTok{"bold"}\NormalTok{, }\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(}\FloatTok{1.3}\NormalTok{)), }\DocumentationTok{\#\# larger bold title}
+    \AttributeTok{axis.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{family =} \StringTok{"Tabular"}\NormalTok{), }\DocumentationTok{\#\# monospaced font for axes}
+    \AttributeTok{axis.title.x =} \FunctionTok{element\_text}\NormalTok{( }\DocumentationTok{\#\# left{-}aligned, grey x axis label}
+      \AttributeTok{hjust =} \DecValTok{0}\NormalTok{, }\AttributeTok{color =} \StringTok{"grey30"}\NormalTok{, }\AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{t =} \DecValTok{12}\NormalTok{)}
+\NormalTok{    ),}
+    \AttributeTok{strip.text =} \FunctionTok{element\_text}\NormalTok{( }\DocumentationTok{\#\# larger bold facet labels}
+      \AttributeTok{face =} \StringTok{"bold"}\NormalTok{, }\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(}\FloatTok{1.15}\NormalTok{)}
+\NormalTok{    ),}
+    \AttributeTok{panel.grid.major.x =} \FunctionTok{element\_blank}\NormalTok{(), }\DocumentationTok{\#\# no vertical grid lines}
+    \AttributeTok{panel.grid.minor =} \FunctionTok{element\_blank}\NormalTok{(), }\DocumentationTok{\#\# no minor grid lines}
+    \AttributeTok{legend.position =} \StringTok{"top"}\NormalTok{, }\DocumentationTok{\#\# place legend above plot}
+    \AttributeTok{legend.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(}\DecValTok{1}\NormalTok{)) }\DocumentationTok{\#\# larger legend labels}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/ggplotThemeAdjustments-1.png}
+\caption{\label{fig:ggplotThemeAdjustments}After applying on of the complete themes, one can further style the theme to the personal needs.}
+\end{figure}
+
+The book covers themes in full detail in Chapter XYZ. Here you learn how to leverage complete themes, which other complete themes are provided by extension packages, and how to create your own custom, corporate theme to apply a cohesive and easily reproducible style to all of your graphics.
+
+RECAP
+
+LEAD OVER TO NEXT CHAPTER
+
+\hypertarget{the-concepts-of-ggplot2}{%
+\chapter{The Concepts of \{ggplot2\}}\label{the-concepts-of-ggplot2}}
+
+Creating a basic ggplot
+
+First, to be able to use the functionality of ggplot2 we have to load the package (which we can also load via the tidyverse package collection):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -892,37 +1526,37 @@ First, to be able to use the functionality of \textbf{ggplot2} we have to load t
 \end{Highlighting}
 \end{Shaded}
 
-The syntax of \textbf{ggplot2} is very different from plotting functionality of provided by base R. We always start to define a plotting object by calling \texttt{ggplot(data\ =\ df)} which just tells \textbf{ggplot2} that we are going to work with that data. In most cases, you might want to plot two variables---one on the x and one on the y axis. These are \emph{positional aesthetics} and thus we add \texttt{aes(x\ =\ var1,\ y\ =\ var2)} to the \texttt{ggplot()} call (yes, the \texttt{aes()} stands for aesthetics). However, there are also cases where one has to specify only one or even three or more variables.
+The syntax of ggplot2 is very different from plotting functionality of provided by base R. We always start to define a plotting object by calling ggplot(data = df) which just tells ggplot2 that we are going to work with that data. In most cases, you might want to plot two variables---one on the x and one on the y axis. These are positional aesthetics and thus we add aes(x = var1, y = var2) to the ggplot() call (yes, the aes() stands for aesthetics). However, there are also cases where one has to specify only one or even three or more variables.
 
-We specify the data outside \texttt{aes()} and add the variables that ggplot maps the aesthetics to inside \texttt{aes()}.
+We specify the data outside aes() and add the variables that ggplot maps the aesthetics to inside aes().
 
-Here, we map the variable \texttt{date} to the x position and the variable \texttt{temp} to the y position. Later, we will also map variables to all kind of other aesthetics such as color, size, and shape.
+Here, we map the variable date to the x position and the variable temp to the y position. Later, we will also map variables to all kind of other aesthetics such as color, size, and shape.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ bikes, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ count))}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ bikes, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count))}
 \end{Highlighting}
 \end{Shaded}
 
-Only a panel is created when running this. Why? This is because \textbf{ggplot2} does not know \emph{how} we want to plot that data---we still need to provide a geometry!
+Only a panel is created when running this. Why? This is because ggplot2 does not know how we want to plot that data---we still need to provide a geometry!
 
-\textbf{ggplot2} allows you to store the current \texttt{ggobject} in a variable of your choice by assigning it to a variable, in our case called \texttt{g}. You can extend this \texttt{ggobject} later by adding other layers, either all at once or by assigning it to the same or another variable.
+ggplot2 allows you to store the current ggobject in a variable of your choice by assigning it to a variable, in our case called g. You can extend this ggobject later by adding other layers, either all at once or by assigning it to the same or another variable.
 
-Thanks to \emph{implicit matching} we can rewrite the code as follows: \texttt{ggplot(bikes,\ aes(date,\ count))}. But be aware that the order matters! I suggest to use a mixture if you feel confident to do so.
+Thanks to implicit matching we can rewrite the code as follows: ggplot(bikes, aes(date, count)). But be aware that the order matters! I suggest to use a mixture if you feel confident to do so.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ count))}
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count))}
 \end{Highlighting}
 \end{Shaded}
 
-Omitting the arguments \texttt{data} and \texttt{mapping} saves you a ton of typing when creating dozens to hundreds ggplot's per day but being specific about \texttt{x} and \texttt{y} is a good idea. This is the syntax I am using throughout the book.
+Omitting the arguments data and mapping saves you a ton of typing when creating dozens to hundreds ggplot's per day but being specific about x and y is a good idea. This is the syntax I am using throughout the book.
 
-There are many, many different geometries (called \emph{geoms} because each function usually starts with \texttt{geom\_}) one can add to a ggplot by default (see \href{https://ggplot2.tidyverse.org/reference/}{here} for a full list) and even more provided by extension packages (see \href{https://exts.ggplot2.tidyverse.org/}{here} for a collection of extension packages). Let's tell \textbf{ggplot2} which style we want to use, for example by adding \texttt{geom\_point()} to create a scatter plot:
+There are many, many different geometries (called geoms because each function usually starts with geom\_) one can add to a ggplot by default (see here for a full list) and even more provided by extension packages (see here for a collection of extension packages). Let's tell ggplot2 which style we want to use, for example by adding geom\_point() to create a scatter plot:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
   \FunctionTok{geom\_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -937,7 +1571,7 @@ One can also combine several geometric layers---and this is where the magic and 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
   \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} 
   \FunctionTok{geom\_smooth}\NormalTok{()}
 \end{Highlighting}
@@ -949,16 +1583,15 @@ One can also combine several geometric layers---and this is where the magic and 
 \caption{\label{fig:ggplot-default-line-point}Again, the same data, now shown as a connected scatterplot as a combination of points and lines.}
 \end{figure}
 
-That's it for now about geometries. No worries, we are going to learn several plot types in Chapter \texttt{charts}.
+That's it for now about geometries. No worries, we are going to learn several plot types in Chapter charts.
 
-\hypertarget{prop}{%
-\section{Change Properties of Geometries}\label{prop}}
+Change Properties of Geometries
 
-Within the \texttt{geom\_*} command, you already can manipulate visual aesthetics such as the color, shape, and size of your points. Let's turn all points to large fire-red diamonds!
+Within the geom\_* command, you already can manipulate visual aesthetics such as the color, shape, and size of your points. Let's turn all points to large fire-red diamonds!
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
   \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"firebrick"}\NormalTok{, }\AttributeTok{shape =} \StringTok{"diamond"}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -969,25 +1602,25 @@ Within the \texttt{geom\_*} command, you already can manipulate visual aesthetic
 \caption{\label{fig:ggplot-default-col-size-shape}We can change the appearance of the geometry, here illustrated by turning the black dots in larger, red diamonds.}
 \end{figure}
 
-\textbf{ggplot2} understands both \texttt{color} and \texttt{colour} as well as the short version \texttt{col}.
+ggplot2 understands both color and colour as well as the short version col.
 
-You can use preset colors (here is a \href{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}{full list}) or \href{https://www.techopedia.com/definition/29788/color-hex-code}{hex color codes}, both in quotes, and even RGB/RGBA colors by using the \texttt{rgb()} function.
+You can use preset colors (here is a full list) or hex color codes, both in quotes, and even RGB/RGBA colors by using the rgb() function.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
   \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"\#b22222"}\NormalTok{, }\AttributeTok{shape =} \StringTok{"diamond"}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}\NormalTok{)}
 
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
   \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \FunctionTok{rgb}\NormalTok{(}\DecValTok{178}\NormalTok{, }\DecValTok{34}\NormalTok{, }\DecValTok{34}\NormalTok{, }\AttributeTok{maxColorValue =} \DecValTok{255}\NormalTok{), }\AttributeTok{shape =} \StringTok{"diamond"}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-Each geom comes with its own properties (called \emph{arguments}) and the same argument may result in a different change depending on the geom you are using.
+Each geom comes with its own properties (called arguments) and the same argument may result in a different change depending on the geom you are using.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
     \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"firebrick"}\NormalTok{, }\AttributeTok{shape =} \StringTok{"diamond"}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+} 
     \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{formula =}\NormalTok{ y  }\SpecialCharTok{\textasciitilde{}}\FunctionTok{poly}\NormalTok{(x, }\DecValTok{4}\NormalTok{), }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{, }
                 \AttributeTok{color =} \StringTok{"gray40"}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}\NormalTok{)}
@@ -1000,18 +1633,17 @@ Each geom comes with its own properties (called \emph{arguments}) and the same a
 \caption{\label{fig:ggplot-default-line-col-size-shape}You can style each geometrical layer on its own. Each geometry also comes with a set of individual properties.}
 \end{figure}
 
-\hypertarget{mapping-data-to-aesthetics}{%
-\section{Mapping Data to Aesthetics}\label{mapping-data-to-aesthetics}}
+Mapping Data to Aesthetics
 
-You already have seen two \emph{positional aesthetics}, \texttt{x} and \texttt{y} that can be used in combination with the \texttt{aes()} function to map variables to the x- and y-axis, respectively. There are many more aesthetic attributes we are going to use throughout the book. Some are related to positions such as \texttt{ymin} and \texttt{ymax} while others change the appearance of the layer based on the variables they are mapped to such as \texttt{color} and \texttt{shape}.
+You already have seen two positional aesthetics, x and y that can be used in combination with the aes() function to map variables to the x- and y-axis, respectively. There are many more aesthetic attributes we are going to use throughout the book. Some are related to positions such as ymin and ymax while others change the appearance of the layer based on the variables they are mapped to such as color and shape.
 
-As with the \texttt{x} and \texttt{y}, the mapping needs to be wrapped into \texttt{aes()} so that ggplot knows that you are referring to columns of your data set. There are two different levels on which you can apply aesthetic mappings: either for all layers or for individual layers only.
+As with the x and y, the mapping needs to be wrapped into aes() so that ggplot knows that you are referring to columns of your data set. There are two different levels on which you can apply aesthetic mappings: either for all layers or for individual layers only.
 
-In case we want to color our points based on the period of the day to reveal the two patterns, we add \texttt{aes(color\ =\ day\_night)} to our point layer \texttt{geom\_point()}:
+In case we want to color our points based on the period of the day to reveal the two patterns, we add aes(color = day\_night) to our point layer geom\_point():
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
   \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ day\_night)) }\SpecialCharTok{+}
   \FunctionTok{geom\_smooth}\NormalTok{()}
 \end{Highlighting}
@@ -1023,11 +1655,11 @@ In case we want to color our points based on the period of the day to reveal the
 \caption{\label{fig:ggplot-aes-layer}By applying aesthetic mapping to the \texttt{day\_night} variable in the point layers, the two groups can be identified. Note that \textbf{ggplot2} automatically adds a legend to the plot.}
 \end{figure}
 
-By supplying the aesthetic mapping inside \texttt{ggplot()} all layers are applying the same mapping. Consequently, the grouping and coloring is also used for the smoothing:
+By supplying the aesthetic mapping inside ggplot() all layers are applying the same mapping. Consequently, the grouping and coloring is also used for the smoothing:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ count, }\AttributeTok{color =}\NormalTok{ day\_night)) }\SpecialCharTok{+} 
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count, }\AttributeTok{color =}\NormalTok{ day\_night)) }\SpecialCharTok{+} 
   \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
   \FunctionTok{geom\_smooth}\NormalTok{()}
 \end{Highlighting}
@@ -1039,17 +1671,17 @@ By supplying the aesthetic mapping inside \texttt{ggplot()} all layers are apply
 \caption{\label{fig:ggplot-aes-parent}Both, the points and the smoothing lines are encoded by daytime. Because of that, the smoothing is hard to see and best visible in the legend.}
 \end{figure}
 
-The aesthetic mapping to both, \texttt{geom\_point()} and \texttt{geom\_smooth()}, is also reflected in the legend which now shows points, lines, and ribbons.
+The aesthetic mapping to both, geom\_point() and geom\_smooth(), is also reflected in the legend which now shows points, lines, and ribbons.
 
-Note that you can overwrite the mapping specified in \texttt{ggplot()} in individual layers by either supplying a fixed value to that property:
+Note that you can overwrite the mapping specified in ggplot() in individual layers by either supplying a fixed value to that property:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ count, }\AttributeTok{color =}\NormalTok{ day\_night)) }\SpecialCharTok{+} 
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count, }\AttributeTok{color =}\NormalTok{ day\_night)) }\SpecialCharTok{+} 
   \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{geom\_smooth}\NormalTok{()}
 
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ count, }\AttributeTok{color =}\NormalTok{ day\_night)) }\SpecialCharTok{+} 
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count, }\AttributeTok{color =}\NormalTok{ day\_night)) }\SpecialCharTok{+} 
   \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
   \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{color =} \StringTok{"black"}\NormalTok{)}
 \end{Highlighting}
@@ -1061,16 +1693,15 @@ Note that you can overwrite the mapping specified in \texttt{ggplot()} in indivi
 \caption{\label{fig:ggplot-aes-parent-overwrite-plot}Overwriting the color encoding in the point (left) or the smoothing (right). Note that the grouping is removed as well which changes the behaviour of the smoothing geom.}
 \end{figure}
 
-\hypertarget{theme}{%
-\section{\texorpdfstring{Replace the default \textbf{ggplot2} theme}{Replace the default ggplot2 theme}}\label{theme}}
+Replace the default ggplot2 theme
 
-And to illustrate some more of ggplot's versatility, let's get rid of the grayish default \textbf{ggplot2} look by setting a different built-in theme, e.g.~\texttt{theme\_bw()}. One can add a theme directly to a ggplot composition or setting a theme globally---by calling \texttt{theme\_set()} all following plots will have the same black'n'white theme. In the same step, we can also increase the \texttt{base\_size} of the plot elements. The default base size is 11 and tends to be too small, at least for my workflow.
+And to illustrate some more of ggplot's versatility, let's get rid of the grayish default ggplot2 look by setting a different built-in theme, e.g.~theme\_bw(). One can add a theme directly to a ggplot composition or setting a theme globally---by calling theme\_set() all following plots will have the same black'n'white theme. In the same step, we can also increase the base\_size of the plot elements. The default base size is 11 and tends to be too small, at least for my workflow.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{theme\_set}\NormalTok{(}\FunctionTok{theme\_bw}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{16}\NormalTok{))}
 
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ count, }\AttributeTok{color =}\NormalTok{ day\_night)) }\SpecialCharTok{+} 
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count, }\AttributeTok{color =}\NormalTok{ day\_night)) }\SpecialCharTok{+} 
   \FunctionTok{geom\_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -1081,65 +1712,17 @@ And to illustrate some more of ggplot's versatility, let's get rid of the grayis
 \caption{\label{fig:remove-gray-background}We can change the appearance for all following plots generated with \textbf{ggplot2} by globally setting another theme via \texttt{theme\_set()}.}
 \end{figure}
 
-You can find more on how to use built-in themes and how to customize themes in the section \texttt{themes}. From the next chapter on, we will also use the \texttt{theme()} function to customize particular elements of the theme.
+You can find more on how to use built-in themes and how to customize themes in the section themes. From the next chapter on, we will also use the theme() function to customize particular elements of the theme.
 
-\texttt{theme()} is an essential command to manually modify all kinds of theme elements (texts, rectangles, and lines). To see which details of a ggplot theme can be modified have a look \href{https://ggplot2.tidyverse.org/reference/theme.html}{here}---and take some time, this is a looong list.
+theme() is an essential command to manually modify all kinds of theme elements (texts, rectangles, and lines). To see which details of a ggplot theme can be modified have a look here---and take some time, this is a looong list.
 
-\hypertarget{export}{%
-\section{\texorpdfstring{Export \textbf{ggplot2} as graphic files}{Export ggplot2 as graphic files}}\label{export}}
+Export ggplot2 as graphic files
 
 \hypertarget{part-how-to-polish-your-graphics}{%
 \part{How To Polish Your Graphics}\label{part-how-to-polish-your-graphics}}
 
 \hypertarget{polish}{%
 \chapter{Quick Steps to Improve Your Graphic}\label{polish}}
-
-\hypertarget{text}{%
-\chapter{Working with Text}\label{text}}
-
-\hypertarget{titles}{%
-\section{Titles}\label{titles}}
-
-By default, \textbf{ggplot2} uses the column names specified for the aesthetic mappings as titles. That means, one could overwrite the column names in the source data. Usually the names are optimized for developing code (i.e.~they contain no white spaces or unusual symbols) and it is better to leave them as they are. Also, the columns might be addressed somewhere else in the script and overwriting their names sounds like a bad idea in such a case.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ count, }\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{color =}\NormalTok{ day\_night)) }\SpecialCharTok{+} 
-  \FunctionTok{geom\_point}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{bookdown_files/figure-latex/axis-labs-default-1.png}
-
-Let's add some well-written labels to the axes and legend without changing the input object. For this, we add the \texttt{labs()} function and provide a character string for each label we want to change (here \texttt{x}, \texttt{y}, and \texttt{color}):
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ count, }\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{color =}\NormalTok{ day\_night)) }\SpecialCharTok{+} 
-  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Temperature"}\NormalTok{, }
-       \AttributeTok{y =} \StringTok{"Counts of bikes shared per time period"}\NormalTok{,}
-       \AttributeTok{color =} \StringTok{"Period of the day"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{bookdown_files/figure-latex/axis-labs-1.png}
-
-You can also add each axis title via \texttt{xlab()} and \texttt{ylab()} to specify each label individually. However, I recommend to use the \texttt{labs()} as (a) it allows you to add more labels to your plot and (b) collects all labels in one place.
-
-By adding \texttt{\textbackslash{}n} to a string you force a line break. Usually you can also specify symbols by simply adding the symbol itself (here ``°''). In case you want to add more complex expressions you can use the \texttt{expression()} function. Here we use it in combination with \texttt{paste()} to concatenate multiple strings. With this approach we can for example add superscripts:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ count, }\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{color =}\NormalTok{ day\_night)) }\SpecialCharTok{+} 
-  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Temperature (°C)"}\SpecialCharTok{\^{}}\StringTok{"(precisely the average air temperature)"}\NormalTok{)),}
-       \AttributeTok{y =} \StringTok{"Counts of bikes shared per time period"}\NormalTok{,}
-       \AttributeTok{color =} \StringTok{"Period of}\SpecialCharTok{\textbackslash{}n}\StringTok{the day"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{bookdown_files/figure-latex/axis-labs-expression-1.png}
 
 \hypertarget{axes}{%
 \chapter{Working with Axes}\label{axes}}
@@ -1449,6 +2032,53 @@ Sometimes it is handy to alter your labels a little, perhaps adding units or per
 \item
   work with scale\_*\_date()
 \end{itemize}
+
+\hypertarget{text}{%
+\chapter{Working with Text}\label{text}}
+
+\hypertarget{titles}{%
+\section{Titles}\label{titles}}
+
+By default, \textbf{ggplot2} uses the column names specified for the aesthetic mappings as titles. That means, one could overwrite the column names in the source data. Usually the names are optimized for developing code (i.e.~they contain no white spaces or unusual symbols) and it is better to leave them as they are. Also, the columns might be addressed somewhere else in the script and overwriting their names sounds like a bad idea in such a case.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ count, }\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{color =}\NormalTok{ day\_night)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown_files/figure-latex/axis-labs-default-1.png}
+
+Let's add some well-written labels to the axes and legend without changing the input object. For this, we add the \texttt{labs()} function and provide a character string for each label we want to change (here \texttt{x}, \texttt{y}, and \texttt{color}):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ count, }\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{color =}\NormalTok{ day\_night)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Temperature"}\NormalTok{, }
+       \AttributeTok{y =} \StringTok{"Counts of bikes shared per time period"}\NormalTok{,}
+       \AttributeTok{color =} \StringTok{"Period of the day"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown_files/figure-latex/axis-labs-1.png}
+
+You can also add each axis title via \texttt{xlab()} and \texttt{ylab()} to specify each label individually. However, I recommend to use the \texttt{labs()} as (a) it allows you to add more labels to your plot and (b) collects all labels in one place.
+
+By adding \texttt{\textbackslash{}n} to a string you force a line break. Usually you can also specify symbols by simply adding the symbol itself (here ``°''). In case you want to add more complex expressions you can use the \texttt{expression()} function. Here we use it in combination with \texttt{paste()} to concatenate multiple strings. With this approach we can for example add superscripts:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ count, }\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{color =}\NormalTok{ day\_night)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \FunctionTok{expression}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Temperature (°C)"}\SpecialCharTok{\^{}}\StringTok{"(precisely the average air temperature)"}\NormalTok{)),}
+       \AttributeTok{y =} \StringTok{"Counts of bikes shared per time period"}\NormalTok{,}
+       \AttributeTok{color =} \StringTok{"Period of}\SpecialCharTok{\textbackslash{}n}\StringTok{the day"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown_files/figure-latex/axis-labs-expression-1.png}
 
 \cleardoublepage
 

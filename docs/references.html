@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>References | Graphic Design with ggplot2</title>
   <meta name="description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="References | Graphic Design with ggplot2" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
   <meta name="github-repo" content="z3tt/graphic-design-ggplot2" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Cédric Scherer" />
 
 
-<meta name="date" content="2022-04-27" />
+<meta name="date" content="2022-12-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="more-to-say.html"/>
 
-<script src="libs/header-attrs/header-attrs.js"></script>
 <script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -52,6 +50,7 @@
 
 
 <link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/kePrint/kePrint.js"></script>
 <link href="libs/lightable/lightable.css" rel="stylesheet" />
@@ -95,7 +94,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -108,7 +107,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -181,28 +180,40 @@ div.csl-indent {
 <li class="chapter" data-level="2.1" data-path="get-started.html"><a href="get-started.html#data"><i class="fa fa-check"></i><b>2.1</b> The Data</a></li>
 <li class="chapter" data-level="2.2" data-path="get-started.html"><a href="get-started.html#rstats"><i class="fa fa-check"></i><b>2.2</b> Working in R</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="get-started.html"><a href="get-started.html#import-data"><i class="fa fa-check"></i><b>2.2.1</b> Import data</a></li>
-<li class="chapter" data-level="2.2.2" data-path="get-started.html"><a href="get-started.html#inspect-data"><i class="fa fa-check"></i><b>2.2.2</b> Inspect data</a></li>
-<li class="chapter" data-level="2.2.3" data-path="get-started.html"><a href="get-started.html#data-types"><i class="fa fa-check"></i><b>2.2.3</b> Data types</a></li>
-<li class="chapter" data-level="2.2.4" data-path="get-started.html"><a href="get-started.html#data-wrangling"><i class="fa fa-check"></i><b>2.2.4</b> Data wrangling</a></li>
+<li class="chapter" data-level="2.2.1" data-path="get-started.html"><a href="get-started.html#import"><i class="fa fa-check"></i><b>2.2.1</b> Import data</a></li>
+<li class="chapter" data-level="2.2.2" data-path="get-started.html"><a href="get-started.html#workflows"><i class="fa fa-check"></i><b>2.2.2</b> Project-oriented workflows</a></li>
+<li class="chapter" data-level="2.2.3" data-path="get-started.html"><a href="get-started.html#inspect"><i class="fa fa-check"></i><b>2.2.3</b> Inspect data</a></li>
+<li class="chapter" data-level="2.2.4" data-path="get-started.html"><a href="get-started.html#classes"><i class="fa fa-check"></i><b>2.2.4</b> Data types</a></li>
+<li class="chapter" data-level="2.2.5" data-path="get-started.html"><a href="get-started.html#wrangling"><i class="fa fa-check"></i><b>2.2.5</b> Data wrangling</a></li>
+<li class="chapter" data-level="2.2.6" data-path="get-started.html"><a href="get-started.html#quarto-rmd"><i class="fa fa-check"></i><b>2.2.6</b> Quarto and Rmarkdown</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="get-started.html"><a href="get-started.html#rmarkdown"><i class="fa fa-check"></i><b>2.3</b> Working with Rmarkdown</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>3</b> The ggplot2 Package</a>
+<li class="chapter" data-level="3" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>3</b> The {ggplot2} Package</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="ggplot.html"><a href="ggplot.html#default"><i class="fa fa-check"></i><b>3.1</b> A Basic ggplot</a></li>
-<li class="chapter" data-level="3.2" data-path="ggplot.html"><a href="ggplot.html#prop"><i class="fa fa-check"></i><b>3.2</b> Change Properties of Geometries</a></li>
-<li class="chapter" data-level="3.3" data-path="ggplot.html"><a href="ggplot.html#mapping-data-to-aesthetics"><i class="fa fa-check"></i><b>3.3</b> Mapping Data to Aesthetics</a></li>
-<li class="chapter" data-level="3.4" data-path="ggplot.html"><a href="ggplot.html#theme"><i class="fa fa-check"></i><b>3.4</b> Replace the default <strong>ggplot2</strong> theme</a></li>
-<li class="chapter" data-level="3.5" data-path="ggplot.html"><a href="ggplot.html#export"><i class="fa fa-check"></i><b>3.5</b> Export <strong>ggplot2</strong> as graphic files</a></li>
+<li class="chapter" data-level="3.1" data-path="ggplot.html"><a href="ggplot.html#the-structure-of-a-ggplot"><i class="fa fa-check"></i><b>3.1</b> The Structure of a ggplot</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="ggplot.html"><a href="ggplot.html#data-1"><i class="fa fa-check"></i><b>3.1.1</b> Data</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html"><i class="fa fa-check"></i><b>4</b> A walk-through example</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#basics"><i class="fa fa-check"></i><b>4.1</b> Create a basic ggplot</a></li>
+<li class="chapter" data-level="4.2" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#layers"><i class="fa fa-check"></i><b>4.2</b> Combine multiple layers</a></li>
+<li class="chapter" data-level="4.3" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#facets"><i class="fa fa-check"></i><b>4.3</b> Create small multiples</a></li>
+<li class="chapter" data-level="4.4" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#axes"><i class="fa fa-check"></i><b>4.4</b> Change the axis scaling</a></li>
+<li class="chapter" data-level="4.5" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#colors"><i class="fa fa-check"></i><b>4.5</b> Use a custom color palette</a></li>
+<li class="chapter" data-level="4.6" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#labels"><i class="fa fa-check"></i><b>4.6</b> Adjust labels</a></li>
+<li class="chapter" data-level="4.7" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#themes"><i class="fa fa-check"></i><b>4.7</b> Apply a complete theme</a></li>
+<li class="chapter" data-level="4.8" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#theming"><i class="fa fa-check"></i><b>4.8</b> Customize the theme</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="the-concepts-of-ggplot2.html"><a href="the-concepts-of-ggplot2.html"><i class="fa fa-check"></i><b>5</b> The Concepts of {ggplot2}</a></li>
 <li class="part"><span><b>I How To Polish Your Graphics</b></span></li>
-<li class="chapter" data-level="4" data-path="polish.html"><a href="polish.html"><i class="fa fa-check"></i><b>4</b> Quick Steps to Improve Your Graphic</a></li>
-<li class="chapter" data-level="5" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>5</b> Working with Text</a>
+<li class="chapter" data-level="6" data-path="polish.html"><a href="polish.html"><i class="fa fa-check"></i><b>6</b> Quick Steps to Improve Your Graphic</a></li>
+<li class="chapter" data-level="7" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#axes"><i class="fa fa-check"></i><b>7</b> Working with Axes</a></li>
+<li class="chapter" data-level="8" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>8</b> Working with Text</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="text.html"><a href="text.html#titles"><i class="fa fa-check"></i><b>5.1</b> Titles</a></li>
+<li class="chapter" data-level="8.1" data-path="text.html"><a href="text.html#titles"><i class="fa fa-check"></i><b>8.1</b> Titles</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="axes.html"><a href="axes.html"><i class="fa fa-check"></i><b>6</b> Working with Axes</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="more-to-say.html"><a href="more-to-say.html"><i class="fa fa-check"></i><b>A</b> More to Say</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -226,8 +237,8 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
+<div id="references" class="section level1 unnumbered hasAnchor">
+<h1>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div class="csl-entry">
@@ -246,10 +257,12 @@ Sciaini, Marco, Matthias Fritsch, Cédric Scherer, and Craig Eric Simpkins. 2018
 Xie, Yihui. 2015. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd ed. Boca Raton, Florida, United States: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/">http://yihui.name/knitr/</a>.
 </div>
 <div class="csl-entry">
-———. 2021. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.
+———. 2022. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.
 </div>
 </div>
 </div>
+
+
 
 
 

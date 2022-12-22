@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Get Started | Graphic Design with ggplot2</title>
   <meta name="description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Get Started | Graphic Design with ggplot2" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
   <meta name="github-repo" content="z3tt/graphic-design-ggplot2" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Cédric Scherer" />
 
 
-<meta name="date" content="2022-04-27" />
+<meta name="date" content="2022-12-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="introduction.html"/>
 <link rel="next" href="ggplot.html"/>
-<script src="libs/header-attrs/header-attrs.js"></script>
 <script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -52,6 +50,7 @@
 
 
 <link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/kePrint/kePrint.js"></script>
 <link href="libs/lightable/lightable.css" rel="stylesheet" />
@@ -95,7 +94,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -108,7 +107,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -181,28 +180,40 @@ div.csl-indent {
 <li class="chapter" data-level="2.1" data-path="get-started.html"><a href="get-started.html#data"><i class="fa fa-check"></i><b>2.1</b> The Data</a></li>
 <li class="chapter" data-level="2.2" data-path="get-started.html"><a href="get-started.html#rstats"><i class="fa fa-check"></i><b>2.2</b> Working in R</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="get-started.html"><a href="get-started.html#import-data"><i class="fa fa-check"></i><b>2.2.1</b> Import data</a></li>
-<li class="chapter" data-level="2.2.2" data-path="get-started.html"><a href="get-started.html#inspect-data"><i class="fa fa-check"></i><b>2.2.2</b> Inspect data</a></li>
-<li class="chapter" data-level="2.2.3" data-path="get-started.html"><a href="get-started.html#data-types"><i class="fa fa-check"></i><b>2.2.3</b> Data types</a></li>
-<li class="chapter" data-level="2.2.4" data-path="get-started.html"><a href="get-started.html#data-wrangling"><i class="fa fa-check"></i><b>2.2.4</b> Data wrangling</a></li>
+<li class="chapter" data-level="2.2.1" data-path="get-started.html"><a href="get-started.html#import"><i class="fa fa-check"></i><b>2.2.1</b> Import data</a></li>
+<li class="chapter" data-level="2.2.2" data-path="get-started.html"><a href="get-started.html#workflows"><i class="fa fa-check"></i><b>2.2.2</b> Project-oriented workflows</a></li>
+<li class="chapter" data-level="2.2.3" data-path="get-started.html"><a href="get-started.html#inspect"><i class="fa fa-check"></i><b>2.2.3</b> Inspect data</a></li>
+<li class="chapter" data-level="2.2.4" data-path="get-started.html"><a href="get-started.html#classes"><i class="fa fa-check"></i><b>2.2.4</b> Data types</a></li>
+<li class="chapter" data-level="2.2.5" data-path="get-started.html"><a href="get-started.html#wrangling"><i class="fa fa-check"></i><b>2.2.5</b> Data wrangling</a></li>
+<li class="chapter" data-level="2.2.6" data-path="get-started.html"><a href="get-started.html#quarto-rmd"><i class="fa fa-check"></i><b>2.2.6</b> Quarto and Rmarkdown</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="get-started.html"><a href="get-started.html#rmarkdown"><i class="fa fa-check"></i><b>2.3</b> Working with Rmarkdown</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>3</b> The ggplot2 Package</a>
+<li class="chapter" data-level="3" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>3</b> The {ggplot2} Package</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="ggplot.html"><a href="ggplot.html#default"><i class="fa fa-check"></i><b>3.1</b> A Basic ggplot</a></li>
-<li class="chapter" data-level="3.2" data-path="ggplot.html"><a href="ggplot.html#prop"><i class="fa fa-check"></i><b>3.2</b> Change Properties of Geometries</a></li>
-<li class="chapter" data-level="3.3" data-path="ggplot.html"><a href="ggplot.html#mapping-data-to-aesthetics"><i class="fa fa-check"></i><b>3.3</b> Mapping Data to Aesthetics</a></li>
-<li class="chapter" data-level="3.4" data-path="ggplot.html"><a href="ggplot.html#theme"><i class="fa fa-check"></i><b>3.4</b> Replace the default <strong>ggplot2</strong> theme</a></li>
-<li class="chapter" data-level="3.5" data-path="ggplot.html"><a href="ggplot.html#export"><i class="fa fa-check"></i><b>3.5</b> Export <strong>ggplot2</strong> as graphic files</a></li>
+<li class="chapter" data-level="3.1" data-path="ggplot.html"><a href="ggplot.html#the-structure-of-a-ggplot"><i class="fa fa-check"></i><b>3.1</b> The Structure of a ggplot</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="ggplot.html"><a href="ggplot.html#data-1"><i class="fa fa-check"></i><b>3.1.1</b> Data</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html"><i class="fa fa-check"></i><b>4</b> A walk-through example</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#basics"><i class="fa fa-check"></i><b>4.1</b> Create a basic ggplot</a></li>
+<li class="chapter" data-level="4.2" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#layers"><i class="fa fa-check"></i><b>4.2</b> Combine multiple layers</a></li>
+<li class="chapter" data-level="4.3" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#facets"><i class="fa fa-check"></i><b>4.3</b> Create small multiples</a></li>
+<li class="chapter" data-level="4.4" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#axes"><i class="fa fa-check"></i><b>4.4</b> Change the axis scaling</a></li>
+<li class="chapter" data-level="4.5" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#colors"><i class="fa fa-check"></i><b>4.5</b> Use a custom color palette</a></li>
+<li class="chapter" data-level="4.6" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#labels"><i class="fa fa-check"></i><b>4.6</b> Adjust labels</a></li>
+<li class="chapter" data-level="4.7" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#themes"><i class="fa fa-check"></i><b>4.7</b> Apply a complete theme</a></li>
+<li class="chapter" data-level="4.8" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#theming"><i class="fa fa-check"></i><b>4.8</b> Customize the theme</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="the-concepts-of-ggplot2.html"><a href="the-concepts-of-ggplot2.html"><i class="fa fa-check"></i><b>5</b> The Concepts of {ggplot2}</a></li>
 <li class="part"><span><b>I How To Polish Your Graphics</b></span></li>
-<li class="chapter" data-level="4" data-path="polish.html"><a href="polish.html"><i class="fa fa-check"></i><b>4</b> Quick Steps to Improve Your Graphic</a></li>
-<li class="chapter" data-level="5" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>5</b> Working with Text</a>
+<li class="chapter" data-level="6" data-path="polish.html"><a href="polish.html"><i class="fa fa-check"></i><b>6</b> Quick Steps to Improve Your Graphic</a></li>
+<li class="chapter" data-level="7" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#axes"><i class="fa fa-check"></i><b>7</b> Working with Axes</a></li>
+<li class="chapter" data-level="8" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>8</b> Working with Text</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="text.html"><a href="text.html#titles"><i class="fa fa-check"></i><b>5.1</b> Titles</a></li>
+<li class="chapter" data-level="8.1" data-path="text.html"><a href="text.html#titles"><i class="fa fa-check"></i><b>8.1</b> Titles</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="axes.html"><a href="axes.html"><i class="fa fa-check"></i><b>6</b> Working with Axes</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="more-to-say.html"><a href="more-to-say.html"><i class="fa fa-check"></i><b>A</b> More to Say</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -226,11 +237,11 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="get-started" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Get Started</h1>
-<div id="data" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> The Data</h2>
-<p>We are using historical data for bike sharing in London in 2015 and 2016, provided by <a href="https://tfl.gov.uk/modes/cycling/santander-cycles"><em>TfL (Transport for London)</em></a>. The data was collected from the TfL data base and is ‘Powered by TfL Open Data.’ The processed data set contains hourly information on the number of rented bikes and was combined with weather data acquired from freemeteo.com. The data was contributed to the <a href="https://www.kaggle.com/hmavrodiev/london-bike-sharing-dataset">Kaggle online community</a> by Hristo Mavrodiev.</p>
+<div id="get-started" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Get Started<a href="get-started.html#get-started" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="data" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> The Data<a href="get-started.html#data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We are using historical data for bike sharing in London in 2015 and 2016, provided by <a href="https://tfl.gov.uk/modes/cycling/santander-cycles"><em>TfL (Transport for London)</em></a>. The data was collected from the TfL data base and is ‘Powered by TfL Open Data’. The processed data set contains hourly information on the number of rented bikes and was combined with weather data acquired from freemeteo.com. The data was contributed to the <a href="https://www.kaggle.com/hmavrodiev/london-bike-sharing-dataset">Kaggle online community</a> by Hristo Mavrodiev.</p>
 <div class="figure"><span style="display:block;" id="fig:img-data-comparison"></span>
 <img src="img/setup-data-comparison-raw-aggregated.png" alt="The original and aggregated data sets in direct comparison: counts of bike shares registered by TfL over time  with month encoded by colour. The left panel shows counts for every hour of the day, while in the right panel the hourly data was aggregated into two periods of the day (day and night)."  />
 <p class="caption">
@@ -239,7 +250,7 @@ FIGURE 2.1: The original and aggregated data sets in direct comparison: counts o
 </div>
 <p>To make the visualizations manageable and patterns more insightful, we are using a modified data set with all variables aggregated for day (6:00am–5:59pm) and night (6:00pm–5:59am) (<a href="get-started.html#fig:img-data-comparison">2.1</a>. The bike counts were summarized while all weather-related variables where averaged. Finally, for the weather type, the most common was used and, in case of a tie, one of the most common types was randomly chosen. The modified data sets contains 14 variables (columns) with 1,454 observations (rows). To give you a better idea what the data set contains, a visual overview of the variables is provided in table <a href="get-started.html#tab:table-bikes-data">2.1</a> and figure <a href="get-started.html#fig:img-data-overview-vars">2.2</a>.</p>
 <p class="comment">
-COMMENT: Decide on a version to provide and overview of the variables as table or list.
+<p>COMMENT: Decide on a version to provide and overview of the variables as table or list.</p>
 </p>
 <div class="figure"><span style="display:block;" id="fig:img-data-overview-vars"></span>
 <img src="img/setup-data-comparison-all-dodge.png" alt="Overview of the distribution of the boolean variables `is_workday`, `is_weekend`, and `is_holiday` (A), the categorical variable `weather_type` (B), and the continuous variables `count`, `temp`, `temp_feel`, `humidity`, and `wind_speed` (C) of the cleaned and aggregated bike sharing data set. In panel C, the correlation between the variables is shown as scatterplot encoded by `timeperiod` (upper triangle) and encoded by point density (lower triangle), highlighting the level of overlap of data points."  />
@@ -249,7 +260,7 @@ FIGURE 2.2: Overview of the distribution of the boolean variables <code>is_workd
 </div>
 <p><br></p>
 <!--
-* `date` — encoded as `YYY-MM-DD`
+* `date` — encoded as `YYYY-MM-DD`
 * `timeperiod` — `day` (6:00am--5:59pm) and `night` (6:00pm--5:59am)
 * `year` — either `2015` or `2016`
 * `month` — `1` (January) to `12` (December)
@@ -394,98 +405,283 @@ Most common weather typed
 </tbody>
 </table>
 </div>
-<div id="rstats" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Working in R</h2>
-<p><strong>ggplot2</strong> can be used even if you know little about the R programming language. However, the knowledge of certain basic principles is at least helpful and probably indispensable for advanced plots. This section will give you a short overview of workflows and the very basics needed. The overview makes use of the <strong>tidyverse</strong>, a package collection designed for data science in R. However, multiple other options exist to import, inspect, and wrangle your data if you prefer not to work with the <strong>tidyverse</strong> for these steps<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
-<div id="import-data" class="section level3" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> Import data</h3>
-<p>You need to import data to be able to work with it in the current session. The data can be imported from a local directory or directly from a web source. Nowadays, all common and some less common data formats can easily be imported. For traditional tabular data as .txt or .csv one can use the <strong>readr</strong> package.</p>
-<p>We use the <code>read_csv()</code> function to load the TfL data as .csv file directly from a web URL. To access the URL and data later, we are storing it in variables called <code>url_data</code> and <code>bikes</code> by using the <em>assignment arrow</em> <code>&lt;-</code>. The <code>col_types</code> argument allows to specify the column types, e.g. <code>i</code> are integer values, <code>f</code> encodes factors, and <code>l</code> turns a column into logical, boolean variable that is either <code>TRUE</code> or <code>FALSE</code>.</p>
+<div id="rstats" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Working in R<a href="get-started.html#rstats" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>{ggplot2}</strong> can be used even if you know little about the R programming language. However, the knowledge of certain basic principles is at least helpful and probably indispensable for advanced plots. This section will give you a short overview of workflows and the very basics needed. The overview makes use of the <strong>{tidyverse}</strong>, a package collection designed for data science in R. However, multiple other options exist to import, inspect, and wrangle your data if you prefer not to work with the <strong>{tidyverse}</strong> for these steps<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
+<div id="import" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Import data<a href="get-started.html#import" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You need to import data to be able to work with it in the current session. The data can be imported from a local directory or directly from a web source. Nowadays, all common and some less common data formats can easily be imported. For traditional tabular data as .txt or .csv one can use the <strong>{readr}</strong> package.</p>
+<p>We use the <code>read_csv()</code> function to load the TfL data as .csv file directly from a web URL. To access the URL and data later, we are storing the link as <code>url_data</code> and the data set as <code>bikes</code> by using the <em>assignment arrow</em> <code>&lt;-</code>. The <code>col_types</code> argument within the `read_csv()` function allows to specify the column types. For example, <code>i</code> represents integer values, <code>f</code> encodes factors, and <code>l</code> turns a column into a logical, boolean variable that only can have two states, <code>TRUE</code> or <code>FALSE</code>. You’ll find more on the different <em>data types</em> later in this chapter.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="get-started.html#cb3-1" aria-hidden="true" tabindex="-1"></a>url_data <span class="ot">&lt;-</span> <span class="st">&quot;https://cedricscherer.com/data/london-bikes.csv&quot;</span></span>
 <span id="cb3-2"><a href="get-started.html#cb3-2" aria-hidden="true" tabindex="-1"></a>bikes <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> url_data, <span class="at">col_types =</span> <span class="st">&quot;Dcfffilllddddfc&quot;</span>)</span></code></pre></div>
 <p class="note">
-The <code>::</code> is called “namespace” and can be used to access a function without loading the package. Here, you could also run <code>library(readr)</code> first and <code>bikes &lt;- read_csv(url_data)</code> afterwards.
+<p>The <code>::</code> is called “namespace” and can be used to access a function without loading the package. Here, you could also run <code>library(readr)</code> first and <code>bikes &lt;- read_csv(url_data)</code> afterwards.</p>
 </p>
-<p>If you want to load data that is stored locally, you specify the path to the file instead.</p>
+<p>If you want to load data that is stored locally, you specify the path to the file instead:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="get-started.html#cb4-1" aria-hidden="true" tabindex="-1"></a>path_data <span class="ot">&lt;-</span> <span class="st">&quot;C://path/to/my/data/london-bikes.csv&quot;</span> <span class="do">## mocked-up name for Win users</span></span>
 <span id="cb4-2"><a href="get-started.html#cb4-2" aria-hidden="true" tabindex="-1"></a>bikes <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> path_data, <span class="at">col_types =</span> <span class="st">&quot;Dcfffilllddddfc&quot;</span>)</span></code></pre></div>
+<p>Note that the syntax of the path differs between operating systems. While in Windows subdirectories are separated with backslashes, Mac and Linux uses slashes. Also, absolute paths differ in their syntax: Windows machines specify the drive letter, here<code>C://</code>, or the server name; on Mac/Linux machines absolute paths start with <code>/users/</code>.</p>
+<p>Instead of relying on the absolute path, which likely differs between users and operating systems, you can also use relative paths. Those are specified with a leading dot, e.g. as <code>./data/london-bikes.csv</code>, and look for the file relative from the working directory. You can retrieve and change your working directory with <code>getwd()</code> and <code>setwd()</code>. However, relying on the default working directory or setting a custom one will likely cause problems the moment someone else wants to run your code<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
 </div>
-<div id="inspect-data" class="section level3" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> Inspect data</h3>
+<div id="workflows" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Project-oriented workflows<a href="get-started.html#workflows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Preferably, we do not want to rely on absolute paths and the default or manually set working directories. So-called project-oriented workflows aim to organize each piece of work in a self-contained, bundled directory. This directory includes all relevant files needed for the project, such as scripts and images. By ensuring that paths are set relative and in a way that they are understood by any operating system, we guarantee that the project will run on any machine and can easily moved around.</p>
+<p>If you are working in Rstudio, <em>Rstudio projects</em> provide such a project-oriented workflow. When opening the project via the associated <code>.Rproj</code> file, it ensures that the working directory is correctly set and points to the project’s top-level directory (i.e. the folder that contains the <code>.Rproj</code> file).</p>
+<p>When using Rstudio projects, a helpful package to navigate to files of interest is the <a href="https://here.r-lib.org/"><strong>{here}</strong> package</a>. The function <code>here()</code> will create paths relative to the top-level directory:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="get-started.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## point to the csv inside the &quot;data&quot; subdirectory of the project directory</span></span>
+<span id="cb5-2"><a href="get-started.html#cb5-2" aria-hidden="true" tabindex="-1"></a>path_data <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;london-bikes.csv&quot;</span>) </span></code></pre></div>
+</div>
+<div id="inspect" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Inspect data<a href="get-started.html#inspect" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>After importing the data, it is advisable to have a look at the data. Does the object stored in R match the dimensions of your original data file? Are the variables displayed correctly? You can print the data by simply running the name of the object, here <code>bikes</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="get-started.html#cb5-1" aria-hidden="true" tabindex="-1"></a>bikes</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="get-started.html#cb6-1" aria-hidden="true" tabindex="-1"></a>bikes</span></code></pre></div>
 <pre><code>## # A tibble: 1,454 x 14
-##    date       day_night year  month season count
-##    &lt;date&gt;     &lt;chr&gt;     &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;  &lt;int&gt;
-##  1 2015-01-04 day       2015  1     3       6830
-##  2 2015-01-04 night     2015  1     3       2404
-##  3 2015-01-05 day       2015  1     3      14763
-##  4 2015-01-05 night     2015  1     3       5609
-##  5 2015-01-06 day       2015  1     3      14501
-##  6 2015-01-06 night     2015  1     3       6112
-##  7 2015-01-07 day       2015  1     3      16358
-##  8 2015-01-07 night     2015  1     3       4706
-##  9 2015-01-08 day       2015  1     3       9971
-## 10 2015-01-08 night     2015  1     3       5630
-## # ... with 1,444 more rows, and 8 more variables:
-## #   is_workday &lt;lgl&gt;, is_weekend &lt;lgl&gt;,
-## #   is_holiday &lt;lgl&gt;, temp &lt;dbl&gt;, temp_feel &lt;dbl&gt;,
-## #   humidity &lt;dbl&gt;, wind_speed &lt;dbl&gt;,
-## #   weather_type &lt;fct&gt;</code></pre>
-<p>As we have used the <strong>readr</strong> package, our data is stored as a <em>tibble</em> (class <code>tbl_df</code> and related) which is the <strong>tidyverse</strong> subclass of a data frame (class <code>data.frame</code>). On the top of the output, you can directly see that our data set consists of 14 variables (columns) frame with 1454 observations (rows). Also, it will show you the first ten rows. Alternatively you can inspect the data with the help of <code>str()</code> or <code>tibble::glimpse()</code> to print a transposed version.</p>
-<p>If you have looked carefully, you may have noticed that a tibble prints also the class of each column, e.g. <code>&lt;chr&gt;</code>. We have specified the class of the columns manually when importing the data; if not specified, <code>readr::read_csv()</code> as most other import functions guess the class. Thus, it is always worth to check the classes of the columns. The data encoding is especially important when exploring chart options and writing ggplot code. You should be familiar if the data is encoded as quantitative (i.e. class integer, numeric, date) or qualitative (i.e. class character, factor, boolean). By using the <code>$</code> symbol one can access single columns of a data frame, e.g. <code>bikes$date</code>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="get-started.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(bikes)</span></code></pre></div>
-<pre><code>## [1] &quot;spec_tbl_df&quot; &quot;tbl_df&quot;      &quot;tbl&quot;        
-## [4] &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="get-started.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(bikes<span class="sc">$</span>date) </span></code></pre></div>
-<pre><code>## [1] &quot;Date&quot;</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="get-started.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(bikes<span class="sc">$</span>count)</span></code></pre></div>
-<pre><code>## [1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="get-started.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(bikes<span class="sc">$</span>temp)</span></code></pre></div>
-<pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="get-started.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(bikes<span class="sc">$</span>day_night)</span></code></pre></div>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="get-started.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(bikes<span class="sc">$</span>weather_type)</span></code></pre></div>
-<pre><code>## [1] &quot;factor&quot;</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="get-started.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(bikes<span class="sc">$</span>is_holiday) </span></code></pre></div>
-<pre><code>## [1] &quot;logical&quot;</code></pre>
-<p>To explore individual variables, the following functions are useful:</p>
+##    date       day_ni~1 year  month season count is_wo~2
+##    &lt;date&gt;     &lt;chr&gt;    &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;  &lt;int&gt; &lt;lgl&gt;  
+##  1 2015-01-04 day      2015  1     3       6830 FALSE  
+##  2 2015-01-04 night    2015  1     3       2404 FALSE  
+##  3 2015-01-05 day      2015  1     3      14763 TRUE   
+##  4 2015-01-05 night    2015  1     3       5609 TRUE   
+##  5 2015-01-06 day      2015  1     3      14501 TRUE   
+##  6 2015-01-06 night    2015  1     3       6112 TRUE   
+##  7 2015-01-07 day      2015  1     3      16358 TRUE   
+##  8 2015-01-07 night    2015  1     3       4706 TRUE   
+##  9 2015-01-08 day      2015  1     3       9971 TRUE   
+## 10 2015-01-08 night    2015  1     3       5630 TRUE   
+## # ... with 1,444 more rows, 7 more variables:
+## #   is_weekend &lt;lgl&gt;, is_holiday &lt;lgl&gt;, temp &lt;dbl&gt;,
+## #   temp_feel &lt;dbl&gt;, humidity &lt;dbl&gt;, wind_speed &lt;dbl&gt;,
+## #   weather_type &lt;fct&gt;, and abbreviated variable names
+## #   1: day_night, 2: is_workday</code></pre>
+<p>As we have used the <strong>{readr}</strong> package, our data is stored as a <em>tibble</em> (class <code>tbl_df</code> and related) which is the <strong>{tidyverse}</strong> subclass of a traditional data frame (class <code>data.frame</code>). There are other data structures in R such as lists and matrices; however, in this book we are going to use only data frames, more precisely tibbles (besides spatial data formats in Chapter XYZ).</p>
+<p>On the top of the output, you can directly see that our data set consists of <code>format(length(bikes), big.mark = ",")</code> variables (columns) frame with 1,454 observations (rows). Also, the tibble output shows you the first ten rows. Alternatively you can inspect the data with the help of <code>str()</code> or <code>tibble::glimpse()</code> to print a transposed version.</p>
+</div>
+<div id="classes" class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Data types<a href="get-started.html#classes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If you have looked carefully, you may have noticed that a tibble prints also the data type of each column, e.g. <code>&lt;chr&gt;</code>. In our case, we have specified the types of the columns manually when importing the data; if not specified, <code>readr::read_csv()</code> as most other import functions will guess the data type for each column based on the first x observations.</p>
+<p>The data encoding is especially important when exploring chart options and writing ggplot code. You should be familiar if the data is encoded as quantitative or qualitative, if it contains missing or unusual values. Thus, it is always worth to check the classes and the values of the columns.</p>
+<p>In R there are multiple low-level data types, and some of the <strong>{ggplot2}</strong> behavior will depend on the type of the variable(s) used for plotting. The six basic data types are:</p>
 <ul>
-<li><code>min()</code>, <code>max()</code>, <code>range()</code> to extract extreme values</li>
+<li>character</li>
+<li>factor</li>
+<li>numeric</li>
+<li>integer</li>
+<li>logical</li>
+<li>complex</li>
+</ul>
+<p>To examine the data type of an object, use the <code>class()</code> function. The <code>$</code> symbol allows you to access single columns of a data frame, e.g. <code>bikes$day_night</code>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="get-started.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(bikes<span class="sc">$</span>day_night)</span>
+<span id="cb8-2"><a href="get-started.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;character&quot;</span></span>
+<span id="cb8-3"><a href="get-started.html#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="get-started.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(bikes<span class="sc">$</span>weather_type)</span>
+<span id="cb8-5"><a href="get-started.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;factor&quot;</span></span>
+<span id="cb8-6"><a href="get-started.html#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="get-started.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(bikes<span class="sc">$</span>temp)</span>
+<span id="cb8-8"><a href="get-started.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;numeric&quot;</span></span>
+<span id="cb8-9"><a href="get-started.html#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="get-started.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(bikes<span class="sc">$</span>count)</span>
+<span id="cb8-11"><a href="get-started.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;integer&quot;</span></span>
+<span id="cb8-12"><a href="get-started.html#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="get-started.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(bikes<span class="sc">$</span>is_weekend)</span>
+<span id="cb8-14"><a href="get-started.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;logical&quot;</span></span></code></pre></div>
+<p>Variables of type <code>character</code>, <code>factor</code>, and <code>logical</code> will be handled as <strong>categorical, qualitative data</strong> while <code>numeric</code>, <code>integer</code>, and <code>complex</code><a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> are treated as <strong>numerical, quantitative data</strong>.</p>
+<p>The most important difference between the categorical types is their sorting: while <code>character</code> and also <code>logical</code> values are sorted alphabetically, <code>factor</code> variables have a specified order, defined by the so-called <em>levels</em>. Note that numbers can be treated as well and thus we can change their intrinsic order, too. We can inspect the order with the <code>levels()</code>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="get-started.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(bikes<span class="sc">$</span>weather_type) <span class="do">## an example of a factor with strings</span></span>
+<span id="cb9-2"><a href="get-started.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;broken clouds&quot;    &quot;clear&quot;           </span></span>
+<span id="cb9-3"><a href="get-started.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [3] &quot;cloudy&quot;           &quot;scattered clouds&quot;</span></span>
+<span id="cb9-4"><a href="get-started.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] &quot;rain&quot;             &quot;snowfall&quot;</span></span>
+<span id="cb9-5"><a href="get-started.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(bikes<span class="sc">$</span>season) <span class="do">## an example of a factor with numbers</span></span>
+<span id="cb9-6"><a href="get-started.html#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;3&quot; &quot;0&quot; &quot;1&quot; &quot;2&quot;</span></span></code></pre></div>
+<p>Also, we can manually change the order of a factor by supplying a vector of level names to the <code>factor()</code> function:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="get-started.html#cb10-1" aria-hidden="true" tabindex="-1"></a>bikes<span class="sc">$</span>season_type_mix <span class="ot">&lt;-</span> <span class="fu">factor</span>(bikes<span class="sc">$</span>season, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;2&quot;</span>, <span class="st">&quot;0&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;1&quot;</span>))</span>
+<span id="cb10-2"><a href="get-started.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(bikes<span class="sc">$</span>season_type_mix)</span>
+<span id="cb10-3"><a href="get-started.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;2&quot; &quot;0&quot; &quot;3&quot; &quot;1&quot;</span></span></code></pre></div>
+<p>The <a href="https://forcats.tidyverse.org/"><strong>{forcats}</strong> package</a> provides a set of useful functions to reorder factor levels. Important functions to quickly change to order of variables include <code>fct_rev()</code>, <code>fct_reorder()</code>, <code>fct_infreq()</code>, <code>fct_inorder()</code>, and <code>fct_lump()</code>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="get-started.html#cb11-1" aria-hidden="true" tabindex="-1"></a>bikes<span class="sc">$</span>weather_type_rev <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_rev</span>(bikes<span class="sc">$</span>weather_type)</span>
+<span id="cb11-2"><a href="get-started.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(bikes<span class="sc">$</span>weather_type_rev)</span>
+<span id="cb11-3"><a href="get-started.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;snowfall&quot;         &quot;rain&quot;            </span></span>
+<span id="cb11-4"><a href="get-started.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [3] &quot;scattered clouds&quot; &quot;cloudy&quot;          </span></span>
+<span id="cb11-5"><a href="get-started.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] &quot;clear&quot;            &quot;broken clouds&quot;</span></span>
+<span id="cb11-6"><a href="get-started.html#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="get-started.html#cb11-7" aria-hidden="true" tabindex="-1"></a>bikes<span class="sc">$</span>weather_type_rank <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_infreq</span>(bikes<span class="sc">$</span>weather_type)</span>
+<span id="cb11-8"><a href="get-started.html#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(bikes<span class="sc">$</span>weather_type_rank)</span>
+<span id="cb11-9"><a href="get-started.html#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;clear&quot;            &quot;scattered clouds&quot;</span></span>
+<span id="cb11-10"><a href="get-started.html#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [3] &quot;broken clouds&quot;    &quot;rain&quot;            </span></span>
+<span id="cb11-11"><a href="get-started.html#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] &quot;cloudy&quot;           &quot;snowfall&quot;</span></span></code></pre></div>
+<p>The single difference between the two numerical types <code>numeric</code> and <code>integer</code> is simply-speaking the existence of floating point numbers: while <code>numeric</code> variables store decimals, <code>integer</code> variables are stored as whole numbers. If you want to force integer values, you can specify them as <code>1L</code>.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="get-started.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(bikes<span class="sc">$</span>temp) <span class="do">## numeric</span></span>
+<span id="cb12-2"><a href="get-started.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2.167 2.792 8.958 7.125 9.000 6.708</span></span>
+<span id="cb12-3"><a href="get-started.html#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="get-started.html#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(<span class="fu">head</span>(bikes<span class="sc">$</span>temp)) <span class="do">## integer</span></span>
+<span id="cb12-5"><a href="get-started.html#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2 2 8 7 9 6</span></span></code></pre></div>
+<p>As shown in the last command, we can also convert data types. Be careful though, as R has internal rules how to <em>coerce</em> one data type into another. The same also happens if you specify a vector with different data types. In the following example, the <code>integer</code>, <code>numeric</code>, and <code>logical</code> values are coerced to <code>character</code> values. Afterwards, we explore the coercion behavior by converting the vector to other data types:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="get-started.html#cb13-1" aria-hidden="true" tabindex="-1"></a>my_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(1L, <span class="fl">0.2</span>, <span class="st">&quot;ggplot&quot;</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb13-2"><a href="get-started.html#cb13-2" aria-hidden="true" tabindex="-1"></a>my_vector</span>
+<span id="cb13-3"><a href="get-started.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;1&quot;      &quot;0.2&quot;    &quot;ggplot&quot; &quot;FALSE&quot;</span></span>
+<span id="cb13-4"><a href="get-started.html#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="get-started.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(my_vector)</span>
+<span id="cb13-6"><a href="get-started.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;character&quot;</span></span>
+<span id="cb13-7"><a href="get-started.html#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="get-started.html#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(my_vector)</span>
+<span id="cb13-9"><a href="get-started.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1.0 0.2  NA  NA</span></span>
+<span id="cb13-10"><a href="get-started.html#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="get-started.html#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(my_vector)</span>
+<span id="cb13-12"><a href="get-started.html#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  1  0 NA NA</span></span>
+<span id="cb13-13"><a href="get-started.html#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="get-started.html#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="fu">as.factor</span>(my_vector)</span>
+<span id="cb13-15"><a href="get-started.html#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1      0.2    ggplot FALSE </span></span>
+<span id="cb13-16"><a href="get-started.html#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="do">## Levels: 0.2 1 FALSE ggplot</span></span>
+<span id="cb13-17"><a href="get-started.html#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="get-started.html#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="fu">as.logical</span>(my_vector)</span>
+<span id="cb13-19"><a href="get-started.html#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]    NA    NA    NA FALSE</span></span></code></pre></div>
+<p>When changing the data type of our <code>character</code> vector, some values are successfully converted (e.g. <code>1L</code> and <code>0.2</code> as <code>numeric</code> or <code>FALSE</code> as <code>logical</code>) while some are “wrongly” interpreted (e.g. <code>0.2</code> is converted into <code>0L</code> as <code>integer</code> or <code>FALSE</code> into <code>"FALSE"</code> as <code>character</code>). Some others are stored as <code>NA</code> representing <em>unknown, not available values</em> (e.g. <code>"ggplot"</code> as <code>numeric</code> or <code>1</code> as <code>logical</code>). Conversion between different data types is very useful but be careful and always inspect the output of the conversion for potential coercion mistakes.</p>
+<p>Another important data type is the <code>Date</code> class. Dates are either represented as the number of days since a specified origin or converted <code>character</code> type with a structure of YYYY-MM-DD:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="get-started.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(bikes<span class="sc">$</span>date)</span>
+<span id="cb14-2"><a href="get-started.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Date&quot;</span></span>
+<span id="cb14-3"><a href="get-started.html#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="get-started.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="dv">1</span>, <span class="at">origin =</span> <span class="st">&quot;1970-01-01&quot;</span>)</span>
+<span id="cb14-5"><a href="get-started.html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;1970-01-02&quot;</span></span>
+<span id="cb14-6"><a href="get-started.html#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="get-started.html#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">&quot;2007-06-10&quot;</span>)</span>
+<span id="cb14-8"><a href="get-started.html#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;2007-06-10&quot;</span></span>
+<span id="cb14-9"><a href="get-started.html#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="get-started.html#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">&quot;2022-09-16&quot;</span>) <span class="sc">-</span> <span class="fu">as.Date</span>(<span class="st">&quot;2007-06-10&quot;</span>)</span>
+<span id="cb14-11"><a href="get-started.html#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Time difference of 5577 days</span></span></code></pre></div>
+<p>Furthermore, <code>POSIXct</code> and <code>POSIXlt</code> are able to represent full time stamps including a date and time. The two POSIX date/time classes only differ in the way that the values are stored internally.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="get-started.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.POSIXct</span>(<span class="st">&quot;2007-06-10 12:34:56&quot;</span>)</span>
+<span id="cb15-2"><a href="get-started.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;2007-06-10 12:34:56 CEST&quot;</span></span>
+<span id="cb15-3"><a href="get-started.html#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="get-started.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">as.POSIXlt</span>(<span class="st">&quot;2007-06-10 12:34:56&quot;</span>)</span>
+<span id="cb15-5"><a href="get-started.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;2007-06-10 12:34:56 CEST&quot;</span></span></code></pre></div>
+</div>
+<div id="wrangling" class="section level3 hasAnchor" number="2.2.5">
+<h3><span class="header-section-number">2.2.5</span> Data wrangling<a href="get-started.html#wrangling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Often, the data imported might not be in the right format to plot it with <strong>{ggplot2}</strong>. The preparation of the data—e.g. converting data types and setting factor levels, aggregating values, estimating data summaries, reshaping the data set or combining it with another source—is called <em>data wrangling</em>, <em>data munging</em>, or <strong>data manipulation</strong>.</p>
+<p>To explore and retrieve summary estimates of individual variables, the following functions are useful:</p>
+<ul>
+<li><code>min()</code>, <code>max()</code>, <code>range()</code> to extract extremes of numerical data</li>
 <li><code>quantile()</code> to get an idea of the distribution numerical data</li>
 <li><code>unique()</code> to get all unique entries, helpful for categorical data</li>
 <li><code>length(unique())</code> to count all unique entries</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="get-started.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(bikes<span class="sc">$</span>temp) <span class="do">## add na.rm = TRUE in case it returns `NA`</span></span></code></pre></div>
-<pre><code>## [1] 0.125</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="get-started.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(bikes<span class="sc">$</span>date)</span></code></pre></div>
-<pre><code>## [1] &quot;2015-01-04&quot; &quot;2016-12-31&quot;</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="get-started.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(bikes<span class="sc">$</span>count)</span></code></pre></div>
-<pre><code>##    0%   25%   50%   75%  100% 
-##   953  7508 11965 19412 51870</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="get-started.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(bikes<span class="sc">$</span>weather_type)</span></code></pre></div>
-<pre><code>## [1] broken clouds    clear            cloudy          
-## [4] scattered clouds rain             snowfall        
-## 6 Levels: broken clouds clear ... snowfall</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="get-started.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(bikes<span class="sc">$</span>year))</span></code></pre></div>
-<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="get-started.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(bikes<span class="sc">$</span>temp) <span class="do">## add na.rm = TRUE in case it returns `NA`</span></span>
+<span id="cb16-2"><a href="get-started.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.125</span></span>
+<span id="cb16-3"><a href="get-started.html#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="get-started.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(bikes<span class="sc">$</span>date)</span>
+<span id="cb16-5"><a href="get-started.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;2015-01-04&quot; &quot;2016-12-31&quot;</span></span>
+<span id="cb16-6"><a href="get-started.html#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="get-started.html#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(bikes<span class="sc">$</span>count)</span>
+<span id="cb16-8"><a href="get-started.html#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="do">##    0%   25%   50%   75%  100% </span></span>
+<span id="cb16-9"><a href="get-started.html#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   953  7508 11965 19412 51870</span></span>
+<span id="cb16-10"><a href="get-started.html#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="get-started.html#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(bikes<span class="sc">$</span>day_night)</span>
+<span id="cb16-12"><a href="get-started.html#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;day&quot;   &quot;night&quot;</span></span>
+<span id="cb16-13"><a href="get-started.html#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="get-started.html#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(bikes<span class="sc">$</span>weather_type))</span>
+<span id="cb16-15"><a href="get-started.html#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6</span></span></code></pre></div>
+<p>The <a href="https://dplyr.tidyverse.org/"><strong>{dplyr}</strong></a> and other <strong>{tidyverse}</strong> packages provide a simple and intuitive syntax to wrangle data. There are a ton of unique functions, but knowing a handful is enough to empower you to bring your data in the right format.</p>
+<p>There are five main functions of <strong>{dplyr}</strong>, called <em>verbs</em> in this context:</p>
+<ul>
+<li><code>filter()</code>: Pick rows with matching criteria</li>
+<li><code>select()</code>: Pick columns with matching criteria</li>
+<li><code>arrange()</code>: Reorder rows</li>
+<li><code>mutate()</code>: Create new variables</li>
+<li><code>summarize()</code> or <code>summarise()</code>: Sum up variables</li>
+</ul>
+<p>All of these functions follow a consistent syntax: <code>verb(data, condition)</code>. Note that we specify the data and columns individually and that within the tidyverse, column names are referred to without quotation marks:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="get-started.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="do">## only keep more than 1000 shares during the night</span></span>
+<span id="cb17-2"><a href="get-started.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(bikes, day_night <span class="sc">==</span> <span class="st">&quot;night&quot;</span>, count <span class="sc">&gt;</span> <span class="dv">1000</span>) </span>
+<span id="cb17-3"><a href="get-started.html#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="get-started.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="do">## only keep 4 columns and reorder those</span></span>
+<span id="cb17-5"><a href="get-started.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(bikes, date, count, weather_type, temp) </span>
+<span id="cb17-6"><a href="get-started.html#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="get-started.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="do">## order by day_night and decreasing bike shares</span></span>
+<span id="cb17-8"><a href="get-started.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(bikes, day_night, <span class="sc">-</span>count) </span>
+<span id="cb17-9"><a href="get-started.html#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="get-started.html#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="do">## add a column with temperature encoded as °F</span></span>
+<span id="cb17-11"><a href="get-started.html#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(bikes, <span class="at">temp_fahrenheit =</span> temp <span class="sc">*</span> <span class="fl">1.8</span> <span class="sc">+</span> <span class="dv">32</span>)</span>
+<span id="cb17-12"><a href="get-started.html#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="get-started.html#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="do">## calculate the mean count across all observations</span></span>
+<span id="cb17-14"><a href="get-started.html#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(bikes, <span class="at">count_avg =</span> <span class="fu">mean</span>(count)) </span></code></pre></div>
+<p>Another important and very powerful function from the <strong>{dplyr}</strong> package is <code>group_by()</code>: when a data set is grouped into subsets, we can apply any operation for each group <em>within a single data frame</em>. While you could nest those functions, the common approach within the tidyverse is the use of <em>pipes</em>. Pipes take the output of one function and send it directly to the next which avoids nested operations and allows for a more logical order of functions and their arguments. The <strong>{tidyverse}</strong> pipe is encoded as <code>%&gt;%</code>; a base R pipe is available as <code>|&gt;</code> as well. Have a look at the following silly example:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="get-started.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="do">## nested functions, read inside out + disconnected function inputs</span></span>
+<span id="cb18-2"><a href="get-started.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">go_to_work</span>(</span>
+<span id="cb18-3"><a href="get-started.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">breakfast</span>(</span>
+<span id="cb18-4"><a href="get-started.html#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">wake_up</span>(</span>
+<span id="cb18-5"><a href="get-started.html#cb18-5" aria-hidden="true" tabindex="-1"></a>      Cedric, <span class="at">alarm =</span> <span class="st">&quot;06:30&quot;</span>)</span>
+<span id="cb18-6"><a href="get-started.html#cb18-6" aria-hidden="true" tabindex="-1"></a>    ), </span>
+<span id="cb18-7"><a href="get-started.html#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;coffee&quot;</span>, <span class="st">&quot;croissant&quot;</span>)</span>
+<span id="cb18-8"><a href="get-started.html#cb18-8" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb18-9"><a href="get-started.html#cb18-9" aria-hidden="true" tabindex="-1"></a>  mode <span class="ot">=</span> <span class="st">&quot;bus&quot;</span>, delay <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb18-10"><a href="get-started.html#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="er">)</span></span>
+<span id="cb18-11"><a href="get-started.html#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="get-started.html#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="do">## piped version with &quot;Cedric&quot; passed to the next function call</span></span>
+<span id="cb18-13"><a href="get-started.html#cb18-13" aria-hidden="true" tabindex="-1"></a>Cedric <span class="sc">%&gt;%</span> </span>
+<span id="cb18-14"><a href="get-started.html#cb18-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wake_up</span>(<span class="at">alarm =</span> <span class="st">&quot;06:30&quot;</span>)<span class="er">)</span> <span class="sc">%&gt;%</span> </span>
+<span id="cb18-15"><a href="get-started.html#cb18-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">breakfast</span>(<span class="fu">c</span>(<span class="st">&quot;coffee&quot;</span>, <span class="st">&quot;croissant&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-16"><a href="get-started.html#cb18-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">go_to_work</span>(<span class="at">mode =</span> <span class="st">&quot;bus&quot;</span>, <span class="at">delay =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p>Let’s create the workflow for some serious data preparation: In a first step, we are going to estimate the average temperature for night rents per year and season:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="get-started.html#cb19-1" aria-hidden="true" tabindex="-1"></a>bikes_summarized <span class="ot">&lt;-</span> </span>
+<span id="cb19-2"><a href="get-started.html#cb19-2" aria-hidden="true" tabindex="-1"></a>  bikes <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a href="get-started.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="do">## only keep night observations</span></span>
+<span id="cb19-4"><a href="get-started.html#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(day_night <span class="sc">==</span> <span class="st">&quot;night&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-5"><a href="get-started.html#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="do">## create 8 subsets (4 seasons x 2 years)</span></span>
+<span id="cb19-6"><a href="get-started.html#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(season, year) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-7"><a href="get-started.html#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="do">## calculate total counts and mean temperature per subgroup</span></span>
+<span id="cb19-8"><a href="get-started.html#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb19-9"><a href="get-started.html#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">count =</span> <span class="fu">sum</span>(count), </span>
+<span id="cb19-10"><a href="get-started.html#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">temp_avg =</span> <span class="fu">mean</span>(temp)</span>
+<span id="cb19-11"><a href="get-started.html#cb19-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb19-12"><a href="get-started.html#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="get-started.html#cb19-13" aria-hidden="true" tabindex="-1"></a>bikes_summarized</span></code></pre></div>
+<pre><code>## # A tibble: 8 x 4
+## # Groups:   season [4]
+##   season year    count temp_avg
+##   &lt;fct&gt;  &lt;fct&gt;   &lt;int&gt;    &lt;dbl&gt;
+## 1 3      2015   459469     7.65
+## 2 3      2016   489136     6.91
+## 3 0      2015   693703     9.93
+## 4 0      2016   676427     9.43
+## 5 1      2015  1020524    17.2 
+## 6 1      2016  1044592    17.7 
+## 7 2      2015   685534    12.4 
+## 8 2      2016   744827    12.3</code></pre>
+<p>After filtering out “day” cases, the grouping by <code>season</code> and <code>year</code> allows us to summarize counts and average temperatures for each of the eight groups. Note that the resulting tibble is still grouped by <code>season</code> (as shown in the output with the <code>[4]</code> explicitly stating the number of current subsets).</p>
+<p>In a next step, we regroup our data to add a column with shares of nightly bike rents per season on a yearly basis. Afterwards, we remove all subsets by calling <code>ungroup()</code> and clean our data set by reordering and removing columns and sorting rows by year and season:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="get-started.html#cb21-1" aria-hidden="true" tabindex="-1"></a>bikes_summarized <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="get-started.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="do">## add column with relative shares per year</span></span>
+<span id="cb21-3"><a href="get-started.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-4"><a href="get-started.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">share_year =</span> count <span class="sc">/</span> <span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-5"><a href="get-started.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="do">## remove grouping</span></span>
+<span id="cb21-6"><a href="get-started.html#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb21-7"><a href="get-started.html#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="do">## reorder columns and remove days column</span></span>
+<span id="cb21-8"><a href="get-started.html#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, season, count, share_year, temp_avg) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-9"><a href="get-started.html#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="do">## sort by year and season</span></span>
+<span id="cb21-10"><a href="get-started.html#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(year, season) </span></code></pre></div>
+<pre><code>## # A tibble: 8 x 5
+##   year  season   count share_year temp_avg
+##   &lt;fct&gt; &lt;fct&gt;    &lt;int&gt;      &lt;dbl&gt;    &lt;dbl&gt;
+## 1 2015  3       459469      0.161     7.65
+## 2 2015  0       693703      0.243     9.93
+## 3 2015  1      1020524      0.357    17.2 
+## 4 2015  2       685534      0.240    12.4 
+## 5 2016  3       489136      0.166     6.91
+## 6 2016  0       676427      0.229     9.43
+## 7 2016  1      1044592      0.354    17.7 
+## 8 2016  2       744827      0.252    12.3</code></pre>
 </div>
-<div id="data-types" class="section level3" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> Data types</h3>
-</div>
-<div id="data-wrangling" class="section level3" number="2.2.4">
-<h3><span class="header-section-number">2.2.4</span> Data wrangling</h3>
-</div>
-</div>
-<div id="rmarkdown" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Working with Rmarkdown</h2>
+<div id="quarto-rmd" class="section level3 hasAnchor" number="2.2.6">
+<h3><span class="header-section-number">2.2.6</span> Quarto and Rmarkdown<a href="get-started.html#quarto-rmd" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 
+</div>
 </div>
 </div>
 <div class="footnotes">
 <hr />
 <ol start="4">
-<li id="fn4"><p>Note that the <strong>ggplot2</strong> package itself belongs to the <strong>tidyverse</strong> as well.<a href="get-started.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>Note that the <strong>{ggplot2}</strong> package itself belongs to the <strong>{tidyverse}</strong> as well.<a href="get-started.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>A detailed reasoning why you should not use <code>setwd()</code> is provided in <a href="https://rstats.wtf/project-oriented-workflow.html">Chapter 2 of “What they forgot you to teach about R”)</a>.<a href="get-started.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>As variables of type <code>complex</code> are rarely used in a data visualization context, we are going to ignore this data type.<a href="get-started.html#fnref6" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

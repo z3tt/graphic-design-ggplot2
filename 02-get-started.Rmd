@@ -3,6 +3,7 @@ library(tidyverse)
 bikes <- readr::read_csv("https://www.cedricscherer.com/data/london-bikes.csv", col_types = "Dcfffilllddddfc")
 ```
 
+
 # Get Started {#get-started}
 
 ## The Data {#data}
@@ -15,7 +16,11 @@ knitr::include_graphics("./img/setup-data-comparison-raw-aggregated.png", dpi = 
 
 To make the visualizations manageable and patterns more insightful, we are using a modified data set with all variables aggregated for day (6:00am--5:59pm) and night (6:00pm--5:59am) (\@ref(fig:img-data-comparison). The bike counts were summarized while all weather-related variables where averaged. Finally, for the weather type, the most common was used and, in case of a tie, one of the most common types was randomly chosen. The modified data sets contains 14 variables (columns) with 1,454 observations (rows). To give you a better idea what the data set contains, a visual overview of the variables is provided in table \@ref(tab:table-bikes-data) and figure \@ref(fig:img-data-overview-vars).
 
-<p class="comment">COMMENT: Decide on a version to provide and overview of the variables as table or list.</p>
+<p class="comment">
+
+COMMENT: Decide on a version to provide and overview of the variables as table or list.
+
+</p>
 
 ```{r img-data-overview-vars, echo=FALSE, fig.cap="Overview of the distribution of the boolean variables `is_workday`, `is_weekend`, and `is_holiday` (A), the categorical variable `weather_type` (B), and the continuous variables `count`, `temp`, `temp_feel`, `humidity`, and `wind_speed` (C) of the cleaned and aggregated bike sharing data set. In panel C, the correlation between the variables is shown as scatterplot encoded by `timeperiod` (upper triangle) and encoded by point density (lower triangle), highlighting the level of overlap of data points."}
 knitr::include_graphics("./img/setup-data-comparison-all-dodge.png", dpi = NA)
@@ -74,80 +79,282 @@ data_tbl %>%
 
 ## Working in R {#rstats}
 
-**ggplot2** can be used even if you know little about the R programming language. However, the knowledge of certain basic principles is at least helpful and probably indispensable for advanced plots. This section will give you a short overview of workflows and the very basics needed. The overview makes use of the **tidyverse**, a package collection designed for data science in R. However, multiple other options exist to import, inspect, and wrangle your data if you prefer not to work with the **tidyverse** for these steps[^started-1].
+**{ggplot2}** can be used even if you know little about the R programming language. However, the knowledge of certain basic principles is at least helpful and probably indispensable for advanced plots. This section will give you a short overview of workflows and the very basics needed. The overview makes use of the **{tidyverse}**, a package collection designed for data science in R. However, multiple other options exist to import, inspect, and wrangle your data if you prefer not to work with the **{tidyverse}** for these steps[^02-get-started-1].
 
-[^started-1]: Note that the **ggplot2** package itself belongs to the **tidyverse** as well.
+[^02-get-started-1]: Note that the **{ggplot2}** package itself belongs to the **{tidyverse}** as well.
 
 
-### Import data
+### Import data {#import}
 
-You need to import data to be able to work with it in the current session. The data can be imported from a local directory or directly from a web source. Nowadays, all common and some less common data formats can easily be imported. For traditional tabular data as .txt or .csv one can use the **readr** package. 
+You need to import data to be able to work with it in the current session. The data can be imported from a local directory or directly from a web source. Nowadays, all common and some less common data formats can easily be imported. For traditional tabular data as .txt or .csv one can use the **{readr}** package.
 
-We use the `read_csv()` function to load the TfL data as .csv file directly from a web URL. To access the URL and data later, we are storing it in variables called `url_data` and `bikes` by using the *assignment arrow* `<-`. The `col_types` argument allows to specify the column types, e.g. `i` are integer values, `f` encodes factors, and `l` turns a column into logical, boolean variable that is either `TRUE` or `FALSE`.
+We use the `read_csv()` function to load the TfL data as .csv file directly from a web URL. To access the URL and data later, we are storing the link as `url_data` and the data set as `bikes` by using the *assignment arrow* `<-`. The `col_types` argument within the \`read_csv()\` function allows to specify the column types. For example, `i` represents integer values, `f` encodes factors, and `l` turns a column into a logical, boolean variable that only can have two states, `TRUE` or `FALSE`. You'll find more on the different *data types* later in this chapter.
 
 ```{r data-import-url, eval=FALSE, message=FALSE, warning=FALSE}
 url_data <- "https://cedricscherer.com/data/london-bikes.csv"
 bikes <- readr::read_csv(file = url_data, col_types = "Dcfffilllddddfc")
 ```
 
-<p class="note">The `::` is called "namespace" and can be used to access a function without loading the package. Here, you could also run `library(readr)` first and `bikes <- read_csv(url_data)` afterwards.</p>
+<p class="note">
 
-If you want to load data that is stored locally, you specify the path to the file instead.
+The `::` is called "namespace" and can be used to access a function without loading the package. Here, you could also run `library(readr)` first and `bikes <- read_csv(url_data)` afterwards.
+
+</p>
+
+If you want to load data that is stored locally, you specify the path to the file instead:
 
 ```{r data-import-local, eval=FALSE, message=FALSE, warning=FALSE}
 path_data <- "C://path/to/my/data/london-bikes.csv" ## mocked-up name for Win users
 bikes <- readr::read_csv(file = path_data, col_types = "Dcfffilllddddfc")
 ```
 
+Note that the syntax of the path differs between operating systems. While in Windows subdirectories are separated with backslashes, Mac and Linux uses slashes. Also, absolute paths differ in their syntax: Windows machines specify the drive letter, here`C://`, or the server name; on Mac/Linux machines absolute paths start with `/users/`.
 
-### Inspect data
+Instead of relying on the absolute path, which likely differs between users and operating systems, you can also use relative paths. Those are specified with a leading dot, e.g. as `./data/london-bikes.csv`, and look for the file relative from the working directory. You can retrieve and change your working directory with `getwd()` and `setwd()`. However, relying on the default working directory or setting a custom one will likely cause problems the moment someone else wants to run your code[^02-get-started-2].
 
-After importing the data, it is advisable to have a look at the data. Does the object stored in R match the dimensions of your original data file? Are the variables displayed correctly? You can print the data by simply running the name of the object, here `bikes`. 
+[^02-get-started-2]: A detailed reasoning why you should not use `setwd()` is provided in [Chapter 2 of "What they forgot you to teach about R")](https://rstats.wtf/project-oriented-workflow.html).
+
+### Project-oriented workflows {#workflows}
+
+Preferably, we do not want to rely on absolute paths and the default or manually set working directories. So-called project-oriented workflows aim to organize each piece of work in a self-contained, bundled directory. This directory includes all relevant files needed for the project, such as scripts and images. By ensuring that paths are set relative and in a way that they are understood by any operating system, we guarantee that the project will run on any machine and can easily moved around.
+
+If you are working in Rstudio, *Rstudio projects* provide such a project-oriented workflow. When opening the project via the associated `.Rproj` file, it ensures that the working directory is correctly set and points to the project's top-level directory (i.e. the folder that contains the `.Rproj` file).
+
+When using Rstudio projects, a helpful package to navigate to files of interest is the [**{here}** package](https://here.r-lib.org/). The function `here()` will create paths relative to the top-level directory:
+
+```{r here-package}
+## point to the csv inside the "data" subdirectory of the project directory
+path_data <- here::here("data", "london-bikes.csv") 
+```
+
+
+### Inspect data {#inspect}
+
+After importing the data, it is advisable to have a look at the data. Does the object stored in R match the dimensions of your original data file? Are the variables displayed correctly? You can print the data by simply running the name of the object, here `bikes`.
 
 ```{r print-data}
 bikes
 ```
 
-As we have used the **readr** package, our data is stored as a *tibble* (class `tbl_df` and related) which is the **tidyverse** subclass of a data frame (class `data.frame`). On the top of the output, you can directly see that our data set consists of `r length(bikes)` variables (columns) frame with `r nrow(bikes)` observations (rows). Also, it will show you the first ten rows. Alternatively you can inspect the data with the help of `str()` or `tibble::glimpse()` to print a transposed version.
+As we have used the **{readr}** package, our data is stored as a *tibble* (class `tbl_df` and related) which is the **{tidyverse}** subclass of a traditional data frame (class `data.frame`). There are other data structures in R such as lists and matrices; however, in this book we are going to use only data frames, more precisely tibbles (besides spatial data formats in Chapter XYZ).
 
-If you have looked carefully, you may have noticed that a tibble prints also the class of each column, e.g. `<chr>`. We have specified the class of the columns manually when importing the data; if not specified, `readr::read_csv()` as most other import functions guess the class. Thus, it is always worth to check the classes of the columns. The data encoding is especially important when exploring chart options and writing ggplot code. You should be familiar if the data is encoded as quantitative (i.e. class integer, numeric, date) or qualitative (i.e. class character, factor, boolean). By using the `$` symbol one can access single columns of a data frame, e.g. `bikes$date`. 
+On the top of the output, you can directly see that our data set consists of `format(length(bikes), big.mark = ",")` variables (columns) frame with `r format(nrow(bikes), big.mark = ",")` observations (rows). Also, the tibble output shows you the first ten rows. Alternatively you can inspect the data with the help of `str()` or `tibble::glimpse()` to print a transposed version.
 
-```{r, inspect-data-class}
-class(bikes)
-class(bikes$date) 
-class(bikes$count)
-class(bikes$temp)
+
+### Data types {#classes}
+
+If you have looked carefully, you may have noticed that a tibble prints also the data type of each column, e.g. `<chr>`. In our case, we have specified the types of the columns manually when importing the data; if not specified, `readr::read_csv()` as most other import functions will guess the data type for each column based on the first x observations.
+
+The data encoding is especially important when exploring chart options and writing ggplot code. You should be familiar if the data is encoded as quantitative or qualitative, if it contains missing or unusual values. Thus, it is always worth to check the classes and the values of the columns.
+
+In R there are multiple low-level data types, and some of the **{ggplot2}** behavior will depend on the type of the variable(s) used for plotting. The six basic data types are:
+
+-   character
+-   factor
+-   numeric
+-   integer
+-   logical
+-   complex
+
+To examine the data type of an object, use the `class()` function. The `$` symbol allows you to access single columns of a data frame, e.g. `bikes$day_night`:
+
+```{r class-character, collapse=TRUE}
 class(bikes$day_night)
+
 class(bikes$weather_type)
-class(bikes$is_holiday) 
+
+class(bikes$temp)
+
+class(bikes$count)
+
+class(bikes$is_weekend)
 ```
 
-To explore individual variables, the following functions are useful:
+Variables of type `character`, `factor`, and `logical` will be handled as **categorical, qualitative data** while `numeric`, `integer`, and `complex`[^02-get-started-3] are treated as **numerical, quantitative data**.
 
-* `min()`, `max()`, `range()` to extract extreme values
-* `quantile()` to get an idea of the distribution numerical data
-* `unique()` to get all unique entries, helpful for categorical data
-* `length(unique())` to count all unique entries
+[^02-get-started-3]: As variables of type `complex` are rarely used in a data visualization context, we are going to ignore this data type.
 
-```{r, inspect-data-vars}
+The most important difference between the categorical types is their sorting: while `character` and also `logical` values are sorted alphabetically, `factor` variables have a specified order, defined by the so-called *levels*. Note that numbers can be treated as well and thus we can change their intrinsic order, too. We can inspect the order with the `levels()`:
+
+```{r factors, collapse=TRUE}
+levels(bikes$weather_type) ## an example of a factor with strings
+levels(bikes$season) ## an example of a factor with numbers
+```
+
+Also, we can manually change the order of a factor by supplying a vector of level names to the `factor()` function:
+
+```{r factors-change, collapse=TRUE}
+bikes$season_type_mix <- factor(bikes$season, levels = c("2", "0", "3", "1"))
+levels(bikes$season_type_mix)
+```
+
+The [**{forcats}** package](https://forcats.tidyverse.org/) provides a set of useful functions to reorder factor levels. Important functions to quickly change to order of variables include `fct_rev()`, `fct_reorder()`, `fct_infreq()`, `fct_inorder()`, and `fct_lump()`:
+
+```{r factors-forcats, collapse=TRUE}
+bikes$weather_type_rev <- forcats::fct_rev(bikes$weather_type)
+levels(bikes$weather_type_rev)
+
+bikes$weather_type_rank <- forcats::fct_infreq(bikes$weather_type)
+levels(bikes$weather_type_rank)
+```
+
+The single difference between the two numerical types `numeric` and `integer` is simply-speaking the existence of floating point numbers: while `numeric` variables store decimals, `integer` variables are stored as whole numbers. If you want to force integer values, you can specify them as `1L`.
+
+```{r classes-numerical, collapse=TRUE}
+head(bikes$temp) ## numeric
+
+as.integer(head(bikes$temp)) ## integer
+```
+
+As shown in the last command, we can also convert data types. Be careful though, as R has internal rules how to *coerce* one data type into another. The same also happens if you specify a vector with different data types. In the following example, the `integer`, `numeric`, and `logical` values are coerced to `character` values. Afterwards, we explore the coercion behavior by converting the vector to other data types:
+
+```{r coercion, warning=FALSE, collapse=TRUE}
+my_vector <- c(1L, 0.2, "ggplot", FALSE)
+my_vector
+
+class(my_vector)
+
+as.numeric(my_vector)
+
+as.integer(my_vector)
+
+as.factor(my_vector)
+
+as.logical(my_vector)
+```
+
+When changing the data type of our `character` vector, some values are successfully converted (e.g. `1L` and `0.2` as `numeric` or `FALSE` as `logical`) while some are "wrongly" interpreted (e.g. `0.2` is converted into `0L` as `integer` or `FALSE` into `"FALSE"` as `character`). Some others are stored as `NA` representing *unknown, not available values* (e.g. `"ggplot"` as `numeric` or `1` as `logical`). Conversion between different data types is very useful but be careful and always inspect the output of the conversion for potential coercion mistakes.
+
+Another important data type is the `Date` class. Dates are either represented as the number of days since a specified origin or converted `character` type with a structure of YYYY-MM-DD:
+
+```{r class-date, collapse=TRUE}
+class(bikes$date)
+
+as.Date(1, origin = "1970-01-01")
+
+as.Date("2007-06-10")
+
+as.Date("2022-09-16") - as.Date("2007-06-10")
+```
+
+Furthermore, `POSIXct` and `POSIXlt` are able to represent full time stamps including a date and time. The two POSIX date/time classes only differ in the way that the values are stored internally.
+
+```{r classes-datetime, collapse=TRUE}
+as.POSIXct("2007-06-10 12:34:56")
+
+as.POSIXlt("2007-06-10 12:34:56")
+```
+
+
+### Data wrangling {#wrangling}
+
+Often, the data imported might not be in the right format to plot it with **{ggplot2}**. The preparation of the data—e.g. converting data types and setting factor levels, aggregating values, estimating data summaries, reshaping the data set or combining it with another source—is called *data wrangling*, *data munging*, or **data manipulation**.  
+
+To explore and retrieve summary estimates of individual variables, the following functions are useful:
+
+-   `min()`, `max()`, `range()` to extract extremes of numerical data
+-   `quantile()` to get an idea of the distribution numerical data
+-   `unique()` to get all unique entries, helpful for categorical data
+-   `length(unique())` to count all unique entries
+
+```{r, inspect-data-vars, collapse=TRUE}
 min(bikes$temp) ## add na.rm = TRUE in case it returns `NA`
+
 range(bikes$date)
+
 quantile(bikes$count)
-unique(bikes$weather_type)
-length(unique(bikes$year))
+
+unique(bikes$day_night)
+
+length(unique(bikes$weather_type))
+```
+
+The [**{dplyr}**](https://dplyr.tidyverse.org/) and other **{tidyverse}** packages provide a simple and intuitive syntax to wrangle data. There are a ton of unique functions, but knowing a handful is enough to empower you to bring your data in the right format. 
+
+There are five main functions of **{dplyr}**, called *verbs* in this context:
+
+-  `filter()`: Pick rows with matching criteria
+-  `select()`: Pick columns with matching criteria
+-  `arrange()`: Reorder rows
+-  `mutate()`: Create new variables
+-  `summarize()` or `summarise()`: Sum up variables
+
+All of these functions follow a consistent syntax: `verb(data, condition)`. Note that we specify the data and columns individually and that within the tidyverse, column names are referred to without quotation marks:
+
+```{r, eval=FALSE}
+## only keep more than 1000 shares during the night
+filter(bikes, day_night == "night", count > 1000) 
+
+## only keep 4 columns and reorder those
+select(bikes, date, count, weather_type, temp) 
+
+## order by day_night and decreasing bike shares
+arrange(bikes, day_night, -count) 
+
+## add a column with temperature encoded as °F
+mutate(bikes, temp_fahrenheit = temp * 1.8 + 32)
+
+## calculate the mean count across all observations
+summarize(bikes, count_avg = mean(count)) 
+```
+
+Another important and very powerful function from the **{dplyr}** package is `group_by()`: when a data set is grouped into subsets, we can apply any operation for each group *within a single data frame*. While you could nest those functions, the common approach within the tidyverse is the use of *pipes*. Pipes take the output of one function and send it directly to the next which avoids nested operations and allows for a more logical order of functions and their arguments. The **{tidyverse}** pipe is encoded as `%>%`; a base R pipe is available as `|>` as well. Have a look at the following silly example:
+
+```{r pipe-get-to-work, eval=FALSE}
+## nested functions, read inside out + disconnected function inputs
+go_to_work(
+  breakfast(
+    wake_up(
+      Cedric, alarm = "06:30")
+    ), 
+    c("coffee", "croissant")
+  ),
+  mode = "bus", delay = 10
+)
+
+## piped version with "Cedric" passed to the next function call
+Cedric %>% 
+  wake_up(alarm = "06:30")) %>% 
+  breakfast(c("coffee", "croissant") %>% 
+  go_to_work(mode = "bus", delay = 10)
+```
+
+Let's create the workflow for some serious data preparation: In a first step, we are going to estimate the average temperature for night rents per year and season:
+
+```{r data-prep-1}
+bikes_summarized <- 
+  bikes %>% 
+  ## only keep night observations
+  filter(day_night == "night") %>% 
+  ## create 8 subsets (4 seasons x 2 years)
+  group_by(season, year) %>% 
+  ## calculate total counts and mean temperature per subgroup
+  summarize(
+    count = sum(count), 
+    temp_avg = mean(temp)
+  )
+
+bikes_summarized
+```
+
+After filtering out "day" cases, the grouping by `season` and `year` allows us to summarize counts and average temperatures for each of the eight groups. Note that the resulting tibble is still grouped by `season` (as shown in the output with the `[4]` explicitly stating the number of current subsets).
+
+In a next step, we regroup our data to add a column with shares of nightly bike rents per season on a yearly basis. Afterwards, we remove all subsets by calling `ungroup()` and clean our data set by reordering and removing columns and sorting rows by year and season:
+
+```{r data-prep-2}
+bikes_summarized %>% 
+  ## add column with relative shares per year
+  group_by(year) %>% 
+  mutate(share_year = count / sum(count)) %>% 
+  ## remove grouping
+  ungroup() %>% 
+  ## reorder columns and remove days column
+  select(year, season, count, share_year, temp_avg) %>% 
+  ## sort by year and season
+  arrange(year, season) 
 ```
 
 
-### Data types
-
-
-
-### Data wrangling
-
-
-## Working with Rmarkdown {#rmarkdown}
-
-
-
+### Quarto and Rmarkdown {#quarto-rmd}
 
 

@@ -24,11 +24,13 @@ options(
 
 knitr::opts_chunk$set(
   echo = TRUE, message = FALSE, warning = FALSE, dev = "ragg_png", 
-  res = 1000, retina = 1, fig.width = 9, fig.heigth = 5
+  res = 600, retina = 1, fig.width = 9, fig.heigth = 5.5, cache = TRUE
 )
 
 # install the packages needed by this book; you fill out c(), e.g. c('ggplot2', 'dplyr')
-lapply(c('xfun', 'tidyverse', 'patchwork', 'corrr', 'ggforce', 'ragg'), function(pkg) {
+pkgs <- c('xfun', 'tidyverse', 'patchwork', 'ggforce', 'ggdist', 'ggtext', 'ggrepel', 'rcartocolor', 'ragg')
+
+lapply(pkgs, function(pkg) {
   if (system.file(package = pkg) == '') install.packages(pkg)
 })
 ```
@@ -106,7 +108,7 @@ The book was written with the **knitr**\index{knitr} package [@xie2015] and the 
 xfun::session_info()
 ```
 
-Package names are in bold text (e.g. **ggplot2**), and inline code and file names are formatted in a monospaced typewriter font (e.g. `read_csv("data.csv")`). Function names are followed by parentheses (e.g. `ggplot2::ggplot()`). Notes are formatted as <span style='color:#28A87D;font-style:italic;'>coloured, italic text</span>.
+Package names are in bold text and wrapped into curly brackets (e.g. **{ggplot2}**), and inline code and file names are formatted in a monospaced typewriter font (e.g. `read_csv("data.csv")`). Function names are followed by parentheses (e.g. `ggplot2::ggplot()`). Notes are formatted as <span style='color:#28A87D;font-style:italic;'>coloured, italic text</span>.
 
 
 ## Acknowledgments {-}

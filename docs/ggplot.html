@@ -4,19 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 The ggplot2 Package | Graphic Design with ggplot2</title>
+  <title>Chapter 3 The {ggplot2} Package | Graphic Design with ggplot2</title>
   <meta name="description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 The ggplot2 Package | Graphic Design with ggplot2" />
+  <meta property="og:title" content="Chapter 3 The {ggplot2} Package | Graphic Design with ggplot2" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
   <meta name="github-repo" content="z3tt/graphic-design-ggplot2" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 The ggplot2 Package | Graphic Design with ggplot2" />
+  <meta name="twitter:title" content="Chapter 3 The {ggplot2} Package | Graphic Design with ggplot2" />
   
   <meta name="twitter:description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Cédric Scherer" />
 
 
-<meta name="date" content="2022-04-27" />
+<meta name="date" content="2022-12-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,8 +31,7 @@
   
   
 <link rel="prev" href="get-started.html"/>
-<link rel="next" href="polish.html"/>
-<script src="libs/header-attrs/header-attrs.js"></script>
+<link rel="next" href="a-walk-through-example.html"/>
 <script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -52,6 +50,7 @@
 
 
 <link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/kePrint/kePrint.js"></script>
 <link href="libs/lightable/lightable.css" rel="stylesheet" />
@@ -95,7 +94,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -108,7 +107,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -181,28 +180,40 @@ div.csl-indent {
 <li class="chapter" data-level="2.1" data-path="get-started.html"><a href="get-started.html#data"><i class="fa fa-check"></i><b>2.1</b> The Data</a></li>
 <li class="chapter" data-level="2.2" data-path="get-started.html"><a href="get-started.html#rstats"><i class="fa fa-check"></i><b>2.2</b> Working in R</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="get-started.html"><a href="get-started.html#import-data"><i class="fa fa-check"></i><b>2.2.1</b> Import data</a></li>
-<li class="chapter" data-level="2.2.2" data-path="get-started.html"><a href="get-started.html#inspect-data"><i class="fa fa-check"></i><b>2.2.2</b> Inspect data</a></li>
-<li class="chapter" data-level="2.2.3" data-path="get-started.html"><a href="get-started.html#data-types"><i class="fa fa-check"></i><b>2.2.3</b> Data types</a></li>
-<li class="chapter" data-level="2.2.4" data-path="get-started.html"><a href="get-started.html#data-wrangling"><i class="fa fa-check"></i><b>2.2.4</b> Data wrangling</a></li>
+<li class="chapter" data-level="2.2.1" data-path="get-started.html"><a href="get-started.html#import"><i class="fa fa-check"></i><b>2.2.1</b> Import data</a></li>
+<li class="chapter" data-level="2.2.2" data-path="get-started.html"><a href="get-started.html#workflows"><i class="fa fa-check"></i><b>2.2.2</b> Project-oriented workflows</a></li>
+<li class="chapter" data-level="2.2.3" data-path="get-started.html"><a href="get-started.html#inspect"><i class="fa fa-check"></i><b>2.2.3</b> Inspect data</a></li>
+<li class="chapter" data-level="2.2.4" data-path="get-started.html"><a href="get-started.html#classes"><i class="fa fa-check"></i><b>2.2.4</b> Data types</a></li>
+<li class="chapter" data-level="2.2.5" data-path="get-started.html"><a href="get-started.html#wrangling"><i class="fa fa-check"></i><b>2.2.5</b> Data wrangling</a></li>
+<li class="chapter" data-level="2.2.6" data-path="get-started.html"><a href="get-started.html#quarto-rmd"><i class="fa fa-check"></i><b>2.2.6</b> Quarto and Rmarkdown</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="get-started.html"><a href="get-started.html#rmarkdown"><i class="fa fa-check"></i><b>2.3</b> Working with Rmarkdown</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>3</b> The ggplot2 Package</a>
+<li class="chapter" data-level="3" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>3</b> The {ggplot2} Package</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="ggplot.html"><a href="ggplot.html#default"><i class="fa fa-check"></i><b>3.1</b> A Basic ggplot</a></li>
-<li class="chapter" data-level="3.2" data-path="ggplot.html"><a href="ggplot.html#prop"><i class="fa fa-check"></i><b>3.2</b> Change Properties of Geometries</a></li>
-<li class="chapter" data-level="3.3" data-path="ggplot.html"><a href="ggplot.html#mapping-data-to-aesthetics"><i class="fa fa-check"></i><b>3.3</b> Mapping Data to Aesthetics</a></li>
-<li class="chapter" data-level="3.4" data-path="ggplot.html"><a href="ggplot.html#theme"><i class="fa fa-check"></i><b>3.4</b> Replace the default <strong>ggplot2</strong> theme</a></li>
-<li class="chapter" data-level="3.5" data-path="ggplot.html"><a href="ggplot.html#export"><i class="fa fa-check"></i><b>3.5</b> Export <strong>ggplot2</strong> as graphic files</a></li>
+<li class="chapter" data-level="3.1" data-path="ggplot.html"><a href="ggplot.html#the-structure-of-a-ggplot"><i class="fa fa-check"></i><b>3.1</b> The Structure of a ggplot</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="ggplot.html"><a href="ggplot.html#data-1"><i class="fa fa-check"></i><b>3.1.1</b> Data</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html"><i class="fa fa-check"></i><b>4</b> A walk-through example</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#basics"><i class="fa fa-check"></i><b>4.1</b> Create a basic ggplot</a></li>
+<li class="chapter" data-level="4.2" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#layers"><i class="fa fa-check"></i><b>4.2</b> Combine multiple layers</a></li>
+<li class="chapter" data-level="4.3" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#facets"><i class="fa fa-check"></i><b>4.3</b> Create small multiples</a></li>
+<li class="chapter" data-level="4.4" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#axes"><i class="fa fa-check"></i><b>4.4</b> Change the axis scaling</a></li>
+<li class="chapter" data-level="4.5" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#colors"><i class="fa fa-check"></i><b>4.5</b> Use a custom color palette</a></li>
+<li class="chapter" data-level="4.6" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#labels"><i class="fa fa-check"></i><b>4.6</b> Adjust labels</a></li>
+<li class="chapter" data-level="4.7" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#themes"><i class="fa fa-check"></i><b>4.7</b> Apply a complete theme</a></li>
+<li class="chapter" data-level="4.8" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#theming"><i class="fa fa-check"></i><b>4.8</b> Customize the theme</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="the-concepts-of-ggplot2.html"><a href="the-concepts-of-ggplot2.html"><i class="fa fa-check"></i><b>5</b> The Concepts of {ggplot2}</a></li>
 <li class="part"><span><b>I How To Polish Your Graphics</b></span></li>
-<li class="chapter" data-level="4" data-path="polish.html"><a href="polish.html"><i class="fa fa-check"></i><b>4</b> Quick Steps to Improve Your Graphic</a></li>
-<li class="chapter" data-level="5" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>5</b> Working with Text</a>
+<li class="chapter" data-level="6" data-path="polish.html"><a href="polish.html"><i class="fa fa-check"></i><b>6</b> Quick Steps to Improve Your Graphic</a></li>
+<li class="chapter" data-level="7" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#axes"><i class="fa fa-check"></i><b>7</b> Working with Axes</a></li>
+<li class="chapter" data-level="8" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>8</b> Working with Text</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="text.html"><a href="text.html#titles"><i class="fa fa-check"></i><b>5.1</b> Titles</a></li>
+<li class="chapter" data-level="8.1" data-path="text.html"><a href="text.html#titles"><i class="fa fa-check"></i><b>8.1</b> Titles</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="axes.html"><a href="axes.html"><i class="fa fa-check"></i><b>6</b> Working with Axes</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="more-to-say.html"><a href="more-to-say.html"><i class="fa fa-check"></i><b>A</b> More to Say</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -226,25 +237,28 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ggplot" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> The ggplot2 Package</h1>
+<div id="ggplot" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> The {ggplot2} Package<a href="ggplot.html#ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p class="comment">
 <p>ADD SHORT HISTORY OF GGPLOT2</p>
 </p>
-<p>When looking into the package description of the <strong>ggplot2</strong> package, it states the following:</p>
+<p>When looking into the package description of the <strong>{ggplot2}</strong> package, it states the following:</p>
 <blockquote>
-<p><strong>ggplot2</strong> is a system for declaratively creating graphics, based on <a href="https://link.springer.com/chapter/10.1007/978-3-642-21551-3_13">The Grammar of Graphics</a>. You provide the data, tell <strong>ggplot2</strong> how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.</p>
+<p><strong>{ggplot2}</strong> is a system for declaratively creating graphics, based on <a href="https://link.springer.com/chapter/10.1007/978-3-642-21551-3_13">The Grammar of Graphics</a>. You provide the data, tell <strong>{ggplot2}</strong> how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.</p>
 </blockquote>
-<p>A ggplot is built up from a few components:</p>
+<p>The most important insight from that technical description is that (1) it relies on a framework called the grammar of graphics (hence the gg in <strong>{ggplot2}</strong>) and (2) we map variables to aesthetics. This is an important concept when writing <strong>{ggplot2}</strong> code.</p>
+<div id="the-structure-of-a-ggplot" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> The Structure of a ggplot<a href="ggplot.html#the-structure-of-a-ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In general, a ggplot is built up from the following components:</p>
 <ol style="list-style-type: decimal">
 <li><strong>Data</strong>:<br />
 The raw data that you want to plot.</li>
 <li><strong>Aesthetics</strong> <code>aes()</code>:<br />
-Aesthetics that variables are mapped to such as position, color, size, shape, and transparency</li>
+The mapping of variables to visual properties, such as position, color, size, shape, and transparency.</li>
 <li><strong>Layers:</strong><br />
-The geometric shapes (<code>geom_</code>) that will represent the data or statistical transformation ( `stat_`)of the data, such as quantiles, fitted curves, and counts.</li>
+The representation of the data on the plot panel which is a combination of the geometric shapes (<code>geom_</code>) representing the data and the statistical transformation ( `stat_`) of the data, such as fitted curves, counts, and data summaries.</li>
 <li><strong>Scales</strong> <code>scale_</code>:<br />
-Maps between the data and the aesthetic dimensions, such as data range to positional aesthetics or qualitative or quantitative values to colors.</li>
+The control of the mapping between the data and the aesthetic dimensions, such as data range to positional aesthetics or qualitative or quantitative values to colors.</li>
 <li><strong>Coordinate system</strong> <code>coord_</code>:<br />
 The transformation used for mapping data coordinates into the plane of the graphic.</li>
 <li><strong>Facets</strong> <code>facet_</code>:<br />
@@ -253,155 +267,25 @@ The arrangement of the data into a grid of plots (also known as <em>trellis</em>
 The overall visual (non-data) details of a plot, such as background, grid lines, axes, typefaces, sizes, and colors.</li>
 </ol>
 <p class="note">
-The number of elements may vary depending on how you group them and whom you ask. This list is based on the list provided in the <a href="https://ggplot2-book.org/introduction.html">“ggplot2” book by Hadley Wickham</a>.
+<p>The number of elements may vary depending on how you group them and whom you ask. This list is based on the list provided in the <a href="https://ggplot2-book.org/introduction.html">“ggplot2” book by Hadley Wickham</a>.</p>
 </p>
-<p>A basic ggplot needs three things that you have to specify: the <em>data</em>, <em>aesthetics</em>, and a <em>geometry</em>. All other components can be added to customize the graphic.</p>
-<div id="default" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> A Basic ggplot</h2>
-<p>First, to be able to use the functionality of <strong>ggplot2</strong> we have to load the package (which we can also load via the <a href="https://www.tidyverse.org/">tidyverse package collection</a>):</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="ggplot.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(tidyverse)</span></span>
-<span id="cb31-2"><a href="ggplot.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
-<p>The syntax of <strong>ggplot2</strong> is very different from plotting functionality of provided by base R. We always start to define a plotting object by calling <code>ggplot(data = df)</code> which just tells <strong>ggplot2</strong> that we are going to work with that data. In most cases, you might want to plot two variables—one on the x and one on the y axis. These are <em>positional aesthetics</em> and thus we add <code>aes(x = var1, y = var2)</code> to the <code>ggplot()</code> call (yes, the <code>aes()</code> stands for aesthetics). However, there are also cases where one has to specify only one or even three or more variables.</p>
-<p class="note">
-We specify the data outside <code>aes()</code> and add the variables that ggplot maps the aesthetics to inside <code>aes()</code>.
-</p>
-<p>Here, we map the variable <code>date</code> to the x position and the variable <code>temp</code> to the y position. Later, we will also map variables to all kind of other aesthetics such as color, size, and shape.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="ggplot.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> bikes, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count))</span></code></pre></div>
-<p>Only a panel is created when running this. Why? This is because <strong>ggplot2</strong> does not know <em>how</em> we want to plot that data—we still need to provide a geometry!</p>
-<p><strong>ggplot2</strong> allows you to store the current <code>ggobject</code> in a variable of your choice by assigning it to a variable, in our case called <code>g</code>. You can extend this <code>ggobject</code> later by adding other layers, either all at once or by assigning it to the same or another variable.</p>
-<p class="note">
-Thanks to <em>implicit matching</em> we can rewrite the code as follows: <code>ggplot(bikes, aes(date, count))</code>. But be aware that the order matters! I suggest to use a mixture if you feel confident to do so.
-</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="ggplot.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count))</span></code></pre></div>
-<p class="note">
-Omitting the arguments <code>data</code> and <code>mapping</code> saves you a ton of typing when creating dozens to hundreds ggplot’s per day but being specific about <code>x</code> and <code>y</code> is a good idea. This is the syntax I am using throughout the book.
-</p>
-<p>There are many, many different geometries (called <em>geoms</em> because each function usually starts with <code>geom_</code>) one can add to a ggplot by default (see <a href="https://ggplot2.tidyverse.org/reference/">here</a> for a full list) and even more provided by extension packages (see <a href="https://exts.ggplot2.tidyverse.org/">here</a> for a collection of extension packages). Let’s tell <strong>ggplot2</strong> which style we want to use, for example by adding <code>geom_point()</code> to create a scatter plot:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="ggplot.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
-<span id="cb34-2"><a href="ggplot.html#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:ggplot-default"></span>
-<img src="bookdown_files/figure-html/ggplot-default-1.png" alt="A default scatter plot of temperature measured in Chicago created with the **ggplot2** package." width="864" />
-<p class="caption">
-FIGURE 3.1: A default scatter plot of temperature measured in Chicago created with the <strong>ggplot2</strong> package.
-</p>
-</div>
-<p>One can also combine several geometric layers—and this is where the magic and fun starts!</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="ggplot.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
-<span id="cb35-2"><a href="ggplot.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb35-3"><a href="ggplot.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:ggplot-default-line-point"></span>
-<img src="bookdown_files/figure-html/ggplot-default-line-point-1.png" alt="Again, the same data, now shown as a connected scatterplot as a combination of points and lines." width="864" />
-<p class="caption">
-FIGURE 3.2: Again, the same data, now shown as a connected scatterplot as a combination of points and lines.
-</p>
-</div>
-<p>That’s it for now about geometries. No worries, we are going to learn several plot types in Chapter <code>charts</code>.</p>
-</div>
-<div id="prop" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Change Properties of Geometries</h2>
-<p>Within the <code>geom_*</code> command, you already can manipulate visual aesthetics such as the color, shape, and size of your points. Let’s turn all points to large fire-red diamonds!</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="ggplot.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
-<span id="cb36-2"><a href="ggplot.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;firebrick&quot;</span>, <span class="at">shape =</span> <span class="st">&quot;diamond&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:ggplot-default-col-size-shape"></span>
-<img src="bookdown_files/figure-html/ggplot-default-col-size-shape-1.png" alt="We can change the appearance of the geometry, here illustrated by turning the black dots in larger, red diamonds." width="864" />
-<p class="caption">
-FIGURE 3.3: We can change the appearance of the geometry, here illustrated by turning the black dots in larger, red diamonds.
-</p>
-</div>
-<p class="note">
-<strong>ggplot2</strong> understands both <code>color</code> and <code>colour</code> as well as the short version <code>col</code>.
-</p>
-<p>You can use preset colors (here is a <a href="http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf">full list</a>) or <a href="https://www.techopedia.com/definition/29788/color-hex-code">hex color codes</a>, both in quotes, and even RGB/RGBA colors by using the <code>rgb()</code> function.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="ggplot.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
-<span id="cb37-2"><a href="ggplot.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#b22222&quot;</span>, <span class="at">shape =</span> <span class="st">&quot;diamond&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>)</span>
-<span id="cb37-3"><a href="ggplot.html#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-4"><a href="ggplot.html#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
-<span id="cb37-5"><a href="ggplot.html#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="fu">rgb</span>(<span class="dv">178</span>, <span class="dv">34</span>, <span class="dv">34</span>, <span class="at">maxColorValue =</span> <span class="dv">255</span>), <span class="at">shape =</span> <span class="st">&quot;diamond&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p>Each geom comes with its own properties (called <em>arguments</em>) and the same argument may result in a different change depending on the geom you are using.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="ggplot.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
-<span id="cb38-2"><a href="ggplot.html#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;firebrick&quot;</span>, <span class="at">shape =</span> <span class="st">&quot;diamond&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb38-3"><a href="ggplot.html#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">formula =</span> y  <span class="sc">~</span><span class="fu">poly</span>(x, <span class="dv">4</span>), <span class="at">se =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb38-4"><a href="ggplot.html#cb38-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">color =</span> <span class="st">&quot;gray40&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:ggplot-default-line-col-size-shape"></span>
-<img src="bookdown_files/figure-html/ggplot-default-line-col-size-shape-1.png" alt="You can style each geometrical layer on its own. Each geometry also comes with a set of individual properties." width="864" />
-<p class="caption">
-FIGURE 3.4: You can style each geometrical layer on its own. Each geometry also comes with a set of individual properties.
-</p>
-</div>
-</div>
-<div id="mapping-data-to-aesthetics" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Mapping Data to Aesthetics</h2>
-<p>You already have seen two <em>positional aesthetics</em>, <code>x</code> and <code>y</code> that can be used in combination with the <code>aes()</code> function to map variables to the x- and y-axis, respectively. There are many more aesthetic attributes we are going to use throughout the book. Some are related to positions such as <code>ymin</code> and <code>ymax</code> while others change the appearance of the layer based on the variables they are mapped to such as <code>color</code> and <code>shape</code>.</p>
-<p>As with the <code>x</code> and <code>y</code>, the mapping needs to be wrapped into <code>aes()</code> so that ggplot knows that you are referring to columns of your data set. There are two different levels on which you can apply aesthetic mappings: either for all layers or for individual layers only.</p>
-<p>In case we want to color our points based on the period of the day to reveal the two patterns, we add <code>aes(color = day_night)</code> to our point layer <code>geom_point()</code>:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="ggplot.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
-<span id="cb39-2"><a href="ggplot.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> day_night)) <span class="sc">+</span></span>
-<span id="cb39-3"><a href="ggplot.html#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:ggplot-aes-layer"></span>
-<img src="bookdown_files/figure-html/ggplot-aes-layer-1.png" alt="By applying aesthetic mapping to the `day_night` variable in the point layers, the two groups can be identified. Note that **ggplot2** automatically adds a legend to the plot." width="864" />
-<p class="caption">
-FIGURE 3.5: By applying aesthetic mapping to the <code>day_night</code> variable in the point layers, the two groups can be identified. Note that <strong>ggplot2</strong> automatically adds a legend to the plot.
-</p>
-</div>
-<p>By supplying the aesthetic mapping inside <code>ggplot()</code> all layers are applying the same mapping. Consequently, the grouping and coloring is also used for the smoothing:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="ggplot.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count, <span class="at">color =</span> day_night)) <span class="sc">+</span> </span>
-<span id="cb40-2"><a href="ggplot.html#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb40-3"><a href="ggplot.html#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:ggplot-aes-parent"></span>
-<img src="bookdown_files/figure-html/ggplot-aes-parent-1.png" alt="Both, the points and the smoothing lines are encoded by daytime.  Because of that, the smoothing is hard to see and best visible in the legend." width="864" />
-<p class="caption">
-FIGURE 3.6: Both, the points and the smoothing lines are encoded by daytime. Because of that, the smoothing is hard to see and best visible in the legend.
-</p>
-</div>
-<p>The aesthetic mapping to both, <code>geom_point()</code> and <code>geom_smooth()</code>, is also reflected in the legend which now shows points, lines, and ribbons.</p>
-<p>Note that you can overwrite the mapping specified in <code>ggplot()</code> in individual layers by either supplying a fixed value to that property:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="ggplot.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count, <span class="at">color =</span> day_night)) <span class="sc">+</span> </span>
-<span id="cb41-2"><a href="ggplot.html#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb41-3"><a href="ggplot.html#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span>
-<span id="cb41-4"><a href="ggplot.html#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-5"><a href="ggplot.html#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count, <span class="at">color =</span> day_night)) <span class="sc">+</span> </span>
-<span id="cb41-6"><a href="ggplot.html#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb41-7"><a href="ggplot.html#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:ggplot-aes-parent-overwrite-plot"></span>
-<img src="bookdown_files/figure-html/ggplot-aes-parent-overwrite-plot-1.png" alt="Overwriting the color encoding in the point (left) or the smoothing (right). Note that the grouping is removed as well which changes the behaviour of the smoothing geom." width="864" />
-<p class="caption">
-FIGURE 3.7: Overwriting the color encoding in the point (left) or the smoothing (right). Note that the grouping is removed as well which changes the behaviour of the smoothing geom.
-</p>
-</div>
-</div>
-<div id="theme" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Replace the default <strong>ggplot2</strong> theme</h2>
-<p>And to illustrate some more of ggplot’s versatility, let’s get rid of the grayish default <strong>ggplot2</strong> look by setting a different built-in theme, e.g. <code>theme_bw()</code>. One can add a theme directly to a ggplot composition or setting a theme globally—by calling <code>theme_set()</code> all following plots will have the same black’n’white theme. In the same step, we can also increase the <code>base_size</code> of the plot elements. The default base size is 11 and tends to be too small, at least for my workflow.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="ggplot.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>))</span>
-<span id="cb42-2"><a href="ggplot.html#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-3"><a href="ggplot.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count, <span class="at">color =</span> day_night)) <span class="sc">+</span> </span>
-<span id="cb42-4"><a href="ggplot.html#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:remove-gray-background"></span>
-<img src="bookdown_files/figure-html/remove-gray-background-1.png" alt="We can change the appearance for all following plots generated with **ggplot2** by globally setting another theme via `theme_set()`." width="864" />
-<p class="caption">
-FIGURE 3.8: We can change the appearance for all following plots generated with <strong>ggplot2</strong> by globally setting another theme via <code>theme_set()</code>.
-</p>
-</div>
-<p>You can find more on how to use built-in themes and how to customize themes in the section <code>themes</code>. From the next chapter on, we will also use the <code>theme()</code> function to customize particular elements of the theme.</p>
-<p class="note">
-<code>theme()</code> is an essential command to manually modify all kinds of theme elements (texts, rectangles, and lines). To see which details of a ggplot theme can be modified have a look <a href="https://ggplot2.tidyverse.org/reference/theme.html">here</a>—and take some time, this is a looong list.
-</p>
-</div>
-<div id="export" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> Export <strong>ggplot2</strong> as graphic files</h2>
+<p>A basic ggplot needs three things that you have to specify: the <em>data</em>, <em>aesthetics</em>, and a <em>layer</em>. All other components can be further combined and modified to customize your chart.</p>
+<p>You can think of a ggplot as a receipt for a dish: it can be based on a few or a diversity of ingredients. Also, you are free to add additional ingredients to spice-up your creation (literally and visually).</p>
+<p>Similarly, you can build rather basic charts such as scatter plots or histograms with only a few lines code. But <code>{ggplot2}</code> also allows to create rather complex charts that combine multiple geometries, statistical transformations and maybe even data sets. On top, it is up to you how much effort you take to polish the plot. You can rely on the defaults used for data-related aesthetics (e.g. default axis breaks and color palettes) and non-data aspects (e.g. complete themes). Or you decide to modify the data-related aesthetics such as axes and color palettes and/or customize the theme elements of your graphic to your needs.</p>
+<div id="data-1" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Data<a href="ggplot.html#data-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>No data visualization without data.</p>
 
 </div>
 </div>
-
-
-
+</div>
             </section>
 
           </div>
         </div>
       </div>
 <a href="get-started.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="polish.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="a-walk-through-example.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>

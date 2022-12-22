@@ -155,15 +155,38 @@ beneficial in any data-related field.
 
 ## Why R and **ggplot2** {#why}
 
-As a computational ecologist, I've learned and used a range of different tools and programming languages for various purposes such as data wrangling, statistical analyses, and model building. The open-source language R was and is the programming language most widely used by ecologists to handle and analyze ecological data [@sciaini2018]. Consequently, I was *of course* using R in my daily life as an scientific researcher.
+As a computational ecologist, I've learned and used a range of different 
+tools and programming languages for various purposes such as data wrangling, 
+statistical analyses, and model building. The open-source language R was and 
+is the programming language most widely used by ecologists to handle and 
+analyze ecological data [@sciaini2018]. Consequently, I was *of course* 
+using R in my daily life as an scientific researcher.
 
-Nowadays, R plays a crucial part in many data-related workflows, no matter if for scientific, educational, or industrial use cases. Thanks to the ever growing R community and the rich collection of libraries that add additional functionality and simplify workflows, R is an attractive programming language that has outgrown of its original purpose: statistical analyses. Today, R can serve as tool to generate automated reports, develop stand-alone web apps, and draft presentation slides, books, and web pages. And to design high-level, publication–ready visualizations.
+Nowadays, R plays a crucial part in many data-related workflows, no matter 
+if for scientific, educational, or industrial use cases. Thanks to the 
+ever growing R community and the rich collection of libraries that add 
+additional functionality and simplify workflows, R is an attractive 
+programming language that has outgrown of its original purpose: statistical 
+analyses. Today, R can serve as tool to generate automated reports, develop 
+stand-alone web apps, and draft presentation slides, books, and web pages. 
+And to design high-level, publication–ready visualizations.
 
-Even though R—similar to most programming languages—has a steep learning curve, the level of functionality, flexibility, automation, and reproducibility offered can be a major benefit also in a design context:
+Even though R—similar to most programming languages—has a steep learning 
+curve, the level of functionality, flexibility, automation, and 
+reproducibility offered can be a major benefit also in a design context:
 
-* The layered approach of **ggplot2** opens the possibility to build any type of visualization.
+* The layered approach of **ggplot2** opens the possibility to build any 
+type of visualization.
 * Various extension packages add missing functionality.
-* Script-based workflows instead of *point–and–click* approaches allow for reproducibility—which means you can simply (in theory) run the code again after receiving new data or create thousands of visualizations for various data sets in no time.
-* Sharing code is becoming the golden standard in many fields and thus facilitates transparency and credibility as well as modification and creative advancement.
-* A helpful community and many free resources simplify learning experiences and the search for solutions.
-* The visualizations created in R can be exported as vector files and thus allow for post–processing with graphic design tools. 
+* Script-based workflows instead of *point–and–click* approaches allow for 
+reproducibility—which means you can simply (in theory) run the code again 
+after receiving new data or create thousands of visualizations for various 
+data sets in no time.
+* Sharing code is becoming the golden standard in many fields and thus 
+facilitates transparency and credibility as well as modification and 
+creative advancement.
+* A helpful community and many free resources simplify learning experiences 
+and the search for solutions.
+* The visualizations created in R can be exported as vector files and thus 
+allow for post–processing with vector graphics software like Adobe 
+Illustrator, Inkscape or Figma. 
