@@ -1,8 +1,0 @@
-```{r setup-section-polish, echo=FALSE, include=FALSE}
-library(tidyverse)
-bikes <- readr::read_csv("https://www.cedricscherer.com/data/london-bikes.csv", col_types = "Dcfffilllddddfc")
-```
-
-# (PART) How To Polish Your Graphics {-}
-
-# Quick Steps to Improve Your Graphic {#polish}

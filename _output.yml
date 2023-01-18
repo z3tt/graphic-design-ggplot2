@@ -2,7 +2,7 @@ bookdown::gitbook:
   css: css/style.css
   config:
     toc:
-      collapse: none
+      collapse: section
       before: |
         <li><a href="./"><b>“Graphic Design with ggplot2”</b><br>Written by Cédric Scherer</a></li>
       after: |

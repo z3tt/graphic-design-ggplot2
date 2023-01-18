@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 The Grammar of Graphics | Graphic Design with ggplot2</title>
+  <meta name="description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 The Grammar of Graphics | Graphic Design with ggplot2" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
+  <meta name="github-repo" content="z3tt/graphic-design-ggplot2" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 The Grammar of Graphics | Graphic Design with ggplot2" />
+  
+  <meta name="twitter:description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
+  
+
+<meta name="author" content="Cédric Scherer" />
+
+
+<meta name="date" content="2022-12-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction.html"/>
+<link rel="next" href="get-started.html"/>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+<script src="libs/kePrint/kePrint.js"></script>
+<link href="libs/lightable/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><b>“Graphic Design with ggplot2”</b><br>Written by Cédric Scherer</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#why-read-this-book"><i class="fa fa-check"></i>Why read this book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#how-to-read-this-book"><i class="fa fa-check"></i>How to read this book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#software-information-and-conventions"><i class="fa fa-check"></i>Software information and conventions</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i>Acknowledgments</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#communication"><i class="fa fa-check"></i><b>1.1</b> Communicating Data</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#coding"><i class="fa fa-check"></i><b>1.2</b> Coding Visualizations</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#why"><i class="fa fa-check"></i><b>1.3</b> Why R and <strong>ggplot2</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="the-grammar-of-graphics.html"><a href="the-grammar-of-graphics.html"><i class="fa fa-check"></i><b>2</b> The Grammar of Graphics</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="the-grammar-of-graphics.html"><a href="the-grammar-of-graphics.html#ggplot"><i class="fa fa-check"></i><b>2.1</b> The {ggplot2} Package</a></li>
+<li class="chapter" data-level="2.2" data-path="the-grammar-of-graphics.html"><a href="the-grammar-of-graphics.html#components"><i class="fa fa-check"></i><b>2.2</b> The Components of a ggplot</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="the-grammar-of-graphics.html"><a href="the-grammar-of-graphics.html#data"><i class="fa fa-check"></i><b>2.2.1</b> Data</a></li>
+<li class="chapter" data-level="2.2.2" data-path="the-grammar-of-graphics.html"><a href="the-grammar-of-graphics.html#aesthetics"><i class="fa fa-check"></i><b>2.2.2</b> Aesthetics</a></li>
+<li class="chapter" data-level="2.2.3" data-path="the-grammar-of-graphics.html"><a href="the-grammar-of-graphics.html#layers"><i class="fa fa-check"></i><b>2.2.3</b> Layers</a></li>
+<li class="chapter" data-level="2.2.4" data-path="the-grammar-of-graphics.html"><a href="the-grammar-of-graphics.html#scales"><i class="fa fa-check"></i><b>2.2.4</b> Scales</a></li>
+<li class="chapter" data-level="2.2.5" data-path="the-grammar-of-graphics.html"><a href="the-grammar-of-graphics.html#coords"><i class="fa fa-check"></i><b>2.2.5</b> Coordinate Systems</a></li>
+<li class="chapter" data-level="2.2.6" data-path="the-grammar-of-graphics.html"><a href="the-grammar-of-graphics.html#facets"><i class="fa fa-check"></i><b>2.2.6</b> Facets</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="the-grammar-of-graphics.html"><a href="the-grammar-of-graphics.html#themes"><i class="fa fa-check"></i><b>2.3</b> Themes</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="get-started.html"><a href="get-started.html"><i class="fa fa-check"></i><b>3</b> Get Started</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="get-started.html"><a href="get-started.html#dataset"><i class="fa fa-check"></i><b>3.1</b> The Data Set</a></li>
+<li class="chapter" data-level="3.2" data-path="get-started.html"><a href="get-started.html#rstats"><i class="fa fa-check"></i><b>3.2</b> Working in R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="get-started.html"><a href="get-started.html#import"><i class="fa fa-check"></i><b>3.2.1</b> Import data</a></li>
+<li class="chapter" data-level="3.2.2" data-path="get-started.html"><a href="get-started.html#workflows"><i class="fa fa-check"></i><b>3.2.2</b> Project-oriented workflows</a></li>
+<li class="chapter" data-level="3.2.3" data-path="get-started.html"><a href="get-started.html#inspect"><i class="fa fa-check"></i><b>3.2.3</b> Inspect data</a></li>
+<li class="chapter" data-level="3.2.4" data-path="get-started.html"><a href="get-started.html#classes"><i class="fa fa-check"></i><b>3.2.4</b> Data types</a></li>
+<li class="chapter" data-level="3.2.5" data-path="get-started.html"><a href="get-started.html#wrangling"><i class="fa fa-check"></i><b>3.2.5</b> Data wrangling</a></li>
+<li class="chapter" data-level="3.2.6" data-path="get-started.html"><a href="get-started.html#utility"><i class="fa fa-check"></i><b>3.2.6</b> Other Helpful Functions</a></li>
+<li class="chapter" data-level="3.2.7" data-path="get-started.html"><a href="get-started.html#quarto-rmd"><i class="fa fa-check"></i><b>3.2.7</b> Quarto and Rmarkdown</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html"><i class="fa fa-check"></i><b>4</b> A walk-through example</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#basics"><i class="fa fa-check"></i><b>4.1</b> Create a basic ggplot</a></li>
+<li class="chapter" data-level="4.2" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#combined-layers"><i class="fa fa-check"></i><b>4.2</b> Combine multiple layers</a></li>
+<li class="chapter" data-level="4.3" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#faceting"><i class="fa fa-check"></i><b>4.3</b> Create small multiples</a></li>
+<li class="chapter" data-level="4.4" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#axis-scaling"><i class="fa fa-check"></i><b>4.4</b> Change the axis scaling</a></li>
+<li class="chapter" data-level="4.5" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#color-scaling"><i class="fa fa-check"></i><b>4.5</b> Use a custom color palette</a></li>
+<li class="chapter" data-level="4.6" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#label-adjustment"><i class="fa fa-check"></i><b>4.6</b> Adjust labels</a></li>
+<li class="chapter" data-level="4.7" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#complete-themes"><i class="fa fa-check"></i><b>4.7</b> Apply a complete theme</a></li>
+<li class="chapter" data-level="4.8" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#custom-theming"><i class="fa fa-check"></i><b>4.8</b> Customize the theme</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="the-concepts-of-ggplot2.html"><a href="the-concepts-of-ggplot2.html"><i class="fa fa-check"></i><b>5</b> The Concepts of {ggplot2}</a></li>
+<li class="part"><span><b>I How To Polish Your Graphics</b></span></li>
+<li class="chapter" data-level="6" data-path="polish.html"><a href="polish.html"><i class="fa fa-check"></i><b>6</b> Quick Steps to Improve Your Graphic</a></li>
+<li class="chapter" data-level="7" data-path="working-with-axes.html"><a href="working-with-axes.html"><i class="fa fa-check"></i><b>7</b> Working with Axes</a></li>
+<li class="chapter" data-level="8" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>8</b> Working with Text</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="text.html"><a href="text.html#titles"><i class="fa fa-check"></i><b>8.1</b> Titles</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="more-to-say.html"><a href="more-to-say.html"><i class="fa fa-check"></i><b>A</b> More to Say</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<hr class="grey"><li><i><a href="https://bookdown.org" target="blank">Published with bookdown</a></i></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Graphic Design with ggplot2</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="the-grammar-of-graphics" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> The Grammar of Graphics<a href="the-grammar-of-graphics.html#the-grammar-of-graphics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="ggplot" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> The {ggplot2} Package<a href="the-grammar-of-graphics.html#ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p class="comment">
+<p>ADD SHORT HISTORY OF THE GRAMMAR + GGPLOT2</p>
+</p>
+<p>When looking into the package description of the <strong>{ggplot2}</strong> package, it states the following:</p>
+<blockquote>
+<p><strong>{ggplot2}</strong> is a system for declaratively creating graphics, based on <a href="https://link.springer.com/chapter/10.1007/978-3-642-21551-3_13">The Grammar of Graphics</a>. You provide the data, tell <strong>{ggplot2}</strong> how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.</p>
+</blockquote>
+<p>The most important insight from that technical description is that (1) it relies on a framework called the grammar of graphics (hence the gg in <strong>{ggplot2}</strong>) and (2) we map variables to aesthetics. This is an important concept when writing <strong>{ggplot2}</strong> code.</p>
+</div>
+<div id="components" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> The Components of a ggplot<a href="the-grammar-of-graphics.html#components" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In general, a ggplot is built up from the following components:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Data</strong>:<br />
+The raw data that you want to plot.</li>
+<li><strong>Aesthetics</strong> <code>aes()</code>:<br />
+The mapping of variables to visual properties, such as position, color, size, shape, and transparency.</li>
+<li><strong>Layers:</strong><br />
+The representation of the data on the plot panel which is a combination of the geometric shapes (<code>geom_</code>) representing the data and the statistical transformation (<code>stat_</code>) of the data, such as fitted curves, counts, and data summaries.</li>
+<li><strong>Scales</strong> <code>scale_</code>:<br />
+The control of the mapping between the data and the aesthetic dimensions, such as data range to positional aesthetics or qualitative or quantitative values to colors.</li>
+<li><strong>Coordinate system</strong> <code>coord_</code>:<br />
+The transformation used for mapping data coordinates into the plane of the graphic.</li>
+<li><strong>Facets</strong> <code>facet_</code>:<br />
+The arrangement of the data into a grid of plots (also known as <em>trellis</em> or <em>lattice plot</em>, or simply <em>small multiples</em>).</li>
+<li><strong>Visual themes</strong> <code>theme()</code>:<br />
+The overall visual (non-data) details of a plot, such as background, grid lines, axes, typefaces, sizes, and colors.</li>
+</ol>
+<p class="note">
+<p>The number of elements may vary depending on how you group them and whom you ask. This list is based on the list provided in the <a href="https://ggplot2-book.org/introduction.html">“ggplot2” book by Hadley Wickham</a>.</p>
+</p>
+<p>A basic ggplot needs three things that you have to specify: the <em>data</em>, <em>aesthetics</em>, and a <em>layer</em>. All other components can be further combined and modified to customize your chart.</p>
+<p>You can think of a ggplot as a receipt for a dish: it can be based on a few or a diversity of ingredients. Also, you are free to add additional ingredients to spice-up your creation (literally and visually).</p>
+<p>Similarly, you can build rather basic charts such as scatter plots or histograms with only a few lines code. But <strong><code>{ggplot2}</code></strong> also allows to create rather complex charts that combine multiple geometries, statistical transformations and maybe even data sets. On top, it is up to you how much effort you take to polish the plot. You can rely on the defaults used for data-related aesthetics (e.g. default axis breaks and color palettes) and non-data aspects (e.g. complete themes). Or you decide to modify the data-related aesthetics such as axes and color palettes and/or customize the theme elements of your graphic to your needs.</p>
+<div id="data" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Data<a href="the-grammar-of-graphics.html#data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Without data, there is no data visualization. Luckily, there are many sources of data available to us: statistics, surveys, experiments, and observations. The data may be collected by governments, researcher labs and organisations, companies—or yourself. However, it is important to consider the quality and context of the data you choose in order to gain accurate and valuable insights.</p>
+<p>The <em>quality</em> of the data we use will have a direct impact on the validity and usefulness of the insights we gain from our data visualization. Poor quality data can lead to incorrect conclusions, while high quality data can provide valuable insights and help us make informed decisions.</p>
+<p>In addition to the quality of the data, it is also important to consider the <em>context</em> in which the data was collected. Different data sources may have different biases or limitations, and it is important to consider these when interpreting and visualizing the data.</p>
+<p>Usually, data visualization should be based on real data. At the same time, it is of course possible to create visualizations using hypothetical or simulated data to train yourself or experiment with new chart types. However, you should always keep in mind the origin of the data and communicate the fact clearly to your audience to avoid misleading insights. In order to truly understand and learn from data, we need to work with real, accurate, and reliable data.</p>
+<p>The general recommendation is to structure your data in a “long format”. In a long-form data set, rows store the observations and columns the variables. Each cell represents the value for each combination of observation and variable.</p>
+<p>Imagine you have data on two variables which were measured multiple times for different groups. In a long format, you set up four columns like this: the first encodes the group, the second the year, and the third the metric. The fourth column holds the actual measured values for each combination of group, year, and metric (<a href="the-grammar-of-graphics.html#fig:imgFormatLongWide">2.1</a>, left).</p>
+<p>In contrast, wide formats often spread a variable across columns, for example combining the metrics and the year. In such a setup, the information “year” is not a value but part of the column names (<a href="the-grammar-of-graphics.html#fig:imgFormatLongWide">2.1</a>, right top). A special case is the creation of unique columns per metric. Strictly speaking, such tables are wide-formatted data but depending on your use case such a format might be preferred when the goal is to visualize the metrics in isolation (<a href="the-grammar-of-graphics.html#fig:imgFormatLongWide">2.1</a>, right bottom).</p>
+<div class="figure"><span style="display:block;" id="fig:imgFormatLongWide"></span>
+<img src="img/table-format-long-wide.png" alt="A comparison of data arranged in a long (left) versus wide formats (right). Groups are additionally encoded by shaded rows, the two different metrics by colour."  />
+<p class="caption">
+FIGURE 2.1: A comparison of data arranged in a long (left) versus wide formats (right). Groups are additionally encoded by shaded rows, the two different metrics by colour.
+</p>
+</div>
+<p>If you need to reshape your data, the <code>pivot_*()</code> functions from the <strong><code>{tidyr}</code></strong> package are handy. Ùse <code>pivot_longer()</code> to convert a wide data frame into the long format. To go the other direction, use the <code>pivot_wider()</code>.</p>
+</div>
+<div id="aesthetics" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Aesthetics<a href="the-grammar-of-graphics.html#aesthetics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To visualize certain variables in your data set with <strong><code>{ggplot2}</code></strong>, values are mapped to aesthetic, s. Aesthetic attributes include positional information such as x and y but also colors, fills, point shapes, line types, sizes, and levels of transparency.</p>
+<p>Sticking to our small data set, we could use our long-format data and to map the variables group, year, metric, and value to different aesthetics (see <a href="the-grammar-of-graphics.html#fig:plotsAestheticsData">2.2</a> A for an example). However, to create a scatter plot showing the relationship of both metrics, storing each of them in separate columns is more suited. Now, we can map the variable “metric_x” and “metric_y” to the x and y aesthetics, respectively (<a href="the-grammar-of-graphics.html#fig:plotsAestheticsData">2.2</a> B).</p>
+<div class="figure"><span style="display:block;" id="fig:plotsAestheticsData"></span>
+<img src="bookdown_files/figure-html/plotsAestheticsData-1.png" alt="Basic ggplot outputs mapping four different variables (columns of the data set) to aesthetics, using the long-format data (`data_long`, left plot) and wide-format data (`data_wide`, right plot)." width="864" />
+<p class="caption">
+FIGURE 2.2: Basic ggplot outputs mapping four different variables (columns of the data set) to aesthetics, using the long-format data (<code>data_long</code>, left plot) and wide-format data (<code>data_wide</code>, right plot).
+</p>
+</div>
+<p class="note">
+The optimal shape of your data set relates to the plot you have in mind. Stick to the rule that any variable that you want to use for an aesthetic should have a dedicated column.
+</p>
+</div>
+<div id="layers" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Layers<a href="the-grammar-of-graphics.html#layers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Layers in <strong><code>{ggplot2}</code></strong> define the geometrical representation of the data and the statistical transformation applied to the values. On top, you can also adjust the position of the layer, such as the grouping or stacking of bars or the jittering of points. In the example above, we have used a layer with geometry “point”, the statistical transformation “identity”, and without any adjustment of the position. This specification simply means “draw the values as points as they are, using the specified aesthetics of position, color, and shape”.</p>
+<p>In general, each layer in a ggplot is created using a separate function call. For each layer, you can specify the visual appearance, such as color, and size, independently by <em>setting properties</em> (e.g. turn all points green) or <em>mapping aesthetics</em> (e.g. base the color on the group variable). This allows you to build up a complex plot by adding and customizing individual layers, giving you fine-grained control over the appearance of your plots.</p>
+<div class="figure"><span style="display:block;" id="fig:plotsLayersCombinedPenguins"></span>
+<img src="bookdown_files/figure-html/plotsLayersCombinedPenguins-1.png" alt="Three different visualizations showing the distribution of body mass across three penguin species. A) A box-and-whiskers plot using a single layer. B) Adding a second layer to plot A allows to show the raw data as jittered points. C) Combining multiple layers, one can build more complex visualizations like this variant of a raincloud plot plus annotations." width="864" />
+<p class="caption">
+FIGURE 2.3: Three different visualizations showing the distribution of body mass across three penguin species. A) A box-and-whiskers plot using a single layer. B) Adding a second layer to plot A allows to show the raw data as jittered points. C) Combining multiple layers, one can build more complex visualizations like this variant of a raincloud plot plus annotations.
+</p>
+</div>
+<p>Geometrical layers refer to the visual elements of the plot, such as points, lines, and bars. These are created using functions like <code>geom_point()</code>, <code>geom_line()</code>, and <code>geom_bar()</code>, respectively. Each of these functions adds a layer to the plot.</p>
+<p>Statistical layers refer to the statistical transformations applied to the data being plotted. These are created using functions like <code>stat_smooth()</code>, <code>stat_count()</code>, and <code>stat_summary()</code>, which add a layer to the plot that shows the result of the statistical transformation.</p>
+</div>
+<div id="scales" class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Scales<a href="the-grammar-of-graphics.html#scales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="coords" class="section level3 hasAnchor" number="2.2.5">
+<h3><span class="header-section-number">2.2.5</span> Coordinate Systems<a href="the-grammar-of-graphics.html#coords" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="facets" class="section level3 hasAnchor" number="2.2.6">
+<h3><span class="header-section-number">2.2.6</span> Facets<a href="the-grammar-of-graphics.html#facets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<div id="themes" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Themes<a href="the-grammar-of-graphics.html#themes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="get-started.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-crc/edit/master/02-ggplot2-package.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown.pdf", "bookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

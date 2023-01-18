@@ -1,0 +1,7 @@
+```{r 06setupSectionStats, echo=FALSE, include=FALSE}
+source(here::here("src", "prerequisites.R"))
+```
+
+# Customizing Color Palettes
+
+
