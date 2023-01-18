@@ -1,6 +1,6 @@
 --- 
 title: "Graphic Design with ggplot2"
-subtitle: "Create Beautiful Data Visualizations in R"
+subtitle: "Create Beautiful and Engaging Data Visualizations in R"
 author: "Cédric Scherer"
 date: "`r Sys.Date()`"
 documentclass: krantz
@@ -11,7 +11,7 @@ colorlinks: yes
 lot: yes
 lof: yes
 site: bookdown::bookdown_site
-description: "Create Beautiful, Publication–Ready Data Visualizations in R"
+description: "Create Beautiful and Engaging Data Visualizations in R"
 github-repo: z3tt/graphic-design-ggplot2
 graphics: yes
 #cover-image: images/cover.jpg
@@ -80,16 +80,16 @@ To run any of the materials locally on your own machine, you will need the follo
 * A recent version of R (download from [here](https://cloud.r-project.org/)) 
 * Preferably an *Integrated Development Environment* (IDE) to store scripts and run code, e.g. RStudio (download from [here](https://rstudio.com/products/rstudio/download/#download)) or Visual Studio Code (download from [here](https://code.visualstudio.com/download))
 * A set of R packages installed:
-  + [**tidyverse**](https://www.tidyverse.org/) that includes [**ggplot2**](https://ggplot2.tidyverse.org/)
-  + [**ggforce**](https://ggforce.data-imaginist.com/)
-  + [**ggrepel**](https://ggrepel.slowkow.com/)
-  + [**ggtext**](https://wilkelab.org/ggtext/)
-  + [**magick**](https://docs.ropensci.org/magick/)
-  + [**patchwork**](https://patchwork.data-imaginist.com/)
-  + [**ragg**](https://ragg.r-lib.org/)
-  + [**rnaturalearth**](https://docs.ropensci.org/rnaturalearth/)
-  + [**scico**](https://github.com/thomasp85/scico)
-  + [**sf**](https://r-spatial.github.io/sf/)
+  + [**{tidyverse}**](https://www.tidyverse.org/) that includes [**{ggplot2}**](https://ggplot2.tidyverse.org/)
+  + [**{ggforce}**](https://ggforce.data-imaginist.com/)
+  + [**{ggrepel}**](https://ggrepel.slowkow.com/)
+  + [**{ggtext}**](https://wilkelab.org/ggtext/)
+  + [**{magick}**](https://docs.ropensci.org/magick/)
+  + [**{patchwork}**](https://patchwork.data-imaginist.com/)
+  + [**{ragg}**](https://ragg.r-lib.org/)
+  + [**{rnaturalearth}**](https://docs.ropensci.org/rnaturalearth/)
+  + [**{scico}**](https://github.com/thomasp85/scico)
+  + [**{sf}**](https://r-spatial.github.io/sf/)
   
 To install all packages in one go, run the following code in the R console:
 
@@ -102,13 +102,13 @@ install.packages(c(
 
 ## Software information and conventions {-}
 
-The book was written with the **knitr**\index{knitr} package [@xie2015] and the **bookdown**\index{bookdown} package [@R-bookdown] with the following setup:
+The book was written with the **{knitr}**\index{knitr} package [@xie2015] and the **{bookdown}**\index{bookdown} package [@R-bookdown] with the following setup:
 
 ```{r session, echo=FALSE}
 xfun::session_info()
 ```
 
-Package names are in bold text and wrapped into curly brackets (e.g. **{ggplot2}**), and inline code and file names are formatted in a monospaced typewriter font (e.g. `read_csv("data.csv")`). Function names are followed by parentheses (e.g. `ggplot2::ggplot()`). Notes are formatted as <span style='color:#28A87D;font-style:italic;'>coloured, italic text</span>.
+Package names are in **bold text** and wrapped into curly brackets, e.g. **{ggplot2}**. Inline code and file names are formatted in a `monospaced typewriter font`. Function names are followed by parentheses as in `ggplot2::ggplot()`. 
 
 
 ## Acknowledgments {-}

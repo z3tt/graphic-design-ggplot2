@@ -5,19 +5,19 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Graphic Design with ggplot2</title>
-  <meta name="description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
+  <meta name="description" content="Create Beautiful and Engaging Data Visualizations in R" />
   <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Graphic Design with ggplot2" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
+  <meta property="og:description" content="Create Beautiful and Engaging Data Visualizations in R" />
   <meta name="github-repo" content="z3tt/graphic-design-ggplot2" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Graphic Design with ggplot2" />
   
-  <meta name="twitter:description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
+  <meta name="twitter:description" content="Create Beautiful and Engaging Data Visualizations in R" />
   
 
 <meta name="author" content="Cédric Scherer" />
@@ -256,7 +256,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="header">
 <h1 class="title">Graphic Design with ggplot2</h1>
-<h2 class="subtitle"><em>Create Beautiful Data Visualizations in R</em></h2>
+<h2 class="subtitle"><em>Create Beautiful and Engaging Data Visualizations in R</em></h2>
 <p class="author"><em>Cédric Scherer</em></p>
 <p class="date"><em>2023-01-18</em></p>
 </div>
@@ -298,16 +298,16 @@ div.csl-indent {
 <li>Preferably an <em>Integrated Development Environment</em> (IDE) to store scripts and run code, e.g. RStudio (download from <a href="https://rstudio.com/products/rstudio/download/#download">here</a>) or Visual Studio Code (download from <a href="https://code.visualstudio.com/download">here</a>)</li>
 <li>A set of R packages installed:
 <ul>
-<li><a href="https://www.tidyverse.org/"><strong>tidyverse</strong></a> that includes <a href="https://ggplot2.tidyverse.org/"><strong>ggplot2</strong></a></li>
-<li><a href="https://ggforce.data-imaginist.com/"><strong>ggforce</strong></a></li>
-<li><a href="https://ggrepel.slowkow.com/"><strong>ggrepel</strong></a></li>
-<li><a href="https://wilkelab.org/ggtext/"><strong>ggtext</strong></a></li>
-<li><a href="https://docs.ropensci.org/magick/"><strong>magick</strong></a></li>
-<li><a href="https://patchwork.data-imaginist.com/"><strong>patchwork</strong></a></li>
-<li><a href="https://ragg.r-lib.org/"><strong>ragg</strong></a></li>
-<li><a href="https://docs.ropensci.org/rnaturalearth/"><strong>rnaturalearth</strong></a></li>
-<li><a href="https://github.com/thomasp85/scico"><strong>scico</strong></a></li>
-<li><a href="https://r-spatial.github.io/sf/"><strong>sf</strong></a></li>
+<li><a href="https://www.tidyverse.org/"><strong>{tidyverse}</strong></a> that includes <a href="https://ggplot2.tidyverse.org/"><strong>{ggplot2}</strong></a></li>
+<li><a href="https://ggforce.data-imaginist.com/"><strong>{ggforce}</strong></a></li>
+<li><a href="https://ggrepel.slowkow.com/"><strong>{ggrepel}</strong></a></li>
+<li><a href="https://wilkelab.org/ggtext/"><strong>{ggtext}</strong></a></li>
+<li><a href="https://docs.ropensci.org/magick/"><strong>{magick}</strong></a></li>
+<li><a href="https://patchwork.data-imaginist.com/"><strong>{patchwork}</strong></a></li>
+<li><a href="https://ragg.r-lib.org/"><strong>{ragg}</strong></a></li>
+<li><a href="https://docs.ropensci.org/rnaturalearth/"><strong>{rnaturalearth}</strong></a></li>
+<li><a href="https://github.com/thomasp85/scico"><strong>{scico}</strong></a></li>
+<li><a href="https://r-spatial.github.io/sf/"><strong>{sf}</strong></a></li>
 </ul></li>
 </ul>
 <p>To install all packages in one go, run the following code in the R console:</p>
@@ -318,7 +318,7 @@ div.csl-indent {
 </div>
 <div id="software-information-and-conventions" class="section level2 unnumbered hasAnchor">
 <h2>Software information and conventions<a href="index.html#software-information-and-conventions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The book was written with the <strong>knitr</strong> package <span class="citation">(<a href="#ref-xie2015" role="doc-biblioref">Xie 2015</a>)</span> and the <strong>bookdown</strong> package <span class="citation">(<a href="#ref-R-bookdown" role="doc-biblioref">Xie 2022</a>)</span> with the following setup:</p>
+<p>The book was written with the <strong>{knitr}</strong> package <span class="citation">(<a href="#ref-xie2015" role="doc-biblioref">Xie 2015</a>)</span> and the <strong>{bookdown}</strong> package <span class="citation">(<a href="#ref-R-bookdown" role="doc-biblioref">Xie 2022</a>)</span> with the following setup:</p>
 <pre><code>## R version 4.2.2 (2022-10-31)
 ## Platform: aarch64-apple-darwin20 (64-bit)
 ## Running under: macOS Ventura 13.0
@@ -348,7 +348,7 @@ div.csl-indent {
 ##   tools_4.2.2       utils_4.2.2      
 ##   vctrs_0.5.1       xfun_0.36        
 ##   yaml_2.3.6</code></pre>
-<p>Package names are in bold text and wrapped into curly brackets (e.g. <strong>{ggplot2}</strong>), and inline code and file names are formatted in a monospaced typewriter font (e.g. <code>read_csv("data.csv")</code>). Function names are followed by parentheses (e.g. <code>ggplot2::ggplot()</code>). Notes are formatted as <span style="color:#28A87D;font-style:italic;">coloured, italic text</span>.</p>
+<p>Package names are in <strong>bold text</strong> and wrapped into curly brackets, e.g. <strong>{ggplot2}</strong>. Inline code and file names are formatted in a <code>monospaced typewriter font</code>. Function names are followed by parentheses as in <code>ggplot2::ggplot()</code>.</p>
 </div>
 <div id="acknowledgments" class="section level2 unnumbered hasAnchor">
 <h2>Acknowledgments<a href="index.html#acknowledgments" class="anchor-section" aria-label="Anchor link to header"></a></h2>

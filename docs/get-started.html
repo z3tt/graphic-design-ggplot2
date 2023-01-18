@@ -5,19 +5,19 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Get Started | Graphic Design with ggplot2</title>
-  <meta name="description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
+  <meta name="description" content="Create Beautiful and Engaging Data Visualizations in R" />
   <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Get Started | Graphic Design with ggplot2" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
+  <meta property="og:description" content="Create Beautiful and Engaging Data Visualizations in R" />
   <meta name="github-repo" content="z3tt/graphic-design-ggplot2" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 3 Get Started | Graphic Design with ggplot2" />
   
-  <meta name="twitter:description" content="Create Beautiful, Publication–Ready Data Visualizations in R" />
+  <meta name="twitter:description" content="Create Beautiful and Engaging Data Visualizations in R" />
   
 
 <meta name="author" content="Cédric Scherer" />
@@ -502,7 +502,7 @@ Most common weather typed
 <span id="cb8-13"><a href="get-started.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(bikes<span class="sc">$</span>is_weekend)</span>
 <span id="cb8-14"><a href="get-started.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;logical&quot;</span></span></code></pre></div>
 <p>Variables of type <code>character</code>, <code>factor</code>, and <code>logical</code> will be handled as <strong>categorical, qualitative data</strong> while <code>numeric</code>, <code>integer</code>, and <code>complex</code><a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> are treated as <strong>numerical, quantitative data</strong>.</p>
-<p>The most important difference between the categorical types is their sorting: while <code>character</code> and also <code>logical</code> values are sorted alphabetically, <code>factor</code> variables have a specified order, defined by the so-called <em>levels</em>. Note that numbers can be treated as well and thus we can change their intrinsic order, too. We can inspect the order with the <code>levels()</code>:</p>
+<p>The most important difference between the categorical types is their sorting: while <code>character</code> and also <code>logical</code> values are sorted alphabetically, <code>factor</code> variables have a specified order, defined by the so-called <em>levels</em>. Note that numbers can be treated as categorical as well and thus we can change their intrinsic order, too. We can inspect the order with the <code>levels()</code>:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="get-started.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(bikes<span class="sc">$</span>weather_type) <span class="do">## an example of a factor with strings</span></span>
 <span id="cb9-2"><a href="get-started.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;broken clouds&quot;    &quot;clear&quot;           </span></span>
 <span id="cb9-3"><a href="get-started.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [3] &quot;cloudy&quot;           &quot;scattered clouds&quot;</span></span>

@@ -180,7 +180,7 @@
   \apptocmd{\@title}{\par {\large #1 \par}}{}{}
 }
 \makeatother
-\subtitle{Create Beautiful Data Visualizations in R}
+\subtitle{Create Beautiful and Engaging Data Visualizations in R}
 \author{Cédric Scherer}
 \date{2023-01-18}
 
@@ -285,25 +285,25 @@ To run any of the materials locally on your own machine, you will need the follo
   \begin{itemize}
   \tightlist
   \item
-    \href{https://www.tidyverse.org/}{\textbf{tidyverse}} that includes \href{https://ggplot2.tidyverse.org/}{\textbf{ggplot2}}
+    \href{https://www.tidyverse.org/}{\textbf{\{tidyverse\}}} that includes \href{https://ggplot2.tidyverse.org/}{\textbf{\{ggplot2\}}}
   \item
-    \href{https://ggforce.data-imaginist.com/}{\textbf{ggforce}}
+    \href{https://ggforce.data-imaginist.com/}{\textbf{\{ggforce\}}}
   \item
-    \href{https://ggrepel.slowkow.com/}{\textbf{ggrepel}}
+    \href{https://ggrepel.slowkow.com/}{\textbf{\{ggrepel\}}}
   \item
-    \href{https://wilkelab.org/ggtext/}{\textbf{ggtext}}
+    \href{https://wilkelab.org/ggtext/}{\textbf{\{ggtext\}}}
   \item
-    \href{https://docs.ropensci.org/magick/}{\textbf{magick}}
+    \href{https://docs.ropensci.org/magick/}{\textbf{\{magick\}}}
   \item
-    \href{https://patchwork.data-imaginist.com/}{\textbf{patchwork}}
+    \href{https://patchwork.data-imaginist.com/}{\textbf{\{patchwork\}}}
   \item
-    \href{https://ragg.r-lib.org/}{\textbf{ragg}}
+    \href{https://ragg.r-lib.org/}{\textbf{\{ragg\}}}
   \item
-    \href{https://docs.ropensci.org/rnaturalearth/}{\textbf{rnaturalearth}}
+    \href{https://docs.ropensci.org/rnaturalearth/}{\textbf{\{rnaturalearth\}}}
   \item
-    \href{https://github.com/thomasp85/scico}{\textbf{scico}}
+    \href{https://github.com/thomasp85/scico}{\textbf{\{scico\}}}
   \item
-    \href{https://r-spatial.github.io/sf/}{\textbf{sf}}
+    \href{https://r-spatial.github.io/sf/}{\textbf{\{sf\}}}
   \end{itemize}
 \end{itemize}
 
@@ -322,7 +322,7 @@ To install all packages in one go, run the following code in the R console:
 \section*{Software information and conventions}\label{software-information-and-conventions}}
 
 
-The book was written with the \textbf{knitr}\index{knitr} package \citep{xie2015} and the \textbf{bookdown}\index{bookdown} package \citep{R-bookdown} with the following setup:
+The book was written with the \textbf{\{knitr\}}\index{knitr} package \citep{xie2015} and the \textbf{\{bookdown\}}\index{bookdown} package \citep{R-bookdown} with the following setup:
 
 \begin{verbatim}
 ## R version 4.2.2 (2022-10-31)
@@ -356,7 +356,7 @@ The book was written with the \textbf{knitr}\index{knitr} package \citep{xie2015
 ##   yaml_2.3.6
 \end{verbatim}
 
-Package names are in bold text and wrapped into curly brackets (e.g.~\textbf{\{ggplot2\}}), and inline code and file names are formatted in a monospaced typewriter font (e.g.~\texttt{read\_csv("data.csv")}). Function names are followed by parentheses (e.g.~\texttt{ggplot2::ggplot()}). Notes are formatted as {coloured, italic text}.
+Package names are in \textbf{bold text} and wrapped into curly brackets, e.g.~\textbf{\{ggplot2\}}. Inline code and file names are formatted in a \texttt{monospaced\ typewriter\ font}. Function names are followed by parentheses as in \texttt{ggplot2::ggplot()}.
 
 \hypertarget{acknowledgments}{%
 \section*{Acknowledgments}\label{acknowledgments}}
@@ -853,7 +853,7 @@ To examine the data type of an object, use the \texttt{class()} function. The \t
 
 Variables of type \texttt{character}, \texttt{factor}, and \texttt{logical} will be handled as \textbf{categorical, qualitative data} while \texttt{numeric}, \texttt{integer}, and \texttt{complex}\footnote{As variables of type \texttt{complex} are rarely used in a data visualization context, we are going to ignore this data type.} are treated as \textbf{numerical, quantitative data}.
 
-The most important difference between the categorical types is their sorting: while \texttt{character} and also \texttt{logical} values are sorted alphabetically, \texttt{factor} variables have a specified order, defined by the so-called \emph{levels}. Note that numbers can be treated as well and thus we can change their intrinsic order, too. We can inspect the order with the \texttt{levels()}:
+The most important difference between the categorical types is their sorting: while \texttt{character} and also \texttt{logical} values are sorted alphabetically, \texttt{factor} variables have a specified order, defined by the so-called \emph{levels}. Note that numbers can be treated as categorical as well and thus we can change their intrinsic order, too. We can inspect the order with the \texttt{levels()}:
 
 \begin{Shaded}
 \begin{Highlighting}[]

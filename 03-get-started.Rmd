@@ -174,7 +174,7 @@ Variables of type `character`, `factor`, and `logical` will be handled as **cate
 
 [^02-get-started-3]: As variables of type `complex` are rarely used in a data visualization context, we are going to ignore this data type.
 
-The most important difference between the categorical types is their sorting: while `character` and also `logical` values are sorted alphabetically, `factor` variables have a specified order, defined by the so-called *levels*. Note that numbers can be treated as well and thus we can change their intrinsic order, too. We can inspect the order with the `levels()`:
+The most important difference between the categorical types is their sorting: while `character` and also `logical` values are sorted alphabetically, `factor` variables have a specified order, defined by the so-called *levels*. Note that numbers can be treated as categorical as well and thus we can change their intrinsic order, too. We can inspect the order with the `levels()`:
 
 ```{r 03factors, collapse=TRUE}
 levels(bikes$weather_type) ## an example of a factor with strings

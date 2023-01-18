@@ -9,7 +9,8 @@
 }
 .book .book-header h1 {
   font-family: "Literata", "Bodoni MT",  "Bodoni 72", Georgia, serif;
-  font-weight: 700;
+  font-weight: 720;
+  font-style: italic;
 }
 
 
@@ -26,12 +27,17 @@ h1, h2 {
   font-weight: 650;
 }
 
-h1.title {
+h1.title, h1.hasAnchor {
   font-weight: 720;
 }
 
 h1.hasAnchor {
-  font-weight: 720;
+  font-style: italic;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal h2 {
+  font-size: 1.5em;
+  margin-top: .75em;
 }
 
 .book .book-body .page-wrapper .page-inner section.normal code, .book .book-body .page-wrapper .page-inner section.normal pre {
@@ -42,6 +48,7 @@ p.caption {
   color: #5A5A5A;
   margin-top: 10px;
 }
+
 p code, pre code {
   font-family: "Spline Sans Mono", Consolas, Monospace;
   white-space: inherit;

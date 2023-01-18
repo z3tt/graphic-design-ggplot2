@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2023.1.8)  18 JAN 2023 10:54
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2023.1.8)  18 JAN 2023 13:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1244,9 +1244,10 @@ Underfull \hbox (badness 10000) detected at line 212
 
 Package hyperref Warning: bookmark level for unknown fm defaults to 0.
 
-(./bookdown.lof
-LaTeX Font Info:    Font shape `TU/SourceCodePro(0)/m/n' will be
-(Font)              scaled to size 8.00003pt on input line 4.
+No file bookdown.lof.
+\tf@lof=\write6
+\openout6 = `bookdown.lof'.
+
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
@@ -1255,11 +1256,46 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [5
 
 
-])
-\tf@lof=\write6
-\openout6 = `bookdown.lof'.
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[6]
+
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[6
+
+]
 Underfull \vbox (badness 10000) detected at line 213
  []
 
@@ -1310,7 +1346,6 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [7
-
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1407,20 +1442,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [9
 
-] [10] [11]
-Underfull \hbox (badness 2103) in paragraph at lines 359--360
-\TU/lmr/m/n/10 and inline code and file names are formatted in a monospaced typ
-ewriter font
- []
-
-
-Underfull \hbox (badness 1496) in paragraph at lines 359--360
-\TU/lmr/m/n/10 (e.g. \TU/SourceCodePro(0)/m/n/10 read_csv("data.csv")\TU/lmr/m/
-n/10 ). Function names are followed by parentheses (e.g. \TU/SourceCodePro(0)/m
-/n/10 gg-
- []
-
-[12]
+] [10]
+LaTeX Font Info:    Font shape `TU/SourceCodePro(0)/m/n' will be
+(Font)              scaled to size 8.00003pt on input line 313.
+[11] [12]
 Underfull \vbox (badness 10000) detected at line 373
  []
 
@@ -2679,9 +2704,9 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 22448 strings out of 476179
- 420914 string characters out of 5809545
- 910911 words of memory out of 5000000
+ 22446 strings out of 476179
+ 420888 string characters out of 5809545
+ 910924 words of memory out of 5000000
  42793 multiletter control sequences out of 15000+600000
  475013 words of font info for 108 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
