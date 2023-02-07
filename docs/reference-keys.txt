@@ -29,7 +29,6 @@ fig:05barsTitlePosition
 fig:06examplePlotThemeUpdate
 fig:06customThemeApplied
 fig:06customThemeModified
-fig:06barsTitlePosition
 introduction
 communication
 coding
@@ -74,7 +73,7 @@ use-a-different-theme
 use-a-custom-font
 increase-the-font-sizes
 create-text-hierarchy
-legend-styling
+style-the-legend
 align-titles-and-captions
 add-some-white-space
 tips-to-improve-your-ggplot-workflow
@@ -82,12 +81,7 @@ save-ggplot-output-with-the-correct-dimensions
 display-ggplot-output-with-the-correct-dimensions
 make-fonts-work
 set-your-ggplot-theme-globally
-create-your-own-theme
-improve-your-ggplot-design
-remove-panel-padding
-legend-styling-1
-align-titles-and-captions-1
-add-some-white-space-1
+create-your-own-custom-theme
 working-with-layers
 geometrical-shapes
 statistical-transformations

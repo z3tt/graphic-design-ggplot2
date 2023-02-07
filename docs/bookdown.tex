@@ -1017,7 +1017,7 @@ To explore and retrieve summary estimates of individual variables, the following
 The \href{https://dplyr.tidyverse.org/}{\textbf{dplyr}} \citep{dplyr} and other \textbf{tidyverse} packages provide a simple and intuitive syntax to wrangle data. There are a ton of unique functions, but knowing a handful is enough to empower you to bring your data in the right format.
 
 \hypertarget{dplyr}{%
-\subsubsection{Data wrangling with the \{dplyr\} package}\label{dplyr}}
+\subsubsection{\texorpdfstring{Data wrangling with the \textbf{dplyr} package}{Data wrangling with the dplyr package}}\label{dplyr}}
 
 There are five main functions of \textbf{dplyr}, called \emph{verbs}:
 
@@ -1151,7 +1151,7 @@ In a next step, we regroup our data to add a column with shares of nightly bike 
 \end{verbatim}
 
 \hypertarget{tidyr}{%
-\subsubsection{Reshaping data with the \{tidyr\} package}\label{tidyr}}
+\subsubsection{\texorpdfstring{Reshaping data with the \textbf{tidyr} package}{Reshaping data with the tidyr package}}\label{tidyr}}
 
 In case you need to reshape a data set to make it work with \textbf{ggplot2}, you can use the functions \texttt{pivot\_longer()} and \texttt{pivot\_wider()} from the \href{https://tidyr.tidyverse.org/}{\textbf{tidyr} package} \citep{tidyr} to move from one format to the other. Let's illustrate their behavior using one of the toy data sets used in section
 
@@ -1643,7 +1643,7 @@ In the following I want to share some tips how you quickly customize the appeara
 \end{figure}
 
 \hypertarget{use-a-different-theme}{%
-\section{Use a Different Theme}\label{use-a-different-theme}}
+\section{Use a different theme}\label{use-a-different-theme}}
 
 The simplest step to give your plot a different appearance is using one of the complete themes provided by \textbf{ggplot2}. We already have seen \texttt{theme\_light()} in the previous section. A full list of themes:
 
@@ -1685,7 +1685,7 @@ Let's use the popular \texttt{theme\_minimal()} for now:
 \end{figure}
 
 \hypertarget{use-a-custom-font}{%
-\section{Use a Custom Font}\label{use-a-custom-font}}
+\section{Use a custom font}\label{use-a-custom-font}}
 
 There are multiple extension packages that aim to provide access to font files, \textbf{extrafont}, \textbf{sysfont}, \textbf{showtext}, and \textbf{systemfonts} to name a few. To my knowledge, the \textbf{systemfonts} package provides the best solution to work with typefaces and resolve font specifications. After loading the package, all locally installed font files are available in your current R session.
 
@@ -1725,7 +1725,7 @@ If you are searching for a specific font, this is my script to return family nam
 \end{verbatim}
 
 \hypertarget{increase-the-font-sizes}{%
-\section{Increase the Font Sizes}\label{increase-the-font-sizes}}
+\section{Increase the font sizes}\label{increase-the-font-sizes}}
 
 The base size in any ggplot theme is set to 11. This number determines the individual text sizes and line widths of your theme elements. Depending on the width and height specified when saving your plot, you may want to adjust the overall size by changing the \texttt{base\_size} in the \texttt{theme\_*()} call.
 
@@ -1742,7 +1742,7 @@ The base size in any ggplot theme is set to 11. This number determines the indiv
 \end{figure}
 
 \hypertarget{create-text-hierarchy}{%
-\section{Create Text Hierarchy}\label{create-text-hierarchy}}
+\section{Create text hierarchy}\label{create-text-hierarchy}}
 
 By default, the title is always set in regular weight. In many cases I find myself using a font that is bold and larger than by default. You can update details of the theme by directly addressing the respective theme element, here \texttt{plot.title}. As the title is a text element, we pass the new settings inside the element\_text() function. The \texttt{face} argument controls the font style and can take \texttt{"regular"}, \texttt{"bold"}, \texttt{"italic"}, and \texttt{"bold.italic"} as inputs. The size can either be set in absolute numbers or relative to the \texttt{base\_size} via the \texttt{rel()} function.
 
@@ -1758,8 +1758,8 @@ By default, the title is always set in regular weight. In many cases I find myse
 \caption{\label{fig:05textHierarchy}One can style single theme elements with the \texttt{theme()} function. Here, we create a more pronounced tet hierarchy by setting the title in a bigger, bold typeface.}
 \end{figure}
 
-\hypertarget{legend-styling}{%
-\section{Legend Styling}\label{legend-styling}}
+\hypertarget{style-the-legend}{%
+\section{Style the legend}\label{style-the-legend}}
 
 {[}WIP{]}
 
@@ -1793,7 +1793,7 @@ By default, the title is always set in regular weight. In many cases I find myse
 \includegraphics{bookdown_files/figure-latex/05guidePositionTop-1.png}
 
 \hypertarget{align-titles-and-captions}{%
-\section{Align Titles and Captions}\label{align-titles-and-captions}}
+\section{Align titles and captions}\label{align-titles-and-captions}}
 
 By default, the titles and captions are left-aligned with the horizontal justification being set to \texttt{hjust\ =\ 0}. However, the horizontal justification does only impact the alignment of the title relative to the panel. If you want to place these text elements relative to the outer border of your graphic. you can set \texttt{plot.title.position} \texttt{plot.caption.position} to \texttt{"plot"}, respectively
 
@@ -1819,7 +1819,7 @@ The importance of aligning the title either with the panel border (the default b
 \end{figure}
 
 \hypertarget{add-some-white-space}{%
-\section{Add Some White Space}\label{add-some-white-space}}
+\section{Add some white space}\label{add-some-white-space}}
 
 {[}WIP{]}
 
@@ -1853,7 +1853,7 @@ When designing graphics with a code-based software, changes in the code need to 
 A benefit of a code-based graphics software is the ability to automate steps to avoid redundant code and allow for consistency. By adjusting the default settings, reusing code or even writing your own helper functions and themes rather than typing the same code again and again enables one to work more efficiently while preventing mistakes and inconsistencies.
 
 \hypertarget{save-ggplot-output-with-the-correct-dimensions}{%
-\section{Save ggplot Output with the ``Correct'' Dimensions}\label{save-ggplot-output-with-the-correct-dimensions}}
+\section{Save ggplot output with the ``correct'' dimensions}\label{save-ggplot-output-with-the-correct-dimensions}}
 
 One of the most common question I hear is ``how do I save the plot in a way that it looks as in the RStudio Plots pane?''. As the Plots pane in RStudio is responsive, it will redraw the plot with new dimensions every time you resize the pane. Consequently, the relative size of geometries and theme elements changes as well. Also, the dimensions of the plot shown are not obvious so you may end up in a loop of guessing the right measurements and adjusting the sizes, margins, widths of your components.
 
@@ -1873,7 +1873,7 @@ From now on, stick to this dimension and adjust the components after inspecting 
 If you are saving raster files such as .png and .jpeg, make sure to set the desired resolution by setting \texttt{dpi}. For web applications, images usually should be of low resolution to avoid long loading times (72 dpi is the general recommendation) while graphics used for print should be of high resolution of 300 dpi or more. The default in \texttt{ggsave()} is 300 dpi.
 
 \hypertarget{display-ggplot-output-with-the-correct-dimensions}{%
-\section{Display ggplot Output with the ``Correct'' Dimensions}\label{display-ggplot-output-with-the-correct-dimensions}}
+\section{Display ggplot output with the ``correct'' dimensions}\label{display-ggplot-output-with-the-correct-dimensions}}
 
 The iterative process of adjusting your graphic, saving it to disk, navigating to the folder, and looking at the plot is a tedious one. To avoid the additional workload, you can optimize your workflow by previewing your graphic in the correct dimensions without leaving RStudio.
 
@@ -1923,7 +1923,7 @@ The original purpose of \textbf{camcorder} is the generation of a GIF that showc
 \end{Shaded}
 
 \hypertarget{make-fonts-work}{%
-\section{Make Fonts Work}\label{make-fonts-work}}
+\section{Make fonts work}\label{make-fonts-work}}
 
 \textbf{\emph{Use the systemfonts package to find and use typefaces:}} As discussed in the previous chapter, the \textbf{systemfonts} package is likely the preferred approach to work with fonts. To search for a font file on your system use \texttt{match\_font()}. You can inspect all available typefaces via \texttt{system\_fonts()}.
 
@@ -1949,7 +1949,7 @@ To make fonts work in the RStudio Plots pane, select the AGG device as default f
 \end{Shaded}
 
 \hypertarget{set-your-ggplot-theme-globally}{%
-\section{Set Your ggplot Theme Globally}\label{set-your-ggplot-theme-globally}}
+\section{Set your ggplot theme globally}\label{set-your-ggplot-theme-globally}}
 
 Instead of applying and customizing a theme for each of your ggplots, you can set your theme once and it will be used for all future ggplot output by passing a complete theme to \texttt{theme\_set()}.
 
@@ -2021,8 +2021,8 @@ Furthermore, you can customize the new default theme supplied to \texttt{theme\_
 \caption{\label{fig:06examplePlotThemeUpdate}Running the same plot with updated theme defaults, globally set via \texttt{theme\_update()}. This allows for a consistent style for all graphics without the need to write redundant code.}
 \end{figure}
 
-\hypertarget{create-your-own-theme}{%
-\section{Create Your Own Theme}\label{create-your-own-theme}}
+\hypertarget{create-your-own-custom-theme}{%
+\section{Create your own custom theme}\label{create-your-own-custom-theme}}
 
 {[}WIP{]}
 
@@ -2083,125 +2083,6 @@ Furthermore, you can customize the new default theme supplied to \texttt{theme\_
 \caption{\label{fig:06customThemeModified}You can still overwrite the main settings and adjust single elements when using the custom theme.}
 \end{figure}
 
-\hypertarget{improve-your-ggplot-design}{%
-\section{Improve Your ggplot Design}\label{improve-your-ggplot-design}}
-
-In the following I want to share a quick tips how you customize the appearance of your graphics with a few additional lines of code. First, let's create a plot to work with: we will display the counts of reported bike rents during the night only as a time series. To focus on the tips, we assign the ggplot output to \texttt{g} and extend this object in the following.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(ggplot2)}
-\FunctionTok{library}\NormalTok{(dplyr)}
-
-\NormalTok{bikes\_nightly }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(bikes, day\_night }\SpecialCharTok{==} \StringTok{"night"}\NormalTok{)}
-
-\NormalTok{g }\OtherTok{\textless{}{-}} 
-  \FunctionTok{ggplot}\NormalTok{(bikes\_nightly, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
-  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ temp), }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{limits =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\ConstantTok{NA}\NormalTok{)) }\SpecialCharTok{+}
-  \FunctionTok{scale\_color\_gradient}\NormalTok{(}
-    \AttributeTok{low =} \StringTok{"\#00B3FF"}\NormalTok{, }\AttributeTok{high =} \StringTok{"\#FF5477"}\NormalTok{, }
-    \AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{label\_number}\NormalTok{(}\AttributeTok{suffix =} \StringTok{"°C"}\NormalTok{)}
-\NormalTok{  ) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}
-    \AttributeTok{x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{y =} \StringTok{"Number of bike rents per night"}\NormalTok{, }\AttributeTok{color =} \StringTok{"Average Temperature:"}\NormalTok{,}
-    \AttributeTok{title =} \StringTok{"TfL bike rents peak during warm summer nights"}\NormalTok{,}
-    \AttributeTok{caption =} \StringTok{"Data: TfL (Transport for London), Jan 2015–Dec 2016"}
-\NormalTok{  )}
-
-\NormalTok{g}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{bookdown_files/figure-latex/06basicPlot-1.png}
-
-\hypertarget{remove-panel-padding}{%
-\section{Remove Panel Padding}\label{remove-panel-padding}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{g }\SpecialCharTok{+} \FunctionTok{coord\_cartesian}\NormalTok{(}\AttributeTok{expand =} \ConstantTok{FALSE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-3-1.png}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{g }\SpecialCharTok{+} \FunctionTok{coord\_cartesian}\NormalTok{(}\AttributeTok{expand =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{clip =} \StringTok{"off"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-4-1.png}
-
-\hypertarget{legend-styling-1}{%
-\section{Legend Styling}\label{legend-styling-1}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{g }\SpecialCharTok{+} \FunctionTok{guides}\NormalTok{(}\AttributeTok{color =} \FunctionTok{guide\_colorsteps}\NormalTok{())}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-5-1.png}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{g }\SpecialCharTok{+} \FunctionTok{guides}\NormalTok{(}\AttributeTok{color =} \FunctionTok{guide\_colorsteps}\NormalTok{(}
-    \AttributeTok{barwidth =} \FunctionTok{unit}\NormalTok{(}\DecValTok{25}\NormalTok{, }\StringTok{"lines"}\NormalTok{), }\AttributeTok{title.position =} \StringTok{"top"}
-\NormalTok{  )) }\SpecialCharTok{+}
-  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"top"}\NormalTok{, }\AttributeTok{legend.justification =} \StringTok{"left"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-6-1.png}
-
-\hypertarget{align-titles-and-captions-1}{%
-\section{Align Titles and Captions}\label{align-titles-and-captions-1}}
-
-By default, the titles and captions are left-aligned with the horizontal justification being set to \texttt{hjust\ =\ 0}. However, the horizontal justification does only impact the alignment of the title relative to the panel. If you want to place these text elements relative to the outer border of your graphic. you can set \texttt{plot.title.position} \texttt{plot.caption.position} to \texttt{"plot"}, respectively
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{g }\SpecialCharTok{+} \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title.position =} \StringTok{"plot"}\NormalTok{,}
-          \AttributeTok{plot.caption.position =} \StringTok{"plot"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{bookdown_files/figure-latex/06titleAlign-1.png}
-
-The importance of aligning the title either with the panel border (the default behavior) or with the plot border becomes especially important if you have long labels on the left of the plot. This is often the case when displaying categories along the y axis with a left-aligned title (Fig. \ref{fig:06barsTitlePosition}. The same applies for right-aligned text in case of increased margins on the right of the panel, for example when using facets or adding legends.
-
-\begin{figure}
-\centering
-\includegraphics{bookdown_files/figure-latex/06barsTitlePosition-1.png}
-\caption{\label{fig:06barsTitlePosition}Plots with long labels on the y axis with the title being either aligned with the panel border (default behavior, left) or with the plot border (right).}
-\end{figure}
-
-\hypertarget{add-some-white-space-1}{%
-\section{Add Some White Space}\label{add-some-white-space-1}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{g }\SpecialCharTok{+} \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.margin =} \FunctionTok{margin}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{4}\NormalTok{)))}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-7-1.png}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{g }\SpecialCharTok{+} \FunctionTok{theme}\NormalTok{(}
-  \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{b =} \DecValTok{15}\NormalTok{)),}
-  \AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{t =} \DecValTok{20}\NormalTok{)),}
-  \AttributeTok{axis.title.y =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{r =} \DecValTok{10}\NormalTok{)),}
-  \AttributeTok{legend.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{b =} \DecValTok{10}\NormalTok{)),}
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-8-1.png}
-
 \hypertarget{part-how-to-work-with-components}{%
 \part{How To Work with Components}\label{part-how-to-work-with-components}}
 
@@ -2224,7 +2105,7 @@ Many geometrical shapes only need two positional arguments, namely \texttt{x} an
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-9-1.png}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-3-1.png}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2233,7 +2114,7 @@ Many geometrical shapes only need two positional arguments, namely \texttt{x} an
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-9-2.png}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-3-2.png}
 
 {[}WIP{]}
 

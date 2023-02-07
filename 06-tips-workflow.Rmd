@@ -9,7 +9,7 @@ When designing graphics with a code-based software, changes in the code need to 
 A benefit of a code-based graphics software is the ability to automate steps to avoid redundant code and allow for consistency. By adjusting the default settings, reusing code or even writing your own helper functions and themes rather than typing the same code again and again enables one to work more efficiently while preventing mistakes and inconsistencies.
 
 
-## Save ggplot Output with the "Correct" Dimensions
+## Save ggplot output with the "correct" dimensions
 
 One of the most common question I hear is "how do I save the plot in a way that it looks as in the RStudio Plots pane?". As the Plots pane in RStudio is responsive, it will redraw the plot with new dimensions every time you resize the pane. Consequently, the relative size of geometries and theme elements changes as well. Also, the dimensions of the plot shown are not obvious so you may end up in a loop of guessing the right measurements and adjusting the sizes, margins, widths of your components. 
 
@@ -27,7 +27,7 @@ From now on, stick to this dimension and adjust the components after inspecting 
 If you are saving raster files such as .png and .jpeg, make sure to set the desired resolution by setting `dpi`. For web applications, images usually should be of low resolution to avoid long loading times (72 dpi is the general recommendation) while graphics used for print should be of high resolution of 300 dpi or more. The default in `ggsave()` is 300 dpi.
 
 
-## Display ggplot Output with the "Correct" Dimensions
+## Display ggplot output with the "correct" dimensions
 
 The iterative process of adjusting your graphic, saving it to disk, navigating to the folder, and looking at the plot is a tedious one. To avoid the additional workload, you can optimize your workflow by previewing your graphic in the correct dimensions without leaving RStudio.
 
@@ -71,7 +71,7 @@ camcorder::gg_playback(name = "./plots/process.gif")
 ```
 
 
-## Make Fonts Work
+## Make fonts work
 
 ***Use the systemfonts package to find and use typefaces:*** As discussed in the previous chapter, the **systemfonts** package is likely the preferred approach to work with fonts. To search for a font file on your system use `match_font()`. You can inspect all available typefaces via `system_fonts()`.
 
@@ -93,7 +93,7 @@ ggsave("plot.pdf", device = cairo_pdf)
 ```
 
 
-## Set Your ggplot Theme Globally
+## Set your ggplot theme globally
 
 Instead of applying and customizing a theme for each of your ggplots, you can set your theme once and it will be used for all future ggplot output by passing a complete theme to `theme_set()`.
 
@@ -144,7 +144,7 @@ g
 ```
 
 
-## Create Your Own Theme
+## Create your own custom theme
 
 [WIP]
 
@@ -186,100 +186,3 @@ g +
   ) +
   theme(plot.title = element_text(color = "goldenrod"))
 ```
-
-
-## Improve Your ggplot Design
-
-In the following I want to share a quick tips how you customize the appearance of your graphics with a few additional lines of code. First, let's create a plot to work with: we will display the counts of reported bike rents during the night only as a time series. To focus on the tips, we assign the ggplot output to `g` and extend this object in the following.
-
-```{r 06basicPlot}
-library(ggplot2)
-library(dplyr)
-
-bikes_nightly <- filter(bikes, day_night == "night")
-
-g <- 
-  ggplot(bikes_nightly, aes(x = date, y = count)) + 
-  geom_point(aes(color = temp), alpha = .5) +
-  scale_y_continuous(limits = c(0, NA)) +
-  scale_color_gradient(
-    low = "#00B3FF", high = "#FF5477", 
-    labels = scales::label_number(suffix = "°C")
-  ) +
-  labs(
-    x = NULL, y = "Number of bike rents per night", color = "Average Temperature:",
-    title = "TfL bike rents peak during warm summer nights",
-    caption = "Data: TfL (Transport for London), Jan 2015–Dec 2016"
-  )
-
-g
-```
-
-## Remove Panel Padding
-
-```{r}
-g + coord_cartesian(expand = FALSE)
-```
-
-```{r}
-g + coord_cartesian(expand = FALSE, clip = "off")
-```
-
-## Legend Styling
-
-```{r}
-g + guides(color = guide_colorsteps())
-```
-
-```{r, fig.height=6.5}
-g + guides(color = guide_colorsteps(
-    barwidth = unit(25, "lines"), title.position = "top"
-  )) +
-  theme(legend.position = "top", legend.justification = "left")
-```
-
-## Align Titles and Captions
-
-By default, the titles and captions are left-aligned with the horizontal justification being set to `hjust = 0`. However, the horizontal justification does only impact the alignment of the title relative to the panel. If you want to place these text elements relative to the outer border of your graphic. you can set `plot.title.position` `plot.caption.position` to `"plot"`, respectively
-
-```{r 06titleAlign}
-g + theme(plot.title.position = "plot",
-          plot.caption.position = "plot")
-```
-
-The importance of aligning the title either with the panel border (the default behavior) or with the plot border becomes especially important if you have long labels on the left of the plot. This is often the case when displaying categories along the y axis with a left-aligned title (Fig. \@ref(fig:06barsTitlePosition). The same applies for right-aligned text in case of increased margins on the right of the panel, for example when using facets or adding legends.
-
-```{r 06barsTitlePosition, echo=FALSE, fig.width=14, fig.height=6, fig.cap="Plots with long labels on the y axis with the title being either aligned with the panel border (default behavior, left) or with the plot border (right)."}
-p <- 
-  ggplot(bikes, aes(x = count, y = forcats::fct_rev(season))) +
-  geom_col(color = "grey45", fill = "grey45", width = .7) +
-  scale_x_continuous(expand = c(0, 0), labels = scales::label_comma(), position = "top") +
-  scale_y_discrete(labels = c("Autumn (Sep-Nov)", "Summer (Jun-Aug)", "Spring (Mar-May)", "Winter (Dec-Feb)")) +
-  labs(x = NULL, y = NULL, title = "Reported TfL bike rents in 2015/16 per season") +
-  theme(panel.grid.minor = element_blank(), panel.grid.major.y = element_blank(),
-        plot.margin = margin(rep(15, 4)), plot.background = element_rect(fill = NA, color = "grey85"))
-
-p1 <- p + theme(plot.title.position = "panel")
-p2 <- p + theme(plot.title.position = "plot")
-
-p1 + plot_spacer() + p2 + plot_layout(widths = c(1, .1, 1))
-```
-
-## Add Some White Space
-
-```{r}
-g + theme(plot.margin = margin(rep(20, 4)))
-```
-
-```{r}
-g + theme(
-  plot.title = element_text(margin = margin(b = 15)),
-  plot.caption = element_text(margin = margin(t = 20)),
-  axis.title.y = element_text(margin = margin(r = 10)),
-  legend.title = element_text(margin = margin(b = 10)),
-)
-```
-
-
-
-

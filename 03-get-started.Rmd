@@ -266,7 +266,7 @@ length(unique(bikes$weather_type))
 
 The [**dplyr**](https://dplyr.tidyverse.org/) [@dplyr] and other **tidyverse** packages provide a simple and intuitive syntax to wrangle data. There are a ton of unique functions, but knowing a handful is enough to empower you to bring your data in the right format. 
 
-#### Data wrangling with the {dplyr} package {#dplyr}
+#### Data wrangling with the **dplyr** package {#dplyr}
 
 There are five main functions of **dplyr**, called *verbs*:
 
@@ -358,7 +358,7 @@ bikes_summarized %>%
   arrange(year, season) 
 ```
 
-#### Reshaping data with the {tidyr} package {#tidyr}
+#### Reshaping data with the **tidyr** package {#tidyr}
 
 In case you need to reshape a data set to make it work with **ggplot2**, you can use the functions `pivot_longer()` and `pivot_wider()` from the [**tidyr** package](https://tidyr.tidyverse.org/) [@tidyr] to move from one format to the other. Let's illustrate their behavior using one of the toy data sets used in section 
 

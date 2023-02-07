@@ -34,7 +34,6 @@
 \contentsline {figure}{\numberline {6.1}{\ignorespaces Running the same plot with updated theme defaults, globally set via \texttt {theme\_update()}. This allows for a consistent style for all graphics without the need to write redundant code.\relax }}{59}{figure.caption.37}%
 \contentsline {figure}{\numberline {6.2}{\ignorespaces Applying our custom theme to the ggplot object from before.\relax }}{60}{figure.caption.38}%
 \contentsline {figure}{\numberline {6.3}{\ignorespaces You can still overwrite the main settings and adjust single elements when using the custom theme.\relax }}{61}{figure.caption.39}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Plots with long labels on the y axis with the title being either aligned with the panel border (default behavior, left) or with the plot border (right).\relax }}{65}{figure.caption.40}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

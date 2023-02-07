@@ -28,8 +28,8 @@
 \contentsline {subsection}{\numberline {3.2.3}Inspect data}{21}{subsection.3.2.3}%
 \contentsline {subsection}{\numberline {3.2.4}Data types}{21}{subsection.3.2.4}%
 \contentsline {subsection}{\numberline {3.2.5}Data preparation}{24}{subsection.3.2.5}%
-\contentsline {subsubsection}{\numberline {3.2.5.1}Data wrangling with the \{dplyr\} package}{25}{subsubsection.3.2.5.1}%
-\contentsline {subsubsection}{\numberline {3.2.5.2}Reshaping data with the \{tidyr\} package}{27}{subsubsection.3.2.5.2}%
+\contentsline {subsubsection}{\numberline {3.2.5.1}Data wrangling with the \textbf {dplyr} package}{25}{subsubsection.3.2.5.1}%
+\contentsline {subsubsection}{\numberline {3.2.5.2}Reshaping data with the \textbf {tidyr} package}{27}{subsubsection.3.2.5.2}%
 \contentsline {chapter}{\numberline {4}A Walk-through Example}{31}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Prerequisites}{31}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Create a basic ggplot}{31}{section.4.2}%
@@ -43,35 +43,30 @@
 \contentsline {section}{\numberline {4.10}Apply a complete theme}{40}{section.4.10}%
 \contentsline {section}{\numberline {4.11}Customize the theme}{41}{section.4.11}%
 \contentsline {chapter}{\numberline {5}Tips to Improve Your ggplot Design}{45}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Use a Different Theme}{45}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Use a Custom Font}{46}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Increase the Font Sizes}{48}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Create Text Hierarchy}{48}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Legend Styling}{49}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Align Titles and Captions}{51}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Add Some White Space}{51}{section.5.7}%
+\contentsline {section}{\numberline {5.1}Use a different theme}{45}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Use a custom font}{46}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Increase the font sizes}{48}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Create text hierarchy}{48}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Style the legend}{49}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Align titles and captions}{51}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Add some white space}{51}{section.5.7}%
 \contentsline {chapter}{\numberline {6}Tips to Improve Your ggplot Workflow}{55}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Save ggplot Output with the ``Correct'' Dimensions}{55}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Display ggplot Output with the ``Correct'' Dimensions}{56}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Make Fonts Work}{57}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Set Your ggplot Theme Globally}{57}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Create Your Own Theme}{59}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Improve Your ggplot Design}{60}{section.6.6}%
-\contentsline {section}{\numberline {6.7}Remove Panel Padding}{62}{section.6.7}%
-\contentsline {section}{\numberline {6.8}Legend Styling}{63}{section.6.8}%
-\contentsline {section}{\numberline {6.9}Align Titles and Captions}{64}{section.6.9}%
-\contentsline {section}{\numberline {6.10}Add Some White Space}{65}{section.6.10}%
-\contentsline {part}{II\hspace {1em}How To Work with Components}{67}{part.2}%
-\contentsline {chapter}{\numberline {7}Working with Layers}{69}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Geometrical Shapes}{69}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Statistical Transformations}{70}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Positional Adjustments}{70}{section.7.3}%
-\contentsline {chapter}{\numberline {8}Working with Colors}{71}{chapter.8}%
-\contentsline {chapter}{\numberline {9}Working with Text}{73}{chapter.9}%
-\contentsline {part}{III\hspace {1em}Advanced Walk-Through Examples}{75}{part.3}%
-\contentsline {chapter}{\numberline {10}Overview}{77}{chapter.10}%
-\contentsline {chapter}{Appendix}{79}{chapter.10}%
-\contentsline {chapter}{\numberline {A}More to Say}{79}{appendix.A}%
-\contentsline {fm}{Bibliography}{81}{appendix*.41}%
-\contentsline {chapter}{Index}{83}{appendix*.41}%
-\contentsline {section}{}{83}{appendix*.41}%
+\contentsline {section}{\numberline {6.1}Save ggplot output with the ``correct'' dimensions}{55}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Display ggplot output with the ``correct'' dimensions}{56}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Make fonts work}{57}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Set your ggplot theme globally}{57}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Create your own custom theme}{59}{section.6.5}%
+\contentsline {part}{II\hspace {1em}How To Work with Components}{63}{part.2}%
+\contentsline {chapter}{\numberline {7}Working with Layers}{65}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Geometrical Shapes}{65}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Statistical Transformations}{66}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Positional Adjustments}{66}{section.7.3}%
+\contentsline {chapter}{\numberline {8}Working with Colors}{67}{chapter.8}%
+\contentsline {chapter}{\numberline {9}Working with Text}{69}{chapter.9}%
+\contentsline {part}{III\hspace {1em}Advanced Walk-Through Examples}{71}{part.3}%
+\contentsline {chapter}{\numberline {10}Overview}{73}{chapter.10}%
+\contentsline {chapter}{Appendix}{75}{chapter.10}%
+\contentsline {chapter}{\numberline {A}More to Say}{75}{appendix.A}%
+\contentsline {fm}{Bibliography}{77}{appendix*.40}%
+\contentsline {chapter}{Index}{79}{appendix*.40}%
+\contentsline {section}{}{79}{appendix*.40}%
