@@ -213,15 +213,15 @@ To my family,thank you for all your support and love.
 \chapter*{Preface}\label{preface}}
 
 
-Back in 2016, I had to prepare my PhD introductory talk to inform about my plans for the next three years and to showcase my first preliminary results. I planned to create a visualization using small multiples to show various outcomes of the scenarios I ran with my simulation model. I was already using the R programming language for years and quickly came across the graphics library \textbf{ggplot2} which comes with the functionality to easily create small multiples. I never liked the syntax and style of base plots in R, so I immediately fell in love with the idea and implementation of \textbf{ggplot2}'s \emph{Grammar of Graphics}. But because I was short on time, I plotted these figures by trial and error and with the help of lots of googling. The resource I came always back to was a blog entry called \href{http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/}{``Beautiful plotting in R: A \textbf{ggplot2} cheatsheet'' by Zev Ross}. After giving the talk which contained some decent plots thanks to the blog post, I decided to go through this tutorial step-by-step. I learned so much from it and directly started modifying the codes and adding additional code snippets, chart types, and resources.
+Back in 2016, I had to prepare my PhD introductory talk to inform about my plans for the next three years and to showcase my first preliminary results. I planned to create a visualization using small multiples to show various outcomes of the scenarios I ran with my simulation model. I was already using the R programming language for years and quickly came across the graphics library \textbf{ggplot2} which comes with the functionality to easily create small multiples. I never liked the syntax and style of plots created in base R or with the \textbf{lattice} package, so I immediately fell in love with the idea and implementation of \textbf{ggplot2}'s \emph{Grammar of Graphics} that allows to combine and modify plot components in a very sophisitcated manner. But because I was short on time, I plotted these figures by trial and error and with the help of lots of googling. The resource I came always back to was a blog entry called \href{http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/}{``Beautiful plotting in R: A \textbf{ggplot2} cheatsheet'' by Zev Ross}. After giving the talk which contained some decent plots thanks to the blog post, I decided to go through this tutorial step-by-step. I learned so much from it and directly started modifying the codes and adding additional code snippets, chart types, and resources.
 
 Fast forward to 2019. I successfully finished my PhD and started participating in a weekly data visualization challenge called \href{https://github.com/rfordatascience/tidytuesday/blob/master/README.md}{\#TidyTuesday}. Every week, a raw data set is shared with the aim to explore and visualize the data with \textbf{ggplot2}. Thanks to my experience with the \textbf{tidyverse} and especially \textbf{ggplot2} during my PhD and the open-source approach of the challenge that made it possible to learn from other participants, my visualizations quickly became more advanced and complex.
 
 A few months later, I had built a portfolio of various charts and maps and decided to start working as an independent data visualization specialist. I am now using \textbf{ggplot2} every day: for my academic work, design requests, reproducible reports, educational purposes, and personal data visualization projects. What I especially love about my current job specification: It challenges and satisfies my creativity on different levels. Besides the creativity one can express in terms of chart choice and design, there is also creativity needed to come up with solutions and tricks to bring the most venturous ideas to life. At the same time, there is the gratification when your code works and \emph{magically} translates code snippets to visuals.
 
-The blog entry by Zev Ross was not updated since January 2016, so I decided to add more examples and tricks to my version, which was now hosted on my \href{https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/}{personal blog}. Step by step, my version became a unique tutorial that now contains for example also the fantastic \textbf{patchwork}, \textbf{ggtext} and \textbf{ggforce} packages, a section of custom fonts and colors, a collection of R packages tailored to create interactive charts, and several new chart types. The updated version now contains \textasciitilde3.000 lines of code and 188 plots and received a lot of interest from \textbf{ggplot2} users from many different professional fields.
+The blog entry by Zev Ross was not updated since January 2016, so I decided to add more examples and tricks to my version, which was now hosted on my \href{https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/}{personal blog}. Step by step, my version became a unique tutorial that now contains for example also the fantastic \textbf{patchwork}, \textbf{ggtext} and \textbf{ggforce} packages, a section on custom fonts and color palettes, a collection of R packages tailored to create interactive charts, and several new chart types. The updated version now contains \textasciitilde3.000 lines of code and 188 plots and received a lot of interest from \textbf{ggplot2} users from many different professional fields.
 
-On a sunny day in July 2021, this tutorial served as the starting point for the book you hold in your hands. Plans changed a lot over the time and the book became something unique, that is loosely based on the tutorial and a 2-day workshop I was honored to teach at the rstudio::conf(2022) in Washington DC. In addition, I decided to include more advanced tips and insights in the process of creating custom, engaging data visualizations with \textbf{ggplot2}. I hope you enjoy it as much as I enjoyed learning and sharing \textbf{ggplot2} wizardry!
+On a sunny day in July 2021, this tutorial served as the starting point for the book you hold in your hands. Plans changed a lot over the time and the book became something unique, that is loosely based on the tutorial and a 2-day workshop I was honored to teach at the rstudio::conf(2022) in Washington DC. In addition, I decided to include more advanced tips and insights in the process of creating custom, engaging data visualizations with \textbf{ggplot2}. I hope you enjoy it as much as I enjoyed learning and sharing ggplot wizardry!
 
 \hypertarget{why-read-this-book}{%
 \section*{Why read this book}\label{why-read-this-book}}
@@ -291,73 +291,25 @@ To run any of the materials locally on your own machine, you will need the follo
   \item
     \href{https://ggplot2.tidyverse.org/}{\textbf{ggplot2}}
   \item
-    A set of other \textbf{tidyverse} packages:
-
-    \begin{itemize}
-    \tightlist
-    \item
-      \href{https://readr.tidyverse.org/}{\textbf{readr}}
-    \item
-      \href{https://tibble.tidyverse.org/}{\textbf{tibble}}
-    \item
-      \href{https://dplyr.tidyverse.org/}{\textbf{dplyr}}
-    \item
-      \href{https://tidyr.tidyverse.org/}{\textbf{tidyr}}
-    \item
-      \href{https://forcats.tidyverse.org/}{\textbf{forcats}}
-    \item
-      \href{https://stringr.tidyverse.org/}{\textbf{stringr}}
-    \item
-      \href{https://lubriate.tidyverse.org/}{\textbf{lubridate}}
-    \end{itemize}
+    A set of other \textbf{tidyverse} packages:\href{https://readr.tidyverse.org/}{\textbf{readr}}, \href{https://tibble.tidyverse.org/}{\textbf{tibble}}, \href{https://dplyr.tidyverse.org/}{\textbf{dplyr}}, \href{https://tidyr.tidyverse.org/}{\textbf{tidyr}}, \href{https://forcats.tidyverse.org/}{\textbf{forcats}}, \href{https://stringr.tidyverse.org/}{\textbf{stringr}}, \href{https://lubriate.tidyverse.org/}{\textbf{lubridate}}
   \item
-    ggplot2 extension packages:
-
-    \begin{itemize}
-    \tightlist
-    \item
-      \href{https://ggforce.data-imaginist.com/}{\textbf{ggforce}}
-    \item
-      \href{https://ggrepel.slowkow.com/}{\textbf{ggrepel}}
-    \item
-      \href{https://wilkelab.org/ggtext/}{\textbf{ggtext}}
-    \item
-      \href{https://patchwork.data-imaginist.com/}{\textbf{patchwork}}
-    \end{itemize}
+    Some \textbf{ggplot2} extension packages:\href{https://ggforce.data-imaginist.com/}{\textbf{ggforce}}, \href{https://ggrepel.slowkow.com/}{\textbf{ggrepel}}, \href{https://wilkelab.org/ggtext/}{\textbf{ggtext}}, \href{https://patchwork.data-imaginist.com/}{\textbf{patchwork}}
   \item
-    Packages providing color palettes and funcionality:
-
-    \begin{itemize}
-    \tightlist
-    \item
-      \href{https://colorspace.r-forge.r-project.org/}{\textbf{colorspace}}
-    \item
-      \href{https://github.com/thomasp85/scico}{\textbf{scico}}
-    \item
-      \href{https://jakubnowosad.com/rcartocolor/}{\textbf{rcartocolor}}
-    \end{itemize}
+    Packages providing color palettes and functionality:\href{https://colorspace.r-forge.r-project.org/}{\textbf{colorspace}}, \href{https://github.com/thomasp85/scico}{\textbf{scico}}, \href{https://jakubnowosad.com/rcartocolor/}{\textbf{rcartocolor}}
   \item
-    A few other packages providing useful functionality:
-
-    \begin{itemize}
-    \tightlist
-    \item
-      \href{https://docs.ropensci.org/magick/}{\textbf{magick}}
-    \item
-      \href{https://ragg.r-lib.org/}{\textbf{ragg}} that includes \href{https://systemfonts.r-lib.org/}{\textbf{systemfonts}}
-    \item
-      \href{https://r-spatial.github.io/sf/}{\textbf{sf}}
-    \end{itemize}
+    A few other packages providing useful functionality:\href{https://docs.ropensci.org/magick/}{\textbf{magick}}, \href{https://ragg.r-lib.org/}{\textbf{ragg}} (includes \href{https://systemfonts.r-lib.org/}{\textbf{systemfonts}}), \href{https://r-spatial.github.io/sf/}{\textbf{sf}}
   \end{itemize}
 \item
-  The following typeface installed:
+  The following typefaces installed on your system:
 
   \begin{itemize}
   \tightlist
   \item
-    {[}Asap Condensed{]}
+    \href{https://fonts.google.com/specimen/Asap+Condensed}{Asap Condensed}
   \item
-    {[}WIP{]}
+    \href{https://fonts.google.com/specimen/Spline+Sans}{Spline Sans}
+  \item
+    \href{https://fonts.google.com/specimen/Spline+Sans+Mono}{Spline Sans Mono}
   \end{itemize}
 \end{itemize}
 
@@ -366,10 +318,14 @@ To install all packages in one go, run the following code in the R console:
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{install.packages}\NormalTok{(}\FunctionTok{c}\NormalTok{(}
-  \StringTok{"ggplot2"}\NormalTok{, }\StringTok{"readr"}\NormalTok{, }\StringTok{"tibble"}\NormalTok{, }\StringTok{"dplyr"}\NormalTok{, }\StringTok{"tidyr"}\NormalTok{, }\StringTok{"forcats"}\NormalTok{, }\StringTok{"stringr"}\NormalTok{, }\StringTok{"lubridate"}\NormalTok{, }\StringTok{"ggforce"}\NormalTok{, }\StringTok{"ggtext"}\NormalTok{, }\StringTok{"colorspace"}\NormalTok{, }\StringTok{"scico"}\NormalTok{, }\StringTok{"rcartocolor"}\NormalTok{, }\StringTok{"patchwork"}\NormalTok{, }\StringTok{"magick"}\NormalTok{, }\StringTok{"ragg"}\NormalTok{, }\StringTok{"systemfonts"}\NormalTok{, }\StringTok{"sf"}
+  \StringTok{"ggplot2"}\NormalTok{, }\StringTok{"readr"}\NormalTok{, }\StringTok{"tibble"}\NormalTok{, }\StringTok{"dplyr"}\NormalTok{, }\StringTok{"tidyr"}\NormalTok{, }\StringTok{"forcats"}\NormalTok{, }
+  \StringTok{"stringr"}\NormalTok{, }\StringTok{"lubridate"}\NormalTok{, }\StringTok{"ggforce"}\NormalTok{, }\StringTok{"ggtext"}\NormalTok{, }\StringTok{"colorspace"}\NormalTok{, }\StringTok{"scico"}\NormalTok{,}
+  \StringTok{"rcartocolor"}\NormalTok{, }\StringTok{"patchwork"}\NormalTok{, }\StringTok{"magick"}\NormalTok{, }\StringTok{"ragg"}\NormalTok{, }\StringTok{"systemfonts"}\NormalTok{, }\StringTok{"sf"}
 \NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
+
+To get a bundle of all typefaces, download the zip file via \href{}{ADD LINK}.
 
 \hypertarget{software-information-and-conventions}{%
 \section*{Software information and conventions}\label{software-information-and-conventions}}

@@ -286,11 +286,11 @@ div.csl-indent {
 </div>
 <div id="preface" class="section level1 unnumbered hasAnchor">
 <h1>Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Back in 2016, I had to prepare my PhD introductory talk to inform about my plans for the next three years and to showcase my first preliminary results. I planned to create a visualization using small multiples to show various outcomes of the scenarios I ran with my simulation model. I was already using the R programming language for years and quickly came across the graphics library <strong>ggplot2</strong> which comes with the functionality to easily create small multiples. I never liked the syntax and style of base plots in R, so I immediately fell in love with the idea and implementation of <strong>ggplot2</strong>’s <em>Grammar of Graphics</em>. But because I was short on time, I plotted these figures by trial and error and with the help of lots of googling. The resource I came always back to was a blog entry called <a href="http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/">“Beautiful plotting in R: A <strong>ggplot2</strong> cheatsheet” by Zev Ross</a>. After giving the talk which contained some decent plots thanks to the blog post, I decided to go through this tutorial step-by-step. I learned so much from it and directly started modifying the codes and adding additional code snippets, chart types, and resources.</p>
+<p>Back in 2016, I had to prepare my PhD introductory talk to inform about my plans for the next three years and to showcase my first preliminary results. I planned to create a visualization using small multiples to show various outcomes of the scenarios I ran with my simulation model. I was already using the R programming language for years and quickly came across the graphics library <strong>ggplot2</strong> which comes with the functionality to easily create small multiples. I never liked the syntax and style of plots created in base R or with the <strong>lattice</strong> package, so I immediately fell in love with the idea and implementation of <strong>ggplot2</strong>’s <em>Grammar of Graphics</em> that allows to combine and modify plot components in a very sophisitcated manner. But because I was short on time, I plotted these figures by trial and error and with the help of lots of googling. The resource I came always back to was a blog entry called <a href="http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/">“Beautiful plotting in R: A <strong>ggplot2</strong> cheatsheet” by Zev Ross</a>. After giving the talk which contained some decent plots thanks to the blog post, I decided to go through this tutorial step-by-step. I learned so much from it and directly started modifying the codes and adding additional code snippets, chart types, and resources.</p>
 <p>Fast forward to 2019. I successfully finished my PhD and started participating in a weekly data visualization challenge called <a href="https://github.com/rfordatascience/tidytuesday/blob/master/README.md">#TidyTuesday</a>. Every week, a raw data set is shared with the aim to explore and visualize the data with <strong>ggplot2</strong>. Thanks to my experience with the <strong>tidyverse</strong> and especially <strong>ggplot2</strong> during my PhD and the open-source approach of the challenge that made it possible to learn from other participants, my visualizations quickly became more advanced and complex.</p>
 <p>A few months later, I had built a portfolio of various charts and maps and decided to start working as an independent data visualization specialist. I am now using <strong>ggplot2</strong> every day: for my academic work, design requests, reproducible reports, educational purposes, and personal data visualization projects. What I especially love about my current job specification: It challenges and satisfies my creativity on different levels. Besides the creativity one can express in terms of chart choice and design, there is also creativity needed to come up with solutions and tricks to bring the most venturous ideas to life. At the same time, there is the gratification when your code works and <em>magically</em> translates code snippets to visuals.</p>
-<p>The blog entry by Zev Ross was not updated since January 2016, so I decided to add more examples and tricks to my version, which was now hosted on my <a href="https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/">personal blog</a>. Step by step, my version became a unique tutorial that now contains for example also the fantastic <strong>patchwork</strong>, <strong>ggtext</strong> and <strong>ggforce</strong> packages, a section of custom fonts and colors, a collection of R packages tailored to create interactive charts, and several new chart types. The updated version now contains ~3.000 lines of code and 188 plots and received a lot of interest from <strong>ggplot2</strong> users from many different professional fields.</p>
-<p>On a sunny day in July 2021, this tutorial served as the starting point for the book you hold in your hands. Plans changed a lot over the time and the book became something unique, that is loosely based on the tutorial and a 2-day workshop I was honored to teach at the rstudio::conf(2022) in Washington DC. In addition, I decided to include more advanced tips and insights in the process of creating custom, engaging data visualizations with <strong>ggplot2</strong>. I hope you enjoy it as much as I enjoyed learning and sharing <strong>ggplot2</strong> wizardry!</p>
+<p>The blog entry by Zev Ross was not updated since January 2016, so I decided to add more examples and tricks to my version, which was now hosted on my <a href="https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/">personal blog</a>. Step by step, my version became a unique tutorial that now contains for example also the fantastic <strong>patchwork</strong>, <strong>ggtext</strong> and <strong>ggforce</strong> packages, a section on custom fonts and color palettes, a collection of R packages tailored to create interactive charts, and several new chart types. The updated version now contains ~3.000 lines of code and 188 plots and received a lot of interest from <strong>ggplot2</strong> users from many different professional fields.</p>
+<p>On a sunny day in July 2021, this tutorial served as the starting point for the book you hold in your hands. Plans changed a lot over the time and the book became something unique, that is loosely based on the tutorial and a 2-day workshop I was honored to teach at the rstudio::conf(2022) in Washington DC. In addition, I decided to include more advanced tips and insights in the process of creating custom, engaging data visualizations with <strong>ggplot2</strong>. I hope you enjoy it as much as I enjoyed learning and sharing ggplot wizardry!</p>
 <div id="why-read-this-book" class="section level2 unnumbered hasAnchor">
 <h2>Why read this book<a href="index.html#why-read-this-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Often, people that use common graphic design and charting tools or have basic experience with <strong>ggplot2</strong> cannot believe what one can achieve with this graphics library—and I want to show you how one can create a publication-ready graphic that goes beyond the traditional scientific scatter or box plot.</p>
@@ -326,46 +326,25 @@ div.csl-indent {
 <li>The following R packages installed:
 <ul>
 <li><a href="https://ggplot2.tidyverse.org/"><strong>ggplot2</strong></a></li>
-<li>A set of other <strong>tidyverse</strong> packages:
-<ul>
-<li><a href="https://readr.tidyverse.org/"><strong>readr</strong></a></li>
-<li><a href="https://tibble.tidyverse.org/"><strong>tibble</strong></a></li>
-<li><a href="https://dplyr.tidyverse.org/"><strong>dplyr</strong></a></li>
-<li><a href="https://tidyr.tidyverse.org/"><strong>tidyr</strong></a></li>
-<li><a href="https://forcats.tidyverse.org/"><strong>forcats</strong></a></li>
-<li><a href="https://stringr.tidyverse.org/"><strong>stringr</strong></a></li>
-<li><a href="https://lubriate.tidyverse.org/"><strong>lubridate</strong></a></li>
+<li>A set of other <strong>tidyverse</strong> packages:<br><a href="https://readr.tidyverse.org/"><strong>readr</strong></a>, <a href="https://tibble.tidyverse.org/"><strong>tibble</strong></a>, <a href="https://dplyr.tidyverse.org/"><strong>dplyr</strong></a>, <a href="https://tidyr.tidyverse.org/"><strong>tidyr</strong></a>, <a href="https://forcats.tidyverse.org/"><strong>forcats</strong></a>, <a href="https://stringr.tidyverse.org/"><strong>stringr</strong></a>, <a href="https://lubriate.tidyverse.org/"><strong>lubridate</strong></a></li>
+<li>Some <strong>ggplot2</strong> extension packages:<br><a href="https://ggforce.data-imaginist.com/"><strong>ggforce</strong></a>, <a href="https://ggrepel.slowkow.com/"><strong>ggrepel</strong></a>, <a href="https://wilkelab.org/ggtext/"><strong>ggtext</strong></a>, <a href="https://patchwork.data-imaginist.com/"><strong>patchwork</strong></a></li>
+<li>Packages providing color palettes and functionality:<br><a href="https://colorspace.r-forge.r-project.org/"><strong>colorspace</strong></a>, <a href="https://github.com/thomasp85/scico"><strong>scico</strong></a>, <a href="https://jakubnowosad.com/rcartocolor/"><strong>rcartocolor</strong></a></li>
+<li>A few other packages providing useful functionality:<br><a href="https://docs.ropensci.org/magick/"><strong>magick</strong></a>, <a href="https://ragg.r-lib.org/"><strong>ragg</strong></a> (includes <a href="https://systemfonts.r-lib.org/"><strong>systemfonts</strong></a>), <a href="https://r-spatial.github.io/sf/"><strong>sf</strong></a></li>
 </ul></li>
-<li>ggplot2 extension packages:
+<li>The following typefaces installed on your system:
 <ul>
-<li><a href="https://ggforce.data-imaginist.com/"><strong>ggforce</strong></a></li>
-<li><a href="https://ggrepel.slowkow.com/"><strong>ggrepel</strong></a></li>
-<li><a href="https://wilkelab.org/ggtext/"><strong>ggtext</strong></a></li>
-<li><a href="https://patchwork.data-imaginist.com/"><strong>patchwork</strong></a></li>
-</ul></li>
-<li>Packages providing color palettes and funcionality:
-<ul>
-<li><a href="https://colorspace.r-forge.r-project.org/"><strong>colorspace</strong></a></li>
-<li><a href="https://github.com/thomasp85/scico"><strong>scico</strong></a></li>
-<li><a href="https://jakubnowosad.com/rcartocolor/"><strong>rcartocolor</strong></a></li>
-</ul></li>
-<li>A few other packages providing useful functionality:
-<ul>
-<li><a href="https://docs.ropensci.org/magick/"><strong>magick</strong></a></li>
-<li><a href="https://ragg.r-lib.org/"><strong>ragg</strong></a> that includes <a href="https://systemfonts.r-lib.org/"><strong>systemfonts</strong></a></li>
-<li><a href="https://r-spatial.github.io/sf/"><strong>sf</strong></a></li>
-</ul></li>
-</ul></li>
-<li>The following typeface installed:
-<ul>
-<li>[Asap Condensed]</li>
-<li>[WIP]</li>
+<li><a href="https://fonts.google.com/specimen/Asap+Condensed">Asap Condensed</a></li>
+<li><a href="https://fonts.google.com/specimen/Spline+Sans">Spline Sans</a></li>
+<li><a href="https://fonts.google.com/specimen/Spline+Sans+Mono">Spline Sans Mono</a></li>
 </ul></li>
 </ul>
 <p>To install all packages in one go, run the following code in the R console:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(</span>
-<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;readr&quot;</span>, <span class="st">&quot;tibble&quot;</span>, <span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;tidyr&quot;</span>, <span class="st">&quot;forcats&quot;</span>, <span class="st">&quot;stringr&quot;</span>, <span class="st">&quot;lubridate&quot;</span>, <span class="st">&quot;ggforce&quot;</span>, <span class="st">&quot;ggtext&quot;</span>, <span class="st">&quot;colorspace&quot;</span>, <span class="st">&quot;scico&quot;</span>, <span class="st">&quot;rcartocolor&quot;</span>, <span class="st">&quot;patchwork&quot;</span>, <span class="st">&quot;magick&quot;</span>, <span class="st">&quot;ragg&quot;</span>, <span class="st">&quot;systemfonts&quot;</span>, <span class="st">&quot;sf&quot;</span></span>
-<span id="cb1-3"><a href="index.html#cb1-3" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div>
+<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;readr&quot;</span>, <span class="st">&quot;tibble&quot;</span>, <span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;tidyr&quot;</span>, <span class="st">&quot;forcats&quot;</span>, </span>
+<span id="cb1-3"><a href="index.html#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;stringr&quot;</span>, <span class="st">&quot;lubridate&quot;</span>, <span class="st">&quot;ggforce&quot;</span>, <span class="st">&quot;ggtext&quot;</span>, <span class="st">&quot;colorspace&quot;</span>, <span class="st">&quot;scico&quot;</span>,</span>
+<span id="cb1-4"><a href="index.html#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;rcartocolor&quot;</span>, <span class="st">&quot;patchwork&quot;</span>, <span class="st">&quot;magick&quot;</span>, <span class="st">&quot;ragg&quot;</span>, <span class="st">&quot;systemfonts&quot;</span>, <span class="st">&quot;sf&quot;</span></span>
+<span id="cb1-5"><a href="index.html#cb1-5" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div>
+<p>To get a bundle of all typefaces, download the zip file via <a href="">ADD LINK</a>.</p>
 </div>
 <div id="software-information-and-conventions" class="section level2 unnumbered hasAnchor">
 <h2>Software information and conventions<a href="index.html#software-information-and-conventions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
