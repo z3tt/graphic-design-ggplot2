@@ -735,7 +735,7 @@ Variable & Description\\
 \textbf{ggplot2} can be used even if you know little about the R programming language. However, the knowledge of certain basic principles is at least helpful and probably indispensable for advanced plots. This section will give you a short overview of workflows and the very basics needed. The overview makes use of the \textbf{tidyverse}, a package collection designed for data science in R. However, multiple other options exist to import, inspect, and wrangle your data if you prefer not to work with the \textbf{tidyverse} for these steps\footnote{Note that the \textbf{ggplot2} package itself belongs to the \textbf{tidyverse} as well.}.
 
 \hypertarget{import}{%
-\subsection{Import data}\label{import}}
+\subsection{Import Data}\label{import}}
 
 You need to import data to be able to work with it in the current session. The data can be imported from a local directory or directly from a web source. Nowadays, all common and some less common data formats can easily be imported. For common tabular data formats such as .txt or .csv one can use the \href{https://readr.tidyverse.org/}{\textbf{readr} package} \citep{readr} from the \textbf{tidyverse}.
 
@@ -764,7 +764,7 @@ Note that the syntax of the path differs between operating systems. While in Win
 Instead of relying on the absolute path, which likely differs between users and operating systems, you can also use relative paths. Those are specified with a leading dot, e.g.~as \texttt{./data/london-bikes.csv}, and look for the file relative from the working directory. You can retrieve and change your working directory with \texttt{getwd()} and \texttt{setwd()}. However, relying on the default working directory or setting a custom one will likely cause problems the moment someone else wants to run your code\footnote{A detailed reasoning why you should not use \texttt{setwd()} is provided in \href{https://rstats.wtf/project-oriented-workflow.html}{Chapter 2 of ``What they forgot you to teach about R''}.}.
 
 \hypertarget{workflows}{%
-\subsection{Project-oriented workflows}\label{workflows}}
+\subsection{Project-oriented Workflows}\label{workflows}}
 
 Preferably, we do not want to rely on absolute paths and the default or manually set working directories. So-called project-oriented workflows aim to organize each piece of work in a self-contained, bundled directory. This directory includes all relevant files needed for the project, such as scripts and images. By ensuring that paths are set relative and in a way that they are understood by any operating system, we guarantee that the project will run on any machine and can easily moved around.
 
@@ -780,7 +780,7 @@ When using Rstudio projects, a helpful package to navigate to files of interest 
 \end{Shaded}
 
 \hypertarget{inspect}{%
-\subsection{Inspect data}\label{inspect}}
+\subsection{Inspect the Data}\label{inspect}}
 
 After importing the data, it is advisable to have a look at the data. Does the object stored in R match the dimensions of your original data file? Are the variables displayed correctly? You can print the data by simply running the name of the object, here \texttt{bikes}.
 
@@ -816,7 +816,7 @@ As we have used the \textbf{readr} package, our data is stored as a \emph{tibble
 On the top of the output, you can directly see that our data set consists of \texttt{format(length(bikes),\ big.mark\ =\ ",")} variables (columns) frame with 1,454 observations (rows). Also, the tibble output shows you the first ten rows. Alternatively you can inspect the data with the help of \texttt{str()} or \texttt{tibble::glimpse()} to print a transposed version.
 
 \hypertarget{classes}{%
-\subsection{Data types}\label{classes}}
+\subsection{Data Types}\label{classes}}
 
 If you have looked carefully, you may have noticed that a tibble prints also the data type of each column, e.g.~\texttt{\textless{}chr\textgreater{}}. In our case, we have specified the types of the columns manually when importing the data; if not specified, \texttt{readr::read\_csv()} as most other import functions will guess the data type for each column based on the first x observations.
 
@@ -976,7 +976,7 @@ Furthermore, \texttt{POSIXct} and \texttt{POSIXlt} are able to represent full ti
 \end{Shaded}
 
 \hypertarget{preparation}{%
-\subsection{Data preparation}\label{preparation}}
+\subsection{Data Preparation}\label{preparation}}
 
 Often, the data imported might not be in the right format to plot it with \textbf{ggplot2}. The preparation of the data---e.g.~converting data types and setting factor levels, aggregating values, estimating data summaries, reshaping the data set or combining it with another source---is called \emph{data wrangling}, \emph{data munging}, or \textbf{data manipulation}.
 
@@ -1017,7 +1017,7 @@ To explore and retrieve summary estimates of individual variables, the following
 The \href{https://dplyr.tidyverse.org/}{\textbf{dplyr}} \citep{dplyr} and other \textbf{tidyverse} packages provide a simple and intuitive syntax to wrangle data. There are a ton of unique functions, but knowing a handful is enough to empower you to bring your data in the right format.
 
 \hypertarget{dplyr}{%
-\subsubsection{\texorpdfstring{Data wrangling with the \textbf{dplyr} package}{Data wrangling with the dplyr package}}\label{dplyr}}
+\subsubsection{\texorpdfstring{Data Wrangling with the \textbf{dplyr} Package}{Data Wrangling with the dplyr Package}}\label{dplyr}}
 
 There are five main functions of \textbf{dplyr}, called \emph{verbs}:
 
@@ -1151,7 +1151,7 @@ In a next step, we regroup our data to add a column with shares of nightly bike 
 \end{verbatim}
 
 \hypertarget{tidyr}{%
-\subsubsection{\texorpdfstring{Reshaping data with the \textbf{tidyr} package}{Reshaping data with the tidyr package}}\label{tidyr}}
+\subsubsection{\texorpdfstring{Reshaping Data with the \textbf{tidyr} Package}{Reshaping Data with the tidyr Package}}\label{tidyr}}
 
 In case you need to reshape a data set to make it work with \textbf{ggplot2}, you can use the functions \texttt{pivot\_longer()} and \texttt{pivot\_wider()} from the \href{https://tidyr.tidyverse.org/}{\textbf{tidyr} package} \citep{tidyr} to move from one format to the other. Let's illustrate their behavior using one of the toy data sets used in section
 
@@ -1249,7 +1249,7 @@ Before we can create a ggplot, we have to load the package by running \texttt{li
 \end{Shaded}
 
 \hypertarget{basics}{%
-\section{Create a basic ggplot}\label{basics}}
+\section{Create a Basic ggplot}\label{basics}}
 
 Once the \textbf{ggplot2} package is loaded, we can create a basic ggplot by specifying the \emph{data}, \emph{aesthetics}---the positional encoding of the variables---, and a \emph{geometry}.
 
@@ -1285,7 +1285,7 @@ Due to so-called \emph{implicit matching}, we can rewrite the first part as \tex
 Omitting the arguments \texttt{data} and \texttt{mapping} saves you a ton of typing when creating dozens to hundreds ggplots per day. In my opinion, it is good practice to refer to aesthetics explicitly, and I will follow this convention throughout the book.
 
 \hypertarget{combined-layers}{%
-\section{Combine multiple layers}\label{combined-layers}}
+\section{Combine Multiple Layers}\label{combined-layers}}
 
 One can also add several layers, specified as either geometric shapes starting with \texttt{geom*()} or statistical transformations starting with \texttt{stat\_*()} (\ref{fig:04ggplotBasicSmooth})---and this is where the magic and fun starts!
 
@@ -1307,7 +1307,7 @@ One can also add several layers, specified as either geometric shapes starting w
 Both \texttt{geom\_*()} and \texttt{stat\_*()} internally make use of the same function \texttt{layer()} and pass default inputs for the \texttt{geom}, \texttt{stat}, and \texttt{position} arguments. Basically the use of geoms versus stats is only the perspective and personal preference: when specifying \texttt{geom\_*()} we focus on the shape representing the variables; using \texttt{stat\_*()} highlights the transformation applied to the variables. More information on the different geometries is provided in Chapter XYZ and a deep-dive into the power of statistical transformation is Chapter XYZ.
 
 \hypertarget{map-aesthetics}{%
-\section{Mapping aesthetics in layers}\label{map-aesthetics}}
+\section{Mapping Aesthetics in Layers}\label{map-aesthetics}}
 
 By looking at these scatter plots, we can actually identify two different trends for day and night. We can highlight both groups by mapping the \texttt{day\_night} variable to \texttt{color} (Fig. \ref{fig:04ggplotBasicColor}). Note that the mapping is applied to both, \texttt{geom\_point()} and \texttt{geom\_smooth()} and consequently the latter layer creates two separate smoothings.
 
@@ -1329,7 +1329,7 @@ Aesthetics can also be defined for each layer and are then applied locally to th
 You will learn more how to work with global and local aesthetics in Chapter XYZ and how to modify their appearance in Chapter XYZ.
 
 \hypertarget{set-properties}{%
-\section{Setting properties in layers}\label{set-properties}}
+\section{Setting Properties in Layers}\label{set-properties}}
 
 Furthermore, each layer has its own arguments to change their behavior and appearance. Let's also add some transparency to the points and turn the smoothing into a linear fitting (Fig. \ref{fig:04ggplotBasicAdjustLayers}). As we are not mapping aesthetics but setting properties, we have to place those adjustments outside the \texttt{aes()} call.
 
@@ -1362,7 +1362,7 @@ In general follow the rule to set constant properties outside \texttt{aes()} and
 The different aesthetics and the differences of global versus local mapping of aesthetics is explained in Chapter XYZ.
 
 \hypertarget{faceting}{%
-\section{Create small multiples}\label{faceting}}
+\section{Create Small Multiples}\label{faceting}}
 
 A fantastic feature of \textbf{ggplot2} is it's ability to quickly split a single visualization in a set of so-called \emph{small multiples}: the same visualization, no matter how complex it is, is applied to subsets contained in the same data set. In \textbf{ggplot2}, such small multiples are called \emph{facets} wich are conditional on the variables defined in the \texttt{facet\_*()} function (Fig. \ref{fig:04ggplotFacet}).
 
@@ -1413,7 +1413,7 @@ The \texttt{facet} functionality also comes with the option to overwrite the def
 \end{figure}
 
 \hypertarget{axis-scaling}{%
-\section{Change the axis scaling}\label{axis-scaling}}
+\section{Change the Axis Scaling}\label{axis-scaling}}
 
 For every aesthetic, \textbf{ggplot2} applies so-called \emph{scales} that translate between variable ranges (data) and property ranges (aesthetic). For the positional axes, a set of \texttt{scale\_x\_*()} and \texttt{scale\_y\_*()} controls their behavior. The \texttt{breaks} argument defines the placement of the axes ticks while the \texttt{labels} argument controls the labels next to those ticks. The labels can be either overwritten by a vector of the same length as the breaks (as for x in our example) or a function that returns a vector based on the breaks (as for y in our example). There are many more arguments such as \texttt{expand} to control the padding towards the ends of the respective axis or \texttt{trans} to transform the scale. You can read more about how to control \texttt{scales} in Chapter XYZ and about label adjustment and styling in Chapter XYZ.
 
@@ -1447,7 +1447,7 @@ For every aesthetic, \textbf{ggplot2} applies so-called \emph{scales} that trans
 \end{figure}
 
 \hypertarget{color-scaling}{%
-\section{Use a custom color palette}\label{color-scaling}}
+\section{Use a Custom Color Palette}\label{color-scaling}}
 
 The \texttt{scales} do not only control the behavior of the axes but also all other aesthetics such as \texttt{color}, \texttt{shape} or \texttt{alpha}. In case of categorical colors, scale\_color\_manual() enables us to overwrite the default color set by passing a vector of colors.
 
@@ -1487,7 +1487,7 @@ You will learn more about the different color and fill scales and how to manipul
 Furthermore, we are storing the current plot in an object named \texttt{g1}. This \texttt{ggplot} object can be extended afterwards. Storing intermediate ggplot outputs is especially helpful if the code becomes rather long and in case you have multiple variants of the same chart, for example when building up a chart stepwise. Another common use case is the creation of graphics in multiple languages.
 
 \hypertarget{label-adjustment}{%
-\section{Adjust labels}\label{label-adjustment}}
+\section{Adjust Labels and Titles}\label{label-adjustment}}
 
 For now, we have ignored that \textbf{ggplot2} uses the variable names as specified in our \texttt{bikes} object for data-related labels. Resist the temptation to change the variable names in your original data set! We can easily overwrite those by referring to the respective aesthetic (\texttt{x}, \texttt{y}, and \texttt{color}) in the \texttt{labs()} function which we add to our plot. Here, we can also specify a title, subtitle, caption, and tag (subtitle and tag are not shown in the following example; Fig. \ref{fig:04ggplotLabels}).
 
@@ -1535,7 +1535,7 @@ Let's also overwrite the cryptic numeric encoding of the seasons. Similar to the
 Note that the code is returning a message informing you that the present color scale has been replaced. As you can only apply one scale per aesthetic, we also have to pass the color vector again to use the custom colors from before.
 
 \hypertarget{complete-themes}{%
-\section{Apply a complete theme}\label{complete-themes}}
+\section{Apply a Complete Theme}\label{complete-themes}}
 
 \textbf{ggplot2} comes with a set of so-called \emph{complete themes}. We can add one of these to overwrite the default theme\_grey() by one of the others (run \texttt{?theme\_grey} for a full list of available complete themes).
 
@@ -1558,7 +1558,7 @@ When adding a theme to a ggplot, we can already overwrite the \texttt{base\_size
 \end{figure}
 
 \hypertarget{custom-theming}{%
-\section{Customize the theme}\label{custom-theming}}
+\section{Customize the Theme}\label{custom-theming}}
 
 The complete themes follow a set of rules that overwrite the choices made for the default \texttt{theme\_grey()}. By using a \texttt{theme()} call after (!) adding a complete theme, one can adjust the appearance of single elements (e.g.~\texttt{plot.title} or \texttt{panel.grid.major.x}) as well as set some pre-set options such as the positions of titles, captions and legends (\texttt{plot.title.position}, \texttt{plot.caption.position} and \texttt{legend.position}).
 
@@ -1643,7 +1643,7 @@ In the following I want to share some tips how you quickly customize the appeara
 \end{figure}
 
 \hypertarget{use-a-different-theme}{%
-\section{Use a different theme}\label{use-a-different-theme}}
+\section{Use a Different Theme}\label{use-a-different-theme}}
 
 The simplest step to give your plot a different appearance is using one of the complete themes provided by \textbf{ggplot2}. We already have seen \texttt{theme\_light()} in the previous section. A full list of themes:
 
@@ -1685,7 +1685,7 @@ Let's use the popular \texttt{theme\_minimal()} for now:
 \end{figure}
 
 \hypertarget{use-a-custom-font}{%
-\section{Use a custom font}\label{use-a-custom-font}}
+\section{Use a Custom Font}\label{use-a-custom-font}}
 
 There are multiple extension packages that aim to provide access to font files, \textbf{extrafont}, \textbf{sysfont}, \textbf{showtext}, and \textbf{systemfonts} to name a few. To my knowledge, the \textbf{systemfonts} package provides the best solution to work with typefaces and resolve font specifications. After loading the package, all locally installed font files are available in your current R session.
 
@@ -1725,7 +1725,7 @@ If you are searching for a specific font, this is my script to return family nam
 \end{verbatim}
 
 \hypertarget{increase-the-font-sizes}{%
-\section{Increase the font sizes}\label{increase-the-font-sizes}}
+\section{Increase the Font Sizes}\label{increase-the-font-sizes}}
 
 The base size in any ggplot theme is set to 11. This number determines the individual text sizes and line widths of your theme elements. Depending on the width and height specified when saving your plot, you may want to adjust the overall size by changing the \texttt{base\_size} in the \texttt{theme\_*()} call.
 
@@ -1742,7 +1742,7 @@ The base size in any ggplot theme is set to 11. This number determines the indiv
 \end{figure}
 
 \hypertarget{create-text-hierarchy}{%
-\section{Create text hierarchy}\label{create-text-hierarchy}}
+\section{Create Text Hierarchy}\label{create-text-hierarchy}}
 
 By default, the title is always set in regular weight. In many cases I find myself using a font that is bold and larger than by default. You can update details of the theme by directly addressing the respective theme element, here \texttt{plot.title}. As the title is a text element, we pass the new settings inside the element\_text() function. The \texttt{face} argument controls the font style and can take \texttt{"regular"}, \texttt{"bold"}, \texttt{"italic"}, and \texttt{"bold.italic"} as inputs. The size can either be set in absolute numbers or relative to the \texttt{base\_size} via the \texttt{rel()} function.
 
@@ -1758,8 +1758,8 @@ By default, the title is always set in regular weight. In many cases I find myse
 \caption{\label{fig:05textHierarchy}One can style single theme elements with the \texttt{theme()} function. Here, we create a more pronounced tet hierarchy by setting the title in a bigger, bold typeface.}
 \end{figure}
 
-\hypertarget{style-the-legend}{%
-\section{Style the legend}\label{style-the-legend}}
+\hypertarget{modify-the-legend}{%
+\section{Modify the Legend}\label{modify-the-legend}}
 
 {[}WIP{]}
 
@@ -1793,7 +1793,7 @@ By default, the title is always set in regular weight. In many cases I find myse
 \includegraphics{bookdown_files/figure-latex/05guidePositionTop-1.png}
 
 \hypertarget{align-titles-and-captions}{%
-\section{Align titles and captions}\label{align-titles-and-captions}}
+\section{Align Titles and Captions}\label{align-titles-and-captions}}
 
 By default, the titles and captions are left-aligned with the horizontal justification being set to \texttt{hjust\ =\ 0}. However, the horizontal justification does only impact the alignment of the title relative to the panel. If you want to place these text elements relative to the outer border of your graphic. you can set \texttt{plot.title.position} \texttt{plot.caption.position} to \texttt{"plot"}, respectively
 
@@ -1819,7 +1819,7 @@ The importance of aligning the title either with the panel border (the default b
 \end{figure}
 
 \hypertarget{add-some-white-space}{%
-\section{Add some white space}\label{add-some-white-space}}
+\section{Add Some White Space}\label{add-some-white-space}}
 
 {[}WIP{]}
 
@@ -1853,7 +1853,7 @@ When designing graphics with a code-based software, changes in the code need to 
 A benefit of a code-based graphics software is the ability to automate steps to avoid redundant code and allow for consistency. By adjusting the default settings, reusing code or even writing your own helper functions and themes rather than typing the same code again and again enables one to work more efficiently while preventing mistakes and inconsistencies.
 
 \hypertarget{save-ggplot-output-with-the-correct-dimensions}{%
-\section{Save ggplot output with the ``correct'' dimensions}\label{save-ggplot-output-with-the-correct-dimensions}}
+\section{Save ggplot Output with the ``Correct'' Dimensions}\label{save-ggplot-output-with-the-correct-dimensions}}
 
 One of the most common question I hear is ``how do I save the plot in a way that it looks as in the RStudio Plots pane?''. As the Plots pane in RStudio is responsive, it will redraw the plot with new dimensions every time you resize the pane. Consequently, the relative size of geometries and theme elements changes as well. Also, the dimensions of the plot shown are not obvious so you may end up in a loop of guessing the right measurements and adjusting the sizes, margins, widths of your components.
 
@@ -1873,7 +1873,7 @@ From now on, stick to this dimension and adjust the components after inspecting 
 If you are saving raster files such as .png and .jpeg, make sure to set the desired resolution by setting \texttt{dpi}. For web applications, images usually should be of low resolution to avoid long loading times (72 dpi is the general recommendation) while graphics used for print should be of high resolution of 300 dpi or more. The default in \texttt{ggsave()} is 300 dpi.
 
 \hypertarget{display-ggplot-output-with-the-correct-dimensions}{%
-\section{Display ggplot output with the ``correct'' dimensions}\label{display-ggplot-output-with-the-correct-dimensions}}
+\section{Display ggplot Output with the ``Correct'' Dimensions}\label{display-ggplot-output-with-the-correct-dimensions}}
 
 The iterative process of adjusting your graphic, saving it to disk, navigating to the folder, and looking at the plot is a tedious one. To avoid the additional workload, you can optimize your workflow by previewing your graphic in the correct dimensions without leaving RStudio.
 
@@ -1923,7 +1923,7 @@ The original purpose of \textbf{camcorder} is the generation of a GIF that showc
 \end{Shaded}
 
 \hypertarget{make-fonts-work}{%
-\section{Make fonts work}\label{make-fonts-work}}
+\section{Make Fonts Work}\label{make-fonts-work}}
 
 \textbf{\emph{Use the systemfonts package to find and use typefaces:}} As discussed in the previous chapter, the \textbf{systemfonts} package is likely the preferred approach to work with fonts. To search for a font file on your system use \texttt{match\_font()}. You can inspect all available typefaces via \texttt{system\_fonts()}.
 
@@ -1949,7 +1949,7 @@ To make fonts work in the RStudio Plots pane, select the AGG device as default f
 \end{Shaded}
 
 \hypertarget{set-your-ggplot-theme-globally}{%
-\section{Set your ggplot theme globally}\label{set-your-ggplot-theme-globally}}
+\section{Set Your ggplot Theme Globally}\label{set-your-ggplot-theme-globally}}
 
 Instead of applying and customizing a theme for each of your ggplots, you can set your theme once and it will be used for all future ggplot output by passing a complete theme to \texttt{theme\_set()}.
 
@@ -1996,7 +1996,7 @@ Furthermore, you can customize the new default theme supplied to \texttt{theme\_
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{theme\_set}\NormalTok{(}
-  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_family =} \StringTok{"Asap Condensed"}\NormalTok{, }\AttributeTok{base\_size =} \DecValTok{15}\NormalTok{)}
+  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_family =} \StringTok{"Asap SemiCondensed"}\NormalTok{, }\AttributeTok{base\_size =} \DecValTok{15}\NormalTok{)}
 \NormalTok{)}
 
 \FunctionTok{theme\_update}\NormalTok{(}
@@ -2021,14 +2021,14 @@ Furthermore, you can customize the new default theme supplied to \texttt{theme\_
 \caption{\label{fig:06examplePlotThemeUpdate}Running the same plot with updated theme defaults, globally set via \texttt{theme\_update()}. This allows for a consistent style for all graphics without the need to write redundant code.}
 \end{figure}
 
-\hypertarget{create-your-own-custom-theme}{%
-\section{Create your own custom theme}\label{create-your-own-custom-theme}}
+\hypertarget{create-your-own-theme}{%
+\section{Create Your Own Theme}\label{create-your-own-theme}}
 
 {[}WIP{]}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{theme\_custom }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{14}\NormalTok{, }\AttributeTok{base\_family =} \StringTok{"Asap Condensed"}\NormalTok{, }
+\NormalTok{theme\_custom }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{14}\NormalTok{, }\AttributeTok{base\_family =} \StringTok{"Asap SemiCondensed"}\NormalTok{, }
                          \AttributeTok{base\_line\_size =}\NormalTok{ base\_size}\SpecialCharTok{/}\DecValTok{25}\NormalTok{, }\AttributeTok{base\_rect\_size =}\NormalTok{ base\_size}\SpecialCharTok{/}\DecValTok{25}\NormalTok{,}
                          \AttributeTok{color\_plot =} \StringTok{"grey96"}\NormalTok{, }\AttributeTok{color\_panel =} \StringTok{"white"}\NormalTok{) \{}
     \FunctionTok{theme\_minimal}\NormalTok{(}

@@ -73,7 +73,7 @@ use-a-different-theme
 use-a-custom-font
 increase-the-font-sizes
 create-text-hierarchy
-style-the-legend
+modify-the-legend
 align-titles-and-captions
 add-some-white-space
 tips-to-improve-your-ggplot-workflow
@@ -81,7 +81,7 @@ save-ggplot-output-with-the-correct-dimensions
 display-ggplot-output-with-the-correct-dimensions
 make-fonts-work
 set-your-ggplot-theme-globally
-create-your-own-custom-theme
+create-your-own-theme
 working-with-layers
 geometrical-shapes
 statistical-transformations

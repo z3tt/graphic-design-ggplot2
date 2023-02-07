@@ -32,7 +32,7 @@ g <-
 g
 ```
 
-## Use a different theme
+## Use a Different Theme
 
 The simplest step to give your plot a different appearance is using one of the complete themes provided by **ggplot2**. We already have seen `theme_light()` in the previous section. A full list of themes:
 
@@ -54,7 +54,7 @@ Let's use the popular `theme_minimal()` for now:
 g + theme_minimal()
 ```
 
-## Use a custom font
+## Use a Custom Font
 
 There are multiple extension packages that aim to provide access to font files, **extrafont**, **sysfont**, **showtext**, and **systemfonts** to name a few. To my knowledge, the **systemfonts** package provides the best solution to work with typefaces and resolve font specifications. After loading the package, all locally installed font files are available in your current R session.
 
@@ -78,7 +78,7 @@ systemfonts::system_fonts() %>%
 ```
 
 
-## Increase the font sizes
+## Increase the Font Sizes
 
 The base size in any ggplot theme is set to 11. This number determines the individual text sizes and line widths of your theme elements. Depending on the width and height specified when saving your plot, you may want to adjust the overall size by changing the `base_size` in the `theme_*()` call. 
 
@@ -87,7 +87,7 @@ The base size in any ggplot theme is set to 11. This number determines the indiv
 ```
 
 
-## Create text hierarchy
+## Create Text Hierarchy
 
 By default, the title is always set in regular weight. In many cases I find myself using a font that is bold and larger than by default. You can update details of the theme by directly addressing the respective theme element, here `plot.title`. As the title is a text element, we pass the new settings inside the element_text() function. The `face` argument controls the font style and can take `"regular"`, `"bold"`, `"italic"`, and `"bold.italic"` as inputs. The size can either be set in absolute numbers or relative to the `base_size` via the `rel()` function.
 
@@ -95,7 +95,7 @@ By default, the title is always set in regular weight. In many cases I find myse
 (g <- g + theme(plot.title = element_text(face = "bold", size = rel(1.4))))
 ```
 
-## Style the legend
+## Modify the Legend
 
 [WIP]
 
@@ -116,7 +116,7 @@ g + guides(color = guide_colorsteps(
   theme(legend.position = "top", legend.justification = "left")
 ```
 
-## Align titles and captions
+## Align Titles and Captions
 
 By default, the titles and captions are left-aligned with the horizontal justification being set to `hjust = 0`. However, the horizontal justification does only impact the alignment of the title relative to the panel. If you want to place these text elements relative to the outer border of your graphic. you can set `plot.title.position` `plot.caption.position` to `"plot"`, respectively
 
@@ -144,7 +144,7 @@ p2 <- p + theme(plot.title.position = "plot")
 p1 + plot_spacer() + p2 + plot_layout(widths = c(1, .1, 1))
 ```
 
-## Add some white space
+## Add Some White Space
 
 [WIP]
 

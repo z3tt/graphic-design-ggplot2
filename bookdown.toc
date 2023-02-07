@@ -23,39 +23,39 @@
 \contentsline {chapter}{\numberline {3}Get Started}{17}{chapter.3}%
 \contentsline {section}{\numberline {3.1}The Data Set}{17}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Working in R}{19}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Import data}{19}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Project-oriented workflows}{20}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Inspect data}{21}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Data types}{21}{subsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.2.5}Data preparation}{24}{subsection.3.2.5}%
-\contentsline {subsubsection}{\numberline {3.2.5.1}Data wrangling with the \textbf {dplyr} package}{25}{subsubsection.3.2.5.1}%
-\contentsline {subsubsection}{\numberline {3.2.5.2}Reshaping data with the \textbf {tidyr} package}{27}{subsubsection.3.2.5.2}%
+\contentsline {subsection}{\numberline {3.2.1}Import Data}{19}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Project-oriented Workflows}{20}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Inspect the Data}{21}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Data Types}{21}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Data Preparation}{24}{subsection.3.2.5}%
+\contentsline {subsubsection}{\numberline {3.2.5.1}Data Wrangling with the \textbf {dplyr} Package}{25}{subsubsection.3.2.5.1}%
+\contentsline {subsubsection}{\numberline {3.2.5.2}Reshaping Data with the \textbf {tidyr} Package}{27}{subsubsection.3.2.5.2}%
 \contentsline {chapter}{\numberline {4}A Walk-through Example}{31}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Prerequisites}{31}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Create a basic ggplot}{31}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Combine multiple layers}{32}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Mapping aesthetics in layers}{33}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Setting properties in layers}{34}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Create small multiples}{35}{section.4.6}%
-\contentsline {section}{\numberline {4.7}Change the axis scaling}{36}{section.4.7}%
-\contentsline {section}{\numberline {4.8}Use a custom color palette}{38}{section.4.8}%
-\contentsline {section}{\numberline {4.9}Adjust labels}{39}{section.4.9}%
-\contentsline {section}{\numberline {4.10}Apply a complete theme}{40}{section.4.10}%
-\contentsline {section}{\numberline {4.11}Customize the theme}{41}{section.4.11}%
+\contentsline {section}{\numberline {4.2}Create a Basic ggplot}{31}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Combine Multiple Layers}{32}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Mapping Aesthetics in Layers}{33}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Setting Properties in Layers}{34}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Create Small Multiples}{35}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Change the Axis Scaling}{36}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Use a Custom Color Palette}{38}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Adjust Labels and Titles}{39}{section.4.9}%
+\contentsline {section}{\numberline {4.10}Apply a Complete Theme}{40}{section.4.10}%
+\contentsline {section}{\numberline {4.11}Customize the Theme}{41}{section.4.11}%
 \contentsline {chapter}{\numberline {5}Tips to Improve Your ggplot Design}{45}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Use a different theme}{45}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Use a custom font}{46}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Increase the font sizes}{48}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Create text hierarchy}{48}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Style the legend}{49}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Align titles and captions}{51}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Add some white space}{51}{section.5.7}%
+\contentsline {section}{\numberline {5.1}Use a Different Theme}{45}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Use a Custom Font}{46}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Increase the Font Sizes}{48}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Create Text Hierarchy}{48}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Modify the Legend}{49}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Align Titles and Captions}{51}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Add Some White Space}{51}{section.5.7}%
 \contentsline {chapter}{\numberline {6}Tips to Improve Your ggplot Workflow}{55}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Save ggplot output with the ``correct'' dimensions}{55}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Display ggplot output with the ``correct'' dimensions}{56}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Make fonts work}{57}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Set your ggplot theme globally}{57}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Create your own custom theme}{59}{section.6.5}%
+\contentsline {section}{\numberline {6.1}Save ggplot Output with the ``Correct'' Dimensions}{55}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Display ggplot Output with the ``Correct'' Dimensions}{56}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Make Fonts Work}{57}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Set Your ggplot Theme Globally}{57}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Create Your Own Theme}{59}{section.6.5}%
 \contentsline {part}{II\hspace {1em}How To Work with Components}{63}{part.2}%
 \contentsline {chapter}{\numberline {7}Working with Layers}{65}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Geometrical Shapes}{65}{section.7.1}%

@@ -78,7 +78,7 @@ data_tbl |>
 [^02-get-started-1]: Note that the **ggplot2** package itself belongs to the **tidyverse** as well.
 
 
-### Import data {#import}
+### Import Data {#import}
 
 You need to import data to be able to work with it in the current session. The data can be imported from a local directory or directly from a web source. Nowadays, all common and some less common data formats can easily be imported. For common tabular data formats such as .txt or .csv one can use the [**readr** package](https://readr.tidyverse.org/) [@readr] from the **tidyverse**.
 
@@ -108,7 +108,7 @@ Instead of relying on the absolute path, which likely differs between users and 
 
 [^02-get-started-2]: A detailed reasoning why you should not use `setwd()` is provided in [Chapter 2 of "What they forgot you to teach about R"](https://rstats.wtf/project-oriented-workflow.html).
 
-### Project-oriented workflows {#workflows}
+### Project-oriented Workflows {#workflows}
 
 Preferably, we do not want to rely on absolute paths and the default or manually set working directories. So-called project-oriented workflows aim to organize each piece of work in a self-contained, bundled directory. This directory includes all relevant files needed for the project, such as scripts and images. By ensuring that paths are set relative and in a way that they are understood by any operating system, we guarantee that the project will run on any machine and can easily moved around.
 
@@ -122,7 +122,7 @@ path_data <- here::here("data", "london-bikes.csv")
 ```
 
 
-### Inspect data {#inspect}
+### Inspect the Data {#inspect}
 
 After importing the data, it is advisable to have a look at the data. Does the object stored in R match the dimensions of your original data file? Are the variables displayed correctly? You can print the data by simply running the name of the object, here `bikes`.
 
@@ -135,7 +135,7 @@ As we have used the **readr** package, our data is stored as a *tibble* (class `
 On the top of the output, you can directly see that our data set consists of `format(length(bikes), big.mark = ",")` variables (columns) frame with `r format(nrow(bikes), big.mark = ",")` observations (rows). Also, the tibble output shows you the first ten rows. Alternatively you can inspect the data with the help of `str()` or `tibble::glimpse()` to print a transposed version.
 
 
-### Data types {#classes}
+### Data Types {#classes}
 
 If you have looked carefully, you may have noticed that a tibble prints also the data type of each column, e.g. `<chr>`. In our case, we have specified the types of the columns manually when importing the data; if not specified, `readr::read_csv()` as most other import functions will guess the data type for each column based on the first x observations.
 
@@ -241,7 +241,7 @@ as.POSIXlt("2007-06-10 12:34:56")
 ```
 
 
-### Data preparation {#preparation}
+### Data Preparation {#preparation}
 
 Often, the data imported might not be in the right format to plot it with **ggplot2**. The preparation of the data—e.g. converting data types and setting factor levels, aggregating values, estimating data summaries, reshaping the data set or combining it with another source—is called *data wrangling*, *data munging*, or **data manipulation**.  
 
@@ -266,7 +266,7 @@ length(unique(bikes$weather_type))
 
 The [**dplyr**](https://dplyr.tidyverse.org/) [@dplyr] and other **tidyverse** packages provide a simple and intuitive syntax to wrangle data. There are a ton of unique functions, but knowing a handful is enough to empower you to bring your data in the right format. 
 
-#### Data wrangling with the **dplyr** package {#dplyr}
+#### Data Wrangling with the **dplyr** Package {#dplyr}
 
 There are five main functions of **dplyr**, called *verbs*:
 
@@ -358,7 +358,7 @@ bikes_summarized %>%
   arrange(year, season) 
 ```
 
-#### Reshaping data with the **tidyr** package {#tidyr}
+#### Reshaping Data with the **tidyr** Package {#tidyr}
 
 In case you need to reshape a data set to make it work with **ggplot2**, you can use the functions `pivot_longer()` and `pivot_wider()` from the [**tidyr** package](https://tidyr.tidyverse.org/) [@tidyr] to move from one format to the other. Let's illustrate their behavior using one of the toy data sets used in section 
 

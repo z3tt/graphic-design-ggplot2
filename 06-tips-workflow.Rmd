@@ -9,7 +9,7 @@ When designing graphics with a code-based software, changes in the code need to 
 A benefit of a code-based graphics software is the ability to automate steps to avoid redundant code and allow for consistency. By adjusting the default settings, reusing code or even writing your own helper functions and themes rather than typing the same code again and again enables one to work more efficiently while preventing mistakes and inconsistencies.
 
 
-## Save ggplot output with the "correct" dimensions
+## Save ggplot Output with the "Correct" Dimensions
 
 One of the most common question I hear is "how do I save the plot in a way that it looks as in the RStudio Plots pane?". As the Plots pane in RStudio is responsive, it will redraw the plot with new dimensions every time you resize the pane. Consequently, the relative size of geometries and theme elements changes as well. Also, the dimensions of the plot shown are not obvious so you may end up in a loop of guessing the right measurements and adjusting the sizes, margins, widths of your components. 
 
@@ -27,7 +27,7 @@ From now on, stick to this dimension and adjust the components after inspecting 
 If you are saving raster files such as .png and .jpeg, make sure to set the desired resolution by setting `dpi`. For web applications, images usually should be of low resolution to avoid long loading times (72 dpi is the general recommendation) while graphics used for print should be of high resolution of 300 dpi or more. The default in `ggsave()` is 300 dpi.
 
 
-## Display ggplot output with the "correct" dimensions
+## Display ggplot Output with the "Correct" Dimensions
 
 The iterative process of adjusting your graphic, saving it to disk, navigating to the folder, and looking at the plot is a tedious one. To avoid the additional workload, you can optimize your workflow by previewing your graphic in the correct dimensions without leaving RStudio.
 
@@ -71,7 +71,7 @@ camcorder::gg_playback(name = "./plots/process.gif")
 ```
 
 
-## Make fonts work
+## Make Fonts Work
 
 ***Use the systemfonts package to find and use typefaces:*** As discussed in the previous chapter, the **systemfonts** package is likely the preferred approach to work with fonts. To search for a font file on your system use `match_font()`. You can inspect all available typefaces via `system_fonts()`.
 
@@ -93,7 +93,7 @@ ggsave("plot.pdf", device = cairo_pdf)
 ```
 
 
-## Set your ggplot theme globally
+## Set Your ggplot Theme Globally
 
 Instead of applying and customizing a theme for each of your ggplots, you can set your theme once and it will be used for all future ggplot output by passing a complete theme to `theme_set()`.
 
@@ -127,7 +127,7 @@ Furthermore, you can customize the new default theme supplied to `theme_set()`:
 
 ```{r 06themeUpdate}
 theme_set(
-  theme_minimal(base_family = "Asap Condensed", base_size = 15)
+  theme_minimal(base_family = "Asap SemiCondensed", base_size = 15)
 )
 
 theme_update(
@@ -144,12 +144,12 @@ g
 ```
 
 
-## Create your own custom theme
+## Create Your Own Theme
 
 [WIP]
 
 ```{r 06customTheme}
-theme_custom <- function(base_size = 14, base_family = "Asap Condensed", 
+theme_custom <- function(base_size = 14, base_family = "Asap SemiCondensed", 
                          base_line_size = base_size/25, base_rect_size = base_size/25,
                          color_plot = "grey96", color_panel = "white") {
     theme_minimal(
