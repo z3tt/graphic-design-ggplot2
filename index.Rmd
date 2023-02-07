@@ -113,7 +113,7 @@ Package names are in **bold text** and wrapped into curly brackets, e.g. **{ggpl
 
 ## Acknowledgments {-}
 
-Thanks to David Grubbs, Alberto Cairo, Emily Riederer, Oscar Baruffa, and Malcolm Barrett for all your constructive feedback.  
+Thanks to David Grubbs, Alberto Cairo, Emily Riederer, Oscar Baruffa, Malcolm Barrett, and Tanya Shapiro for all your constructive feedback and your patience and willingness to discuss the tiny details with me.  
   
 
 ```{block2, type='flushright', html.tag='p'}

@@ -1,0 +1,42 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces A comparison of data arranged in a long (left) versus wide formats (right). The two different metrics by color. Groups are additionally encoded by shaded rows.\relax }}{10}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Basic ggplot outputs mapping four different variables (columns of the data set) to aesthetics, using the long-format data (\texttt {data\_long}, left plot) and wide-format data (\texttt {data\_wide}, right plot).\relax }}{11}{figure.caption.11}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces The same data, visualized as a scatter plot showing the raw data without any statistical transformation (left) and after a statistical tranformation has been applied to calculate linear fittings for each Penguin species (right). The visualizations use the Palmer Archipelago penguin data by A.M. Horst, A.P. Hill \& K.B. Gorman (2020).\relax }}{11}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Three different visualizations showing the distribution of body mass across three penguin species. A) A box-and-whiskers plot using a single layer. B) Adding a second layer to plot A allows to show the raw data as jittered points. C) By combining multiple layers, one can build more complex visualizations like this variant of a raincloud plot. Four layers are used here: one for the density curve, one for the pointrange, another one for the barcode strip and finally one for the annotation with the mean values. The visualizations use the Palmer Archipelago penguin data by A.M. Horst, A.P. Hill \& K.B. Gorman (2020).\relax }}{12}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces ``Artists in the USA'' by Lee Olney\relax }}{14}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces ``Not my Cup of Coffee'' by Cédric Scherer\relax }}{15}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces ``Doctor Who was the Best?'' by Tanya Shapiro\relax }}{16}{figure.caption.16}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The original and aggregated data sets in direct comparison: counts of bike shares registered by TfL over time with month encoded by colour. The left panel shows counts for every hour of the day, while in the right panel the hourly data was aggregated into two periods of the day (day and night).\relax }}{17}{figure.caption.17}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Overview of the distribution of the boolean variables \texttt {is\_workday}, \texttt {is\_weekend}, and \texttt {is\_holiday} (A), the categorical variable \texttt {weather\_type} (B), and the continuous variables \texttt {count}, \texttt {temp}, \texttt {temp\_feel}, \texttt {humidity}, and \texttt {wind\_speed} (C) of the cleaned and aggregated bike sharing data set. In panel C, the correlation between the variables is shown as scatterplot encoded by \texttt {timeperiod} (upper triangle) and encoded by point density (lower triangle), highlighting the level of overlap of data points.\relax }}{18}{figure.caption.18}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces A basic scatter plot of feels-like temperature and reported TfL bike rents, created with the \{ggplot2\} package.\relax }}{32}{figure.caption.19}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces The same scatter plot, now with an additional GAM smoothing.\relax }}{33}{figure.caption.20}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces The points and smoothing lines colored by the time of the day.\relax }}{34}{figure.caption.21}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces We can map aesthetics and define properties for each layer individually.\relax }}{35}{figure.caption.22}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces With the \texttt {facet} functions, a visualization can quickly be split into small multiples.\relax }}{36}{figure.caption.23}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces \{ggplot2\} even allows to free the axis range---while ensuring equal axis spacing.\relax }}{37}{figure.caption.24}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces To adjust the formatting of axis labels, the respective axis needs to be addressed via the \texttt {scale\_*()} functions.\relax }}{38}{figure.caption.25}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces We can overwrite the default labels with the \texttt {labs()} which also allows to add a title, subtitle, caption, and tag to the graphic.\relax }}{40}{figure.caption.26}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces By passing a vector of the same length as there are seasons to the \texttt {labels} argument of the \texttt {scale\_color\_*()} function, we can overwrite the labels used in the legend.\relax }}{41}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces The graphic now comes with a new look and a non-default font used for all text labels.\relax }}{42}{figure.caption.28}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces After applying on of the complete themes, one can further style the theme to the personal needs.\relax }}{43}{figure.caption.29}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces A time series of reported bike rents during the night (6 pm to 6 am) with points being encoded by the average temperature using the default \textbf {ggplot2} theme.\relax }}{46}{figure.caption.30}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces The same plot as before using the minimal theme.\relax }}{47}{figure.caption.31}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces All text labels now use a custom font by changing the \texttt {base\_family} of the theme.\relax }}{47}{figure.caption.32}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces If the text elements are too small for the desired out width and height, you can adjust them by overwriting the default \texttt {base\_size}.\relax }}{48}{figure.caption.33}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces One can style single theme elements with the \texttt {theme()} function. Here, we create a more pronounced tet hierarchy by setting the title in a bigger, bold typeface.\relax }}{49}{figure.caption.34}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces The title and sutitle can be aligned with the plot border by setting \texttt {plot.title.position} to \texttt {"plot"}. Similarly, the position of the caption can be changed by using \texttt {plot.caption.position}.\relax }}{52}{figure.caption.35}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Plots with long labels on the y axis with the title being either aligned with the panel border (default behavior, left) or with the plot border (right).\relax }}{52}{figure.caption.36}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Running the same plot with updated theme defaults, globally set via \texttt {theme\_update()}. This allows for a consistent style for all graphics without the need to write redundant code.\relax }}{59}{figure.caption.37}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Applying our custom theme to the ggplot object from before.\relax }}{60}{figure.caption.38}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces You can still overwrite the main settings and adjust single elements when using the custom theme.\relax }}{61}{figure.caption.39}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Plots with long labels on the y axis with the title being either aligned with the panel border (default behavior, left) or with the plot border (right).\relax }}{65}{figure.caption.40}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

@@ -1,0 +1,44 @@
+```{r 05setupSectionGeoms, echo=FALSE, include=FALSE}
+source(here::here("src", "prerequisites.R"))
+```
+
+# (PART) How To Work with Components {-}
+
+# Working with Layers
+
+Internally all layers are created by the `layer()` function. A layer is by definition a "combination of data, stat and geom with a potential position adjustment" (`layer` R help). 
+
+The long list of featured `geom_*()` and `stat_*()` functions in **{ggplot2}** is thus just a set of predefined layers with default `geom`, `stat`, `position` arguments that use the data passed in the initial `ggplot()` call. The data can also be specified for each layer separately by passing it inside the respective geom or stat.
+
+## Geometrical Shapes
+
+Many geometrical shapes only need two positional arguments, namely `x` and `y` as a single coordinate is sufficient to represent your data. A combination of x and y values determine the position of points, connected lines, or the height of bars.
+
+```{r}
+ggplot(bikes, aes(x = date, y = count)) +
+  geom_line() ## a timeseries of bike shares per date
+
+ggplot(bikes, aes(x = date, y = count)) +
+  geom_col() ## a bar chart with one bar per date
+```
+
+[WIP]
+
+* most geoms use two positional aesthetics
+* showcase a few of those
+* some geoms take only one or more than 2
+* showcase of some of those
+
+
+## Statistical Transformations
+
+* stats are just a different perspective
+* illustrate with usual examples
+* powerful transformations: count + summary
+
+
+## Positional Adjustments
+
+* 
+
+

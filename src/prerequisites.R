@@ -4,3 +4,6 @@ library(ggplot2)
 library(patchwork)
 
 source(here::here("src", "theme.R"))
+theme_set(theme_custom())
+
+colors <- c("#28A87F", "#FFA200", "#9C4BFF","#00B3FF","#FF5477")

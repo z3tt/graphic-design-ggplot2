@@ -182,7 +182,7 @@
 \makeatother
 \subtitle{Create Beautiful and Engaging Data Visualizations in R}
 \author{Cédric Scherer}
-\date{2023-01-18}
+\date{2023-02-07}
 
 \begin{document}
 \maketitle
@@ -195,9 +195,7 @@
 \thispagestyle{empty}
 
 \begin{center}
-To my son,
-
-without whom I should have finished this book two years earlier
+To my family,thank you for all your support and love.
 %\includegraphics{images/dedication.pdf}
 \end{center}
 
@@ -327,7 +325,7 @@ The book was written with the \textbf{\{knitr\}}\index{knitr} package \citep{xie
 \begin{verbatim}
 ## R version 4.2.2 (2022-10-31)
 ## Platform: aarch64-apple-darwin20 (64-bit)
-## Running under: macOS Ventura 13.0
+## Running under: macOS Ventura 13.1
 ## 
 ## Locale: en_US.UTF-8 / en_US.UTF-8 / en_US.UTF-8 / C / en_US.UTF-8 / en_US.UTF-8
 ## 
@@ -362,7 +360,7 @@ Package names are in \textbf{bold text} and wrapped into curly brackets, e.g.~\t
 \section*{Acknowledgments}\label{acknowledgments}}
 
 
-Thanks to David Grubbs, Alberto Cairo, Emily Riederer, Oscar Baruffa, and Malcolm Barrett for all your constructive feedback.
+Thanks to David Grubbs, Alberto Cairo, Emily Riederer, Oscar Baruffa, Malcolm Barrett, and Tanya Shapiro for all your constructive feedback and your patience and willingness to discuss the tiny details with me.
 
 \begin{flushright}
 Cédric Scherer\\
@@ -460,6 +458,9 @@ Even though R---similar to most programming languages---has a steep learning cur
 \item
   The visualizations created in R can be exported as vector files and thus allow for post--processing with vector graphics software like Adobe Illustrator, Inkscape or Figma.
 \end{itemize}
+
+\hypertarget{part-general-overiew}{%
+\part{General Overiew}\label{part-general-overiew}}
 
 \hypertarget{the-layered-grammar-of-graphics}{%
 \chapter{The Layered Grammar of Graphics}\label{the-layered-grammar-of-graphics}}
@@ -685,9 +686,7 @@ We are using historical data for bike sharing in London in 2015 and 2016, provid
 \caption{\label{fig:03imgDataComparison}The original and aggregated data sets in direct comparison: counts of bike shares registered by TfL over time with month encoded by colour. The left panel shows counts for every hour of the day, while in the right panel the hourly data was aggregated into two periods of the day (day and night).}
 \end{figure}
 
-To make the visualizations manageable and patterns more insightful, we are using a modified data set with all variables aggregated for day (6:00am--5:59pm) and night (6:00pm--5:59am) (\ref{fig:imgDataComparison}). The bike counts were summarized while all weather-related variables where averaged. Finally, for the weather type, the most common was used and, in case of a tie, one of the most common types was randomly chosen. The modified data sets contains 14 variables (columns) with 1,454 observations (rows). To give you a better idea what the data set contains, a visual overview of the variables is provided in table \ref{tab:tableBikesData} and figure \ref{fig:imgDataOverviewVars}.
-
-COMMENT: Decide on a version to provide and overview of the variables as table or list.
+To make the visualizations manageable and patterns more insightful, we are using a modified data set with all variables aggregated for day (6:00am--5:59pm) and night (6:00pm--5:59am) (\ref{fig:03imgDataComparison}). The bike counts were summarized while all weather-related variables where averaged. Finally, for the weather type, the most common was used and, in case of a tie, one of the most common types was randomly chosen. The modified data sets contains 14 variables (columns) with 1,454 observations (rows). To give you a better idea what the data set contains, a visual overview of the variables is provided in table \ref{tab:03tableBikesData} and figure \ref{fig:03imgDataOverviewVars}.
 
 \begin{figure}
 \centering
@@ -1240,7 +1239,7 @@ Before we can create a ggplot, we have to load the package by running \texttt{li
 
 Once the \textbf{\{ggplot2\}} package is loaded, we can create a basic ggplot by specifying the \emph{data}, \emph{aesthetics}---the positional encoding of the variables---, and a \emph{geometry}.
 
-Here, we map the variable \texttt{temp\_feel} of our \texttt{bikes} data object to the \texttt{x} position and the variable \texttt{count} to the \texttt{y} position (\ref{fig:04ggplotBasic}). We will also map variables to all kind of other aesthetics throughout the book. Some are related to positions such as \texttt{xstart} and \texttt{ymax} while others change the appearance of the layer based on the variables they are mapped to such as \texttt{color} and \texttt{shape}.
+Here, we map the variable \texttt{temp\_feel} of our \texttt{bikes} data object to the \texttt{x} position and the variable \texttt{count} to the \texttt{y} position (\ref{fig:04ggplotBasic}). We will also map variables to all kind of other aesthetics throughout the book. Some are related to positions such as \texttt{xmin} or \texttt{yend} while others change the appearance of the layer based on the variables they are mapped to such as \texttt{color} and \texttt{shape}.
 
 There are many, many different geometries (often called geoms because each function starts with \texttt{geom\_}) one can add to a ggplot by default and even more provided by extension packages. By adding \texttt{geom\_point()} we create a scatter plot:
 
@@ -1356,8 +1355,8 @@ A fantastic feature of \textbf{\{ggplot2\}} is it's ability to quickly split a s
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
-  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}
-    \AttributeTok{color =}\NormalTok{ day\_night), }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}
+  \FunctionTok{geom\_point}\NormalTok{(}
+    \FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ day\_night), }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}
 \NormalTok{  ) }\SpecialCharTok{+} 
   \FunctionTok{stat\_smooth}\NormalTok{(}
     \FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ day\_night), }\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}
@@ -1485,7 +1484,6 @@ For now, we have ignored that \textbf{\{ggplot2\}} uses the variable names as sp
     \DocumentationTok{\#\# overwrite axis and legend titles}
     \AttributeTok{x =} \StringTok{"Average Feels{-}Like Temperature"}\NormalTok{, }\AttributeTok{y =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{color =} \ConstantTok{NULL}\NormalTok{,}
     \DocumentationTok{\#\# add plot title and caption}
-    
     \AttributeTok{title =} \StringTok{"Trends of reported bike rents versus feels{-}like temperature in London."}\NormalTok{,}
     \AttributeTok{caption =} \StringTok{"Data: TfL (Transport for London), Jan 2015–Dec 2016"}
 \NormalTok{  )}
@@ -1534,7 +1532,7 @@ When adding a theme to a ggplot, we can already overwrite the \texttt{base\_size
 \NormalTok{g3 }\SpecialCharTok{+}
   \DocumentationTok{\#\# add theme with a custom font + larger element sizes}
   \FunctionTok{theme\_light}\NormalTok{(}
-    \AttributeTok{base\_size =} \DecValTok{12}\NormalTok{, }\AttributeTok{base\_family =} \StringTok{"Cabinet Grotesk"}
+    \AttributeTok{base\_size =} \DecValTok{12}\NormalTok{, }\AttributeTok{base\_family =} \StringTok{"Spline Sans"}
 \NormalTok{  )}
 \end{Highlighting}
 \end{Shaded}
@@ -1556,14 +1554,14 @@ In general, theme elements can be of class text (e.g.~\texttt{plot.title}), line
 \begin{Highlighting}[]
 \NormalTok{g3 }\SpecialCharTok{+}
   \FunctionTok{theme\_light}\NormalTok{(}
-    \AttributeTok{base\_size =} \DecValTok{12}\NormalTok{, }\AttributeTok{base\_family =} \StringTok{"Cabinet Grotesk"}
+    \AttributeTok{base\_size =} \DecValTok{12}\NormalTok{, }\AttributeTok{base\_family =} \StringTok{"Spline Sans"}
 \NormalTok{  ) }\SpecialCharTok{+}
   \DocumentationTok{\#\# theme adjustments}
   \FunctionTok{theme}\NormalTok{(}
     \AttributeTok{plot.title.position =} \StringTok{"plot"}\NormalTok{, }\DocumentationTok{\#\# left{-}align title}
     \AttributeTok{plot.caption.position =} \StringTok{"plot"}\NormalTok{, }\DocumentationTok{\#\# right{-}align title}
     \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{face =} \StringTok{"bold"}\NormalTok{, }\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(}\FloatTok{1.3}\NormalTok{)), }\DocumentationTok{\#\# larger bold title}
-    \AttributeTok{axis.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{family =} \StringTok{"Tabular"}\NormalTok{), }\DocumentationTok{\#\# monospaced font for axes}
+    \AttributeTok{axis.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{family =} \StringTok{"Spline Sans Mono"}\NormalTok{), }\DocumentationTok{\#\# monospaced font for axes}
     \AttributeTok{axis.title.x =} \FunctionTok{element\_text}\NormalTok{( }\DocumentationTok{\#\# left{-}aligned, grey x axis label}
       \AttributeTok{hjust =} \DecValTok{0}\NormalTok{, }\AttributeTok{color =} \StringTok{"grey30"}\NormalTok{, }\AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{t =} \DecValTok{12}\NormalTok{)}
 \NormalTok{    ),}
@@ -1592,6 +1590,604 @@ RECAP
 
 LEAD OVER TO NEXT CHAPTER
 
+\hypertarget{tips-to-improve-your-ggplot-design}{%
+\chapter{Tips to Improve Your ggplot Design}\label{tips-to-improve-your-ggplot-design}}
+
+In the following I want to share some tips how you quickly customize the appearance of your graphics with a few additional lines of code. First, let's create a plot to work with: we will display the counts of reported bike rents during the night only as a time series. To focus on the tips, we assign the ggplot output to \texttt{g} and extend this object in the following.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\NormalTok{bikes\_nightly }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(bikes, day\_night }\SpecialCharTok{==} \StringTok{"night"}\NormalTok{)}
+
+\NormalTok{g }\OtherTok{\textless{}{-}} 
+  \FunctionTok{ggplot}\NormalTok{(bikes\_nightly, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ temp), }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
+  \DocumentationTok{\#\# style y axis, labels and colors}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{limits =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\ConstantTok{NA}\NormalTok{), }\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{label\_comma}\NormalTok{()) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_gradient}\NormalTok{(}
+    \AttributeTok{low =} \StringTok{"\#00B3FF"}\NormalTok{, }\AttributeTok{high =} \StringTok{"\#FF5477"}\NormalTok{, }
+    \AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{label\_number}\NormalTok{(}\AttributeTok{suffix =} \StringTok{"°C"}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{y =} \StringTok{"Number of bike rents per night"}\NormalTok{, }\AttributeTok{color =} \StringTok{"Average Temperature:"}\NormalTok{,}
+    \AttributeTok{title =} \StringTok{"TfL bike rents peak during warm summer nights"}\NormalTok{,}
+    \AttributeTok{subtitle =} \StringTok{"A time series of reported bike rents between 6 pm and 6 am in London"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"Data: TfL (Transport for London), Jan 2015–Dec 2016"}
+\NormalTok{  ) }
+
+\NormalTok{g}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/05basicPlot-1.png}
+\caption{\label{fig:05basicPlot}A time series of reported bike rents during the night (6 pm to 6 am) with points being encoded by the average temperature using the default \textbf{ggplot2} theme.}
+\end{figure}
+
+\hypertarget{use-a-different-theme}{%
+\section{Use a Different Theme}\label{use-a-different-theme}}
+
+The simplest step to give your plot a different appearance is using one of the complete themes provided by \textbf{ggplot2}. We already have seen \texttt{theme\_light()} in the previous section. A full list of themes:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{theme\_gray()}, the default theme with a grey panel, white grid lines, and grey boxes for facets
+\item
+  \texttt{theme\_minimal()} without a panel border and facet boxes
+  ≈* \texttt{theme\_bw()} with a white panel, grey grid lines, a black panel border, and grey boxes for facets
+\item
+  \texttt{theme\_linedraw()}, similar to \texttt{theme\_bw()} but featuring black axis text and facet boxes
+\item
+  \texttt{theme\_light()}, similar to \texttt{theme\_bw()} but with a grey panel border and all-grey facet boxes
+\item
+  \texttt{theme\_minimal()} without a panel border and facet boxes
+\item
+  \texttt{theme\_classic()} with axis lines but no grid lines and white facet boxes with a black outline
+\item
+  \texttt{theme\_dark()} with a dark-grey panel and even darker facet boxes
+\item
+  \texttt{theme\_void()}, a completely empty theme
+\end{itemize}
+
+The completely empty theme \texttt{theme\_void()} is often helpful when working with maps. Also, you can use it to build your theme element by element like drawing on a blank canvas.
+
+Let's use the popular \texttt{theme\_minimal()} for now:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/05themeMinimal-1.png}
+\caption{\label{fig:05themeMinimal}The same plot as before using the minimal theme.}
+\end{figure}
+
+\hypertarget{use-a-custom-font}{%
+\section{Use a Custom Font}\label{use-a-custom-font}}
+
+There are multiple extension packages that aim to provide access to font files, \textbf{extrafont}, \textbf{sysfont}, \textbf{showtext}, and \textbf{systemfonts} to name a few. To my knowledge, the \textbf{systemfonts} package provides the best solution to work with typefaces and resolve font specifications. After loading the package, all locally installed font files are available in your current R session.
+
+The default font family of ggplot themes is the default sans serif font and thus it is specific to the system you and potential collaborators are working on. You can overwrite the default by passing a font family as argument to \texttt{base\_family} inside the \texttt{theme\_*()} call.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_family =} \StringTok{"Asap SemiCondensed"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/05themeBaseFamily-1.png}
+\caption{\label{fig:05themeBaseFamily}All text labels now use a custom font by changing the \texttt{base\_family} of the theme.}
+\end{figure}
+
+If you are searching for a specific font, this is my script to return family names that can be used as inputs for text elements in \textbf{ggplot2}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{systemfonts}\SpecialCharTok{::}\FunctionTok{system\_fonts}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \DocumentationTok{\#\# filter for a pattern}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(stringr}\SpecialCharTok{::}\FunctionTok{str\_detect}\NormalTok{(name, }\StringTok{"Asap"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \DocumentationTok{\#\# only keep family column}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{pull}\NormalTok{(family) }\SpecialCharTok{\%\textgreater{}\%} 
+  \DocumentationTok{\#\# only keep distinct families and sort them by name}
+  \FunctionTok{unique}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{sort}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Asap"               "Asap Condensed"    
+## [3] "Asap Expanded"      "Asap SemiCondensed"
+## [5] "Asap SemiExpanded"
+\end{verbatim}
+
+\hypertarget{increase-the-font-sizes}{%
+\section{Increase the Font Sizes}\label{increase-the-font-sizes}}
+
+The base size in any ggplot theme is set to 11. This number determines the individual text sizes and line widths of your theme elements. Depending on the width and height specified when saving your plot, you may want to adjust the overall size by changing the \texttt{base\_size} in the \texttt{theme\_*()} call.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(g }\OtherTok{\textless{}{-}}\NormalTok{ g }\SpecialCharTok{+} \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_family =} \StringTok{"Asap SemiCondensed"}\NormalTok{, }\AttributeTok{base\_size =} \DecValTok{14}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/05themeBaseSize-1.png}
+\caption{\label{fig:05themeBaseSize}If the text elements are too small for the desired out width and height, you can adjust them by overwriting the default \texttt{base\_size}.}
+\end{figure}
+
+\hypertarget{create-text-hierarchy}{%
+\section{Create Text Hierarchy}\label{create-text-hierarchy}}
+
+By default, the title is always set in regular weight. In many cases I find myself using a font that is bold and larger than by default. You can update details of the theme by directly addressing the respective theme element, here \texttt{plot.title}. As the title is a text element, we pass the new settings inside the element\_text() function. The \texttt{face} argument controls the font style and can take \texttt{"regular"}, \texttt{"bold"}, \texttt{"italic"}, and \texttt{"bold.italic"} as inputs. The size can either be set in absolute numbers or relative to the \texttt{base\_size} via the \texttt{rel()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(g }\OtherTok{\textless{}{-}}\NormalTok{ g }\SpecialCharTok{+} \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{face =} \StringTok{"bold"}\NormalTok{, }\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(}\FloatTok{1.4}\NormalTok{))))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/05textHierarchy-1.png}
+\caption{\label{fig:05textHierarchy}One can style single theme elements with the \texttt{theme()} function. Here, we create a more pronounced tet hierarchy by setting the title in a bigger, bold typeface.}
+\end{figure}
+
+\hypertarget{legend-styling}{%
+\section{Legend Styling}\label{legend-styling}}
+
+{[}WIP{]}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{guides}\NormalTok{(}\AttributeTok{color =} \FunctionTok{guide\_colorsteps}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown_files/figure-latex/05guideColorsteps-1.png}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{guides}\NormalTok{(}\AttributeTok{color =} \FunctionTok{guide\_colorsteps}\NormalTok{(}
+    \AttributeTok{barheight =} \FunctionTok{unit}\NormalTok{(}\DecValTok{15}\NormalTok{, }\StringTok{"lines"}\NormalTok{)}
+\NormalTok{  ))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown_files/figure-latex/05guideKeyHeight-1.png}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{guides}\NormalTok{(}\AttributeTok{color =} \FunctionTok{guide\_colorsteps}\NormalTok{(}
+    \AttributeTok{barwidth =} \FunctionTok{unit}\NormalTok{(}\DecValTok{25}\NormalTok{, }\StringTok{"lines"}\NormalTok{), }\AttributeTok{title.position =} \StringTok{"top"}
+\NormalTok{  )) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"top"}\NormalTok{, }\AttributeTok{legend.justification =} \StringTok{"left"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown_files/figure-latex/05guidePositionTop-1.png}
+
+\hypertarget{align-titles-and-captions}{%
+\section{Align Titles and Captions}\label{align-titles-and-captions}}
+
+By default, the titles and captions are left-aligned with the horizontal justification being set to \texttt{hjust\ =\ 0}. However, the horizontal justification does only impact the alignment of the title relative to the panel. If you want to place these text elements relative to the outer border of your graphic. you can set \texttt{plot.title.position} \texttt{plot.caption.position} to \texttt{"plot"}, respectively
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title.position =} \StringTok{"plot"}\NormalTok{,}
+          \AttributeTok{plot.caption.position =} \StringTok{"plot"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/05titleAlign-1.png}
+\caption{\label{fig:05titleAlign}The title and sutitle can be aligned with the plot border by setting \texttt{plot.title.position} to \texttt{"plot"}. Similarly, the position of the caption can be changed by using \texttt{plot.caption.position}.}
+\end{figure}
+
+The importance of aligning the title either with the panel border (the default behavior) or with the plot border becomes especially important if you have long labels on the left of the plot. This is often the case when displaying categories along the y axis with a left-aligned title (Fig. \ref{fig:05barsTitlePosition}. The same applies for right-aligned text in case of increased margins on the right of the panel, for example when using facets or adding legends.
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/05barsTitlePosition-1.png}
+\caption{\label{fig:05barsTitlePosition}Plots with long labels on the y axis with the title being either aligned with the panel border (default behavior, left) or with the plot border (right).}
+\end{figure}
+
+\hypertarget{add-some-white-space}{%
+\section{Add Some White Space}\label{add-some-white-space}}
+
+{[}WIP{]}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.margin =} \FunctionTok{margin}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{4}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown_files/figure-latex/05plotMargin-1.png}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{theme}\NormalTok{(}
+  \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{b =} \DecValTok{10}\NormalTok{)),}
+  \AttributeTok{plot.subtitle =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{b =} \DecValTok{15}\NormalTok{)),}
+  \AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{t =} \DecValTok{20}\NormalTok{)),}
+  \AttributeTok{axis.title.y =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{r =} \DecValTok{10}\NormalTok{)),}
+  \AttributeTok{legend.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{b =} \DecValTok{10}\NormalTok{)),}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown_files/figure-latex/05textMargins-1.png}
+
+\hypertarget{tips-to-improve-your-ggplot-workflow}{%
+\chapter{Tips to Improve Your ggplot Workflow}\label{tips-to-improve-your-ggplot-workflow}}
+
+When designing graphics with a code-based software, changes in the code need to be rendered to a graphical output to see the actual changes. The process of saving the graphic successfully in the desired format and being able to quickly inspect the adjustments are often a main source of frustration. The first tips thus cover how-to's on saving your ggplot output in the correct dimension, improving the iterative design process, and embedding non-default typefaces.
+
+A benefit of a code-based graphics software is the ability to automate steps to avoid redundant code and allow for consistency. By adjusting the default settings, reusing code or even writing your own helper functions and themes rather than typing the same code again and again enables one to work more efficiently while preventing mistakes and inconsistencies.
+
+\hypertarget{save-ggplot-output-with-the-correct-dimensions}{%
+\section{Save ggplot Output with the ``Correct'' Dimensions}\label{save-ggplot-output-with-the-correct-dimensions}}
+
+One of the most common question I hear is ``how do I save the plot in a way that it looks as in the RStudio Plots pane?''. As the Plots pane in RStudio is responsive, it will redraw the plot with new dimensions every time you resize the pane. Consequently, the relative size of geometries and theme elements changes as well. Also, the dimensions of the plot shown are not obvious so you may end up in a loop of guessing the right measurements and adjusting the sizes, margins, widths of your components.
+
+For sure, the iteration of adjusting sizes and position is one of the most annoying and elaborate tasks when designing graphics with \textbf{ggplot2}. And most ggplot users will painfully remember the moment when a plot saved to disk looks absolutely nothing as it did in the Plots pane. So how can we avoid this time-consuming task?
+
+\textbf{\emph{Don't rely on the preview and decide on the dimensions before polishing:}} Once you are moving from exploring the data and potential visualizations to creating your final polished graphic, save the plot to disk in the desired width and height. By default, the dimensions are in inches.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggsave}\NormalTok{(}\StringTok{"plot.png"}\NormalTok{, }\AttributeTok{width =} \DecValTok{12}\NormalTok{, }\AttributeTok{height =} \DecValTok{8}\NormalTok{)}
+\FunctionTok{ggsave}\NormalTok{(}\StringTok{"plot.png"}\NormalTok{, }\AttributeTok{width =} \DecValTok{30}\NormalTok{, }\AttributeTok{height =} \DecValTok{20}\NormalTok{, }\AttributeTok{unit =} \StringTok{"cm"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+From now on, stick to this dimension and adjust the components after inspecting the saved graphic. Of course, you can adjust the dimensions afterwards. Slight changes will have no big impact on the relative sizes; otherwise, you may have to resize some of your components.
+
+If you are saving raster files such as .png and .jpeg, make sure to set the desired resolution by setting \texttt{dpi}. For web applications, images usually should be of low resolution to avoid long loading times (72 dpi is the general recommendation) while graphics used for print should be of high resolution of 300 dpi or more. The default in \texttt{ggsave()} is 300 dpi.
+
+\hypertarget{display-ggplot-output-with-the-correct-dimensions}{%
+\section{Display ggplot Output with the ``Correct'' Dimensions}\label{display-ggplot-output-with-the-correct-dimensions}}
+
+The iterative process of adjusting your graphic, saving it to disk, navigating to the folder, and looking at the plot is a tedious one. To avoid the additional workload, you can optimize your workflow by previewing your graphic in the correct dimensions without leaving RStudio.
+
+\textbf{\emph{Work in Quarto (.qmd) or Rmarkdown (.rmd) files to inspect your plots in-line:}} In qmd and rmd formats, code is run inside individual chunks for which you can define figure dimensions by setting \texttt{fig.width} or \texttt{fig.height} as chunk options \footnote{Note that the new YAML-styled \texttt{\#\textbar{}\ fig-width:\ 12} does not work and the \href{https://github.com/rstudio/rstudio/issues/11708}{width and height need to be specified in the \textbf{knitr} chunk options}.}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r, fig.width=12, fig.height=8\}}
+\NormalTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
+\end{Highlighting}
+\end{Shaded}
+
+When a chunk is executed, the in-line plot output will respect these settings. When saving the file with \texttt{ggsave()}, make sure to use the same width and height. By default, the units in both chunk settings and \texttt{ggsave()} are in inches.
+
+\textbf{Use the camcorder package to automatically save and display your graphics:} The \href{https://thebioengineer.github.io/camcorder/}{\textbf{camcorder} package} \citep{camcorder} is an R package that automatically saves graphics generated with \textbf{ggplot2} with custom settings. The package allows you to inspect the ggplot output directly in RStudio by displaying the saved graphic in the Viewer pane. As each graphic is saved automatically, running \texttt{ggsave()} after every adjustment becomes obsolote---another time-saver!
+
+You initiate a recoding by calling \texttt{gg\_record()} with the desired path to save the plots to and image settings as you specify them in \texttt{ggsave()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"camcorder"}\NormalTok{)}
+
+\NormalTok{camcorder}\SpecialCharTok{::}\FunctionTok{gg\_record}\NormalTok{(}
+  \AttributeTok{dir =} \StringTok{"./plots"}\NormalTok{, }\DocumentationTok{\#\# where to save the recording}
+  \AttributeTok{device =} \StringTok{"png"}\NormalTok{,  }\DocumentationTok{\#\# device to use to save images}
+  \AttributeTok{width =} \DecValTok{12}\NormalTok{,      }\DocumentationTok{\#\# width of saved image}
+  \AttributeTok{height =} \DecValTok{8}\NormalTok{,      }\DocumentationTok{\#\# height of saved image}
+  \AttributeTok{dpi =} \DecValTok{300}        \DocumentationTok{\#\# dpi to use when saving image}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+If you want to change some settings later, use \texttt{gg\_resize\_film()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{camcorder}\SpecialCharTok{::}\FunctionTok{gg\_resize\_film}\NormalTok{(}\AttributeTok{width =} \FloatTok{12.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The original purpose of \textbf{camcorder} is the generation of a GIF that showcases every step of the design process using the saved image files. If you want to create such an animation, run \texttt{gg\_playback()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{camcorder}\SpecialCharTok{::}\FunctionTok{gg\_playback}\NormalTok{(}\AttributeTok{name =} \StringTok{"./plots/process.gif"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{make-fonts-work}{%
+\section{Make Fonts Work}\label{make-fonts-work}}
+
+\textbf{\emph{Use the systemfonts package to find and use typefaces:}} As discussed in the previous chapter, the \textbf{systemfonts} package is likely the preferred approach to work with fonts. To search for a font file on your system use \texttt{match\_font()}. You can inspect all available typefaces via \texttt{system\_fonts()}.
+
+A common issue is the rendering of custom typefaces and special characters such as mathematical symbols, unusual glyphs, and emojis.
+
+\textbf{\emph{If you are saving your graphics as PNG raster images use the agg\_png device:}} The best-performing device to render your ggplot output successfully are the agg devices. In recent versions, this device is the default in \texttt{ggsave()} in case the \textbf{ragg} package is installed. It also features agg devices for other raster formats such as JPEG and TIFF.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ragg)}
+\FunctionTok{ggsave}\NormalTok{(}\StringTok{"plot.png"}\NormalTok{, }\AttributeTok{device =}\NormalTok{ agg\_png)}
+\end{Highlighting}
+\end{Shaded}
+
+To make fonts work in the RStudio Plots pane, select the AGG device as default for the graphics backend by navigating to \texttt{Tools\ \textgreater{}\ Global\ Options...\ \textgreater{}\ General\ \textgreater{}\ Graphics}.
+
+\textbf{\emph{If you are saving your graphics as PDF vector graphics use the cairo\_pdf device:}} I prefer to dave my files as lossless vector graphics. The device known to work best for rendering is the Cairo device which needs to be secified as \texttt{device\ =\ cairo\_pdf}. Mac users need to install \href{https://www.xquartz.org/}{XQuartz} which is needed to use the Cairo device.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggsave}\NormalTok{(}\StringTok{"plot.pdf"}\NormalTok{, }\AttributeTok{device =}\NormalTok{ cairo\_pdf)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{set-your-ggplot-theme-globally}{%
+\section{Set Your ggplot Theme Globally}\label{set-your-ggplot-theme-globally}}
+
+Instead of applying and customizing a theme for each of your ggplots, you can set your theme once and it will be used for all future ggplot output by passing a complete theme to \texttt{theme\_set()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{theme\_set}\NormalTok{(}\FunctionTok{theme\_minimal}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+Let's see how a plot using \texttt{theme\_minimal()} looks like---note that we do not apply the theme to the plot itself.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\OtherTok{\textless{}{-}} 
+  \FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ humidity, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ day\_night), }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{4}\NormalTok{) }\SpecialCharTok{+}
+  \DocumentationTok{\#\# style labels and colors}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{label\_percent}\NormalTok{(}\AttributeTok{scale =} \DecValTok{1}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{label\_comma}\NormalTok{()) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#9C4BFF"}\NormalTok{, }\StringTok{"\#00B3FF"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{x =} \StringTok{"Humidity"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Reported bike rents"}\NormalTok{, }\AttributeTok{color =} \ConstantTok{NULL}\NormalTok{,}
+    \AttributeTok{title =} \StringTok{"Reported bike rents versus average humidity (day/night)"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"Data: TfL (Transport for London), Jan 2015–Dec 2016"}
+\NormalTok{  )}
+  
+\NormalTok{g}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown_files/figure-latex/06examplePlotThemeSet-1.png}
+
+Furthermore, you can customize the new default theme supplied to \texttt{theme\_set()}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Set the typeface for text elements and sizes of the theme elements when calling the complete theme.
+\item
+  Adjust theme elements and components of the complete theme via \texttt{theme\_update()}.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{theme\_set}\NormalTok{(}
+  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_family =} \StringTok{"Asap SemiCondensed"}\NormalTok{, }\AttributeTok{base\_size =} \DecValTok{15}\NormalTok{)}
+\NormalTok{)}
+
+\FunctionTok{theme\_update}\NormalTok{(}
+  \AttributeTok{panel.grid.minor =} \FunctionTok{element\_blank}\NormalTok{(),}
+  \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{face =} \StringTok{"bold"}\NormalTok{),}
+  \AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{color =} \StringTok{"grey40"}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+{[}WIP{]}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/06examplePlotThemeUpdate-1.png}
+\caption{\label{fig:06examplePlotThemeUpdate}Running the same plot with updated theme defaults, globally set via \texttt{theme\_update()}. This allows for a consistent style for all graphics without the need to write redundant code.}
+\end{figure}
+
+\hypertarget{create-your-own-theme}{%
+\section{Create Your Own Theme}\label{create-your-own-theme}}
+
+{[}WIP{]}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{theme\_custom }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{14}\NormalTok{, }\AttributeTok{base\_family =} \StringTok{"Asap SemiCondensed"}\NormalTok{, }
+                         \AttributeTok{base\_line\_size =}\NormalTok{ base\_size}\SpecialCharTok{/}\DecValTok{25}\NormalTok{, }\AttributeTok{base\_rect\_size =}\NormalTok{ base\_size}\SpecialCharTok{/}\DecValTok{25}\NormalTok{,}
+                         \AttributeTok{color\_plot =} \StringTok{"grey96"}\NormalTok{, }\AttributeTok{color\_panel =} \StringTok{"white"}\NormalTok{) \{}
+    \FunctionTok{theme\_minimal}\NormalTok{(}
+      \AttributeTok{base\_size =}\NormalTok{ base\_size, }\AttributeTok{base\_family =}\NormalTok{ base\_family, }
+      \AttributeTok{base\_line\_size =}\NormalTok{ base\_line\_size, }\AttributeTok{base\_rect\_size =}\NormalTok{ base\_rect\_size}
+\NormalTok{    ) }\SpecialCharTok{\%+replace\%} 
+    \FunctionTok{theme}\NormalTok{(}
+      \AttributeTok{panel.grid.minor =} \FunctionTok{element\_blank}\NormalTok{(),}
+      \AttributeTok{panel.grid.major =} \FunctionTok{element\_line}\NormalTok{(}\AttributeTok{color =}\NormalTok{ color\_plot),}
+      \AttributeTok{panel.background =} \FunctionTok{element\_rect}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ color\_panel, }\AttributeTok{color =} \ConstantTok{NA}\NormalTok{),}
+      \AttributeTok{plot.background =} \FunctionTok{element\_rect}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ color\_plot, }\AttributeTok{color =} \ConstantTok{NA}\NormalTok{),}
+      \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(}\FloatTok{1.2}\NormalTok{), }\AttributeTok{face =} \StringTok{"bold"}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{0}\NormalTok{,}
+                                  \AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{b =} \FunctionTok{rel}\NormalTok{(}\DecValTok{15}\NormalTok{))), }
+      \AttributeTok{plot.subtitle =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(}\DecValTok{1}\NormalTok{), }\AttributeTok{hjust =} \DecValTok{0}\NormalTok{),}
+      \AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{color =} \StringTok{"grey30"}\NormalTok{, }\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(.}\DecValTok{7}\NormalTok{), }\AttributeTok{hjust =} \DecValTok{0}\NormalTok{,}
+                                  \AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{t =} \FunctionTok{rel}\NormalTok{(}\DecValTok{20}\NormalTok{))),}
+      \AttributeTok{plot.title.position =} \StringTok{"plot"}\NormalTok{,}
+      \AttributeTok{plot.caption.position =} \StringTok{"plot"}\NormalTok{,}
+      \AttributeTok{axis.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{color =} \StringTok{"grey40"}\NormalTok{, }\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(.}\DecValTok{8}\NormalTok{)),}
+      \AttributeTok{complete =} \ConstantTok{FALSE}
+\NormalTok{  )}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{theme\_custom}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/06customThemeApplied-1.png}
+\caption{\label{fig:06customThemeApplied}Applying our custom theme to the ggplot object from before.}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+}
+  \FunctionTok{theme\_custom}\NormalTok{(}
+    \AttributeTok{base\_size =} \DecValTok{16}\NormalTok{, }\AttributeTok{base\_family =} \StringTok{"Spline Sans"}\NormalTok{,}
+    \AttributeTok{color\_plot =} \StringTok{"white"}\NormalTok{, }\AttributeTok{color\_panel =} \StringTok{"antiquewhite"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{color =} \StringTok{"goldenrod"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/06customThemeModified-1.png}
+\caption{\label{fig:06customThemeModified}You can still overwrite the main settings and adjust single elements when using the custom theme.}
+\end{figure}
+
+\hypertarget{improve-your-ggplot-design}{%
+\section{Improve Your ggplot Design}\label{improve-your-ggplot-design}}
+
+In the following I want to share a quick tips how you customize the appearance of your graphics with a few additional lines of code. First, let's create a plot to work with: we will display the counts of reported bike rents during the night only as a time series. To focus on the tips, we assign the ggplot output to \texttt{g} and extend this object in the following.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\NormalTok{bikes\_nightly }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(bikes, day\_night }\SpecialCharTok{==} \StringTok{"night"}\NormalTok{)}
+
+\NormalTok{g }\OtherTok{\textless{}{-}} 
+  \FunctionTok{ggplot}\NormalTok{(bikes\_nightly, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ temp), }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{limits =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\ConstantTok{NA}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_gradient}\NormalTok{(}
+    \AttributeTok{low =} \StringTok{"\#00B3FF"}\NormalTok{, }\AttributeTok{high =} \StringTok{"\#FF5477"}\NormalTok{, }
+    \AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{label\_number}\NormalTok{(}\AttributeTok{suffix =} \StringTok{"°C"}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{y =} \StringTok{"Number of bike rents per night"}\NormalTok{, }\AttributeTok{color =} \StringTok{"Average Temperature:"}\NormalTok{,}
+    \AttributeTok{title =} \StringTok{"TfL bike rents peak during warm summer nights"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"Data: TfL (Transport for London), Jan 2015–Dec 2016"}
+\NormalTok{  )}
+
+\NormalTok{g}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown_files/figure-latex/06basicPlot-1.png}
+
+\hypertarget{remove-panel-padding}{%
+\section{Remove Panel Padding}\label{remove-panel-padding}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{coord\_cartesian}\NormalTok{(}\AttributeTok{expand =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-2-1.png}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{coord\_cartesian}\NormalTok{(}\AttributeTok{expand =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{clip =} \StringTok{"off"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-3-1.png}
+
+\hypertarget{legend-styling-1}{%
+\section{Legend Styling}\label{legend-styling-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{guides}\NormalTok{(}\AttributeTok{color =} \FunctionTok{guide\_colorsteps}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-4-1.png}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{guides}\NormalTok{(}\AttributeTok{color =} \FunctionTok{guide\_colorsteps}\NormalTok{(}
+    \AttributeTok{barwidth =} \FunctionTok{unit}\NormalTok{(}\DecValTok{25}\NormalTok{, }\StringTok{"lines"}\NormalTok{), }\AttributeTok{title.position =} \StringTok{"top"}
+\NormalTok{  )) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"top"}\NormalTok{, }\AttributeTok{legend.justification =} \StringTok{"left"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-5-1.png}
+
+\hypertarget{align-titles-and-captions-1}{%
+\section{Align Titles and Captions}\label{align-titles-and-captions-1}}
+
+By default, the titles and captions are left-aligned with the horizontal justification being set to \texttt{hjust\ =\ 0}. However, the horizontal justification does only impact the alignment of the title relative to the panel. If you want to place these text elements relative to the outer border of your graphic. you can set \texttt{plot.title.position} \texttt{plot.caption.position} to \texttt{"plot"}, respectively
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title.position =} \StringTok{"plot"}\NormalTok{,}
+          \AttributeTok{plot.caption.position =} \StringTok{"plot"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown_files/figure-latex/06titleAlign-1.png}
+
+The importance of aligning the title either with the panel border (the default behavior) or with the plot border becomes especially important if you have long labels on the left of the plot. This is often the case when displaying categories along the y axis with a left-aligned title (Fig. \ref{fig:06barsTitlePosition}. The same applies for right-aligned text in case of increased margins on the right of the panel, for example when using facets or adding legends.
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/06barsTitlePosition-1.png}
+\caption{\label{fig:06barsTitlePosition}Plots with long labels on the y axis with the title being either aligned with the panel border (default behavior, left) or with the plot border (right).}
+\end{figure}
+
+\hypertarget{add-some-white-space-1}{%
+\section{Add Some White Space}\label{add-some-white-space-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.margin =} \FunctionTok{margin}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{4}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-6-1.png}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{theme}\NormalTok{(}
+  \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{b =} \DecValTok{15}\NormalTok{)),}
+  \AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{t =} \DecValTok{20}\NormalTok{)),}
+  \AttributeTok{axis.title.y =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{r =} \DecValTok{10}\NormalTok{)),}
+  \AttributeTok{legend.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{b =} \DecValTok{10}\NormalTok{)),}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-7-1.png}
+
 \hypertarget{part-how-to-work-with-components}{%
 \part{How To Work with Components}\label{part-how-to-work-with-components}}
 
@@ -1614,7 +2210,7 @@ Many geometrical shapes only need two positional arguments, namely \texttt{x} an
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-2-1.png}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-8-1.png}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1623,7 +2219,7 @@ Many geometrical shapes only need two positional arguments, namely \texttt{x} an
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-2-2.png}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-8-2.png}
 
 {[}WIP{]}
 
@@ -1645,7 +2241,7 @@ Many geometrical shapes only need two positional arguments, namely \texttt{x} an
 \begin{itemize}
 \tightlist
 \item
-  stats are just tak a different perspective
+  stats are just a different perspective
 \item
   illustrate with usual examples
 \item
@@ -1666,11 +2262,11 @@ Many geometrical shapes only need two positional arguments, namely \texttt{x} an
 \hypertarget{styling-titles-and-labels}{%
 \chapter{Styling Titles and Labels}\label{styling-titles-and-labels}}
 
-\hypertarget{part-how-to-polish-your-graphics}{%
-\part{How To Polish Your Graphics}\label{part-how-to-polish-your-graphics}}
+\hypertarget{part-advanced-walk-through-examples}{%
+\part{Advanced Walk-Through Examples}\label{part-advanced-walk-through-examples}}
 
-\hypertarget{polish}{%
-\chapter{Quick Steps to Improve Your Graphic}\label{polish}}
+\hypertarget{overview}{%
+\chapter{Overview}\label{overview}}
 
 \cleardoublepage
 

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Working with Layers | Graphic Design with ggplot2</title>
+  <title>Chapter 7 Working with Layers | Graphic Design with ggplot2</title>
   <meta name="description" content="Create Beautiful and Engaging Data Visualizations in R" />
   <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Working with Layers | Graphic Design with ggplot2" />
+  <meta property="og:title" content="Chapter 7 Working with Layers | Graphic Design with ggplot2" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Create Beautiful and Engaging Data Visualizations in R" />
   <meta name="github-repo" content="z3tt/graphic-design-ggplot2" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Working with Layers | Graphic Design with ggplot2" />
+  <meta name="twitter:title" content="Chapter 7 Working with Layers | Graphic Design with ggplot2" />
   
   <meta name="twitter:description" content="Create Beautiful and Engaging Data Visualizations in R" />
   
@@ -23,14 +23,14 @@
 <meta name="author" content="Cédric Scherer" />
 
 
-<meta name="date" content="2023-01-18" />
+<meta name="date" content="2023-02-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="a-walk-through-example.html"/>
+<link rel="prev" href="tips-to-improve-your-ggplot-workflow.html"/>
 <link rel="next" href="customizing-color-palettes.html"/>
 <script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -175,6 +175,7 @@ div.csl-indent {
 <li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#coding"><i class="fa fa-check"></i><b>1.2</b> Coding Visualizations</a></li>
 <li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#why"><i class="fa fa-check"></i><b>1.3</b> Why R and <strong>ggplot2</strong></a></li>
 </ul></li>
+<li class="part"><span><b>I General Overiew</b></span></li>
 <li class="chapter" data-level="2" data-path="the-layered-grammar-of-graphics.html"><a href="the-layered-grammar-of-graphics.html"><i class="fa fa-check"></i><b>2</b> The Layered Grammar of Graphics</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="the-layered-grammar-of-graphics.html"><a href="the-layered-grammar-of-graphics.html#ggplot"><i class="fa fa-check"></i><b>2.1</b> The {ggplot2} Package</a></li>
@@ -220,17 +221,40 @@ div.csl-indent {
 <li class="chapter" data-level="4.10" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#complete-themes"><i class="fa fa-check"></i><b>4.10</b> Apply a complete theme</a></li>
 <li class="chapter" data-level="4.11" data-path="a-walk-through-example.html"><a href="a-walk-through-example.html#custom-theming"><i class="fa fa-check"></i><b>4.11</b> Customize the theme</a></li>
 </ul></li>
-<li class="part"><span><b>I How To Work with Components</b></span></li>
-<li class="chapter" data-level="5" data-path="working-with-layers.html"><a href="working-with-layers.html"><i class="fa fa-check"></i><b>5</b> Working with Layers</a>
+<li class="chapter" data-level="5" data-path="tips-to-improve-your-ggplot-design.html"><a href="tips-to-improve-your-ggplot-design.html"><i class="fa fa-check"></i><b>5</b> Tips to Improve Your ggplot Design</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="working-with-layers.html"><a href="working-with-layers.html#geometrical-shapes"><i class="fa fa-check"></i><b>5.1</b> Geometrical Shapes</a></li>
-<li class="chapter" data-level="5.2" data-path="working-with-layers.html"><a href="working-with-layers.html#statistical-transformations"><i class="fa fa-check"></i><b>5.2</b> Statistical Transformations</a></li>
-<li class="chapter" data-level="5.3" data-path="working-with-layers.html"><a href="working-with-layers.html#positional-adjustments"><i class="fa fa-check"></i><b>5.3</b> Positional Adjustments</a></li>
+<li class="chapter" data-level="5.1" data-path="tips-to-improve-your-ggplot-design.html"><a href="tips-to-improve-your-ggplot-design.html#use-a-different-theme"><i class="fa fa-check"></i><b>5.1</b> Use a Different Theme</a></li>
+<li class="chapter" data-level="5.2" data-path="tips-to-improve-your-ggplot-design.html"><a href="tips-to-improve-your-ggplot-design.html#use-a-custom-font"><i class="fa fa-check"></i><b>5.2</b> Use a Custom Font</a></li>
+<li class="chapter" data-level="5.3" data-path="tips-to-improve-your-ggplot-design.html"><a href="tips-to-improve-your-ggplot-design.html#increase-the-font-sizes"><i class="fa fa-check"></i><b>5.3</b> Increase the Font Sizes</a></li>
+<li class="chapter" data-level="5.4" data-path="tips-to-improve-your-ggplot-design.html"><a href="tips-to-improve-your-ggplot-design.html#create-text-hierarchy"><i class="fa fa-check"></i><b>5.4</b> Create Text Hierarchy</a></li>
+<li class="chapter" data-level="5.5" data-path="tips-to-improve-your-ggplot-design.html"><a href="tips-to-improve-your-ggplot-design.html#legend-styling"><i class="fa fa-check"></i><b>5.5</b> Legend Styling</a></li>
+<li class="chapter" data-level="5.6" data-path="tips-to-improve-your-ggplot-design.html"><a href="tips-to-improve-your-ggplot-design.html#align-titles-and-captions"><i class="fa fa-check"></i><b>5.6</b> Align Titles and Captions</a></li>
+<li class="chapter" data-level="5.7" data-path="tips-to-improve-your-ggplot-design.html"><a href="tips-to-improve-your-ggplot-design.html#add-some-white-space"><i class="fa fa-check"></i><b>5.7</b> Add Some White Space</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="customizing-color-palettes.html"><a href="customizing-color-palettes.html"><i class="fa fa-check"></i><b>6</b> Customizing Color Palettes</a></li>
-<li class="chapter" data-level="7" data-path="styling-titles-and-labels.html"><a href="styling-titles-and-labels.html"><i class="fa fa-check"></i><b>7</b> Styling Titles and Labels</a></li>
-<li class="part"><span><b>II How To Polish Your Graphics</b></span></li>
-<li class="chapter" data-level="8" data-path="polish.html"><a href="polish.html"><i class="fa fa-check"></i><b>8</b> Quick Steps to Improve Your Graphic</a></li>
+<li class="chapter" data-level="6" data-path="tips-to-improve-your-ggplot-workflow.html"><a href="tips-to-improve-your-ggplot-workflow.html"><i class="fa fa-check"></i><b>6</b> Tips to Improve Your ggplot Workflow</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="tips-to-improve-your-ggplot-workflow.html"><a href="tips-to-improve-your-ggplot-workflow.html#save-ggplot-output-with-the-correct-dimensions"><i class="fa fa-check"></i><b>6.1</b> Save ggplot Output with the “Correct” Dimensions</a></li>
+<li class="chapter" data-level="6.2" data-path="tips-to-improve-your-ggplot-workflow.html"><a href="tips-to-improve-your-ggplot-workflow.html#display-ggplot-output-with-the-correct-dimensions"><i class="fa fa-check"></i><b>6.2</b> Display ggplot Output with the “Correct” Dimensions</a></li>
+<li class="chapter" data-level="6.3" data-path="tips-to-improve-your-ggplot-workflow.html"><a href="tips-to-improve-your-ggplot-workflow.html#make-fonts-work"><i class="fa fa-check"></i><b>6.3</b> Make Fonts Work</a></li>
+<li class="chapter" data-level="6.4" data-path="tips-to-improve-your-ggplot-workflow.html"><a href="tips-to-improve-your-ggplot-workflow.html#set-your-ggplot-theme-globally"><i class="fa fa-check"></i><b>6.4</b> Set Your ggplot Theme Globally</a></li>
+<li class="chapter" data-level="6.5" data-path="tips-to-improve-your-ggplot-workflow.html"><a href="tips-to-improve-your-ggplot-workflow.html#create-your-own-theme"><i class="fa fa-check"></i><b>6.5</b> Create Your Own Theme</a></li>
+<li class="chapter" data-level="6.6" data-path="tips-to-improve-your-ggplot-workflow.html"><a href="tips-to-improve-your-ggplot-workflow.html#improve-your-ggplot-design"><i class="fa fa-check"></i><b>6.6</b> Improve Your ggplot Design</a></li>
+<li class="chapter" data-level="6.7" data-path="tips-to-improve-your-ggplot-workflow.html"><a href="tips-to-improve-your-ggplot-workflow.html#remove-panel-padding"><i class="fa fa-check"></i><b>6.7</b> Remove Panel Padding</a></li>
+<li class="chapter" data-level="6.8" data-path="tips-to-improve-your-ggplot-workflow.html"><a href="tips-to-improve-your-ggplot-workflow.html#legend-styling-1"><i class="fa fa-check"></i><b>6.8</b> Legend Styling</a></li>
+<li class="chapter" data-level="6.9" data-path="tips-to-improve-your-ggplot-workflow.html"><a href="tips-to-improve-your-ggplot-workflow.html#align-titles-and-captions-1"><i class="fa fa-check"></i><b>6.9</b> Align Titles and Captions</a></li>
+<li class="chapter" data-level="6.10" data-path="tips-to-improve-your-ggplot-workflow.html"><a href="tips-to-improve-your-ggplot-workflow.html#add-some-white-space-1"><i class="fa fa-check"></i><b>6.10</b> Add Some White Space</a></li>
+</ul></li>
+<li class="part"><span><b>II How To Work with Components</b></span></li>
+<li class="chapter" data-level="7" data-path="working-with-layers.html"><a href="working-with-layers.html"><i class="fa fa-check"></i><b>7</b> Working with Layers</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="working-with-layers.html"><a href="working-with-layers.html#geometrical-shapes"><i class="fa fa-check"></i><b>7.1</b> Geometrical Shapes</a></li>
+<li class="chapter" data-level="7.2" data-path="working-with-layers.html"><a href="working-with-layers.html#statistical-transformations"><i class="fa fa-check"></i><b>7.2</b> Statistical Transformations</a></li>
+<li class="chapter" data-level="7.3" data-path="working-with-layers.html"><a href="working-with-layers.html#positional-adjustments"><i class="fa fa-check"></i><b>7.3</b> Positional Adjustments</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="customizing-color-palettes.html"><a href="customizing-color-palettes.html"><i class="fa fa-check"></i><b>8</b> Customizing Color Palettes</a></li>
+<li class="chapter" data-level="9" data-path="styling-titles-and-labels.html"><a href="styling-titles-and-labels.html"><i class="fa fa-check"></i><b>9</b> Styling Titles and Labels</a></li>
+<li class="part"><span><b>III Advanced Walk-Through Examples</b></span></li>
+<li class="chapter" data-level="10" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>10</b> Overview</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="more-to-say.html"><a href="more-to-say.html"><i class="fa fa-check"></i><b>A</b> More to Say</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -254,19 +278,19 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="working-with-layers" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Working with Layers<a href="working-with-layers.html#working-with-layers" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="working-with-layers" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Working with Layers<a href="working-with-layers.html#working-with-layers" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Internally all layers are created by the <code>layer()</code> function. A layer is by definition a “combination of data, stat and geom with a potential position adjustment” (<code>layer</code> R help).</p>
 <p>The long list of featured <code>geom_*()</code> and <code>stat_*()</code> functions in <strong>{ggplot2}</strong> is thus just a set of predefined layers with default <code>geom</code>, <code>stat</code>, <code>position</code> arguments that use the data passed in the initial <code>ggplot()</code> call. The data can also be specified for each layer separately by passing it inside the respective geom or stat.</p>
-<div id="geometrical-shapes" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> Geometrical Shapes<a href="working-with-layers.html#geometrical-shapes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="geometrical-shapes" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Geometrical Shapes<a href="working-with-layers.html#geometrical-shapes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Many geometrical shapes only need two positional arguments, namely <code>x</code> and <code>y</code> as a single coordinate is sufficient to represent your data. A combination of x and y values determine the position of points, connected lines, or the height of bars.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="working-with-layers.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count)) <span class="sc">+</span></span>
-<span id="cb42-2"><a href="working-with-layers.html#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="do">## a timeseries of bike shares per date</span></span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-2-1.png" width="864" /></p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="working-with-layers.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count)) <span class="sc">+</span></span>
-<span id="cb43-2"><a href="working-with-layers.html#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="do">## a bar chart with one bar per date</span></span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-2-2.png" width="864" /></p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="working-with-layers.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count)) <span class="sc">+</span></span>
+<span id="cb77-2"><a href="working-with-layers.html#cb77-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="do">## a timeseries of bike shares per date</span></span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-8-1.png" width="864" /></p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="working-with-layers.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count)) <span class="sc">+</span></span>
+<span id="cb78-2"><a href="working-with-layers.html#cb78-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="do">## a bar chart with one bar per date</span></span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-8-2.png" width="864" /></p>
 <p>[WIP]</p>
 <ul>
 <li>most geoms use two positional aesthetics</li>
@@ -275,16 +299,16 @@ div.csl-indent {
 <li>showcase of some of those</li>
 </ul>
 </div>
-<div id="statistical-transformations" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> Statistical Transformations<a href="working-with-layers.html#statistical-transformations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="statistical-transformations" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Statistical Transformations<a href="working-with-layers.html#statistical-transformations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li>stats are just tak a different perspective</li>
+<li>stats are just a different perspective</li>
 <li>illustrate with usual examples</li>
 <li>powerful transformations: count + summary</li>
 </ul>
 </div>
-<div id="positional-adjustments" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> Positional Adjustments<a href="working-with-layers.html#positional-adjustments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="positional-adjustments" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Positional Adjustments<a href="working-with-layers.html#positional-adjustments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li></li>
 </ul>
@@ -296,7 +320,7 @@ div.csl-indent {
           </div>
         </div>
       </div>
-<a href="a-walk-through-example.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tips-to-improve-your-ggplot-workflow.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="customizing-color-palettes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -328,7 +352,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/yihui/bookdown-crc/edit/master/05-layers.Rmd",
+"link": "https://github.com/yihui/bookdown-crc/edit/master/07-working-with-layers.Rmd",
 "text": "Edit"
 },
 "history": {

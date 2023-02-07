@@ -14,13 +14,7 @@ We are using historical data for bike sharing in London in 2015 and 2016, provid
 knitr::include_graphics("./img/setup-data-comparison-raw-aggregated.png", dpi = NA)
 ```
 
-To make the visualizations manageable and patterns more insightful, we are using a modified data set with all variables aggregated for day (6:00am--5:59pm) and night (6:00pm--5:59am) (\@ref(fig:imgDataComparison)). The bike counts were summarized while all weather-related variables where averaged. Finally, for the weather type, the most common was used and, in case of a tie, one of the most common types was randomly chosen. The modified data sets contains 14 variables (columns) with 1,454 observations (rows). To give you a better idea what the data set contains, a visual overview of the variables is provided in table \@ref(tab:tableBikesData) and figure \@ref(fig:imgDataOverviewVars).
-
-<p class="comment">
-
-COMMENT: Decide on a version to provide and overview of the variables as table or list.
-
-</p>
+To make the visualizations manageable and patterns more insightful, we are using a modified data set with all variables aggregated for day (6:00am--5:59pm) and night (6:00pm--5:59am) (\@ref(fig:03imgDataComparison)). The bike counts were summarized while all weather-related variables where averaged. Finally, for the weather type, the most common was used and, in case of a tie, one of the most common types was randomly chosen. The modified data sets contains 14 variables (columns) with 1,454 observations (rows). To give you a better idea what the data set contains, a visual overview of the variables is provided in table \@ref(tab:03tableBikesData) and figure \@ref(fig:03imgDataOverviewVars).
 
 ```{r 03imgDataOverviewVars, echo=FALSE, fig.cap="Overview of the distribution of the boolean variables `is_workday`, `is_weekend`, and `is_holiday` (A), the categorical variable `weather_type` (B), and the continuous variables `count`, `temp`, `temp_feel`, `humidity`, and `wind_speed` (C) of the cleaned and aggregated bike sharing data set. In panel C, the correlation between the variables is shown as scatterplot encoded by `timeperiod` (upper triangle) and encoded by point density (lower triangle), highlighting the level of overlap of data points."}
 knitr::include_graphics("./img/setup-data-comparison-all-dodge.png", dpi = NA)

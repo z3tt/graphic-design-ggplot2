@@ -2,6 +2,8 @@
 source(here::here("src", "prerequisites.R"))
 ```
 
+# (PART) General Overiew {-}
+
 # The Layered Grammar of Graphics
 
 ## The {ggplot2} Package {#ggplot}

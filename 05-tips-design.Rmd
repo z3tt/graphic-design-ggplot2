@@ -1,0 +1,164 @@
+```{r 05setupSectionTipsDesign, echo=FALSE, include=FALSE}
+source(here::here("src", "prerequisites.R"))
+theme_set(theme_grey())
+```
+
+# Tips to Improve Your ggplot Design
+
+In the following I want to share some tips how you quickly customize the appearance of your graphics with a few additional lines of code. First, let's create a plot to work with: we will display the counts of reported bike rents during the night only as a time series. To focus on the tips, we assign the ggplot output to `g` and extend this object in the following.
+
+```{r 05basicPlot, fig.cap="A time series of reported bike rents during the night (6 pm to 6 am) with points being encoded by the average temperature using the default **ggplot2** theme."}
+library(ggplot2)
+library(dplyr)
+
+bikes_nightly <- filter(bikes, day_night == "night")
+
+g <- 
+  ggplot(bikes_nightly, aes(x = date, y = count)) + 
+  geom_point(aes(color = temp), alpha = .5) +
+  ## style y axis, labels and colors
+  scale_y_continuous(limits = c(0, NA), labels = scales::label_comma()) +
+  scale_color_gradient(
+    low = "#00B3FF", high = "#FF5477", 
+    labels = scales::label_number(suffix = "°C")
+  ) +
+  labs(
+    x = NULL, y = "Number of bike rents per night", color = "Average Temperature:",
+    title = "TfL bike rents peak during warm summer nights",
+    subtitle = "A time series of reported bike rents between 6 pm and 6 am in London",
+    caption = "Data: TfL (Transport for London), Jan 2015–Dec 2016"
+  ) 
+
+g
+```
+
+## Use a Different Theme
+
+The simplest step to give your plot a different appearance is using one of the complete themes provided by **ggplot2**. We already have seen `theme_light()` in the previous section. A full list of themes:
+
+* `theme_gray()`, the default theme with a grey panel, white grid lines, and grey boxes for facets
+* `theme_minimal()` without a panel border and facet boxes
+≈* `theme_bw()` with a white panel, grey grid lines, a black panel border, and grey boxes for facets
+* `theme_linedraw()`, similar to `theme_bw()` but featuring black axis text and facet boxes
+* `theme_light()`, similar to `theme_bw()` but with a grey panel border and all-grey facet boxes
+* `theme_minimal()` without a panel border and facet boxes
+* `theme_classic()` with axis lines but no grid lines and white facet boxes with a black outline
+* `theme_dark()` with a dark-grey panel and even darker facet boxes
+* `theme_void()`, a completely empty theme
+
+The completely empty theme `theme_void()` is often helpful when working with maps. Also, you can use it to build your theme element by element like drawing on a blank canvas. 
+
+Let's use the popular `theme_minimal()` for now:
+
+```{r 05themeMinimal, fig.cap="The same plot as before using the minimal theme."}
+g + theme_minimal()
+```
+
+## Use a Custom Font
+
+There are multiple extension packages that aim to provide access to font files, **extrafont**, **sysfont**, **showtext**, and **systemfonts** to name a few. To my knowledge, the **systemfonts** package provides the best solution to work with typefaces and resolve font specifications. After loading the package, all locally installed font files are available in your current R session.
+
+The default font family of ggplot themes is the default sans serif font and thus it is specific to the system you and potential collaborators are working on. You can overwrite the default by passing a font family as argument to `base_family` inside the `theme_*()` call.
+
+```{r 05themeBaseFamily, fig.cap="All text labels now use a custom font by changing the `base_family` of the theme."}
+g + theme_minimal(base_family = "Asap SemiCondensed")
+```
+
+If you are searching for a specific font, this is my script to return family names that can be used as inputs for text elements in **ggplot2**:
+
+```{r 05searchFont}
+systemfonts::system_fonts() %>% 
+  ## filter for a pattern
+  dplyr::filter(stringr::str_detect(name, "Asap")) %>% 
+  ## only keep family column
+  dplyr::pull(family) %>% 
+  ## only keep distinct families and sort them by name
+  unique() %>% 
+  sort()
+```
+
+
+## Increase the Font Sizes
+
+The base size in any ggplot theme is set to 11. This number determines the individual text sizes and line widths of your theme elements. Depending on the width and height specified when saving your plot, you may want to adjust the overall size by changing the `base_size` in the `theme_*()` call. 
+
+```{r 05themeBaseSize, fig.cap="If the text elements are too small for the desired out width and height, you can adjust them by overwriting the default `base_size`."}
+(g <- g + theme_minimal(base_family = "Asap SemiCondensed", base_size = 14))
+```
+
+
+## Create Text Hierarchy
+
+By default, the title is always set in regular weight. In many cases I find myself using a font that is bold and larger than by default. You can update details of the theme by directly addressing the respective theme element, here `plot.title`. As the title is a text element, we pass the new settings inside the element_text() function. The `face` argument controls the font style and can take `"regular"`, `"bold"`, `"italic"`, and `"bold.italic"` as inputs. The size can either be set in absolute numbers or relative to the `base_size` via the `rel()` function.
+
+```{r 05textHierarchy, fig.cap="One can style single theme elements with the `theme()` function. Here, we create a more pronounced tet hierarchy by setting the title in a bigger, bold typeface."}
+(g <- g + theme(plot.title = element_text(face = "bold", size = rel(1.4))))
+```
+
+## Legend Styling
+
+[WIP]
+
+```{r 05guideColorsteps}
+g + guides(color = guide_colorsteps())
+```
+
+```{r 05guideKeyHeight}
+g + guides(color = guide_colorsteps(
+    barheight = unit(15, "lines")
+  ))
+```
+
+```{r 05guidePositionTop, fig.height=6.5}
+g + guides(color = guide_colorsteps(
+    barwidth = unit(25, "lines"), title.position = "top"
+  )) +
+  theme(legend.position = "top", legend.justification = "left")
+```
+
+## Align Titles and Captions
+
+By default, the titles and captions are left-aligned with the horizontal justification being set to `hjust = 0`. However, the horizontal justification does only impact the alignment of the title relative to the panel. If you want to place these text elements relative to the outer border of your graphic. you can set `plot.title.position` `plot.caption.position` to `"plot"`, respectively
+
+```{r 05titleAlign, fig.cap='The title and sutitle can be aligned with the plot border by setting `plot.title.position` to `"plot"`. Similarly, the position of the caption can be changed by using `plot.caption.position`.'}
+g + theme(plot.title.position = "plot",
+          plot.caption.position = "plot")
+```
+
+The importance of aligning the title either with the panel border (the default behavior) or with the plot border becomes especially important if you have long labels on the left of the plot. This is often the case when displaying categories along the y axis with a left-aligned title (Fig. \@ref(fig:05barsTitlePosition). The same applies for right-aligned text in case of increased margins on the right of the panel, for example when using facets or adding legends.
+
+```{r 05barsTitlePosition, echo=FALSE, fig.cap="Plots with long labels on the y axis with the title being either aligned with the panel border (default behavior, left) or with the plot border (right)."}
+p <- 
+  ggplot(bikes, aes(x = count, y = forcats::fct_rev(season))) +
+  geom_col(color = "grey45", fill = "grey45", width = .7) +
+  scale_x_continuous(expand = c(0, 0), labels = scales::label_comma(), position = "top") +
+  scale_y_discrete(labels = c("Autumn (Sep-Nov)", "Summer (Jun-Aug)", "Spring (Mar-May)", "Winter (Dec-Feb)")) +
+  labs(x = NULL, y = NULL, title = "Reported TfL bike rents in 2015/16 per season") +
+  theme_minimal(base_family = "Asap SemiCondensed") +
+  theme(panel.grid.minor = element_blank(), panel.grid.major.y = element_blank(),
+        plot.margin = margin(rep(15, 4)), plot.background = element_rect(fill = NA, color = "grey85"))
+
+p1 <- p + theme(plot.title.position = "panel")
+p2 <- p + theme(plot.title.position = "plot")
+
+p1 + plot_spacer() + p2 + plot_layout(widths = c(1, .1, 1))
+```
+
+## Add Some White Space
+
+[WIP]
+
+```{r 05plotMargin, fig.cap=""}
+g + theme(plot.margin = margin(rep(20, 4)))
+```
+
+```{r 05textMargins, fig.cap=""}
+g + theme(
+  plot.title = element_text(margin = margin(b = 10)),
+  plot.subtitle = element_text(margin = margin(b = 15)),
+  plot.caption = element_text(margin = margin(t = 20)),
+  axis.title.y = element_text(margin = margin(r = 10)),
+  legend.title = element_text(margin = margin(b = 10)),
+)
+```
+

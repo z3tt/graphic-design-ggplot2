@@ -28,7 +28,7 @@ bikes <- readr::read_csv(file = url_data, col_types = "Dcfffilllddddfc")
 
 Once the **{ggplot2}** package is loaded, we can create a basic ggplot by specifying the *data*, *aesthetics*---the positional encoding of the variables---, and a *geometry*. 
 
-Here, we map the variable `temp_feel` of our `bikes` data object to the `x` position and the variable `count` to the `y` position (\@ref(fig:04ggplotBasic)). We will also map variables to all kind of other aesthetics throughout the book. Some are related to positions such as `xstart` and `ymax` while others change the appearance of the layer based on the variables they are mapped to such as `color` and `shape`.
+Here, we map the variable `temp_feel` of our `bikes` data object to the `x` position and the variable `count` to the `y` position (\@ref(fig:04ggplotBasic)). We will also map variables to all kind of other aesthetics throughout the book. Some are related to positions such as `xmin` or `yend` while others change the appearance of the layer based on the variables they are mapped to such as `color` and `shape`.
 
 There are many, many different geometries (often called geoms because each function starts with `geom_`) one can add to a ggplot by default and even more provided by extension packages. By adding `geom_point()` we create a scatter plot: 
 
@@ -114,8 +114,8 @@ A fantastic feature of **{ggplot2}** is it's ability to quickly split a single v
 
 ```{r 04ggplotFacet, fig.cap="With the `facet` functions, a visualization can quickly be split into small multiples."}
 ggplot(bikes, aes(x = temp_feel, y = count)) + 
-  geom_point(aes(
-    color = day_night), alpha = .5, size = 2
+  geom_point(
+    aes(color = day_night), alpha = .5, size = 2
   ) + 
   stat_smooth(
     aes(group = day_night), method = "lm", color = "black"
@@ -212,7 +212,6 @@ g2 <- g1 +
     ## overwrite axis and legend titles
     x = "Average Feels-Like Temperature", y = NULL, color = NULL,
     ## add plot title and caption
-    
     title = "Trends of reported bike rents versus feels-like temperature in London.",
     caption = "Data: TfL (Transport for London), Jan 2015–Dec 2016"
   )
@@ -245,7 +244,7 @@ When adding a theme to a ggplot, we can already overwrite the `base_size` of the
 g3 +
   ## add theme with a custom font + larger element sizes
   theme_light(
-    base_size = 12, base_family = "Cabinet Grotesk"
+    base_size = 12, base_family = "Spline Sans"
   )
 ```
 
@@ -258,14 +257,14 @@ In general, theme elements can be of class text (e.g. `plot.title`), line (e.g. 
 ```{r 04ggplotThemeAdjustments, fig.cap="After applying on of the complete themes, one can further style the theme to the personal needs."}
 g3 +
   theme_light(
-    base_size = 12, base_family = "Cabinet Grotesk"
+    base_size = 12, base_family = "Spline Sans"
   ) +
   ## theme adjustments
   theme(
     plot.title.position = "plot", ## left-align title
     plot.caption.position = "plot", ## right-align title
     plot.title = element_text(face = "bold", size = rel(1.3)), ## larger bold title
-    axis.text = element_text(family = "Tabular"), ## monospaced font for axes
+    axis.text = element_text(family = "Spline Sans Mono"), ## monospaced font for axes
     axis.title.x = element_text( ## left-aligned, grey x axis label
       hjust = 0, color = "grey30", margin = margin(t = 12)
     ),
