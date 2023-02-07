@@ -6,7 +6,7 @@ source(here::here("src", "prerequisites.R"))
 
 # The Layered Grammar of Graphics {#grammar}
 
-## The {ggplot2} Package {#ggplot}
+## The ggplot2 Package {#ggplot}
 
 In 2005 Hadley Wickham implemented Leland Wilkinson's ["The Grammar of Graphics"](https://link.springer.com/chapter/10.1007/978-3-642-21551-3_13) [@wilkinson2005]---a general concept for data visualization---as an R package called [**ggplot2**](https://ggplot2.tidyverse.org/) [@ggplot2]. The idea of both, the theoretical concept and its implementation in **ggplot2**, is that data visualizations can be defined as semantic components rather than as predefined chart types. The ability to control and combine multiple components makes it a powerful approach to compose complex graphs, iterate quickly over different visual data representations, and modify existing plots. Furthermore, it allows for a comprehensive and consistent syntax to describe and build data visualizations. 
 
