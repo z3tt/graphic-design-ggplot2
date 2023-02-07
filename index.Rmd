@@ -45,7 +45,7 @@ A few months later, I had built a portfolio of various charts and maps and decid
 
 The blog entry by Zev Ross was not updated since January 2016, so I decided to add more examples and tricks to my version, which was now hosted on my [personal blog](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/). Step by step, my version became a unique tutorial that now contains for example also the fantastic **patchwork**, **ggtext** and **ggforce** packages, a section of custom fonts and colors, a collection of R packages tailored to create interactive charts, and several new chart types. The updated version now contains ~3.000 lines of code and 188 plots and received a lot of interest from **ggplot2** users from many different professional fields.
 
-Today, on a sunny day in July 2021, this tutorial serves as the starting point for the book you hold in your hands. I hope you enjoy it as much as I enjoyed learning and sharing **ggplot2** wizardry!
+On a sunny day in July 2021, this tutorial served as the starting point for the book you hold in your hands. Plans changed a lot over the time and the book became something unique, that is loosely based on the tutorial and a 2-day workshop I was honored to teach at the rstudio::conf(2022) in Washington DC. In addition, I decided to include more advanced tips and insights in the process of creating custom, engaging data visualizations with **ggplot2**. I hope you enjoy it as much as I enjoyed learning and sharing **ggplot2** wizardry!
 
 
 ## Why read this book {-}
@@ -70,45 +70,62 @@ Among other things, the book covers the following:
 
 This book can either serve as a textbook or as a reference. Depending on your skill level, some codes and tricks may already be known or not helpful at the moment. In case you want to directly jump to the chapters you find most promising or helpful, here are some suggestions:
 
+* What is the idea of **ggplot2** and how does it actually work? → Chapter \@ref(grammar)
 * How do I get started with the code? → Chapter \@ref(get-started)
-* I have no idea how **ggplot2** actually works and need a quick introduction → Chapter \@ref(ggplot)
+* Can I get a quick walk-through of the power of **ggplot2**? → Chapter \@ref(walkthrough)
+* How can I modify colors and pick good color palettes? → Chapter \@ref(working-with-colors)
+* Which ggplot tricks and design decisions are used to create custom graphics? → Chapter \@ref(advanced-examples)
 
 ## Prerequisites {-}
 
 To run any of the materials locally on your own machine, you will need the following:
 
 * A recent version of R (download from [here](https://cloud.r-project.org/)) 
-* Preferably an *Integrated Development Environment* (IDE) to store scripts and run code, e.g. RStudio (download from [here](https://rstudio.com/products/rstudio/download/#download)) or Visual Studio Code (download from [here](https://code.visualstudio.com/download))
-* A set of R packages installed:
-  + [**{tidyverse}**](https://www.tidyverse.org/) that includes [**{ggplot2}**](https://ggplot2.tidyverse.org/)
-  + [**{ggforce}**](https://ggforce.data-imaginist.com/)
-  + [**{ggrepel}**](https://ggrepel.slowkow.com/)
-  + [**{ggtext}**](https://wilkelab.org/ggtext/)
-  + [**{magick}**](https://docs.ropensci.org/magick/)
-  + [**{patchwork}**](https://patchwork.data-imaginist.com/)
-  + [**{ragg}**](https://ragg.r-lib.org/)
-  + [**{rnaturalearth}**](https://docs.ropensci.org/rnaturalearth/)
-  + [**{scico}**](https://github.com/thomasp85/scico)
-  + [**{sf}**](https://r-spatial.github.io/sf/)
+* Preferably an *Integrated Development Environment* (IDE) to store scripts and run code, e.g. RStudio (download from [here](https://posit.co/download/rstudio-desktop/)) or Visual Studio Code (download from [here](https://code.visualstudio.com/download))
+* The following R packages installed:
+  + [**ggplot2**](https://ggplot2.tidyverse.org/) 
+  + A set of other **tidyverse** packages:
+    + [**readr**](https://readr.tidyverse.org/)
+    + [**tibble**](https://tibble.tidyverse.org/)
+    + [**dplyr**](https://dplyr.tidyverse.org/)
+    + [**tidyr**](https://tidyr.tidyverse.org/)
+    + [**forcats**](https://forcats.tidyverse.org/)
+    + [**stringr**](https://stringr.tidyverse.org/)
+    + [**lubridate**](https://lubriate.tidyverse.org/)
+  + ggplot2 extension packages: 
+    + [**ggforce**](https://ggforce.data-imaginist.com/)
+    + [**ggrepel**](https://ggrepel.slowkow.com/)
+    + [**ggtext**](https://wilkelab.org/ggtext/)
+    + [**patchwork**](https://patchwork.data-imaginist.com/)
+  + Packages providing color palettes and funcionality:
+    + [**colorspace**](https://colorspace.r-forge.r-project.org/)
+    + [**scico**](https://github.com/thomasp85/scico)
+    + [**rcartocolor**](https://jakubnowosad.com/rcartocolor/)
+  + A few other packages providing useful functionality: 
+    + [**magick**](https://docs.ropensci.org/magick/)
+    + [**ragg**](https://ragg.r-lib.org/) that includes [**systemfonts**](https://systemfonts.r-lib.org/)
+    + [**sf**](https://r-spatial.github.io/sf/)
+* The following typeface installed:
+    + [Asap Condensed]
+    + [WIP]
   
 To install all packages in one go, run the following code in the R console:
 
 ```{r install-packages, eval=FALSE}
 install.packages(c(
-  "tidyverse", "ggforce", "ggtext", "magick", "patchwork", 
-  "ragg", "rnaturalearth", "scico", "sf"
+  "ggplot2", "readr", "tibble", "dplyr", "tidyr", "forcats", "stringr", "lubridate", "ggforce", "ggtext", "colorspace", "scico", "rcartocolor", "patchwork", "magick", "ragg", "systemfonts", "sf"
 ))
 ```
 
 ## Software information and conventions {-}
 
-The book was written with the **{knitr}**\index{knitr} package [@xie2015] and the **{bookdown}**\index{bookdown} package [@R-bookdown] with the following setup:
+The book was written with the **knitr**\index{knitr} package [@xie2015] and the **bookdown**\index{bookdown} package [@R-bookdown] with the following setup:
 
 ```{r session, echo=FALSE}
 xfun::session_info()
 ```
 
-Package names are in **bold text** and wrapped into curly brackets, e.g. **{ggplot2}**. Inline code and file names are formatted in a `monospaced typewriter font`. Function names are followed by parentheses as in `ggplot2::ggplot()`. 
+Package names are in **bold text** and wrapped into curly brackets, e.g. **ggplot2**. Inline code and file names are formatted in a `monospaced typewriter font`. Function names are followed by parentheses as in `ggplot2::ggplot()`. 
 
 
 ## Acknowledgments {-}

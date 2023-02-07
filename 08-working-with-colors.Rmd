@@ -2,6 +2,6 @@
 source(here::here("src", "prerequisites.R"))
 ```
 
-# Customizing Color Palettes
+# Working with Colors {#working-with-colors}
 
 

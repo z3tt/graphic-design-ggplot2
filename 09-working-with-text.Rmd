@@ -2,7 +2,7 @@
 source(here::here("src", "prerequisites.R"))
 ```
 
-# Styling Titles and Labels
+# Working with Text {#working-with-text}
 
 
 

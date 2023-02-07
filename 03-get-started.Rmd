@@ -1,10 +1,10 @@
 ```{r 03setup-section-start, echo=FALSE}
-library(tidyverse)
+library(ggplot2)
 bikes <- readr::read_csv("https://www.cedricscherer.com/data/london-bikes.csv", col_types = "Dcfffilllddddfc")
 ```
 
 
-# Get Started
+# Get Started {#get-started}
 
 ## The Data Set {#dataset}
 
@@ -43,24 +43,24 @@ knitr::include_graphics("./img/setup-data-comparison-all-dodge.png", dpi = NA)
 
 ```{r 03tableBikesData, echo=FALSE}
 ## extensive table, too wide for PDF
-# data_tbl <- tibble(
+# data_tbl <- tibble::tibble(
 #    Variable = names(bikes),
 #    Meaning = c("Date", "Period of the day", "Year", "Month as number", "Season as number", "Bike count", "Is a work day?", "Is a weekend?", "Is a holiday?", "Air temperature", "Feels like temperature", "Humidity", "Wind speed", "Weather category"),
 #    Class = c("`date`", "`character`", "`factor`", "`factor`", "`factor`", "`integer`", "`logical`", "`logical`", "`logical`", "`double`", "`double`", "`double`", "`double`", "`character`"),
 #    `Values / Units` = c("`YYYY-MM-DD` format", "day (6:00am–5:59pm) or night (6:00pm–5:59am)", "`2015` or `2016`", "`1` (January) to `12` (December)", "`0` (spring) to `3` (winter)", "sum of bikes rented", "`TRUE` being Monday to Friday", "`TRUE` being Saturday or Sunday", "`TRUE` being an official holiday in the UK", "average in degree Celsius", "average in degree Celsius", "average in percentage (0-100)", "average in kilometres per hour", "most common type")
 # )
 
-data_tbl <- tibble(
+data_tbl <- tibble::tibble(
    Variable = paste0("`", names(bikes), "`"),
    Description = c("Date encoded as `YYYY-MM-DD`", "`day` (6:00am–5:59pm) or `night` (6:00pm–5:59am)", "`2015` or `2016`", "`1` (January) to `12` (December)", "`0` (spring), `1` (summer), `2` (autumn) or `3` (winter)", "Sum of bikes rented", "`TRUE` being Monday to Friday and no official holiday", "`TRUE` being Saturday or Sunday", "`TRUE` being an official holiday in the UK", "Average air temperature (°C)", "Average feels like temperature (°C)", "Average air humidity (%)", "Average wind speed (km/h)", "Most common weather typed")#,
    #Class = c("`date`", "`character`", "`factor`", "`factor`", "`factor`", "`integer`", "`logical`", "`logical`", "`logical`", "`double`", "`double`", "`double`", "`double`", "`character`"),
 )
 
-data_tbl %>% 
+data_tbl |>
   kableExtra::kbl(
     booktabs = TRUE, longtable = TRUE,
     caption = 'Overview of the 15 variables contained in the cleaned and aggregated bike sharing data set.'
-  ) %>%
+  ) |>
   kableExtra::kable_styling(
     bootstrap_options = c("hover", "condensed")
   )
@@ -73,14 +73,14 @@ data_tbl %>%
 
 ## Working in R {#rstats}
 
-**{ggplot2}** can be used even if you know little about the R programming language. However, the knowledge of certain basic principles is at least helpful and probably indispensable for advanced plots. This section will give you a short overview of workflows and the very basics needed. The overview makes use of the **{tidyverse}**, a package collection designed for data science in R. However, multiple other options exist to import, inspect, and wrangle your data if you prefer not to work with the **{tidyverse}** for these steps[^02-get-started-1].
+**ggplot2** can be used even if you know little about the R programming language. However, the knowledge of certain basic principles is at least helpful and probably indispensable for advanced plots. This section will give you a short overview of workflows and the very basics needed. The overview makes use of the **tidyverse**, a package collection designed for data science in R. However, multiple other options exist to import, inspect, and wrangle your data if you prefer not to work with the **tidyverse** for these steps[^02-get-started-1].
 
-[^02-get-started-1]: Note that the **{ggplot2}** package itself belongs to the **{tidyverse}** as well.
+[^02-get-started-1]: Note that the **ggplot2** package itself belongs to the **tidyverse** as well.
 
 
 ### Import data {#import}
 
-You need to import data to be able to work with it in the current session. The data can be imported from a local directory or directly from a web source. Nowadays, all common and some less common data formats can easily be imported. For common tabular data formats such as .txt or .csv one can use the [**{readr}** package](https://readr.tidyverse.org/) [@readr] from the **{tidyverse}**.
+You need to import data to be able to work with it in the current session. The data can be imported from a local directory or directly from a web source. Nowadays, all common and some less common data formats can easily be imported. For common tabular data formats such as .txt or .csv one can use the [**readr** package](https://readr.tidyverse.org/) [@readr] from the **tidyverse**.
 
 We use the `read_csv()` function to load the TfL data as .csv file directly from a web URL. To access the URL and data later, we are storing the link as `url_data` and the data set as `bikes` by using the *assignment arrow* `<-`. The `col_types` argument within the `read_csv()` function allows to specify the column types. For example, `i` represents integer values, `f` encodes factors, and `l` turns a column into a logical, boolean variable that only can have two states, `TRUE` or `FALSE`. You'll find more on the different *data types* later in this chapter.
 
@@ -114,7 +114,7 @@ Preferably, we do not want to rely on absolute paths and the default or manually
 
 If you are working in Rstudio, *Rstudio projects* provide such a project-oriented workflow. When opening the project via the associated `.Rproj` file, it ensures that the working directory is correctly set and points to the project's top-level directory (i.e. the folder that contains the `.Rproj` file).
 
-When using Rstudio projects, a helpful package to navigate to files of interest is the [**{here}** package](https://here.r-lib.org/). The function `here()` will create paths relative to the top-level directory:
+When using Rstudio projects, a helpful package to navigate to files of interest is the [**here** package](https://here.r-lib.org/). The function `here()` will create paths relative to the top-level directory:
 
 ```{r 03herePackage}
 ## point to the csv inside the "data" subdirectory of the project directory
@@ -130,7 +130,7 @@ After importing the data, it is advisable to have a look at the data. Does the o
 bikes
 ```
 
-As we have used the **{readr}** package, our data is stored as a *tibble* (class `tbl_df` and related) which is the **{tidyverse}** subclass of a traditional data frame (class `data.frame`). There are other data structures in R such as lists and matrices; however, in this book we are going to use only data frames, more precisely tibbles (besides spatial data formats in Chapter XYZ).
+As we have used the **readr** package, our data is stored as a *tibble* (class `tbl_df` and related) which is the **tidyverse** subclass of a traditional data frame (class `data.frame`). There are other data structures in R such as lists and matrices; however, in this book we are going to use only data frames, more precisely tibbles (besides spatial data formats in Chapter XYZ).
 
 On the top of the output, you can directly see that our data set consists of `format(length(bikes), big.mark = ",")` variables (columns) frame with `r format(nrow(bikes), big.mark = ",")` observations (rows). Also, the tibble output shows you the first ten rows. Alternatively you can inspect the data with the help of `str()` or `tibble::glimpse()` to print a transposed version.
 
@@ -141,7 +141,7 @@ If you have looked carefully, you may have noticed that a tibble prints also the
 
 The data encoding is especially important when exploring chart options and writing ggplot code. You should be familiar if the data is encoded as quantitative or qualitative, if it contains missing or unusual values. Thus, it is always worth to check the classes and the values of the columns.
 
-In R there are multiple low-level data types, and some of the **{ggplot2}** behavior will depend on the type of the variable(s) used for plotting. The six basic data types are:
+In R there are multiple low-level data types, and some of the **ggplot2** behavior will depend on the type of the variable(s) used for plotting. The six basic data types are:
 
 -   character
 -   factor
@@ -183,7 +183,7 @@ bikes$season_mix <- factor(bikes$season, levels = c("2", "0", "3", "1"))
 levels(bikes$season_mix)
 ```
 
-The [**{forcats}** package](https://forcats.tidyverse.org/) [@forcats] provides a set of useful functions to reorder factor levels. Important functions to quickly change to order of variables include `fct_rev()`, `fct_reorder()`, `fct_infreq()`, `fct_inorder()`, and `fct_lump()`:
+The [**forcats** package](https://forcats.tidyverse.org/) [@forcats] provides a set of useful functions to reorder factor levels. Important functions to quickly change to order of variables include `fct_rev()`, `fct_reorder()`, `fct_infreq()`, `fct_inorder()`, and `fct_lump()`:
 
 ```{r 03factorsForcats, collapse=TRUE}
 bikes$weather_type_rev <- forcats::fct_rev(bikes$weather_type)
@@ -243,7 +243,7 @@ as.POSIXlt("2007-06-10 12:34:56")
 
 ### Data preparation {#preparation}
 
-Often, the data imported might not be in the right format to plot it with **{ggplot2}**. The preparation of the data—e.g. converting data types and setting factor levels, aggregating values, estimating data summaries, reshaping the data set or combining it with another source—is called *data wrangling*, *data munging*, or **data manipulation**.  
+Often, the data imported might not be in the right format to plot it with **ggplot2**. The preparation of the data—e.g. converting data types and setting factor levels, aggregating values, estimating data summaries, reshaping the data set or combining it with another source—is called *data wrangling*, *data munging*, or **data manipulation**.  
 
 To explore and retrieve summary estimates of individual variables, the following functions are useful:
 
@@ -264,11 +264,11 @@ unique(bikes$day_night)
 length(unique(bikes$weather_type))
 ```
 
-The [**{dplyr}**](https://dplyr.tidyverse.org/) [@dplyr] and other **{tidyverse}** packages provide a simple and intuitive syntax to wrangle data. There are a ton of unique functions, but knowing a handful is enough to empower you to bring your data in the right format. 
+The [**dplyr**](https://dplyr.tidyverse.org/) [@dplyr] and other **tidyverse** packages provide a simple and intuitive syntax to wrangle data. There are a ton of unique functions, but knowing a handful is enough to empower you to bring your data in the right format. 
 
 #### Data wrangling with the {dplyr} package {#dplyr}
 
-There are five main functions of **{dplyr}**, called *verbs*:
+There are five main functions of **dplyr**, called *verbs*:
 
 -  `filter()`: Pick rows with matching criteria
 -  `select()`: Pick columns with matching criteria
@@ -279,6 +279,9 @@ There are five main functions of **{dplyr}**, called *verbs*:
 All of these functions follow a consistent syntax: `verb(data, condition)`. Note that we specify the data and columns individually and that within the tidyverse, column names are referred to without quotation marks:
 
 ```{r 03dplyrVerbs, eval=FALSE}
+## load the package functions
+library(dplyr)
+
 ## only keep more than 1000 shares during the night
 filter(bikes, day_night == "night", count > 1000) 
 
@@ -295,7 +298,7 @@ mutate(bikes, temp_fahrenheit = temp * 1.8 + 32)
 summarize(bikes, count_avg = mean(count)) 
 ```
 
-Another important and very powerful function from the **{dplyr}** package is `group_by()`: when a data set is grouped into subsets, we can apply any operation for each group *within a single data frame*. While you could nest those functions, the common approach within the tidyverse is the use of *pipes*. Pipes take the output of one function and send it directly to the next which avoids nested operations and allows for a more logical order of functions and their arguments. The **{tidyverse}** pipe is encoded as `%>%`; a base R pipe is available as `|>` as well. Have a look at the following silly example:
+Another important and very powerful function from the **dplyr** package is `group_by()`: when a data set is grouped into subsets, we can apply any operation for each group *within a single data frame*. While you could nest those functions, the common approach within the tidyverse is the use of *pipes*. Pipes take the output of one function and send it directly to the next which avoids nested operations and allows for a more logical order of functions and their arguments. The **tidyverse** pipe is encoded as `%>%`; a base R pipe is available as `|>` as well. Have a look at the following silly example:
 
 ```{r 03pipeGetToWork, eval=FALSE}
 ## nested functions, read inside out + disconnected function inputs
@@ -317,6 +320,10 @@ Cedric %>%
 ```
 
 Let's create the workflow for some serious data preparation: In a first step, we are going to estimate the average temperature for night rents per year and season:
+
+```{r, include=FALSE}
+library(dplyr)
+```
 
 ```{r 03dataPrep1}
 bikes_summarized <- 
@@ -353,7 +360,7 @@ bikes_summarized %>%
 
 #### Reshaping data with the {tidyr} package {#tidyr}
 
-In case you need to reshape a data set to make it work with **{ggplot2}**, you can use the functions `pivot_longer()` and `pivot_wider()` from the [**`{tidyr}`** package](https://tidyr.tidyverse.org/) [@tidyr] to move from one format to the other. Let's illustrate their behavior using one of the toy data sets used in section 
+In case you need to reshape a data set to make it work with **ggplot2**, you can use the functions `pivot_longer()` and `pivot_wider()` from the [**`{tidyr}`** package](https://tidyr.tidyverse.org/) [@tidyr] to move from one format to the other. Let's illustrate their behavior using one of the toy data sets used in section 
 
 ```{r 03pivotExamples}
 ## create long-format data as showcased in section 2

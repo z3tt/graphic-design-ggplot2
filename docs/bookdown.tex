@@ -221,7 +221,7 @@ A few months later, I had built a portfolio of various charts and maps and decid
 
 The blog entry by Zev Ross was not updated since January 2016, so I decided to add more examples and tricks to my version, which was now hosted on my \href{https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/}{personal blog}. Step by step, my version became a unique tutorial that now contains for example also the fantastic \textbf{patchwork}, \textbf{ggtext} and \textbf{ggforce} packages, a section of custom fonts and colors, a collection of R packages tailored to create interactive charts, and several new chart types. The updated version now contains \textasciitilde3.000 lines of code and 188 plots and received a lot of interest from \textbf{ggplot2} users from many different professional fields.
 
-Today, on a sunny day in July 2021, this tutorial serves as the starting point for the book you hold in your hands. I hope you enjoy it as much as I enjoyed learning and sharing \textbf{ggplot2} wizardry!
+On a sunny day in July 2021, this tutorial served as the starting point for the book you hold in your hands. Plans changed a lot over the time and the book became something unique, that is loosely based on the tutorial and a 2-day workshop I was honored to teach at the rstudio::conf(2022) in Washington DC. In addition, I decided to include more advanced tips and insights in the process of creating custom, engaging data visualizations with \textbf{ggplot2}. I hope you enjoy it as much as I enjoyed learning and sharing \textbf{ggplot2} wizardry!
 
 \hypertarget{why-read-this-book}{%
 \section*{Why read this book}\label{why-read-this-book}}
@@ -260,9 +260,15 @@ This book can either serve as a textbook or as a reference. Depending on your sk
 \begin{itemize}
 \tightlist
 \item
+  What is the idea of \textbf{ggplot2} and how does it actually work? → Chapter \ref{grammar}
+\item
   How do I get started with the code? → Chapter \ref{get-started}
 \item
-  I have no idea how \textbf{ggplot2} actually works and need a quick introduction → Chapter \ref{ggplot}
+  Can I get a quick walk-through of the power of \textbf{ggplot2}? → Chapter \ref{walkthrough}
+\item
+  How can I modify colors and pick good color palettes? → Chapter \ref{working-with-colors}
+\item
+  Which ggplot tricks and design decisions are used to create custom graphics? → Chapter \ref{advanced-examples}
 \end{itemize}
 
 \hypertarget{prerequisites}{%
@@ -276,32 +282,82 @@ To run any of the materials locally on your own machine, you will need the follo
 \item
   A recent version of R (download from \href{https://cloud.r-project.org/}{here})
 \item
-  Preferably an \emph{Integrated Development Environment} (IDE) to store scripts and run code, e.g.~RStudio (download from \href{https://rstudio.com/products/rstudio/download/\#download}{here}) or Visual Studio Code (download from \href{https://code.visualstudio.com/download}{here})
+  Preferably an \emph{Integrated Development Environment} (IDE) to store scripts and run code, e.g.~RStudio (download from \href{https://posit.co/download/rstudio-desktop/}{here}) or Visual Studio Code (download from \href{https://code.visualstudio.com/download}{here})
 \item
-  A set of R packages installed:
+  The following R packages installed:
 
   \begin{itemize}
   \tightlist
   \item
-    \href{https://www.tidyverse.org/}{\textbf{\{tidyverse\}}} that includes \href{https://ggplot2.tidyverse.org/}{\textbf{\{ggplot2\}}}
+    \href{https://ggplot2.tidyverse.org/}{\textbf{ggplot2}}
   \item
-    \href{https://ggforce.data-imaginist.com/}{\textbf{\{ggforce\}}}
+    A set of other \textbf{tidyverse} packages:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \href{https://readr.tidyverse.org/}{\textbf{readr}}
+    \item
+      \href{https://tibble.tidyverse.org/}{\textbf{tibble}}
+    \item
+      \href{https://dplyr.tidyverse.org/}{\textbf{dplyr}}
+    \item
+      \href{https://tidyr.tidyverse.org/}{\textbf{tidyr}}
+    \item
+      \href{https://forcats.tidyverse.org/}{\textbf{forcats}}
+    \item
+      \href{https://stringr.tidyverse.org/}{\textbf{stringr}}
+    \item
+      \href{https://lubriate.tidyverse.org/}{\textbf{lubridate}}
+    \end{itemize}
   \item
-    \href{https://ggrepel.slowkow.com/}{\textbf{\{ggrepel\}}}
+    ggplot2 extension packages:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \href{https://ggforce.data-imaginist.com/}{\textbf{ggforce}}
+    \item
+      \href{https://ggrepel.slowkow.com/}{\textbf{ggrepel}}
+    \item
+      \href{https://wilkelab.org/ggtext/}{\textbf{ggtext}}
+    \item
+      \href{https://patchwork.data-imaginist.com/}{\textbf{patchwork}}
+    \end{itemize}
   \item
-    \href{https://wilkelab.org/ggtext/}{\textbf{\{ggtext\}}}
+    Packages providing color palettes and funcionality:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \href{https://colorspace.r-forge.r-project.org/}{\textbf{colorspace}}
+    \item
+      \href{https://github.com/thomasp85/scico}{\textbf{scico}}
+    \item
+      \href{https://jakubnowosad.com/rcartocolor/}{\textbf{rcartocolor}}
+    \end{itemize}
   \item
-    \href{https://docs.ropensci.org/magick/}{\textbf{\{magick\}}}
+    A few other packages providing useful functionality:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \href{https://docs.ropensci.org/magick/}{\textbf{magick}}
+    \item
+      \href{https://ragg.r-lib.org/}{\textbf{ragg}} that includes \href{https://systemfonts.r-lib.org/}{\textbf{systemfonts}}
+    \item
+      \href{https://r-spatial.github.io/sf/}{\textbf{sf}}
+    \end{itemize}
+  \end{itemize}
+\item
+  The following typeface installed:
+
+  \begin{itemize}
+  \tightlist
   \item
-    \href{https://patchwork.data-imaginist.com/}{\textbf{\{patchwork\}}}
+    {[}Asap Condensed{]}
   \item
-    \href{https://ragg.r-lib.org/}{\textbf{\{ragg\}}}
-  \item
-    \href{https://docs.ropensci.org/rnaturalearth/}{\textbf{\{rnaturalearth\}}}
-  \item
-    \href{https://github.com/thomasp85/scico}{\textbf{\{scico\}}}
-  \item
-    \href{https://r-spatial.github.io/sf/}{\textbf{\{sf\}}}
+    {[}WIP{]}
   \end{itemize}
 \end{itemize}
 
@@ -310,8 +366,7 @@ To install all packages in one go, run the following code in the R console:
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{install.packages}\NormalTok{(}\FunctionTok{c}\NormalTok{(}
-  \StringTok{"tidyverse"}\NormalTok{, }\StringTok{"ggforce"}\NormalTok{, }\StringTok{"ggtext"}\NormalTok{, }\StringTok{"magick"}\NormalTok{, }\StringTok{"patchwork"}\NormalTok{, }
-  \StringTok{"ragg"}\NormalTok{, }\StringTok{"rnaturalearth"}\NormalTok{, }\StringTok{"scico"}\NormalTok{, }\StringTok{"sf"}
+  \StringTok{"ggplot2"}\NormalTok{, }\StringTok{"readr"}\NormalTok{, }\StringTok{"tibble"}\NormalTok{, }\StringTok{"dplyr"}\NormalTok{, }\StringTok{"tidyr"}\NormalTok{, }\StringTok{"forcats"}\NormalTok{, }\StringTok{"stringr"}\NormalTok{, }\StringTok{"lubridate"}\NormalTok{, }\StringTok{"ggforce"}\NormalTok{, }\StringTok{"ggtext"}\NormalTok{, }\StringTok{"colorspace"}\NormalTok{, }\StringTok{"scico"}\NormalTok{, }\StringTok{"rcartocolor"}\NormalTok{, }\StringTok{"patchwork"}\NormalTok{, }\StringTok{"magick"}\NormalTok{, }\StringTok{"ragg"}\NormalTok{, }\StringTok{"systemfonts"}\NormalTok{, }\StringTok{"sf"}
 \NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -320,7 +375,7 @@ To install all packages in one go, run the following code in the R console:
 \section*{Software information and conventions}\label{software-information-and-conventions}}
 
 
-The book was written with the \textbf{\{knitr\}}\index{knitr} package \citep{xie2015} and the \textbf{\{bookdown\}}\index{bookdown} package \citep{R-bookdown} with the following setup:
+The book was written with the \textbf{knitr}\index{knitr} package \citep{xie2015} and the \textbf{bookdown}\index{bookdown} package \citep{R-bookdown} with the following setup:
 
 \begin{verbatim}
 ## R version 4.2.2 (2022-10-31)
@@ -354,7 +409,7 @@ The book was written with the \textbf{\{knitr\}}\index{knitr} package \citep{xie
 ##   yaml_2.3.6
 \end{verbatim}
 
-Package names are in \textbf{bold text} and wrapped into curly brackets, e.g.~\textbf{\{ggplot2\}}. Inline code and file names are formatted in a \texttt{monospaced\ typewriter\ font}. Function names are followed by parentheses as in \texttt{ggplot2::ggplot()}.
+Package names are in \textbf{bold text} and wrapped into curly brackets, e.g.~\textbf{ggplot2}. Inline code and file names are formatted in a \texttt{monospaced\ typewriter\ font}. Function names are followed by parentheses as in \texttt{ggplot2::ggplot()}.
 
 \hypertarget{acknowledgments}{%
 \section*{Acknowledgments}\label{acknowledgments}}
@@ -373,7 +428,7 @@ Berlin, Germany
 
 \href{https://cedricscherer.com}{Dr Cédric Scherer} is a data visualization designer, consultant, and instructor helping clients and workshop participants to create engaging and effective graphics. As a graduated ecologist, he has acquired an extensive hypothesis--driven research experience and problem--solving expertise in data wrangling, statistical analysis, and model development. As an independent data visualization designer, Cédric later combined his expertise in analyzing large data sets with his passion for design, colors and typefaces.
 
-Cédric has designed graphics across all disciplines, purposes, and styles applying a code--first approach and regularly talks about data visualization design and ggplot2 techniques. Due to participation in social data challenges such as \#TidyTuesday, he is now well known for complex and visually appealing figures, entirely made with \textbf{\{ggplot2\}}, that look as if they have been created with a vector design tool. He also uses R and the \textbf{\{tidyverse\}} packages to automate data analyses and plot generation, following the code-first philosophy of a reproducible workflow.
+Cédric has designed graphics across all disciplines, purposes, and styles applying a code--first approach and regularly talks about data visualization design and ggplot2 techniques. Due to participation in social data challenges such as \#TidyTuesday, he is now well known for complex and visually appealing figures, entirely made with \textbf{ggplot2}, that look as if they have been created with a vector design tool. He also uses R and the \textbf{tidyverse} packages to automate data analyses and plot generation, following the code-first philosophy of a reproducible workflow.
 
 \mainmatter
 
@@ -462,20 +517,20 @@ Even though R---similar to most programming languages---has a steep learning cur
 \hypertarget{part-general-overiew}{%
 \part{General Overiew}\label{part-general-overiew}}
 
-\hypertarget{the-layered-grammar-of-graphics}{%
-\chapter{The Layered Grammar of Graphics}\label{the-layered-grammar-of-graphics}}
+\hypertarget{grammar}{%
+\chapter{The Layered Grammar of Graphics}\label{grammar}}
 
 \hypertarget{ggplot}{%
 \section{The \{ggplot2\} Package}\label{ggplot}}
 
-In 2005 Hadley Wickham implemented Leland Wilkinson's \href{https://link.springer.com/chapter/10.1007/978-3-642-21551-3_13}{``The Grammar of Graphics''} \citep{wilkinson2005}---a general concept for data visualization---as an R package called \href{https://ggplot2.tidyverse.org/}{\textbf{\{ggplot2\}}} \citep{ggplot2}. The idea of both, the theoretical concept and its implementation in \textbf{\{ggplot2\}}, is that data visualizations can be defined as semantic components rather than as predefined chart types. The ability to control and combine multiple components makes it a powerful approach to compose complex graphs, iterate quickly over different visual data representations, and modify existing plots. Furthermore, it allows for a comprehensive and consistent syntax to describe and build data visualizations.
+In 2005 Hadley Wickham implemented Leland Wilkinson's \href{https://link.springer.com/chapter/10.1007/978-3-642-21551-3_13}{``The Grammar of Graphics''} \citep{wilkinson2005}---a general concept for data visualization---as an R package called \href{https://ggplot2.tidyverse.org/}{\textbf{ggplot2}} \citep{ggplot2}. The idea of both, the theoretical concept and its implementation in \textbf{ggplot2}, is that data visualizations can be defined as semantic components rather than as predefined chart types. The ability to control and combine multiple components makes it a powerful approach to compose complex graphs, iterate quickly over different visual data representations, and modify existing plots. Furthermore, it allows for a comprehensive and consistent syntax to describe and build data visualizations.
 
-The package was intially released on June 10, 2007 and has since then become one of the most popular R packages and the standard for producing custom, high-quality graphics in R. The predessor, the original \href{https://github.com/hadley/ggplot1}{\textbf{\{ggplot\}} package}, was released in 2006 and is made available out of historical interest.
+The package was intially released on June 10, 2007 and has since then become one of the most popular R packages and the standard for producing custom, high-quality graphics in R. The predessor, the original \href{https://github.com/hadley/ggplot1}{\textbf{ggplot} package}, was released in 2006 and is made available out of historical interest.
 
-When looking into the package description of the \href{https://ggplot2.tidyverse.org/}{\textbf{\{ggplot2\}} package}, it states the following:
+When looking into the package description of the \href{https://ggplot2.tidyverse.org/}{\textbf{ggplot2} package}, it states the following:
 
 \begin{quote}
-\textbf{\{ggplot2\}} is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell \textbf{\{ggplot2\}} how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
+\textbf{ggplot2} is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell \textbf{ggplot2} how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
 \end{quote}
 
 The most important insight from this technical description is that
@@ -489,7 +544,7 @@ The most important insight from this technical description is that
   we use graphical primitives, i.e.~definining one or multiple forms to represent the variables (e.g.~lines, points, rectangles)
 \end{enumerate}
 
-Both are important when writing \textbf{\{ggplot2\}} code and together with the provided data form the key components of a ggplot.
+Both are important when writing \textbf{ggplot2} code and together with the provided data form the key components of a ggplot.
 
 \hypertarget{components}{%
 \section{The Components of a ggplot}\label{components}}
@@ -528,7 +583,7 @@ A basic ggplot needs three key components that you have to specify: the \emph{da
 
 You can think of a ggplot as a receipt for a dish: it can be based on a few or a diversity of ingredients. Also, you are free to add additional ingredients to spice-up your creation (literally and visually).
 
-Similarly, you can build rather basic charts such as scatter plots or histograms with only a few lines code. But \textbf{\{ggplot2\}} also allows to create rather complex charts that combine multiple geometries, statistical transformations and maybe even data sets. On top, it is up to you how much effort you take to polish the plot. You can rely on the defaults used for data-related aesthetics (e.g.~default axis breaks and color palettes) and non-data aspects (e.g.~complete themes). Or you decide to modify the data-related aesthetics such as axes and color palettes and/or customize the theme elements of your graphic to your needs.
+Similarly, you can build rather basic charts such as scatter plots or histograms with only a few lines code. But \textbf{ggplot2} also allows to create rather complex charts that combine multiple geometries, statistical transformations and maybe even data sets. On top, it is up to you how much effort you take to polish the plot. You can rely on the defaults used for data-related aesthetics (e.g.~default axis breaks and color palettes) and non-data aspects (e.g.~complete themes). Or you decide to modify the data-related aesthetics such as axes and color palettes and/or customize the theme elements of your graphic to your needs.
 
 \hypertarget{key-components}{%
 \section{Key Components}\label{key-components}}
@@ -544,7 +599,7 @@ In addition to the quality of the data, it is also important to consider the \te
 
 Usually, data visualization should be based on real data. At the same time, it is of course possible to create visualizations using hypothetical or simulated data to train yourself or experiment with new chart types. However, you should always keep in mind the origin of the data and communicate the fact clearly to your audience to avoid misleading insights. In order to truly understand and learn from data, we need to work with real, accurate, and reliable data.
 
-Depending on how you want to display your data in \textbf{\{ggplot2\}}, you have to prepare the data in different formats. The general recommendation is to use a ``long format'' or ``tidy format''. In a tidy-form data set, each variable is stored in a column while rows form single observations (\ref{fig:02imgFormatLongTidyWide}). With such a data set, we can display each variable using a different visual channel, the \emph{aesthetics}, such as position, color and shape (see \ref{fig:02ggplotAestheticsData} A). Consequently, data in true ``long format'' (i.e.~the variable is specified in a dedicated row) is only useful in case you want to display the variables using the same visual channel (see \ref{fig:02ggplotAestheticsData} B). A wide format, as you might often find it in case of governmental data, often needs some reshaping except the goal is the representation of a single combination.
+Depending on how you want to display your data in \textbf{ggplot2}, you have to prepare the data in different formats. The general recommendation is to use a ``long format'' or ``tidy format''. In a tidy-form data set, each variable is stored in a column while rows form single observations (\ref{fig:02imgFormatLongTidyWide}). With such a data set, we can display each variable using a different visual channel, the \emph{aesthetics}, such as position, color and shape (see \ref{fig:02ggplotAestheticsData} A). Consequently, data in true ``long format'' (i.e.~the variable is specified in a dedicated row) is only useful in case you want to display the variables using the same visual channel (see \ref{fig:02ggplotAestheticsData} B). A wide format, as you might often find it in case of governmental data, often needs some reshaping except the goal is the representation of a single combination.
 
 \begin{figure}
 \centering
@@ -557,7 +612,7 @@ If you need to reshape your data, the \texttt{pivot\_*()} functions from the \te
 \hypertarget{aesthetics}{%
 \subsection{Aesthetics}\label{aesthetics}}
 
-To visualize certain variables in your data set with \textbf{\{ggplot2\}}, values are mapped to visual channels called \emph{aesthetics}. Aesthetic attributes include positional information such as x and y but also colors, fills, point shapes, line types, sizes, and levels of transparency.
+To visualize certain variables in your data set with \textbf{ggplot2}, values are mapped to visual channels called \emph{aesthetics}. Aesthetic attributes include positional information such as x and y but also colors, fills, point shapes, line types, sizes, and levels of transparency.
 
 Sticking to our small data set, we could use our tidy-form data (\ref{fig:02imgFormatLongTidyWide}, top right) to create a scatter plot of the two metrics (\ref{fig:02ggplotAestheticsData} A). However, we could also use the long-form data (\ref{fig:02imgFormatLongTidyWide}, top left) to show the metrics as a group wise dot plot and encode the metrics by shape(\ref{fig:02ggplotAestheticsData} B).
 
@@ -572,7 +627,7 @@ The optimal shape of your data set relates to the plot you have in mind. Stick t
 \hypertarget{layers}{%
 \subsection{Layers}\label{layers}}
 
-Layers in \textbf{\{ggplot2\}} define the the statistical transformation, geometrical representation, and positional adjustment of the mapped values. In the example above, we have used a layer with geometry ``point'' and without any statistical transformation or positional adjustment. This specification simply means ``draw the raw values as points by using the specified aesthetics of position, color, and shape''.
+Layers in \textbf{ggplot2} define the the statistical transformation, geometrical representation, and positional adjustment of the mapped values. In the example above, we have used a layer with geometry ``point'' and without any statistical transformation or positional adjustment. This specification simply means ``draw the raw values as points by using the specified aesthetics of position, color, and shape''.
 
 Statistical transformation are responsible for calculating summaries such as counts and averages. You can also perform more advanced transformations of the data such as calculating smoothings and densities. If there is any statistical transformation specified, the calculation is applied to the data before they are plotted.
 
@@ -630,12 +685,12 @@ Coordinate systems interpret the position aesthetics. By default, a Cartesian co
 
 Facets split variables to multiple panels, allowing to create the same visualization for several combinations. Such small multiples can be a powerful tool to show high-dimensional data, to explore big data sets, and to compare patterns across variables and groups.
 
-A special case of facets are geo-referenced small multiples: a set of visualizations is laid out in a grid that represents the original topography. Such graphics can be easily created in \textbf{\{ggplot2\}} with the help of the \textbf{\texttt{\{geofacet\}}} extension package.
+A special case of facets are geo-referenced small multiples: a set of visualizations is laid out in a grid that represents the original topography. Such graphics can be easily created in \textbf{ggplot2} with the help of the \textbf{\texttt{\{geofacet\}}} extension package.
 
 \hypertarget{themes}{%
 \subsection{Themes}\label{themes}}
 
-Themes encode all non-data elements of your plots such as the typeface, background colors, and titles and captions. \textbf{\{ggplot2\}} comes with a set of complete themes that can be added to your plot and further modified with high flexibility.
+Themes encode all non-data elements of your plots such as the typeface, background colors, and titles and captions. \textbf{ggplot2} comes with a set of complete themes that can be added to your plot and further modified with high flexibility.
 
 The modified themes can easily be turned into your own custom theme function which can be used as a component in the same way. Also, several extension packages such as \textbf{\texttt{\{ggthemes\}}}, \textbf{\texttt{\{hrbrthemes\}}} or \textbf{\texttt{\{tvthemes\}}} provide even more complete themes to change the look of your visualization.
 
@@ -644,7 +699,7 @@ The ability to use pre-coded themes is a great feature as it allows for a consis
 \hypertarget{showcase}{%
 \section{Showcase}\label{showcase}}
 
-The following collection of graphics illustrate the power and versatility of \textbf{\{ggplot2\}}---and a range of extension packages---to create customized, partly uncommon or complex charts. All these charts are the outcome of 100\% R code, making use of multiple layers and customized colors, fonts, and themes.
+The following collection of graphics illustrate the power and versatility of \textbf{ggplot2}---and a range of extension packages---to create customized, partly uncommon or complex charts. All these charts are the outcome of 100\% R code, making use of multiple layers and customized colors, fonts, and themes.
 
 The visualization ``Artists in the USA'' shows the\ldots{[}WIP{]}
 
@@ -670,7 +725,7 @@ Tanya Shapiro used a ``jitter-pop'' chart---a cmbination of jitter strips and lo
 \caption{\label{fig:02imgVizDoctorWho}``Doctor Who was the Best?'' by Tanya Shapiro}
 \end{figure}
 
-These are just a few examples of the many types of charts that you can create using \textbf{\{ggplot2\}}. With a little creativity and experimentation, you can come up with your own unique and informative visualizations or artful pieces.
+These are just a few examples of the many types of charts that you can create using \textbf{ggplot2}. With a little creativity and experimentation, you can come up with your own unique and informative visualizations or artful pieces.
 
 \hypertarget{get-started}{%
 \chapter{Get Started}\label{get-started}}
@@ -721,12 +776,12 @@ Variable & Description\\
 \hypertarget{rstats}{%
 \section{Working in R}\label{rstats}}
 
-\textbf{\{ggplot2\}} can be used even if you know little about the R programming language. However, the knowledge of certain basic principles is at least helpful and probably indispensable for advanced plots. This section will give you a short overview of workflows and the very basics needed. The overview makes use of the \textbf{\{tidyverse\}}, a package collection designed for data science in R. However, multiple other options exist to import, inspect, and wrangle your data if you prefer not to work with the \textbf{\{tidyverse\}} for these steps\footnote{Note that the \textbf{\{ggplot2\}} package itself belongs to the \textbf{\{tidyverse\}} as well.}.
+\textbf{ggplot2} can be used even if you know little about the R programming language. However, the knowledge of certain basic principles is at least helpful and probably indispensable for advanced plots. This section will give you a short overview of workflows and the very basics needed. The overview makes use of the \textbf{tidyverse}, a package collection designed for data science in R. However, multiple other options exist to import, inspect, and wrangle your data if you prefer not to work with the \textbf{tidyverse} for these steps\footnote{Note that the \textbf{ggplot2} package itself belongs to the \textbf{tidyverse} as well.}.
 
 \hypertarget{import}{%
 \subsection{Import data}\label{import}}
 
-You need to import data to be able to work with it in the current session. The data can be imported from a local directory or directly from a web source. Nowadays, all common and some less common data formats can easily be imported. For common tabular data formats such as .txt or .csv one can use the \href{https://readr.tidyverse.org/}{\textbf{\{readr\}} package} \citep{readr} from the \textbf{\{tidyverse\}}.
+You need to import data to be able to work with it in the current session. The data can be imported from a local directory or directly from a web source. Nowadays, all common and some less common data formats can easily be imported. For common tabular data formats such as .txt or .csv one can use the \href{https://readr.tidyverse.org/}{\textbf{readr} package} \citep{readr} from the \textbf{tidyverse}.
 
 We use the \texttt{read\_csv()} function to load the TfL data as .csv file directly from a web URL. To access the URL and data later, we are storing the link as \texttt{url\_data} and the data set as \texttt{bikes} by using the \emph{assignment arrow} \texttt{\textless{}-}. The \texttt{col\_types} argument within the \texttt{read\_csv()} function allows to specify the column types. For example, \texttt{i} represents integer values, \texttt{f} encodes factors, and \texttt{l} turns a column into a logical, boolean variable that only can have two states, \texttt{TRUE} or \texttt{FALSE}. You'll find more on the different \emph{data types} later in this chapter.
 
@@ -759,7 +814,7 @@ Preferably, we do not want to rely on absolute paths and the default or manually
 
 If you are working in Rstudio, \emph{Rstudio projects} provide such a project-oriented workflow. When opening the project via the associated \texttt{.Rproj} file, it ensures that the working directory is correctly set and points to the project's top-level directory (i.e.~the folder that contains the \texttt{.Rproj} file).
 
-When using Rstudio projects, a helpful package to navigate to files of interest is the \href{https://here.r-lib.org/}{\textbf{\{here\}} package}. The function \texttt{here()} will create paths relative to the top-level directory:
+When using Rstudio projects, a helpful package to navigate to files of interest is the \href{https://here.r-lib.org/}{\textbf{here} package}. The function \texttt{here()} will create paths relative to the top-level directory:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -800,7 +855,7 @@ After importing the data, it is advisable to have a look at the data. Does the o
 ## #   1: day_night, 2: is_workday
 \end{verbatim}
 
-As we have used the \textbf{\{readr\}} package, our data is stored as a \emph{tibble} (class \texttt{tbl\_df} and related) which is the \textbf{\{tidyverse\}} subclass of a traditional data frame (class \texttt{data.frame}). There are other data structures in R such as lists and matrices; however, in this book we are going to use only data frames, more precisely tibbles (besides spatial data formats in Chapter XYZ).
+As we have used the \textbf{readr} package, our data is stored as a \emph{tibble} (class \texttt{tbl\_df} and related) which is the \textbf{tidyverse} subclass of a traditional data frame (class \texttt{data.frame}). There are other data structures in R such as lists and matrices; however, in this book we are going to use only data frames, more precisely tibbles (besides spatial data formats in Chapter XYZ).
 
 On the top of the output, you can directly see that our data set consists of \texttt{format(length(bikes),\ big.mark\ =\ ",")} variables (columns) frame with 1,454 observations (rows). Also, the tibble output shows you the first ten rows. Alternatively you can inspect the data with the help of \texttt{str()} or \texttt{tibble::glimpse()} to print a transposed version.
 
@@ -811,7 +866,7 @@ If you have looked carefully, you may have noticed that a tibble prints also the
 
 The data encoding is especially important when exploring chart options and writing ggplot code. You should be familiar if the data is encoded as quantitative or qualitative, if it contains missing or unusual values. Thus, it is always worth to check the classes and the values of the columns.
 
-In R there are multiple low-level data types, and some of the \textbf{\{ggplot2\}} behavior will depend on the type of the variable(s) used for plotting. The six basic data types are:
+In R there are multiple low-level data types, and some of the \textbf{ggplot2} behavior will depend on the type of the variable(s) used for plotting. The six basic data types are:
 
 \begin{itemize}
 \tightlist
@@ -876,7 +931,7 @@ Also, we can manually change the order of a factor by supplying a vector of leve
 \end{Highlighting}
 \end{Shaded}
 
-The \href{https://forcats.tidyverse.org/}{\textbf{\{forcats\}} package} \citep{forcats} provides a set of useful functions to reorder factor levels. Important functions to quickly change to order of variables include \texttt{fct\_rev()}, \texttt{fct\_reorder()}, \texttt{fct\_infreq()}, \texttt{fct\_inorder()}, and \texttt{fct\_lump()}:
+The \href{https://forcats.tidyverse.org/}{\textbf{forcats} package} \citep{forcats} provides a set of useful functions to reorder factor levels. Important functions to quickly change to order of variables include \texttt{fct\_rev()}, \texttt{fct\_reorder()}, \texttt{fct\_infreq()}, \texttt{fct\_inorder()}, and \texttt{fct\_lump()}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -967,7 +1022,7 @@ Furthermore, \texttt{POSIXct} and \texttt{POSIXlt} are able to represent full ti
 \hypertarget{preparation}{%
 \subsection{Data preparation}\label{preparation}}
 
-Often, the data imported might not be in the right format to plot it with \textbf{\{ggplot2\}}. The preparation of the data---e.g.~converting data types and setting factor levels, aggregating values, estimating data summaries, reshaping the data set or combining it with another source---is called \emph{data wrangling}, \emph{data munging}, or \textbf{data manipulation}.
+Often, the data imported might not be in the right format to plot it with \textbf{ggplot2}. The preparation of the data---e.g.~converting data types and setting factor levels, aggregating values, estimating data summaries, reshaping the data set or combining it with another source---is called \emph{data wrangling}, \emph{data munging}, or \textbf{data manipulation}.
 
 To explore and retrieve summary estimates of individual variables, the following functions are useful:
 
@@ -1003,12 +1058,12 @@ To explore and retrieve summary estimates of individual variables, the following
 \end{Highlighting}
 \end{Shaded}
 
-The \href{https://dplyr.tidyverse.org/}{\textbf{\{dplyr\}}} \citep{dplyr} and other \textbf{\{tidyverse\}} packages provide a simple and intuitive syntax to wrangle data. There are a ton of unique functions, but knowing a handful is enough to empower you to bring your data in the right format.
+The \href{https://dplyr.tidyverse.org/}{\textbf{dplyr}} \citep{dplyr} and other \textbf{tidyverse} packages provide a simple and intuitive syntax to wrangle data. There are a ton of unique functions, but knowing a handful is enough to empower you to bring your data in the right format.
 
 \hypertarget{dplyr}{%
 \subsubsection{Data wrangling with the \{dplyr\} package}\label{dplyr}}
 
-There are five main functions of \textbf{\{dplyr\}}, called \emph{verbs}:
+There are five main functions of \textbf{dplyr}, called \emph{verbs}:
 
 \begin{itemize}
 \tightlist
@@ -1028,6 +1083,9 @@ All of these functions follow a consistent syntax: \texttt{verb(data,\ condition
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\DocumentationTok{\#\# load the package functions}
+\FunctionTok{library}\NormalTok{(dplyr)}
+
 \DocumentationTok{\#\# only keep more than 1000 shares during the night}
 \FunctionTok{filter}\NormalTok{(bikes, day\_night }\SpecialCharTok{==} \StringTok{"night"}\NormalTok{, count }\SpecialCharTok{\textgreater{}} \DecValTok{1000}\NormalTok{) }
 
@@ -1045,7 +1103,7 @@ All of these functions follow a consistent syntax: \texttt{verb(data,\ condition
 \end{Highlighting}
 \end{Shaded}
 
-Another important and very powerful function from the \textbf{\{dplyr\}} package is \texttt{group\_by()}: when a data set is grouped into subsets, we can apply any operation for each group \emph{within a single data frame}. While you could nest those functions, the common approach within the tidyverse is the use of \emph{pipes}. Pipes take the output of one function and send it directly to the next which avoids nested operations and allows for a more logical order of functions and their arguments. The \textbf{\{tidyverse\}} pipe is encoded as \texttt{\%\textgreater{}\%}; a base R pipe is available as \texttt{\textbar{}\textgreater{}} as well. Have a look at the following silly example:
+Another important and very powerful function from the \textbf{dplyr} package is \texttt{group\_by()}: when a data set is grouped into subsets, we can apply any operation for each group \emph{within a single data frame}. While you could nest those functions, the common approach within the tidyverse is the use of \emph{pipes}. Pipes take the output of one function and send it directly to the next which avoids nested operations and allows for a more logical order of functions and their arguments. The \textbf{tidyverse} pipe is encoded as \texttt{\%\textgreater{}\%}; a base R pipe is available as \texttt{\textbar{}\textgreater{}} as well. Have a look at the following silly example:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1139,7 +1197,7 @@ In a next step, we regroup our data to add a column with shares of nightly bike 
 \hypertarget{tidyr}{%
 \subsubsection{Reshaping data with the \{tidyr\} package}\label{tidyr}}
 
-In case you need to reshape a data set to make it work with \textbf{\{ggplot2\}}, you can use the functions \texttt{pivot\_longer()} and \texttt{pivot\_wider()} from the \href{https://tidyr.tidyverse.org/}{\textbf{\texttt{\{tidyr\}}} package} \citep{tidyr} to move from one format to the other. Let's illustrate their behavior using one of the toy data sets used in section
+In case you need to reshape a data set to make it work with \textbf{ggplot2}, you can use the functions \texttt{pivot\_longer()} and \texttt{pivot\_wider()} from the \href{https://tidyr.tidyverse.org/}{\textbf{\texttt{\{tidyr\}}} package} \citep{tidyr} to move from one format to the other. Let's illustrate their behavior using one of the toy data sets used in section
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1209,10 +1267,10 @@ In case you need to reshape a data set to make it work with \textbf{\{ggplot2\}}
 
 {[}WIP{]} lubridate, stringr, \ldots{}
 
-\hypertarget{a-walk-through-example}{%
-\chapter{A Walk-through Example}\label{a-walk-through-example}}
+\hypertarget{walkthrough}{%
+\chapter{A Walk-through Example}\label{walkthrough}}
 
-To illustrate the utility and flexibility of \textbf{\{ggplot2\}} to create complex, well-designed visualizations with a handful of components, we are going to create a set of four plots. For each combination of year and time of the day, we draw a scatter plot of bike rents including a linear fitting to show overall trends with feels-like temperature.
+To illustrate the utility and flexibility of \textbf{ggplot2} to create complex, well-designed visualizations with a handful of components, we are going to create a set of four plots. For each combination of year and time of the day, we draw a scatter plot of bike rents including a linear fitting to show overall trends with feels-like temperature.
 
 The creation of the plot itself will require only four lines of code! One to specify the data and global aesthetics, two for the scatter and fitting, and another one to create small multiples.
 
@@ -1237,7 +1295,7 @@ Before we can create a ggplot, we have to load the package by running \texttt{li
 \hypertarget{basics}{%
 \section{Create a basic ggplot}\label{basics}}
 
-Once the \textbf{\{ggplot2\}} package is loaded, we can create a basic ggplot by specifying the \emph{data}, \emph{aesthetics}---the positional encoding of the variables---, and a \emph{geometry}.
+Once the \textbf{ggplot2} package is loaded, we can create a basic ggplot by specifying the \emph{data}, \emph{aesthetics}---the positional encoding of the variables---, and a \emph{geometry}.
 
 Here, we map the variable \texttt{temp\_feel} of our \texttt{bikes} data object to the \texttt{x} position and the variable \texttt{count} to the \texttt{y} position (\ref{fig:04ggplotBasic}). We will also map variables to all kind of other aesthetics throughout the book. Some are related to positions such as \texttt{xmin} or \texttt{yend} while others change the appearance of the layer based on the variables they are mapped to such as \texttt{color} and \texttt{shape}.
 
@@ -1350,7 +1408,7 @@ The different aesthetics and the differences of global versus local mapping of a
 \hypertarget{faceting}{%
 \section{Create small multiples}\label{faceting}}
 
-A fantastic feature of \textbf{\{ggplot2\}} is it's ability to quickly split a single visualization in a set of so-called \emph{small multiples}: the same visualization, no matter how complex it is, is applied to subsets contained in the same data set. In \textbf{\{ggplot2\}}, such small multiples are called \emph{facets} wich are conditional on the variables defined in the \texttt{facet\_*()} function (Fig. \ref{fig:04ggplotFacet}).
+A fantastic feature of \textbf{ggplot2} is it's ability to quickly split a single visualization in a set of so-called \emph{small multiples}: the same visualization, no matter how complex it is, is applied to subsets contained in the same data set. In \textbf{ggplot2}, such small multiples are called \emph{facets} wich are conditional on the variables defined in the \texttt{facet\_*()} function (Fig. \ref{fig:04ggplotFacet}).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1372,7 +1430,7 @@ A fantastic feature of \textbf{\{ggplot2\}} is it's ability to quickly split a s
 \caption{\label{fig:04ggplotFacet}With the \texttt{facet} functions, a visualization can quickly be split into small multiples.}
 \end{figure}
 
-Consistency across axes is considered good practice as varying axis ranges are harder to compare and the potential of misleading viewers increases in case the differences keep unnoticed---or even worse are not noticeable. The implementation of facet in \textbf{\{ggplot2\}} ensures consistency across all small multiples by default, as illustrated by the empty space in the lower row as there are no values above \textasciitilde21,000 reported rents during night.
+Consistency across axes is considered good practice as varying axis ranges are harder to compare and the potential of misleading viewers increases in case the differences keep unnoticed---or even worse are not noticeable. The implementation of facet in \textbf{ggplot2} ensures consistency across all small multiples by default, as illustrated by the empty space in the lower row as there are no values above \textasciitilde21,000 reported rents during night.
 
 The \texttt{facet} functionality also comes with the option to overwrite the default behavior by ``freeing'' the positional scales. Furthermore, one can ensure equal axis spacing by freeing the space as well (Fig. \ref{fig:04ggplotFacetGrid}). This setting allows to efficiently use the available space while ensuring comparability across plots and decreasing the potential of misleading the viewer. The differences between the two ways to create small multiples, namely \texttt{facet\_grid()} and \texttt{facet\_wrap()}, as well as ways to adjust and annotate facets are explained in Chapter XYZ.
 
@@ -1401,7 +1459,7 @@ The \texttt{facet} functionality also comes with the option to overwrite the def
 \hypertarget{axis-scaling}{%
 \section{Change the axis scaling}\label{axis-scaling}}
 
-For every aesthetic, \textbf{\{ggplot2\}} applies so-called \emph{scales} that translate between variable ranges (data) and property ranges (aesthetic). For the positional axes, a set of \texttt{scale\_x\_*()} and \texttt{scale\_y\_*()} controls their behavior. The \texttt{breaks} argument defines the placement of the axes ticks while the \texttt{labels} argument controls the labels next to those ticks. The labels can be either overwritten by a vector of the same length as the breaks (as for x in our example) or a function that returns a vector based on the breaks (as for y in our example). There are many more arguments such as \texttt{expand} to control the padding towards the ends of the respective axis or \texttt{trans} to transform the scale. You can read more about how to control \texttt{scales} in Chapter XYZ and about label adjustment and styling in Chapter XYZ.
+For every aesthetic, \textbf{ggplot2} applies so-called \emph{scales} that translate between variable ranges (data) and property ranges (aesthetic). For the positional axes, a set of \texttt{scale\_x\_*()} and \texttt{scale\_y\_*()} controls their behavior. The \texttt{breaks} argument defines the placement of the axes ticks while the \texttt{labels} argument controls the labels next to those ticks. The labels can be either overwritten by a vector of the same length as the breaks (as for x in our example) or a function that returns a vector based on the breaks (as for y in our example). There are many more arguments such as \texttt{expand} to control the padding towards the ends of the respective axis or \texttt{trans} to transform the scale. You can read more about how to control \texttt{scales} in Chapter XYZ and about label adjustment and styling in Chapter XYZ.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1475,7 +1533,7 @@ Furthermore, we are storing the current plot in an object named \texttt{g1}. Thi
 \hypertarget{label-adjustment}{%
 \section{Adjust labels}\label{label-adjustment}}
 
-For now, we have ignored that \textbf{\{ggplot2\}} uses the variable names as specified in our \texttt{bikes} object for data-related labels. Resist the temptation to change the variable names in your original data set! We can easily overwrite those by referring to the respective aesthetic (\texttt{x}, \texttt{y}, and \texttt{color}) in the \texttt{labs()} function which we add to our plot. Here, we can also specify a title, subtitle, caption, and tag (subtitle and tag are not shown in the following example; Fig. \ref{fig:04ggplotLabels}).
+For now, we have ignored that \textbf{ggplot2} uses the variable names as specified in our \texttt{bikes} object for data-related labels. Resist the temptation to change the variable names in your original data set! We can easily overwrite those by referring to the respective aesthetic (\texttt{x}, \texttt{y}, and \texttt{color}) in the \texttt{labs()} function which we add to our plot. Here, we can also specify a title, subtitle, caption, and tag (subtitle and tag are not shown in the following example; Fig. \ref{fig:04ggplotLabels}).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1523,7 +1581,7 @@ Note that the code is returning a message informing you that the present color s
 \hypertarget{complete-themes}{%
 \section{Apply a complete theme}\label{complete-themes}}
 
-\textbf{\{ggplot2\}} comes with a set of so-called \emph{complete themes}. We can add one of these to overwrite the default theme\_grey() by one of the others (run \texttt{?theme\_grey} for a full list of available complete themes).
+\textbf{ggplot2} comes with a set of so-called \emph{complete themes}. We can add one of these to overwrite the default theme\_grey() by one of the others (run \texttt{?theme\_grey} for a full list of available complete themes).
 
 When adding a theme to a ggplot, we can already overwrite the \texttt{base\_size} of the theme elements, which translates to the size of text labels and line widths. Furthermore, we can set a non-default typeface by supplying a locally installed typeface in the \texttt{base\_family} argument.
 
@@ -1679,7 +1737,7 @@ The default font family of ggplot themes is the default sans serif font and thus
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{g }\SpecialCharTok{+} \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_family =} \StringTok{"Asap SemiCondensed"}\NormalTok{)}
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_family =} \StringTok{"Asap Condensed"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1717,7 +1775,7 @@ The base size in any ggplot theme is set to 11. This number determines the indiv
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{(g }\OtherTok{\textless{}{-}}\NormalTok{ g }\SpecialCharTok{+} \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_family =} \StringTok{"Asap SemiCondensed"}\NormalTok{, }\AttributeTok{base\_size =} \DecValTok{14}\NormalTok{))}
+\NormalTok{(g }\OtherTok{\textless{}{-}}\NormalTok{ g }\SpecialCharTok{+} \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_family =} \StringTok{"Asap Condensed"}\NormalTok{, }\AttributeTok{base\_size =} \DecValTok{14}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1982,7 +2040,7 @@ Furthermore, you can customize the new default theme supplied to \texttt{theme\_
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{theme\_set}\NormalTok{(}
-  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_family =} \StringTok{"Asap SemiCondensed"}\NormalTok{, }\AttributeTok{base\_size =} \DecValTok{15}\NormalTok{)}
+  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_family =} \StringTok{"Asap Condensed"}\NormalTok{, }\AttributeTok{base\_size =} \DecValTok{15}\NormalTok{)}
 \NormalTok{)}
 
 \FunctionTok{theme\_update}\NormalTok{(}
@@ -2014,7 +2072,7 @@ Furthermore, you can customize the new default theme supplied to \texttt{theme\_
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{theme\_custom }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{14}\NormalTok{, }\AttributeTok{base\_family =} \StringTok{"Asap SemiCondensed"}\NormalTok{, }
+\NormalTok{theme\_custom }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{14}\NormalTok{, }\AttributeTok{base\_family =} \StringTok{"Asap Condensed"}\NormalTok{, }
                          \AttributeTok{base\_line\_size =}\NormalTok{ base\_size}\SpecialCharTok{/}\DecValTok{25}\NormalTok{, }\AttributeTok{base\_rect\_size =}\NormalTok{ base\_size}\SpecialCharTok{/}\DecValTok{25}\NormalTok{,}
                          \AttributeTok{color\_plot =} \StringTok{"grey96"}\NormalTok{, }\AttributeTok{color\_panel =} \StringTok{"white"}\NormalTok{) \{}
     \FunctionTok{theme\_minimal}\NormalTok{(}
@@ -2110,7 +2168,7 @@ In the following I want to share a quick tips how you customize the appearance o
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-2-1.png}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-3-1.png}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2118,7 +2176,7 @@ In the following I want to share a quick tips how you customize the appearance o
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-3-1.png}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-4-1.png}
 
 \hypertarget{legend-styling-1}{%
 \section{Legend Styling}\label{legend-styling-1}}
@@ -2129,7 +2187,7 @@ In the following I want to share a quick tips how you customize the appearance o
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-4-1.png}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-5-1.png}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2140,7 +2198,7 @@ In the following I want to share a quick tips how you customize the appearance o
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-5-1.png}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-6-1.png}
 
 \hypertarget{align-titles-and-captions-1}{%
 \section{Align Titles and Captions}\label{align-titles-and-captions-1}}
@@ -2173,7 +2231,7 @@ The importance of aligning the title either with the panel border (the default b
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-6-1.png}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-7-1.png}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2186,7 +2244,7 @@ The importance of aligning the title either with the panel border (the default b
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-7-1.png}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-8-1.png}
 
 \hypertarget{part-how-to-work-with-components}{%
 \part{How To Work with Components}\label{part-how-to-work-with-components}}
@@ -2196,7 +2254,7 @@ The importance of aligning the title either with the panel border (the default b
 
 Internally all layers are created by the \texttt{layer()} function. A layer is by definition a ``combination of data, stat and geom with a potential position adjustment'' (\texttt{layer} R help).
 
-The long list of featured \texttt{geom\_*()} and \texttt{stat\_*()} functions in \textbf{\{ggplot2\}} is thus just a set of predefined layers with default \texttt{geom}, \texttt{stat}, \texttt{position} arguments that use the data passed in the initial \texttt{ggplot()} call. The data can also be specified for each layer separately by passing it inside the respective geom or stat.
+The long list of featured \texttt{geom\_*()} and \texttt{stat\_*()} functions in \textbf{ggplot2} is thus just a set of predefined layers with default \texttt{geom}, \texttt{stat}, \texttt{position} arguments that use the data passed in the initial \texttt{ggplot()} call. The data can also be specified for each layer separately by passing it inside the respective geom or stat.
 
 \hypertarget{geometrical-shapes}{%
 \section{Geometrical Shapes}\label{geometrical-shapes}}
@@ -2210,7 +2268,7 @@ Many geometrical shapes only need two positional arguments, namely \texttt{x} an
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-8-1.png}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-9-1.png}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2219,7 +2277,7 @@ Many geometrical shapes only need two positional arguments, namely \texttt{x} an
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-8-2.png}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-9-2.png}
 
 {[}WIP{]}
 
@@ -2256,17 +2314,17 @@ Many geometrical shapes only need two positional arguments, namely \texttt{x} an
 \item
 \end{itemize}
 
-\hypertarget{customizing-color-palettes}{%
-\chapter{Customizing Color Palettes}\label{customizing-color-palettes}}
+\hypertarget{working-with-colors}{%
+\chapter{Working with Colors}\label{working-with-colors}}
 
-\hypertarget{styling-titles-and-labels}{%
-\chapter{Styling Titles and Labels}\label{styling-titles-and-labels}}
+\hypertarget{working-with-text}{%
+\chapter{Working with Text}\label{working-with-text}}
 
 \hypertarget{part-advanced-walk-through-examples}{%
 \part{Advanced Walk-Through Examples}\label{part-advanced-walk-through-examples}}
 
-\hypertarget{overview}{%
-\chapter{Overview}\label{overview}}
+\hypertarget{advanced-examples}{%
+\chapter{Overview}\label{advanced-examples}}
 
 \cleardoublepage
 

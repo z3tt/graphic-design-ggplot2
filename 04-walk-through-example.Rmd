@@ -2,9 +2,9 @@
 ggplot2::theme_set(ggplot2::theme_grey())
 ```
 
-# A Walk-through Example
+# A Walk-through Example {#walkthrough}
 
-To illustrate the utility and flexibility of **{ggplot2}** to create complex, well-designed visualizations with a handful of components, we are going to create a set of four plots. For each combination of year and time of the day, we draw a scatter plot of bike rents including a linear fitting to show overall trends with feels-like temperature. 
+To illustrate the utility and flexibility of **ggplot2** to create complex, well-designed visualizations with a handful of components, we are going to create a set of four plots. For each combination of year and time of the day, we draw a scatter plot of bike rents including a linear fitting to show overall trends with feels-like temperature. 
 
 The creation of the plot itself will require only four lines of code! One to specify the data and global aesthetics, two for the scatter and fitting, and another one to create small multiples.
 
@@ -26,7 +26,7 @@ bikes <- readr::read_csv(file = url_data, col_types = "Dcfffilllddddfc")
 
 ## Create a basic ggplot {#basics}
 
-Once the **{ggplot2}** package is loaded, we can create a basic ggplot by specifying the *data*, *aesthetics*---the positional encoding of the variables---, and a *geometry*. 
+Once the **ggplot2** package is loaded, we can create a basic ggplot by specifying the *data*, *aesthetics*---the positional encoding of the variables---, and a *geometry*. 
 
 Here, we map the variable `temp_feel` of our `bikes` data object to the `x` position and the variable `count` to the `y` position (\@ref(fig:04ggplotBasic)). We will also map variables to all kind of other aesthetics throughout the book. Some are related to positions such as `xmin` or `yend` while others change the appearance of the layer based on the variables they are mapped to such as `color` and `shape`.
 
@@ -110,7 +110,7 @@ The different aesthetics and the differences of global versus local mapping of a
 
 ## Create small multiples {#faceting}
 
-A fantastic feature of **{ggplot2}** is it's ability to quickly split a single visualization in a set of so-called *small multiples*: the same visualization, no matter how complex it is, is applied to subsets contained in the same data set. In **{ggplot2}**, such small multiples are called *facets* wich are conditional on the variables defined in the `facet_*()` function (Fig. \@ref(fig:04ggplotFacet)).
+A fantastic feature of **ggplot2** is it's ability to quickly split a single visualization in a set of so-called *small multiples*: the same visualization, no matter how complex it is, is applied to subsets contained in the same data set. In **ggplot2**, such small multiples are called *facets* wich are conditional on the variables defined in the `facet_*()` function (Fig. \@ref(fig:04ggplotFacet)).
 
 ```{r 04ggplotFacet, fig.cap="With the `facet` functions, a visualization can quickly be split into small multiples."}
 ggplot(bikes, aes(x = temp_feel, y = count)) + 
@@ -124,7 +124,7 @@ ggplot(bikes, aes(x = temp_feel, y = count)) +
   facet_grid(day_night ~ year)
 ```
 
-Consistency across axes is considered good practice as varying axis ranges are harder to compare and the potential of misleading viewers increases in case the differences keep unnoticed---or even worse are not noticeable. The implementation of facet in **{ggplot2}** ensures consistency across all small multiples by default, as illustrated by the empty space in the lower row as there are no values above \~21,000 reported rents during night.
+Consistency across axes is considered good practice as varying axis ranges are harder to compare and the potential of misleading viewers increases in case the differences keep unnoticed---or even worse are not noticeable. The implementation of facet in **ggplot2** ensures consistency across all small multiples by default, as illustrated by the empty space in the lower row as there are no values above \~21,000 reported rents during night.
 
 The `facet` functionality also comes with the option to overwrite the default behavior by "freeing" the positional scales. Furthermore, one can ensure equal axis spacing by freeing the space as well (Fig. \@ref(fig:04ggplotFacetGrid)). This setting allows to efficiently use the available space while ensuring comparability across plots and decreasing the potential of misleading the viewer. The differences between the two ways to create small multiples, namely `facet_grid()` and `facet_wrap()`, as well as ways to adjust and annotate facets are explained in Chapter XYZ.
 
@@ -144,7 +144,7 @@ ggplot(bikes, aes(x = temp_feel, y = count)) +
 
 ## Change the axis scaling {#axis-scaling}
 
-For every aesthetic, **{ggplot2}** applies so-called *scales* that translate between variable ranges (data) and property ranges (aesthetic). For the positional axes, a set of `scale_x_*()` and `scale_y_*()` controls their behavior. The `breaks` argument defines the placement of the axes ticks while the `labels` argument controls the labels next to those ticks. The labels can be either overwritten by a vector of the same length as the breaks (as for x in our example) or a function that returns a vector based on the breaks (as for y in our example). There are many more arguments such as `expand` to control the padding towards the ends of the respective axis or `trans` to transform the scale. You can read more about how to control `scales` in Chapter XYZ and about label adjustment and styling in Chapter XYZ.
+For every aesthetic, **ggplot2** applies so-called *scales* that translate between variable ranges (data) and property ranges (aesthetic). For the positional axes, a set of `scale_x_*()` and `scale_y_*()` controls their behavior. The `breaks` argument defines the placement of the axes ticks while the `labels` argument controls the labels next to those ticks. The labels can be either overwritten by a vector of the same length as the breaks (as for x in our example) or a function that returns a vector based on the breaks (as for y in our example). There are many more arguments such as `expand` to control the padding towards the ends of the respective axis or `trans` to transform the scale. You can read more about how to control `scales` in Chapter XYZ and about label adjustment and styling in Chapter XYZ.
 
 ```{r 04ggplotLabelsAxes, fig.cap="To adjust the formatting of axis labels, the respective axis needs to be addressed via the `scale_*()` functions."}
 ggplot(bikes, aes(x = temp_feel, y = count)) + 
@@ -204,7 +204,7 @@ Furthermore, we are storing the current plot in an object  named `g1`. This `ggp
 
 ## Adjust labels {#label-adjustment}
 
-For now, we have ignored that **{ggplot2}** uses the variable names as specified in our `bikes` object for data-related labels. Resist the temptation to change the variable names in your original data set! We can easily overwrite those by referring to the respective aesthetic (`x`, `y`, and `color`) in the `labs()` function which we add to our plot. Here, we can also specify a title, subtitle, caption, and tag (subtitle and tag are not shown in the following example; Fig. \@ref(fig:04ggplotLabels)).
+For now, we have ignored that **ggplot2** uses the variable names as specified in our `bikes` object for data-related labels. Resist the temptation to change the variable names in your original data set! We can easily overwrite those by referring to the respective aesthetic (`x`, `y`, and `color`) in the `labs()` function which we add to our plot. Here, we can also specify a title, subtitle, caption, and tag (subtitle and tag are not shown in the following example; Fig. \@ref(fig:04ggplotLabels)).
 
 ```{r 04ggplotLabels, fig.cap="We can overwrite the default labels with the `labs()` which also allows to add a title, subtitle, caption, and tag to the graphic."}
 g2 <- g1 +
@@ -236,7 +236,7 @@ Note that the code is returning a message informing you that the present color s
 
 ## Apply a complete theme {#complete-themes}
 
-**{ggplot2}** comes with a set of so-called *complete themes*. We can add one of these to overwrite the default theme_grey() by one of the others (run `?theme_grey` for a full list of available complete themes). 
+**ggplot2** comes with a set of so-called *complete themes*. We can add one of these to overwrite the default theme_grey() by one of the others (run `?theme_grey` for a full list of available complete themes). 
 
 When adding a theme to a ggplot, we can already overwrite the `base_size` of the theme elements, which translates to the size of text labels and line widths. Furthermore, we can set a non-default typeface by supplying a locally installed typeface in the `base_family` argument.
 

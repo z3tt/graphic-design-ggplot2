@@ -4,24 +4,24 @@ source(here::here("src", "prerequisites.R"))
 
 # (PART) General Overiew {-}
 
-# The Layered Grammar of Graphics
+# The Layered Grammar of Graphics {#grammar}
 
 ## The {ggplot2} Package {#ggplot}
 
-In 2005 Hadley Wickham implemented Leland Wilkinson's ["The Grammar of Graphics"](https://link.springer.com/chapter/10.1007/978-3-642-21551-3_13) [@wilkinson2005]---a general concept for data visualization---as an R package called [**{ggplot2}**](https://ggplot2.tidyverse.org/) [@ggplot2]. The idea of both, the theoretical concept and its implementation in **{ggplot2}**, is that data visualizations can be defined as semantic components rather than as predefined chart types. The ability to control and combine multiple components makes it a powerful approach to compose complex graphs, iterate quickly over different visual data representations, and modify existing plots. Furthermore, it allows for a comprehensive and consistent syntax to describe and build data visualizations. 
+In 2005 Hadley Wickham implemented Leland Wilkinson's ["The Grammar of Graphics"](https://link.springer.com/chapter/10.1007/978-3-642-21551-3_13) [@wilkinson2005]---a general concept for data visualization---as an R package called [**ggplot2**](https://ggplot2.tidyverse.org/) [@ggplot2]. The idea of both, the theoretical concept and its implementation in **ggplot2**, is that data visualizations can be defined as semantic components rather than as predefined chart types. The ability to control and combine multiple components makes it a powerful approach to compose complex graphs, iterate quickly over different visual data representations, and modify existing plots. Furthermore, it allows for a comprehensive and consistent syntax to describe and build data visualizations. 
 
-The package was intially released on June 10, 2007 and has since then become one of the most popular R packages and the standard for producing custom, high-quality graphics in R. The predessor, the original [**{ggplot}** package](https://github.com/hadley/ggplot1), was released in 2006 and is made available out of historical interest.
+The package was intially released on June 10, 2007 and has since then become one of the most popular R packages and the standard for producing custom, high-quality graphics in R. The predessor, the original [**ggplot** package](https://github.com/hadley/ggplot1), was released in 2006 and is made available out of historical interest.
 
-When looking into the package description of the [**{ggplot2}** package](https://ggplot2.tidyverse.org/), it states the following:
+When looking into the package description of the [**ggplot2** package](https://ggplot2.tidyverse.org/), it states the following:
 
-> **{ggplot2}** is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell **{ggplot2}** how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
+> **ggplot2** is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell **ggplot2** how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
 
 The most important insight from this technical description is that 
 
 1. we map variables to aesthetics, i.e. defining the visual channels used to represent the variables (e.g. position, color, shape)
 2. we use graphical primitives, i.e. definining one or multiple forms to represent the variables (e.g. lines, points, rectangles)
 
-Both are important when writing **{ggplot2}** code and together with the provided data form the key components of a ggplot. 
+Both are important when writing **ggplot2** code and together with the provided data form the key components of a ggplot. 
 
 ## The Components of a ggplot {#components}
 
@@ -52,7 +52,7 @@ A basic ggplot needs three key components that you have to specify: the *data*, 
 
 You can think of a ggplot as a receipt for a dish: it can be based on a few or a diversity of ingredients. Also, you are free to add additional ingredients to spice-up your creation (literally and visually). 
 
-Similarly, you can build rather basic charts such as scatter plots or histograms with only a few lines code. But **{ggplot2}** also allows to create rather complex charts that combine multiple geometries, statistical transformations and maybe even data sets. On top, it is up to you how much effort you take to polish the plot. You can rely on the defaults used for data-related aesthetics (e.g. default axis breaks and color palettes) and non-data aspects (e.g. complete themes). Or you decide to modify the data-related aesthetics such as axes and color palettes and/or customize the theme elements of your graphic to your needs. 
+Similarly, you can build rather basic charts such as scatter plots or histograms with only a few lines code. But **ggplot2** also allows to create rather complex charts that combine multiple geometries, statistical transformations and maybe even data sets. On top, it is up to you how much effort you take to polish the plot. You can rely on the defaults used for data-related aesthetics (e.g. default axis breaks and color palettes) and non-data aspects (e.g. complete themes). Or you decide to modify the data-related aesthetics such as axes and color palettes and/or customize the theme elements of your graphic to your needs. 
 
 
 ## Key Components
@@ -67,7 +67,7 @@ In addition to the quality of the data, it is also important to consider the ***
 
 Usually, data visualization should be based on real data. At the same time, it is of course possible to create visualizations using hypothetical or simulated data to train yourself or experiment with new chart types. However, you should always keep in mind the origin of the data and communicate the fact clearly to your audience to avoid misleading insights. In order to truly understand and learn from data, we need to work with real, accurate, and reliable data.
 
-Depending on how you want to display your data in **{ggplot2}**, you have to prepare the data in different formats. The general recommendation is to use a "long format" or "tidy format". In a tidy-form data set, each variable is stored in a column while rows form single observations (\@ref(fig:02imgFormatLongTidyWide)). With such a data set, we can display each variable using a different visual channel, the *aesthetics*, such as position, color and shape (see \@ref(fig:02ggplotAestheticsData) A). Consequently, data in true "long format" (i.e. the variable is specified in a dedicated row) is only useful in case you want to display the variables using the same visual channel (see \@ref(fig:02ggplotAestheticsData) B). A wide format, as you might often find it in case of governmental data, often needs some reshaping except the goal is the representation of a single combination.
+Depending on how you want to display your data in **ggplot2**, you have to prepare the data in different formats. The general recommendation is to use a "long format" or "tidy format". In a tidy-form data set, each variable is stored in a column while rows form single observations (\@ref(fig:02imgFormatLongTidyWide)). With such a data set, we can display each variable using a different visual channel, the *aesthetics*, such as position, color and shape (see \@ref(fig:02ggplotAestheticsData) A). Consequently, data in true "long format" (i.e. the variable is specified in a dedicated row) is only useful in case you want to display the variables using the same visual channel (see \@ref(fig:02ggplotAestheticsData) B). A wide format, as you might often find it in case of governmental data, often needs some reshaping except the goal is the representation of a single combination.
 
 ```{r 02imgFormatLongTidyWide, echo=FALSE, fig.cap="A comparison of data arranged in a long (left) versus wide formats (right). The two different metrics by color. Groups are additionally encoded by shaded rows."}
 knitr::include_graphics("./img/table-format-long-tidy-wide.png", dpi = NA)
@@ -78,7 +78,7 @@ If you need to reshape your data, the `pivot_*()` functions from the **`{tidyr}`
 
 ### Aesthetics {#aesthetics}
 
-To visualize certain variables in your data set with **{ggplot2}**, values are mapped to visual channels called *aesthetics*. Aesthetic attributes include positional information such as x and y but also colors, fills, point shapes, line types, sizes, and levels of transparency. 
+To visualize certain variables in your data set with **ggplot2**, values are mapped to visual channels called *aesthetics*. Aesthetic attributes include positional information such as x and y but also colors, fills, point shapes, line types, sizes, and levels of transparency. 
 
 Sticking to our small data set, we could use our tidy-form data (\@ref(fig:02imgFormatLongTidyWide), top right) to create a scatter plot of the two metrics (\@ref(fig:02ggplotAestheticsData) A). However, we could also use the long-form data (\@ref(fig:02imgFormatLongTidyWide), top left) to show the metrics as a group wise dot plot and encode the metrics by shape(\@ref(fig:02ggplotAestheticsData) B).
 
@@ -121,7 +121,7 @@ The optimal shape of your data set relates to the plot you have in mind. Stick t
 
 ### Layers {#layers}
 
-Layers in **{ggplot2}** define the the statistical transformation, geometrical representation, and positional adjustment of the mapped values. In the example above, we have used a layer with geometry "point" and without any statistical transformation or positional adjustment. This specification simply means "draw the raw values as points by using the specified aesthetics of position, color, and shape". 
+Layers in **ggplot2** define the the statistical transformation, geometrical representation, and positional adjustment of the mapped values. In the example above, we have used a layer with geometry "point" and without any statistical transformation or positional adjustment. This specification simply means "draw the raw values as points by using the specified aesthetics of position, color, and shape". 
 
 Statistical transformation are responsible for calculating summaries such as counts and averages. You can also perform more advanced transformations of the data such as calculating smoothings and densities. If there is any statistical transformation specified, the calculation is applied to the data before they are plotted. 
 
@@ -264,11 +264,11 @@ Coordinate systems interpret the position aesthetics. By default, a Cartesian co
 
 Facets split variables to multiple panels, allowing to create the same visualization for several combinations. Such small multiples can be a powerful tool to show high-dimensional data, to explore big data sets, and to compare patterns across variables and groups.
 
-A special case of facets are geo-referenced small multiples: a set of visualizations is laid out in a grid that represents the original topography. Such graphics can be easily created in **{ggplot2}** with the help of the **`{geofacet}`** extension package. 
+A special case of facets are geo-referenced small multiples: a set of visualizations is laid out in a grid that represents the original topography. Such graphics can be easily created in **ggplot2** with the help of the **`{geofacet}`** extension package. 
 
 ### Themes {#themes}
 
-Themes encode all non-data elements of your plots such as the typeface, background colors, and titles and captions. **{ggplot2}** comes with a set of complete themes that can be added to your plot and further modified with high flexibility. 
+Themes encode all non-data elements of your plots such as the typeface, background colors, and titles and captions. **ggplot2** comes with a set of complete themes that can be added to your plot and further modified with high flexibility. 
 
 The modified themes can easily be turned into your own custom theme function which can be used as a component in the same way. Also, several extension packages such as **`{ggthemes}`**, **`{hrbrthemes}`** or **`{tvthemes}`** provide even more complete themes to change the look of your visualization.
 
@@ -276,7 +276,7 @@ The ability to use pre-coded themes is a great feature as it allows for a consis
 
 ## Showcase
 
-The following collection of graphics illustrate the power and versatility of **{ggplot2}**---and a range of extension packages---to create customized, partly uncommon or complex charts. All these charts are the outcome of 100% R code, making use of multiple layers and customized colors, fonts, and themes.
+The following collection of graphics illustrate the power and versatility of **ggplot2**---and a range of extension packages---to create customized, partly uncommon or complex charts. All these charts are the outcome of 100% R code, making use of multiple layers and customized colors, fonts, and themes.
 
 The visualization "Artists in the USA" shows the...[WIP]
 
@@ -296,5 +296,5 @@ Tanya Shapiro used a "jitter-pop" chart---a cmbination of jitter strips and loll
 knitr::include_graphics("./img/doctor-who-tanya-shapiro.png", dpi = NA)
 ```
 
-These are just a few examples of the many types of charts that you can create using **{ggplot2}**. With a little creativity and experimentation, you can come up with your own unique and informative visualizations or artful pieces.
+These are just a few examples of the many types of charts that you can create using **ggplot2**. With a little creativity and experimentation, you can come up with your own unique and informative visualizations or artful pieces.
 

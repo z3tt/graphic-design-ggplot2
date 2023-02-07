@@ -127,7 +127,7 @@ Furthermore, you can customize the new default theme supplied to `theme_set()`:
 
 ```{r 06themeUpdate}
 theme_set(
-  theme_minimal(base_family = "Asap SemiCondensed", base_size = 15)
+  theme_minimal(base_family = "Asap Condensed", base_size = 15)
 )
 
 theme_update(
@@ -149,7 +149,7 @@ g
 [WIP]
 
 ```{r 06customTheme}
-theme_custom <- function(base_size = 14, base_family = "Asap SemiCondensed", 
+theme_custom <- function(base_size = 14, base_family = "Asap Condensed", 
                          base_line_size = base_size/25, base_rect_size = base_size/25,
                          color_plot = "grey96", color_panel = "white") {
     theme_minimal(

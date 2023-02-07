@@ -2,16 +2,16 @@ invisible(library(ggplot2))
 invisible(library(systemfonts))
 
 systemfonts::register_variant(
-  name = "Asap Semicondensed Medium",
-  family = "Asap Semicondensed",
+  name = "Asap Condensed Medium",
+  family = "Asap Condensed",
   weight = "medium"
 )
 
-theme_custom <- function(base_size = 14, base_family = "Asap Semicondensed",
+theme_custom <- function(base_size = 14, base_family = "Asap Condensed",
                          base_line_size = base_size/22, base_rect_size = base_size/22)
 {
   family_medium <- base_family
-  if (base_family == "Asap Semicondensed") family_medium <- "Asap Semicondensed Medium"
+  if (base_family == "Asap Condensed") family_medium <- "Asap Condensed Medium"
 
 
   theme_bw(base_size = base_size, base_family = base_family,

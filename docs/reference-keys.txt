@@ -34,7 +34,7 @@ introduction
 communication
 coding
 why
-the-layered-grammar-of-graphics
+grammar
 ggplot
 components
 key-components
@@ -57,7 +57,7 @@ classes
 preparation
 dplyr
 tidyr
-a-walk-through-example
+walkthrough
 prep-ggplot
 basics
 combined-layers
@@ -92,7 +92,7 @@ working-with-layers
 geometrical-shapes
 statistical-transformations
 positional-adjustments
-customizing-color-palettes
-styling-titles-and-labels
-overview
+working-with-colors
+working-with-text
+advanced-examples
 more-to-say

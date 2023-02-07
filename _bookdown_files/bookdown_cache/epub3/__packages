@@ -2,11 +2,4 @@ ggplot2
 patchwork
 systemfonts
 palmerpenguins
-tidyverse
-tibble
-tidyr
-readr
-purrr
 dplyr
-stringr
-forcats

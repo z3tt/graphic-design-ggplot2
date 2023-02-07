@@ -61,7 +61,7 @@ There are multiple extension packages that aim to provide access to font files, 
 The default font family of ggplot themes is the default sans serif font and thus it is specific to the system you and potential collaborators are working on. You can overwrite the default by passing a font family as argument to `base_family` inside the `theme_*()` call.
 
 ```{r 05themeBaseFamily, fig.cap="All text labels now use a custom font by changing the `base_family` of the theme."}
-g + theme_minimal(base_family = "Asap SemiCondensed")
+g + theme_minimal(base_family = "Asap Condensed")
 ```
 
 If you are searching for a specific font, this is my script to return family names that can be used as inputs for text elements in **ggplot2**:
@@ -83,7 +83,7 @@ systemfonts::system_fonts() %>%
 The base size in any ggplot theme is set to 11. This number determines the individual text sizes and line widths of your theme elements. Depending on the width and height specified when saving your plot, you may want to adjust the overall size by changing the `base_size` in the `theme_*()` call. 
 
 ```{r 05themeBaseSize, fig.cap="If the text elements are too small for the desired out width and height, you can adjust them by overwriting the default `base_size`."}
-(g <- g + theme_minimal(base_family = "Asap SemiCondensed", base_size = 14))
+(g <- g + theme_minimal(base_family = "Asap Condensed", base_size = 14))
 ```
 
 
@@ -134,7 +134,7 @@ p <-
   scale_x_continuous(expand = c(0, 0), labels = scales::label_comma(), position = "top") +
   scale_y_discrete(labels = c("Autumn (Sep-Nov)", "Summer (Jun-Aug)", "Spring (Mar-May)", "Winter (Dec-Feb)")) +
   labs(x = NULL, y = NULL, title = "Reported TfL bike rents in 2015/16 per season") +
-  theme_minimal(base_family = "Asap SemiCondensed") +
+  theme_minimal(base_family = "Asap Condensed") +
   theme(panel.grid.minor = element_blank(), panel.grid.major.y = element_blank(),
         plot.margin = margin(rep(15, 4)), plot.background = element_rect(fill = NA, color = "grey85"))
 

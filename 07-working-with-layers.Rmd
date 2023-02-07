@@ -4,11 +4,11 @@ source(here::here("src", "prerequisites.R"))
 
 # (PART) How To Work with Components {-}
 
-# Working with Layers
+# Working with Layers {#working-with-layers}
 
 Internally all layers are created by the `layer()` function. A layer is by definition a "combination of data, stat and geom with a potential position adjustment" (`layer` R help). 
 
-The long list of featured `geom_*()` and `stat_*()` functions in **{ggplot2}** is thus just a set of predefined layers with default `geom`, `stat`, `position` arguments that use the data passed in the initial `ggplot()` call. The data can also be specified for each layer separately by passing it inside the respective geom or stat.
+The long list of featured `geom_*()` and `stat_*()` functions in **ggplot2** is thus just a set of predefined layers with default `geom`, `stat`, `position` arguments that use the data passed in the initial `ggplot()` call. The data can also be specified for each layer separately by passing it inside the respective geom or stat.
 
 ## Geometrical Shapes
 
