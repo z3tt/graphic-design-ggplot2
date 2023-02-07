@@ -155,6 +155,20 @@
 \makeatother
 
 \frontmatter
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -619,7 +633,7 @@ Sticking to our small data set, we could use our tidy-form data (\ref{fig:02imgF
 \begin{figure}
 \centering
 \includegraphics{bookdown_files/figure-latex/02ggplotAestheticsData-1.png}
-\caption{\label{fig:02ggplotAestheticsData}Basic ggplot outputs mapping four different variables (columns of the data set) to aesthetics, using the long-format data (\texttt{data\_long}, left plot) and wide-format data (\texttt{data\_wide}, right plot).}
+\caption{\label{fig:02ggplotAestheticsData}Basic ggplot outputs mapping four different variables (columns of the data set) to aesthetics, using the long-format data (\texttt{data\_long}, left plot) and wide-format data (\texttt{data\_wide}, right plot). Lines connecting the groups were added to make the difference between both plots more obvious.}
 \end{figure}
 
 The optimal shape of your data set relates to the plot you have in mind. Stick to the rule that any variable that you want to use for an aesthetic should have a dedicated column.

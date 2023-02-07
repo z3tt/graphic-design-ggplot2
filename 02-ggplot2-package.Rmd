@@ -82,7 +82,7 @@ To visualize certain variables in your data set with **ggplot2**, values are map
 
 Sticking to our small data set, we could use our tidy-form data (\@ref(fig:02imgFormatLongTidyWide), top right) to create a scatter plot of the two metrics (\@ref(fig:02ggplotAestheticsData) A). However, we could also use the long-form data (\@ref(fig:02imgFormatLongTidyWide), top left) to show the metrics as a group wise dot plot and encode the metrics by shape(\@ref(fig:02ggplotAestheticsData) B).
 
-```{r 02ggplotAestheticsData, echo=FALSE, fig.cap="Basic ggplot outputs mapping four different variables (columns of the data set) to aesthetics, using the long-format data (`data_long`, left plot) and wide-format data (`data_wide`, right plot)."}
+```{r 02ggplotAestheticsData, echo=FALSE, fig.cap="Basic ggplot outputs mapping four different variables (columns of the data set) to aesthetics, using the long-format data (`data_long`, left plot) and wide-format data (`data_wide`, right plot). Lines connecting the groups were added to make the difference between both plots more obvious."}
 data_long <- tibble::tibble(
   group = rep(c("A", "B", "C"), 4),
   year = rep(rep(c("2022", "2023"), each = 3), 2),
@@ -97,17 +97,20 @@ data_tidy <- tidyr::pivot_wider(
   names_prefix = "metric_"
 )
 
-pl <- ggplot(data_long, aes(x = group, y = value, shape = year, color = metric)) +
+pt <- ggplot(data_tidy, aes(x = metric_x, y = metric_y, shape = year, color = group)) +
   layer(geom = "point", stat = "identity", position = "identity", params = list(size = 3.5)) +
   ## or `geom_point(size = 3.5)` with stat = "identity" and position = "identity" as default
   ## or `stat_identity(size = 3.5)` with geom = "point" and position = "identity" as default
-  scale_color_manual(values = colors[c(1,3)]) +
-  theme(axis.text.y = element_text(family = "Spline Sans Mono"))
-
-pt <- ggplot(data_tidy, aes(x = metric_x, y = metric_y, shape = year, color = group)) +
-  layer(geom = "point", stat = "identity", position = "identity", params = list(size = 3.5)) +
+  geom_line(aes(group = group), show.legend = FALSE) +
   scale_color_manual(values = colors[c(2,4,5)]) +
-  theme(axis.text = element_text(family = "Spline Sans Mono"))
+  theme(legend.justification = "top")
+
+pl <- ggplot(data_long, aes(x = group, y = value, shape = year, color = metric)) +
+  layer(geom = "point", stat = "identity", position = "identity", params = list(size = 3.5)) +
+  geom_line(aes(group = interaction(group, metric)), show.legend = FALSE) +
+  scale_color_manual(values = colors[c(1,3)]) +
+  guides(shape = guide_legend(order = 1), color = guide_legend(order = 2)) +
+  theme(legend.justification = "top")
 
 pt + plot_spacer() + pl +
   plot_layout(widths = c(1, .05, 1)) +
