@@ -108,7 +108,7 @@ Instead of relying on the absolute path, which likely differs between users and 
 
 [^02-get-started-2]: A detailed reasoning why you should not use `setwd()` is provided in [Chapter 2 of "What they forgot you to teach about R"](https://rstats.wtf/project-oriented-workflow.html).
 
-### Project-oriented Workflows {#workflows}
+### Project-Oriented Workflows {#workflows}
 
 Preferably, we do not want to rely on absolute paths and the default or manually set working directories. So-called project-oriented workflows aim to organize each piece of work in a self-contained, bundled directory. This directory includes all relevant files needed for the project, such as scripts and images. By ensuring that paths are set relative and in a way that they are understood by any operating system, we guarantee that the project will run on any machine and can easily moved around.
 

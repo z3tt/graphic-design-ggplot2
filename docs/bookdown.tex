@@ -224,7 +224,7 @@ The blog entry by Zev Ross was not updated since January 2016, so I decided to a
 On a sunny day in July 2021, this tutorial served as the starting point for the book you hold in your hands. Plans changed a lot over the time and the book became something unique, that is loosely based on the tutorial and a 2-day workshop I was honored to teach at the rstudio::conf(2022) in Washington DC. In addition, I decided to include more advanced tips and insights in the process of creating custom, engaging data visualizations with \textbf{ggplot2}. I hope you enjoy it as much as I enjoyed learning and sharing ggplot wizardry!
 
 \hypertarget{why-read-this-book}{%
-\section*{Why read this book}\label{why-read-this-book}}
+\section*{Why Read This Book}\label{why-read-this-book}}
 
 
 Often, people that use common graphic design and charting tools or have basic experience with \textbf{ggplot2} cannot believe what one can achieve with this graphics library---and I want to show you how one can create a publication-ready graphic that goes beyond the traditional scientific scatter or box plot.
@@ -252,7 +252,7 @@ Among other things, the book covers the following:
 \end{itemize}
 
 \hypertarget{how-to-read-this-book}{%
-\section*{How to read this book}\label{how-to-read-this-book}}
+\section*{How to Read This Book}\label{how-to-read-this-book}}
 
 
 This book can either serve as a textbook or as a reference. Depending on your skill level, some codes and tricks may already be known or not helpful at the moment. In case you want to directly jump to the chapters you find most promising or helpful, here are some suggestions:
@@ -278,7 +278,6 @@ This book can either serve as a textbook or as a reference. Depending on your sk
 To run any of the materials locally on your own machine, you will need the following:
 
 \begin{itemize}
-\tightlist
 \item
   A recent version of R (download from \href{https://cloud.r-project.org/}{here})
 \item
@@ -328,8 +327,10 @@ To install all packages in one go, run the following code in the R console:
 To get a bundle of all typefaces, download the zip file via \href{}{ADD LINK}.
 
 \hypertarget{software-information-and-conventions}{%
-\section*{Software information and conventions}\label{software-information-and-conventions}}
+\section*{Software Information and Conventions}\label{software-information-and-conventions}}
 
+
+Package names are in \textbf{bold text} and wrapped into curly brackets, e.g.~\textbf{ggplot2}. Inline code and file names are formatted in a \texttt{monospaced\ typewriter\ font}. Function names are followed by parentheses as in \texttt{ggplot2::ggplot()}.
 
 The book was written with the \textbf{knitr}\index{knitr} package \citep{xie2015} and the \textbf{bookdown}\index{bookdown} package \citep{R-bookdown} with the following setup:
 
@@ -365,10 +366,8 @@ The book was written with the \textbf{knitr}\index{knitr} package \citep{xie2015
 ##   yaml_2.3.6
 \end{verbatim}
 
-Package names are in \textbf{bold text} and wrapped into curly brackets, e.g.~\textbf{ggplot2}. Inline code and file names are formatted in a \texttt{monospaced\ typewriter\ font}. Function names are followed by parentheses as in \texttt{ggplot2::ggplot()}.
-
-\hypertarget{acknowledgments}{%
-\section*{Acknowledgments}\label{acknowledgments}}
+\hypertarget{acknowledgements}{%
+\section*{Acknowledgements}\label{acknowledgements}}
 
 
 Thanks to David Grubbs, Alberto Cairo, Emily Riederer, Oscar Baruffa, Malcolm Barrett, and Tanya Shapiro for all your constructive feedback and your patience and willingness to discuss the tiny details with me.
@@ -764,7 +763,7 @@ Note that the syntax of the path differs between operating systems. While in Win
 Instead of relying on the absolute path, which likely differs between users and operating systems, you can also use relative paths. Those are specified with a leading dot, e.g.~as \texttt{./data/london-bikes.csv}, and look for the file relative from the working directory. You can retrieve and change your working directory with \texttt{getwd()} and \texttt{setwd()}. However, relying on the default working directory or setting a custom one will likely cause problems the moment someone else wants to run your code\footnote{A detailed reasoning why you should not use \texttt{setwd()} is provided in \href{https://rstats.wtf/project-oriented-workflow.html}{Chapter 2 of ``What they forgot you to teach about R''}.}.
 
 \hypertarget{workflows}{%
-\subsection{Project-oriented Workflows}\label{workflows}}
+\subsection{Project-Oriented Workflows}\label{workflows}}
 
 Preferably, we do not want to rely on absolute paths and the default or manually set working directories. So-called project-oriented workflows aim to organize each piece of work in a self-contained, bundled directory. This directory includes all relevant files needed for the project, such as scripts and images. By ensuring that paths are set relative and in a way that they are understood by any operating system, we guarantee that the project will run on any machine and can easily moved around.
 
@@ -1224,7 +1223,7 @@ In case you need to reshape a data set to make it work with \textbf{ggplot2}, yo
 {[}WIP{]} lubridate, stringr, \ldots{}
 
 \hypertarget{walkthrough}{%
-\chapter{A Walk-through Example}\label{walkthrough}}
+\chapter{A Walk-Through Example}\label{walkthrough}}
 
 To illustrate the utility and flexibility of \textbf{ggplot2} to create complex, well-designed visualizations with a handful of components, we are going to create a set of four plots. For each combination of year and time of the day, we draw a scatter plot of bike rents including a linear fitting to show overall trends with feels-like temperature.
 

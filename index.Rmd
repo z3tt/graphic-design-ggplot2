@@ -48,7 +48,7 @@ The blog entry by Zev Ross was not updated since January 2016, so I decided to a
 On a sunny day in July 2021, this tutorial served as the starting point for the book you hold in your hands. Plans changed a lot over the time and the book became something unique, that is loosely based on the tutorial and a 2-day workshop I was honored to teach at the rstudio::conf(2022) in Washington DC. In addition, I decided to include more advanced tips and insights in the process of creating custom, engaging data visualizations with **ggplot2**. I hope you enjoy it as much as I enjoyed learning and sharing ggplot wizardry!
 
 
-## Why read this book {-}
+## Why Read This Book {-}
 
 Often, people that use common graphic design and charting tools or have basic experience with **ggplot2** cannot believe what one can achieve with this graphics library—and I want to show you how one can create a publication-ready graphic that goes beyond the traditional scientific scatter or box plot.
 
@@ -66,7 +66,7 @@ Among other things, the book covers the following:
 *	Reference implementations illustrating code solutions and design choices
 
 
-## How to read this book {-}
+## How to Read This Book {-}
 
 This book can either serve as a textbook or as a reference. Depending on your skill level, some codes and tricks may already be known or not helpful at the moment. In case you want to directly jump to the chapters you find most promising or helpful, here are some suggestions:
 
@@ -80,14 +80,17 @@ This book can either serve as a textbook or as a reference. Depending on your sk
 
 To run any of the materials locally on your own machine, you will need the following:
 
-* A recent version of R (download from [here](https://cloud.r-project.org/)) 
+* A recent version of R (download from [here](https://cloud.r-project.org/))
+
 * Preferably an *Integrated Development Environment* (IDE) to store scripts and run code, e.g. RStudio (download from [here](https://posit.co/download/rstudio-desktop/)) or Visual Studio Code (download from [here](https://code.visualstudio.com/download))
+
 * The following R packages installed:
   + [**ggplot2**](https://ggplot2.tidyverse.org/) 
   + A set of other **tidyverse** packages:<br>[**readr**](https://readr.tidyverse.org/), [**tibble**](https://tibble.tidyverse.org/), [**dplyr**](https://dplyr.tidyverse.org/), [**tidyr**](https://tidyr.tidyverse.org/), [**forcats**](https://forcats.tidyverse.org/), [**stringr**](https://stringr.tidyverse.org/), [**lubridate**](https://lubriate.tidyverse.org/)
   + Some **ggplot2** extension packages:<br>[**ggforce**](https://ggforce.data-imaginist.com/), [**ggrepel**](https://ggrepel.slowkow.com/), [**ggtext**](https://wilkelab.org/ggtext/), [**patchwork**](https://patchwork.data-imaginist.com/)
   + Packages providing color palettes and functionality:<br>[**colorspace**](https://colorspace.r-forge.r-project.org/), [**scico**](https://github.com/thomasp85/scico), [**rcartocolor**](https://jakubnowosad.com/rcartocolor/)
   + A few other packages providing useful functionality:<br>[**magick**](https://docs.ropensci.org/magick/), [**ragg**](https://ragg.r-lib.org/) (includes [**systemfonts**](https://systemfonts.r-lib.org/)), [**sf**](https://r-spatial.github.io/sf/)
+  
 * The following typefaces installed on your system:
     + [Asap Condensed](https://fonts.google.com/specimen/Asap+Condensed)
     + [Spline Sans](https://fonts.google.com/specimen/Spline+Sans)
@@ -105,7 +108,9 @@ install.packages(c(
 
 To get a bundle of all typefaces, download the zip file via [ADD LINK]().
 
-## Software information and conventions {-}
+## Software Information and Conventions {-}
+
+Package names are in **bold text** and wrapped into curly brackets, e.g. **ggplot2**. Inline code and file names are formatted in a `monospaced typewriter font`. Function names are followed by parentheses as in `ggplot2::ggplot()`. 
 
 The book was written with the **knitr**\index{knitr} package [@xie2015] and the **bookdown**\index{bookdown} package [@R-bookdown] with the following setup:
 
@@ -113,10 +118,8 @@ The book was written with the **knitr**\index{knitr} package [@xie2015] and the 
 xfun::session_info()
 ```
 
-Package names are in **bold text** and wrapped into curly brackets, e.g. **ggplot2**. Inline code and file names are formatted in a `monospaced typewriter font`. Function names are followed by parentheses as in `ggplot2::ggplot()`. 
 
-
-## Acknowledgments {-}
+## Acknowledgements {-}
 
 Thanks to David Grubbs, Alberto Cairo, Emily Riederer, Oscar Baruffa, Malcolm Barrett, and Tanya Shapiro for all your constructive feedback and your patience and willingness to discuss the tiny details with me.  
   

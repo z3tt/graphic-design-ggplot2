@@ -24,13 +24,13 @@
 \contentsline {section}{\numberline {3.1}The Data Set}{17}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Working in R}{19}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Import Data}{19}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Project-oriented Workflows}{20}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.2}Project-Oriented Workflows}{20}{subsection.3.2.2}%
 \contentsline {subsection}{\numberline {3.2.3}Inspect the Data}{21}{subsection.3.2.3}%
 \contentsline {subsection}{\numberline {3.2.4}Data Types}{21}{subsection.3.2.4}%
 \contentsline {subsection}{\numberline {3.2.5}Data Preparation}{24}{subsection.3.2.5}%
 \contentsline {subsubsection}{\numberline {3.2.5.1}Data Wrangling with the \textbf {dplyr} Package}{25}{subsubsection.3.2.5.1}%
 \contentsline {subsubsection}{\numberline {3.2.5.2}Reshaping Data with the \textbf {tidyr} Package}{27}{subsubsection.3.2.5.2}%
-\contentsline {chapter}{\numberline {4}A Walk-through Example}{31}{chapter.4}%
+\contentsline {chapter}{\numberline {4}A Walk-Through Example}{31}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Prerequisites}{31}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Create a Basic ggplot}{31}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Combine Multiple Layers}{32}{section.4.3}%
