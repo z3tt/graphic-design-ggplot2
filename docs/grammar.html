@@ -290,28 +290,28 @@ div.csl-indent {
 </blockquote>
 <p>The most important insight from this technical description is that</p>
 <ol style="list-style-type: decimal">
-<li>we map variables to aesthetics, i.e. defining the visual channels used to represent the variables (e.g. position, color, shape)</li>
-<li>we use graphical primitives, i.e. definining one or multiple forms to represent the variables (e.g. lines, points, rectangles)</li>
+<li><strong><em>we map variables to aesthetics</em></strong>, i.e. defining the visual channels used to represent the variables (e.g. position, color, shape)</li>
+<li><strong><em>we use graphical primitives</em></strong>, i.e. definining one or multiple forms to represent the variables (e.g. lines, points, rectangles)</li>
 </ol>
-<p>Both are important when writing <strong>ggplot2</strong> code and together with the provided data form the key components of a ggplot.</p>
+<p>Both are important when writing <strong>ggplot2</strong> code and together with the provided data they are the key components of a ggplot. Additional components allow to control the visual appearance, the layout, and the coordinate system.</p>
 </div>
 <div id="components" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> The Components of a ggplot<a href="grammar.html#components" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In general, a ggplot is built up from the following components:</p>
 <ol style="list-style-type: decimal">
-<li><strong>Data</strong>:<br />
+<li><strong><em>Data</em></strong>:<br />
 The raw data that you want to plot.</li>
-<li><strong>Aesthetics</strong>:<br />
+<li><strong><em>Aesthetics</em></strong>:<br />
 The mapping of variables to visual properties, such as position, color, size, shape, and transparency.</li>
-<li><strong>Layers:</strong><br />
+<li><strong><em>Layers:</em></strong><br />
 The representation of the data on the plot panel which is a combination of the <em>geometric shapes</em> representing the data and the <em>statistical transformation</em> of the data, such as fitted curves, counts, and data summaries.</li>
-<li><strong>Scales</strong>:<br />
+<li><strong><em>Scales</em></strong>:<br />
 The control of the mapping between the data and the aesthetic dimensions, such as data range to positional aesthetics or qualitative or quantitative values to colors.</li>
-<li><strong>Coordinate system</strong>:<br />
+<li><strong><em>Coordinate system</em></strong>:<br />
 The transformation used for mapping data coordinates into the plane of the graphic.</li>
-<li><strong>Facets</strong>:<br />
+<li><strong><em>Facets</em></strong>:<br />
 The arrangement of the data into a grid of plots (also known as <em>trellis</em> or <em>lattice plot</em>, or simply <em>small multiples</em>).</li>
-<li><strong>Visual themes</strong>:<br />
+<li><strong><em>Visual themes</em></strong>:<br />
 The overall visual (non-data) details of a plot, such as background, grid lines, axes, typefaces, sizes, and colors.</li>
 </ol>
 <p class="note">
@@ -336,7 +336,7 @@ The overall visual (non-data) details of a plot, such as background, grid lines,
 FIGURE 2.1: A comparison of data arranged in a long (left) versus wide formats (right). The two different metrics by color. Groups are additionally encoded by shaded rows.
 </p>
 </div>
-<p>If you need to reshape your data, the <code>pivot_*()</code> functions from the <strong><code>{tidyr}</code></strong> package are handy. Use <code>pivot_longer()</code> to convert a wide data set into the long or tidy format. To go the other direction, use the <code>pivot_wider()</code>. You can find an example in chapter <a href="get-started.html#tidyr">3.2.5.2</a>.</p>
+<p>If you need to reshape your data, the <code>pivot_*()</code> functions from the <strong>tidyr</strong> package are handy. Use <code>pivot_longer()</code> to convert a wide data set into the long or tidy format. To go the other direction, use the <code>pivot_wider()</code>. You can find an example in chapter <a href="get-started.html#tidyr">3.2.5.2</a>.</p>
 </div>
 <div id="aesthetics" class="section level3 hasAnchor" number="2.3.2">
 <h3><span class="header-section-number">2.3.2</span> Aesthetics<a href="grammar.html#aesthetics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -395,12 +395,12 @@ FIGURE 2.4: Three different visualizations showing the distribution of body mass
 <div id="facets" class="section level3 hasAnchor" number="2.4.3">
 <h3><span class="header-section-number">2.4.3</span> Facets<a href="grammar.html#facets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Facets split variables to multiple panels, allowing to create the same visualization for several combinations. Such small multiples can be a powerful tool to show high-dimensional data, to explore big data sets, and to compare patterns across variables and groups.</p>
-<p>A special case of facets are geo-referenced small multiples: a set of visualizations is laid out in a grid that represents the original topography. Such graphics can be easily created in <strong>ggplot2</strong> with the help of the <strong><code>{geofacet}</code></strong> extension package.</p>
+<p>A special case of facets are geo-referenced small multiples: a set of visualizations is laid out in a grid that represents the original topography. Such graphics can be easily created in <strong>ggplot2</strong> with the help of the <strong>geofacet</strong> extension package.</p>
 </div>
 <div id="themes" class="section level3 hasAnchor" number="2.4.4">
 <h3><span class="header-section-number">2.4.4</span> Themes<a href="grammar.html#themes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Themes encode all non-data elements of your plots such as the typeface, background colors, and titles and captions. <strong>ggplot2</strong> comes with a set of complete themes that can be added to your plot and further modified with high flexibility.</p>
-<p>The modified themes can easily be turned into your own custom theme function which can be used as a component in the same way. Also, several extension packages such as <strong><code>{ggthemes}</code></strong>, <strong><code>{hrbrthemes}</code></strong> or <strong><code>{tvthemes}</code></strong> provide even more complete themes to change the look of your visualization.</p>
+<p>The modified themes can easily be turned into your own custom theme function which can be used as a component in the same way. Also, several extension packages such as <strong>ggthemes</strong>, <strong>hrbrthemes</strong> or <strong>tvthemes</strong> provide even more complete themes to change the look of your visualization.</p>
 <p>The ability to use pre-coded themes is a great feature as it allows for a consistent and corporate style while saving time to write the same code over and over again.</p>
 </div>
 </div>

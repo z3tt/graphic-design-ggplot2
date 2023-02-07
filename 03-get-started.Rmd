@@ -360,7 +360,7 @@ bikes_summarized %>%
 
 #### Reshaping data with the {tidyr} package {#tidyr}
 
-In case you need to reshape a data set to make it work with **ggplot2**, you can use the functions `pivot_longer()` and `pivot_wider()` from the [**`{tidyr}`** package](https://tidyr.tidyverse.org/) [@tidyr] to move from one format to the other. Let's illustrate their behavior using one of the toy data sets used in section 
+In case you need to reshape a data set to make it work with **ggplot2**, you can use the functions `pivot_longer()` and `pivot_wider()` from the [**tidyr** package](https://tidyr.tidyverse.org/) [@tidyr] to move from one format to the other. Let's illustrate their behavior using one of the toy data sets used in section 
 
 ```{r 03pivotExamples}
 ## create long-format data as showcased in section 2

@@ -155,20 +155,6 @@
 \makeatother
 
 \frontmatter
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
-\usepackage{xcolor}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -495,7 +481,7 @@ While some decisions might (and should) be made before crafting the visualizatio
 
 As data visualizations involve the quantitative representation of variables, an environment that allows to handle, wrangle and quantify data is preferential. Classical design software is great to create vector-based graphics of all kinds but must often be paired with a `visualization tool' if the data and/or the chart type becomes more complex. While there are many tools that allow to quickly create specific, predefined chart types (e.g.~DataWrapper, Flourish, RAWgraphs), often also with beautiful and very sensible defaults, such chart builders usually do not provide full flexibility.
 
-By using a computational, code-driven approach we can combine all steps related to data visualization in the same environment: from the data import and cleaning to the precise and flexible encoding of quantitative information with custom designs. Programming languages such as JavaScript, Python, or R have a much steeper learning curve but at the same time allow users to create almost any visualization one can think of. Furthermore, they come with several \emph{extension libraries} (e.g.~D3.js, echarts, Vega, Matplotlib, ggplot2) that provide additional approaches or add more opportunities to existing code.
+By using a computational, code-driven approach we can combine all steps related to data visualization in the same environment: from the data import and cleaning to the precise and flexible encoding of quantitative information with custom designs. Programming languages such as JavaScript, Python, or R have a much steeper learning curve than chart builders but at the same time allow users to create almost any visualization one can think of. Furthermore, they come with several \emph{extension libraries} (e.g.~D3.js, echarts, Vega, Matplotlib, ggplot2) that provide additional approaches or add more opportunities to existing code.
 
 Data visualizations that are generated with code have several other benefits. The \emph{reproducibility} of code makes the process more efficient by being able to update the data or to use the code as a template for future projects. The \emph{transparency} of coded (and well-documented) data workflows increases trust. The \emph{scalability} of code allows to produce the graphics for multiple data sets and use cases.
 
@@ -506,7 +492,7 @@ With that in mind, knowing how to code visualizations is likely beneficial in an
 \hypertarget{why}{%
 \section{\texorpdfstring{Why R and \textbf{ggplot2}}{Why R and ggplot2}}\label{why}}
 
-As a computational ecologist, I've learned and used a range of different tools and programming languages for various purposes such as data wrangling, statistical analyses, and model building. The open-source language R was and is the programming language most widely used by ecologists to handle and analyze ecological data \citep{sciaini2018}. Consequently, I was \emph{of course} using R in my daily life as an scientific researcher.
+As a computational ecologist, I've learned and used a range of different tools and programming languages for various purposes such as data wrangling, statistical analyses, and model building. The open-source language R was and is the programming language most widely used by ecologists to handle and analyze ecological data \citep{sciaini2018}. Consequently, I was \emph{of course} using R in my daily life as a scientific researcher.
 
 Nowadays, R plays a crucial part in many data-related workflows, no matter if for scientific, educational, or industrial use cases. Thanks to the ever growing R community and the rich collection of libraries that add additional functionality and simplify workflows, R is an attractive programming language that has outgrown of its original purpose: statistical analyses. Today, R can serve as tool to generate automated reports, develop stand-alone web apps, and draft presentation slides, books, and web pages. And to design high-level, publication--ready visualizations.
 
@@ -521,7 +507,7 @@ Even though R---similar to most programming languages---has a steep learning cur
 \item
   Script-based workflows instead of \emph{point--and--click} approaches allow for reproducibility---which means you can run the code again after receiving new data or create thousands of visualizations for various data sets in no time.
 \item
-  Sharing code is becoming the golden standard in many fields and thus facilitates transparency and credibility as well as modification and creative advancement.
+  Sharing code is becoming the golden standard in many fields and thus facilitates transparency and credibility as well as reuse and creative advancement.
 \item
   A helpful community and many free resources simplify learning experiences and the search for solutions.
 \item
@@ -553,12 +539,12 @@ The most important insight from this technical description is that
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  we map variables to aesthetics, i.e.~defining the visual channels used to represent the variables (e.g.~position, color, shape)
+  \textbf{\emph{we map variables to aesthetics}}, i.e.~defining the visual channels used to represent the variables (e.g.~position, color, shape)
 \item
-  we use graphical primitives, i.e.~definining one or multiple forms to represent the variables (e.g.~lines, points, rectangles)
+  \textbf{\emph{we use graphical primitives}}, i.e.~definining one or multiple forms to represent the variables (e.g.~lines, points, rectangles)
 \end{enumerate}
 
-Both are important when writing \textbf{ggplot2} code and together with the provided data form the key components of a ggplot.
+Both are important when writing \textbf{ggplot2} code and together with the provided data they are the key components of a ggplot. Additional components allow to control the visual appearance, the layout, and the coordinate system.
 
 \hypertarget{components}{%
 \section{The Components of a ggplot}\label{components}}
@@ -569,25 +555,25 @@ In general, a ggplot is built up from the following components:
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{Data}:\\
+  \textbf{\emph{Data}}:\\
   The raw data that you want to plot.
 \item
-  \textbf{Aesthetics}:\\
+  \textbf{\emph{Aesthetics}}:\\
   The mapping of variables to visual properties, such as position, color, size, shape, and transparency.
 \item
-  \textbf{Layers:}\\
+  \textbf{\emph{Layers:}}\\
   The representation of the data on the plot panel which is a combination of the \emph{geometric shapes} representing the data and the \emph{statistical transformation} of the data, such as fitted curves, counts, and data summaries.
 \item
-  \textbf{Scales}:\\
+  \textbf{\emph{Scales}}:\\
   The control of the mapping between the data and the aesthetic dimensions, such as data range to positional aesthetics or qualitative or quantitative values to colors.
 \item
-  \textbf{Coordinate system}:\\
+  \textbf{\emph{Coordinate system}}:\\
   The transformation used for mapping data coordinates into the plane of the graphic.
 \item
-  \textbf{Facets}:\\
+  \textbf{\emph{Facets}}:\\
   The arrangement of the data into a grid of plots (also known as \emph{trellis} or \emph{lattice plot}, or simply \emph{small multiples}).
 \item
-  \textbf{Visual themes}:\\
+  \textbf{\emph{Visual themes}}:\\
   The overall visual (non-data) details of a plot, such as background, grid lines, axes, typefaces, sizes, and colors.
 \end{enumerate}
 
@@ -621,7 +607,7 @@ Depending on how you want to display your data in \textbf{ggplot2}, you have to 
 \caption{\label{fig:02imgFormatLongTidyWide}A comparison of data arranged in a long (left) versus wide formats (right). The two different metrics by color. Groups are additionally encoded by shaded rows.}
 \end{figure}
 
-If you need to reshape your data, the \texttt{pivot\_*()} functions from the \textbf{\texttt{\{tidyr\}}} package are handy. Use \texttt{pivot\_longer()} to convert a wide data set into the long or tidy format. To go the other direction, use the \texttt{pivot\_wider()}. You can find an example in chapter \ref{tidyr}.
+If you need to reshape your data, the \texttt{pivot\_*()} functions from the \textbf{tidyr} package are handy. Use \texttt{pivot\_longer()} to convert a wide data set into the long or tidy format. To go the other direction, use the \texttt{pivot\_wider()}. You can find an example in chapter \ref{tidyr}.
 
 \hypertarget{aesthetics}{%
 \subsection{Aesthetics}\label{aesthetics}}
@@ -699,14 +685,14 @@ Coordinate systems interpret the position aesthetics. By default, a Cartesian co
 
 Facets split variables to multiple panels, allowing to create the same visualization for several combinations. Such small multiples can be a powerful tool to show high-dimensional data, to explore big data sets, and to compare patterns across variables and groups.
 
-A special case of facets are geo-referenced small multiples: a set of visualizations is laid out in a grid that represents the original topography. Such graphics can be easily created in \textbf{ggplot2} with the help of the \textbf{\texttt{\{geofacet\}}} extension package.
+A special case of facets are geo-referenced small multiples: a set of visualizations is laid out in a grid that represents the original topography. Such graphics can be easily created in \textbf{ggplot2} with the help of the \textbf{geofacet} extension package.
 
 \hypertarget{themes}{%
 \subsection{Themes}\label{themes}}
 
 Themes encode all non-data elements of your plots such as the typeface, background colors, and titles and captions. \textbf{ggplot2} comes with a set of complete themes that can be added to your plot and further modified with high flexibility.
 
-The modified themes can easily be turned into your own custom theme function which can be used as a component in the same way. Also, several extension packages such as \textbf{\texttt{\{ggthemes\}}}, \textbf{\texttt{\{hrbrthemes\}}} or \textbf{\texttt{\{tvthemes\}}} provide even more complete themes to change the look of your visualization.
+The modified themes can easily be turned into your own custom theme function which can be used as a component in the same way. Also, several extension packages such as \textbf{ggthemes}, \textbf{hrbrthemes} or \textbf{tvthemes} provide even more complete themes to change the look of your visualization.
 
 The ability to use pre-coded themes is a great feature as it allows for a consistent and corporate style while saving time to write the same code over and over again.
 
@@ -1211,7 +1197,7 @@ In a next step, we regroup our data to add a column with shares of nightly bike 
 \hypertarget{tidyr}{%
 \subsubsection{Reshaping data with the \{tidyr\} package}\label{tidyr}}
 
-In case you need to reshape a data set to make it work with \textbf{ggplot2}, you can use the functions \texttt{pivot\_longer()} and \texttt{pivot\_wider()} from the \href{https://tidyr.tidyverse.org/}{\textbf{\texttt{\{tidyr\}}} package} \citep{tidyr} to move from one format to the other. Let's illustrate their behavior using one of the toy data sets used in section
+In case you need to reshape a data set to make it work with \textbf{ggplot2}, you can use the functions \texttt{pivot\_longer()} and \texttt{pivot\_wider()} from the \href{https://tidyr.tidyverse.org/}{\textbf{tidyr} package} \citep{tidyr} to move from one format to the other. Let's illustrate their behavior using one of the toy data sets used in section
 
 \begin{Shaded}
 \begin{Highlighting}[]

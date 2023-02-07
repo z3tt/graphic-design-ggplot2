@@ -18,28 +18,28 @@ When looking into the package description of the [**ggplot2** package](https://g
 
 The most important insight from this technical description is that 
 
-1. we map variables to aesthetics, i.e. defining the visual channels used to represent the variables (e.g. position, color, shape)
-2. we use graphical primitives, i.e. definining one or multiple forms to represent the variables (e.g. lines, points, rectangles)
+1. ***we map variables to aesthetics***, i.e. defining the visual channels used to represent the variables (e.g. position, color, shape)
+2. ***we use graphical primitives***, i.e. definining one or multiple forms to represent the variables (e.g. lines, points, rectangles)
 
-Both are important when writing **ggplot2** code and together with the provided data form the key components of a ggplot. 
+Both are important when writing **ggplot2** code and together with the provided data they are the key components of a ggplot. Additional components allow to control the visual appearance, the layout, and the coordinate system.
 
 ## The Components of a ggplot {#components}
 
 In general, a ggplot is built up from the following components:
 
-1.  **Data**:\
+1.  ***Data***:\
     The raw data that you want to plot.
-2.  **Aesthetics**:\
+2.  ***Aesthetics***:\
     The mapping of variables to visual properties, such as position, color, size, shape, and transparency.
-3.  **Layers:**\
+3.  ***Layers:***\
     The representation of the data on the plot panel which is a combination of the *geometric shapes*  representing the data and the *statistical transformation* of the data, such as fitted curves, counts, and data summaries.
-4.  **Scales**:\
+4.  ***Scales***:\
     The control of the mapping between the data and the aesthetic dimensions, such as data range to positional aesthetics or qualitative or quantitative values to colors.
-5.  **Coordinate system**:\
+5.  ***Coordinate system***:\
     The transformation used for mapping data coordinates into the plane of the graphic.
-6.  **Facets**:\
+6.  ***Facets***:\
     The arrangement of the data into a grid of plots (also known as *trellis* or *lattice plot*, or simply *small multiples*).
-7.  **Visual themes**:\
+7.  ***Visual themes***:\
     The overall visual (non-data) details of a plot, such as background, grid lines, axes, typefaces, sizes, and colors.
 
 <p class="note">
@@ -73,7 +73,7 @@ Depending on how you want to display your data in **ggplot2**, you have to prepa
 knitr::include_graphics("./img/table-format-long-tidy-wide.png", dpi = NA)
 ```
 
-If you need to reshape your data, the `pivot_*()` functions from the **`{tidyr}`** package are handy. Use `pivot_longer()` to  convert a wide data set into the long or tidy format. To go the other direction, use the `pivot_wider()`. You can find an example in chapter \@ref(tidyr).
+If you need to reshape your data, the `pivot_*()` functions from the **tidyr** package are handy. Use `pivot_longer()` to  convert a wide data set into the long or tidy format. To go the other direction, use the `pivot_wider()`. You can find an example in chapter \@ref(tidyr).
 
 
 ### Aesthetics {#aesthetics}
@@ -267,13 +267,13 @@ Coordinate systems interpret the position aesthetics. By default, a Cartesian co
 
 Facets split variables to multiple panels, allowing to create the same visualization for several combinations. Such small multiples can be a powerful tool to show high-dimensional data, to explore big data sets, and to compare patterns across variables and groups.
 
-A special case of facets are geo-referenced small multiples: a set of visualizations is laid out in a grid that represents the original topography. Such graphics can be easily created in **ggplot2** with the help of the **`{geofacet}`** extension package. 
+A special case of facets are geo-referenced small multiples: a set of visualizations is laid out in a grid that represents the original topography. Such graphics can be easily created in **ggplot2** with the help of the **geofacet** extension package. 
 
 ### Themes {#themes}
 
 Themes encode all non-data elements of your plots such as the typeface, background colors, and titles and captions. **ggplot2** comes with a set of complete themes that can be added to your plot and further modified with high flexibility. 
 
-The modified themes can easily be turned into your own custom theme function which can be used as a component in the same way. Also, several extension packages such as **`{ggthemes}`**, **`{hrbrthemes}`** or **`{tvthemes}`** provide even more complete themes to change the look of your visualization.
+The modified themes can easily be turned into your own custom theme function which can be used as a component in the same way. Also, several extension packages such as **ggthemes**, **hrbrthemes** or **tvthemes** provide even more complete themes to change the look of your visualization.
 
 The ability to use pre-coded themes is a great feature as it allows for a consistent and corporate style while saving time to write the same code over and over again. 
 
