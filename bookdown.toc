@@ -34,8 +34,8 @@
 \contentsline {section}{\numberline {4.1}Prerequisites}{31}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Create a Basic ggplot}{31}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Combine Multiple Layers}{32}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Mapping Aesthetics in Layers}{33}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Setting Properties in Layers}{34}{section.4.5}%
+\contentsline {section}{\numberline {4.4}Mapping Aesthetics}{33}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Setting Properties}{34}{section.4.5}%
 \contentsline {section}{\numberline {4.6}Create Small Multiples}{35}{section.4.6}%
 \contentsline {section}{\numberline {4.7}Change the Axis Scaling}{36}{section.4.7}%
 \contentsline {section}{\numberline {4.8}Use a Custom Color Palette}{38}{section.4.8}%

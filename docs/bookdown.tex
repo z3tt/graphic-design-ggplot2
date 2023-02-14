@@ -155,6 +155,20 @@
 \makeatother
 
 \frontmatter
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -182,7 +196,7 @@
 \makeatother
 \subtitle{Create Beautiful and Engaging Data Visualizations in R}
 \author{Cédric Scherer}
-\date{2023-02-07}
+\date{2023-02-14}
 
 \begin{document}
 \maketitle
@@ -1286,7 +1300,7 @@ Omitting the arguments \texttt{data} and \texttt{mapping} saves you a ton of typ
 \hypertarget{combined-layers}{%
 \section{Combine Multiple Layers}\label{combined-layers}}
 
-One can also add several layers, specified as either geometric shapes starting with \texttt{geom*()} or statistical transformations starting with \texttt{stat\_*()} (\ref{fig:04ggplotBasicSmooth})---and this is where the magic and fun starts!
+One can also add several layers, specified as either geometric shapes starting with \texttt{geom\_*()} or statistical transformations starting with \texttt{stat\_*()} (\ref{fig:04ggplotBasicSmooth})---and this is where the magic and fun starts!
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1306,7 +1320,7 @@ One can also add several layers, specified as either geometric shapes starting w
 Both \texttt{geom\_*()} and \texttt{stat\_*()} internally make use of the same function \texttt{layer()} and pass default inputs for the \texttt{geom}, \texttt{stat}, and \texttt{position} arguments. Basically the use of geoms versus stats is only the perspective and personal preference: when specifying \texttt{geom\_*()} we focus on the shape representing the variables; using \texttt{stat\_*()} highlights the transformation applied to the variables. More information on the different geometries is provided in Chapter XYZ and a deep-dive into the power of statistical transformation is Chapter XYZ.
 
 \hypertarget{map-aesthetics}{%
-\section{Mapping Aesthetics in Layers}\label{map-aesthetics}}
+\section{Mapping Aesthetics}\label{map-aesthetics}}
 
 By looking at these scatter plots, we can actually identify two different trends for day and night. We can highlight both groups by mapping the \texttt{day\_night} variable to \texttt{color} (Fig. \ref{fig:04ggplotBasicColor}). Note that the mapping is applied to both, \texttt{geom\_point()} and \texttt{geom\_smooth()} and consequently the latter layer creates two separate smoothings.
 
@@ -1328,7 +1342,7 @@ Aesthetics can also be defined for each layer and are then applied locally to th
 You will learn more how to work with global and local aesthetics in Chapter XYZ and how to modify their appearance in Chapter XYZ.
 
 \hypertarget{set-properties}{%
-\section{Setting Properties in Layers}\label{set-properties}}
+\section{Setting Properties}\label{set-properties}}
 
 Furthermore, each layer has its own arguments to change their behavior and appearance. Let's also add some transparency to the points and turn the smoothing into a linear fitting (Fig. \ref{fig:04ggplotBasicAdjustLayers}). As we are not mapping aesthetics but setting properties, we have to place those adjustments outside the \texttt{aes()} call.
 

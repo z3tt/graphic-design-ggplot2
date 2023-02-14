@@ -1,5 +1,5 @@
 ```{r 04setup-section-walkthrough, echo=FALSE, include=FALSE}
-ggplot2::theme_set(ggplot2::theme_grey())
+ggplot2::theme_set(ggplot2::theme_grey(base_size = 12, base_family = "Asap"))
 ```
 
 # A Walk-Through Example {#walkthrough}
@@ -55,7 +55,7 @@ Omitting the arguments `data` and `mapping` saves you a ton of typing when creat
 
 ## Combine Multiple Layers {#combined-layers}
 
-One can also add several layers, specified as either geometric shapes starting with `geom*()` or statistical transformations starting with `stat_*()` (\@ref(fig:04ggplotBasicSmooth))---and this is where the magic and fun starts!
+One can also add several layers, specified as either geometric shapes starting with `geom_*()` or statistical transformations starting with `stat_*()` (\@ref(fig:04ggplotBasicSmooth))---and this is where the magic and fun starts!
 
 ```{r 04ggplotBasicSmooth, fig.cap="The same scatter plot, now with an additional GAM smoothing."}
 ggplot(bikes, aes(x = temp_feel, y = count)) + 
@@ -66,7 +66,7 @@ ggplot(bikes, aes(x = temp_feel, y = count)) +
 
 Both `geom_*()` and `stat_*()` internally make use of the same function `layer()` and pass default inputs for the `geom`, `stat`, and `position` arguments. Basically the use of geoms versus stats is only the perspective and personal preference: when specifying `geom_*()` we focus on the shape representing the variables; using `stat_*()` highlights the transformation applied to the variables. More information on the different geometries is provided in Chapter XYZ and a deep-dive into the power of statistical transformation is Chapter XYZ.
 
-## Mapping Aesthetics in Layers {#map-aesthetics}
+## Mapping Aesthetics {#map-aesthetics}
 
 By looking at these scatter plots, we can actually identify two different trends for day and night. We can highlight both groups by mapping the `day_night` variable to `color` (Fig. \@ref(fig:04ggplotBasicColor)). Note that the mapping is applied to both, `geom_point()` and `geom_smooth()` and consequently the latter layer creates two separate smoothings.
 
@@ -80,7 +80,7 @@ Aesthetics can also be defined for each layer and are then applied locally to th
 You will learn more how to work with global and local aesthetics in Chapter XYZ and how to modify their appearance in Chapter XYZ.
 
 
-## Setting Properties in Layers {#set-properties}
+## Setting Properties {#set-properties}
 
 Furthermore, each layer has its own arguments to change their behavior and appearance. Let's also add some transparency to the points and turn the smoothing into a linear fitting (Fig. \@ref(fig:04ggplotBasicAdjustLayers)). As we are not mapping aesthetics but setting properties, we have to place those adjustments outside the `aes()` call.
 

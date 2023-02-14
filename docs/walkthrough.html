@@ -23,7 +23,7 @@
 <meta name="author" content="Cédric Scherer" />
 
 
-<meta name="date" content="2023-02-07" />
+<meta name="date" content="2023-02-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -212,8 +212,8 @@ div.csl-indent {
 <li class="chapter" data-level="4.1" data-path="walkthrough.html"><a href="walkthrough.html#prep-ggplot"><i class="fa fa-check"></i><b>4.1</b> Prerequisites</a></li>
 <li class="chapter" data-level="4.2" data-path="walkthrough.html"><a href="walkthrough.html#basics"><i class="fa fa-check"></i><b>4.2</b> Create a Basic ggplot</a></li>
 <li class="chapter" data-level="4.3" data-path="walkthrough.html"><a href="walkthrough.html#combined-layers"><i class="fa fa-check"></i><b>4.3</b> Combine Multiple Layers</a></li>
-<li class="chapter" data-level="4.4" data-path="walkthrough.html"><a href="walkthrough.html#map-aesthetics"><i class="fa fa-check"></i><b>4.4</b> Mapping Aesthetics in Layers</a></li>
-<li class="chapter" data-level="4.5" data-path="walkthrough.html"><a href="walkthrough.html#set-properties"><i class="fa fa-check"></i><b>4.5</b> Setting Properties in Layers</a></li>
+<li class="chapter" data-level="4.4" data-path="walkthrough.html"><a href="walkthrough.html#map-aesthetics"><i class="fa fa-check"></i><b>4.4</b> Mapping Aesthetics</a></li>
+<li class="chapter" data-level="4.5" data-path="walkthrough.html"><a href="walkthrough.html#set-properties"><i class="fa fa-check"></i><b>4.5</b> Setting Properties</a></li>
 <li class="chapter" data-level="4.6" data-path="walkthrough.html"><a href="walkthrough.html#faceting"><i class="fa fa-check"></i><b>4.6</b> Create Small Multiples</a></li>
 <li class="chapter" data-level="4.7" data-path="walkthrough.html"><a href="walkthrough.html#axis-scaling"><i class="fa fa-check"></i><b>4.7</b> Change the Axis Scaling</a></li>
 <li class="chapter" data-level="4.8" data-path="walkthrough.html"><a href="walkthrough.html#color-scaling"><i class="fa fa-check"></i><b>4.8</b> Use a Custom Color Palette</a></li>
@@ -312,7 +312,7 @@ FIGURE 4.1: A basic scatter plot of feels-like temperature and reported TfL bike
 </div>
 <div id="combined-layers" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Combine Multiple Layers<a href="walkthrough.html#combined-layers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>One can also add several layers, specified as either geometric shapes starting with <code>geom*()</code> or statistical transformations starting with <code>stat_*()</code> (<a href="walkthrough.html#fig:04ggplotBasicSmooth">4.2</a>)—and this is where the magic and fun starts!</p>
+<p>One can also add several layers, specified as either geometric shapes starting with <code>geom_*()</code> or statistical transformations starting with <code>stat_*()</code> (<a href="walkthrough.html#fig:04ggplotBasicSmooth">4.2</a>)—and this is where the magic and fun starts!</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="walkthrough.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
 <span id="cb31-2"><a href="walkthrough.html#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb31-3"><a href="walkthrough.html#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="do">## add a GAM smoothing</span></span>
@@ -326,7 +326,7 @@ FIGURE 4.2: The same scatter plot, now with an additional GAM smoothing.
 <p>Both <code>geom_*()</code> and <code>stat_*()</code> internally make use of the same function <code>layer()</code> and pass default inputs for the <code>geom</code>, <code>stat</code>, and <code>position</code> arguments. Basically the use of geoms versus stats is only the perspective and personal preference: when specifying <code>geom_*()</code> we focus on the shape representing the variables; using <code>stat_*()</code> highlights the transformation applied to the variables. More information on the different geometries is provided in Chapter XYZ and a deep-dive into the power of statistical transformation is Chapter XYZ.</p>
 </div>
 <div id="map-aesthetics" class="section level2 hasAnchor" number="4.4">
-<h2><span class="header-section-number">4.4</span> Mapping Aesthetics in Layers<a href="walkthrough.html#map-aesthetics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">4.4</span> Mapping Aesthetics<a href="walkthrough.html#map-aesthetics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>By looking at these scatter plots, we can actually identify two different trends for day and night. We can highlight both groups by mapping the <code>day_night</code> variable to <code>color</code> (Fig. <a href="walkthrough.html#fig:04ggplotBasicColor">4.3</a>). Note that the mapping is applied to both, <code>geom_point()</code> and <code>geom_smooth()</code> and consequently the latter layer creates two separate smoothings.</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="walkthrough.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count, <span class="at">color =</span> day_night)) <span class="sc">+</span> </span>
 <span id="cb32-2"><a href="walkthrough.html#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
@@ -341,7 +341,7 @@ FIGURE 4.3: The points and smoothing lines colored by the time of the day.
 You will learn more how to work with global and local aesthetics in Chapter XYZ and how to modify their appearance in Chapter XYZ.</p>
 </div>
 <div id="set-properties" class="section level2 hasAnchor" number="4.5">
-<h2><span class="header-section-number">4.5</span> Setting Properties in Layers<a href="walkthrough.html#set-properties" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">4.5</span> Setting Properties<a href="walkthrough.html#set-properties" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Furthermore, each layer has its own arguments to change their behavior and appearance. Let’s also add some transparency to the points and turn the smoothing into a linear fitting (Fig. <a href="walkthrough.html#fig:04ggplotBasicAdjustLayers">4.4</a>). As we are not mapping aesthetics but setting properties, we have to place those adjustments outside the <code>aes()</code> call.</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="walkthrough.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
 <span id="cb33-2"><a href="walkthrough.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
