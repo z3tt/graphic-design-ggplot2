@@ -1,4 +1,5 @@
-bikes <- readr::read_csv("https://www.cedricscherer.com/data/london-bikes.csv", col_types = "Dcfffilllddddfc")
+#bikes <- readr::read_csv("https://www.cedricscherer.com/data/london-bikes.csv", col_types = "Dcfffilllddddfc")
+bikes <- readr::read_csv(here::here("data", "london-bikes.csv"), col_types = "Dcfffilllddddfc")
 
 library(ggplot2)
 library(patchwork)

@@ -83,6 +83,7 @@ make-fonts-work
 set-your-ggplot-theme-globally
 create-your-own-theme
 working-with-layers
+layer-defaults
 geometrical-shapes
 statistical-transformations
 positional-adjustments

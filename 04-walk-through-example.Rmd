@@ -64,7 +64,7 @@ ggplot(bikes, aes(x = temp_feel, y = count)) +
   stat_smooth()
 ```
 
-Both `geom_*()` and `stat_*()` internally make use of the same function `layer()` and pass default inputs for the `geom`, `stat`, and `position` arguments. Basically the use of geoms versus stats is only the perspective and personal preference: when specifying `geom_*()` we focus on the shape representing the variables; using `stat_*()` highlights the transformation applied to the variables. More information on the different geometries is provided in Chapter XYZ and a deep-dive into the power of statistical transformation is Chapter XYZ.
+Both `geom_*()` and `stat_*()` internally make use of the same function `layer()` and pass default inputs for the `geom`, `stat`, and `position` arguments. Basically the use of geoms versus stats is only a personal preference: when specifying `geom_*()` we focus on the shape representing the variables; using `stat_*()` highlights the transformation applied to the variables. More information on the different geometries is provided in Chapter XYZ and a deep-dive into the power of statistical transformation is Chapter XYZ.
 
 ## Mapping Aesthetics {#map-aesthetics}
 

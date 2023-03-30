@@ -1,4 +1,4 @@
-```{r 05setupSectionGeoms, echo=FALSE, include=FALSE}
+```{r 05setupSectionGeoms, echo=FALSE, include=FALSE, freeze=FALSE}
 source(here::here("src", "prerequisites.R"))
 ```
 
@@ -8,7 +8,89 @@ source(here::here("src", "prerequisites.R"))
 
 Internally all layers are created by the `layer()` function. A layer is by definition a "combination of data, stat and geom with a potential position adjustment" (`layer` R help). 
 
+```{r}
+ggplot(bikes, aes(x = temp, y = count)) +
+  layer(geom = "point", stat = "identity", position = "identity")
+```
+
+
+## Layer Defaults
+
 The long list of featured `geom_*()` and `stat_*()` functions in **ggplot2** is thus just a set of predefined layers with default `geom`, `stat`, `position` arguments that use the data passed in the initial `ggplot()` call. The data can also be specified for each layer separately by passing it inside the respective geom or stat.
+
+The following codes produce the same output as the `layer()` function above, a scatter plot of counts over time:
+
+```{r, eval=FALSE}
+ggplot(bikes, aes(x = temp, y = count)) +
+  geom_point() ## with defaults `stat = "identity", position = "identity"`
+
+ggplot(bikes, aes(x = temp, y = count)) +
+  stat_identity() ## with defaults `geom = "point", position = "identity"`
+```
+
+All layers follow the same approach with both, `geom_*` and `stat_*` defaults such as binned bars to create histograms via `geom_histogram()` or `stat_histogram()`, both with the defaults `geom = "bar"`, `stat = "bin"`, and `position = "identity"`.
+
+```{r, eval=FALSE}
+ggplot(bikes, aes(x = temp)) + geom_histogram() 
+ggplot(bikes, aes(x = temp)) + stat_bin()
+```
+
+For all geometries and statistical transformation there is a respective `geom_*` and `stat_*` with reasonable defaults. For example, `geom_bar()` or `stat_count()` both produce *bar* charts with the height encoding the *count* per variable:
+
+```{r, eval=FALSE}
+ggplot(bikes, aes(x = weather_type, fill = year)) + geom_bar() ## with default `stat = "count"`
+ggplot(bikes, aes(x = weather_type, fill = year)) + stat_count() ## with default `geom = "bar"`
+```
+
+Maybe you have wondered at some point, why you can use `geom_smooth()` and `stat_smooth()` interchangeably to create a conditional smoothing? This is because both call the same underlying layer function with the default arguments `geom = "smooth"`, `stat = "smooth"` and `position = "identity"`. 
+
+```{r, eval=FALSE}
+ggplot(bikes, aes(x = temp, y = humidity)) + geom_smooth()
+ggplot(bikes, aes(x = temp, y = humidity)) + stat_smooth()
+```
+
+```{r, echo=FALSE}
+s1 <- 
+  ggplot(bikes, aes(x = temp, y = humidity)) + 
+  geom_smooth() +
+  labs(title = "geom_smooth()\nstat_smooth()") +
+  theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05)))
+
+s2 <- 
+  ggplot(bikes, aes(x = weather_type, fill = day_night)) + 
+  stat_count() +
+  labs(title = "geom_bar()\nstat_count()") +
+  theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05)), legend.position = "bottom")
+
+s1 + plot_spacer() + s2 + plot_layout(widths = c(.8, .03, 1))
+```
+
+
+We can overwrite the defaults and change the behavior of the layer:
+
+```{r, eval=FALSE}
+ggplot(bikes, aes(x = wind_speed, y = humidity)) +
+  stat_smooth() ## with default `geom = "smooth"`
+
+ggplot(bikes, aes(x = wind_speed, y = humidity)) +
+  stat_smooth(geom = "pointrange")
+```
+
+```{r, echo=FALSE}
+s3 <- ggplot(bikes, aes(x = wind_speed, y = humidity)) +
+  stat_smooth(geom = "pointrange", size = .1)  +
+  labs(title = 'stat_smooth(geom = "pointrange")\nstat_pointrange(stat = "smooth")') +
+  theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05)))
+
+s4 <- ggplot(bikes, aes(x = weather_type, fill = day_night)) +
+  geom_bar(position = "dodge") +
+  labs(title = 'geom_bar(position = "dodge")\nstat_count(position = "dodge")') +
+  theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05)), legend.position = "bottom")
+
+s3 + plot_spacer() + s4 + plot_layout(widths = c(.8, .1, 1))
+```
+
+
 
 ## Geometrical Shapes
 

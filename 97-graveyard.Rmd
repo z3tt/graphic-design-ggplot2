@@ -1,0 +1,20 @@
+```{r 97setupSectionGraveyard, echo=FALSE, include=FALSE, freeze=FALSE}
+source(here::here("src", "prerequisites.R"))
+```
+
+```{r, echo=FALSE, fig.width=8, fig.height=4}
+p1 <- 
+  ggplot(bikes, aes(x = date, y = count)) +
+  layer(geom = "point", stat = "identity", position = "identity")
+
+p2 <- 
+  ggplot(bikes, aes(x = temp)) +
+  layer(geom = "bar", stat = "bin", position = "identity")
+
+p3 <- 
+  ggplot(bikes, aes(x = wind_speed, y = humidity)) +
+  layer(geom = "smooth", stat = "smooth", position = "identity", params = list(se = TRUE))
+
+p1 + plot_spacer() + p2 + plot_spacer() + p3 + 
+  plot_layout(nrow = 1, widths = c(1, .03, 1, .03, 1))
+```

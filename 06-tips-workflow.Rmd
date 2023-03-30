@@ -1,4 +1,4 @@
-```{r 06setupSectionTipsWorkflow, echo=FALSE, include=FALSE}
+```{r 06setupSectionTipsWorkflow, echo=FALSE, include=FALSE, freeze=FALSE}
 source(here::here("src", "prerequisites.R"))
 ```
 

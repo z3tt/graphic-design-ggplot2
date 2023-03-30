@@ -23,7 +23,7 @@
 <meta name="author" content="Cédric Scherer" />
 
 
-<meta name="date" content="2023-02-14" />
+<meta name="date" content="2023-03-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -242,9 +242,10 @@ div.csl-indent {
 <li class="part"><span><b>II How To Work with Components</b></span></li>
 <li class="chapter" data-level="7" data-path="working-with-layers.html"><a href="working-with-layers.html"><i class="fa fa-check"></i><b>7</b> Working with Layers</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="working-with-layers.html"><a href="working-with-layers.html#geometrical-shapes"><i class="fa fa-check"></i><b>7.1</b> Geometrical Shapes</a></li>
-<li class="chapter" data-level="7.2" data-path="working-with-layers.html"><a href="working-with-layers.html#statistical-transformations"><i class="fa fa-check"></i><b>7.2</b> Statistical Transformations</a></li>
-<li class="chapter" data-level="7.3" data-path="working-with-layers.html"><a href="working-with-layers.html#positional-adjustments"><i class="fa fa-check"></i><b>7.3</b> Positional Adjustments</a></li>
+<li class="chapter" data-level="7.1" data-path="working-with-layers.html"><a href="working-with-layers.html#layer-defaults"><i class="fa fa-check"></i><b>7.1</b> Layer Defaults</a></li>
+<li class="chapter" data-level="7.2" data-path="working-with-layers.html"><a href="working-with-layers.html#geometrical-shapes"><i class="fa fa-check"></i><b>7.2</b> Geometrical Shapes</a></li>
+<li class="chapter" data-level="7.3" data-path="working-with-layers.html"><a href="working-with-layers.html#statistical-transformations"><i class="fa fa-check"></i><b>7.3</b> Statistical Transformations</a></li>
+<li class="chapter" data-level="7.4" data-path="working-with-layers.html"><a href="working-with-layers.html#positional-adjustments"><i class="fa fa-check"></i><b>7.4</b> Positional Adjustments</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="working-with-colors.html"><a href="working-with-colors.html"><i class="fa fa-check"></i><b>8</b> Working with Colors</a></li>
 <li class="chapter" data-level="9" data-path="working-with-text.html"><a href="working-with-text.html"><i class="fa fa-check"></i><b>9</b> Working with Text</a></li>
@@ -323,7 +324,7 @@ FIGURE 4.1: A basic scatter plot of feels-like temperature and reported TfL bike
 FIGURE 4.2: The same scatter plot, now with an additional GAM smoothing.
 </p>
 </div>
-<p>Both <code>geom_*()</code> and <code>stat_*()</code> internally make use of the same function <code>layer()</code> and pass default inputs for the <code>geom</code>, <code>stat</code>, and <code>position</code> arguments. Basically the use of geoms versus stats is only the perspective and personal preference: when specifying <code>geom_*()</code> we focus on the shape representing the variables; using <code>stat_*()</code> highlights the transformation applied to the variables. More information on the different geometries is provided in Chapter XYZ and a deep-dive into the power of statistical transformation is Chapter XYZ.</p>
+<p>Both <code>geom_*()</code> and <code>stat_*()</code> internally make use of the same function <code>layer()</code> and pass default inputs for the <code>geom</code>, <code>stat</code>, and <code>position</code> arguments. Basically the use of geoms versus stats is only a personal preference: when specifying <code>geom_*()</code> we focus on the shape representing the variables; using <code>stat_*()</code> highlights the transformation applied to the variables. More information on the different geometries is provided in Chapter XYZ and a deep-dive into the power of statistical transformation is Chapter XYZ.</p>
 </div>
 <div id="map-aesthetics" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Mapping Aesthetics<a href="walkthrough.html#map-aesthetics" class="anchor-section" aria-label="Anchor link to header"></a></h2>

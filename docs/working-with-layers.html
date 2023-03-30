@@ -23,7 +23,7 @@
 <meta name="author" content="Cédric Scherer" />
 
 
-<meta name="date" content="2023-02-14" />
+<meta name="date" content="2023-03-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -242,9 +242,10 @@ div.csl-indent {
 <li class="part"><span><b>II How To Work with Components</b></span></li>
 <li class="chapter" data-level="7" data-path="working-with-layers.html"><a href="working-with-layers.html"><i class="fa fa-check"></i><b>7</b> Working with Layers</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="working-with-layers.html"><a href="working-with-layers.html#geometrical-shapes"><i class="fa fa-check"></i><b>7.1</b> Geometrical Shapes</a></li>
-<li class="chapter" data-level="7.2" data-path="working-with-layers.html"><a href="working-with-layers.html#statistical-transformations"><i class="fa fa-check"></i><b>7.2</b> Statistical Transformations</a></li>
-<li class="chapter" data-level="7.3" data-path="working-with-layers.html"><a href="working-with-layers.html#positional-adjustments"><i class="fa fa-check"></i><b>7.3</b> Positional Adjustments</a></li>
+<li class="chapter" data-level="7.1" data-path="working-with-layers.html"><a href="working-with-layers.html#layer-defaults"><i class="fa fa-check"></i><b>7.1</b> Layer Defaults</a></li>
+<li class="chapter" data-level="7.2" data-path="working-with-layers.html"><a href="working-with-layers.html#geometrical-shapes"><i class="fa fa-check"></i><b>7.2</b> Geometrical Shapes</a></li>
+<li class="chapter" data-level="7.3" data-path="working-with-layers.html"><a href="working-with-layers.html#statistical-transformations"><i class="fa fa-check"></i><b>7.3</b> Statistical Transformations</a></li>
+<li class="chapter" data-level="7.4" data-path="working-with-layers.html"><a href="working-with-layers.html#positional-adjustments"><i class="fa fa-check"></i><b>7.4</b> Positional Adjustments</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="working-with-colors.html"><a href="working-with-colors.html"><i class="fa fa-check"></i><b>8</b> Working with Colors</a></li>
 <li class="chapter" data-level="9" data-path="working-with-text.html"><a href="working-with-text.html"><i class="fa fa-check"></i><b>9</b> Working with Text</a></li>
@@ -276,16 +277,45 @@ div.csl-indent {
 <div id="working-with-layers" class="section level1 hasAnchor" number="7">
 <h1><span class="header-section-number">Chapter 7</span> Working with Layers<a href="working-with-layers.html#working-with-layers" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Internally all layers are created by the <code>layer()</code> function. A layer is by definition a “combination of data, stat and geom with a potential position adjustment” (<code>layer</code> R help).</p>
-<p>The long list of featured <code>geom_*()</code> and <code>stat_*()</code> functions in <strong>ggplot2</strong> is thus just a set of predefined layers with default <code>geom</code>, <code>stat</code>, <code>position</code> arguments that use the data passed in the initial <code>ggplot()</code> call. The data can also be specified for each layer separately by passing it inside the respective geom or stat.</p>
-<div id="geometrical-shapes" class="section level2 hasAnchor" number="7.1">
-<h2><span class="header-section-number">7.1</span> Geometrical Shapes<a href="working-with-layers.html#geometrical-shapes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Many geometrical shapes only need two positional arguments, namely <code>x</code> and <code>y</code> as a single coordinate is sufficient to represent your data. A combination of x and y values determine the position of points, connected lines, or the height of bars.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="working-with-layers.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count)) <span class="sc">+</span></span>
-<span id="cb69-2"><a href="working-with-layers.html#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="do">## a timeseries of bike shares per date</span></span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="working-with-layers.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp, <span class="at">y =</span> count)) <span class="sc">+</span></span>
+<span id="cb69-2"><a href="working-with-layers.html#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer</span>(<span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">position =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/unnamed-chunk-3-1.png" width="864" /></p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="working-with-layers.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count)) <span class="sc">+</span></span>
-<span id="cb70-2"><a href="working-with-layers.html#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="do">## a bar chart with one bar per date</span></span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-3-2.png" width="864" /></p>
+<div id="layer-defaults" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Layer Defaults<a href="working-with-layers.html#layer-defaults" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The long list of featured <code>geom_*()</code> and <code>stat_*()</code> functions in <strong>ggplot2</strong> is thus just a set of predefined layers with default <code>geom</code>, <code>stat</code>, <code>position</code> arguments that use the data passed in the initial <code>ggplot()</code> call. The data can also be specified for each layer separately by passing it inside the respective geom or stat.</p>
+<p>The following codes produce the same output as the <code>layer()</code> function above, a scatter plot of counts over time:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="working-with-layers.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp, <span class="at">y =</span> count)) <span class="sc">+</span></span>
+<span id="cb70-2"><a href="working-with-layers.html#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="do">## with defaults `stat = &quot;identity&quot;, position = &quot;identity&quot;`</span></span>
+<span id="cb70-3"><a href="working-with-layers.html#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-4"><a href="working-with-layers.html#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp, <span class="at">y =</span> count)) <span class="sc">+</span></span>
+<span id="cb70-5"><a href="working-with-layers.html#cb70-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_identity</span>() <span class="do">## with defaults `geom = &quot;point&quot;, position = &quot;identity&quot;`</span></span></code></pre></div>
+<p>All layers follow the same approach with both, <code>geom_*</code> and <code>stat_*</code> defaults such as binned bars to create histograms via <code>geom_histogram()</code> or <code>stat_histogram()</code>, both with the defaults <code>geom = "bar"</code>, <code>stat = "bin"</code>, and <code>position = "identity"</code>.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="working-with-layers.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp)) <span class="sc">+</span> <span class="fu">geom_histogram</span>() </span>
+<span id="cb71-2"><a href="working-with-layers.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp)) <span class="sc">+</span> <span class="fu">stat_bin</span>()</span></code></pre></div>
+<p>For all geometries and statistical transformation there is a respective <code>geom_*</code> and <code>stat_*</code> with reasonable defaults. For example, <code>geom_bar()</code> or <code>stat_count()</code> both produce <em>bar</em> charts with the height encoding the <em>count</em> per variable:</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="working-with-layers.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> weather_type, <span class="at">fill =</span> year)) <span class="sc">+</span> <span class="fu">geom_bar</span>() <span class="do">## with default `stat = &quot;count&quot;`</span></span>
+<span id="cb72-2"><a href="working-with-layers.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> weather_type, <span class="at">fill =</span> year)) <span class="sc">+</span> <span class="fu">stat_count</span>() <span class="do">## with default `geom = &quot;bar&quot;`</span></span></code></pre></div>
+<p>Maybe you have wondered at some point, why you can use <code>geom_smooth()</code> and <code>stat_smooth()</code> interchangeably to create a conditional smoothing? This is because both call the same underlying layer function with the default arguments <code>geom = "smooth"</code>, <code>stat = "smooth"</code> and <code>position = "identity"</code>.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="working-with-layers.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp, <span class="at">y =</span> humidity)) <span class="sc">+</span> <span class="fu">geom_smooth</span>()</span>
+<span id="cb73-2"><a href="working-with-layers.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp, <span class="at">y =</span> humidity)) <span class="sc">+</span> <span class="fu">stat_smooth</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-8-1.png" width="864" /></p>
+<p>We can overwrite the defaults and change the behavior of the layer:</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="working-with-layers.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> wind_speed, <span class="at">y =</span> humidity)) <span class="sc">+</span></span>
+<span id="cb74-2"><a href="working-with-layers.html#cb74-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>() <span class="do">## with default `geom = &quot;smooth&quot;`</span></span>
+<span id="cb74-3"><a href="working-with-layers.html#cb74-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-4"><a href="working-with-layers.html#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> wind_speed, <span class="at">y =</span> humidity)) <span class="sc">+</span></span>
+<span id="cb74-5"><a href="working-with-layers.html#cb74-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">geom =</span> <span class="st">&quot;pointrange&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-10-1.png" width="864" /></p>
+</div>
+<div id="geometrical-shapes" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Geometrical Shapes<a href="working-with-layers.html#geometrical-shapes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Many geometrical shapes only need two positional arguments, namely <code>x</code> and <code>y</code> as a single coordinate is sufficient to represent your data. A combination of x and y values determine the position of points, connected lines, or the height of bars.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="working-with-layers.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count)) <span class="sc">+</span></span>
+<span id="cb75-2"><a href="working-with-layers.html#cb75-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="do">## a timeseries of bike shares per date</span></span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-11-1.png" width="864" /></p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="working-with-layers.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count)) <span class="sc">+</span></span>
+<span id="cb76-2"><a href="working-with-layers.html#cb76-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="do">## a bar chart with one bar per date</span></span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-11-2.png" width="864" /></p>
 <p>[WIP]</p>
 <ul>
 <li>most geoms use two positional aesthetics</li>
@@ -294,16 +324,16 @@ div.csl-indent {
 <li>showcase of some of those</li>
 </ul>
 </div>
-<div id="statistical-transformations" class="section level2 hasAnchor" number="7.2">
-<h2><span class="header-section-number">7.2</span> Statistical Transformations<a href="working-with-layers.html#statistical-transformations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="statistical-transformations" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Statistical Transformations<a href="working-with-layers.html#statistical-transformations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>stats are just a different perspective</li>
 <li>illustrate with usual examples</li>
 <li>powerful transformations: count + summary</li>
 </ul>
 </div>
-<div id="positional-adjustments" class="section level2 hasAnchor" number="7.3">
-<h2><span class="header-section-number">7.3</span> Positional Adjustments<a href="working-with-layers.html#positional-adjustments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="positional-adjustments" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Positional Adjustments<a href="working-with-layers.html#positional-adjustments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li></li>
 </ul>
