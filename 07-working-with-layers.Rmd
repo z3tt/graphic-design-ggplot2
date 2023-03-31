@@ -54,13 +54,16 @@ s1 <-
   ggplot(bikes, aes(x = temp, y = humidity)) + 
   geom_smooth() +
   labs(title = "geom_smooth()\nstat_smooth()") +
-  theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05)))
+  theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05), lineheight = 1.1))
 
 s2 <- 
   ggplot(bikes, aes(x = weather_type, fill = day_night)) + 
   stat_count() +
+  scale_fill_manual(values = colors[2:3], name = NULL) +
   labs(title = "geom_bar()\nstat_count()") +
-  theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05)), legend.position = "bottom")
+  theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05), lineheight = 1.1), 
+        panel.grid.major.x = element_blank(),
+        legend.position = "bottom")
 
 s1 + plot_spacer() + s2 + plot_layout(widths = c(.8, .03, 1))
 ```
@@ -80,12 +83,15 @@ ggplot(bikes, aes(x = wind_speed, y = humidity)) +
 s3 <- ggplot(bikes, aes(x = wind_speed, y = humidity)) +
   stat_smooth(geom = "pointrange", size = .1)  +
   labs(title = 'stat_smooth(geom = "pointrange")\nstat_pointrange(stat = "smooth")') +
-  theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05)))
+  theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05), lineheight = 1.1))
 
 s4 <- ggplot(bikes, aes(x = weather_type, fill = day_night)) +
   geom_bar(position = "dodge") +
+  scale_fill_manual(values = colors[2:3], name = NULL) +
   labs(title = 'geom_bar(position = "dodge")\nstat_count(position = "dodge")') +
-  theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05)), legend.position = "bottom")
+  theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05), lineheight = 1.1), 
+        panel.grid.major.x = element_blank(),
+        legend.position = "bottom")
 
 s3 + plot_spacer() + s4 + plot_layout(widths = c(.8, .1, 1))
 ```
