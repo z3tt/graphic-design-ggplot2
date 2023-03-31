@@ -19,9 +19,9 @@
 \contentsline {figure}{\numberline {4.6}{\ignorespaces \{ggplot2\} even allows to free the axis range---while ensuring equal axis spacing.\relax }}{37}{figure.caption.24}%
 \contentsline {figure}{\numberline {4.7}{\ignorespaces To adjust the formatting of axis labels, the respective axis needs to be addressed via the \texttt {scale\_*()} functions.\relax }}{38}{figure.caption.25}%
 \contentsline {figure}{\numberline {4.8}{\ignorespaces We can overwrite the default labels with the \texttt {labs()} which also allows to add a title, subtitle, caption, and tag to the graphic.\relax }}{40}{figure.caption.26}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces By passing a vector of the same length as there are seasons to the \texttt {labels} argument of the \texttt {scale\_color\_*()} function, we can overwrite the labels used in the legend.\relax }}{41}{figure.caption.27}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces The graphic now comes with a new look and a non-default font used for all text labels.\relax }}{42}{figure.caption.28}%
-\contentsline {figure}{\numberline {4.11}{\ignorespaces After applying on of the complete themes, one can further style the theme to the personal needs.\relax }}{43}{figure.caption.29}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces By passing a vector of the same length as there are seasons to the \texttt {labels} argument of the \texttt {scale\_color\_*()} function, we can overwrite the labels used in the legend.\relax }}{40}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces The graphic now comes with a new look and a non-default font used for all text labels.\relax }}{41}{figure.caption.28}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces After applying on of the complete themes, one can further style the theme to the personal needs.\relax }}{42}{figure.caption.29}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces A time series of reported bike rents during the night (6 pm to 6 am) with points being encoded by the average temperature using the default \textbf {ggplot2} theme.\relax }}{46}{figure.caption.30}%
 \contentsline {figure}{\numberline {5.2}{\ignorespaces The same plot as before using the minimal theme.\relax }}{47}{figure.caption.31}%
