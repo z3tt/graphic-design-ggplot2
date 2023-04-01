@@ -4,4 +4,14 @@ source(here::here("src", "prerequisites.R"))
 
 # Working with Colors {#working-with-colors}
 
+```{r. include=FALSE}
+ggplot(coins, aes(x = date, xend = date, 
+                  y = open, yend = close)) +
+  geom_segment(
+    ## encode segments by trend
+    aes(color = close > open),
+    ## draw arrow heads to indicate direction of change 
+    arrow = arrow(type = "closed",length = unit(.3, "lines"))
+  )
+```
 

@@ -1,5 +1,5 @@
 ```{r 05setupSectionGeoms, echo=FALSE, include=FALSE, freeze=FALSE}
-source(here::here("src", "prerequisites.R"))
+source(here::here("src", "prerequisites.R")) 
 ```
 
 # (PART) How To Work with Components {-}
@@ -10,8 +10,13 @@ Internally all layers are created by the `layer()` function. A layer is by defin
 
 ```{r 07layerScatter, fig.cap="A simple scatter plot of bike counts versus average temperature created with the `layer()` function."}
 ggplot() +
-  layer(data = bikes, mapping = aes(x = temp, y = count),
-        geom = "point", stat = "identity", position = "identity")
+  layer(
+    data = bikes, 
+    mapping = aes(x = temp, y = count),
+    geom = "point", 
+    stat = "identity", 
+    position = "identity"
+  )
 ```
 
 The data and aesthetic mappings are often specified in the initial `ggplot()` call. These specifications are then passed to all layers. 
@@ -130,7 +135,15 @@ ggplot(bikes, aes(x = is_weekend, y = count)) + geom_boxplot()
 ggplot(bikes, aes(x = temp, y = count)) + geom_boxplot()
 ```
 
-Histograms show the distribution of numeric variables as bars grouped into equal numerical ranges, so-called bins. The corresponding `geom_histogram()` creates *binned bars* (read: `stat = "bin", geom = "bar"`) for quantitative variables but fails when passing qualitative variables as calculation of bins across categories is not meaningful. In that case, `geom_bar()` with the default `stat = "count"` creates the desired bar chart showing counts per category.
+```{r, echo=FALSE}
+b1 <- ggplot(bikes, aes(x = season, y = count)) + geom_boxplot()
+b2 <- ggplot(bikes, aes(x = is_weekend, y = count)) + geom_boxplot()
+b3 <- ggplot(bikes, aes(x = temp, y = count)) + geom_boxplot()
+
+b1 + plot_spacer() + b2 + plot_spacer() + b3 + plot_layout(widths = c(1, .05, .65, .05, .5))
+```
+
+Histograms show the distribution of numeric variables as bars grouped into equal numerical ranges, so-called bins. The corresponding `geom_histogram()` creates *binned bars* (read: `stat = "bin", geom = "bar"`) for quantitative variables but fails when passing qualitative variables as calculation of bins across categories is not meaningful. In case of a discrete x aesthetic, `geom_bar()` with the default `stat = "count"` creates the desired bar chart showing counts per category. 
 
 ```{r, eval=FALSE}
 ## works as `temp` is numeric
@@ -144,6 +157,190 @@ ggplot(bikes, aes(x = is_weekend)) + geom_histogram()
 ggplot(bikes, aes(x = is_weekend)) + geom_bar()
 ```
 
+```{r, echo=FALSE}
+h1 <- ggplot(bikes, aes(x = temp)) + geom_histogram()
+h2 <- ggplot(bikes, aes(x = is_weekend)) + geom_bar()
+
+h1 + plot_spacer() + h2 + plot_layout(widths = c(1, .03, .65))
+```
+
+Other geometries need more than two positional aesthetics. `geom_linerange()` draws horizontal or vertical lines based on `xmin` and `xmax` or `ymin` and `ymax`, respectively. Let's load some stock data and show the change of opening versus closing price over time:
+
+```{r}
+coins <- readr::read_rds("./data/crypto_cleaned.rds") %>% 
+  dplyr::filter(year == 2018, month %in% 5:6, currency == "litecoin")
+
+ggplot(coins, aes(x = date, ymin = open, ymax = close)) +
+  geom_linerange()
+```
+
+That's great but I'd like to indicate the direction of change in daily prices. For that we can use `geom_segment()` which allows to add arrow heads to straight lines. The segments are not restricted to vertical or horizontal and thus take four positional arguments: `x` and `xend` as well as `y` and `yend`. For our use case, we map the same variable, namely `date`, to both x coordinates.
+
+```{r}
+ggplot(coins, aes(x = date, xend = date, 
+                  y = open, yend = close)) +
+  geom_segment(
+    arrow = arrow(type = "closed",length = unit(.4, "lines"))
+  )
+```
+
+The geom `pointrange` (that we have also used in the smoothing example) needs four positional aesthetics as well: in addition to the `x` and `y` positions, we have to specify the range as well as either `xmin` and `xmax` or `ymin` and `ymax`.
+
+```{r}
+library(dplyr)
+bikes_season <- 
+  bikes %>% 
+  group_by(season) %>% 
+  summarize(avg = mean(count), sd = sd(count))
+
+ggplot(bikes_season, 
+       aes(x = season, y = avg, ymin = avg - sd, ymax = avg + sd)) +
+  geom_pointrange()
+```
+
+## Statistical Transformations
+
+You can also use `stat_summary()` and let **ggplot2** do the transformation of the raw data. By default, `stat_summary()` uses a `pointrange` geometry with the three positional aesthetics representing mean ± standard error. 
+
+```{r, eval=FALSE}
+ggplot(bikes, aes(x = season, y = count)) +
+  stat_summary()
+```
+ 
+Passing a set of functions to the arguments `fun`, `fun.min` and `fun.max` we can modify the range:
+
+```{r, eval=FALSE}
+ggplot(bikes, aes(x = season, y = count)) +
+  stat_summary(
+    fun = "mean",
+    fun.min = function(y) mean(y) - sd(y), 
+    fun.max = function(y) mean(y) + sd(y)
+  )
+```
+
+```{r, echo=FALSE}
+e1 <- ggplot(bikes, aes(x = season, y = count)) +
+  stat_summary() +
+  labs(title = "mean ± standard error")
+
+e2 <- ggplot(bikes, aes(x = season, y = count)) +
+  stat_summary(
+    fun = "mean",
+    fun.min = function(y) mean(y) - sd(y), 
+    fun.max = function(y) mean(y) + sd(y)
+  ) +
+  labs(title = "mean ± standard deviation")
+
+e1 + plot_spacer() + e2 + plot_layout(widths = c(1, .1, 1))
+```
+
+Alternatively, a function that returns the required aesthetics can be specified as input for `fun.data`. As the function `mean_sdl()` computes the mean ± 2 times the standard deviation, we have to adjust the function argument `mult` as well. Either we pass it to the `fun.args` argument or specify it as function argument directly.
+
+```{r, eval=FALSE}
+ggplot(bikes, aes(x = season, y = count)) +
+  stat_summary(
+    fun.data = "mean_sdl", 
+    fun.args = list(mult = 1)
+  )
+
+ggplot(bikes, aes(x = season, y = count)) +
+  stat_summary(
+    fun.data = function(y) mean_sdl(y, mult = 1)
+  )
+```
+
+This seems to hard to remember? The nice thing is that all  solutions are valid, just pick your favorite (and forget about the rest as long as there is no particular reason to use it).
+
+Similarly, we can also overwrite the default geometry, for example to display the median count for each season by adding a red triangle:
+
+```{r}
+ggplot(bikes, aes(x = season, y = count)) +
+  stat_summary(
+    fun.data = function(y) mean_sdl(y, mult = 1)
+  ) +
+  stat_summary(
+    geom = "point",
+    fun = "median",
+    color = "#FF5477",
+    shape = 17,
+    size = 4
+  )
+```
+
+The `stat_*()` functions and especially `stat_summary` are incredible powerful and often a neat way to create all kind of chart types. Let's use a combination of summaries to draw a dumbbell chart of temperature ranges across months.
+
+```{r}
+ggplot(bikes, aes(y = month, x = temp)) + 
+  stat_summary(
+    geom = "linerange",
+    fun.min = "min",
+    fun.max = "max"
+  ) +
+  stat_summary(
+    geom = "point",
+    fun = "range",
+    size = 3
+  )
+```
+
+We can also use `stat_summary()` to add the actual minimum and maximum values to our plot. The geom `text` in combination with the `label` aesthetic adds data-related labels. 
+
+```{r, eval=FALSE}
+ggplot(bikes, aes(y = forcats::fct_rev(month), x = temp)) + 
+  stat_summary(
+    geom = "linerange",
+    fun.min = "min",
+    fun.max = "max"
+  ) +
+  stat_summary(
+    geom = "point",
+    fun = "range",
+    size = 3
+  ) +
+  stat_summary(
+    geom = "text",
+    fun = "range",
+    aes(label = after_stat(sprintf("%1.1f", x))),
+    vjust = 1.7
+  )
+```
+
+```{r, echo=FALSE}
+ggplot(bikes, aes(y = forcats::fct_rev(month), x = temp)) + 
+  stat_summary(
+    geom = "linerange",
+    fun.min = "min",
+    fun.max = "max"
+  ) +
+  stat_summary(
+    geom = "point",
+    fun = "range",
+    size = 3
+  ) +
+  stat_summary(
+    geom = "text",
+    fun = "range",
+    aes(label = after_stat(sprintf("%1.1f", x))),
+    family = "Asap Condensed",
+    vjust = 1.7
+  )
+```
+
+
+
+```{r, include=FALSE}
+ggplot(bikes, aes(x = temp, y = count, group = cut_interval(temp, 4))) + 
+  geom_boxplot()
+
+ggplot(bikes, aes(x = temp, y = count, group = cut_number(temp, 4))) + 
+  geom_boxplot()
+
+ggplot(bikes, aes(x = cut_interval(temp, 4), y = count)) + 
+  geom_boxplot(varwidth = TRUE)
+
+ggplot(bikes, aes(x = cut_number(temp, 4), y = count)) + 
+  geom_boxplot(varwidth = TRUE)
+```
 
 
 

@@ -2,7 +2,7 @@
 source(here::here("src", "prerequisites.R"))
 ```
 
-```{r, echo=FALSE, fig.width=8, fig.height=4}
+```{r, eval=FALSE, fig.width=8, fig.height=4}
 p1 <- 
   ggplot(bikes, aes(x = date, y = count)) +
   layer(geom = "point", stat = "identity", position = "identity")
@@ -31,6 +31,28 @@ ggplot(bikes, aes(x = temp)) + stat_bin()
 Both functions call the same `layer()` function with the predefined defaults `geom = "bar"`, `stat = "bin"`, and `position = "identity"`.
 
 *************
+
+
+```{r, eval=FALSE}
+bikes_summerdays_2015 <- dplyr::filter(
+  bikes, day_night == "day", year == "2015", season == "summer"
+)
+
+ggplot(bikes_summerdays_2015,
+       aes(x = date, xend = date, ## start at previous temp
+           y = lag(count), yend = count)) + ## start at previous count
+  geom_segment()
+
+ggplot(bikes_summerdays_2015,
+       aes(x = lag(date), xend = date, ## start at previous temp
+           y = lag(count), yend = count)) + ## start at previous count
+  geom_segment(
+    alpha = .5, aes(color = count > lag(count)), 
+    ## draw arrow heads to indicate direction of change 
+    arrow = arrow(type = "closed",length = unit(.3, "lines"))
+  )
+```
+
 
 ```{r, eval=FALSE, include=FALSE}
 theme_set(theme_void(base_family = "Spline Sans Mono")) 

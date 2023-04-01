@@ -245,6 +245,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.1" data-path="working-with-layers.html"><a href="working-with-layers.html#predefined-layers"><i class="fa fa-check"></i><b>7.1</b> Predefined Layers</a></li>
 <li class="chapter" data-level="7.2" data-path="working-with-layers.html"><a href="working-with-layers.html#changing-layer-defaults"><i class="fa fa-check"></i><b>7.2</b> Changing Layer Defaults</a></li>
 <li class="chapter" data-level="7.3" data-path="working-with-layers.html"><a href="working-with-layers.html#positional-aesthetics"><i class="fa fa-check"></i><b>7.3</b> Positional Aesthetics</a></li>
+<li class="chapter" data-level="7.4" data-path="working-with-layers.html"><a href="working-with-layers.html#statistical-transformations"><i class="fa fa-check"></i><b>7.4</b> Statistical Transformations</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="working-with-colors.html"><a href="working-with-colors.html"><i class="fa fa-check"></i><b>8</b> Working with Colors</a></li>
 <li class="chapter" data-level="9" data-path="working-with-text.html"><a href="working-with-text.html"><i class="fa fa-check"></i><b>9</b> Working with Text</a></li>
@@ -278,13 +279,43 @@ div.csl-indent {
 <p>Yeah! I have finished my book, but I have more to say about some topics. Let me explain them in this appendix.</p>
 <p>To know more about <strong>bookdown</strong>, see <a href="https://bookdown.org" class="uri">https://bookdown.org</a>.</p>
 
-<p><img src="bookdown_files/figure-html/unnamed-chunk-11-1.png" width="768" /></p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="more-to-say.html#cb87-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> </span>
+<span id="cb87-2"><a href="more-to-say.html#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count)) <span class="sc">+</span></span>
+<span id="cb87-3"><a href="more-to-say.html#cb87-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer</span>(<span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">position =</span> <span class="st">&quot;identity&quot;</span>)</span>
+<span id="cb87-4"><a href="more-to-say.html#cb87-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-5"><a href="more-to-say.html#cb87-5" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> </span>
+<span id="cb87-6"><a href="more-to-say.html#cb87-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp)) <span class="sc">+</span></span>
+<span id="cb87-7"><a href="more-to-say.html#cb87-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer</span>(<span class="at">geom =</span> <span class="st">&quot;bar&quot;</span>, <span class="at">stat =</span> <span class="st">&quot;bin&quot;</span>, <span class="at">position =</span> <span class="st">&quot;identity&quot;</span>)</span>
+<span id="cb87-8"><a href="more-to-say.html#cb87-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-9"><a href="more-to-say.html#cb87-9" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> </span>
+<span id="cb87-10"><a href="more-to-say.html#cb87-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> wind_speed, <span class="at">y =</span> humidity)) <span class="sc">+</span></span>
+<span id="cb87-11"><a href="more-to-say.html#cb87-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer</span>(<span class="at">geom =</span> <span class="st">&quot;smooth&quot;</span>, <span class="at">stat =</span> <span class="st">&quot;smooth&quot;</span>, <span class="at">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">params =</span> <span class="fu">list</span>(<span class="at">se =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb87-12"><a href="more-to-say.html#cb87-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-13"><a href="more-to-say.html#cb87-13" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">plot_spacer</span>() <span class="sc">+</span> p2 <span class="sc">+</span> <span class="fu">plot_spacer</span>() <span class="sc">+</span> p3 <span class="sc">+</span> </span>
+<span id="cb87-14"><a href="more-to-say.html#cb87-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, .<span class="dv">03</span>, <span class="dv">1</span>, .<span class="dv">03</span>, <span class="dv">1</span>))</span></code></pre></div>
 <hr />
 <p>For example, <code>geom_histogram()</code> or <code>stat_bin()</code> both create histograms representing the distribution of a continuous variable as binned bars:</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="more-to-say.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp)) <span class="sc">+</span> <span class="fu">geom_histogram</span>() </span>
-<span id="cb78-2"><a href="more-to-say.html#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp)) <span class="sc">+</span> <span class="fu">stat_bin</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="more-to-say.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp)) <span class="sc">+</span> <span class="fu">geom_histogram</span>() </span>
+<span id="cb88-2"><a href="more-to-say.html#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp)) <span class="sc">+</span> <span class="fu">stat_bin</span>()</span></code></pre></div>
 <p>Both functions call the same <code>layer()</code> function with the predefined defaults <code>geom = "bar"</code>, <code>stat = "bin"</code>, and <code>position = "identity"</code>.</p>
 <hr />
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="more-to-say.html#cb89-1" aria-hidden="true" tabindex="-1"></a>bikes_summerdays_2015 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(</span>
+<span id="cb89-2"><a href="more-to-say.html#cb89-2" aria-hidden="true" tabindex="-1"></a>  bikes, day_night <span class="sc">==</span> <span class="st">&quot;day&quot;</span>, year <span class="sc">==</span> <span class="st">&quot;2015&quot;</span>, season <span class="sc">==</span> <span class="st">&quot;summer&quot;</span></span>
+<span id="cb89-3"><a href="more-to-say.html#cb89-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb89-4"><a href="more-to-say.html#cb89-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-5"><a href="more-to-say.html#cb89-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes_summerdays_2015,</span>
+<span id="cb89-6"><a href="more-to-say.html#cb89-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">xend =</span> date, <span class="do">## start at previous temp</span></span>
+<span id="cb89-7"><a href="more-to-say.html#cb89-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="fu">lag</span>(count), <span class="at">yend =</span> count)) <span class="sc">+</span> <span class="do">## start at previous count</span></span>
+<span id="cb89-8"><a href="more-to-say.html#cb89-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>()</span>
+<span id="cb89-9"><a href="more-to-say.html#cb89-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-10"><a href="more-to-say.html#cb89-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes_summerdays_2015,</span>
+<span id="cb89-11"><a href="more-to-say.html#cb89-11" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">lag</span>(date), <span class="at">xend =</span> date, <span class="do">## start at previous temp</span></span>
+<span id="cb89-12"><a href="more-to-say.html#cb89-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="fu">lag</span>(count), <span class="at">yend =</span> count)) <span class="sc">+</span> <span class="do">## start at previous count</span></span>
+<span id="cb89-13"><a href="more-to-say.html#cb89-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(</span>
+<span id="cb89-14"><a href="more-to-say.html#cb89-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">color =</span> count <span class="sc">&gt;</span> <span class="fu">lag</span>(count)), </span>
+<span id="cb89-15"><a href="more-to-say.html#cb89-15" aria-hidden="true" tabindex="-1"></a>    <span class="do">## draw arrow heads to indicate direction of change </span></span>
+<span id="cb89-16"><a href="more-to-say.html#cb89-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type =</span> <span class="st">&quot;closed&quot;</span>,<span class="at">length =</span> <span class="fu">unit</span>(.<span class="dv">3</span>, <span class="st">&quot;lines&quot;</span>))</span>
+<span id="cb89-17"><a href="more-to-say.html#cb89-17" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 
 </div>
             </section>

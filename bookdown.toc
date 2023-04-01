@@ -61,12 +61,13 @@
 \contentsline {section}{\numberline {7.1}Predefined Layers}{66}{section.7.1}%
 \contentsline {section}{\numberline {7.2}Changing Layer Defaults}{66}{section.7.2}%
 \contentsline {section}{\numberline {7.3}Positional Aesthetics}{67}{section.7.3}%
-\contentsline {chapter}{\numberline {8}Working with Colors}{71}{chapter.8}%
-\contentsline {chapter}{\numberline {9}Working with Text}{73}{chapter.9}%
-\contentsline {part}{III\hspace {1em}Advanced Walk-Through Examples}{75}{part.3}%
-\contentsline {chapter}{\numberline {10}Overview}{77}{chapter.10}%
-\contentsline {chapter}{Appendix}{79}{chapter.10}%
-\contentsline {chapter}{\numberline {A}More to Say}{79}{appendix.A}%
-\contentsline {fm}{Bibliography}{81}{appendix*.44}%
-\contentsline {chapter}{Index}{83}{appendix*.44}%
-\contentsline {section}{}{83}{appendix*.44}%
+\contentsline {section}{\numberline {7.4}Statistical Transformations}{71}{section.7.4}%
+\contentsline {chapter}{\numberline {8}Working with Colors}{75}{chapter.8}%
+\contentsline {chapter}{\numberline {9}Working with Text}{77}{chapter.9}%
+\contentsline {part}{III\hspace {1em}Advanced Walk-Through Examples}{79}{part.3}%
+\contentsline {chapter}{\numberline {10}Overview}{81}{chapter.10}%
+\contentsline {chapter}{Appendix}{83}{chapter.10}%
+\contentsline {chapter}{\numberline {A}More to Say}{83}{appendix.A}%
+\contentsline {fm}{Bibliography}{85}{appendix*.44}%
+\contentsline {chapter}{Index}{87}{appendix*.44}%
+\contentsline {section}{}{87}{appendix*.44}%

@@ -90,6 +90,7 @@ working-with-layers
 predefined-layers
 changing-layer-defaults
 positional-aesthetics
+statistical-transformations
 working-with-colors
 working-with-text
 advanced-examples
