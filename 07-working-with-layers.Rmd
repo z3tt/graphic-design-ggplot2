@@ -8,125 +8,146 @@ source(here::here("src", "prerequisites.R"))
 
 Internally all layers are created by the `layer()` function. A layer is by definition a "combination of data, stat and geom with a potential position adjustment" (`layer` R help). 
 
-```{r}
+```{r 07layerScatter, fig.cap="A simple scatter plot of bike counts versus average temperature created with the `layer()` function."}
+ggplot() +
+  layer(data = bikes, mapping = aes(x = temp, y = count),
+        geom = "point", stat = "identity", position = "identity")
+```
+
+The data and aesthetic mappings are often specified in the initial `ggplot()` call. These specifications are then passed to all layers. 
+
+```{r, eval=FALSE}
 ggplot(bikes, aes(x = temp, y = count)) +
   layer(geom = "point", stat = "identity", position = "identity")
 ```
 
 
-## Layer Defaults
+## Predefined Layers
 
-The long list of featured `geom_*()` and `stat_*()` functions in **ggplot2** is thus just a set of predefined layers with default `geom`, `stat`, `position` arguments that use the data passed in the initial `ggplot()` call. The data can also be specified for each layer separately by passing it inside the respective geom or stat.
+To simplify your life, **ggplot2** features a long list of predefined layers with sensible defaults for `geom`, `stat`, and `position`. Focusing on either the geometrical representation or the statistical transformation, these functions start with `geom_*()` or `stat_*()`, respectively.  
 
-The following codes produce the same output as the `layer()` function above, a scatter plot of counts over time:
+For all geometries and statistical transformation there are respective `geom_*()` and `stat_*()` functions. This means, you can usually go both routes to create the same chart. The following codes produce the same output as the `layer()` function above, a scatter plot of counts versus temperature:
 
 ```{r, eval=FALSE}
 ggplot(bikes, aes(x = temp, y = count)) +
-  geom_point() ## with defaults `stat = "identity", position = "identity"`
+  geom_point() ## with `stat = "identity", position = "identity"`
 
 ggplot(bikes, aes(x = temp, y = count)) +
-  stat_identity() ## with defaults `geom = "point", position = "identity"`
+  stat_identity() ## with `geom = "point", position = "identity"`
 ```
 
-All layers follow the same approach with both, `geom_*` and `stat_*` defaults such as binned bars to create histograms via `geom_histogram()` or `stat_histogram()`, both with the defaults `geom = "bar"`, `stat = "bin"`, and `position = "identity"`.
+Similarly, `geom_bar()` or `stat_count()` both produce *bar* charts with the height encoding the *count* per variable. For both, the default positional adjustment is `"stack"`. Mapping a variable to the `fill` aesthetic thus creates stacked bar charts:
 
 ```{r, eval=FALSE}
-ggplot(bikes, aes(x = temp)) + geom_histogram() 
-ggplot(bikes, aes(x = temp)) + stat_bin()
+ggplot(bikes, aes(x = weather_type, fill = year)) + 
+  geom_bar() ## with `stat = "count"`
+
+ggplot(bikes, aes(x = weather_type, fill = year)) + 
+  stat_count() ## with `geom = "bar"`
 ```
 
-For all geometries and statistical transformation there is a respective `geom_*` and `stat_*` with reasonable defaults. For example, `geom_bar()` or `stat_count()` both produce *bar* charts with the height encoding the *count* per variable:
+Maybe you have wondered at some point, why you can use `geom_smooth()` and `stat_smooth()` interchangeably to create a conditional smoothing? This is because both call the same underlying layer function with the default arguments `geom = "smooth"` and `stat = "smooth"`, respectively. 
 
 ```{r, eval=FALSE}
-ggplot(bikes, aes(x = weather_type, fill = year)) + geom_bar() ## with default `stat = "count"`
-ggplot(bikes, aes(x = weather_type, fill = year)) + stat_count() ## with default `geom = "bar"`
+ggplot(bikes, aes(x = temp, y = humidity)) + 
+  geom_smooth() ## with `stat = "smooth"`
+
+ggplot(bikes, aes(x = temp, y = humidity)) + 
+  stat_smooth() ## with `geom = "smooth"`
 ```
 
-Maybe you have wondered at some point, why you can use `geom_smooth()` and `stat_smooth()` interchangeably to create a conditional smoothing? This is because both call the same underlying layer function with the default arguments `geom = "smooth"`, `stat = "smooth"` and `position = "identity"`. 
-
-```{r, eval=FALSE}
-ggplot(bikes, aes(x = temp, y = humidity)) + geom_smooth()
-ggplot(bikes, aes(x = temp, y = humidity)) + stat_smooth()
-```
-
-```{r, echo=FALSE}
+```{r 07layerPredefinedDefault, echo=FALSE, fig.cap="Left: A stacked bar chart of the number of observations per weather type and time of the day, created with the predefined layers `geom_bar()` or `stat_count()`. Right: A conditional smoothing of humidity and temperature created with the predefined layers `geom_smooth()` or `stat_smooth()`."}
 s1 <- 
-  ggplot(bikes, aes(x = temp, y = humidity)) + 
-  geom_smooth() +
-  labs(title = "geom_smooth()\nstat_smooth()") +
-  theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05), lineheight = 1.1))
-
-s2 <- 
   ggplot(bikes, aes(x = weather_type, fill = day_night)) + 
   stat_count() +
-  scale_fill_manual(values = colors[2:3], name = NULL) +
+  scale_fill_manual(values = prismatic::clr_darken(colors[2:3], .2), name = NULL) +
   labs(title = "geom_bar()\nstat_count()") +
   theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05), lineheight = 1.1), 
         panel.grid.major.x = element_blank(),
         legend.position = "bottom")
 
-s1 + plot_spacer() + s2 + plot_layout(widths = c(.8, .03, 1))
+s2 <- 
+  ggplot(bikes, aes(x = temp, y = humidity)) + 
+  geom_smooth(color = "black") +
+  labs(title = "geom_smooth()\nstat_smooth()") +
+  theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05), lineheight = 1.1))
+
+s1 + plot_spacer() + s2 + plot_layout(widths = c(1, .03, .8))
 ```
 
+## Changing Layer Defaults
 
-We can overwrite the defaults and change the behavior of the layer:
+We can overwrite the default argument inputs to change the behavior of the layer. 
+
+While the stacked bars (Fig. \@ref(fig:07layerPredefinedDefault)A) put emphasis on the total counts per weather type, a grouped bar chart simplifies comparison between groups. We can change the default behavior of `geom_bar()` or `stat_count()` by setting the `position` to `dodge` to place the bars next to each other:
 
 ```{r, eval=FALSE}
-ggplot(bikes, aes(x = wind_speed, y = humidity)) +
-  stat_smooth() ## with default `geom = "smooth"`
+ggplot(bikes, aes(x = weather_type, fill = day_night)) +
+  geom_bar(position = "dodge")
+```
 
+We can also overwrite the default `stat` in geometrical layers or `geom` in statistical layers. For example, changing the `geom` in `stat_smooth()` to `pointrange` turns the smoothed line and ribbon into points with vertical lines representing the confidence intervals:
+
+```{r, eval=FALSE}
 ggplot(bikes, aes(x = wind_speed, y = humidity)) +
   stat_smooth(geom = "pointrange")
 ```
 
-```{r, echo=FALSE}
-s3 <- ggplot(bikes, aes(x = wind_speed, y = humidity)) +
-  stat_smooth(geom = "pointrange", size = .1)  +
-  labs(title = 'stat_smooth(geom = "pointrange")\nstat_pointrange(stat = "smooth")') +
-  theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05), lineheight = 1.1))
+Again, we could rewrite the code by using the respective geometrical layer `geom_pointrange()` and setting the default statistical transformation `"identity"` to `"smooth"`.
 
-s4 <- ggplot(bikes, aes(x = weather_type, fill = day_night)) +
-  geom_bar(position = "dodge") +
-  scale_fill_manual(values = colors[2:3], name = NULL) +
+```{r 07layerPredefinedCustom, echo=FALSE, fig.cap='Left: The bar chart of weather types per time of the day as dodged bars by setting the `position` to `"dodge"`, overwriting the default `"stack"`. Right: The conditional smoothing as so-called pointranges displaying the predicted mean as points and the confidence intervals as vertical lines by overwriting the default `geom` in `stat_smooth()` or using the respective geometrical layer with `stat = "smooth"`.'}
+s3 <- ggplot(bikes, aes(x = weather_type, fill = day_night)) +
+  geom_bar(position = position_dodge(preserve = "single")) +
+  scale_fill_manual(values = prismatic::clr_darken(colors[2:3], .2), name = NULL) +
   labs(title = 'geom_bar(position = "dodge")\nstat_count(position = "dodge")') +
   theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05), lineheight = 1.1), 
         panel.grid.major.x = element_blank(),
         legend.position = "bottom")
 
-s3 + plot_spacer() + s4 + plot_layout(widths = c(.8, .1, 1))
+s4 <- ggplot(bikes, aes(x = wind_speed, y = humidity)) +
+  stat_smooth(geom = "pointrange", size = .1)  +
+  labs(title = 'stat_smooth(geom = "pointrange")\nstat_pointrange(stat = "smooth")') +
+  theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05), lineheight = 1.1))
+
+s3 + plot_spacer() + s4 + plot_layout(widths = c(1, .03, .8))
+```
+
+
+## Positional Aesthetics
+
+Many geometrical shapes work with one or two positional arguments, namely `x` and `y` to represent your data. Depending on the type of the variables, the layer may behave differently or return an error if the variables do not meet the required type. 
+
+For example, **ggplot2** will calculate a box plot for each category if the type is `character`, `logical`, or `factor` but only a single box plot otherwise:
+
+```{r, eval=FALSE}
+## creates four boxplots as `season` is a factor
+ggplot(bikes, aes(x = season, y = count)) + geom_boxplot()
+
+## creates two boxplots as `is_weekend` is logical
+ggplot(bikes, aes(x = is_weekend, y = count)) + geom_boxplot()
+
+## creates a single boxplot as `temp` is numeric
+ggplot(bikes, aes(x = temp, y = count)) + geom_boxplot()
+```
+
+Histograms show the distribution of numeric variables as bars grouped into equal numerical ranges, so-called bins. The corresponding `geom_histogram()` creates *binned bars* (read: `stat = "bin", geom = "bar"`) for quantitative variables but fails when passing qualitative variables as calculation of bins across categories is not meaningful. In that case, `geom_bar()` with the default `stat = "count"` creates the desired bar chart showing counts per category.
+
+```{r, eval=FALSE}
+## works as `temp` is numeric
+ggplot(bikes, aes(x = temp)) + geom_histogram()
+
+## fails as `is_weekend` is categorical
+ggplot(bikes, aes(x = is_weekend)) + geom_histogram()
+# Error: `stat_bin()` requires a continuous x aesthetic
+
+## create bars with discrete x aesthetics
+ggplot(bikes, aes(x = is_weekend)) + geom_bar()
 ```
 
 
 
-## Geometrical Shapes
-
-Many geometrical shapes only need two positional arguments, namely `x` and `y` as a single coordinate is sufficient to represent your data. A combination of x and y values determine the position of points, connected lines, or the height of bars.
-
-```{r}
-ggplot(bikes, aes(x = date, y = count)) +
-  geom_line() ## a timeseries of bike shares per date
-
-ggplot(bikes, aes(x = date, y = count)) +
-  geom_col() ## a bar chart with one bar per date
-```
 
 [WIP]
 
-* most geoms use two positional aesthetics
-* showcase a few of those
-* some geoms take only one or more than 2
-* showcase of some of those
-
-
-## Statistical Transformations
-
-* stats are just a different perspective
-* illustrate with usual examples
-* powerful transformations: count + summary
-
-
-## Positional Adjustments
-
-* 
 
 

@@ -1,5 +1,5 @@
 ```{r 04setup-section-walkthrough, echo=FALSE, include=FALSE}
-ggplot2::theme_set(ggplot2::theme_grey(base_size = 12, base_family = "Asap"))
+ggplot2::theme_set(ggplot2::theme_grey(base_size = 12))
 ```
 
 # A Walk-Through Example {#walkthrough}
@@ -169,9 +169,9 @@ ggplot(bikes, aes(x = temp_feel, y = count)) +
 
 ## Use a Custom Color Palette {#color-scaling}
 
-The `scales` do not only control the behavior of the axes but also all other aesthetics such as `color`, `shape` or `alpha`. In case of categorical colors, scale_color_manual() enables us to overwrite the default color set by passing a vector of colors.
+The `scales` do not only control the behavior of the axes but also all other aesthetics such as `color`, `shape` or `alpha`. In case of categorical colors, `scale_color_manual()` enables us to overwrite the default color set by passing a vector of colors.
 
-```{r 04ggplotColors, fig.cap=""}
+```{r 04ggplotColors, fig.cap="Categorical colors can be customized with the function `scale_color_manual()`."}
 g1 <- ggplot(bikes, aes(x = temp_feel, y = count)) + 
   geom_point(
     aes(color = season), alpha = .5, size = 2
@@ -221,7 +221,7 @@ g2
 
 Let's also overwrite the cryptic numeric encoding of the seasons. Similar to the positional scales, we can pass a vector or function to the `labels` argument in the `scale_color_*()` component:
 
-```{r 04legendLabels, fig.cap="By passing a vector of the same length as there are seasons to the `labels` argument of the `scale_color_*()` function, we can overwrite the labels used in the legend."}
+```{r 04legendLabels, fig.cap="We can overwrite the legend text with a set of custom labels by passing a character vector to the `labels` argument of the `scale_color_*()` function."}
 g3 <- g2 +
   scale_color_manual(
     values = c("#3c89d9", "#1ec99b", "#F7B01B", "#a26e7c"),
@@ -236,7 +236,7 @@ Note that the code is returning a message informing you that the present color s
 
 ## Apply a Complete Theme {#complete-themes}
 
-**ggplot2** comes with a set of so-called *complete themes*. We can add one of these to overwrite the default theme_grey() by one of the others (run `?theme_grey` for a full list of available complete themes). 
+**ggplot2** comes with a set of so-called *complete themes*. We can add one of these to overwrite the default `theme_grey()` by one of the others (run `?theme_grey` for a full list of available complete themes). 
 
 When adding a theme to a ggplot, we can already overwrite the `base_size` of the theme elements, which translates to the size of text labels and line widths. Furthermore, we can set a non-default typeface by supplying a locally installed typeface in the `base_family` argument.
 
@@ -250,11 +250,11 @@ g3 +
 
 ## Customize the Theme {#custom-theming}
 
-The complete themes follow a set of rules that overwrite the choices made for the default `theme_grey()`. By using a `theme()` call after (!) adding a complete theme, one can adjust the appearance of single elements (e.g. `plot.title` or `panel.grid.major.x`) as well as set some pre-set options such as the positions of titles, captions and legends (`plot.title.position`, `plot.caption.position` and `legend.position`). 
+The complete themes follow a set of rules that overwrite the choices made for the default `theme_grey()`. By using a `theme()` call <u>after</u> adding a complete theme, one can adjust the appearance of single elements (e.g. `plot.title` or `panel.grid.major.x`) as well as set some predefined options such as the positions of titles, captions and legends (`plot.title.position`, `plot.caption.position` and `legend.position`). 
 
 In general, theme elements can be of class text (e.g. `plot.title`), line (e.g. `panel.grid.major.x`), or rectangle (e.g. `panel.background`). In addition, we can use `element_blank()` to remove an element entirely as set for `panel.grid.minor` in our example.
 
-```{r 04ggplotThemeAdjustments, fig.cap="After applying on of the complete themes, one can further style the theme to the personal needs."}
+```{r 04ggplotThemeAdjustments, fig.cap="After applying one of the complete themes, the overall appearance can be further modified via the `theme()` function."}
 g3 +
   theme_light(
     base_size = 12, base_family = "Spline Sans"
@@ -262,7 +262,7 @@ g3 +
   ## theme adjustments
   theme(
     plot.title.position = "plot", ## left-align title
-    plot.caption.position = "plot", ## right-align title
+    plot.caption.position = "plot", ## right-align caption
     plot.title = element_text(face = "bold", size = rel(1.3)), ## larger bold title
     axis.text = element_text(family = "Spline Sans Mono"), ## monospaced font for axes
     axis.title.x = element_text( ## left-aligned, grey x axis label

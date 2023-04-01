@@ -155,20 +155,6 @@
 \makeatother
 
 \frontmatter
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
-\usepackage{xcolor}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -196,7 +182,7 @@
 \makeatother
 \subtitle{Create Beautiful and Engaging Data Visualizations in R}
 \author{Cédric Scherer}
-\date{2023-03-31}
+\date{2023-04-01}
 
 \begin{document}
 \maketitle
@@ -1462,7 +1448,7 @@ For every aesthetic, \textbf{ggplot2} applies so-called \emph{scales} that trans
 \hypertarget{color-scaling}{%
 \section{Use a Custom Color Palette}\label{color-scaling}}
 
-The \texttt{scales} do not only control the behavior of the axes but also all other aesthetics such as \texttt{color}, \texttt{shape} or \texttt{alpha}. In case of categorical colors, scale\_color\_manual() enables us to overwrite the default color set by passing a vector of colors.
+The \texttt{scales} do not only control the behavior of the axes but also all other aesthetics such as \texttt{color}, \texttt{shape} or \texttt{alpha}. In case of categorical colors, \texttt{scale\_color\_manual()} enables us to overwrite the default color set by passing a vector of colors.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1491,7 +1477,11 @@ The \texttt{scales} do not only control the behavior of the axes but also all ot
 \end{Highlighting}
 \end{Shaded}
 
+\begin{figure}
+\centering
 \includegraphics{bookdown_files/figure-latex/04ggplotColors-1.png}
+\caption{\label{fig:04ggplotColors}Categorical colors can be customized with the function \texttt{scale\_color\_manual()}.}
+\end{figure}
 
 The colors will be applied in order, i.e.~the levels of the factor or alphabetical in case of character variables. To ensure correct mapping, one can also use a named vector.
 
@@ -1542,7 +1532,7 @@ Let's also overwrite the cryptic numeric encoding of the seasons. Similar to the
 \begin{figure}
 \centering
 \includegraphics{bookdown_files/figure-latex/04legendLabels-1.png}
-\caption{\label{fig:04legendLabels}By passing a vector of the same length as there are seasons to the \texttt{labels} argument of the \texttt{scale\_color\_*()} function, we can overwrite the labels used in the legend.}
+\caption{\label{fig:04legendLabels}We can overwrite the legend text with a set of custom labels by passing a character vector to the \texttt{labels} argument of the \texttt{scale\_color\_*()} function.}
 \end{figure}
 
 Note that the code is returning a message informing you that the present color scale has been replaced. As you can only apply one scale per aesthetic, we also have to pass the color vector again to use the custom colors from before.
@@ -1550,7 +1540,7 @@ Note that the code is returning a message informing you that the present color s
 \hypertarget{complete-themes}{%
 \section{Apply a Complete Theme}\label{complete-themes}}
 
-\textbf{ggplot2} comes with a set of so-called \emph{complete themes}. We can add one of these to overwrite the default theme\_grey() by one of the others (run \texttt{?theme\_grey} for a full list of available complete themes).
+\textbf{ggplot2} comes with a set of so-called \emph{complete themes}. We can add one of these to overwrite the default \texttt{theme\_grey()} by one of the others (run \texttt{?theme\_grey} for a full list of available complete themes).
 
 When adding a theme to a ggplot, we can already overwrite the \texttt{base\_size} of the theme elements, which translates to the size of text labels and line widths. Furthermore, we can set a non-default typeface by supplying a locally installed typeface in the \texttt{base\_family} argument.
 
@@ -1573,7 +1563,7 @@ When adding a theme to a ggplot, we can already overwrite the \texttt{base\_size
 \hypertarget{custom-theming}{%
 \section{Customize the Theme}\label{custom-theming}}
 
-The complete themes follow a set of rules that overwrite the choices made for the default \texttt{theme\_grey()}. By using a \texttt{theme()} call after (!) adding a complete theme, one can adjust the appearance of single elements (e.g.~\texttt{plot.title} or \texttt{panel.grid.major.x}) as well as set some pre-set options such as the positions of titles, captions and legends (\texttt{plot.title.position}, \texttt{plot.caption.position} and \texttt{legend.position}).
+The complete themes follow a set of rules that overwrite the choices made for the default \texttt{theme\_grey()}. By using a \texttt{theme()} call after adding a complete theme, one can adjust the appearance of single elements (e.g.~\texttt{plot.title} or \texttt{panel.grid.major.x}) as well as set some predefined options such as the positions of titles, captions and legends (\texttt{plot.title.position}, \texttt{plot.caption.position} and \texttt{legend.position}).
 
 In general, theme elements can be of class text (e.g.~\texttt{plot.title}), line (e.g.~\texttt{panel.grid.major.x}), or rectangle (e.g.~\texttt{panel.background}). In addition, we can use \texttt{element\_blank()} to remove an element entirely as set for \texttt{panel.grid.minor} in our example.
 
@@ -1586,7 +1576,7 @@ In general, theme elements can be of class text (e.g.~\texttt{plot.title}), line
   \DocumentationTok{\#\# theme adjustments}
   \FunctionTok{theme}\NormalTok{(}
     \AttributeTok{plot.title.position =} \StringTok{"plot"}\NormalTok{, }\DocumentationTok{\#\# left{-}align title}
-    \AttributeTok{plot.caption.position =} \StringTok{"plot"}\NormalTok{, }\DocumentationTok{\#\# right{-}align title}
+    \AttributeTok{plot.caption.position =} \StringTok{"plot"}\NormalTok{, }\DocumentationTok{\#\# right{-}align caption}
     \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{face =} \StringTok{"bold"}\NormalTok{, }\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(}\FloatTok{1.3}\NormalTok{)), }\DocumentationTok{\#\# larger bold title}
     \AttributeTok{axis.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{family =} \StringTok{"Spline Sans Mono"}\NormalTok{), }\DocumentationTok{\#\# monospaced font for axes}
     \AttributeTok{axis.title.x =} \FunctionTok{element\_text}\NormalTok{( }\DocumentationTok{\#\# left{-}aligned, grey x axis label}
@@ -1606,7 +1596,7 @@ In general, theme elements can be of class text (e.g.~\texttt{plot.title}), line
 \begin{figure}
 \centering
 \includegraphics{bookdown_files/figure-latex/04ggplotThemeAdjustments-1.png}
-\caption{\label{fig:04ggplotThemeAdjustments}After applying on of the complete themes, one can further style the theme to the personal needs.}
+\caption{\label{fig:04ggplotThemeAdjustments}After applying one of the complete themes, the overall appearance can be further modified via the \texttt{theme()} function.}
 \end{figure}
 
 The book covers themes in full detail in Chapter XYZ. Here you learn how to leverage complete themes, which other complete themes are provided by extension packages, and how to create your own custom, corporate theme to apply a cohesive and easily reproducible style to all of your graphics.
@@ -2106,130 +2096,142 @@ Internally all layers are created by the \texttt{layer()} function. A layer is b
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{layer}\NormalTok{(}\AttributeTok{data =}\NormalTok{ bikes, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{y =}\NormalTok{ count),}
+        \AttributeTok{geom =} \StringTok{"point"}\NormalTok{, }\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{position =} \StringTok{"identity"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/07layerScatter-1.png}
+\caption{\label{fig:07layerScatter}A simple scatter plot of bike counts versus average temperature created with the \texttt{layer()} function.}
+\end{figure}
+
+The data and aesthetic mappings are often specified in the initial \texttt{ggplot()} call. These specifications are then passed to all layers.
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+}
   \FunctionTok{layer}\NormalTok{(}\AttributeTok{geom =} \StringTok{"point"}\NormalTok{, }\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{position =} \StringTok{"identity"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-3-1.png}
+\hypertarget{predefined-layers}{%
+\section{Predefined Layers}\label{predefined-layers}}
 
-\hypertarget{layer-defaults}{%
-\section{Layer Defaults}\label{layer-defaults}}
+To simplify your life, \textbf{ggplot2} features a long list of predefined layers with sensible defaults for \texttt{geom}, \texttt{stat}, and \texttt{position}. Focusing on either the geometrical representation or the statistical transformation, these functions start with \texttt{geom\_*()} or \texttt{stat\_*()}, respectively.
 
-The long list of featured \texttt{geom\_*()} and \texttt{stat\_*()} functions in \textbf{ggplot2} is thus just a set of predefined layers with default \texttt{geom}, \texttt{stat}, \texttt{position} arguments that use the data passed in the initial \texttt{ggplot()} call. The data can also be specified for each layer separately by passing it inside the respective geom or stat.
-
-The following codes produce the same output as the \texttt{layer()} function above, a scatter plot of counts over time:
+For all geometries and statistical transformation there are respective \texttt{geom\_*()} and \texttt{stat\_*()} functions. This means, you can usually go both routes to create the same chart. The following codes produce the same output as the \texttt{layer()} function above, a scatter plot of counts versus temperature:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{() }\DocumentationTok{\#\# with defaults \textasciigrave{}stat = "identity", position = "identity"\textasciigrave{}}
+  \FunctionTok{geom\_point}\NormalTok{() }\DocumentationTok{\#\# with \textasciigrave{}stat = "identity", position = "identity"\textasciigrave{}}
 
 \FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+}
-  \FunctionTok{stat\_identity}\NormalTok{() }\DocumentationTok{\#\# with defaults \textasciigrave{}geom = "point", position = "identity"\textasciigrave{}}
+  \FunctionTok{stat\_identity}\NormalTok{() }\DocumentationTok{\#\# with \textasciigrave{}geom = "point", position = "identity"\textasciigrave{}}
 \end{Highlighting}
 \end{Shaded}
 
-All layers follow the same approach with both, \texttt{geom\_*} and \texttt{stat\_*} defaults such as binned bars to create histograms via \texttt{geom\_histogram()} or \texttt{stat\_histogram()}, both with the defaults \texttt{geom\ =\ "bar"}, \texttt{stat\ =\ "bin"}, and \texttt{position\ =\ "identity"}.
+Similarly, \texttt{geom\_bar()} or \texttt{stat\_count()} both produce \emph{bar} charts with the height encoding the \emph{count} per variable. For both, the default positional adjustment is \texttt{"stack"}. Mapping a variable to the \texttt{fill} aesthetic thus creates stacked bar charts:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp)) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{() }
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp)) }\SpecialCharTok{+} \FunctionTok{stat\_bin}\NormalTok{()}
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ weather\_type, }\AttributeTok{fill =}\NormalTok{ year)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_bar}\NormalTok{() }\DocumentationTok{\#\# with \textasciigrave{}stat = "count"\textasciigrave{}}
+
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ weather\_type, }\AttributeTok{fill =}\NormalTok{ year)) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_count}\NormalTok{() }\DocumentationTok{\#\# with \textasciigrave{}geom = "bar"\textasciigrave{}}
 \end{Highlighting}
 \end{Shaded}
 
-For all geometries and statistical transformation there is a respective \texttt{geom\_*} and \texttt{stat\_*} with reasonable defaults. For example, \texttt{geom\_bar()} or \texttt{stat\_count()} both produce \emph{bar} charts with the height encoding the \emph{count} per variable:
+Maybe you have wondered at some point, why you can use \texttt{geom\_smooth()} and \texttt{stat\_smooth()} interchangeably to create a conditional smoothing? This is because both call the same underlying layer function with the default arguments \texttt{geom\ =\ "smooth"} and \texttt{stat\ =\ "smooth"}, respectively.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ weather\_type, }\AttributeTok{fill =}\NormalTok{ year)) }\SpecialCharTok{+} \FunctionTok{geom\_bar}\NormalTok{() }\DocumentationTok{\#\# with default \textasciigrave{}stat = "count"\textasciigrave{}}
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ weather\_type, }\AttributeTok{fill =}\NormalTok{ year)) }\SpecialCharTok{+} \FunctionTok{stat\_count}\NormalTok{() }\DocumentationTok{\#\# with default \textasciigrave{}geom = "bar"\textasciigrave{}}
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{y =}\NormalTok{ humidity)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_smooth}\NormalTok{() }\DocumentationTok{\#\# with \textasciigrave{}stat = "smooth"\textasciigrave{}}
+
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{y =}\NormalTok{ humidity)) }\SpecialCharTok{+} 
+  \FunctionTok{stat\_smooth}\NormalTok{() }\DocumentationTok{\#\# with \textasciigrave{}geom = "smooth"\textasciigrave{}}
 \end{Highlighting}
 \end{Shaded}
 
-Maybe you have wondered at some point, why you can use \texttt{geom\_smooth()} and \texttt{stat\_smooth()} interchangeably to create a conditional smoothing? This is because both call the same underlying layer function with the default arguments \texttt{geom\ =\ "smooth"}, \texttt{stat\ =\ "smooth"} and \texttt{position\ =\ "identity"}.
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/07layerPredefinedDefault-1.png}
+\caption{\label{fig:07layerPredefinedDefault}Left: A stacked bar chart of the number of observations per weather type and time of the day, created with the predefined layers \texttt{geom\_bar()} or \texttt{stat\_count()}. Right: A conditional smoothing of humidity and temperature created with the predefined layers \texttt{geom\_smooth()} or \texttt{stat\_smooth()}.}
+\end{figure}
+
+\hypertarget{changing-layer-defaults}{%
+\section{Changing Layer Defaults}\label{changing-layer-defaults}}
+
+We can overwrite the default argument inputs to change the behavior of the layer.
+
+While the stacked bars (Fig. \ref{fig:07layerPredefinedDefault}A) put emphasis on the total counts per weather type, a grouped bar chart simplifies comparison between groups. We can change the default behavior of \texttt{geom\_bar()} or \texttt{stat\_count()} by setting the \texttt{position} to \texttt{dodge} to place the bars next to each other:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{y =}\NormalTok{ humidity)) }\SpecialCharTok{+} \FunctionTok{geom\_smooth}\NormalTok{()}
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{y =}\NormalTok{ humidity)) }\SpecialCharTok{+} \FunctionTok{stat\_smooth}\NormalTok{()}
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ weather\_type, }\AttributeTok{fill =}\NormalTok{ day\_night)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{position =} \StringTok{"dodge"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-8-1.png}
-
-We can overwrite the defaults and change the behavior of the layer:
+We can also overwrite the default \texttt{stat} in geometrical layers or \texttt{geom} in statistical layers. For example, changing the \texttt{geom} in \texttt{stat\_smooth()} to \texttt{pointrange} turns the smoothed line and ribbon into points with vertical lines representing the confidence intervals:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ wind\_speed, }\AttributeTok{y =}\NormalTok{ humidity)) }\SpecialCharTok{+}
-  \FunctionTok{stat\_smooth}\NormalTok{() }\DocumentationTok{\#\# with default \textasciigrave{}geom = "smooth"\textasciigrave{}}
-
 \FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ wind\_speed, }\AttributeTok{y =}\NormalTok{ humidity)) }\SpecialCharTok{+}
   \FunctionTok{stat\_smooth}\NormalTok{(}\AttributeTok{geom =} \StringTok{"pointrange"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-10-1.png}
+Again, we could rewrite the code by using the respective geometrical layer \texttt{geom\_pointrange()} and setting the default statistical transformation \texttt{"identity"} to \texttt{"smooth"}.
 
-\hypertarget{geometrical-shapes}{%
-\section{Geometrical Shapes}\label{geometrical-shapes}}
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/07layerPredefinedCustom-1.png}
+\caption{\label{fig:07layerPredefinedCustom}Left: The bar chart of weather types per time of the day as dodged bars by setting the \texttt{position} to \texttt{"dodge"}, overwriting the default \texttt{"stack"}. Right: The conditional smoothing as so-called pointranges displaying the predicted mean as points and the confidence intervals as vertical lines by overwriting the default \texttt{geom} in \texttt{stat\_smooth()} or using the respective geometrical layer with \texttt{stat\ =\ "smooth"}.}
+\end{figure}
 
-Many geometrical shapes only need two positional arguments, namely \texttt{x} and \texttt{y} as a single coordinate is sufficient to represent your data. A combination of x and y values determine the position of points, connected lines, or the height of bars.
+\hypertarget{positional-aesthetics}{%
+\section{Positional Aesthetics}\label{positional-aesthetics}}
+
+Many geometrical shapes work with one or two positional arguments, namely \texttt{x} and \texttt{y} to represent your data. Depending on the type of the variables, the layer may behave differently or return an error if the variables do not meet the required type.
+
+For example, \textbf{ggplot2} will calculate a box plot for each category if the type is \texttt{character}, \texttt{logical}, or \texttt{factor} but only a single box plot otherwise:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_line}\NormalTok{() }\DocumentationTok{\#\# a timeseries of bike shares per date}
+\DocumentationTok{\#\# creates four boxplots as \textasciigrave{}season\textasciigrave{} is a factor}
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ season, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} \FunctionTok{geom\_boxplot}\NormalTok{()}
+
+\DocumentationTok{\#\# creates two boxplots as \textasciigrave{}is\_weekend\textasciigrave{} is logical}
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ is\_weekend, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} \FunctionTok{geom\_boxplot}\NormalTok{()}
+
+\DocumentationTok{\#\# creates a single boxplot as \textasciigrave{}temp\textasciigrave{} is numeric}
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} \FunctionTok{geom\_boxplot}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-11-1.png}
+Histograms show the distribution of numeric variables as bars grouped into equal numerical ranges, so-called bins. The corresponding \texttt{geom\_histogram()} creates \emph{binned bars} (read: \texttt{stat\ =\ "bin",\ geom\ =\ "bar"}) for quantitative variables but fails when passing qualitative variables as calculation of bins across categories is not meaningful. In that case, \texttt{geom\_bar()} with the default \texttt{stat\ =\ "count"} creates the desired bar chart showing counts per category.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_col}\NormalTok{() }\DocumentationTok{\#\# a bar chart with one bar per date}
+\DocumentationTok{\#\# works as \textasciigrave{}temp\textasciigrave{} is numeric}
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp)) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{()}
+
+\DocumentationTok{\#\# fails as \textasciigrave{}is\_weekend\textasciigrave{} is categorical}
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ is\_weekend)) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{()}
+\CommentTok{\# Error: \textasciigrave{}stat\_bin()\textasciigrave{} requires a continuous x aesthetic}
+
+\DocumentationTok{\#\# create bars with discrete x aesthetics}
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ is\_weekend)) }\SpecialCharTok{+} \FunctionTok{geom\_bar}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
-
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-11-2.png}
 
 {[}WIP{]}
-
-\begin{itemize}
-\tightlist
-\item
-  most geoms use two positional aesthetics
-\item
-  showcase a few of those
-\item
-  some geoms take only one or more than 2
-\item
-  showcase of some of those
-\end{itemize}
-
-\hypertarget{statistical-transformations}{%
-\section{Statistical Transformations}\label{statistical-transformations}}
-
-\begin{itemize}
-\tightlist
-\item
-  stats are just a different perspective
-\item
-  illustrate with usual examples
-\item
-  powerful transformations: count + summary
-\end{itemize}
-
-\hypertarget{positional-adjustments}{%
-\section{Positional Adjustments}\label{positional-adjustments}}
-
-\begin{itemize}
-\tightlist
-\item
-\end{itemize}
 
 \hypertarget{working-with-colors}{%
 \chapter{Working with Colors}\label{working-with-colors}}
@@ -2256,7 +2258,22 @@ Yeah! I have finished my book, but I have more to say about some topics. Let me 
 
 To know more about \textbf{bookdown}, see \url{https://bookdown.org}.
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-12-1.png}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-11-1.png}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+For example, \texttt{geom\_histogram()} or \texttt{stat\_bin()} both create histograms representing the distribution of a continuous variable as binned bars:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp)) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{() }
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp)) }\SpecialCharTok{+} \FunctionTok{stat\_bin}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+Both functions call the same \texttt{layer()} function with the predefined defaults \texttt{geom\ =\ "bar"}, \texttt{stat\ =\ "bin"}, and \texttt{position\ =\ "identity"}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
   \bibliography{book.bib,packages.bib}
 

@@ -18,23 +18,27 @@
 \contentsline {figure}{\numberline {4.5}{\ignorespaces With the \texttt {facet} functions, a visualization can quickly be split into small multiples.\relax }}{36}{figure.caption.23}%
 \contentsline {figure}{\numberline {4.6}{\ignorespaces \{ggplot2\} even allows to free the axis range---while ensuring equal axis spacing.\relax }}{37}{figure.caption.24}%
 \contentsline {figure}{\numberline {4.7}{\ignorespaces To adjust the formatting of axis labels, the respective axis needs to be addressed via the \texttt {scale\_*()} functions.\relax }}{38}{figure.caption.25}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces We can overwrite the default labels with the \texttt {labs()} which also allows to add a title, subtitle, caption, and tag to the graphic.\relax }}{40}{figure.caption.26}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces By passing a vector of the same length as there are seasons to the \texttt {labels} argument of the \texttt {scale\_color\_*()} function, we can overwrite the labels used in the legend.\relax }}{40}{figure.caption.27}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces The graphic now comes with a new look and a non-default font used for all text labels.\relax }}{41}{figure.caption.28}%
-\contentsline {figure}{\numberline {4.11}{\ignorespaces After applying on of the complete themes, one can further style the theme to the personal needs.\relax }}{42}{figure.caption.29}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Categorical colors can be customized with the function \texttt {scale\_color\_manual()}.\relax }}{39}{figure.caption.26}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces We can overwrite the default labels with the \texttt {labs()} which also allows to add a title, subtitle, caption, and tag to the graphic.\relax }}{40}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces We can overwrite the legend text with a set of custom labels by passing a character vector to the \texttt {labels} argument of the \texttt {scale\_color\_*()} function.\relax }}{41}{figure.caption.28}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces The graphic now comes with a new look and a non-default font used for all text labels.\relax }}{42}{figure.caption.29}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces After applying one of the complete themes, the overall appearance can be further modified via the \texttt {theme()} function.\relax }}{43}{figure.caption.30}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces A time series of reported bike rents during the night (6 pm to 6 am) with points being encoded by the average temperature using the default \textbf {ggplot2} theme.\relax }}{46}{figure.caption.30}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces The same plot as before using the minimal theme.\relax }}{47}{figure.caption.31}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces All text labels now use a custom font by changing the \texttt {base\_family} of the theme.\relax }}{47}{figure.caption.32}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces If the text elements are too small for the desired out width and height, you can adjust them by overwriting the default \texttt {base\_size}.\relax }}{48}{figure.caption.33}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces One can style single theme elements with the \texttt {theme()} function. Here, we create a more pronounced tet hierarchy by setting the title in a bigger, bold typeface.\relax }}{49}{figure.caption.34}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces The title and sutitle can be aligned with the plot border by setting \texttt {plot.title.position} to \texttt {"plot"}. Similarly, the position of the caption can be changed by using \texttt {plot.caption.position}.\relax }}{52}{figure.caption.35}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Plots with long labels on the y axis with the title being either aligned with the panel border (default behavior, left) or with the plot border (right).\relax }}{52}{figure.caption.36}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces A time series of reported bike rents during the night (6 pm to 6 am) with points being encoded by the average temperature using the default \textbf {ggplot2} theme.\relax }}{46}{figure.caption.31}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces The same plot as before using the minimal theme.\relax }}{47}{figure.caption.32}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces All text labels now use a custom font by changing the \texttt {base\_family} of the theme.\relax }}{47}{figure.caption.33}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces If the text elements are too small for the desired out width and height, you can adjust them by overwriting the default \texttt {base\_size}.\relax }}{48}{figure.caption.34}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces One can style single theme elements with the \texttt {theme()} function. Here, we create a more pronounced tet hierarchy by setting the title in a bigger, bold typeface.\relax }}{49}{figure.caption.35}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces The title and sutitle can be aligned with the plot border by setting \texttt {plot.title.position} to \texttt {"plot"}. Similarly, the position of the caption can be changed by using \texttt {plot.caption.position}.\relax }}{52}{figure.caption.36}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Plots with long labels on the y axis with the title being either aligned with the panel border (default behavior, left) or with the plot border (right).\relax }}{52}{figure.caption.37}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Running the same plot with updated theme defaults, globally set via \texttt {theme\_update()}. This allows for a consistent style for all graphics without the need to write redundant code.\relax }}{59}{figure.caption.37}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Applying our custom theme to the ggplot object from before.\relax }}{60}{figure.caption.38}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces You can still overwrite the main settings and adjust single elements when using the custom theme.\relax }}{61}{figure.caption.39}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Running the same plot with updated theme defaults, globally set via \texttt {theme\_update()}. This allows for a consistent style for all graphics without the need to write redundant code.\relax }}{59}{figure.caption.38}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Applying our custom theme to the ggplot object from before.\relax }}{60}{figure.caption.39}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces You can still overwrite the main settings and adjust single elements when using the custom theme.\relax }}{61}{figure.caption.40}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces A simple scatter plot of bike counts versus average temperature created with the \texttt {layer()} function.\relax }}{65}{figure.caption.41}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Left: A stacked bar chart of the number of observations per weather type and time of the day, created with the predefined layers \texttt {geom\_bar()} or \texttt {stat\_count()}. Right: A conditional smoothing of humidity and temperature created with the predefined layers \texttt {geom\_smooth()} or \texttt {stat\_smooth()}.\relax }}{67}{figure.caption.42}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Left: The bar chart of weather types per time of the day as dodged bars by setting the \texttt {position} to \texttt {"dodge"}, overwriting the default \texttt {"stack"}. Right: The conditional smoothing as so-called pointranges displaying the predicted mean as points and the confidence intervals as vertical lines by overwriting the default \texttt {geom} in \texttt {stat\_smooth()} or using the respective geometrical layer with \texttt {stat\ =\ "smooth"}.\relax }}{68}{figure.caption.43}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

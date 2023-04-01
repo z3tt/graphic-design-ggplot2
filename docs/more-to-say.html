@@ -23,7 +23,7 @@
 <meta name="author" content="Cédric Scherer" />
 
 
-<meta name="date" content="2023-03-31" />
+<meta name="date" content="2023-04-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -242,10 +242,9 @@ div.csl-indent {
 <li class="part"><span><b>II How To Work with Components</b></span></li>
 <li class="chapter" data-level="7" data-path="working-with-layers.html"><a href="working-with-layers.html"><i class="fa fa-check"></i><b>7</b> Working with Layers</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="working-with-layers.html"><a href="working-with-layers.html#layer-defaults"><i class="fa fa-check"></i><b>7.1</b> Layer Defaults</a></li>
-<li class="chapter" data-level="7.2" data-path="working-with-layers.html"><a href="working-with-layers.html#geometrical-shapes"><i class="fa fa-check"></i><b>7.2</b> Geometrical Shapes</a></li>
-<li class="chapter" data-level="7.3" data-path="working-with-layers.html"><a href="working-with-layers.html#statistical-transformations"><i class="fa fa-check"></i><b>7.3</b> Statistical Transformations</a></li>
-<li class="chapter" data-level="7.4" data-path="working-with-layers.html"><a href="working-with-layers.html#positional-adjustments"><i class="fa fa-check"></i><b>7.4</b> Positional Adjustments</a></li>
+<li class="chapter" data-level="7.1" data-path="working-with-layers.html"><a href="working-with-layers.html#predefined-layers"><i class="fa fa-check"></i><b>7.1</b> Predefined Layers</a></li>
+<li class="chapter" data-level="7.2" data-path="working-with-layers.html"><a href="working-with-layers.html#changing-layer-defaults"><i class="fa fa-check"></i><b>7.2</b> Changing Layer Defaults</a></li>
+<li class="chapter" data-level="7.3" data-path="working-with-layers.html"><a href="working-with-layers.html#positional-aesthetics"><i class="fa fa-check"></i><b>7.3</b> Positional Aesthetics</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="working-with-colors.html"><a href="working-with-colors.html"><i class="fa fa-check"></i><b>8</b> Working with Colors</a></li>
 <li class="chapter" data-level="9" data-path="working-with-text.html"><a href="working-with-text.html"><i class="fa fa-check"></i><b>9</b> Working with Text</a></li>
@@ -279,7 +278,13 @@ div.csl-indent {
 <p>Yeah! I have finished my book, but I have more to say about some topics. Let me explain them in this appendix.</p>
 <p>To know more about <strong>bookdown</strong>, see <a href="https://bookdown.org" class="uri">https://bookdown.org</a>.</p>
 
-<p><img src="bookdown_files/figure-html/unnamed-chunk-12-1.png" width="768" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-11-1.png" width="768" /></p>
+<hr />
+<p>For example, <code>geom_histogram()</code> or <code>stat_bin()</code> both create histograms representing the distribution of a continuous variable as binned bars:</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="more-to-say.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp)) <span class="sc">+</span> <span class="fu">geom_histogram</span>() </span>
+<span id="cb78-2"><a href="more-to-say.html#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp)) <span class="sc">+</span> <span class="fu">stat_bin</span>()</span></code></pre></div>
+<p>Both functions call the same <code>layer()</code> function with the predefined defaults <code>geom = "bar"</code>, <code>stat = "bin"</code>, and <code>position = "identity"</code>.</p>
+<hr />
 
 </div>
             </section>

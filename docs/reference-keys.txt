@@ -15,6 +15,7 @@ fig:04ggplotBasicAdjustLayers
 fig:04ggplotFacet
 fig:04ggplotFacetGrid
 fig:04ggplotLabelsAxes
+fig:04ggplotColors
 fig:04ggplotLabels
 fig:04legendLabels
 fig:04ggplotThemeComplete
@@ -29,6 +30,9 @@ fig:05barsTitlePosition
 fig:06examplePlotThemeUpdate
 fig:06customThemeApplied
 fig:06customThemeModified
+fig:07layerScatter
+fig:07layerPredefinedDefault
+fig:07layerPredefinedCustom
 introduction
 communication
 coding
@@ -83,10 +87,9 @@ make-fonts-work
 set-your-ggplot-theme-globally
 create-your-own-theme
 working-with-layers
-layer-defaults
-geometrical-shapes
-statistical-transformations
-positional-adjustments
+predefined-layers
+changing-layer-defaults
+positional-aesthetics
 working-with-colors
 working-with-text
 advanced-examples
