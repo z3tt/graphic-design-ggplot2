@@ -31,7 +31,10 @@ fig:06examplePlotThemeUpdate
 fig:06customThemeApplied
 fig:06customThemeModified
 fig:07layerScatter
-fig:07layerPredefinedDefault
+fig:07layerPredefinedDefaultBars
+fig:07layerPredefinedDefaultSmooth
+fig:07layerPredefinedCustomBars
+fig:07layerPredefinedCustomSmooth
 fig:07layerTypeBoxplot
 fig:07layerPositionalTypeHistogram
 introduction

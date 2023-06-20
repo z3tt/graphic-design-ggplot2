@@ -60,6 +60,14 @@ ggplot(bikes, aes(x = weather_type, fill = year)) +
   stat_count() ## with `geom = "bar"`
 ```
 
+```{r 07layerPredefinedDefaultBars, echo=FALSE, fig.cap="A stacked bar chart of the number of observations per weather type and time of the day, created with the predefined layers `geom_bar()` or `stat_count()`."}
+ggplot(bikes, aes(x = weather_type, fill = day_night)) + 
+  stat_count() +
+  scale_fill_manual(values = prismatic::clr_darken(colors[c(2, 4)], .15), name = NULL) +
+  labs(title = "geom_bar()\nstat_count()") +
+  theme(panel.grid.major.x = element_blank())
+```
+
 Maybe you have wondered at some point, why you can use `geom_smooth()` and `stat_smooth()` interchangeably to create a conditional smoothing? This is because both call the same underlying layer function with the default arguments `geom = "smooth"` and `stat = "smooth"`, respectively. 
 
 ```{r, eval=FALSE}
@@ -70,23 +78,10 @@ ggplot(bikes, aes(x = temp, y = humidity)) +
   stat_smooth() ## with `geom = "smooth"`
 ```
 
-```{r 07layerPredefinedDefault, echo=FALSE, fig.cap="Left: A stacked bar chart of the number of observations per weather type and time of the day, created with the predefined layers `geom_bar()` or `stat_count()`. Right: A conditional smoothing of humidity and temperature created with the predefined layers `geom_smooth()` or `stat_smooth()`."}
-s1 <- 
-  ggplot(bikes, aes(x = weather_type, fill = day_night)) + 
-  stat_count() +
-  scale_fill_manual(values = prismatic::clr_darken(colors[2:3], .1), name = NULL) +
-  labs(title = "geom_bar()\nstat_count()") +
-  theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05), lineheight = 1.1), 
-        panel.grid.major.x = element_blank(),
-        legend.position = "bottom")
-
-s2 <- 
-  ggplot(bikes, aes(x = temp, y = humidity)) + 
+```{r 07layerPredefinedDefaultSmooth, echo=FALSE, fig.cap="A conditional smoothing of humidity and temperature created with the predefined layers `geom_smooth()` or `stat_smooth()`."}
+ggplot(bikes, aes(x = temp, y = humidity)) + 
   geom_smooth(color = "blue3") +
-  labs(title = "geom_smooth()\nstat_smooth()") +
-  theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05), lineheight = 1.1))
-
-s1 + plot_spacer() + s2 + plot_layout(widths = c(1, .03, .8))
+  labs(title = "geom_smooth()\nstat_smooth()")
 ```
 
 
@@ -94,7 +89,7 @@ s1 + plot_spacer() + s2 + plot_layout(widths = c(1, .03, .8))
 
 We can overwrite the default argument inputs for `geom` or `stat`, respectively, and `position` to change the behavior of the layer. 
 
-While the stacked bars shown in Fig. \@ref(fig:07layerPredefinedDefault) (left) emphasize the total counts per weather type, a grouped bar chart simplifies comparison between groups. We can change the default behavior of `geom_bar()` or `stat_count()` by setting the `position` to `"dodge"` to place the bars next to each other:
+While the stacked bars shown in Fig. \@ref(fig:07layerPredefinedDefaultBars) emphasize the total counts per weather type, a grouped bar chart simplifies comparison between groups. We can change the default behavior of `geom_bar()` or `stat_count()` by setting the `position` to `"dodge"` to place the bars next to each other:
 
 ```{r, eval=FALSE}
 ggplot(bikes, aes(x = weather_type, fill = day_night)) +
@@ -113,7 +108,15 @@ ggplot(bikes, aes(x = weather_type, fill = day_night)) +
   )
 ```
 
-We can also overwrite the default `stat` in geometrical layers or the default `geom` in statistical layers. For example, changing the `geom` in `stat_smooth()` to `pointrange` turns the smoothed line and ribbon in Fig. \@ref(fig:07layerPredefinedDefault) (right) into points with vertical lines representing the confidence intervals:
+```{r 07layerPredefinedCustomBars, echo=FALSE, fig.cap='The bar chart of weather types per time of the day as dodged bars by setting the `position` to `"dodge"`, overwriting the default `"stack"`.'}
+ggplot(bikes, aes(x = weather_type, fill = day_night)) +
+  geom_bar(width = .7, position = position_dodge2(preserve = "single")) +
+  scale_fill_manual(values = prismatic::clr_darken(colors[c(2, 4)], .15), name = NULL) +
+  labs(title = 'geom_bar(position = "dodge")\nstat_count(position = "dodge")') +
+  theme(panel.grid.major.x = element_blank())
+```
+
+We can also overwrite the default `stat` in geometrical layers or the default `geom` in statistical layers. For example, changing the `geom` in `stat_smooth()` to `pointrange` turns the smoothed line and ribbon in Fig. \@ref(fig:07layerPredefinedDefaultSmooth) into points with vertical lines representing the confidence intervals:
 
 ```{r, eval=FALSE}
 ggplot(bikes, aes(x = wind_speed, y = humidity)) +
@@ -122,23 +125,10 @@ ggplot(bikes, aes(x = wind_speed, y = humidity)) +
 
 Again, we could rewrite the code by using the respective geometrical layer `geom_pointrange()` and setting the default statistical transformation `"identity"` to `"smooth"`.
 
-```{r echo, FALSE, fig.cap='Left: The bar chart of weather types per time of the day as dodged bars by setting the `position` to `"dodge"`, overwriting the default `"stack"`. Right: The conditional smoothing as so-called pointranges displaying the predicted mean as points and the confidence intervals as vertical lines by overwriting the default `geom` in `stat_smooth()` or using the respective geometrical layer with `stat = "smooth"`.'}
-s3 <- 
-  ggplot(bikes, aes(x = weather_type, fill = day_night)) +
-  geom_bar(position = position_dodge2(preserve = "single", width = .9)) +
-  scale_fill_manual(values = prismatic::clr_darken(colors[2:3], .2), name = NULL) +
-  labs(title = 'geom_bar(position = "dodge")\nstat_count(position = "dodge")') +
-  theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05), lineheight = 1.1), 
-        panel.grid.major.x = element_blank(),
-        legend.position = "bottom")
-
-s4 <-
-  ggplot(bikes, aes(x = wind_speed, y = humidity)) +
+```{r 07layerPredefinedCustomSmooth, echo=FALSE, fig.cap='The conditional smoothing as so-called pointranges displaying the predicted mean as points and the confidence intervals as vertical lines by overwriting the default `geom` in `stat_smooth()` or using the respective geometrical layer with `stat = "smooth"`.'}
+ggplot(bikes, aes(x = wind_speed, y = humidity)) +
   stat_smooth(geom = "pointrange", size = .1)  +
-  labs(title = 'stat_smooth(geom = "pointrange")\nstat_pointrange(stat = "smooth")') +
-  theme(plot.title = element_text(family = "Spline Sans Mono", size = rel(1.05), lineheight = 1.1))
-
-s3 + plot_spacer() + s4 + plot_layout(widths = c(1, .03, .8))
+  labs(title = 'stat_smooth(geom = "pointrange")\nstat_pointrange(stat = "smooth")')
 ```
 
 
@@ -159,7 +149,7 @@ ggplot(bikes, aes(x = is_weekend, y = count)) + geom_boxplot()
 ggplot(bikes, aes(x = temp, y = count)) + geom_boxplot()
 ```
 
-```{r 07layerTypeBoxplot, echo=FALSE, fig.cap='The number of indiviudal box-and-whisker plots created by`geom_boxplot()` depends on the type of variable mapped to x. In case of categorical viarables such as `season` or `is_weekend`, the function creates as many boxplots as there are categories. For numeric variables such as `temp`, only a single boxplot isccalculated by default.'}
+```{r 07layerTypeBoxplot, echo=FALSE, fig.width=9, fig.heigth=3.7, fig.cap='The number of indiviudal box-and-whisker plots created by`geom_boxplot()` depends on the type of variable mapped to x. In case of categorical viarables such as `season` or `is_weekend`, the function creates as many boxplots as there are categories. For quantitative variables such as `temp`, only a single boxplot is calculated covering the complete numerical range.'}
 b1 <- ggplot(bikes, aes(x = season, y = count)) + geom_boxplot() +
   theme(panel.grid.major.x = element_blank())
 b2 <- ggplot(bikes, aes(x = is_weekend, y = count)) + geom_boxplot() +
@@ -167,10 +157,10 @@ b2 <- ggplot(bikes, aes(x = is_weekend, y = count)) + geom_boxplot() +
 b3 <- ggplot(bikes, aes(x = temp, y = count)) + geom_boxplot() +
   theme(panel.grid.major.x = element_blank())
 
-b1 + plot_spacer() + b2 + plot_spacer() + b3 + plot_layout(widths = c(1, .05, .65, .05, .5))
+b1 + plot_spacer() + b2 + plot_spacer() + b3 + plot_layout(widths = c(1, .05, .5, .05, .25))
 ```
 
-We can force **ggplot2** to grouped the quantitative variable into equal numerical ranges, so-called *bins* by wrapping the variable inside `cut_interval()`. The corrresponding `cut_number()` creates groups with equal number of observations (and potentially unequal ranges).
+We can force **ggplot2** to group the quantitative variable into equal numerical ranges, so-called *bins*, by wrapping the variable inside `cut_interval()`. The corresponding `cut_number()` creates groups with equal number of observations (and potentially unequal ranges).
 
 ```{r, eval=FALSE}
 ggplot(bikes, aes(x = cut_interval(temp, 6), y = count)) + 
@@ -180,7 +170,7 @@ ggplot(bikes, aes(x = cut_number(temp, 6), y = count)) +
   geom_boxplot(varwidth = TRUE)
 ```
 
-```{r 07layerPositionalTypeBoxplotCut, echo=FALSE, fig.cap=''}
+```{r 07layerPositionalTypeBoxplotCut, echo=FALSE, fig.width=9, fig.heigth=3.7, fig.cap=''}
 c1 <- ggplot(bikes, aes(x = cut_interval(temp, 4), y = count)) + 
   geom_boxplot(varwidth = TRUE) +
   theme(panel.grid.major.x = element_blank(),
@@ -209,11 +199,11 @@ ggplot(bikes, aes(x = is_weekend)) + geom_histogram()
 ggplot(bikes, aes(x = is_weekend)) + geom_bar()
 ```
 
-```{r 07layerPositionalTypeHistogram, echo=FALSE, fig.cap='A histogram bins a quantitative variable, showing counts of obersvations per group (left). As qualitative data is already grouped, a regular bar chart is used to display counts per category (right).'}
+```{r 07layerPositionalTypeHistogram, echo=FALSE, fig.width=9, fig.heigth=3.7,  fig.cap='A histogram bins a quantitative variable, showing counts of obersvations per group (left). As qualitative data is already grouped, a regular bar chart is used to display counts per category (right).'}
 h1 <- ggplot(bikes, aes(x = temp)) + geom_histogram()
 h2 <- ggplot(bikes, aes(x = is_weekend)) + geom_bar()
 
-h1 + plot_spacer() + h2 + plot_layout(widths = c(1, .03, .65))
+h1 + plot_spacer() + h2 + plot_layout(widths = c(1, .03, .6))
 ```
 
 Other geometries need more than two positional aesthetics. `geom_linerange()` draws horizontal or vertical lines based on `xmin` and `xmax` or `ymin` and `ymax`, respectively. Let's load some stock data and show the change of opening versus closing price over time:

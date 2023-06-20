@@ -2167,6 +2167,12 @@ Similarly, \texttt{geom\_bar()} or \texttt{stat\_count()} both produce \emph{bar
 \end{Highlighting}
 \end{Shaded}
 
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/07layerPredefinedDefaultBars-1.png}
+\caption{\label{fig:07layerPredefinedDefaultBars}A stacked bar chart of the number of observations per weather type and time of the day, created with the predefined layers \texttt{geom\_bar()} or \texttt{stat\_count()}.}
+\end{figure}
+
 Maybe you have wondered at some point, why you can use \texttt{geom\_smooth()} and \texttt{stat\_smooth()} interchangeably to create a conditional smoothing? This is because both call the same underlying layer function with the default arguments \texttt{geom\ =\ "smooth"} and \texttt{stat\ =\ "smooth"}, respectively.
 
 \begin{Shaded}
@@ -2181,8 +2187,8 @@ Maybe you have wondered at some point, why you can use \texttt{geom\_smooth()} a
 
 \begin{figure}
 \centering
-\includegraphics{bookdown_files/figure-latex/07layerPredefinedDefault-1.png}
-\caption{\label{fig:07layerPredefinedDefault}Left: A stacked bar chart of the number of observations per weather type and time of the day, created with the predefined layers \texttt{geom\_bar()} or \texttt{stat\_count()}. Right: A conditional smoothing of humidity and temperature created with the predefined layers \texttt{geom\_smooth()} or \texttt{stat\_smooth()}.}
+\includegraphics{bookdown_files/figure-latex/07layerPredefinedDefaultSmooth-1.png}
+\caption{\label{fig:07layerPredefinedDefaultSmooth}A conditional smoothing of humidity and temperature created with the predefined layers \texttt{geom\_smooth()} or \texttt{stat\_smooth()}.}
 \end{figure}
 
 \hypertarget{changing-layer-defaults}{%
@@ -2190,7 +2196,7 @@ Maybe you have wondered at some point, why you can use \texttt{geom\_smooth()} a
 
 We can overwrite the default argument inputs for \texttt{geom} or \texttt{stat}, respectively, and \texttt{position} to change the behavior of the layer.
 
-While the stacked bars shown in Fig. \ref{fig:07layerPredefinedDefault} (left) emphasize the total counts per weather type, a grouped bar chart simplifies comparison between groups. We can change the default behavior of \texttt{geom\_bar()} or \texttt{stat\_count()} by setting the \texttt{position} to \texttt{"dodge"} to place the bars next to each other:
+While the stacked bars shown in Fig. \ref{fig:07layerPredefinedDefaultBars} emphasize the total counts per weather type, a grouped bar chart simplifies comparison between groups. We can change the default behavior of \texttt{geom\_bar()} or \texttt{stat\_count()} by setting the \texttt{position} to \texttt{"dodge"} to place the bars next to each other:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2213,7 +2219,13 @@ The quoted \texttt{"dodge"} is a shortcut to the function \texttt{position\_dodg
 \end{Highlighting}
 \end{Shaded}
 
-We can also overwrite the default \texttt{stat} in geometrical layers or the default \texttt{geom} in statistical layers. For example, changing the \texttt{geom} in \texttt{stat\_smooth()} to \texttt{pointrange} turns the smoothed line and ribbon in Fig. \ref{fig:07layerPredefinedDefault} (right) into points with vertical lines representing the confidence intervals:
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/07layerPredefinedCustomBars-1.png}
+\caption{\label{fig:07layerPredefinedCustomBars}The bar chart of weather types per time of the day as dodged bars by setting the \texttt{position} to \texttt{"dodge"}, overwriting the default \texttt{"stack"}.}
+\end{figure}
+
+We can also overwrite the default \texttt{stat} in geometrical layers or the default \texttt{geom} in statistical layers. For example, changing the \texttt{geom} in \texttt{stat\_smooth()} to \texttt{pointrange} turns the smoothed line and ribbon in Fig. \ref{fig:07layerPredefinedDefaultSmooth} into points with vertical lines representing the confidence intervals:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2224,31 +2236,10 @@ We can also overwrite the default \texttt{stat} in geometrical layers or the def
 
 Again, we could rewrite the code by using the respective geometrical layer \texttt{geom\_pointrange()} and setting the default statistical transformation \texttt{"identity"} to \texttt{"smooth"}.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{s3 }\OtherTok{\textless{}{-}} 
-  \FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ weather\_type, }\AttributeTok{fill =}\NormalTok{ day\_night)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{position =} \FunctionTok{position\_dodge2}\NormalTok{(}\AttributeTok{preserve =} \StringTok{"single"}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{9}\NormalTok{)) }\SpecialCharTok{+}
-  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =}\NormalTok{ prismatic}\SpecialCharTok{::}\FunctionTok{clr\_darken}\NormalTok{(colors[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{], .}\DecValTok{2}\NormalTok{), }\AttributeTok{name =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{\textquotesingle{}geom\_bar(position = "dodge")}\SpecialCharTok{\textbackslash{}n}\StringTok{stat\_count(position = "dodge")\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{family =} \StringTok{"Spline Sans Mono"}\NormalTok{, }\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(}\FloatTok{1.05}\NormalTok{), }\AttributeTok{lineheight =} \FloatTok{1.1}\NormalTok{), }
-        \AttributeTok{panel.grid.major.x =} \FunctionTok{element\_blank}\NormalTok{(),}
-        \AttributeTok{legend.position =} \StringTok{"bottom"}\NormalTok{)}
-
-\NormalTok{s4 }\OtherTok{\textless{}{-}}
-  \FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ wind\_speed, }\AttributeTok{y =}\NormalTok{ humidity)) }\SpecialCharTok{+}
-  \FunctionTok{stat\_smooth}\NormalTok{(}\AttributeTok{geom =} \StringTok{"pointrange"}\NormalTok{, }\AttributeTok{size =}\NormalTok{ .}\DecValTok{1}\NormalTok{)  }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{\textquotesingle{}stat\_smooth(geom = "pointrange")}\SpecialCharTok{\textbackslash{}n}\StringTok{stat\_pointrange(stat = "smooth")\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{family =} \StringTok{"Spline Sans Mono"}\NormalTok{, }\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(}\FloatTok{1.05}\NormalTok{), }\AttributeTok{lineheight =} \FloatTok{1.1}\NormalTok{))}
-
-\NormalTok{s3 }\SpecialCharTok{+} \FunctionTok{plot\_spacer}\NormalTok{() }\SpecialCharTok{+}\NormalTok{ s4 }\SpecialCharTok{+} \FunctionTok{plot\_layout}\NormalTok{(}\AttributeTok{widths =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, .}\DecValTok{03}\NormalTok{, .}\DecValTok{8}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{figure}
 \centering
-\includegraphics{bookdown_files/figure-latex/echo, FALSE-1.png}
-\caption{(\#fig:echo, FALSE)Left: The bar chart of weather types per time of the day as dodged bars by setting the \texttt{position} to \texttt{"dodge"}, overwriting the default \texttt{"stack"}. Right: The conditional smoothing as so-called pointranges displaying the predicted mean as points and the confidence intervals as vertical lines by overwriting the default \texttt{geom} in \texttt{stat\_smooth()} or using the respective geometrical layer with \texttt{stat\ =\ "smooth"}.}
+\includegraphics{bookdown_files/figure-latex/07layerPredefinedCustomSmooth-1.png}
+\caption{\label{fig:07layerPredefinedCustomSmooth}The conditional smoothing as so-called pointranges displaying the predicted mean as points and the confidence intervals as vertical lines by overwriting the default \texttt{geom} in \texttt{stat\_smooth()} or using the respective geometrical layer with \texttt{stat\ =\ "smooth"}.}
 \end{figure}
 
 \hypertarget{positional-aesthetics}{%
@@ -2274,10 +2265,10 @@ Box-and-whisker plots (or short ``box plots'') summarize the distribution of qua
 \begin{figure}
 \centering
 \includegraphics{bookdown_files/figure-latex/07layerTypeBoxplot-1.png}
-\caption{\label{fig:07layerTypeBoxplot}The number of indiviudal box-and-whisker plots created by\texttt{geom\_boxplot()} depends on the type of variable mapped to x. In case of categorical viarables such as \texttt{season} or \texttt{is\_weekend}, the function creates as many boxplots as there are categories. For numeric variables such as \texttt{temp}, only a single boxplot isccalculated by default.}
+\caption{\label{fig:07layerTypeBoxplot}The number of indiviudal box-and-whisker plots created by\texttt{geom\_boxplot()} depends on the type of variable mapped to x. In case of categorical viarables such as \texttt{season} or \texttt{is\_weekend}, the function creates as many boxplots as there are categories. For quantitative variables such as \texttt{temp}, only a single boxplot is calculated covering the complete numerical range.}
 \end{figure}
 
-We can force \textbf{ggplot2} to grouped the quantitative variable into equal numerical ranges, so-called \emph{bins} by wrapping the variable inside \texttt{cut\_interval()}. The corrresponding \texttt{cut\_number()} creates groups with equal number of observations (and potentially unequal ranges).
+We can force \textbf{ggplot2} to group the quantitative variable into equal numerical ranges, so-called \emph{bins}, by wrapping the variable inside \texttt{cut\_interval()}. The corresponding \texttt{cut\_number()} creates groups with equal number of observations (and potentially unequal ranges).
 
 \begin{Shaded}
 \begin{Highlighting}[]

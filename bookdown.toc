@@ -59,9 +59,9 @@
 \contentsline {part}{II\hspace {1em}How To Work with Components}{63}{part.2}%
 \contentsline {chapter}{\numberline {7}Working with Layers}{65}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Predefined Layers}{66}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Changing Layer Defaults}{67}{section.7.2}%
+\contentsline {section}{\numberline {7.2}Changing Layer Defaults}{68}{section.7.2}%
 \contentsline {section}{\numberline {7.3}Positional Aesthetics}{68}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Statistical Transformations}{73}{section.7.4}%
+\contentsline {section}{\numberline {7.4}Statistical Transformations}{74}{section.7.4}%
 \contentsline {section}{\numberline {7.5}Positional Adjustments}{77}{section.7.5}%
 \contentsline {chapter}{\numberline {8}Working with Colors}{79}{chapter.8}%
 \contentsline {chapter}{\numberline {9}Working with Text}{81}{chapter.9}%
@@ -69,6 +69,6 @@
 \contentsline {chapter}{\numberline {10}Overview}{85}{chapter.10}%
 \contentsline {chapter}{Appendix}{87}{chapter.10}%
 \contentsline {chapter}{\numberline {A}More to Say}{87}{appendix.A}%
-\contentsline {fm}{Bibliography}{89}{appendix*.46}%
-\contentsline {chapter}{Index}{91}{appendix*.46}%
-\contentsline {section}{}{91}{appendix*.46}%
+\contentsline {fm}{Bibliography}{89}{appendix*.48}%
+\contentsline {chapter}{Index}{91}{appendix*.48}%
+\contentsline {section}{}{91}{appendix*.48}%
