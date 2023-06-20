@@ -39,7 +39,7 @@ theme_custom <- function(base_size = 14, base_family = "Asap Condensed",
       plot.caption = element_text(size = rel(.8), color = "grey28", hjust = 1, margin = margin(t = .9 * base_size)),
       plot.title.position = "plot",
       plot.caption.position = "plot",
-      plot.margin = margin(rep(.5, 4)),
+      plot.margin = margin(rep(1.5, 4)),
       complete = TRUE
     )
 }

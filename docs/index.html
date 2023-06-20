@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Graphic Design with ggplot2</title>
   <meta name="description" content="Create Beautiful and Engaging Data Visualizations in R" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Graphic Design with ggplot2" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Cédric Scherer" />
 
 
-<meta name="date" content="2023-04-01" />
+<meta name="date" content="2023-06-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -121,6 +121,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -246,6 +250,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.2" data-path="working-with-layers.html"><a href="working-with-layers.html#changing-layer-defaults"><i class="fa fa-check"></i><b>7.2</b> Changing Layer Defaults</a></li>
 <li class="chapter" data-level="7.3" data-path="working-with-layers.html"><a href="working-with-layers.html#positional-aesthetics"><i class="fa fa-check"></i><b>7.3</b> Positional Aesthetics</a></li>
 <li class="chapter" data-level="7.4" data-path="working-with-layers.html"><a href="working-with-layers.html#statistical-transformations"><i class="fa fa-check"></i><b>7.4</b> Statistical Transformations</a></li>
+<li class="chapter" data-level="7.5" data-path="working-with-layers.html"><a href="working-with-layers.html#positional-adjustments"><i class="fa fa-check"></i><b>7.5</b> Positional Adjustments</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="working-with-colors.html"><a href="working-with-colors.html"><i class="fa fa-check"></i><b>8</b> Working with Colors</a></li>
 <li class="chapter" data-level="9" data-path="working-with-text.html"><a href="working-with-text.html"><i class="fa fa-check"></i><b>9</b> Working with Text</a></li>
@@ -278,7 +283,7 @@ div.csl-indent {
 <h1 class="title">Graphic Design with ggplot2</h1>
 <h2 class="subtitle"><em>Create Beautiful and Engaging Data Visualizations in R</em></h2>
 <p class="author"><em>Cédric Scherer</em></p>
-<p class="date"><em>2023-04-01</em></p>
+<p class="date"><em>2023-06-20</em></p>
 </div>
 <div id="preface" class="section level1 unnumbered hasAnchor">
 <h1>Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -345,36 +350,36 @@ div.csl-indent {
 <div id="software-information-and-conventions" class="section level2 unnumbered hasAnchor">
 <h2>Software Information and Conventions<a href="index.html#software-information-and-conventions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Package names are in <strong>bold text</strong> and wrapped into curly brackets, e.g. <strong>ggplot2</strong>. Inline code and file names are formatted in a <code>monospaced typewriter font</code>. Function names are followed by parentheses as in <code>ggplot2::ggplot()</code>.</p>
-<p>The book was written with the <strong>knitr</strong> package <span class="citation">(<a href="#ref-xie2015" role="doc-biblioref">Xie 2015</a>)</span> and the <strong>bookdown</strong> package <span class="citation">(<a href="#ref-R-bookdown" role="doc-biblioref">Xie 2022</a>)</span> with the following setup:</p>
-<pre><code>## R version 4.2.2 (2022-10-31)
-## Platform: aarch64-apple-darwin20 (64-bit)
-## Running under: macOS Ventura 13.2.1
+<p>The book was written with the <strong>knitr</strong> package <span class="citation">(<a href="#ref-xie2015" role="doc-biblioref">Xie 2015</a>)</span> and the <strong>bookdown</strong> package <span class="citation">(<a href="#ref-R-bookdown" role="doc-biblioref">Xie 2023</a>)</span> with the following setup:</p>
+<pre><code>## R version 4.2.3 (2023-03-15)
+## Platform: x86_64-apple-darwin17.0 (64-bit)
+## Running under: macOS Big Sur ... 10.16
 ## 
 ## Locale: en_US.UTF-8 / en_US.UTF-8 / en_US.UTF-8 / C / en_US.UTF-8 / en_US.UTF-8
 ## 
 ## Package version:
-##   base64enc_0.1.3        bookdown_0.31         
-##   bslib_0.4.2            cachem_1.0.6          
-##   cli_3.5.0              compiler_4.2.2        
-##   cpp11_0.4.3            digest_0.6.31         
-##   ellipsis_0.3.2         evaluate_0.19         
-##   fastmap_1.1.0          fs_1.5.2              
-##   glue_1.6.2             graphics_4.2.2        
-##   grDevices_4.2.2        highr_0.10            
-##   htmltools_0.5.4        jquerylib_0.1.4       
-##   jsonlite_1.8.4         knitr_1.41            
-##   lifecycle_1.0.3        magrittr_2.0.3        
-##   memoise_2.0.1          methods_4.2.2         
-##   mime_0.12              R6_2.5.1              
-##   ragg_1.2.4             rappdirs_0.3.3        
-##   rlang_1.0.6            rmarkdown_2.19        
-##   rstudioapi_0.14        sass_0.4.4            
-##   stats_4.2.2            stringi_1.7.8         
-##   stringr_1.5.0          systemfonts_1.0.4.9000
-##   textshaping_0.3.6      tinytex_0.43          
-##   tools_4.2.2            utils_4.2.2           
-##   vctrs_0.5.2            xfun_0.36             
-##   yaml_2.3.6</code></pre>
+##   base64enc_0.1.3   bookdown_0.34    
+##   bslib_0.4.2       cachem_1.0.7     
+##   cli_3.6.0         compiler_4.2.3   
+##   cpp11_0.4.3       digest_0.6.31    
+##   ellipsis_0.3.2    evaluate_0.20    
+##   fastmap_1.1.1     fs_1.6.1         
+##   glue_1.6.2        graphics_4.2.3   
+##   grDevices_4.2.3   highr_0.10       
+##   htmltools_0.5.4   jquerylib_0.1.4  
+##   jsonlite_1.8.4    knitr_1.42       
+##   lifecycle_1.0.3   magrittr_2.0.3   
+##   memoise_2.0.1     methods_4.2.3    
+##   mime_0.12         R6_2.5.1         
+##   ragg_1.2.5        rappdirs_0.3.3   
+##   rlang_1.1.1       rmarkdown_2.20   
+##   rstudioapi_0.14   sass_0.4.5       
+##   stats_4.2.3       stringi_1.7.12   
+##   stringr_1.5.0     systemfonts_1.0.4
+##   textshaping_0.3.6 tinytex_0.44     
+##   tools_4.2.3       utils_4.2.3      
+##   vctrs_0.6.2       xfun_0.39        
+##   yaml_2.3.7</code></pre>
 </div>
 <div id="acknowledgements" class="section level2 unnumbered hasAnchor">
 <h2>Acknowledgements<a href="index.html#acknowledgements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -393,7 +398,7 @@ Berlin, Germany
 Xie, Yihui. 2015. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd ed. Boca Raton, Florida, United States: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/">http://yihui.name/knitr/</a>.
 </div>
 <div id="ref-R-bookdown" class="csl-entry">
-———. 2022. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.
+———. 2023. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.
 </div>
 </div>
             </section>

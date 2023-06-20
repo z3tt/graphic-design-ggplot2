@@ -182,7 +182,7 @@
 \makeatother
 \subtitle{Create Beautiful and Engaging Data Visualizations in R}
 \author{Cédric Scherer}
-\date{2023-04-01}
+\date{2023-06-20}
 
 \begin{document}
 \maketitle
@@ -335,35 +335,35 @@ Package names are in \textbf{bold text} and wrapped into curly brackets, e.g.~\t
 The book was written with the \textbf{knitr}\index{knitr} package \citep{xie2015} and the \textbf{bookdown}\index{bookdown} package \citep{R-bookdown} with the following setup:
 
 \begin{verbatim}
-## R version 4.2.2 (2022-10-31)
-## Platform: aarch64-apple-darwin20 (64-bit)
-## Running under: macOS Ventura 13.2.1
+## R version 4.2.3 (2023-03-15)
+## Platform: x86_64-apple-darwin17.0 (64-bit)
+## Running under: macOS Big Sur ... 10.16
 ## 
 ## Locale: en_US.UTF-8 / en_US.UTF-8 / en_US.UTF-8 / C / en_US.UTF-8 / en_US.UTF-8
 ## 
 ## Package version:
-##   base64enc_0.1.3        bookdown_0.31         
-##   bslib_0.4.2            cachem_1.0.6          
-##   cli_3.5.0              compiler_4.2.2        
-##   cpp11_0.4.3            digest_0.6.31         
-##   ellipsis_0.3.2         evaluate_0.19         
-##   fastmap_1.1.0          fs_1.5.2              
-##   glue_1.6.2             graphics_4.2.2        
-##   grDevices_4.2.2        highr_0.10            
-##   htmltools_0.5.4        jquerylib_0.1.4       
-##   jsonlite_1.8.4         knitr_1.41            
-##   lifecycle_1.0.3        magrittr_2.0.3        
-##   memoise_2.0.1          methods_4.2.2         
-##   mime_0.12              R6_2.5.1              
-##   ragg_1.2.4             rappdirs_0.3.3        
-##   rlang_1.0.6            rmarkdown_2.19        
-##   rstudioapi_0.14        sass_0.4.4            
-##   stats_4.2.2            stringi_1.7.8         
-##   stringr_1.5.0          systemfonts_1.0.4.9000
-##   textshaping_0.3.6      tinytex_0.43          
-##   tools_4.2.2            utils_4.2.2           
-##   vctrs_0.5.2            xfun_0.36             
-##   yaml_2.3.6
+##   base64enc_0.1.3   bookdown_0.34    
+##   bslib_0.4.2       cachem_1.0.7     
+##   cli_3.6.0         compiler_4.2.3   
+##   cpp11_0.4.3       digest_0.6.31    
+##   ellipsis_0.3.2    evaluate_0.20    
+##   fastmap_1.1.1     fs_1.6.1         
+##   glue_1.6.2        graphics_4.2.3   
+##   grDevices_4.2.3   highr_0.10       
+##   htmltools_0.5.4   jquerylib_0.1.4  
+##   jsonlite_1.8.4    knitr_1.42       
+##   lifecycle_1.0.3   magrittr_2.0.3   
+##   memoise_2.0.1     methods_4.2.3    
+##   mime_0.12         R6_2.5.1         
+##   ragg_1.2.5        rappdirs_0.3.3   
+##   rlang_1.1.1       rmarkdown_2.20   
+##   rstudioapi_0.14   sass_0.4.5       
+##   stats_4.2.3       stringi_1.7.12   
+##   stringr_1.5.0     systemfonts_1.0.4
+##   textshaping_0.3.6 tinytex_0.44     
+##   tools_4.2.3       utils_4.2.3      
+##   vctrs_0.6.2       xfun_0.39        
+##   yaml_2.3.7
 \end{verbatim}
 
 \hypertarget{acknowledgements}{%
@@ -791,23 +791,23 @@ After importing the data, it is advisable to have a look at the data. Does the o
 
 \begin{verbatim}
 ## # A tibble: 1,454 x 14
-##    date       day_ni~1 year  month season count is_wo~2
-##    <date>     <chr>    <fct> <fct> <fct>  <int> <lgl>  
-##  1 2015-01-04 day      2015  1     3       6830 FALSE  
-##  2 2015-01-04 night    2015  1     3       2404 FALSE  
-##  3 2015-01-05 day      2015  1     3      14763 TRUE   
-##  4 2015-01-05 night    2015  1     3       5609 TRUE   
-##  5 2015-01-06 day      2015  1     3      14501 TRUE   
-##  6 2015-01-06 night    2015  1     3       6112 TRUE   
-##  7 2015-01-07 day      2015  1     3      16358 TRUE   
-##  8 2015-01-07 night    2015  1     3       4706 TRUE   
-##  9 2015-01-08 day      2015  1     3       9971 TRUE   
-## 10 2015-01-08 night    2015  1     3       5630 TRUE   
-## # ... with 1,444 more rows, 7 more variables:
+##    date       day_night year  month season count
+##    <date>     <chr>     <fct> <fct> <fct>  <int>
+##  1 2015-01-04 day       2015  1     3       6830
+##  2 2015-01-04 night     2015  1     3       2404
+##  3 2015-01-05 day       2015  1     3      14763
+##  4 2015-01-05 night     2015  1     3       5609
+##  5 2015-01-06 day       2015  1     3      14501
+##  6 2015-01-06 night     2015  1     3       6112
+##  7 2015-01-07 day       2015  1     3      16358
+##  8 2015-01-07 night     2015  1     3       4706
+##  9 2015-01-08 day       2015  1     3       9971
+## 10 2015-01-08 night     2015  1     3       5630
+## # i 1,444 more rows
+## # i 8 more variables: is_workday <lgl>,
 ## #   is_weekend <lgl>, is_holiday <lgl>, temp <dbl>,
 ## #   temp_feel <dbl>, humidity <dbl>, wind_speed <dbl>,
-## #   weather_type <fct>, and abbreviated variable names
-## #   1: day_night, 2: is_workday
+## #   weather_type <fct>
 \end{verbatim}
 
 As we have used the \textbf{readr} package, our data is stored as a \emph{tibble} (class \texttt{tbl\_df} and related) which is the \textbf{tidyverse} subclass of a traditional data frame (class \texttt{data.frame}). There are other data structures in R such as lists and matrices; however, in this book we are going to use only data frames, more precisely tibbles (besides spatial data formats in Chapter XYZ).
@@ -2092,14 +2092,28 @@ Furthermore, you can customize the new default theme supplied to \texttt{theme\_
 \hypertarget{working-with-layers}{%
 \chapter{Working with Layers}\label{working-with-layers}}
 
-Internally all layers are created by the \texttt{layer()} function. A layer is by definition a ``combination of data, stat and geom with a potential position adjustment'' (\texttt{layer} R help).
+Internally all layers are created by the \texttt{layer()} function. A layer consists of
+
+\begin{itemize}
+\tightlist
+\item
+  the data set (\texttt{data})
+\item
+  a mapping of variables to aesthetics (\texttt{mapping})
+\item
+  a statistical transformation (\texttt{stat})
+\item
+  a geometric representation (\texttt{geom})
+\item
+  a positional adjustment (\texttt{position})
+\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
   \FunctionTok{layer}\NormalTok{(}
     \AttributeTok{data =}\NormalTok{ bikes, }
-    \AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{y =}\NormalTok{ count),}
+    \AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{y =}\NormalTok{ humidity),}
     \AttributeTok{geom =} \StringTok{"point"}\NormalTok{, }
     \AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }
     \AttributeTok{position =} \StringTok{"identity"}
@@ -2110,31 +2124,33 @@ Internally all layers are created by the \texttt{layer()} function. A layer is b
 \begin{figure}
 \centering
 \includegraphics{bookdown_files/figure-latex/07layerScatter-1.png}
-\caption{\label{fig:07layerScatter}A simple scatter plot of bike counts versus average temperature created with the \texttt{layer()} function.}
+\caption{\label{fig:07layerScatter}A simple scatter plot of humidty versus temperature created with the \texttt{layer()} function by passing the data, the positional aesthetic, a statistical transformation, a geomtric representatio n and the positional adjustment.}
 \end{figure}
 
-The data and aesthetic mappings are often specified in the initial \texttt{ggplot()} call. These specifications are then passed to all layers.
+We map the variables of the specified data the positional aesthetics \texttt{x} and \texttt{y}. The data and aesthetic mappings are often specified in the initial \texttt{ggplot()} call. These specifications are then passed to all layers.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ bikes, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{y =}\NormalTok{ humidity)) }\SpecialCharTok{+}
   \FunctionTok{layer}\NormalTok{(}\AttributeTok{geom =} \StringTok{"point"}\NormalTok{, }\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{position =} \StringTok{"identity"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
+Throughout the book, I am matching the argument names \texttt{data} and \texttt{mapping} in the initial \texttt{ggplot()} call implicitly: \texttt{ggplot(bikes,\ aes(x\ =\ temp,\ y\ =\ count))}. This is common practice and is used in many scripts, tutorials, and examples featuring \textbf{ggplot2} code.
+
 \hypertarget{predefined-layers}{%
 \section{Predefined Layers}\label{predefined-layers}}
 
-To simplify your life, \textbf{ggplot2} features a long list of predefined layers with sensible defaults for \texttt{geom}, \texttt{stat}, and \texttt{position}. Focusing on either the geometrical representation or the statistical transformation, these functions start with \texttt{geom\_*()} or \texttt{stat\_*()}, respectively.
+To simplify your life, \textbf{ggplot2} features a long list of predefined individual layers with sensible defaults for \texttt{geom}, \texttt{stat}, and \texttt{position}. Focusing on either the geometrical representation or the statistical transformation, these functions start with \texttt{geom\_*()} or \texttt{stat\_*()}, respectively.
 
-For all geometries and statistical transformation there are respective \texttt{geom\_*()} and \texttt{stat\_*()} functions. This means, you can usually go both routes to create the same chart. The following codes produce the same output as the \texttt{layer()} function above, a scatter plot of counts versus temperature:
+For all geometries and statistical transformation there are respective \texttt{geom\_*()} and \texttt{stat\_*()} functions. This means, you can usually go both routes to create the same chart. The following codes produce the same output as the \texttt{layer()} function above, a scatter plot of humidity versus temperature:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+}
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{y =}\NormalTok{ humidity)) }\SpecialCharTok{+}
   \FunctionTok{geom\_point}\NormalTok{() }\DocumentationTok{\#\# with \textasciigrave{}stat = "identity", position = "identity"\textasciigrave{}}
 
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+}
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp, }\AttributeTok{y =}\NormalTok{ humidity)) }\SpecialCharTok{+}
   \FunctionTok{stat\_identity}\NormalTok{() }\DocumentationTok{\#\# with \textasciigrave{}geom = "point", position = "identity"\textasciigrave{}}
 \end{Highlighting}
 \end{Shaded}
@@ -2172,9 +2188,9 @@ Maybe you have wondered at some point, why you can use \texttt{geom\_smooth()} a
 \hypertarget{changing-layer-defaults}{%
 \section{Changing Layer Defaults}\label{changing-layer-defaults}}
 
-We can overwrite the default argument inputs to change the behavior of the layer.
+We can overwrite the default argument inputs for \texttt{geom} or \texttt{stat}, respectively, and \texttt{position} to change the behavior of the layer.
 
-While the stacked bars (Fig. \ref{fig:07layerPredefinedDefault}A) put emphasis on the total counts per weather type, a grouped bar chart simplifies comparison between groups. We can change the default behavior of \texttt{geom\_bar()} or \texttt{stat\_count()} by setting the \texttt{position} to \texttt{dodge} to place the bars next to each other:
+While the stacked bars shown in Fig. \ref{fig:07layerPredefinedDefault} (left) emphasize the total counts per weather type, a grouped bar chart simplifies comparison between groups. We can change the default behavior of \texttt{geom\_bar()} or \texttt{stat\_count()} by setting the \texttt{position} to \texttt{"dodge"} to place the bars next to each other:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2183,7 +2199,21 @@ While the stacked bars (Fig. \ref{fig:07layerPredefinedDefault}A) put emphasis o
 \end{Highlighting}
 \end{Shaded}
 
-We can also overwrite the default \texttt{stat} in geometrical layers or \texttt{geom} in statistical layers. For example, changing the \texttt{geom} in \texttt{stat\_smooth()} to \texttt{pointrange} turns the smoothed line and ribbon into points with vertical lines representing the confidence intervals:
+The quoted \texttt{"dodge"} is a shortcut to the function \texttt{position\_dodge()}. If you want to adjust the default dodge behavior, you can specify arguments passed to the position function. For example, we might want to display all bars with the same width, independent of the presence of day and night (i.e.~there is only one, very wide bar for snowfall as there are only day observations). We can fix this by passing \texttt{preserve\ =\ "single"} to the \texttt{position\_dodge()} function. While this places the snowfall bar on the left, \texttt{position\_dodge2()} centers it. At the same time, it adds some spacing between grouped bars when decreasing the bar width:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ weather\_type, }\AttributeTok{fill =}\NormalTok{ day\_night)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}
+    \AttributeTok{width =}\NormalTok{ .}\DecValTok{7}\NormalTok{, }\DocumentationTok{\#\# more narrow bars}
+    \AttributeTok{position =} \FunctionTok{position\_dodge2}\NormalTok{(}
+      \AttributeTok{preserve =} \StringTok{"single"} \DocumentationTok{\#\# consistent bar width}
+\NormalTok{    )}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+We can also overwrite the default \texttt{stat} in geometrical layers or the default \texttt{geom} in statistical layers. For example, changing the \texttt{geom} in \texttt{stat\_smooth()} to \texttt{pointrange} turns the smoothed line and ribbon in Fig. \ref{fig:07layerPredefinedDefault} (right) into points with vertical lines representing the confidence intervals:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2194,18 +2224,39 @@ We can also overwrite the default \texttt{stat} in geometrical layers or \texttt
 
 Again, we could rewrite the code by using the respective geometrical layer \texttt{geom\_pointrange()} and setting the default statistical transformation \texttt{"identity"} to \texttt{"smooth"}.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s3 }\OtherTok{\textless{}{-}} 
+  \FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ weather\_type, }\AttributeTok{fill =}\NormalTok{ day\_night)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{position =} \FunctionTok{position\_dodge2}\NormalTok{(}\AttributeTok{preserve =} \StringTok{"single"}\NormalTok{, }\AttributeTok{width =}\NormalTok{ .}\DecValTok{9}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =}\NormalTok{ prismatic}\SpecialCharTok{::}\FunctionTok{clr\_darken}\NormalTok{(colors[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{], .}\DecValTok{2}\NormalTok{), }\AttributeTok{name =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{\textquotesingle{}geom\_bar(position = "dodge")}\SpecialCharTok{\textbackslash{}n}\StringTok{stat\_count(position = "dodge")\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{family =} \StringTok{"Spline Sans Mono"}\NormalTok{, }\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(}\FloatTok{1.05}\NormalTok{), }\AttributeTok{lineheight =} \FloatTok{1.1}\NormalTok{), }
+        \AttributeTok{panel.grid.major.x =} \FunctionTok{element\_blank}\NormalTok{(),}
+        \AttributeTok{legend.position =} \StringTok{"bottom"}\NormalTok{)}
+
+\NormalTok{s4 }\OtherTok{\textless{}{-}}
+  \FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ wind\_speed, }\AttributeTok{y =}\NormalTok{ humidity)) }\SpecialCharTok{+}
+  \FunctionTok{stat\_smooth}\NormalTok{(}\AttributeTok{geom =} \StringTok{"pointrange"}\NormalTok{, }\AttributeTok{size =}\NormalTok{ .}\DecValTok{1}\NormalTok{)  }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{\textquotesingle{}stat\_smooth(geom = "pointrange")}\SpecialCharTok{\textbackslash{}n}\StringTok{stat\_pointrange(stat = "smooth")\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{family =} \StringTok{"Spline Sans Mono"}\NormalTok{, }\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(}\FloatTok{1.05}\NormalTok{), }\AttributeTok{lineheight =} \FloatTok{1.1}\NormalTok{))}
+
+\NormalTok{s3 }\SpecialCharTok{+} \FunctionTok{plot\_spacer}\NormalTok{() }\SpecialCharTok{+}\NormalTok{ s4 }\SpecialCharTok{+} \FunctionTok{plot\_layout}\NormalTok{(}\AttributeTok{widths =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, .}\DecValTok{03}\NormalTok{, .}\DecValTok{8}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{figure}
 \centering
-\includegraphics{bookdown_files/figure-latex/07layerPredefinedCustom-1.png}
-\caption{\label{fig:07layerPredefinedCustom}Left: The bar chart of weather types per time of the day as dodged bars by setting the \texttt{position} to \texttt{"dodge"}, overwriting the default \texttt{"stack"}. Right: The conditional smoothing as so-called pointranges displaying the predicted mean as points and the confidence intervals as vertical lines by overwriting the default \texttt{geom} in \texttt{stat\_smooth()} or using the respective geometrical layer with \texttt{stat\ =\ "smooth"}.}
+\includegraphics{bookdown_files/figure-latex/echo, FALSE-1.png}
+\caption{(\#fig:echo, FALSE)Left: The bar chart of weather types per time of the day as dodged bars by setting the \texttt{position} to \texttt{"dodge"}, overwriting the default \texttt{"stack"}. Right: The conditional smoothing as so-called pointranges displaying the predicted mean as points and the confidence intervals as vertical lines by overwriting the default \texttt{geom} in \texttt{stat\_smooth()} or using the respective geometrical layer with \texttt{stat\ =\ "smooth"}.}
 \end{figure}
 
 \hypertarget{positional-aesthetics}{%
 \section{Positional Aesthetics}\label{positional-aesthetics}}
 
-Many geometrical shapes work with one or two positional arguments, namely \texttt{x} and \texttt{y} to represent your data. Depending on the type of the variables, the layer may behave differently or return an error if the variables do not meet the required type.
+Many geometrical shapes work with one or two positional arguments, namely \texttt{x} and \texttt{y} to represent your data. Depending on the type of the variables, the layer may behave differently or return an error if the variables do not meet the required type. To highlight the importance of data tpyes, let's consider two examples.
 
-For example, \textbf{ggplot2} will calculate a box plot for each category if the type is \texttt{character}, \texttt{logical}, or \texttt{factor} but only a single box plot otherwise:
+Box-and-whisker plots (or short ``box plots'') summarize the distribution of quantitative data, usually across multiple categories. By adding \texttt{geom\_boxplot()}, \textbf{ggplot2} will calculate a box plot for each category if the type is \texttt{character}, \texttt{logical}, or \texttt{factor} but only a single box plot otherwise:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2220,9 +2271,27 @@ For example, \textbf{ggplot2} will calculate a box plot for each category if the
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-10-1.png}
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/07layerTypeBoxplot-1.png}
+\caption{\label{fig:07layerTypeBoxplot}The number of indiviudal box-and-whisker plots created by\texttt{geom\_boxplot()} depends on the type of variable mapped to x. In case of categorical viarables such as \texttt{season} or \texttt{is\_weekend}, the function creates as many boxplots as there are categories. For numeric variables such as \texttt{temp}, only a single boxplot isccalculated by default.}
+\end{figure}
 
-Histograms show the distribution of numeric variables as bars grouped into equal numerical ranges, so-called bins. The corresponding \texttt{geom\_histogram()} creates \emph{binned bars} (read: \texttt{stat\ =\ "bin",\ geom\ =\ "bar"}) for quantitative variables but fails when passing qualitative variables as calculation of bins across categories is not meaningful. In case of a discrete x aesthetic, \texttt{geom\_bar()} with the default \texttt{stat\ =\ "count"} creates the desired bar chart showing counts per category.
+We can force \textbf{ggplot2} to grouped the quantitative variable into equal numerical ranges, so-called \emph{bins} by wrapping the variable inside \texttt{cut\_interval()}. The corrresponding \texttt{cut\_number()} creates groups with equal number of observations (and potentially unequal ranges).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{cut\_interval}\NormalTok{(temp, }\DecValTok{6}\NormalTok{), }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{varwidth =} \ConstantTok{TRUE}\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{cut\_number}\NormalTok{(temp, }\DecValTok{6}\NormalTok{), }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{varwidth =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown_files/figure-latex/07layerPositionalTypeBoxplotCut-1.png}
+
+Histograms show the distribution of numeric variables as binned bars. The corresponding \texttt{geom\_histogram()} creates these \emph{binned bars} with \texttt{stat\ =\ "bin"} and \texttt{geom\ =\ "bar"} for quantitative variable. But it fails when passing qualitative variables as calculation of bins across categories is not meaningful. In case of a qualitative x aesthetic, \texttt{geom\_bar()} with the default \texttt{stat\ =\ "count"} creates the desired bar chart showing counts per category.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2238,12 +2307,17 @@ Histograms show the distribution of numeric variables as bars grouped into equal
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-12-1.png}
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/07layerPositionalTypeHistogram-1.png}
+\caption{\label{fig:07layerPositionalTypeHistogram}A histogram bins a quantitative variable, showing counts of obersvations per group (left). As qualitative data is already grouped, a regular bar chart is used to display counts per category (right).}
+\end{figure}
 
 Other geometries need more than two positional aesthetics. \texttt{geom\_linerange()} draws horizontal or vertical lines based on \texttt{xmin} and \texttt{xmax} or \texttt{ymin} and \texttt{ymax}, respectively. Let's load some stock data and show the change of opening versus closing price over time:
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
 \NormalTok{coins }\OtherTok{\textless{}{-}}\NormalTok{ readr}\SpecialCharTok{::}\FunctionTok{read\_rds}\NormalTok{(}\StringTok{"./data/crypto\_cleaned.rds"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
 \NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(year }\SpecialCharTok{==} \DecValTok{2018}\NormalTok{, month }\SpecialCharTok{\%in\%} \DecValTok{5}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, currency }\SpecialCharTok{==} \StringTok{"litecoin"}\NormalTok{)}
 
@@ -2252,21 +2326,23 @@ Other geometries need more than two positional aesthetics. \texttt{geom\_lineran
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-13-1.png}
+\includegraphics{bookdown_files/figure-latex/07layerPositionalInputsLinerange-1.png}
 
-That's great but I'd like to indicate the direction of change in daily prices. For that we can use \texttt{geom\_segment()} which allows to add arrow heads to straight lines. The segments are not restricted to vertical or horizontal and thus take four positional arguments: \texttt{x} and \texttt{xend} as well as \texttt{y} and \texttt{yend}. For our use case, we map the same variable, namely \texttt{date}, to both x coordinates.
+That's great but in addition I would like to indicate the direction of change in daily prices. For that we can use \texttt{geom\_segment()} which allows to add arrow heads to straight lines. The segments are not restricted to vertical or horizontal and thus take four positional arguments: \texttt{x} and \texttt{xend} as well as \texttt{y} and \texttt{yend}. For our use case, we map the same variable, namely \texttt{date}, to both x coordinates. We then can define the arrow to be drawn by passing the \texttt{arrow()} function to the \texttt{arrow} argument inside \texttt{geom\_segement()}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{ggplot}\NormalTok{(coins, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{xend =}\NormalTok{ date, }
                   \AttributeTok{y =}\NormalTok{ open, }\AttributeTok{yend =}\NormalTok{ close)) }\SpecialCharTok{+}
   \FunctionTok{geom\_segment}\NormalTok{(}
-    \AttributeTok{arrow =} \FunctionTok{arrow}\NormalTok{(}\AttributeTok{type =} \StringTok{"closed"}\NormalTok{,}\AttributeTok{length =} \FunctionTok{unit}\NormalTok{(.}\DecValTok{4}\NormalTok{, }\StringTok{"lines"}\NormalTok{))}
+    \AttributeTok{arrow =} \FunctionTok{arrow}\NormalTok{(}
+      \AttributeTok{type =} \StringTok{"closed"}\NormalTok{, }\DocumentationTok{\#\# draw an triangle as arrow head }
+      \AttributeTok{length =} \FunctionTok{unit}\NormalTok{(.}\DecValTok{3}\NormalTok{, }\StringTok{"lines"}\NormalTok{)) }\DocumentationTok{\#\# size of the arrow head}
 \NormalTok{  )}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-14-1.png}
+\includegraphics{bookdown_files/figure-latex/07layerPositionalInputsSegment-1.png}
 
 The geom \texttt{pointrange} (that we have also used in the smoothing example) needs four positional aesthetics as well: in addition to the \texttt{x} and \texttt{y} positions, we have to specify the range as well as either \texttt{xmin} and \texttt{xmax} or \texttt{ymin} and \texttt{ymax}.
 
@@ -2276,15 +2352,15 @@ The geom \texttt{pointrange} (that we have also used in the smoothing example) n
 \NormalTok{bikes\_season }\OtherTok{\textless{}{-}} 
 \NormalTok{  bikes }\SpecialCharTok{\%\textgreater{}\%} 
   \FunctionTok{group\_by}\NormalTok{(season) }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{avg =} \FunctionTok{mean}\NormalTok{(count), }\AttributeTok{sd =} \FunctionTok{sd}\NormalTok{(count))}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{n =} \FunctionTok{mean}\NormalTok{(count), }\AttributeTok{sd =} \FunctionTok{sd}\NormalTok{(count))}
 
 \FunctionTok{ggplot}\NormalTok{(bikes\_season, }
-       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ season, }\AttributeTok{y =}\NormalTok{ avg, }\AttributeTok{ymin =}\NormalTok{ avg }\SpecialCharTok{{-}}\NormalTok{ sd, }\AttributeTok{ymax =}\NormalTok{ avg }\SpecialCharTok{+}\NormalTok{ sd)) }\SpecialCharTok{+}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ season, }\AttributeTok{y =}\NormalTok{ n, }\AttributeTok{ymin =}\NormalTok{ n }\SpecialCharTok{{-}}\NormalTok{ sd, }\AttributeTok{ymax =}\NormalTok{ n }\SpecialCharTok{+}\NormalTok{ sd)) }\SpecialCharTok{+}
   \FunctionTok{geom\_pointrange}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-15-1.png}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-13-1.png}
 
 \hypertarget{statistical-transformations}{%
 \section{Statistical Transformations}\label{statistical-transformations}}
@@ -2311,7 +2387,7 @@ Passing a set of functions to the arguments \texttt{fun}, \texttt{fun.min} and \
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-18-1.png}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-16-1.png}
 
 Alternatively, a function that returns the required aesthetics can be specified as input for \texttt{fun.data}. As the function \texttt{mean\_sdl()} computes the mean ± 2 times the standard deviation, we have to adjust the function argument \texttt{mult} as well. Either we pass it to the \texttt{fun.args} argument or specify it as function argument directly.
 
@@ -2343,14 +2419,14 @@ Similarly, we can also overwrite the default geometry, for example to display th
   \FunctionTok{stat\_summary}\NormalTok{(}
     \AttributeTok{geom =} \StringTok{"point"}\NormalTok{,}
     \AttributeTok{fun =} \StringTok{"median"}\NormalTok{,}
-    \AttributeTok{color =} \StringTok{"\#FF5477"}\NormalTok{,}
+    \AttributeTok{color =} \StringTok{"red"}\NormalTok{,}
     \AttributeTok{shape =} \DecValTok{17}\NormalTok{,}
     \AttributeTok{size =} \DecValTok{4}
 \NormalTok{  )}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-20-1.png}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-18-1.png}
 
 The \texttt{stat\_*()} functions and especially \texttt{stat\_summary} are incredible powerful and often a neat way to create all kind of chart types. Let's use a combination of summaries to draw a dumbbell chart of temperature ranges across months.
 
@@ -2370,7 +2446,7 @@ The \texttt{stat\_*()} functions and especially \texttt{stat\_summary} are incre
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-21-1.png}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-19-1.png}
 
 We can also use \texttt{stat\_summary()} to add the actual minimum and maximum values to our plot. The geom \texttt{text} in combination with the \texttt{label} aesthetic adds data-related labels.
 
@@ -2396,14 +2472,26 @@ We can also use \texttt{stat\_summary()} to add the actual minimum and maximum v
 \end{Highlighting}
 \end{Shaded}
 
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-21-1.png}
+
+\hypertarget{positional-adjustments}{%
+\section{Positional Adjustments}\label{positional-adjustments}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ weather\_type, }\AttributeTok{fill =}\NormalTok{ day\_night)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{position =} \StringTok{"fill"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#E39007"}\NormalTok{, }\StringTok{"\#9136F5"}\NormalTok{), }\AttributeTok{name =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{coord\_cartesian}\NormalTok{(}\AttributeTok{expand =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
 \includegraphics{bookdown_files/figure-latex/unnamed-chunk-23-1.png}
 
 {[}WIP{]}
 
 \hypertarget{working-with-colors}{%
 \chapter{Working with Colors}\label{working-with-colors}}
-
-\texttt{\{r.\ include=FALSE\}\ ggplot(coins,\ aes(x\ =\ date,\ xend\ =\ date,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y\ =\ open,\ yend\ =\ close))\ +\ \ \ geom\_segment(\ \ \ \ \ \#\#\ encode\ segments\ by\ trend\ \ \ \ \ aes(color\ =\ close\ \textgreater{}\ open),\ \ \ \ \ \#\#\ draw\ arrow\ heads\ to\ indicate\ direction\ of\ change\ \ \ \ \ \ arrow\ =\ arrow(type\ =\ "closed",length\ =\ unit(.3,\ "lines"))\ \ \ )}
 
 \hypertarget{working-with-text}{%
 \chapter{Working with Text}\label{working-with-text}}
@@ -2426,63 +2514,6 @@ We can also use \texttt{stat\_summary()} to add the actual minimum and maximum v
 Yeah! I have finished my book, but I have more to say about some topics. Let me explain them in this appendix.
 
 To know more about \textbf{bookdown}, see \url{https://bookdown.org}.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{p1 }\OtherTok{\textless{}{-}} 
-  \FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+}
-  \FunctionTok{layer}\NormalTok{(}\AttributeTok{geom =} \StringTok{"point"}\NormalTok{, }\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{position =} \StringTok{"identity"}\NormalTok{)}
-
-\NormalTok{p2 }\OtherTok{\textless{}{-}} 
-  \FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp)) }\SpecialCharTok{+}
-  \FunctionTok{layer}\NormalTok{(}\AttributeTok{geom =} \StringTok{"bar"}\NormalTok{, }\AttributeTok{stat =} \StringTok{"bin"}\NormalTok{, }\AttributeTok{position =} \StringTok{"identity"}\NormalTok{)}
-
-\NormalTok{p3 }\OtherTok{\textless{}{-}} 
-  \FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ wind\_speed, }\AttributeTok{y =}\NormalTok{ humidity)) }\SpecialCharTok{+}
-  \FunctionTok{layer}\NormalTok{(}\AttributeTok{geom =} \StringTok{"smooth"}\NormalTok{, }\AttributeTok{stat =} \StringTok{"smooth"}\NormalTok{, }\AttributeTok{position =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{params =} \FunctionTok{list}\NormalTok{(}\AttributeTok{se =} \ConstantTok{TRUE}\NormalTok{))}
-
-\NormalTok{p1 }\SpecialCharTok{+} \FunctionTok{plot\_spacer}\NormalTok{() }\SpecialCharTok{+}\NormalTok{ p2 }\SpecialCharTok{+} \FunctionTok{plot\_spacer}\NormalTok{() }\SpecialCharTok{+}\NormalTok{ p3 }\SpecialCharTok{+} 
-  \FunctionTok{plot\_layout}\NormalTok{(}\AttributeTok{nrow =} \DecValTok{1}\NormalTok{, }\AttributeTok{widths =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, .}\DecValTok{03}\NormalTok{, }\DecValTok{1}\NormalTok{, .}\DecValTok{03}\NormalTok{, }\DecValTok{1}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-For example, \texttt{geom\_histogram()} or \texttt{stat\_bin()} both create histograms representing the distribution of a continuous variable as binned bars:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp)) }\SpecialCharTok{+} \FunctionTok{geom\_histogram}\NormalTok{() }
-\FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp)) }\SpecialCharTok{+} \FunctionTok{stat\_bin}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-Both functions call the same \texttt{layer()} function with the predefined defaults \texttt{geom\ =\ "bar"}, \texttt{stat\ =\ "bin"}, and \texttt{position\ =\ "identity"}.
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{bikes\_summerdays\_2015 }\OtherTok{\textless{}{-}}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(}
-\NormalTok{  bikes, day\_night }\SpecialCharTok{==} \StringTok{"day"}\NormalTok{, year }\SpecialCharTok{==} \StringTok{"2015"}\NormalTok{, season }\SpecialCharTok{==} \StringTok{"summer"}
-\NormalTok{)}
-
-\FunctionTok{ggplot}\NormalTok{(bikes\_summerdays\_2015,}
-       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{xend =}\NormalTok{ date, }\DocumentationTok{\#\# start at previous temp}
-           \AttributeTok{y =} \FunctionTok{lag}\NormalTok{(count), }\AttributeTok{yend =}\NormalTok{ count)) }\SpecialCharTok{+} \DocumentationTok{\#\# start at previous count}
-  \FunctionTok{geom\_segment}\NormalTok{()}
-
-\FunctionTok{ggplot}\NormalTok{(bikes\_summerdays\_2015,}
-       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{lag}\NormalTok{(date), }\AttributeTok{xend =}\NormalTok{ date, }\DocumentationTok{\#\# start at previous temp}
-           \AttributeTok{y =} \FunctionTok{lag}\NormalTok{(count), }\AttributeTok{yend =}\NormalTok{ count)) }\SpecialCharTok{+} \DocumentationTok{\#\# start at previous count}
-  \FunctionTok{geom\_segment}\NormalTok{(}
-    \AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ count }\SpecialCharTok{\textgreater{}} \FunctionTok{lag}\NormalTok{(count)), }
-    \DocumentationTok{\#\# draw arrow heads to indicate direction of change }
-    \AttributeTok{arrow =} \FunctionTok{arrow}\NormalTok{(}\AttributeTok{type =} \StringTok{"closed"}\NormalTok{,}\AttributeTok{length =} \FunctionTok{unit}\NormalTok{(.}\DecValTok{3}\NormalTok{, }\StringTok{"lines"}\NormalTok{))}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
 
   \bibliography{book.bib,packages.bib}
 

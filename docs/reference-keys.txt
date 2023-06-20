@@ -32,7 +32,8 @@ fig:06customThemeApplied
 fig:06customThemeModified
 fig:07layerScatter
 fig:07layerPredefinedDefault
-fig:07layerPredefinedCustom
+fig:07layerTypeBoxplot
+fig:07layerPositionalTypeHistogram
 introduction
 communication
 coding
@@ -91,6 +92,7 @@ predefined-layers
 changing-layer-defaults
 positional-aesthetics
 statistical-transformations
+positional-adjustments
 working-with-colors
 working-with-text
 advanced-examples

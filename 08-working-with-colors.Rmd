@@ -4,7 +4,7 @@ source(here::here("src", "prerequisites.R"))
 
 # Working with Colors {#working-with-colors}
 
-```{r. include=FALSE}
+```{r, include=FALSE}
 ggplot(coins, aes(x = date, xend = date, 
                   y = open, yend = close)) +
   geom_segment(
