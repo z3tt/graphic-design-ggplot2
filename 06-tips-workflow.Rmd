@@ -215,7 +215,7 @@ plot_scatter <- function(cat, save = TRUE) {
 }
 ```
 
-Afterwards, we can perform the function for multiple subsets by iterating over a vector of categories (here seasons) with the help of the {purrr} package. Alternatively, you can use `lapply()` or a for loop to iterate over your filter conditions.
+Afterwards, we can perform the function for multiple subsets by iterating over a vector of categories (here seasons) with the help of the **{purrr}** package. Alternatively, you can use `lapply()` or a for loop to iterate over your filter conditions.
 
 ```{r, eval=FALSE}
 ## print the plots as well
@@ -283,7 +283,7 @@ purrr::map(c("displ", "hwy", "cty"),
            ~plot_density(data = mpg, var = .x))
 
 ## apply to the `bikes` data with additional grouping
-purrr::map(c("count", "temp", "humidity")), 
+purrr::map(c("count", "temp", "humidity"), 
            ~plot_density(data = bikes, var = .x, grp = "day_night"))
 ```
 
