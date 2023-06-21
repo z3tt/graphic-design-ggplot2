@@ -268,6 +268,7 @@ plot_density <- function(data, var, grp = "") {
     geom_density(aes(fill = !!sym(grp)), position = "identity",
                  color = "grey30", alpha = .3) +
     coord_cartesian(expand = FALSE, clip = "off") +
+    scale_y_continuous(labels = scales::label_number()) +
     scale_fill_brewer(palette = "Dark2", name = NULL) +
     theme_minimal(base_family = "Asap Condensed") +
     theme(panel.grid.minor = element_blank(),
@@ -277,7 +278,7 @@ plot_density <- function(data, var, grp = "") {
   return(g)
 }
 
-## apply to the `mpg` daat from {ggplot2}
+## apply to the `mpg` data from {ggplot2}
 purrr::map(c("displ", "hwy", "cty"), 
            ~plot_density(data = mpg, var = .x))
 
@@ -286,13 +287,14 @@ purrr::map(c("count", "temp", "humidity")),
            ~plot_density(data = bikes, var = .x, grp = "day_night"))
 ```
 
-```{r, echo=FALSE, purl=FALSE, fig.height=5, fig.cap='Two example use cases of the custom `plot_density()` function applied to three variables of the `mpg` data (upper row) and the `bikes` data (lower row), respectively. For the latter, `day_night` was passed as grouping variable.'}
+```{r, echo=FALSE, purl=FALSE, fig.height=5, fig.cap='Two example use cases of the custom `plot_density()` function applied to three variables of the `mpg` data (upper row) and the `bikes` data (lower row), respectively. For the latter, `day_night` was passed as the grouping variable.'}
 plot_density <- function(data, var, grp = "") {
   g <- 
     ggplot(data, aes(x = !!sym(var))) +
     geom_density(aes(fill = !!sym(grp)), position = "identity",
                  color = "grey30", alpha = .3) +
     coord_cartesian(expand = FALSE, clip = "off") +
+    scale_y_continuous(labels = scales::label_number()) +
     scale_fill_brewer(palette = "Dark2", name = NULL) +
     theme_minimal(base_family = "Asap Condensed") +
     theme(panel.grid.minor = element_blank(),

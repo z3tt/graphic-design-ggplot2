@@ -2169,6 +2169,7 @@ Here is another, more general function to create a custom density plot for any q
     \FunctionTok{geom\_density}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =} \SpecialCharTok{!!}\FunctionTok{sym}\NormalTok{(grp)), }\AttributeTok{position =} \StringTok{"identity"}\NormalTok{,}
                  \AttributeTok{color =} \StringTok{"grey30"}\NormalTok{, }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
     \FunctionTok{coord\_cartesian}\NormalTok{(}\AttributeTok{expand =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{clip =} \StringTok{"off"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{label\_number}\NormalTok{()) }\SpecialCharTok{+}
     \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"Dark2"}\NormalTok{, }\AttributeTok{name =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
     \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_family =} \StringTok{"Asap Condensed"}\NormalTok{) }\SpecialCharTok{+}
     \FunctionTok{theme}\NormalTok{(}\AttributeTok{panel.grid.minor =} \FunctionTok{element\_blank}\NormalTok{(),}
@@ -2178,7 +2179,7 @@ Here is another, more general function to create a custom density plot for any q
   \FunctionTok{return}\NormalTok{(g)}
 \NormalTok{\}}
 
-\DocumentationTok{\#\# apply to the \textasciigrave{}mpg\textasciigrave{} daat from \{ggplot2\}}
+\DocumentationTok{\#\# apply to the \textasciigrave{}mpg\textasciigrave{} data from \{ggplot2\}}
 \NormalTok{purrr}\SpecialCharTok{::}\FunctionTok{map}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"displ"}\NormalTok{, }\StringTok{"hwy"}\NormalTok{, }\StringTok{"cty"}\NormalTok{), }
            \SpecialCharTok{\textasciitilde{}}\FunctionTok{plot\_density}\NormalTok{(}\AttributeTok{data =}\NormalTok{ mpg, }\AttributeTok{var =}\NormalTok{ .x))}
 
@@ -2191,7 +2192,7 @@ Here is another, more general function to create a custom density plot for any q
 \begin{figure}
 \centering
 \includegraphics{bookdown_files/figure-latex/unnamed-chunk-8-1.png}
-\caption{\label{fig:unnamed-chunk-8}Two example use cases of the custom \texttt{plot\_density()} function applied to three variables of the \texttt{mpg} data (upper row) and the \texttt{bikes} data (lower row), respectively. For the latter, \texttt{day\_night} was passed as grouping variable.}
+\caption{\label{fig:unnamed-chunk-8}Two example use cases of the custom \texttt{plot\_density()} function applied to three variables of the \texttt{mpg} data (upper row) and the \texttt{bikes} data (lower row), respectively. For the latter, \texttt{day\_night} was passed as the grouping variable.}
 \end{figure}
 
 \hypertarget{part-how-to-work-with-components}{%
