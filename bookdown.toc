@@ -1,7 +1,7 @@
-\contentsline {fm}{List of Figures}{v}{chapter*.1}%
-\contentsline {fm}{List of Tables}{ix}{chapter*.2}%
-\contentsline {fm}{Preface}{xi}{chapter*.3}%
-\contentsline {fm}{About the Author}{xvii}{chapter*.9}%
+\contentsline {fm}{List of Figures}{vii}{chapter*.1}%
+\contentsline {fm}{List of Tables}{xi}{chapter*.2}%
+\contentsline {fm}{Preface}{xiii}{chapter*.3}%
+\contentsline {fm}{About the Author}{xix}{chapter*.9}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Communicating Data}{1}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Coding Visualizations}{3}{section.1.2}%
@@ -56,19 +56,25 @@
 \contentsline {section}{\numberline {6.3}Make Fonts Work}{57}{section.6.3}%
 \contentsline {section}{\numberline {6.4}Set Your ggplot Theme Globally}{57}{section.6.4}%
 \contentsline {section}{\numberline {6.5}Create Your Own Theme}{59}{section.6.5}%
-\contentsline {part}{II\hspace {1em}How To Work with Components}{63}{part.2}%
-\contentsline {chapter}{\numberline {7}Working with Layers}{65}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Predefined Layers}{66}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Changing Layer Defaults}{68}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Positional Aesthetics}{68}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Statistical Transformations}{74}{section.7.4}%
-\contentsline {section}{\numberline {7.5}Positional Adjustments}{77}{section.7.5}%
-\contentsline {chapter}{\numberline {8}Working with Colors}{79}{chapter.8}%
-\contentsline {chapter}{\numberline {9}Working with Text}{81}{chapter.9}%
-\contentsline {part}{III\hspace {1em}Advanced Walk-Through Examples}{83}{part.3}%
-\contentsline {chapter}{\numberline {10}Overview}{85}{chapter.10}%
-\contentsline {chapter}{Appendix}{87}{chapter.10}%
-\contentsline {chapter}{\numberline {A}More to Say}{87}{appendix.A}%
-\contentsline {fm}{Bibliography}{89}{appendix*.48}%
-\contentsline {chapter}{Index}{91}{appendix*.48}%
-\contentsline {section}{}{91}{appendix*.48}%
+\contentsline {section}{\numberline {6.6}Automating Plots: Batch Operations}{60}{section.6.6}%
+\contentsline {part}{II\hspace {1em}How To Work with Components}{65}{part.2}%
+\contentsline {chapter}{\numberline {7}Working with Layers}{67}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Predefined Layers}{68}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Geometrical versus Statistical Layers}{68}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Layer Variants}{70}{subsection.7.1.2}%
+\contentsline {section}{\numberline {7.2}Changing Layer Defaults}{71}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Positional Adjustments}{71}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Modify Transformations and Geometries}{73}{subsection.7.2.2}%
+\contentsline {section}{\numberline {7.3}Positional Aesthetics}{75}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Know Your Data Types}{75}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}Multiple Positional Aesthetics}{76}{subsection.7.3.2}%
+\contentsline {section}{\numberline {7.4}Statistical Summaries}{80}{section.7.4}%
+\contentsline {chapter}{\numberline {8}Working with Colors}{83}{chapter.8}%
+\contentsline {chapter}{\numberline {9}Working with Text}{85}{chapter.9}%
+\contentsline {part}{III\hspace {1em}Advanced Walk-Through Examples}{87}{part.3}%
+\contentsline {chapter}{\numberline {10}Overview}{89}{chapter.10}%
+\contentsline {chapter}{Appendix}{91}{chapter.10}%
+\contentsline {chapter}{\numberline {A}More to Say}{91}{appendix.A}%
+\contentsline {fm}{Bibliography}{93}{appendix*.56}%
+\contentsline {chapter}{Index}{95}{appendix*.56}%
+\contentsline {section}{}{95}{appendix*.56}%

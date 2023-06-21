@@ -23,7 +23,7 @@
 <meta name="author" content="Cédric Scherer" />
 
 
-<meta name="date" content="2023-06-20" />
+<meta name="date" content="2023-06-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -242,15 +242,27 @@ div.csl-indent {
 <li class="chapter" data-level="6.3" data-path="tips-to-improve-your-ggplot-workflow.html"><a href="tips-to-improve-your-ggplot-workflow.html#make-fonts-work"><i class="fa fa-check"></i><b>6.3</b> Make Fonts Work</a></li>
 <li class="chapter" data-level="6.4" data-path="tips-to-improve-your-ggplot-workflow.html"><a href="tips-to-improve-your-ggplot-workflow.html#set-your-ggplot-theme-globally"><i class="fa fa-check"></i><b>6.4</b> Set Your ggplot Theme Globally</a></li>
 <li class="chapter" data-level="6.5" data-path="tips-to-improve-your-ggplot-workflow.html"><a href="tips-to-improve-your-ggplot-workflow.html#create-your-own-theme"><i class="fa fa-check"></i><b>6.5</b> Create Your Own Theme</a></li>
+<li class="chapter" data-level="6.6" data-path="tips-to-improve-your-ggplot-workflow.html"><a href="tips-to-improve-your-ggplot-workflow.html#automating-plots-batch-operations"><i class="fa fa-check"></i><b>6.6</b> Automating Plots: Batch Operations</a></li>
 </ul></li>
 <li class="part"><span><b>II How To Work with Components</b></span></li>
 <li class="chapter" data-level="7" data-path="working-with-layers.html"><a href="working-with-layers.html"><i class="fa fa-check"></i><b>7</b> Working with Layers</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="working-with-layers.html"><a href="working-with-layers.html#predefined-layers"><i class="fa fa-check"></i><b>7.1</b> Predefined Layers</a></li>
-<li class="chapter" data-level="7.2" data-path="working-with-layers.html"><a href="working-with-layers.html#changing-layer-defaults"><i class="fa fa-check"></i><b>7.2</b> Changing Layer Defaults</a></li>
-<li class="chapter" data-level="7.3" data-path="working-with-layers.html"><a href="working-with-layers.html#positional-aesthetics"><i class="fa fa-check"></i><b>7.3</b> Positional Aesthetics</a></li>
-<li class="chapter" data-level="7.4" data-path="working-with-layers.html"><a href="working-with-layers.html#statistical-transformations"><i class="fa fa-check"></i><b>7.4</b> Statistical Transformations</a></li>
-<li class="chapter" data-level="7.5" data-path="working-with-layers.html"><a href="working-with-layers.html#positional-adjustments"><i class="fa fa-check"></i><b>7.5</b> Positional Adjustments</a></li>
+<li class="chapter" data-level="7.1" data-path="working-with-layers.html"><a href="working-with-layers.html#predefined-layers"><i class="fa fa-check"></i><b>7.1</b> Predefined Layers</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="working-with-layers.html"><a href="working-with-layers.html#geometrical-versus-statistical-layers"><i class="fa fa-check"></i><b>7.1.1</b> Geometrical versus Statistical Layers</a></li>
+<li class="chapter" data-level="7.1.2" data-path="working-with-layers.html"><a href="working-with-layers.html#layer-variants"><i class="fa fa-check"></i><b>7.1.2</b> Layer Variants</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="working-with-layers.html"><a href="working-with-layers.html#changing-layer-defaults"><i class="fa fa-check"></i><b>7.2</b> Changing Layer Defaults</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="working-with-layers.html"><a href="working-with-layers.html#positional-adjustments"><i class="fa fa-check"></i><b>7.2.1</b> Positional Adjustments</a></li>
+<li class="chapter" data-level="7.2.2" data-path="working-with-layers.html"><a href="working-with-layers.html#modify-transformations-and-geometries"><i class="fa fa-check"></i><b>7.2.2</b> Modify Transformations and Geometries</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="working-with-layers.html"><a href="working-with-layers.html#positional-aesthetics"><i class="fa fa-check"></i><b>7.3</b> Positional Aesthetics</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="working-with-layers.html"><a href="working-with-layers.html#know-your-data-types"><i class="fa fa-check"></i><b>7.3.1</b> Know Your Data Types</a></li>
+<li class="chapter" data-level="7.3.2" data-path="working-with-layers.html"><a href="working-with-layers.html#multiple-positional-aesthetics"><i class="fa fa-check"></i><b>7.3.2</b> Multiple Positional Aesthetics</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="working-with-layers.html"><a href="working-with-layers.html#statistical-summaries"><i class="fa fa-check"></i><b>7.4</b> Statistical Summaries</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="working-with-colors.html"><a href="working-with-colors.html"><i class="fa fa-check"></i><b>8</b> Working with Colors</a></li>
 <li class="chapter" data-level="9" data-path="working-with-text.html"><a href="working-with-text.html"><i class="fa fa-check"></i><b>9</b> Working with Text</a></li>
@@ -338,7 +350,7 @@ div.csl-indent {
 <span id="cb63-4"><a href="tips-to-improve-your-ggplot-workflow.html#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## style labels and colors</span></span>
 <span id="cb63-5"><a href="tips-to-improve-your-ggplot-workflow.html#cb63-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>(<span class="at">scale =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
 <span id="cb63-6"><a href="tips-to-improve-your-ggplot-workflow.html#cb63-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_comma</span>()) <span class="sc">+</span></span>
-<span id="cb63-7"><a href="tips-to-improve-your-ggplot-workflow.html#cb63-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;#9C4BFF&quot;</span>, <span class="st">&quot;#00B3FF&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb63-7"><a href="tips-to-improve-your-ggplot-workflow.html#cb63-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;#FFA200&quot;</span>, <span class="st">&quot;#757bc7&quot;</span>)) <span class="sc">+</span></span>
 <span id="cb63-8"><a href="tips-to-improve-your-ggplot-workflow.html#cb63-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
 <span id="cb63-9"><a href="tips-to-improve-your-ggplot-workflow.html#cb63-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Humidity&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Reported bike rents&quot;</span>, <span class="at">color =</span> <span class="cn">NULL</span>,</span>
 <span id="cb63-10"><a href="tips-to-improve-your-ggplot-workflow.html#cb63-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Reported bike rents versus average humidity (day/night)&quot;</span>,</span>
@@ -359,8 +371,9 @@ div.csl-indent {
 <span id="cb64-5"><a href="tips-to-improve-your-ggplot-workflow.html#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_update</span>(</span>
 <span id="cb64-6"><a href="tips-to-improve-your-ggplot-workflow.html#cb64-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb64-7"><a href="tips-to-improve-your-ggplot-workflow.html#cb64-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb64-8"><a href="tips-to-improve-your-ggplot-workflow.html#cb64-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;grey40&quot;</span>)</span>
-<span id="cb64-9"><a href="tips-to-improve-your-ggplot-workflow.html#cb64-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb64-8"><a href="tips-to-improve-your-ggplot-workflow.html#cb64-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.title.position =</span> <span class="st">&quot;plot&quot;</span>,</span>
+<span id="cb64-9"><a href="tips-to-improve-your-ggplot-workflow.html#cb64-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;grey40&quot;</span>)</span>
+<span id="cb64-10"><a href="tips-to-improve-your-ggplot-workflow.html#cb64-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>[WIP]</p>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="tips-to-improve-your-ggplot-workflow.html#cb65-1" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:06examplePlotThemeUpdate"></span>
@@ -372,7 +385,7 @@ FIGURE 6.1: Running the same plot with updated theme defaults, globally set via 
 </div>
 <div id="create-your-own-theme" class="section level2 hasAnchor" number="6.5">
 <h2><span class="header-section-number">6.5</span> Create Your Own Theme<a href="tips-to-improve-your-ggplot-workflow.html#create-your-own-theme" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>[WIP]</p>
+<p>[WIP] Maybe own chapter??</p>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="tips-to-improve-your-ggplot-workflow.html#cb66-1" aria-hidden="true" tabindex="-1"></a>theme_custom <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">base_size =</span> <span class="dv">14</span>, <span class="at">base_family =</span> <span class="st">&quot;Asap SemiCondensed&quot;</span>, </span>
 <span id="cb66-2"><a href="tips-to-improve-your-ggplot-workflow.html#cb66-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">base_line_size =</span> base_size<span class="sc">/</span><span class="dv">25</span>, <span class="at">base_rect_size =</span> base_size<span class="sc">/</span><span class="dv">25</span>,</span>
 <span id="cb66-3"><a href="tips-to-improve-your-ggplot-workflow.html#cb66-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">color_plot =</span> <span class="st">&quot;grey96&quot;</span>, <span class="at">color_panel =</span> <span class="st">&quot;white&quot;</span>) {</span>
@@ -413,6 +426,76 @@ FIGURE 6.2: Applying our custom theme to the ggplot object from before.
 <img src="bookdown_files/figure-html/06customThemeModified-1.png" alt="You can still overwrite the main settings and adjust single elements when using the custom theme." width="864" />
 <p class="caption">
 FIGURE 6.3: You can still overwrite the main settings and adjust single elements when using the custom theme.
+</p>
+</div>
+</div>
+<div id="automating-plots-batch-operations" class="section level2 hasAnchor" number="6.6">
+<h2><span class="header-section-number">6.6</span> Automating Plots: Batch Operations<a href="tips-to-improve-your-ggplot-workflow.html#automating-plots-batch-operations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You can create the same plot for a range of subsets by iterating over a list of filter conditions. First, we need to specify a function that filters the data and plots the subset—and optionally also saves the output.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="tips-to-improve-your-ggplot-workflow.html#cb69-1" aria-hidden="true" tabindex="-1"></a>plot_scatter <span class="ot">&lt;-</span> <span class="cf">function</span>(cat, <span class="at">save =</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb69-2"><a href="tips-to-improve-your-ggplot-workflow.html#cb69-2" aria-hidden="true" tabindex="-1"></a>  g <span class="ot">&lt;-</span> </span>
+<span id="cb69-3"><a href="tips-to-improve-your-ggplot-workflow.html#cb69-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="at">data =</span> <span class="fu">filter</span>(bikes, season <span class="sc">%in%</span> cat), </span>
+<span id="cb69-4"><a href="tips-to-improve-your-ggplot-workflow.html#cb69-4" aria-hidden="true" tabindex="-1"></a>           <span class="fu">aes</span>(<span class="at">x =</span> temp, <span class="at">y =</span> count, <span class="at">color =</span> day_night)) <span class="sc">+</span></span>
+<span id="cb69-5"><a href="tips-to-improve-your-ggplot-workflow.html#cb69-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb69-6"><a href="tips-to-improve-your-ggplot-workflow.html#cb69-6" aria-hidden="true" tabindex="-1"></a>    <span class="do">## keep axis ranges consistent</span></span>
+<span id="cb69-7"><a href="tips-to-improve-your-ggplot-workflow.html#cb69-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">range</span>(bikes<span class="sc">$</span>temp)) <span class="sc">+</span></span>
+<span id="cb69-8"><a href="tips-to-improve-your-ggplot-workflow.html#cb69-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">range</span>(bikes<span class="sc">$</span>count)) <span class="sc">+</span></span>
+<span id="cb69-9"><a href="tips-to-improve-your-ggplot-workflow.html#cb69-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;#FFA200&quot;</span>, <span class="st">&quot;#757bc7&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb69-10"><a href="tips-to-improve-your-ggplot-workflow.html#cb69-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> stringr<span class="sc">::</span><span class="fu">str_to_title</span>(cat), </span>
+<span id="cb69-11"><a href="tips-to-improve-your-ggplot-workflow.html#cb69-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Temperature&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Bike shares&quot;</span>, <span class="at">color =</span> <span class="cn">NULL</span>)</span>
+<span id="cb69-12"><a href="tips-to-improve-your-ggplot-workflow.html#cb69-12" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb69-13"><a href="tips-to-improve-your-ggplot-workflow.html#cb69-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">isTRUE</span>(save)) {</span>
+<span id="cb69-14"><a href="tips-to-improve-your-ggplot-workflow.html#cb69-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="fu">paste0</span>(<span class="st">&quot;scatter_&quot;</span>, cat, <span class="st">&quot;.png&quot;</span>), </span>
+<span id="cb69-15"><a href="tips-to-improve-your-ggplot-workflow.html#cb69-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">5</span>)</span>
+<span id="cb69-16"><a href="tips-to-improve-your-ggplot-workflow.html#cb69-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb69-17"><a href="tips-to-improve-your-ggplot-workflow.html#cb69-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb69-18"><a href="tips-to-improve-your-ggplot-workflow.html#cb69-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(g)</span>
+<span id="cb69-19"><a href="tips-to-improve-your-ggplot-workflow.html#cb69-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Afterwards, we can perform the function for multiple subsets by iterating over a vector of categories (here seasons) with the help of the {purrr} package. Alternatively, you can use <code>lapply()</code> or a for loop to iterate over your filter conditions.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="tips-to-improve-your-ggplot-workflow.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="do">## print the plots as well</span></span>
+<span id="cb70-2"><a href="tips-to-improve-your-ggplot-workflow.html#cb70-2" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(<span class="fu">unique</span>(bikes<span class="sc">$</span>season), <span class="sc">~</span><span class="fu">plot_scatter</span>(<span class="at">cat =</span> .x))</span>
+<span id="cb70-3"><a href="tips-to-improve-your-ggplot-workflow.html#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-4"><a href="tips-to-improve-your-ggplot-workflow.html#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="do">## just run the code without printing</span></span>
+<span id="cb70-5"><a href="tips-to-improve-your-ggplot-workflow.html#cb70-5" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">walk</span>(<span class="fu">unique</span>(bikes<span class="sc">$</span>season), <span class="sc">~</span><span class="fu">plot_scatter</span>(<span class="at">cat =</span> .x))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<img src="bookdown_files/figure-html/unnamed-chunk-5-1.png" alt="The four scatter plots of bike share versus temperature per season, produced by iterating our custom `plot_scatter()` function over the four different groups." width="1344" />
+<p class="caption">
+FIGURE 6.4: The four scatter plots of bike share versus temperature per season, produced by iterating our custom <code>plot_scatter()</code> function over the four different groups.
+</p>
+</div>
+<p class="note">
+<p>Note that the axis limits differ depending on the range of the positional variables <code>temp</code> and <code>count</code>. If you want to ensure consistent ranges, add the following two lines to the plot inside the function:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="tips-to-improve-your-ggplot-workflow.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">range</span>(bikes<span class="sc">$</span>temp)) <span class="sc">+</span></span>
+<span id="cb71-2"><a href="tips-to-improve-your-ggplot-workflow.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">range</span>(bikes<span class="sc">$</span>count)) </span></code></pre></div>
+</p>
+<p>You can leverage this approach to create the same chart for different data sets, to map different variables to aesthetics, and more.</p>
+<p>Here is another, more general function to create a custom density plot for any quantitative variable of a data set of your choice. The function makes use of <em>nonstandard evaluation</em> to pass the variables and groupings as strings. The <code>!!sym()</code> notation allows to pass quoted variable names that are evaluated by <strong>{ggplot2}</strong>. <code>sym()</code> converts the string to a symbol, the so-called <em>bang-bang</em> <code>!!</code> then unquotes the symbol so that the <code>aes()</code> function can handle it as usual.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-1" aria-hidden="true" tabindex="-1"></a>plot_density <span class="ot">&lt;-</span> <span class="cf">function</span>(data, var, <span class="at">grp =</span> <span class="st">&quot;&quot;</span>) {</span>
+<span id="cb72-2"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-2" aria-hidden="true" tabindex="-1"></a>  g <span class="ot">&lt;-</span> </span>
+<span id="cb72-3"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="sc">!!</span><span class="fu">sym</span>(var))) <span class="sc">+</span></span>
+<span id="cb72-4"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="sc">!!</span><span class="fu">sym</span>(grp)), <span class="at">position =</span> <span class="st">&quot;identity&quot;</span>,</span>
+<span id="cb72-5"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span>, <span class="at">alpha =</span> .<span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb72-6"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">expand =</span> <span class="cn">FALSE</span>, <span class="at">clip =</span> <span class="st">&quot;off&quot;</span>) <span class="sc">+</span></span>
+<span id="cb72-7"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Dark2&quot;</span>, <span class="at">name =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb72-8"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">&quot;Asap Condensed&quot;</span>) <span class="sc">+</span></span>
+<span id="cb72-9"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb72-10"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb72-11"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>)</span>
+<span id="cb72-12"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb72-13"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(g)</span>
+<span id="cb72-14"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb72-15"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-16"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-16" aria-hidden="true" tabindex="-1"></a><span class="do">## apply to the `mpg` daat from {ggplot2}</span></span>
+<span id="cb72-17"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-17" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(<span class="fu">c</span>(<span class="st">&quot;displ&quot;</span>, <span class="st">&quot;hwy&quot;</span>, <span class="st">&quot;cty&quot;</span>), </span>
+<span id="cb72-18"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-18" aria-hidden="true" tabindex="-1"></a>           <span class="sc">~</span><span class="fu">plot_density</span>(<span class="at">data =</span> mpg, <span class="at">var =</span> .x))</span>
+<span id="cb72-19"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-20"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-20" aria-hidden="true" tabindex="-1"></a><span class="do">## apply to the `bikes` data with additional grouping</span></span>
+<span id="cb72-21"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-21" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(<span class="fu">c</span>(<span class="st">&quot;count&quot;</span>, <span class="st">&quot;temp&quot;</span>, <span class="st">&quot;humidity&quot;</span>)), </span>
+<span id="cb72-22"><a href="tips-to-improve-your-ggplot-workflow.html#cb72-22" aria-hidden="true" tabindex="-1"></a>           <span class="sc">~</span><span class="fu">plot_density</span>(<span class="at">data =</span> bikes, <span class="at">var =</span> .x, <span class="at">grp =</span> <span class="st">&quot;day_night&quot;</span>)<span class="er">)</span></span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
+<img src="bookdown_files/figure-html/unnamed-chunk-8-1.png" alt="Two example use cases of the custom `plot_density()` function applied to three variables of the `mpg` data (upper row) and the `bikes` data (lower row), respectively. For the latter, `day_night` was passed as grouping variable." width="864" />
+<p class="caption">
+FIGURE 6.5: Two example use cases of the custom <code>plot_density()</code> function applied to three variables of the <code>mpg</code> data (upper row) and the <code>bikes</code> data (lower row), respectively. For the latter, <code>day_night</code> was passed as grouping variable.
 </p>
 </div>
 

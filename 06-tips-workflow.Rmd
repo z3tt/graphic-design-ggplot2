@@ -110,7 +110,7 @@ g <-
   ## style labels and colors
   scale_x_continuous(labels = scales::label_percent(scale = 1)) +
   scale_y_continuous(labels = scales::label_comma()) +
-  scale_color_manual(values = c("#9C4BFF", "#00B3FF")) +
+  scale_color_manual(values = c("#FFA200", "#757bc7")) +
   labs(
     x = "Humidity", y = "Reported bike rents", color = NULL,
     title = "Reported bike rents versus average humidity (day/night)",
@@ -133,6 +133,7 @@ theme_set(
 theme_update(
   panel.grid.minor = element_blank(),
   plot.title = element_text(face = "bold"),
+  plot.title.position = "plot",
   plot.caption = element_text(color = "grey40")
 )
 ```
@@ -146,7 +147,7 @@ g
 
 ## Create Your Own Theme
 
-[WIP]
+[WIP] Maybe own chapter??
 
 ```{r 06customTheme}
 theme_custom <- function(base_size = 14, base_family = "Asap SemiCondensed", 
@@ -186,3 +187,135 @@ g +
   ) +
   theme(plot.title = element_text(color = "goldenrod"))
 ```
+
+
+## Automating Plots: Batch Operations
+
+You can create the same plot for a range of subsets by iterating over a list of filter conditions. First, we need to specify a function that filters the data and plots the subset---and optionally also saves the output.
+
+```{r, eval=FALSE}
+plot_scatter <- function(cat, save = TRUE) {
+  g <- 
+    ggplot(data = filter(bikes, season %in% cat), 
+           aes(x = temp, y = count, color = day_night)) +
+    geom_point() +
+    ## keep axis ranges consistent
+    scale_x_continuous(limits = range(bikes$temp)) +
+    scale_y_continuous(limits = range(bikes$count)) +
+    scale_color_manual(values = c("#FFA200", "#757bc7")) +
+    labs(title = stringr::str_to_title(cat), 
+         x = "Temperature", y = "Bike shares", color = NULL)
+   
+  if (isTRUE(save)) {
+    ggsave(filename = paste0("scatter_", cat, ".png"), 
+           width = 7, height = 5)
+  }
+  
+  return(g)
+}
+```
+
+Afterwards, we can perform the function for multiple subsets by iterating over a vector of categories (here seasons) with the help of the {purrr} package. Alternatively, you can use `lapply()` or a for loop to iterate over your filter conditions.
+
+```{r, eval=FALSE}
+## print the plots as well
+purrr::map(unique(bikes$season), ~plot_scatter(cat = .x))
+
+## just run the code without printing
+purrr::walk(unique(bikes$season), ~plot_scatter(cat = .x))
+```
+
+```{r, echo=FALSE, purl=FALSE, fig.width=14, fig.height=8.8, fig.cap='The four scatter plots of bike share versus temperature per season, produced by iterating our custom `plot_scatter()` function over the four different groups.'}
+plot_scatter <- function(cat) {
+  g <- 
+    ggplot(data = filter(bikes, season %in% cat), 
+           aes(x = temp, y = count, color = day_night)) +
+    geom_point() +
+    scale_x_continuous(limits = range(bikes$temp)) +
+    scale_y_continuous(limits = range(bikes$count)) +
+    scale_color_manual(values = c("#FFA200", "#757bc7")) +
+    labs(title = stringr::str_to_title(cat), 
+         x = "Temperature", y = "Bike shares", color = NULL) +
+    theme(plot.margin = margin(rep(10, 5)))
+  
+  return(g)
+}
+
+patchwork::wrap_plots(
+  purrr::map(unique(bikes$season), ~plot_scatter(cat = .x))
+)
+```
+
+<p class="note">
+
+Note that the axis limits differ depending on the range of the positional variables `temp` and `count`. If you want to ensure consistent ranges, add the following two lines to the plot inside the function:
+
+```{r, eval=FALSE}
+scale_x_continuous(limits = range(bikes$temp)) +
+scale_y_continuous(limits = range(bikes$count)) 
+```
+
+</p>
+
+You can leverage this approach to create the same chart for different data sets, to map different variables to aesthetics, and more.
+
+Here is another, more general function to create a custom density plot for any quantitative variable of a data set of your choice. The function makes use of *nonstandard evaluation* to pass the variables and groupings as strings. The `!!sym()` notation allows to pass quoted variable names that are evaluated by **{ggplot2}**. `sym()` converts the string to a symbol, the so-called *bang-bang* `!!` then unquotes the symbol so that the `aes()` function can handle it as usual. 
+
+```{r, eval=FALSE}
+plot_density <- function(data, var, grp = "") {
+  g <- 
+    ggplot(data, aes(x = !!sym(var))) +
+    geom_density(aes(fill = !!sym(grp)), position = "identity",
+                 color = "grey30", alpha = .3) +
+    coord_cartesian(expand = FALSE, clip = "off") +
+    scale_fill_brewer(palette = "Dark2", name = NULL) +
+    theme_minimal(base_family = "Asap Condensed") +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major.x = element_blank(),
+          legend.position = "top")
+    
+  return(g)
+}
+
+## apply to the `mpg` daat from {ggplot2}
+purrr::map(c("displ", "hwy", "cty"), 
+           ~plot_density(data = mpg, var = .x))
+
+## apply to the `bikes` data with additional grouping
+purrr::map(c("count", "temp", "humidity")), 
+           ~plot_density(data = bikes, var = .x, grp = "day_night"))
+```
+
+```{r, echo=FALSE, purl=FALSE, fig.height=5, fig.cap='Two example use cases of the custom `plot_density()` function applied to three variables of the `mpg` data (upper row) and the `bikes` data (lower row), respectively. For the latter, `day_night` was passed as grouping variable.'}
+plot_density <- function(data, var, grp = "") {
+  g <- 
+    ggplot(data, aes(x = !!sym(var))) +
+    geom_density(aes(fill = !!sym(grp)), position = "identity",
+                 color = "grey30", alpha = .3) +
+    coord_cartesian(expand = FALSE, clip = "off") +
+    scale_fill_brewer(palette = "Dark2", name = NULL) +
+    theme_minimal(base_family = "Asap Condensed") +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major.x = element_blank(),
+          legend.position = "top",
+          plot.margin = margin(rep(10, 5)))
+    
+  return(g)
+}
+
+upr <- wrap_plots(
+  purrr::map(c("displ", "hwy", "cty"), 
+             ~plot_density(data = mpg, var = .x),
+  nrow = 1
+))
+           
+lwr <- wrap_plots(
+  purrr::map(c("count", "temp", "humidity"), 
+             ~plot_density(data = bikes, var = .x, grp = "day_night"),
+  nrow = 1
+))
+
+upr / plot_spacer() / lwr + plot_layout(heights = c(1, .03, 1))
+```
+
+
