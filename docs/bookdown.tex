@@ -155,20 +155,6 @@
 \makeatother
 
 \frontmatter
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
-\usepackage{xcolor}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -196,7 +182,7 @@
 \makeatother
 \subtitle{Create Beautiful and Engaging Data Visualizations in R}
 \author{Cédric Scherer}
-\date{2023-06-21}
+\date{2023-06-22}
 
 \begin{document}
 \maketitle
@@ -2039,68 +2025,6 @@ Furthermore, you can customize the new default theme supplied to \texttt{theme\_
 \caption{\label{fig:06examplePlotThemeUpdate}Running the same plot with updated theme defaults, globally set via \texttt{theme\_update()}. This allows for a consistent style for all graphics without the need to write redundant code.}
 \end{figure}
 
-\hypertarget{create-your-own-theme}{%
-\section{Create Your Own Theme}\label{create-your-own-theme}}
-
-{[}WIP{]} Maybe own chapter??
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{theme\_custom }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{14}\NormalTok{, }\AttributeTok{base\_family =} \StringTok{"Asap SemiCondensed"}\NormalTok{, }
-                         \AttributeTok{base\_line\_size =}\NormalTok{ base\_size}\SpecialCharTok{/}\DecValTok{25}\NormalTok{, }\AttributeTok{base\_rect\_size =}\NormalTok{ base\_size}\SpecialCharTok{/}\DecValTok{25}\NormalTok{,}
-                         \AttributeTok{color\_plot =} \StringTok{"grey96"}\NormalTok{, }\AttributeTok{color\_panel =} \StringTok{"white"}\NormalTok{) \{}
-    \FunctionTok{theme\_minimal}\NormalTok{(}
-      \AttributeTok{base\_size =}\NormalTok{ base\_size, }\AttributeTok{base\_family =}\NormalTok{ base\_family, }
-      \AttributeTok{base\_line\_size =}\NormalTok{ base\_line\_size, }\AttributeTok{base\_rect\_size =}\NormalTok{ base\_rect\_size}
-\NormalTok{    ) }\SpecialCharTok{\%+replace\%} 
-    \FunctionTok{theme}\NormalTok{(}
-      \AttributeTok{panel.grid.minor =} \FunctionTok{element\_blank}\NormalTok{(),}
-      \AttributeTok{panel.grid.major =} \FunctionTok{element\_line}\NormalTok{(}\AttributeTok{color =}\NormalTok{ color\_plot),}
-      \AttributeTok{panel.background =} \FunctionTok{element\_rect}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ color\_panel, }\AttributeTok{color =} \ConstantTok{NA}\NormalTok{),}
-      \AttributeTok{plot.background =} \FunctionTok{element\_rect}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ color\_plot, }\AttributeTok{color =} \ConstantTok{NA}\NormalTok{),}
-      \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(}\FloatTok{1.2}\NormalTok{), }\AttributeTok{face =} \StringTok{"bold"}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{0}\NormalTok{,}
-                                  \AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{b =} \FunctionTok{rel}\NormalTok{(}\DecValTok{15}\NormalTok{))), }
-      \AttributeTok{plot.subtitle =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(}\DecValTok{1}\NormalTok{), }\AttributeTok{hjust =} \DecValTok{0}\NormalTok{),}
-      \AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{color =} \StringTok{"grey30"}\NormalTok{, }\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(.}\DecValTok{7}\NormalTok{), }\AttributeTok{hjust =} \DecValTok{0}\NormalTok{,}
-                                  \AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{t =} \FunctionTok{rel}\NormalTok{(}\DecValTok{20}\NormalTok{))),}
-      \AttributeTok{plot.title.position =} \StringTok{"plot"}\NormalTok{,}
-      \AttributeTok{plot.caption.position =} \StringTok{"plot"}\NormalTok{,}
-      \AttributeTok{axis.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{color =} \StringTok{"grey40"}\NormalTok{, }\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(.}\DecValTok{8}\NormalTok{)),}
-      \AttributeTok{complete =} \ConstantTok{FALSE}
-\NormalTok{  )}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{g }\SpecialCharTok{+} \FunctionTok{theme\_custom}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{bookdown_files/figure-latex/06customThemeApplied-1.png}
-\caption{\label{fig:06customThemeApplied}Applying our custom theme to the ggplot object from before.}
-\end{figure}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{g }\SpecialCharTok{+}
-  \FunctionTok{theme\_custom}\NormalTok{(}
-    \AttributeTok{base\_size =} \DecValTok{16}\NormalTok{, }\AttributeTok{base\_family =} \StringTok{"Spline Sans"}\NormalTok{,}
-    \AttributeTok{color\_plot =} \StringTok{"white"}\NormalTok{, }\AttributeTok{color\_panel =} \StringTok{"antiquewhite"}
-\NormalTok{  ) }\SpecialCharTok{+}
-  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{color =} \StringTok{"goldenrod"}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{bookdown_files/figure-latex/06customThemeModified-1.png}
-\caption{\label{fig:06customThemeModified}You can still overwrite the main settings and adjust single elements when using the custom theme.}
-\end{figure}
-
 \hypertarget{automating-plots-batch-operations}{%
 \section{Automating Plots: Batch Operations}\label{automating-plots-batch-operations}}
 
@@ -2130,7 +2054,7 @@ You can create the same plot for a range of subsets by iterating over a list of 
 \end{Highlighting}
 \end{Shaded}
 
-Afterwards, we can perform the function for multiple subsets by iterating over a vector of categories (here seasons) with the help of the \{purrr\} package. Alternatively, you can use \texttt{lapply()} or a for loop to iterate over your filter conditions.
+Afterwards, we can perform the function for multiple subsets by iterating over a vector of categories (here seasons) with the help of the \textbf{\{purrr\}} package. Alternatively, you can use \texttt{lapply()} or a for loop to iterate over your filter conditions.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2144,8 +2068,8 @@ Afterwards, we can perform the function for multiple subsets by iterating over a
 
 \begin{figure}
 \centering
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-5-1.png}
-\caption{\label{fig:unnamed-chunk-5}The four scatter plots of bike share versus temperature per season, produced by iterating our custom \texttt{plot\_scatter()} function over the four different groups.}
+\includegraphics{bookdown_files/figure-latex/06workflowBatchSubsets-1.png}
+\caption{\label{fig:06workflowBatchSubsets}The four scatter plots of bike share versus temperature per season, produced by iterating our custom \texttt{plot\_scatter()} function over the four different groups.}
 \end{figure}
 
 Note that the axis limits differ depending on the range of the positional variables \texttt{temp} and \texttt{count}. If you want to ensure consistent ranges, add the following two lines to the plot inside the function:
@@ -2184,15 +2108,15 @@ Here is another, more general function to create a custom density plot for any q
            \SpecialCharTok{\textasciitilde{}}\FunctionTok{plot\_density}\NormalTok{(}\AttributeTok{data =}\NormalTok{ mpg, }\AttributeTok{var =}\NormalTok{ .x))}
 
 \DocumentationTok{\#\# apply to the \textasciigrave{}bikes\textasciigrave{} data with additional grouping}
-\NormalTok{purrr}\SpecialCharTok{::}\FunctionTok{map}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"count"}\NormalTok{, }\StringTok{"temp"}\NormalTok{, }\StringTok{"humidity"}\NormalTok{)), }
-           \SpecialCharTok{\textasciitilde{}}\FunctionTok{plot\_density}\NormalTok{(}\AttributeTok{data =}\NormalTok{ bikes, }\AttributeTok{var =}\NormalTok{ .x, }\AttributeTok{grp =} \StringTok{"day\_night"}\NormalTok{)}\ErrorTok{)}
+\NormalTok{purrr}\SpecialCharTok{::}\FunctionTok{map}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"count"}\NormalTok{, }\StringTok{"temp"}\NormalTok{, }\StringTok{"humidity"}\NormalTok{), }
+           \SpecialCharTok{\textasciitilde{}}\FunctionTok{plot\_density}\NormalTok{(}\AttributeTok{data =}\NormalTok{ bikes, }\AttributeTok{var =}\NormalTok{ .x, }\AttributeTok{grp =} \StringTok{"day\_night"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{figure}
 \centering
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-8-1.png}
-\caption{\label{fig:unnamed-chunk-8}Two example use cases of the custom \texttt{plot\_density()} function applied to three variables of the \texttt{mpg} data (upper row) and the \texttt{bikes} data (lower row), respectively. For the latter, \texttt{day\_night} was passed as the grouping variable.}
+\includegraphics{bookdown_files/figure-latex/06workflowBatchDataVar-1.png}
+\caption{\label{fig:06workflowBatchDataVar}Two example use cases of the custom \texttt{plot\_density()} function applied to three variables of the \texttt{mpg} data (upper row) and the \texttt{bikes} data (lower row), respectively. For the latter, \texttt{day\_night} was passed as the grouping variable.}
 \end{figure}
 
 \hypertarget{part-how-to-work-with-components}{%
@@ -2403,8 +2327,8 @@ Another common use case of positional adjustments is the so-called \emph{jitteri
 
 \begin{figure}
 \centering
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-18-1.png}
-\caption{\label{fig:unnamed-chunk-18}identity versus jitter}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-16-1.png}
+\caption{\label{fig:unnamed-chunk-16}identity versus jitter}
 \end{figure}
 
 \hypertarget{modify-transformations-and-geometries}{%
@@ -2580,7 +2504,7 @@ The geom \texttt{pointrange} (that we have also used in the smoothing example) n
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-25-1.png}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-23-1.png}
 
 \hypertarget{statistical-summaries}{%
 \section{Statistical Summaries}\label{statistical-summaries}}
@@ -2607,7 +2531,7 @@ Passing a set of functions to the arguments \texttt{fun}, \texttt{fun.min} and \
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-28-1.png}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-26-1.png}
 
 Alternatively, a function that returns the required aesthetics can be specified as input for \texttt{fun.data}. As the function \texttt{mean\_sdl()} computes the mean ± 2 times the standard deviation, we have to adjust the function argument \texttt{mult} as well. Either we pass it to the \texttt{fun.args} argument or specify it as function argument directly.
 
@@ -2646,7 +2570,7 @@ Similarly, we can also overwrite the default geometry, for example to display th
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-30-1.png}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-28-1.png}
 
 The \texttt{stat\_*()} functions and especially \texttt{stat\_summary} are incredible powerful and often a neat way to create all kind of chart types. Let's use a combination of summaries to draw a dumbbell chart of temperature ranges across months.
 
@@ -2690,19 +2614,88 @@ We can also use \texttt{stat\_summary()} to add the actual minimum and maximum v
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-33-1.png}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-31-1.png}
 
 \hypertarget{working-with-colors}{%
 \chapter{Working with Colors}\label{working-with-colors}}
 
+{[}WIP{]}
+
 \begin{figure}
 \centering
-\includegraphics{bookdown_files/figure-latex/unnamed-chunk-35-1.png}
-\caption{\label{fig:unnamed-chunk-35}jitter with mean}
+\includegraphics{bookdown_files/figure-latex/unnamed-chunk-33-1.png}
+\caption{\label{fig:unnamed-chunk-33}jitter with mean}
 \end{figure}
 
 \hypertarget{working-with-text}{%
 \chapter{Working with Text}\label{working-with-text}}
+
+{[}WIP{]}
+
+\hypertarget{working-with-themes}{%
+\chapter{Working with Themes}\label{working-with-themes}}
+
+{[}WIP{]}
+
+\hypertarget{create-your-own-theme}{%
+\section{Create Your Own Theme}\label{create-your-own-theme}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{theme\_custom }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{14}\NormalTok{, }\AttributeTok{base\_family =} \StringTok{"Asap SemiCondensed"}\NormalTok{, }
+                         \AttributeTok{base\_line\_size =}\NormalTok{ base\_size}\SpecialCharTok{/}\DecValTok{25}\NormalTok{, }\AttributeTok{base\_rect\_size =}\NormalTok{ base\_size}\SpecialCharTok{/}\DecValTok{25}\NormalTok{,}
+                         \AttributeTok{color\_plot =} \StringTok{"grey96"}\NormalTok{, }\AttributeTok{color\_panel =} \StringTok{"white"}\NormalTok{) \{}
+    \FunctionTok{theme\_minimal}\NormalTok{(}
+      \AttributeTok{base\_size =}\NormalTok{ base\_size, }\AttributeTok{base\_family =}\NormalTok{ base\_family, }
+      \AttributeTok{base\_line\_size =}\NormalTok{ base\_line\_size, }\AttributeTok{base\_rect\_size =}\NormalTok{ base\_rect\_size}
+\NormalTok{    ) }\SpecialCharTok{\%+replace\%} 
+    \FunctionTok{theme}\NormalTok{(}
+      \AttributeTok{panel.grid.minor =} \FunctionTok{element\_blank}\NormalTok{(),}
+      \AttributeTok{panel.grid.major =} \FunctionTok{element\_line}\NormalTok{(}\AttributeTok{color =}\NormalTok{ color\_plot),}
+      \AttributeTok{panel.background =} \FunctionTok{element\_rect}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ color\_panel, }\AttributeTok{color =} \ConstantTok{NA}\NormalTok{),}
+      \AttributeTok{plot.background =} \FunctionTok{element\_rect}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ color\_plot, }\AttributeTok{color =} \ConstantTok{NA}\NormalTok{),}
+      \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(}\FloatTok{1.2}\NormalTok{), }\AttributeTok{face =} \StringTok{"bold"}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{0}\NormalTok{,}
+                                  \AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{b =} \FunctionTok{rel}\NormalTok{(}\DecValTok{15}\NormalTok{))), }
+      \AttributeTok{plot.subtitle =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(}\DecValTok{1}\NormalTok{), }\AttributeTok{hjust =} \DecValTok{0}\NormalTok{),}
+      \AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{color =} \StringTok{"grey30"}\NormalTok{, }\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(.}\DecValTok{7}\NormalTok{), }\AttributeTok{hjust =} \DecValTok{0}\NormalTok{,}
+                                  \AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{t =} \FunctionTok{rel}\NormalTok{(}\DecValTok{20}\NormalTok{))),}
+      \AttributeTok{plot.title.position =} \StringTok{"plot"}\NormalTok{,}
+      \AttributeTok{plot.caption.position =} \StringTok{"plot"}\NormalTok{,}
+      \AttributeTok{axis.text =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{color =} \StringTok{"grey40"}\NormalTok{, }\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(.}\DecValTok{8}\NormalTok{)),}
+      \AttributeTok{complete =} \ConstantTok{FALSE}
+\NormalTok{  )}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+} \FunctionTok{theme\_custom}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/06customThemeApplied-1.png}
+\caption{\label{fig:06customThemeApplied}Applying our custom theme to the ggplot object from before.}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g }\SpecialCharTok{+}
+  \FunctionTok{theme\_custom}\NormalTok{(}
+    \AttributeTok{base\_size =} \DecValTok{16}\NormalTok{, }\AttributeTok{base\_family =} \StringTok{"Spline Sans"}\NormalTok{,}
+    \AttributeTok{color\_plot =} \StringTok{"white"}\NormalTok{, }\AttributeTok{color\_panel =} \StringTok{"antiquewhite"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{color =} \StringTok{"goldenrod"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{bookdown_files/figure-latex/06customThemeModified-1.png}
+\caption{\label{fig:06customThemeModified}You can still overwrite the main settings and adjust single elements when using the custom theme.}
+\end{figure}
 
 \hypertarget{part-advanced-walk-through-examples}{%
 \part{Advanced Walk-Through Examples}\label{part-advanced-walk-through-examples}}

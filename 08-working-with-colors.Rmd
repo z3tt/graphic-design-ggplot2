@@ -1,8 +1,10 @@
-```{r 06setupSectionStats, echo=FALSE, include=FALSE}
+```{r 08setupSectionColors, echo=FALSE, include=FALSE}
 source(here::here("src", "prerequisites.R"))
 ```
 
 # Working with Colors {#working-with-colors}
+
+[WIP]
 
 ```{r, include=FALSE}
 ggplot(coins, aes(x = date, xend = date, 

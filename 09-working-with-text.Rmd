@@ -1,8 +1,7 @@
-```{r 06setupSectionPosition, echo=FALSE, include=FALSE}
+```{r 09setupSectionText, echo=FALSE, include=FALSE}
 source(here::here("src", "prerequisites.R"))
 ```
 
 # Working with Text {#working-with-text}
 
-
-
+[WIP]

@@ -105,7 +105,7 @@ Let's see how a plot using `theme_minimal()` looks like---note that we do not ap
 
 ```{r 06examplePlotThemeSet}
 g <- 
-  ggplot(bikes, aes(x = humidity, y = count)) +
+  ggplot(bikes, aes(x = temp, y = count)) +
   geom_point(aes(color = day_night), alpha = .4) +
   ## style labels and colors
   scale_x_continuous(labels = scales::label_percent(scale = 1)) +
@@ -145,50 +145,6 @@ g
 ```
 
 
-## Create Your Own Theme
-
-[WIP] Maybe own chapter??
-
-```{r 06customTheme}
-theme_custom <- function(base_size = 14, base_family = "Asap SemiCondensed", 
-                         base_line_size = base_size/25, base_rect_size = base_size/25,
-                         color_plot = "grey96", color_panel = "white") {
-    theme_minimal(
-      base_size = base_size, base_family = base_family, 
-      base_line_size = base_line_size, base_rect_size = base_rect_size
-    ) %+replace% 
-    theme(
-      panel.grid.minor = element_blank(),
-      panel.grid.major = element_line(color = color_plot),
-      panel.background = element_rect(fill = color_panel, color = NA),
-      plot.background = element_rect(fill = color_plot, color = NA),
-      plot.title = element_text(size = rel(1.2), face = "bold", hjust = 0,
-                                  margin = margin(b = rel(15))), 
-      plot.subtitle = element_text(size = rel(1), hjust = 0),
-      plot.caption = element_text(color = "grey30", size = rel(.7), hjust = 0,
-                                  margin = margin(t = rel(20))),
-      plot.title.position = "plot",
-      plot.caption.position = "plot",
-      axis.text = element_text(color = "grey40", size = rel(.8)),
-      complete = FALSE
-  )
-}
-```
-
-```{r 06customThemeApplied, fig.cap="Applying our custom theme to the ggplot object from before."}
-g + theme_custom()
-```
-
-```{r 06customThemeModified, fig.cap="You can still overwrite the main settings and adjust single elements when using the custom theme."}
-g +
-  theme_custom(
-    base_size = 16, base_family = "Spline Sans",
-    color_plot = "white", color_panel = "antiquewhite"
-  ) +
-  theme(plot.title = element_text(color = "goldenrod"))
-```
-
-
 ## Automating Plots: Batch Operations
 
 You can create the same plot for a range of subsets by iterating over a list of filter conditions. First, we need to specify a function that filters the data and plots the subset---and optionally also saves the output.
@@ -225,7 +181,7 @@ purrr::map(unique(bikes$season), ~plot_scatter(cat = .x))
 purrr::walk(unique(bikes$season), ~plot_scatter(cat = .x))
 ```
 
-```{r, echo=FALSE, purl=FALSE, fig.width=14, fig.height=8.8, fig.cap='The four scatter plots of bike share versus temperature per season, produced by iterating our custom `plot_scatter()` function over the four different groups.'}
+```{r 06workflowBatchSubsets, echo=FALSE, purl=FALSE, fig.width=14, fig.height=8.8, fig.cap='The four scatter plots of bike share versus temperature per season, produced by iterating our custom `plot_scatter()` function over the four different groups.'}
 plot_scatter <- function(cat) {
   g <- 
     ggplot(data = filter(bikes, season %in% cat), 
@@ -287,7 +243,7 @@ purrr::map(c("count", "temp", "humidity"),
            ~plot_density(data = bikes, var = .x, grp = "day_night"))
 ```
 
-```{r, echo=FALSE, purl=FALSE, fig.height=5, fig.cap='Two example use cases of the custom `plot_density()` function applied to three variables of the `mpg` data (upper row) and the `bikes` data (lower row), respectively. For the latter, `day_night` was passed as the grouping variable.'}
+```{r 06workflowBatchDataVar, echo=FALSE, purl=FALSE, fig.height=5, fig.cap='Two example use cases of the custom `plot_density()` function applied to three variables of the `mpg` data (upper row) and the `bikes` data (lower row), respectively. For the latter, `day_night` was passed as the grouping variable.'}
 plot_density <- function(data, var, grp = "") {
   g <- 
     ggplot(data, aes(x = !!sym(var))) +

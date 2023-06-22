@@ -1,0 +1,51 @@
+```{r 10setupSectionTheme, echo=FALSE, include=FALSE}
+source(here::here("src", "prerequisites.R"))
+```
+
+# Working with Themes {#working-with-themes}
+
+[WIP]
+
+## Create Your Own Theme
+
+```{r 06customTheme}
+theme_custom <- function(base_size = 14, base_family = "Asap SemiCondensed", 
+                         base_line_size = base_size/25, base_rect_size = base_size/25,
+                         color_plot = "grey96", color_panel = "white") {
+    theme_minimal(
+      base_size = base_size, base_family = base_family, 
+      base_line_size = base_line_size, base_rect_size = base_rect_size
+    ) %+replace% 
+    theme(
+      panel.grid.minor = element_blank(),
+      panel.grid.major = element_line(color = color_plot),
+      panel.background = element_rect(fill = color_panel, color = NA),
+      plot.background = element_rect(fill = color_plot, color = NA),
+      plot.title = element_text(size = rel(1.2), face = "bold", hjust = 0,
+                                  margin = margin(b = rel(15))), 
+      plot.subtitle = element_text(size = rel(1), hjust = 0),
+      plot.caption = element_text(color = "grey30", size = rel(.7), hjust = 0,
+                                  margin = margin(t = rel(20))),
+      plot.title.position = "plot",
+      plot.caption.position = "plot",
+      axis.text = element_text(color = "grey40", size = rel(.8)),
+      complete = FALSE
+  )
+}
+```
+
+```{r 06customThemeApplied, fig.cap="Applying our custom theme to the ggplot object from before."}
+g + theme_custom()
+```
+
+```{r 06customThemeModified, fig.cap="You can still overwrite the main settings and adjust single elements when using the custom theme."}
+g +
+  theme_custom(
+    base_size = 16, base_family = "Spline Sans",
+    color_plot = "white", color_panel = "antiquewhite"
+  ) +
+  theme(plot.title = element_text(color = "goldenrod"))
+```
+
+
+
