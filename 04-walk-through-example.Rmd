@@ -1,10 +1,10 @@
 ```{r 04setup-section-walkthrough, echo=FALSE, include=FALSE}
-ggplot2::theme_set(ggplot2::theme_grey(base_size = 12))
+ggplot2::theme_set(ggplot2::theme_grey(base_size = 13))
 ```
 
 # A Walk-Through Example {#walkthrough}
 
-To illustrate the utility and flexibility of **ggplot2** to create complex, well-designed visualizations with a handful of components, we are going to create a set of four plots. For each combination of year and time of the day, we draw a scatter plot of bike rents including a linear fitting to show overall trends with feels-like temperature. 
+To illustrate the utility and flexibility of **ggplot2** to create complex, well-designed visualizations with a handful of components, we are going to create a set of four plots (so-called small multiples). For each combination of year and time of the day, we draw a scatter plot of bike rents including a linear fitting for each subset.
 
 The creation of the plot itself will require only four lines of code! One to specify the data and global aesthetics, two for the scatter and fitting, and another one to create small multiples.
 
@@ -23,22 +23,21 @@ url_data <- "https://cedricscherer.com/data/london-bikes.csv"
 bikes <- readr::read_csv(file = url_data, col_types = "Dcfffilllddddfc")
 ```
 
-
 ## Create a Basic ggplot {#basics}
 
-Once the **ggplot2** package is loaded, we can create a basic ggplot by specifying the *data*, *aesthetics*---the positional encoding of the variables---, and a *geometry*. 
+Once the **ggplot2** package is loaded, we can create a basic ggplot by specifying the *data*, *aesthetics*---the positional encoding of the variables---, and a *geometry*.
 
-Here, we map the variable `temp_feel` of our `bikes` data object to the `x` position and the variable `count` to the `y` position (\@ref(fig:04ggplotBasic)). We will also map variables to all kind of other aesthetics throughout the book. Some are related to positions such as `xmin` or `yend` while others change the appearance of the layer based on the variables they are mapped to such as `color` and `shape`.
+Here, we map the variable `temp_feel` of our `bikes` data object to the `x` position and the variable `count` to the `y` position (Fig. \@ref(fig:04ggplotBasic)). We will also map variables to all kind of other aesthetics throughout the book. Some are related to positions such as `xmin` or `yend` while others change the appearance of the layer based on the variables they are mapped to such as `color` and `shape`.
 
-There are many, many different geometries (often called geoms because each function starts with `geom_`) one can add to a ggplot by default and even more provided by extension packages. By adding `geom_point()` we create a scatter plot: 
+There are many, many different geometries (often called geoms because each function starts with `geom_`) one can add to a ggplot by default and even more provided by extension packages. By adding `geom_point()` we create a scatter plot:
 
-```{r 04ggplotBasic, fig.cap="A basic scatter plot of feels-like temperature and reported TfL bike rents, created with the {ggplot2} package."}
-ggplot(data = bikes) + ## initial call + data
-  aes(x = temp_feel, y = count) + ## aesthetics
-  geom_point() ## geometric layer
+```{r 04ggplotBasic, fig.width=9, fig.height=6, fig.cap="A basic scatter plot of feels-like temperature and reported TfL bike rents, created with the ggplot2 package."}
+ggplot(data = bikes) +             ## initial call + data
+  aes(x = temp_feel, y = count) +  ## aesthetics
+  geom_point()                     ## geometric layer
 ```
 
-In most cases, you will find ggplot code in which the aesthetics are supplied inside the `ggplot()` call; however, both versions are valid. 
+In most cases, you will find ggplot code in which the aesthetics are supplied inside the `ggplot()` call; however, both versions are valid.
 
 ```{r 04ggplotBasicAesInside, eval=FALSE}
 ggplot(data = bikes, mapping = aes(x = temp_feel, y = count)) +
@@ -47,7 +46,7 @@ ggplot(data = bikes, mapping = aes(x = temp_feel, y = count)) +
 
 <p class="note">
 
-Due to so-called *implicit matching*,  we can rewrite the first part as `ggplot(bikes, aes(date, count))`, omitting the argument names `data` and `mapping` in the `ggplot()` call and `x` and `y` in the `aes()` function. This works as long as we respect the defined order. 
+Due to so-called *implicit matching*, we can rewrite the first part as `ggplot(bikes, aes(date, count))`, omitting the argument names `data` and `mapping` in the `ggplot()` call and `x` and `y` in the `aes()` function. This works as long as we respect the defined order.
 
 Omitting the arguments `data` and `mapping` saves you a ton of typing when creating dozens to hundreds ggplots per day. In my opinion, it is good practice to refer to aesthetics explicitly, and I will follow this convention throughout the book.
 
@@ -55,9 +54,9 @@ Omitting the arguments `data` and `mapping` saves you a ton of typing when creat
 
 ## Combine Multiple Layers {#combined-layers}
 
-One can also add several layers, specified as either geometric shapes starting with `geom_*()` or statistical transformations starting with `stat_*()` (\@ref(fig:04ggplotBasicSmooth))---and this is where the magic and fun starts!
+One can also add several layers, specified as either geometric shapes starting with `geom_*()` or statistical transformations starting with `stat_*()` (Fig. \@ref(fig:04ggplotBasicSmooth))---and this is where the magic and fun starts!
 
-```{r 04ggplotBasicSmooth, fig.cap="The same scatter plot, now with an additional GAM smoothing."}
+```{r 04ggplotBasicSmooth, fig.width=9, fig.height=6, fig.cap="The same scatter plot, now with an additional GAM smoothing."}
 ggplot(bikes, aes(x = temp_feel, y = count)) + 
   geom_point() + 
   ## add a GAM smoothing
@@ -68,34 +67,40 @@ Both `geom_*()` and `stat_*()` internally make use of the same function `layer()
 
 ## Mapping Aesthetics {#map-aesthetics}
 
-By looking at these scatter plots, we can actually identify two different trends for day and night. We can highlight both groups by mapping the `day_night` variable to `color` (Fig. \@ref(fig:04ggplotBasicColor)). Note that the mapping is applied to both, `geom_point()` and `geom_smooth()` and consequently the latter layer creates two separate smoothings.
+By looking at these scatter plots, we can actually identify two different trends for day and night. We can highlight both groups by mapping the `day_night` variable to `color`. Note that the mapping is applied to both, `geom_point()` and `geom_smooth()` and consequently the latter layer creates two separate smoothings (Fig. \@ref(fig:04ggplotBasicColor)).
 
-```{r 04ggplotBasicColor, fig.cap="The points and smoothing lines colored by the time of the day."}
+```{r 04ggplotBasicColor, fig.width=9, fig.height=6, fig.cap="The points and smoothing lines, grouped and colored by time of the day."}
 ggplot(bikes, aes(x = temp_feel, y = count, color = day_night)) + 
   geom_point() + 
   stat_smooth()
 ```
 
-Aesthetics can also be defined for each layer and are then applied locally to the respective geometry or statistical transformation only. The `group` aesthetics allows to create subsets without changing the visual appearance (in contrast to aesthetics such as `color` or `shape`).
-You will learn more how to work with global and local aesthetics in Chapter XYZ and how to modify their appearance in Chapter XYZ.
+Aesthetics can also be defined for each layer and are then applied locally to the respective geometry or statistical transformation only. The `group` aesthetics allows to create subsets without changing the visual appearance (in contrast to aesthetics such as `color` or `shape;` Fig. \@ref(fig:04ggplotLocalAesthetics))).
 
+```{r 04ggplotLocalAesthetics, fig.width=9, fig.height=6, fig.cap="The color applied to the points only with an additional group mapping to draw smoothing lines for both groups individually."}
+ggplot(bikes, aes(x = temp_feel, y = count)) + 
+  ## color mapping only applied to points
+  geom_point(aes(color = day_night)) + 
+  ## invisible grouping to create two trend lines
+  stat_smooth(aes(group = day_night))
+```
+
+You will learn more how to work with global and local aesthetics in Chapter XYZ and how to modify their appearance in Chapter XYZ.
 
 ## Setting Properties {#set-properties}
 
 Furthermore, each layer has its own arguments to change their behavior and appearance. Let's also add some transparency to the points and turn the smoothing into a linear fitting (Fig. \@ref(fig:04ggplotBasicAdjustLayers)). As we are not mapping aesthetics but setting properties, we have to place those adjustments outside the `aes()` call.
 
-```{r 04ggplotBasicAdjustLayers, fig.cap="We can map aesthetics and define properties for each layer individually."}
+```{r 04ggplotBasicAdjustLayers, fig.width=9, fig.height=6, fig.cap="We can map aesthetics and define properties for each layer individually."}
 ggplot(bikes, aes(x = temp_feel, y = count)) + 
   geom_point(
-    ## color mapping only applied to points
     aes(color = day_night), 
     ## setting larger points with 50% opacity
     alpha = .5, size = 2
   ) + 
   stat_smooth(
-    ## invisible grouping to create two trend lines
     aes(group = day_night), 
-    ## use linear fitting + black smoothing lines
+    ## use linear fitting + draw black smoothing lines
     method = "lm", color = "black"
   )
 ```
@@ -112,7 +117,7 @@ The different aesthetics and the differences of global versus local mapping of a
 
 A fantastic feature of **ggplot2** is it's ability to quickly split a single visualization in a set of so-called *small multiples*: the same visualization, no matter how complex it is, is applied to subsets contained in the same data set. In **ggplot2**, such small multiples are called *facets* wich are conditional on the variables defined in the `facet_*()` function (Fig. \@ref(fig:04ggplotFacet)).
 
-```{r 04ggplotFacet, fig.cap="With the `facet` functions, a visualization can quickly be split into small multiples."}
+```{r 04ggplotFacet, fig.width=9, fig.height=6, fig.cap="With the `facet` functions, a visualization can quickly be split into small multiples."}
 ggplot(bikes, aes(x = temp_feel, y = count)) + 
   geom_point(
     aes(color = day_night), alpha = .5, size = 2
@@ -120,33 +125,42 @@ ggplot(bikes, aes(x = temp_feel, y = count)) +
   stat_smooth(
     aes(group = day_night), method = "lm", color = "black"
   ) +
-  ## small multiples based on time of the day (rows) and year (columns)
+  ## split into small multiples
   facet_grid(day_night ~ year)
 ```
 
+The resulting facet displays the data in a 2x2 grid with year as columns and time of the day as rows
+As the data is now split into subgroups by time of the day, we can remove the grouping inside the smoothing and 
+
 Consistency across axes is considered good practice as varying axis ranges are harder to compare and the potential of misleading viewers increases in case the differences keep unnoticed---or even worse are not noticeable. The implementation of facet in **ggplot2** ensures consistency across all small multiples by default, as illustrated by the empty space in the lower row as there are no values above \~21,000 reported rents during night.
 
-The `facet` functionality also comes with the option to overwrite the default behavior by "freeing" the positional scales. Furthermore, one can ensure equal axis spacing by freeing the space as well (Fig. \@ref(fig:04ggplotFacetGrid)). This setting allows to efficiently use the available space while ensuring comparability across plots and decreasing the potential of misleading the viewer. The differences between the two ways to create small multiples, namely `facet_grid()` and `facet_wrap()`, as well as ways to adjust and annotate facets are explained in Chapter XYZ.
+The `facet` functionality also comes with the option to overwrite the default behavior by "freeing" the positional scales. Furthermore, one can ensure equal axis spacing by freeing the space as well (Fig. \@ref(fig:04ggplotFacetGrid)). This setting allows to efficiently use the available space while ensuring comparability across plots and decreasing the potential of misleading the viewer.
 
-```{r 04ggplotFacetGrid, fig.cap="{ggplot2} even allows to free the axis range—while ensuring equal axis spacing."}
+```{r 04ggplotFacetGrid, fig.width=9, fig.height=6, fig.cap="ggplot2 even allows to free the axis range—while ensuring equal axis spacing."}
 ggplot(bikes, aes(x = temp_feel, y = count)) + 
   geom_point(
-    aes(color = day_night), alpha = .5, size = 2
+    alpha = .5, size = 2
   ) + 
   stat_smooth(
-    aes(group = day_night), method = "lm", color = "black"
+    method = "lm", color = "black"
   ) +
   facet_grid(
-    ## free y axis range + scale heights respectively
-    day_night ~ year, scales = "free_y", space = "free_y"
+    day_night ~ year, 
+    ## free y axis range
+    scales = "free_y", 
+    ## scale heights proportionally
+    space = "free_y"
   )
 ```
 
+The differences between the two ways to create small multiples, namely facet_grid() and facet_wrap(), as well as ways to adjust and annotate facets are explained in Chapter XYZ.
+
+
 ## Change the Axis Scaling {#axis-scaling}
 
-For every aesthetic, **ggplot2** applies so-called *scales* that translate between variable ranges (data) and property ranges (aesthetic). For the positional axes, a set of `scale_x_*()` and `scale_y_*()` controls their behavior. The `breaks` argument defines the placement of the axes ticks while the `labels` argument controls the labels next to those ticks. The labels can be either overwritten by a vector of the same length as the breaks (as for x in our example) or a function that returns a vector based on the breaks (as for y in our example). There are many more arguments such as `expand` to control the padding towards the ends of the respective axis or `trans` to transform the scale. You can read more about how to control `scales` in Chapter XYZ and about label adjustment and styling in Chapter XYZ.
+For every aesthetic, **ggplot2** applies so-called *scales* that translate between variable ranges (data) and property ranges (aesthetic). For the positional axes, a set of `scale_x_*()` and `scale_y_*()` controls their behavior (Fig. \@ref(fig:04ggplotLabelsAxes)). The `breaks` argument defines the placement of the axes ticks while the `labels` argument controls the labels next to those ticks. The labels can be either overwritten by a vector of the same length as the breaks (as for x in our example) or a function that returns a vector based on the breaks (as for y in our example). There are many more arguments such as `expand` to control the padding towards the ends of the respective axis or `trans` to transform the scale. You can read more about how to control `scales` in Chapter XYZ and about label adjustment and styling in Chapter XYZ.
 
-```{r 04ggplotLabelsAxes, fig.cap="To adjust the formatting of axis labels, the respective axis needs to be addressed via the `scale_*()` functions."}
+```{r 04ggplotLabelsAxes, fig.width=9, fig.height=6, fig.cap="To adjust the formatting of axis labels, the respective axis needs to be addressed via the `scale_*()` functions."}
 ggplot(bikes, aes(x = temp_feel, y = count)) + 
   geom_point(
     aes(color = season), alpha = .5, size = 2
@@ -157,13 +171,19 @@ ggplot(bikes, aes(x = temp_feel, y = count)) +
   facet_grid(
     day_night ~ year, scales = "free_y", space = "free_y"
   ) +
-  ## x axis: add °C symbol + 5°C spacing
+  ## x axis
   scale_x_continuous(
-    breaks = -1:6*5, labels = function(x) paste0(x, "°C"), expand = c(mult = 0, add = 1)
+    ## add °C symbol
+    labels = function(x) paste0(x, "°C"), 
+    ## use 5°C spacing
+    breaks = -1:6*5
   ) +
-  ## y axis: add a thousand separator + consistent spacing across rows
+  ## y axis
   scale_y_continuous(
-    breaks = 0:5*10000, labels = scales::label_comma(), expand = c(mult = .1, add = 0)
+    ## add a thousand separator
+    labels = scales::label_comma(), 
+    ## use consistent spacing across rows
+    breaks = 0:5*10000
   )
 ```
 
@@ -171,7 +191,9 @@ ggplot(bikes, aes(x = temp_feel, y = count)) +
 
 The `scales` do not only control the behavior of the axes but also all other aesthetics such as `color`, `shape` or `alpha`. In case of categorical colors, `scale_color_manual()` enables us to overwrite the default color set by passing a vector of colors.
 
-```{r 04ggplotColors, fig.cap="Categorical colors can be customized with the function `scale_color_manual()`."}
+The colors will be applied in order, i.e. the levels of the factor or alphabetical in case of character variables. To ensure correct mapping, one can also use a named vector.
+
+```{r 04ggplotColors, fig.width=9, fig.height=6, fig.cap="Categorical colors can be customized with the function `scale_color_manual()`."}
 g1 <- ggplot(bikes, aes(x = temp_feel, y = count)) + 
   geom_point(
     aes(color = season), alpha = .5, size = 2
@@ -183,10 +205,10 @@ g1 <- ggplot(bikes, aes(x = temp_feel, y = count)) +
     day_night ~ year, scales = "free_y", space = "free_y"
   ) +
   scale_x_continuous(
-    breaks = -1:6*5, labels = function(x) paste0(x, "°C"), expand = c(mult = 0, add = 1)
+    breaks = -1:6*5, labels = function(x) paste0(x, "°C")
   ) +
   scale_y_continuous(
-    breaks = 0:5*10000, labels = scales::label_comma(), expand = c(mult = .1, add = 0)
+    breaks = 0:5*10000, labels = scales::label_comma()
   ) +
   ## use a custom color palette for season colors
   scale_color_manual(
@@ -196,23 +218,21 @@ g1 <- ggplot(bikes, aes(x = temp_feel, y = count)) +
 g1
 ```
 
-The colors will be applied in order, i.e. the levels of the factor or alphabetical in case of character variables. To ensure correct mapping, one can also use a named vector.
-
 You will learn more about the different color and fill scales and how to manipulate colors in Chapter XYZ. The chapter also features an example how to create a corporate color or fill scale to ensure consistent color use.
 
-Furthermore, we are storing the current plot in an object  named `g1`. This `ggplot` object can be extended afterwards. Storing intermediate ggplot outputs is especially helpful if the code becomes rather long and in case you have multiple variants of the same chart, for example when building up a chart stepwise. Another common use case is the creation of graphics in multiple languages.
+Furthermore, we are storing the current plot in an object named `g1`. This `ggplot` object can be extended afterwards. Storing intermediate ggplot outputs is especially helpful if the code becomes rather long and in case you have multiple variants of the same chart, for example when building up a chart stepwise. Another common use case is the creation of graphics in multiple languages.
 
 ## Adjust Labels and Titles {#label-adjustment}
 
 For now, we have ignored that **ggplot2** uses the variable names as specified in our `bikes` object for data-related labels. Resist the temptation to change the variable names in your original data set! We can easily overwrite those by referring to the respective aesthetic (`x`, `y`, and `color`) in the `labs()` function which we add to our plot. Here, we can also specify a title, subtitle, caption, and tag (subtitle and tag are not shown in the following example; Fig. \@ref(fig:04ggplotLabels)).
 
-```{r 04ggplotLabels, fig.cap="We can overwrite the default labels with the `labs()` which also allows to add a title, subtitle, caption, and tag to the graphic."}
+```{r 04ggplotLabels, fig.width=9, fig.height=6, fig.cap="We can overwrite the default labels with the `labs()` which also allows to add a title, subtitle, caption, and tag to the graphic."}
 g2 <- g1 +
   labs(
     ## overwrite axis and legend titles
     x = "Average Feels-Like Temperature", y = NULL, color = NULL,
     ## add plot title and caption
-    title = "Trends of reported bike rents versus feels-like temperature in London.",
+    title = "Trends of reported bike rents versus feels-like temperature in London",
     caption = "Data: TfL (Transport for London), Jan 2015–Dec 2016"
   )
 
@@ -221,7 +241,7 @@ g2
 
 Let's also overwrite the cryptic numeric encoding of the seasons. Similar to the positional scales, we can pass a vector or function to the `labels` argument in the `scale_color_*()` component:
 
-```{r 04legendLabels, fig.cap="We can overwrite the legend text with a set of custom labels by passing a character vector to the `labels` argument of the `scale_color_*()` function."}
+```{r 04legendLabels, fig.width=9, fig.height=6, fig.cap="We can overwrite the legend text with a set of custom labels by passing a character vector to the `labels` argument of the `scale_color_*()` function."}
 g3 <- g2 +
   scale_color_manual(
     values = c("#3c89d9", "#1ec99b", "#F7B01B", "#a26e7c"),
@@ -233,48 +253,57 @@ g3
 
 Note that the code is returning a message informing you that the present color scale has been replaced. As you can only apply one scale per aesthetic, we also have to pass the color vector again to use the custom colors from before.
 
-
 ## Apply a Complete Theme {#complete-themes}
 
-**ggplot2** comes with a set of so-called *complete themes*. We can add one of these to overwrite the default `theme_grey()` by one of the others (run `?theme_grey` for a full list of available complete themes). 
+**ggplot2** comes with a set of so-called *complete themes*. We can add one of these to overwrite the default `theme_grey()` by one of the others (run `?theme_grey` for a full list of available complete themes).
 
-When adding a theme to a ggplot, we can already overwrite the `base_size` of the theme elements, which translates to the size of text labels and line widths. Furthermore, we can set a non-default typeface by supplying a locally installed typeface in the `base_family` argument.
+When adding a theme to a ggplot, we can already overwrite the `base_size` of the theme elements, which translates to the size of text labels and line widths. Furthermore, we can set a non-default typeface by supplying a locally installed typeface in the `base_family` argument (Fig. \@ref(fig:04ggplotThemeComplete)).
 
-```{r 04ggplotThemeComplete, fig.cap="The graphic now comes with a new look and a non-default font used for all text labels."}
+```{r 04ggplotThemeComplete, fig.width=9, fig.height=6, fig.cap="The graphic now comes with a new look and a non-default font used for all text labels."}
 g3 +
   ## add theme with a custom font + larger element sizes
   theme_light(
-    base_size = 12, base_family = "Spline Sans"
+    base_size = 15, base_family = "Spline Sans"
   )
 ```
 
 ## Customize the Theme {#custom-theming}
 
-The complete themes follow a set of rules that overwrite the choices made for the default `theme_grey()`. By using a `theme()` call <u>after</u> adding a complete theme, one can adjust the appearance of single elements (e.g. `plot.title` or `panel.grid.major.x`) as well as set some predefined options such as the positions of titles, captions and legends (`plot.title.position`, `plot.caption.position` and `legend.position`). 
+The complete themes follow a set of rules that overwrite the choices made for the default `theme_grey()`. By using a `theme()` call <u>after</u> adding a complete theme, one can adjust the appearance of single elements (e.g. `plot.title` or `panel.grid.major.x`) as well as set some predefined options such as the positions of titles, captions, and legends (`plot.title.position`, `plot.caption.position` and `legend.position`).
 
-In general, theme elements can be of class text (e.g. `plot.title`), line (e.g. `panel.grid.major.x`), or rectangle (e.g. `panel.background`). In addition, we can use `element_blank()` to remove an element entirely as set for `panel.grid.minor` in our example.
+In general, theme elements can be of class text (e.g. `plot.title`), line (e.g. `panel.grid.major.x`), or rectangle (e.g. `panel.background`). In addition, we can use `element_blank()` to remove an element entirely as set for `panel.grid.minor` in our example (Fig. \@ref(fig:04ggplotThemeAdjustments)). Other elements expect the input to be presets (e.g. `"plot"` or `"panel"` in `plot.title.position`), unit objects (e.g. `panel.spacing`), or margin specifications (e.g. `plot.margin`).
 
-```{r 04ggplotThemeAdjustments, fig.cap="After applying one of the complete themes, the overall appearance can be further modified via the `theme()` function."}
+```{r 04ggplotThemeAdjustments, fig.width=9, fig.height=6.7, fig.cap="After applying one of the complete themes, the overall appearance can be further modified via the `theme()` function."}
 g3 +
   theme_light(
-    base_size = 12, base_family = "Spline Sans"
+    base_size = 15, base_family = "Spline Sans"
   ) +
   ## theme adjustments
   theme(
-    plot.title.position = "plot", ## left-align title
-    plot.caption.position = "plot", ## right-align caption
-    plot.title = element_text(face = "bold", size = rel(1.3)), ## larger bold title
-    axis.text = element_text(family = "Spline Sans Mono"), ## monospaced font for axes
-    axis.title.x = element_text( ## left-aligned, grey x axis label
-      hjust = 0, color = "grey30", margin = margin(t = 12)
+    ## left-align title + right-align caption
+    plot.title.position = "plot", 
+    plot.caption.position = "plot", 
+    ## larger, bold title
+    plot.title = element_text(face = "bold", size = rel(1.3)), 
+    ## monospaced font for axes
+    axis.text = element_text(family = "Spline Sans Mono"), 
+    ## left-aligned, grey x axis label
+    axis.title.x = element_text( 
+      hjust = 0, color = "grey20", margin = margin(t = 12)
     ),
-    strip.text = element_text( ## larger bold facet labels
-      face = "bold", size = rel(1.15)
-    ),
-    panel.grid.major.x = element_blank(), ## no vertical grid lines
-    panel.grid.minor = element_blank(), ## no minor grid lines
-    legend.position = "top", ## place legend above plot
-    legend.text = element_text(size = rel(1)) ## larger legend labels
+    ## larger, bold facet labels
+    strip.text = element_text(face = "bold", size = rel(1.15)),
+    ## no vertical major and no minor grid lines
+    panel.grid.major.x = element_blank(), 
+    panel.grid.minor = element_blank(),
+    ## increase white space between panels
+    panel.spacing = unit(12, "pt"),
+    ## place legend above plot
+    legend.position = "top", 
+    ## larger legend labels
+    legend.text = element_text(size = rel(1)), 
+    ## adjust margin
+    plot.margin = margin(t = 2, r = 0, b = 0, l = 0)
   )
 ```
 
@@ -282,6 +311,6 @@ The book covers themes in full detail in Chapter XYZ. Here you learn how to leve
 
 [WIP]
 
-RECAP 
+RECAP
 
 LEAD OVER TO NEXT CHAPTER

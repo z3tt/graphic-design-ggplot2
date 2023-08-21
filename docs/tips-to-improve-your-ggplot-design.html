@@ -23,7 +23,7 @@
 <meta name="author" content="Cédric Scherer" />
 
 
-<meta name="date" content="2023-06-22" />
+<meta name="date" content="2023-08-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -179,7 +179,7 @@ div.csl-indent {
 <li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#coding"><i class="fa fa-check"></i><b>1.2</b> Coding Visualizations</a></li>
 <li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#why"><i class="fa fa-check"></i><b>1.3</b> Why R and <strong>ggplot2</strong></a></li>
 </ul></li>
-<li class="part"><span><b>I General Overiew</b></span></li>
+<li class="part"><span><b>I General Overview</b></span></li>
 <li class="chapter" data-level="2" data-path="grammar.html"><a href="grammar.html"><i class="fa fa-check"></i><b>2</b> The Layered Grammar of Graphics</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="grammar.html"><a href="grammar.html#ggplot"><i class="fa fa-check"></i><b>2.1</b> The ggplot2 Package</a></li>
@@ -197,7 +197,6 @@ div.csl-indent {
 <li class="chapter" data-level="2.4.3" data-path="grammar.html"><a href="grammar.html#facets"><i class="fa fa-check"></i><b>2.4.3</b> Facets</a></li>
 <li class="chapter" data-level="2.4.4" data-path="grammar.html"><a href="grammar.html#themes"><i class="fa fa-check"></i><b>2.4.4</b> Themes</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="grammar.html"><a href="grammar.html#showcase"><i class="fa fa-check"></i><b>2.5</b> Showcase</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="get-started.html"><a href="get-started.html"><i class="fa fa-check"></i><b>3</b> Get Started</a>
 <ul>
@@ -297,28 +296,28 @@ div.csl-indent {
 <div id="tips-to-improve-your-ggplot-design" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">Chapter 5</span> Tips to Improve Your ggplot Design<a href="tips-to-improve-your-ggplot-design.html#tips-to-improve-your-ggplot-design" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>In the following I want to share some tips how you quickly customize the appearance of your graphics with a few additional lines of code. First, let’s create a plot to work with: we will display the counts of reported bike rents during the night only as a time series. To focus on the tips, we assign the ggplot output to <code>g</code> and extend this object in the following.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="tips-to-improve-your-ggplot-design.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb42-2"><a href="tips-to-improve-your-ggplot-design.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb42-3"><a href="tips-to-improve-your-ggplot-design.html#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-4"><a href="tips-to-improve-your-ggplot-design.html#cb42-4" aria-hidden="true" tabindex="-1"></a>bikes_nightly <span class="ot">&lt;-</span> <span class="fu">filter</span>(bikes, day_night <span class="sc">==</span> <span class="st">&quot;night&quot;</span>)</span>
-<span id="cb42-5"><a href="tips-to-improve-your-ggplot-design.html#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-6"><a href="tips-to-improve-your-ggplot-design.html#cb42-6" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> </span>
-<span id="cb42-7"><a href="tips-to-improve-your-ggplot-design.html#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(bikes_nightly, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
-<span id="cb42-8"><a href="tips-to-improve-your-ggplot-design.html#cb42-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> temp), <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb42-9"><a href="tips-to-improve-your-ggplot-design.html#cb42-9" aria-hidden="true" tabindex="-1"></a>  <span class="do">## style y axis, labels and colors</span></span>
-<span id="cb42-10"><a href="tips-to-improve-your-ggplot-design.html#cb42-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="cn">NA</span>), <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_comma</span>()) <span class="sc">+</span></span>
-<span id="cb42-11"><a href="tips-to-improve-your-ggplot-design.html#cb42-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_gradient</span>(</span>
-<span id="cb42-12"><a href="tips-to-improve-your-ggplot-design.html#cb42-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">&quot;#00B3FF&quot;</span>, <span class="at">high =</span> <span class="st">&quot;#FF5477&quot;</span>, </span>
-<span id="cb42-13"><a href="tips-to-improve-your-ggplot-design.html#cb42-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>(<span class="at">suffix =</span> <span class="st">&quot;°C&quot;</span>)</span>
-<span id="cb42-14"><a href="tips-to-improve-your-ggplot-design.html#cb42-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb42-15"><a href="tips-to-improve-your-ggplot-design.html#cb42-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb42-16"><a href="tips-to-improve-your-ggplot-design.html#cb42-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">&quot;Number of bike rents per night&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Average Temperature:&quot;</span>,</span>
-<span id="cb42-17"><a href="tips-to-improve-your-ggplot-design.html#cb42-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;TfL bike rents peak during warm summer nights&quot;</span>,</span>
-<span id="cb42-18"><a href="tips-to-improve-your-ggplot-design.html#cb42-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;A time series of reported bike rents between 6 pm and 6 am in London&quot;</span>,</span>
-<span id="cb42-19"><a href="tips-to-improve-your-ggplot-design.html#cb42-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Data: TfL (Transport for London), Jan 2015–Dec 2016&quot;</span></span>
-<span id="cb42-20"><a href="tips-to-improve-your-ggplot-design.html#cb42-20" aria-hidden="true" tabindex="-1"></a>  ) </span>
-<span id="cb42-21"><a href="tips-to-improve-your-ggplot-design.html#cb42-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-22"><a href="tips-to-improve-your-ggplot-design.html#cb42-22" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="tips-to-improve-your-ggplot-design.html#cb43-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb43-2"><a href="tips-to-improve-your-ggplot-design.html#cb43-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb43-3"><a href="tips-to-improve-your-ggplot-design.html#cb43-3" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="tips-to-improve-your-ggplot-design.html#cb43-4" tabindex="-1"></a>bikes_nightly <span class="ot">&lt;-</span> <span class="fu">filter</span>(bikes, day_night <span class="sc">==</span> <span class="st">&quot;night&quot;</span>)</span>
+<span id="cb43-5"><a href="tips-to-improve-your-ggplot-design.html#cb43-5" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="tips-to-improve-your-ggplot-design.html#cb43-6" tabindex="-1"></a>g <span class="ot">&lt;-</span> </span>
+<span id="cb43-7"><a href="tips-to-improve-your-ggplot-design.html#cb43-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(bikes_nightly, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
+<span id="cb43-8"><a href="tips-to-improve-your-ggplot-design.html#cb43-8" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> temp), <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb43-9"><a href="tips-to-improve-your-ggplot-design.html#cb43-9" tabindex="-1"></a>  <span class="do">## style y axis, labels and colors</span></span>
+<span id="cb43-10"><a href="tips-to-improve-your-ggplot-design.html#cb43-10" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="cn">NA</span>), <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_comma</span>()) <span class="sc">+</span></span>
+<span id="cb43-11"><a href="tips-to-improve-your-ggplot-design.html#cb43-11" tabindex="-1"></a>  <span class="fu">scale_color_gradient</span>(</span>
+<span id="cb43-12"><a href="tips-to-improve-your-ggplot-design.html#cb43-12" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">&quot;#00B3FF&quot;</span>, <span class="at">high =</span> <span class="st">&quot;#FF5477&quot;</span>, </span>
+<span id="cb43-13"><a href="tips-to-improve-your-ggplot-design.html#cb43-13" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>(<span class="at">suffix =</span> <span class="st">&quot;°C&quot;</span>)</span>
+<span id="cb43-14"><a href="tips-to-improve-your-ggplot-design.html#cb43-14" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb43-15"><a href="tips-to-improve-your-ggplot-design.html#cb43-15" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb43-16"><a href="tips-to-improve-your-ggplot-design.html#cb43-16" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">&quot;Number of bike rents per night&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Average Temperature:&quot;</span>,</span>
+<span id="cb43-17"><a href="tips-to-improve-your-ggplot-design.html#cb43-17" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;TfL bike rents peak during warm summer nights&quot;</span>,</span>
+<span id="cb43-18"><a href="tips-to-improve-your-ggplot-design.html#cb43-18" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;A time series of reported bike rents between 6 pm and 6 am in London&quot;</span>,</span>
+<span id="cb43-19"><a href="tips-to-improve-your-ggplot-design.html#cb43-19" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Data: TfL (Transport for London), Jan 2015–Dec 2016&quot;</span></span>
+<span id="cb43-20"><a href="tips-to-improve-your-ggplot-design.html#cb43-20" tabindex="-1"></a>  ) </span>
+<span id="cb43-21"><a href="tips-to-improve-your-ggplot-design.html#cb43-21" tabindex="-1"></a></span>
+<span id="cb43-22"><a href="tips-to-improve-your-ggplot-design.html#cb43-22" tabindex="-1"></a>g</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:05basicPlot"></span>
 <img src="bookdown_files/figure-html/05basicPlot-1.png" alt="A time series of reported bike rents during the night (6 pm to 6 am) with points being encoded by the average temperature using the default **ggplot2** theme." width="864" />
 <p class="caption">
@@ -341,7 +340,7 @@ FIGURE 5.1: A time series of reported bike rents during the night (6 pm to 6 am)
 </ul>
 <p>The completely empty theme <code>theme_void()</code> is often helpful when working with maps. Also, you can use it to build your theme element by element like drawing on a blank canvas.</p>
 <p>Let’s use the popular <code>theme_minimal()</code> for now:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="tips-to-improve-your-ggplot-design.html#cb43-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="tips-to-improve-your-ggplot-design.html#cb44-1" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:05themeMinimal"></span>
 <img src="bookdown_files/figure-html/05themeMinimal-1.png" alt="The same plot as before using the minimal theme." width="864" />
 <p class="caption">
@@ -353,7 +352,7 @@ FIGURE 5.2: The same plot as before using the minimal theme.
 <h2><span class="header-section-number">5.2</span> Use a Custom Font<a href="tips-to-improve-your-ggplot-design.html#use-a-custom-font" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are multiple extension packages that aim to provide access to font files, <strong>extrafont</strong>, <strong>sysfont</strong>, <strong>showtext</strong>, and <strong>systemfonts</strong> to name a few. To my knowledge, the <strong>systemfonts</strong> package provides the best solution to work with typefaces and resolve font specifications. After loading the package, all locally installed font files are available in your current R session.</p>
 <p>The default font family of ggplot themes is the default sans serif font and thus it is specific to the system you and potential collaborators are working on. You can overwrite the default by passing a font family as argument to <code>base_family</code> inside the <code>theme_*()</code> call.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="tips-to-improve-your-ggplot-design.html#cb44-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">&quot;Asap Condensed&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="tips-to-improve-your-ggplot-design.html#cb45-1" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">&quot;Asap Condensed&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:05themeBaseFamily"></span>
 <img src="bookdown_files/figure-html/05themeBaseFamily-1.png" alt="All text labels now use a custom font by changing the `base_family` of the theme." width="864" />
 <p class="caption">
@@ -361,14 +360,14 @@ FIGURE 5.3: All text labels now use a custom font by changing the <code>base_fam
 </p>
 </div>
 <p>If you are searching for a specific font, this is my script to return family names that can be used as inputs for text elements in <strong>ggplot2</strong>:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="tips-to-improve-your-ggplot-design.html#cb45-1" aria-hidden="true" tabindex="-1"></a>systemfonts<span class="sc">::</span><span class="fu">system_fonts</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb45-2"><a href="tips-to-improve-your-ggplot-design.html#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="do">## filter for a pattern</span></span>
-<span id="cb45-3"><a href="tips-to-improve-your-ggplot-design.html#cb45-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(stringr<span class="sc">::</span><span class="fu">str_detect</span>(name, <span class="st">&quot;Asap&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb45-4"><a href="tips-to-improve-your-ggplot-design.html#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## only keep family column</span></span>
-<span id="cb45-5"><a href="tips-to-improve-your-ggplot-design.html#cb45-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">pull</span>(family) <span class="sc">%&gt;%</span> </span>
-<span id="cb45-6"><a href="tips-to-improve-your-ggplot-design.html#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="do">## only keep distinct families and sort them by name</span></span>
-<span id="cb45-7"><a href="tips-to-improve-your-ggplot-design.html#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb45-8"><a href="tips-to-improve-your-ggplot-design.html#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sort</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="tips-to-improve-your-ggplot-design.html#cb46-1" tabindex="-1"></a>systemfonts<span class="sc">::</span><span class="fu">system_fonts</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb46-2"><a href="tips-to-improve-your-ggplot-design.html#cb46-2" tabindex="-1"></a>  <span class="do">## filter for a pattern</span></span>
+<span id="cb46-3"><a href="tips-to-improve-your-ggplot-design.html#cb46-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(stringr<span class="sc">::</span><span class="fu">str_detect</span>(name, <span class="st">&quot;Asap&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb46-4"><a href="tips-to-improve-your-ggplot-design.html#cb46-4" tabindex="-1"></a>  <span class="do">## only keep family column</span></span>
+<span id="cb46-5"><a href="tips-to-improve-your-ggplot-design.html#cb46-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">pull</span>(family) <span class="sc">|&gt;</span> </span>
+<span id="cb46-6"><a href="tips-to-improve-your-ggplot-design.html#cb46-6" tabindex="-1"></a>  <span class="do">## only keep distinct families and sort them by name</span></span>
+<span id="cb46-7"><a href="tips-to-improve-your-ggplot-design.html#cb46-7" tabindex="-1"></a>  <span class="fu">unique</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb46-8"><a href="tips-to-improve-your-ggplot-design.html#cb46-8" tabindex="-1"></a>  <span class="fu">sort</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;Asap&quot;               &quot;Asap Condensed&quot;    
 ## [3] &quot;Asap Expanded&quot;      &quot;Asap SemiCondensed&quot;
 ## [5] &quot;Asap SemiExpanded&quot;</code></pre>
@@ -376,7 +375,7 @@ FIGURE 5.3: All text labels now use a custom font by changing the <code>base_fam
 <div id="increase-the-font-sizes" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> Increase the Font Sizes<a href="tips-to-improve-your-ggplot-design.html#increase-the-font-sizes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The base size in any ggplot theme is set to 11. This number determines the individual text sizes and line widths of your theme elements. Depending on the width and height specified when saving your plot, you may want to adjust the overall size by changing the <code>base_size</code> in the <code>theme_*()</code> call.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="tips-to-improve-your-ggplot-design.html#cb47-1" aria-hidden="true" tabindex="-1"></a>(g <span class="ot">&lt;-</span> g <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">&quot;Asap Condensed&quot;</span>, <span class="at">base_size =</span> <span class="dv">14</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="tips-to-improve-your-ggplot-design.html#cb48-1" tabindex="-1"></a>(g <span class="ot">&lt;-</span> g <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">&quot;Asap Condensed&quot;</span>, <span class="at">base_size =</span> <span class="dv">14</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:05themeBaseSize"></span>
 <img src="bookdown_files/figure-html/05themeBaseSize-1.png" alt="If the text elements are too small for the desired out width and height, you can adjust them by overwriting the default `base_size`." width="864" />
 <p class="caption">
@@ -387,7 +386,7 @@ FIGURE 5.4: If the text elements are too small for the desired out width and hei
 <div id="create-text-hierarchy" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> Create Text Hierarchy<a href="tips-to-improve-your-ggplot-design.html#create-text-hierarchy" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>By default, the title is always set in regular weight. In many cases I find myself using a font that is bold and larger than by default. You can update details of the theme by directly addressing the respective theme element, here <code>plot.title</code>. As the title is a text element, we pass the new settings inside the element_text() function. The <code>face</code> argument controls the font style and can take <code>"regular"</code>, <code>"bold"</code>, <code>"italic"</code>, and <code>"bold.italic"</code> as inputs. The size can either be set in absolute numbers or relative to the <code>base_size</code> via the <code>rel()</code> function.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="tips-to-improve-your-ggplot-design.html#cb48-1" aria-hidden="true" tabindex="-1"></a>(g <span class="ot">&lt;-</span> g <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">size =</span> <span class="fu">rel</span>(<span class="fl">1.4</span>))))</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="tips-to-improve-your-ggplot-design.html#cb49-1" tabindex="-1"></a>(g <span class="ot">&lt;-</span> g <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">size =</span> <span class="fu">rel</span>(<span class="fl">1.4</span>))))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:05textHierarchy"></span>
 <img src="bookdown_files/figure-html/05textHierarchy-1.png" alt="One can style single theme elements with the `theme()` function. Here, we create a more pronounced tet hierarchy by setting the title in a bigger, bold typeface." width="864" />
 <p class="caption">
@@ -398,23 +397,23 @@ FIGURE 5.5: One can style single theme elements with the <code>theme()</code> fu
 <div id="modify-the-legend" class="section level2 hasAnchor" number="5.5">
 <h2><span class="header-section-number">5.5</span> Modify the Legend<a href="tips-to-improve-your-ggplot-design.html#modify-the-legend" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>[WIP]</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="tips-to-improve-your-ggplot-design.html#cb49-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_colorsteps</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="tips-to-improve-your-ggplot-design.html#cb50-1" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_colorsteps</span>())</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/05guideColorsteps-1.png" width="864" /></p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="tips-to-improve-your-ggplot-design.html#cb50-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_colorsteps</span>(</span>
-<span id="cb50-2"><a href="tips-to-improve-your-ggplot-design.html#cb50-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">barheight =</span> <span class="fu">unit</span>(<span class="dv">15</span>, <span class="st">&quot;lines&quot;</span>)</span>
-<span id="cb50-3"><a href="tips-to-improve-your-ggplot-design.html#cb50-3" aria-hidden="true" tabindex="-1"></a>  ))</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="tips-to-improve-your-ggplot-design.html#cb51-1" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_colorsteps</span>(</span>
+<span id="cb51-2"><a href="tips-to-improve-your-ggplot-design.html#cb51-2" tabindex="-1"></a>    <span class="at">barheight =</span> <span class="fu">unit</span>(<span class="dv">15</span>, <span class="st">&quot;lines&quot;</span>)</span>
+<span id="cb51-3"><a href="tips-to-improve-your-ggplot-design.html#cb51-3" tabindex="-1"></a>  ))</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/05guideKeyHeight-1.png" width="864" /></p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="tips-to-improve-your-ggplot-design.html#cb51-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_colorsteps</span>(</span>
-<span id="cb51-2"><a href="tips-to-improve-your-ggplot-design.html#cb51-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">barwidth =</span> <span class="fu">unit</span>(<span class="dv">25</span>, <span class="st">&quot;lines&quot;</span>), <span class="at">title.position =</span> <span class="st">&quot;top&quot;</span></span>
-<span id="cb51-3"><a href="tips-to-improve-your-ggplot-design.html#cb51-3" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">+</span></span>
-<span id="cb51-4"><a href="tips-to-improve-your-ggplot-design.html#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>, <span class="at">legend.justification =</span> <span class="st">&quot;left&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="tips-to-improve-your-ggplot-design.html#cb52-1" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_colorsteps</span>(</span>
+<span id="cb52-2"><a href="tips-to-improve-your-ggplot-design.html#cb52-2" tabindex="-1"></a>    <span class="at">barwidth =</span> <span class="fu">unit</span>(<span class="dv">25</span>, <span class="st">&quot;lines&quot;</span>), <span class="at">title.position =</span> <span class="st">&quot;top&quot;</span></span>
+<span id="cb52-3"><a href="tips-to-improve-your-ggplot-design.html#cb52-3" tabindex="-1"></a>  )) <span class="sc">+</span></span>
+<span id="cb52-4"><a href="tips-to-improve-your-ggplot-design.html#cb52-4" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>, <span class="at">legend.justification =</span> <span class="st">&quot;left&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/05guidePositionTop-1.png" width="864" /></p>
 </div>
 <div id="align-titles-and-captions" class="section level2 hasAnchor" number="5.6">
 <h2><span class="header-section-number">5.6</span> Align Titles and Captions<a href="tips-to-improve-your-ggplot-design.html#align-titles-and-captions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>By default, the titles and captions are left-aligned with the horizontal justification being set to <code>hjust = 0</code>. However, the horizontal justification does only impact the alignment of the title relative to the panel. If you want to place these text elements relative to the outer border of your graphic. you can set <code>plot.title.position</code> <code>plot.caption.position</code> to <code>"plot"</code>, respectively</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="tips-to-improve-your-ggplot-design.html#cb52-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">plot.title.position =</span> <span class="st">&quot;plot&quot;</span>,</span>
-<span id="cb52-2"><a href="tips-to-improve-your-ggplot-design.html#cb52-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">plot.caption.position =</span> <span class="st">&quot;plot&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="tips-to-improve-your-ggplot-design.html#cb53-1" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">plot.title.position =</span> <span class="st">&quot;plot&quot;</span>,</span>
+<span id="cb53-2"><a href="tips-to-improve-your-ggplot-design.html#cb53-2" tabindex="-1"></a>          <span class="at">plot.caption.position =</span> <span class="st">&quot;plot&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:05titleAlign"></span>
 <img src="bookdown_files/figure-html/05titleAlign-1.png" alt="The title and sutitle can be aligned with the plot border by setting `plot.title.position` to `&quot;plot&quot;`. Similarly, the position of the caption can be changed by using `plot.caption.position`." width="864" />
 <p class="caption">
@@ -432,15 +431,15 @@ FIGURE 5.7: Plots with long labels on the y axis with the title being either ali
 <div id="add-some-white-space" class="section level2 hasAnchor" number="5.7">
 <h2><span class="header-section-number">5.7</span> Add Some White Space<a href="tips-to-improve-your-ggplot-design.html#add-some-white-space" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>[WIP]</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="tips-to-improve-your-ggplot-design.html#cb53-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="fu">rep</span>(<span class="dv">20</span>, <span class="dv">4</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="tips-to-improve-your-ggplot-design.html#cb54-1" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="fu">rep</span>(<span class="dv">20</span>, <span class="dv">4</span>)))</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/05plotMargin-1.png" width="864" /></p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="tips-to-improve-your-ggplot-design.html#cb54-1" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">theme</span>(</span>
-<span id="cb54-2"><a href="tips-to-improve-your-ggplot-design.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">10</span>)),</span>
-<span id="cb54-3"><a href="tips-to-improve-your-ggplot-design.html#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">15</span>)),</span>
-<span id="cb54-4"><a href="tips-to-improve-your-ggplot-design.html#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">20</span>)),</span>
-<span id="cb54-5"><a href="tips-to-improve-your-ggplot-design.html#cb54-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">r =</span> <span class="dv">10</span>)),</span>
-<span id="cb54-6"><a href="tips-to-improve-your-ggplot-design.html#cb54-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">10</span>)),</span>
-<span id="cb54-7"><a href="tips-to-improve-your-ggplot-design.html#cb54-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="tips-to-improve-your-ggplot-design.html#cb55-1" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">theme</span>(</span>
+<span id="cb55-2"><a href="tips-to-improve-your-ggplot-design.html#cb55-2" tabindex="-1"></a>  <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">10</span>)),</span>
+<span id="cb55-3"><a href="tips-to-improve-your-ggplot-design.html#cb55-3" tabindex="-1"></a>  <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">15</span>)),</span>
+<span id="cb55-4"><a href="tips-to-improve-your-ggplot-design.html#cb55-4" tabindex="-1"></a>  <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">20</span>)),</span>
+<span id="cb55-5"><a href="tips-to-improve-your-ggplot-design.html#cb55-5" tabindex="-1"></a>  <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">r =</span> <span class="dv">10</span>)),</span>
+<span id="cb55-6"><a href="tips-to-improve-your-ggplot-design.html#cb55-6" tabindex="-1"></a>  <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">10</span>)),</span>
+<span id="cb55-7"><a href="tips-to-improve-your-ggplot-design.html#cb55-7" tabindex="-1"></a>)</span></code></pre></div>
 <p><img src="bookdown_files/figure-html/05textMargins-1.png" width="864" /></p>
 
 </div>

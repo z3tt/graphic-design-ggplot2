@@ -9,13 +9,16 @@ source(here::here("src", "theme.R"))
 theme_set(theme_custom())
 
 colors <- c(
-  green  = "#28A87F",
-  orange = "#FFA200",
-  purple = "#9C4BFF",
-  blue   = "#00B3FF",
-  red    = "#FF5477",
-  grey   = "#8c8c8c"
+  "#28A87F",
+  "#FFA200",
+  "#9C4BFF",
+  "#00B3FF",
+  "#FF5477",
+  "#8c8c8c"
 )
+
+colors_named <- colors
+names(colors_named) <- c("green", "orange", "purple", "blue", "red", "grey")
 
 #col_period <- c(prismatic::clr_desaturate(prismatic::clr_darken(colors[c("orange", "purple")], .05), .5))
 #names(col_period) <- c("day", "night")

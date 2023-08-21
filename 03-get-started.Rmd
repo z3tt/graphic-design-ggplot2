@@ -67,7 +67,7 @@ data_tbl |>
 ```
 
 ```{r 03skimr, echo=FALSE}
-#skimr::skim(bikes) %>%  skimr::partition()
+#skimr::skim(bikes) |>  skimr::partition()
 ```
 
 
@@ -298,7 +298,7 @@ mutate(bikes, temp_fahrenheit = temp * 1.8 + 32)
 summarize(bikes, count_avg = mean(count)) 
 ```
 
-Another important and very powerful function from the **dplyr** package is `group_by()`: when a data set is grouped into subsets, we can apply any operation for each group *within a single data frame*. While you could nest those functions, the common approach within the tidyverse is the use of *pipes*. Pipes take the output of one function and send it directly to the next which avoids nested operations and allows for a more logical order of functions and their arguments. The **tidyverse** pipe is encoded as `%>%`; a base R pipe is available as `|>` as well. Have a look at the following silly example:
+Another important and very powerful function from the **dplyr** package is `group_by()`: when a data set is grouped into subsets, we can apply any operation for each group *within a single data frame*. While you could nest those functions, the common approach within the tidyverse is the use of *pipes*. Pipes take the output of one function and send it directly to the next which avoids nested operations and allows for a more logical order of functions and their arguments. The **tidyverse** pipe is encoded as `|>`; a base R pipe is available as `|>` as well. Have a look at the following silly example:
 
 ```{r 03pipeGetToWork, eval=FALSE}
 ## nested functions, read inside out + disconnected function inputs
@@ -313,9 +313,9 @@ go_to_work(
 )
 
 ## piped version with "Cedric" passed to the next function call
-Cedric %>% 
-  wake_up(alarm = "06:30")) %>% 
-  breakfast(c("coffee", "croissant") %>% 
+Cedric |> 
+  wake_up(alarm = "06:30")) |> 
+  breakfast(c("coffee", "croissant") |> 
   go_to_work(mode = "bus", delay = 10)
 ```
 
@@ -327,11 +327,11 @@ library(dplyr)
 
 ```{r 03dataPrep1}
 bikes_summarized <- 
-  bikes %>% 
+  bikes |> 
   ## only keep night observations
-  filter(day_night == "night") %>% 
+  filter(day_night == "night") |> 
   ## create 8 subsets (4 seasons x 2 years)
-  group_by(season, year) %>% 
+  group_by(season, year) |> 
   ## calculate total counts and mean temperature per subgroup
   summarize(
     count = sum(count), 
@@ -346,14 +346,14 @@ After filtering out "day" cases, the grouping by `season` and `year` allows us t
 In a next step, we regroup our data to add a column with shares of nightly bike rents per season on a yearly basis. Afterwards, we remove all subsets by calling `ungroup()` and clean our data set by reordering and removing columns and sorting rows by year and season:
 
 ```{r 03dataPrep2}
-bikes_summarized %>% 
+bikes_summarized |> 
   ## add column with relative shares per year
-  group_by(year) %>% 
-  mutate(share_year = count / sum(count)) %>% 
+  group_by(year) |> 
+  mutate(share_year = count / sum(count)) |> 
   ## remove grouping
-  ungroup() %>% 
+  ungroup() |> 
   ## reorder columns and remove days column
-  select(year, season, count, share_year, temp_avg) %>% 
+  select(year, season, count, share_year, temp_avg) |> 
   ## sort by year and season
   arrange(year, season) 
 ```

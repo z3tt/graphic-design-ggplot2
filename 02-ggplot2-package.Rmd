@@ -2,24 +2,32 @@
 source(here::here("src", "prerequisites.R"))
 ```
 
-# (PART) General Overiew {-}
+# (PART) General Overview {.unnumbered}
 
 # The Layered Grammar of Graphics {#grammar}
 
+"The Grammar of Graphics" is a general concept for data visualization, proposed by Leland Wilkinson in 2005 [@wilkinson2005]. Based on the earlier work "Semiology of Graphics" by Jacques Bertin [@bertin1983], Wilkinson's "grammar" provides a structured vocabulary for designing and interpreting graphics. Graphics are treated as a language, comprising a set of fundamental components that can be combined and modified to convey insights clearly and coherently.
+
+The grammar of graphics is founded on a layered approach, that define data visualizations as semantic components rather than as predefined chart types. In his view, a graphic is constructed through discrete layers of visual elements, allowing practitioners to create a wide range of visualizations while maintaining a coherent and principled approach. These layers include data, aesthetic mappings, geometric objects, statistical transformations, and scales.
+
+Each layer contributes to the final visualization, enabling the separation of concerns and promoting modularity. *Data* forms the foundation, representing the information to be visualized, while *aesthetic mappings* define how data attributes map to visual properties like size, color, and shape. *Geometric objects* encompass the graphical shapes employed, ranging from points and lines to bars and polygons; *statistical transformations* offer the ability to summarize or transform data, enhancing the analytical power of visualizations. Finally, *scales* help translate data values into perceptually meaningful visual attributes.
+
 ## The ggplot2 Package {#ggplot}
 
-In 2005 Hadley Wickham implemented Leland Wilkinson's ["The Grammar of Graphics"](https://link.springer.com/chapter/10.1007/978-3-642-21551-3_13) [@wilkinson2005]---a general concept for data visualization---as an R package called [**ggplot2**](https://ggplot2.tidyverse.org/) [@ggplot2]. The idea of both, the theoretical concept and its implementation in **ggplot2**, is that data visualizations can be defined as semantic components rather than as predefined chart types. The ability to control and combine multiple components makes it a powerful approach to compose complex graphs, iterate quickly over different visual data representations, and modify existing plots. Furthermore, it allows for a comprehensive and consistent syntax to describe and build data visualizations. 
+In 2005 Hadley Wickham implemented Leland Wilkinson's "The Grammar of Graphics" as an R package called **ggplot2** [@ggplot2]. As in the theoretical concept, **ggplot2** treats data visualizations as a layered combination of components rather than as predefined chart types.
 
-The package was intially released on June 10, 2007 and has since then become one of the most popular R packages and the standard for producing custom, high-quality graphics in R. The predessor, the original [**ggplot** package](https://github.com/hadley/ggplot1), was released in 2006 and is made available out of historical interest.
+Wickham created the package "as a response to the shortcomings of the current plotting systems" in R (@wickham2006), with the idea to allow building up a graphic from multiple layers of data while handling (shared) axes, colors and other attributes consistently and automatically. The ability to control and combine multiple components makes it a powerful approach to compose complex graphs, iterate quickly over different visual data representations, and modify existing plots.
 
-When looking into the package description of the [**ggplot2** package](https://ggplot2.tidyverse.org/), it states the following:
+The package was initially released on June 10, 2007 and has since then become one of the most popular R packages and the standard for producing custom, high-quality graphics in R. The predecessor, the original [**ggplot** package](https://github.com/hadley/ggplot1), was released in 2006 and is made available out of historical interest.
+
+When looking into the package description of the **ggplot2** package, it states the following:
 
 > **ggplot2** is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell **ggplot2** how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
 
-The most important insight from this technical description is that 
+The most important insight from this technical description is that
 
-1. ***we map variables to aesthetics***, i.e. defining the visual channels used to represent the variables (e.g. position, color, shape)
-2. ***we use graphical primitives***, i.e. definining one or multiple forms to represent the variables (e.g. lines, points, rectangles)
+1.  *we map variables to aesthetics*, i.e. defining the visual channels used to represent the variables (e.g. position, color, shape)
+2.  *we use graphical primitives*, i.e. defining one or multiple forms to represent the variables (e.g. lines, points, rectangles)
 
 Both are important when writing **ggplot2** code and together with the provided data they are the key components of a ggplot. Additional components allow to control the visual appearance, the layout, and the coordinate system.
 
@@ -32,7 +40,7 @@ In general, a ggplot is built up from the following components:
 2.  ***Aesthetics***:\
     The mapping of variables to visual properties, such as position, color, size, shape, and transparency.
 3.  ***Layers:***\
-    The representation of the data on the plot panel which is a combination of the *geometric shapes*  representing the data and the *statistical transformation* of the data, such as fitted curves, counts, and data summaries.
+    The representation of the data on the plot panel which is a combination of the *geometric shapes* representing the data and the *statistical transformation* of the data, such as fitted curves, counts, and data summaries.
 4.  ***Scales***:\
     The control of the mapping between the data and the aesthetic dimensions, such as data range to positional aesthetics or qualitative or quantitative values to colors.
 5.  ***Coordinate system***:\
@@ -44,16 +52,160 @@ In general, a ggplot is built up from the following components:
 
 <p class="note">
 
-The number of elements may vary depending on how you group them and whom you ask. This list is based on the list provided in the ["ggplot2" book by Hadley Wickham](https://ggplot2-book.org/introduction.html) [@ggplot2].
+The number of elements may vary depending on how you group them and whom you ask. This list is based on the list provided in the "ggplot2" book by Hadley Wickham [@ggplot2].
 
 </p>
 
 A basic ggplot needs three key components that you have to specify: the *data*, *aesthetics*, and a *layer*. All other additional components can be further modified to customize your graphic.
 
-You can think of a ggplot as a receipt for a dish: it can be based on a few or a diversity of ingredients. Also, you are free to add additional ingredients to spice-up your creation (literally and visually). 
+You can think of a ggplot as a receipt for a dish: it can be based on a few or a diversity of ingredients. Also, you are free to add additional ingredients to spice-up your creation (literally and visually).
 
-Similarly, you can build rather basic charts such as scatter plots or histograms with only a few lines code. But **ggplot2** also allows to create rather complex charts that combine multiple geometries, statistical transformations and maybe even data sets. On top, it is up to you how much effort you take to polish the plot. You can rely on the defaults used for data-related aesthetics (e.g. default axis breaks and color palettes) and non-data aspects (e.g. complete themes). Or you decide to modify the data-related aesthetics such as axes and color palettes and/or customize the theme elements of your graphic to your needs. 
+Similarly, you can build rather basic charts such as scatter plots, histograms, box-and-whisker plots, or area charts with only a few lines code. But **ggplot2** also allows to create rather complex charts that combine multiple geometries, statistical transformations and maybe even data sets. On top, it is up to you how much effort you take to polish the plot.
 
+You can rely on the defaults used for data-related aesthetics and non-data aspects (as in Fig. \@ref(fig:02ggplotUniqueBabynamesBasic)). Or you decide to modify the data-related aesthetics such as axes and color palettes and/or customize the theme elements of your graphic to your needs (as in Fig. \@ref(fig:02ggplotUniqueBabynamesExplorative)). Or you might even choose a storytelling approach and add additional annotations such as direct labels, shapes, and other highlights to provide context and make a graphic more informative and easier to read (as in Fig. \@ref(fig:02ggplotUniqueBabynamesStorytelling)).
+
+```{r 02ggplotUniqueBabynamesBasic, echo=FALSE, fig.width=14.7, fig.height=9, fig.cap='A stacked area graph of the number of unique babynames per year and sex between 1881 and 2017 as an example for a basic ggplot, relying on the defaults for all components.'}
+babynames_unique <- 
+  babynames::babynames |> 
+  group_by(name) |> 
+  slice(1) |> 
+  ungroup() |> 
+  count(year, sex) |> 
+  mutate(sex = ifelse(sex == "F", "female", "male")) |> 
+  filter(year > 1880) |> 
+  rename("count" = n)
+
+ggplot(babynames_unique, aes(x = year, y = count, fill = sex)) +
+  geom_area() +
+  labs(
+    #x = NULL, y = "Count", fill = NULL,
+    title = "Number of Unique Baby Names in the US",
+    caption = "Data: US Social Security Administration (SSA)\nOnly names that have been given at least 5 times per year are considered."
+  ) +
+  theme_grey(base_size = 24)
+```
+
+```{r 02ggplotUniqueBabynamesExplorative, echo=FALSE, fig.width=14.7, fig.height=9, fig.cap='In contrast to Fig. 2.1, the visual theming, scales (axes styling and color palette), and the behavior of the layer have been customized. Besides the different "feel" of the graphic, the chart now focusses on comparing the two sexes due to the common baseline, and not on the overall numbers as in Fig. 2.1.'}
+ggplot(babynames_unique, aes(x = year, y = count, fill = sex, color = sex)) +
+  geom_area(alpha = .25, position = "identity") +
+  geom_line(linewidth = .8, show.legend = FALSE) +
+  scale_x_continuous(expand = c(0, 0), breaks = seq(1890, 2010, by = 20)) +
+  scale_y_continuous(breaks = 0:5*250, labels = scales::label_comma()) +
+  scale_color_manual(values = c("#1D785B", "#7F24D9")) +
+  scale_fill_manual(values = c("#3BD0A0", "#B988EB")) +
+  # scale_color_manual(values = c("#1D785B", "#c47d00")) +
+  # scale_fill_manual(values = c("#3BD0A0", "#ffb73b")) +
+  labs(
+    x = NULL, y = "Names used for the first time", fill = NULL, color = NULL,
+    title = "Number of Unique Baby Names in the US",
+    caption = "Data: US Social Security Administration (SSA)\nOnly names that have been given at least 5 times per year are considered."
+  ) +
+  theme_minimal(base_family = "Roboto Condensed", base_size = 24) +
+  theme(
+    panel.grid.minor = element_blank(),
+    plot.title.position = "plot",
+    plot.title = element_text(family = "Roboto", face = "bold"),
+    plot.caption.position = "plot",
+    plot.caption = element_text(hjust = 0, color = "grey40", margin = margin(t = 25))
+  )
+```
+
+```{r 02ggplotUniqueBabynamesStorytelling, echo=FALSE, fig.width=14.7, fig.height=9, fig.cap='A facetted version of the area charts in Fig. 2.1 and 2.2 using a storytelling-approach by adding annotations (e.g. direct labels, boxes, color hightlights, and overall counts) to provide context and guide the viewer.'}
+notes <- tibble::tibble(
+  year = c(1916, 1916, 1941.5, 1890.5, 1885.8),
+  count = c(530, 530, 1960, 1950, 1860),
+  h = c(0, 0, 0, .5, .5),
+  v = c(0, 0, 1, 1, 1),
+  a = c(0, 0, 1, 0, 0),
+  sex = c("female", "male", "female", "female", "female"),
+  lab = c(
+    "<span style='color:#000000;'>Already around 1915,<br><b style='color:#28A87D;'>new female names</b><br>were booming...</span>", 
+    "<span style='color:#000000;'>... as well as<br><b style='color:#9C55E3;'>new male names</b></span>", 
+    #"Since the 1970s, unique<br>baby names are booming—<br>especially <b style='color:#28A87D;'>female names</b>",
+    #"Especially<br><b style='color:#28A87D;'>female babies</b><br>get unique names<br>since the 70s",
+    #"The use of unique baby<br>names has exploded<br>since the 1970s",
+    "The number of <b style='color:#878787;'>unique<br>baby names</b> peaked<br>between 1988 and 2014",
+    "<span style='color:#666666;font-size:17.5pt;'>names used for the first</span>",
+    "<span style='color:#666666;font-size:17.5pt;'>time in a given year</span>"#,
+    #"<span style='color:#656565;font-size:17.5pt;'>Total</span>"
+  )
+)
+
+#title <- "The Boom of Unique Baby Names"
+#title <- "Since the 1970s, unique baby names are booming—especially for <b style='color:#28A87D;'>baby girls</b>"
+title <- "Since the 1970s, unique baby names are booming (again)"
+subtitle <- "Every year, hundreds of babies in the US get a name that has not been given before.<br>A closer look reveals that new <b style='color:#28A87D;'>female names</b> are way more frequent than <b style='color:#9C55E3;'>male names</b>."
+caption <- "Data: US Social Security Administration (SSA)  |  Only names that have been given at least 5 times per year are considered."
+
+ggplot(babynames_unique, aes(x = year, y = count)) +
+  geom_area(data = select(babynames_unique, year, count, s = sex), aes(group = s), fill = "grey87") +
+  geom_area(aes(color = sex, fill = sex), linewidth = .8) +
+  annotate(
+    geom = "rect", xmin = 1988, xmax = 2014, ymin = 0, ymax = Inf, 
+    color = "grey25", fill = NA, linetype = "13", lineend = "round", linewidth = .6
+  ) +
+  ggtext::geom_richtext(
+    data = notes, aes(label = lab, hjust = h, vjust = v, alpha = a), stat = "unique",
+    family = "Roboto Condensed", label.colour = NA, fill = "white", size = 6.6, lineheight = 1.05
+  ) +
+  facet_wrap(~ sex) +
+  coord_cartesian(expand = FALSE, clip = "off") +
+  scale_x_continuous(breaks = seq(1890, 2010, by = 20)) +
+  scale_y_continuous(
+    labels = scales::label_comma(), breaks = 1:4*500, 
+    sec.axis = dup_axis(name = NULL)
+  ) +
+  scale_color_manual(values = c("#1D785B", "#7F24D9")) +
+  scale_fill_manual(values = c("#3BD0A0", "#B988EB")) +
+  labs(
+    x = NULL, y = NULL, color = NULL, fill = NULL,
+    title = title, subtitle = subtitle, caption = caption
+  ) +
+  theme_minimal(base_family = "Roboto Condensed", base_size = 22) +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.major.y = element_line(linewidth = .7),
+    axis.text = element_text(size = rel(.85), color = "grey40"),
+    axis.text.y.right = element_text(hjust = 1),
+    axis.ticks.x = element_line(color = "grey90"),
+    axis.ticks.length.x = unit(.6, "lines"),
+    panel.spacing.x = unit(2, "lines"),
+    legend.position = "none",
+    strip.text = element_text(color = "white"),
+    plot.title.position = "plot", 
+    plot.caption.position = "plot",
+    plot.title = ggtext::element_markdown(
+      family = "Roboto", face = "bold", size = rel(1.4), margin = margin(t = 0, b = 15)
+    ),
+    plot.subtitle = ggtext::element_markdown(
+      family = "Roboto", size = rel(1.15), lineheight = 1.1, margin = margin(t = 0, b = 20)
+    ),
+    plot.caption = element_text(
+      color = "grey40", size = rel(.8), hjust = 0, margin = margin(t = 25)
+    ),
+    plot.margin = margin(15, 15, 10, 15)
+  )
+
+# babynames_unique |> 
+#   tidyr::pivot_wider(id_cols = year, names_from = sex, values_from = count) |> 
+#   mutate(female_unique_prop = female / (female + male)) -> d
+# 
+# babynames::babynames |> 
+#   group_by(year, sex) |> 
+#   summarize(n = sum(count)) |> 
+#   group_by(year) |> 
+#   mutate(total = sum(n)) |> 
+#   filter(sex == "F") |> 
+#   mutate(female_prop = n / total) -> b
+# 
+# b |> 
+#   left_join(d) |> 
+#   select(year, female_prop, female_unique_prop) |> 
+#   tidyr::pivot_longer(cols = -c(year), names_to = "type", values_to = "prop") |> 
+#   ggplot() + 
+#   geom_line(aes(x = year, y = prop, color = type))
+```
 
 ## Key Components
 
@@ -73,14 +225,13 @@ Depending on how you want to display your data in **ggplot2**, you have to prepa
 knitr::include_graphics("./img/table-format-long-tidy-wide.png", dpi = NA)
 ```
 
-If you need to reshape your data, the `pivot_*()` functions from the **tidyr** package are handy. Use `pivot_longer()` to  convert a wide data set into the long or tidy format. To go the other direction, use the `pivot_wider()`. You can find an example in chapter \@ref(tidyr).
-
+If you need to reshape your data, the `pivot_*()` functions from the **tidyr** package are handy. Use `pivot_longer()` to convert a wide data set into the long or tidy format. To go the other direction, use the `pivot_wider()`. You can find an example in chapter \@ref(tidyr).
 
 ### Aesthetics {#aesthetics}
 
-To visualize certain variables in your data set with **ggplot2**, values are mapped to visual channels called *aesthetics*. Aesthetic attributes include positional information such as x and y but also colors, fills, point shapes, line types, sizes, and levels of transparency. 
+To visualize certain variables in your data set with **ggplot2**, values are mapped to visual channels called *aesthetics*. Aesthetic attributes include positional information such as x and y but also colors, fills, point shapes, line types, sizes, and levels of transparency.
 
-Sticking to our small data set, we could use our tidy-form data (\@ref(fig:02imgFormatLongTidyWide), top right) to create a scatter plot of the two metrics (\@ref(fig:02ggplotAestheticsData) A). However, we could also use the long-form data (\@ref(fig:02imgFormatLongTidyWide), top left) to show the metrics as a group wise dot plot and encode the metrics by shape(\@ref(fig:02ggplotAestheticsData) B).
+Sticking to our small data set, we could use our tidy-form data (Fig. \@ref(fig:02imgFormatLongTidyWide), top right) to create a scatter plot of the two numeric metrics with the categorical group mapped to color and year mapped to shape (Fig. \@ref(fig:02ggplotAestheticsData) A). However, we could also use the long-form data (Fig. \@ref(fig:02imgFormatLongTidyWide), top left) to show the metrics as a group wise dot plot and encode the metrics by color (Fig. \@ref(fig:02ggplotAestheticsData) B).
 
 ```{r 02ggplotAestheticsData, echo=FALSE, fig.cap="Basic ggplot outputs mapping four different variables (columns of the data set) to aesthetics, using the long-format data (`data_long`, left plot) and wide-format data (`data_wide`, right plot). Lines connecting the groups were added to make the difference between both plots more obvious."}
 data_long <- tibble::tibble(
@@ -118,19 +269,20 @@ pt + plot_spacer() + pl +
 ```
 
 <p class="note">
-The optimal shape of your data set relates to the plot you have in mind. Stick to the rule that any variable that you want to use for an aesthetic should have a dedicated column.
-</p>
 
+The optimal shape of your data set relates to the plot you have in mind. Stick to the rule that any variable that you want to use for an aesthetic should have a dedicated column.
+
+</p>
 
 ### Layers {#layers}
 
-Layers in **ggplot2** define the the statistical transformation, geometrical representation, and positional adjustment of the mapped values. In the example above, we have used a layer with geometry "point" and without any statistical transformation or positional adjustment. This specification simply means "draw the raw values as points by using the specified aesthetics of position, color, and shape". 
+Layers in **ggplot2** define the the statistical transformation, geometrical representation, and positional adjustment of the mapped values. In the example above, we have used a layer with geometry "point" and without any statistical transformation or positional adjustment. This specification simply means "draw the raw values as points by using the specified aesthetics of position, color, and shape".
 
-Statistical transformation are responsible for calculating summaries such as counts and averages. You can also perform more advanced transformations of the data such as calculating smoothings and densities. If there is any statistical transformation specified, the calculation is applied to the data before they are plotted. 
+Statistical transformation are responsible for calculating summaries such as counts and averages. You can also perform more advanced transformations of the data such as calculating smoothings and densities. If there is any statistical transformation specified, the calculation is applied to the data before they are plotted.
 
 The raw or transformed data are then used to draw the specified geometrical object(s), representing the parsed data e.g. as points, bars, or lines. On top, you can also adjust the position of the geometries. Examples for positional adjustments are the grouping or stacking of bars or the jittering of points.
 
-For example, you might use a statistical transformation to calculate linear regression lines to fit them to your variables mapped to x and y and display them as banded lines (geometrical object). Or you might decide to show the raw data as points without any statistical transformation (\@ref(fig:02ggplotLayersGeomsStats)).
+For example, you might use a statistical transformation to calculate linear regression lines to fit them to your variables mapped to x and y and display them as banded lines (geometrical object). Or you might decide to show the raw data as points without any statistical transformation (Fig. \@ref(fig:02ggplotLayersGeomsStats)).
 
 ```{r, 02ggplotLayersGeomsStats, echo=FALSE, fig.cap="The same data, visualized as  a scatter plot showing the raw data without any statistical transformation (left) and after a statistical tranformation has been applied to calculate linear fittings for each Penguin species (right). The visualizations use the Palmer Archipelago penguin data by A.M. Horst, A.P. Hill & K.B. Gorman (2020)."}
 library(palmerpenguins)
@@ -240,64 +392,35 @@ g1 + plot_spacer() + g2 + plot_spacer() + g3 +
 
 The layered approach allows to create a wide range of charts and graphics. One can also create more complex, potentially unusual graphics as it allows you to combine layers in a traditional but also nontraditional way as you like.
 
-
 ## Additional Components
 
 The following components are set by default but can be tweaked to:
 
-* adjust the properties of the aesthetics (scales)
-* control the mapping of positional aesthetics (coordinate systems)
-* create small multiples of the specified chart (facets)
-* modify non-data related elements (themes)
-
+-   adjust the properties of the aesthetics (*scales*)
+-   control the mapping of positional aesthetics (*coordinate systems*)
+-   create small multiples of the specified chart (*facets*)
+-   modify non-data related elements (*themes*)
 
 ### Scales {#scales}
 
-Scales translate between the value range of our data, mapped to aesthetics, and the perceptual property range. Every time you map a column to an aesthetic, a respective suitable scale component is added to your plot. 
+Scales translate between the value range of our data, mapped to aesthetics, and the perceptual property range. Every time you map a column to an aesthetic, a respective suitable scale component is added to your plot.
 
 To modify the default settings you can specify your own scale, for example tweak the number of axis ticks or customize the colors used to encode groups. Furthermore, scales are also used to transform the data before it is processed by the layer. An example of transforming the values with a scale component is the display of the data in discrete bins.
 
-
 ### Coordinate Systems {#coords}
 
-Coordinate systems interpret the position aesthetics. By default, a Cartesian coordinate system is used to encode the x and y aesthetics. As this is likely the most common type in data visualization, you might modify coordinate systems only in two cases: creating circular plots such as pie charts and circular barplots or when projecting spatial data. 
-
+Coordinate systems interpret the position aesthetics. By default, a Cartesian coordinate system is used to encode the x and y aesthetics. As this is likely the most common type in data visualization, you might modify coordinate systems only in two cases: creating circular plots such as pie charts and circular barplots or when projecting spatial data.
 
 ### Facets {#facets}
 
 Facets split variables to multiple panels, allowing to create the same visualization for several combinations. Such small multiples can be a powerful tool to show high-dimensional data, to explore big data sets, and to compare patterns across variables and groups.
 
-A special case of facets are geo-referenced small multiples: a set of visualizations is laid out in a grid that represents the original topography. Such graphics can be easily created in **ggplot2** with the help of the **geofacet** extension package. 
+A special case of facets are geo-referenced small multiples: a set of visualizations is laid out in a grid that represents the original topography. Such graphics can be easily created in **ggplot2** with the help of the **geofacet** extension package.
 
 ### Themes {#themes}
 
-Themes encode all non-data elements of your plots such as the typeface, background colors, and titles and captions. **ggplot2** comes with a set of complete themes that can be added to your plot and further modified with high flexibility. 
+Themes encode all non-data elements of your plots such as the typeface, background colors, and titles and captions. **ggplot2** comes with a set of complete themes that can be added to your plot and further modified with high flexibility.
 
 The modified themes can easily be turned into your own custom theme function which can be used as a component in the same way. Also, several extension packages such as **ggthemes**, **hrbrthemes** or **tvthemes** provide even more complete themes to change the look of your visualization.
 
-The ability to use pre-coded themes is a great feature as it allows for a consistent and corporate style while saving time to write the same code over and over again. 
-
-## Showcase
-
-The following collection of graphics illustrate the power and versatility of **ggplot2**---and a range of extension packages---to create customized, partly uncommon or complex charts. All these charts are the outcome of 100% R code, making use of multiple layers and customized colors, fonts, and themes.
-
-The visualization "Artists in the USA" shows the...[WIP]
-
-```{r 02imgVizArtistsUSA, echo=FALSE, fig.cap='"Artists in the USA" by Lee Olney'}
-knitr::include_graphics("./img/artists-tt202239-lee-olney.png", dpi = NA)
-```
-
-In the "Not my Cup of Coffee" visualization, I combined seven layers to create an overview of coffee bean ratings by the Coffee Quality Institute per country. Two layers, a dot plot and an interval strip, are used to highlight the distribution. Two different triangles highlight minimum (red and empty) and median (black and filled) scores. Text layers indicate the scores next to the triangles as well as the respective country at the begin of each interval. [WIP]
-
-```{r 02imgVizCoffeeRatings, echo=FALSE, fig.cap='"Not my Cup of Coffee" by Cédric Scherer'}
-knitr::include_graphics("./img/coffee-ratings.png", dpi = NA)
-```
-
-Tanya Shapiro used a "jitter-pop" chart---a cmbination of jitter strips and lollipops---to visualize several average IMDb scores of the TV series "Doctor Who". Small jittered points show the average scores for each season, colored by doctor. The large circular images show visualize the average score per doctor with horizontal lines indicating the deviation from the overall average score (vertical line). This graphic combines five different layers: jittered points, images, text annotations, and horizontal and vertical lines. the package makes use of the extension packages ... [WIP]
-
-```{r 02imgVizDoctorWho, echo=FALSE, fig.cap='"Doctor Who was the Best?" by Tanya Shapiro'}
-knitr::include_graphics("./img/doctor-who-tanya-shapiro.png", dpi = NA)
-```
-
-These are just a few examples of the many types of charts that you can create using **ggplot2**. With a little creativity and experimentation, you can come up with your own unique and informative visualizations or artful pieces.
-
+The ability to use pre-coded themes is a great feature as it allows for a consistent and corporate style while saving time to write the same code over and over again.

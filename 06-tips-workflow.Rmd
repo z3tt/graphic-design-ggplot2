@@ -215,7 +215,7 @@ scale_y_continuous(limits = range(bikes$count))
 
 You can leverage this approach to create the same chart for different data sets, to map different variables to aesthetics, and more.
 
-Here is another, more general function to create a custom density plot for any quantitative variable of a data set of your choice. The function makes use of *nonstandard evaluation* to pass the variables and groupings as strings. The `!!sym()` notation allows to pass quoted variable names that are evaluated by **{ggplot2}**. `sym()` converts the string to a symbol, the so-called *bang-bang* `!!` then unquotes the symbol so that the `aes()` function can handle it as usual. 
+Here is another, more general function to create a custom density plot for any quantitative variable of a data set of your choice. The function makes use of *nonstandard evaluation* to pass the variables and groupings as strings. The `!!sym()` notation allows to pass quoted variable names that are evaluated by **ggplot2**. `sym()` converts the string to a symbol, the so-called *bang-bang* `!!` then unquotes the symbol so that the `aes()` function can handle it as usual. 
 
 ```{r, eval=FALSE}
 plot_density <- function(data, var, grp = "") {
@@ -234,7 +234,7 @@ plot_density <- function(data, var, grp = "") {
   return(g)
 }
 
-## apply to the `mpg` data from {ggplot2}
+## apply to the `mpg` data from ggplot2
 purrr::map(c("displ", "hwy", "cty"), 
            ~plot_density(data = mpg, var = .x))
 

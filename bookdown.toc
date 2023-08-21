@@ -6,76 +6,75 @@
 \contentsline {section}{\numberline {1.1}Communicating Data}{1}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Coding Visualizations}{3}{section.1.2}%
 \contentsline {section}{\numberline {1.3}Why R and \textbf {ggplot2}}{3}{section.1.3}%
-\contentsline {part}{I\hspace {1em}General Overiew}{5}{part.1}%
-\contentsline {chapter}{\numberline {2}The Layered Grammar of Graphics}{7}{chapter.2}%
-\contentsline {section}{\numberline {2.1}The ggplot2 Package}{7}{section.2.1}%
-\contentsline {section}{\numberline {2.2}The Components of a ggplot}{8}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Key Components}{9}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Data}{9}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Aesthetics}{9}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Layers}{10}{subsection.2.3.3}%
-\contentsline {section}{\numberline {2.4}Additional Components}{12}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Scales}{12}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Coordinate Systems}{13}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}Facets}{13}{subsection.2.4.3}%
-\contentsline {subsection}{\numberline {2.4.4}Themes}{13}{subsection.2.4.4}%
-\contentsline {section}{\numberline {2.5}Showcase}{13}{section.2.5}%
-\contentsline {chapter}{\numberline {3}Get Started}{17}{chapter.3}%
-\contentsline {section}{\numberline {3.1}The Data Set}{17}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Working in R}{19}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Import Data}{19}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Project-Oriented Workflows}{20}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Inspect the Data}{21}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Data Types}{21}{subsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.2.5}Data Preparation}{24}{subsection.3.2.5}%
-\contentsline {subsubsection}{\numberline {3.2.5.1}Data Wrangling with the \textbf {dplyr} Package}{25}{subsubsection.3.2.5.1}%
-\contentsline {subsubsection}{\numberline {3.2.5.2}Reshaping Data with the \textbf {tidyr} Package}{27}{subsubsection.3.2.5.2}%
-\contentsline {chapter}{\numberline {4}A Walk-Through Example}{31}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Prerequisites}{31}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Create a Basic ggplot}{31}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Combine Multiple Layers}{32}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Mapping Aesthetics}{33}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Setting Properties}{34}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Create Small Multiples}{35}{section.4.6}%
-\contentsline {section}{\numberline {4.7}Change the Axis Scaling}{36}{section.4.7}%
-\contentsline {section}{\numberline {4.8}Use a Custom Color Palette}{38}{section.4.8}%
-\contentsline {section}{\numberline {4.9}Adjust Labels and Titles}{39}{section.4.9}%
-\contentsline {section}{\numberline {4.10}Apply a Complete Theme}{41}{section.4.10}%
-\contentsline {section}{\numberline {4.11}Customize the Theme}{41}{section.4.11}%
-\contentsline {chapter}{\numberline {5}Tips to Improve Your ggplot Design}{45}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Use a Different Theme}{45}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Use a Custom Font}{46}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Increase the Font Sizes}{48}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Create Text Hierarchy}{48}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Modify the Legend}{49}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Align Titles and Captions}{51}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Add Some White Space}{51}{section.5.7}%
-\contentsline {chapter}{\numberline {6}Tips to Improve Your ggplot Workflow}{55}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Save ggplot Output with the ``Correct'' Dimensions}{55}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Display ggplot Output with the ``Correct'' Dimensions}{56}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Make Fonts Work}{57}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Set Your ggplot Theme Globally}{57}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Automating Plots: Batch Operations}{59}{section.6.5}%
-\contentsline {part}{II\hspace {1em}How To Work with Components}{63}{part.2}%
-\contentsline {chapter}{\numberline {7}Working with Layers}{65}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Predefined Layers}{66}{section.7.1}%
-\contentsline {subsection}{\numberline {7.1.1}Geometrical versus Statistical Layers}{66}{subsection.7.1.1}%
-\contentsline {subsection}{\numberline {7.1.2}Layer Variants}{68}{subsection.7.1.2}%
-\contentsline {section}{\numberline {7.2}Changing Layer Defaults}{69}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Positional Adjustments}{69}{subsection.7.2.1}%
-\contentsline {subsection}{\numberline {7.2.2}Modify Transformations and Geometries}{71}{subsection.7.2.2}%
-\contentsline {section}{\numberline {7.3}Positional Aesthetics}{73}{section.7.3}%
-\contentsline {subsection}{\numberline {7.3.1}Know Your Data Types}{73}{subsection.7.3.1}%
-\contentsline {subsection}{\numberline {7.3.2}Multiple Positional Aesthetics}{74}{subsection.7.3.2}%
-\contentsline {section}{\numberline {7.4}Statistical Summaries}{78}{section.7.4}%
-\contentsline {chapter}{\numberline {8}Working with Colors}{81}{chapter.8}%
-\contentsline {chapter}{\numberline {9}Working with Text}{83}{chapter.9}%
-\contentsline {chapter}{\numberline {10}Working with Themes}{85}{chapter.10}%
-\contentsline {section}{\numberline {10.1}Create Your Own Theme}{85}{section.10.1}%
-\contentsline {part}{III\hspace {1em}Advanced Walk-Through Examples}{87}{part.3}%
-\contentsline {chapter}{\numberline {11}Overview}{89}{chapter.11}%
-\contentsline {chapter}{Appendix}{91}{chapter.11}%
-\contentsline {chapter}{\numberline {A}More to Say}{91}{appendix.A}%
-\contentsline {fm}{Bibliography}{93}{appendix*.56}%
-\contentsline {chapter}{Index}{95}{appendix*.56}%
-\contentsline {section}{}{95}{appendix*.56}%
+\contentsline {part}{I\hspace {1em}General Overview}{9}{part.1}%
+\contentsline {chapter}{\numberline {2}The Layered Grammar of Graphics}{11}{chapter.2}%
+\contentsline {section}{\numberline {2.1}The ggplot2 Package}{11}{section.2.1}%
+\contentsline {section}{\numberline {2.2}The Components of a ggplot}{12}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Key Components}{13}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Data}{13}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Aesthetics}{15}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Layers}{16}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}Additional Components}{17}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Scales}{19}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Coordinate Systems}{19}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Facets}{19}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}Themes}{19}{subsection.2.4.4}%
+\contentsline {chapter}{\numberline {3}Get Started}{21}{chapter.3}%
+\contentsline {section}{\numberline {3.1}The Data Set}{21}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Working in R}{23}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Import Data}{23}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Project-Oriented Workflows}{24}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Inspect the Data}{25}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Data Types}{25}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Data Preparation}{28}{subsection.3.2.5}%
+\contentsline {subsubsection}{\numberline {3.2.5.1}Data Wrangling with the \textbf {dplyr} Package}{29}{subsubsection.3.2.5.1}%
+\contentsline {subsubsection}{\numberline {3.2.5.2}Reshaping Data with the \textbf {tidyr} Package}{31}{subsubsection.3.2.5.2}%
+\contentsline {chapter}{\numberline {4}A Walk-Through Example}{35}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Prerequisites}{35}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Create a Basic ggplot}{35}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Combine Multiple Layers}{37}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Mapping Aesthetics}{38}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Setting Properties}{39}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Create Small Multiples}{40}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Change the Axis Scaling}{42}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Use a Custom Color Palette}{43}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Adjust Labels and Titles}{45}{section.4.9}%
+\contentsline {section}{\numberline {4.10}Apply a Complete Theme}{47}{section.4.10}%
+\contentsline {section}{\numberline {4.11}Customize the Theme}{48}{section.4.11}%
+\contentsline {chapter}{\numberline {5}Tips to Improve Your ggplot Design}{51}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Use a Different Theme}{51}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Use a Custom Font}{52}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Increase the Font Sizes}{54}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Create Text Hierarchy}{54}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Modify the Legend}{55}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Align Titles and Captions}{57}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Add Some White Space}{57}{section.5.7}%
+\contentsline {chapter}{\numberline {6}Tips to Improve Your ggplot Workflow}{61}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Save ggplot Output with the ``Correct'' Dimensions}{61}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Display ggplot Output with the ``Correct'' Dimensions}{62}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Make Fonts Work}{63}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Set Your ggplot Theme Globally}{63}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Automating Plots: Batch Operations}{65}{section.6.5}%
+\contentsline {part}{II\hspace {1em}How To Work with Components}{69}{part.2}%
+\contentsline {chapter}{\numberline {7}Working with Layers}{71}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Predefined Layers}{72}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Geometrical versus Statistical Layers}{72}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Layer Variants}{74}{subsection.7.1.2}%
+\contentsline {section}{\numberline {7.2}Changing Layer Defaults}{75}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Positional Adjustments}{75}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Modify Transformations and Geometries}{77}{subsection.7.2.2}%
+\contentsline {section}{\numberline {7.3}Positional Aesthetics}{79}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Know Your Data Types}{79}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}Multiple Positional Aesthetics}{80}{subsection.7.3.2}%
+\contentsline {section}{\numberline {7.4}Statistical Summaries}{84}{section.7.4}%
+\contentsline {chapter}{\numberline {8}Working with Colors}{87}{chapter.8}%
+\contentsline {chapter}{\numberline {9}Working with Text}{89}{chapter.9}%
+\contentsline {chapter}{\numberline {10}Working with Themes}{91}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Create Your Own Theme}{91}{section.10.1}%
+\contentsline {part}{III\hspace {1em}Advanced Walk-Through Examples}{93}{part.3}%
+\contentsline {chapter}{\numberline {11}Overview}{95}{chapter.11}%
+\contentsline {chapter}{Appendix}{97}{chapter.11}%
+\contentsline {chapter}{\numberline {A}More to Say}{97}{appendix.A}%
+\contentsline {fm}{Bibliography}{99}{appendix*.59}%
+\contentsline {chapter}{Index}{101}{appendix*.59}%
+\contentsline {section}{}{101}{appendix*.59}%

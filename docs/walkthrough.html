@@ -23,7 +23,7 @@
 <meta name="author" content="Cédric Scherer" />
 
 
-<meta name="date" content="2023-06-22" />
+<meta name="date" content="2023-08-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -179,7 +179,7 @@ div.csl-indent {
 <li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#coding"><i class="fa fa-check"></i><b>1.2</b> Coding Visualizations</a></li>
 <li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#why"><i class="fa fa-check"></i><b>1.3</b> Why R and <strong>ggplot2</strong></a></li>
 </ul></li>
-<li class="part"><span><b>I General Overiew</b></span></li>
+<li class="part"><span><b>I General Overview</b></span></li>
 <li class="chapter" data-level="2" data-path="grammar.html"><a href="grammar.html"><i class="fa fa-check"></i><b>2</b> The Layered Grammar of Graphics</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="grammar.html"><a href="grammar.html#ggplot"><i class="fa fa-check"></i><b>2.1</b> The ggplot2 Package</a></li>
@@ -197,7 +197,6 @@ div.csl-indent {
 <li class="chapter" data-level="2.4.3" data-path="grammar.html"><a href="grammar.html#facets"><i class="fa fa-check"></i><b>2.4.3</b> Facets</a></li>
 <li class="chapter" data-level="2.4.4" data-path="grammar.html"><a href="grammar.html#themes"><i class="fa fa-check"></i><b>2.4.4</b> Themes</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="grammar.html"><a href="grammar.html#showcase"><i class="fa fa-check"></i><b>2.5</b> Showcase</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="get-started.html"><a href="get-started.html"><i class="fa fa-check"></i><b>3</b> Get Started</a>
 <ul>
@@ -296,36 +295,36 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="walkthrough" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">Chapter 4</span> A Walk-Through Example<a href="walkthrough.html#walkthrough" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>To illustrate the utility and flexibility of <strong>ggplot2</strong> to create complex, well-designed visualizations with a handful of components, we are going to create a set of four plots. For each combination of year and time of the day, we draw a scatter plot of bike rents including a linear fitting to show overall trends with feels-like temperature.</p>
+<p>To illustrate the utility and flexibility of <strong>ggplot2</strong> to create complex, well-designed visualizations with a handful of components, we are going to create a set of four plots (so-called small multiples). For each combination of year and time of the day, we draw a scatter plot of bike rents including a linear fitting for each subset.</p>
 <p>The creation of the plot itself will require only four lines of code! One to specify the data and global aesthetics, two for the scatter and fitting, and another one to create small multiples.</p>
 <p>With a few more lines of code, we will adjust the labels, add annotations, and apply a custom color palette. Finally, we apply a personalized theme using custom typefaces.</p>
 <div id="prep-ggplot" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Prerequisites<a href="walkthrough.html#prep-ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Before we can create a ggplot, we have to load the package by running <code>library(ggplot2)</code>. Also, we need import the data set we want to visualize, here our bike share data introduced in Section <a href="get-started.html#dataset">3.1</a> which we store in an object called <code>bikes</code>.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="walkthrough.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="do">## load the ggplot2 package</span></span>
-<span id="cb28-2"><a href="walkthrough.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb28-3"><a href="walkthrough.html#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="walkthrough.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="do">## import bikes data set</span></span>
-<span id="cb28-5"><a href="walkthrough.html#cb28-5" aria-hidden="true" tabindex="-1"></a>url_data <span class="ot">&lt;-</span> <span class="st">&quot;https://cedricscherer.com/data/london-bikes.csv&quot;</span></span>
-<span id="cb28-6"><a href="walkthrough.html#cb28-6" aria-hidden="true" tabindex="-1"></a>bikes <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> url_data, <span class="at">col_types =</span> <span class="st">&quot;Dcfffilllddddfc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="walkthrough.html#cb28-1" tabindex="-1"></a><span class="do">## load the ggplot2 package</span></span>
+<span id="cb28-2"><a href="walkthrough.html#cb28-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb28-3"><a href="walkthrough.html#cb28-3" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="walkthrough.html#cb28-4" tabindex="-1"></a><span class="do">## import bikes data set</span></span>
+<span id="cb28-5"><a href="walkthrough.html#cb28-5" tabindex="-1"></a>url_data <span class="ot">&lt;-</span> <span class="st">&quot;https://cedricscherer.com/data/london-bikes.csv&quot;</span></span>
+<span id="cb28-6"><a href="walkthrough.html#cb28-6" tabindex="-1"></a>bikes <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> url_data, <span class="at">col_types =</span> <span class="st">&quot;Dcfffilllddddfc&quot;</span>)</span></code></pre></div>
 </div>
 <div id="basics" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Create a Basic ggplot<a href="walkthrough.html#basics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Once the <strong>ggplot2</strong> package is loaded, we can create a basic ggplot by specifying the <em>data</em>, <em>aesthetics</em>—the positional encoding of the variables—, and a <em>geometry</em>.</p>
-<p>Here, we map the variable <code>temp_feel</code> of our <code>bikes</code> data object to the <code>x</code> position and the variable <code>count</code> to the <code>y</code> position (<a href="walkthrough.html#fig:04ggplotBasic">4.1</a>). We will also map variables to all kind of other aesthetics throughout the book. Some are related to positions such as <code>xmin</code> or <code>yend</code> while others change the appearance of the layer based on the variables they are mapped to such as <code>color</code> and <code>shape</code>.</p>
+<p>Here, we map the variable <code>temp_feel</code> of our <code>bikes</code> data object to the <code>x</code> position and the variable <code>count</code> to the <code>y</code> position (Fig. <a href="walkthrough.html#fig:04ggplotBasic">4.1</a>). We will also map variables to all kind of other aesthetics throughout the book. Some are related to positions such as <code>xmin</code> or <code>yend</code> while others change the appearance of the layer based on the variables they are mapped to such as <code>color</code> and <code>shape</code>.</p>
 <p>There are many, many different geometries (often called geoms because each function starts with <code>geom_</code>) one can add to a ggplot by default and even more provided by extension packages. By adding <code>geom_point()</code> we create a scatter plot:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="walkthrough.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> bikes) <span class="sc">+</span> <span class="do">## initial call + data</span></span>
-<span id="cb29-2"><a href="walkthrough.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count) <span class="sc">+</span> <span class="do">## aesthetics</span></span>
-<span id="cb29-3"><a href="walkthrough.html#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="do">## geometric layer</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="walkthrough.html#cb29-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> bikes) <span class="sc">+</span>             <span class="do">## initial call + data</span></span>
+<span id="cb29-2"><a href="walkthrough.html#cb29-2" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count) <span class="sc">+</span>  <span class="do">## aesthetics</span></span>
+<span id="cb29-3"><a href="walkthrough.html#cb29-3" tabindex="-1"></a>  <span class="fu">geom_point</span>()                     <span class="do">## geometric layer</span></span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:04ggplotBasic"></span>
-<img src="bookdown_files/figure-html/04ggplotBasic-1.png" alt="A basic scatter plot of feels-like temperature and reported TfL bike rents, created with the {ggplot2} package." width="864" />
+<img src="bookdown_files/figure-html/04ggplotBasic-1.png" alt="A basic scatter plot of feels-like temperature and reported TfL bike rents, created with the ggplot2 package." width="864" />
 <p class="caption">
-FIGURE 4.1: A basic scatter plot of feels-like temperature and reported TfL bike rents, created with the {ggplot2} package.
+FIGURE 4.1: A basic scatter plot of feels-like temperature and reported TfL bike rents, created with the ggplot2 package.
 </p>
 </div>
 <p>In most cases, you will find ggplot code in which the aesthetics are supplied inside the <code>ggplot()</code> call; however, both versions are valid.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="walkthrough.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> bikes, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count)) <span class="sc">+</span></span>
-<span id="cb30-2"><a href="walkthrough.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="walkthrough.html#cb30-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> bikes, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count)) <span class="sc">+</span></span>
+<span id="cb30-2"><a href="walkthrough.html#cb30-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p class="note">
 <p>Due to so-called <em>implicit matching</em>, we can rewrite the first part as <code>ggplot(bikes, aes(date, count))</code>, omitting the argument names <code>data</code> and <code>mapping</code> in the <code>ggplot()</code> call and <code>x</code> and <code>y</code> in the <code>aes()</code> function. This works as long as we respect the defined order.</p>
 <p>Omitting the arguments <code>data</code> and <code>mapping</code> saves you a ton of typing when creating dozens to hundreds ggplots per day. In my opinion, it is good practice to refer to aesthetics explicitly, and I will follow this convention throughout the book.</p>
@@ -333,11 +332,11 @@ FIGURE 4.1: A basic scatter plot of feels-like temperature and reported TfL bike
 </div>
 <div id="combined-layers" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Combine Multiple Layers<a href="walkthrough.html#combined-layers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>One can also add several layers, specified as either geometric shapes starting with <code>geom_*()</code> or statistical transformations starting with <code>stat_*()</code> (<a href="walkthrough.html#fig:04ggplotBasicSmooth">4.2</a>)—and this is where the magic and fun starts!</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="walkthrough.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
-<span id="cb31-2"><a href="walkthrough.html#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb31-3"><a href="walkthrough.html#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="do">## add a GAM smoothing</span></span>
-<span id="cb31-4"><a href="walkthrough.html#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>()</span></code></pre></div>
+<p>One can also add several layers, specified as either geometric shapes starting with <code>geom_*()</code> or statistical transformations starting with <code>stat_*()</code> (Fig. <a href="walkthrough.html#fig:04ggplotBasicSmooth">4.2</a>)—and this is where the magic and fun starts!</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="walkthrough.html#cb31-1" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
+<span id="cb31-2"><a href="walkthrough.html#cb31-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb31-3"><a href="walkthrough.html#cb31-3" tabindex="-1"></a>  <span class="do">## add a GAM smoothing</span></span>
+<span id="cb31-4"><a href="walkthrough.html#cb31-4" tabindex="-1"></a>  <span class="fu">stat_smooth</span>()</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:04ggplotBasicSmooth"></span>
 <img src="bookdown_files/figure-html/04ggplotBasicSmooth-1.png" alt="The same scatter plot, now with an additional GAM smoothing." width="864" />
 <p class="caption">
@@ -348,39 +347,48 @@ FIGURE 4.2: The same scatter plot, now with an additional GAM smoothing.
 </div>
 <div id="map-aesthetics" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Mapping Aesthetics<a href="walkthrough.html#map-aesthetics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>By looking at these scatter plots, we can actually identify two different trends for day and night. We can highlight both groups by mapping the <code>day_night</code> variable to <code>color</code> (Fig. <a href="walkthrough.html#fig:04ggplotBasicColor">4.3</a>). Note that the mapping is applied to both, <code>geom_point()</code> and <code>geom_smooth()</code> and consequently the latter layer creates two separate smoothings.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="walkthrough.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count, <span class="at">color =</span> day_night)) <span class="sc">+</span> </span>
-<span id="cb32-2"><a href="walkthrough.html#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb32-3"><a href="walkthrough.html#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>()</span></code></pre></div>
+<p>By looking at these scatter plots, we can actually identify two different trends for day and night. We can highlight both groups by mapping the <code>day_night</code> variable to <code>color</code>. Note that the mapping is applied to both, <code>geom_point()</code> and <code>geom_smooth()</code> and consequently the latter layer creates two separate smoothings (Fig. <a href="walkthrough.html#fig:04ggplotBasicColor">4.3</a>).</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="walkthrough.html#cb32-1" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count, <span class="at">color =</span> day_night)) <span class="sc">+</span> </span>
+<span id="cb32-2"><a href="walkthrough.html#cb32-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb32-3"><a href="walkthrough.html#cb32-3" tabindex="-1"></a>  <span class="fu">stat_smooth</span>()</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:04ggplotBasicColor"></span>
-<img src="bookdown_files/figure-html/04ggplotBasicColor-1.png" alt="The points and smoothing lines colored by the time of the day." width="864" />
+<img src="bookdown_files/figure-html/04ggplotBasicColor-1.png" alt="The points and smoothing lines, grouped and colored by time of the day." width="864" />
 <p class="caption">
-FIGURE 4.3: The points and smoothing lines colored by the time of the day.
+FIGURE 4.3: The points and smoothing lines, grouped and colored by time of the day.
 </p>
 </div>
-<p>Aesthetics can also be defined for each layer and are then applied locally to the respective geometry or statistical transformation only. The <code>group</code> aesthetics allows to create subsets without changing the visual appearance (in contrast to aesthetics such as <code>color</code> or <code>shape</code>).
-You will learn more how to work with global and local aesthetics in Chapter XYZ and how to modify their appearance in Chapter XYZ.</p>
+<p>Aesthetics can also be defined for each layer and are then applied locally to the respective geometry or statistical transformation only. The <code>group</code> aesthetics allows to create subsets without changing the visual appearance (in contrast to aesthetics such as <code>color</code> or <code>shape;</code> Fig. <a href="walkthrough.html#fig:04ggplotLocalAesthetics">4.4</a>)).</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="walkthrough.html#cb33-1" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
+<span id="cb33-2"><a href="walkthrough.html#cb33-2" tabindex="-1"></a>  <span class="do">## color mapping only applied to points</span></span>
+<span id="cb33-3"><a href="walkthrough.html#cb33-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> day_night)) <span class="sc">+</span> </span>
+<span id="cb33-4"><a href="walkthrough.html#cb33-4" tabindex="-1"></a>  <span class="do">## invisible grouping to create two trend lines</span></span>
+<span id="cb33-5"><a href="walkthrough.html#cb33-5" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="fu">aes</span>(<span class="at">group =</span> day_night))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:04ggplotLocalAesthetics"></span>
+<img src="bookdown_files/figure-html/04ggplotLocalAesthetics-1.png" alt="The color applied to the points only with an additional group mapping to draw smoothing lines for both groups individually." width="864" />
+<p class="caption">
+FIGURE 4.4: The color applied to the points only with an additional group mapping to draw smoothing lines for both groups individually.
+</p>
+</div>
+<p>You will learn more how to work with global and local aesthetics in Chapter XYZ and how to modify their appearance in Chapter XYZ.</p>
 </div>
 <div id="set-properties" class="section level2 hasAnchor" number="4.5">
 <h2><span class="header-section-number">4.5</span> Setting Properties<a href="walkthrough.html#set-properties" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Furthermore, each layer has its own arguments to change their behavior and appearance. Let’s also add some transparency to the points and turn the smoothing into a linear fitting (Fig. <a href="walkthrough.html#fig:04ggplotBasicAdjustLayers">4.4</a>). As we are not mapping aesthetics but setting properties, we have to place those adjustments outside the <code>aes()</code> call.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="walkthrough.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
-<span id="cb33-2"><a href="walkthrough.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb33-3"><a href="walkthrough.html#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="do">## color mapping only applied to points</span></span>
-<span id="cb33-4"><a href="walkthrough.html#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color =</span> day_night), </span>
-<span id="cb33-5"><a href="walkthrough.html#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="do">## setting larger points with 50% opacity</span></span>
-<span id="cb33-6"><a href="walkthrough.html#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">2</span></span>
-<span id="cb33-7"><a href="walkthrough.html#cb33-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb33-8"><a href="walkthrough.html#cb33-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(</span>
-<span id="cb33-9"><a href="walkthrough.html#cb33-9" aria-hidden="true" tabindex="-1"></a>    <span class="do">## invisible grouping to create two trend lines</span></span>
-<span id="cb33-10"><a href="walkthrough.html#cb33-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group =</span> day_night), </span>
-<span id="cb33-11"><a href="walkthrough.html#cb33-11" aria-hidden="true" tabindex="-1"></a>    <span class="do">## use linear fitting + black smoothing lines</span></span>
-<span id="cb33-12"><a href="walkthrough.html#cb33-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span></span>
-<span id="cb33-13"><a href="walkthrough.html#cb33-13" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p>Furthermore, each layer has its own arguments to change their behavior and appearance. Let’s also add some transparency to the points and turn the smoothing into a linear fitting (Fig. <a href="walkthrough.html#fig:04ggplotBasicAdjustLayers">4.5</a>). As we are not mapping aesthetics but setting properties, we have to place those adjustments outside the <code>aes()</code> call.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="walkthrough.html#cb34-1" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
+<span id="cb34-2"><a href="walkthrough.html#cb34-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb34-3"><a href="walkthrough.html#cb34-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color =</span> day_night), </span>
+<span id="cb34-4"><a href="walkthrough.html#cb34-4" tabindex="-1"></a>    <span class="do">## setting larger points with 50% opacity</span></span>
+<span id="cb34-5"><a href="walkthrough.html#cb34-5" tabindex="-1"></a>    <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">2</span></span>
+<span id="cb34-6"><a href="walkthrough.html#cb34-6" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb34-7"><a href="walkthrough.html#cb34-7" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(</span>
+<span id="cb34-8"><a href="walkthrough.html#cb34-8" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group =</span> day_night), </span>
+<span id="cb34-9"><a href="walkthrough.html#cb34-9" tabindex="-1"></a>    <span class="do">## use linear fitting + draw black smoothing lines</span></span>
+<span id="cb34-10"><a href="walkthrough.html#cb34-10" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span></span>
+<span id="cb34-11"><a href="walkthrough.html#cb34-11" tabindex="-1"></a>  )</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:04ggplotBasicAdjustLayers"></span>
 <img src="bookdown_files/figure-html/04ggplotBasicAdjustLayers-1.png" alt="We can map aesthetics and define properties for each layer individually." width="864" />
 <p class="caption">
-FIGURE 4.4: We can map aesthetics and define properties for each layer individually.
+FIGURE 4.5: We can map aesthetics and define properties for each layer individually.
 </p>
 </div>
 <p class="note">
@@ -390,136 +398,152 @@ FIGURE 4.4: We can map aesthetics and define properties for each layer individua
 </div>
 <div id="faceting" class="section level2 hasAnchor" number="4.6">
 <h2><span class="header-section-number">4.6</span> Create Small Multiples<a href="walkthrough.html#faceting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>A fantastic feature of <strong>ggplot2</strong> is it’s ability to quickly split a single visualization in a set of so-called <em>small multiples</em>: the same visualization, no matter how complex it is, is applied to subsets contained in the same data set. In <strong>ggplot2</strong>, such small multiples are called <em>facets</em> wich are conditional on the variables defined in the <code>facet_*()</code> function (Fig. <a href="walkthrough.html#fig:04ggplotFacet">4.5</a>).</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="walkthrough.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
-<span id="cb34-2"><a href="walkthrough.html#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb34-3"><a href="walkthrough.html#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color =</span> day_night), <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">2</span></span>
-<span id="cb34-4"><a href="walkthrough.html#cb34-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb34-5"><a href="walkthrough.html#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(</span>
-<span id="cb34-6"><a href="walkthrough.html#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group =</span> day_night), <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span></span>
-<span id="cb34-7"><a href="walkthrough.html#cb34-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb34-8"><a href="walkthrough.html#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="do">## small multiples based on time of the day (rows) and year (columns)</span></span>
-<span id="cb34-9"><a href="walkthrough.html#cb34-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(day_night <span class="sc">~</span> year)</span></code></pre></div>
+<p>A fantastic feature of <strong>ggplot2</strong> is it’s ability to quickly split a single visualization in a set of so-called <em>small multiples</em>: the same visualization, no matter how complex it is, is applied to subsets contained in the same data set. In <strong>ggplot2</strong>, such small multiples are called <em>facets</em> wich are conditional on the variables defined in the <code>facet_*()</code> function (Fig. <a href="walkthrough.html#fig:04ggplotFacet">4.6</a>).</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="walkthrough.html#cb35-1" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
+<span id="cb35-2"><a href="walkthrough.html#cb35-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb35-3"><a href="walkthrough.html#cb35-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color =</span> day_night), <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">2</span></span>
+<span id="cb35-4"><a href="walkthrough.html#cb35-4" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb35-5"><a href="walkthrough.html#cb35-5" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(</span>
+<span id="cb35-6"><a href="walkthrough.html#cb35-6" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group =</span> day_night), <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span></span>
+<span id="cb35-7"><a href="walkthrough.html#cb35-7" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb35-8"><a href="walkthrough.html#cb35-8" tabindex="-1"></a>  <span class="do">## small multiples</span></span>
+<span id="cb35-9"><a href="walkthrough.html#cb35-9" tabindex="-1"></a>  <span class="fu">facet_grid</span>(</span>
+<span id="cb35-10"><a href="walkthrough.html#cb35-10" tabindex="-1"></a>    <span class="do">## time of the day (rows) vs year (columns)</span></span>
+<span id="cb35-11"><a href="walkthrough.html#cb35-11" tabindex="-1"></a>    day_night <span class="sc">~</span> year</span>
+<span id="cb35-12"><a href="walkthrough.html#cb35-12" tabindex="-1"></a>  )</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:04ggplotFacet"></span>
 <img src="bookdown_files/figure-html/04ggplotFacet-1.png" alt="With the `facet` functions, a visualization can quickly be split into small multiples." width="864" />
 <p class="caption">
-FIGURE 4.5: With the <code>facet</code> functions, a visualization can quickly be split into small multiples.
+FIGURE 4.6: With the <code>facet</code> functions, a visualization can quickly be split into small multiples.
 </p>
 </div>
 <p>Consistency across axes is considered good practice as varying axis ranges are harder to compare and the potential of misleading viewers increases in case the differences keep unnoticed—or even worse are not noticeable. The implementation of facet in <strong>ggplot2</strong> ensures consistency across all small multiples by default, as illustrated by the empty space in the lower row as there are no values above ~21,000 reported rents during night.</p>
-<p>The <code>facet</code> functionality also comes with the option to overwrite the default behavior by “freeing” the positional scales. Furthermore, one can ensure equal axis spacing by freeing the space as well (Fig. <a href="walkthrough.html#fig:04ggplotFacetGrid">4.6</a>). This setting allows to efficiently use the available space while ensuring comparability across plots and decreasing the potential of misleading the viewer. The differences between the two ways to create small multiples, namely <code>facet_grid()</code> and <code>facet_wrap()</code>, as well as ways to adjust and annotate facets are explained in Chapter XYZ.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="walkthrough.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
-<span id="cb35-2"><a href="walkthrough.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb35-3"><a href="walkthrough.html#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color =</span> day_night), <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">2</span></span>
-<span id="cb35-4"><a href="walkthrough.html#cb35-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb35-5"><a href="walkthrough.html#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(</span>
-<span id="cb35-6"><a href="walkthrough.html#cb35-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group =</span> day_night), <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span></span>
-<span id="cb35-7"><a href="walkthrough.html#cb35-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb35-8"><a href="walkthrough.html#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(</span>
-<span id="cb35-9"><a href="walkthrough.html#cb35-9" aria-hidden="true" tabindex="-1"></a>    <span class="do">## free y axis range + scale heights respectively</span></span>
-<span id="cb35-10"><a href="walkthrough.html#cb35-10" aria-hidden="true" tabindex="-1"></a>    day_night <span class="sc">~</span> year, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="at">space =</span> <span class="st">&quot;free_y&quot;</span></span>
-<span id="cb35-11"><a href="walkthrough.html#cb35-11" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p>The <code>facet</code> functionality also comes with the option to overwrite the default behavior by “freeing” the positional scales. Furthermore, one can ensure equal axis spacing by freeing the space as well (Fig. <a href="walkthrough.html#fig:04ggplotFacetGrid">4.7</a>). This setting allows to efficiently use the available space while ensuring comparability across plots and decreasing the potential of misleading the viewer. The differences between the two ways to create small multiples, namely <code>facet_grid()</code> and <code>facet_wrap()</code>, as well as ways to adjust and annotate facets are explained in Chapter XYZ.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="walkthrough.html#cb36-1" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
+<span id="cb36-2"><a href="walkthrough.html#cb36-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb36-3"><a href="walkthrough.html#cb36-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color =</span> day_night), <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">2</span></span>
+<span id="cb36-4"><a href="walkthrough.html#cb36-4" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb36-5"><a href="walkthrough.html#cb36-5" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(</span>
+<span id="cb36-6"><a href="walkthrough.html#cb36-6" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group =</span> day_night), <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span></span>
+<span id="cb36-7"><a href="walkthrough.html#cb36-7" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb36-8"><a href="walkthrough.html#cb36-8" tabindex="-1"></a>  <span class="fu">facet_grid</span>(</span>
+<span id="cb36-9"><a href="walkthrough.html#cb36-9" tabindex="-1"></a>    day_night <span class="sc">~</span> year, </span>
+<span id="cb36-10"><a href="walkthrough.html#cb36-10" tabindex="-1"></a>    <span class="do">## free y axis range</span></span>
+<span id="cb36-11"><a href="walkthrough.html#cb36-11" tabindex="-1"></a>    <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>, </span>
+<span id="cb36-12"><a href="walkthrough.html#cb36-12" tabindex="-1"></a>    <span class="do">## scale heights proportionally</span></span>
+<span id="cb36-13"><a href="walkthrough.html#cb36-13" tabindex="-1"></a>    <span class="at">space =</span> <span class="st">&quot;free_y&quot;</span></span>
+<span id="cb36-14"><a href="walkthrough.html#cb36-14" tabindex="-1"></a>  )</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:04ggplotFacetGrid"></span>
-<img src="bookdown_files/figure-html/04ggplotFacetGrid-1.png" alt="{ggplot2} even allows to free the axis range—while ensuring equal axis spacing." width="864" />
+<img src="bookdown_files/figure-html/04ggplotFacetGrid-1.png" alt="ggplot2 even allows to free the axis range—while ensuring equal axis spacing." width="864" />
 <p class="caption">
-FIGURE 4.6: {ggplot2} even allows to free the axis range—while ensuring equal axis spacing.
+FIGURE 4.7: ggplot2 even allows to free the axis range—while ensuring equal axis spacing.
 </p>
 </div>
 </div>
 <div id="axis-scaling" class="section level2 hasAnchor" number="4.7">
 <h2><span class="header-section-number">4.7</span> Change the Axis Scaling<a href="walkthrough.html#axis-scaling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>For every aesthetic, <strong>ggplot2</strong> applies so-called <em>scales</em> that translate between variable ranges (data) and property ranges (aesthetic). For the positional axes, a set of <code>scale_x_*()</code> and <code>scale_y_*()</code> controls their behavior. The <code>breaks</code> argument defines the placement of the axes ticks while the <code>labels</code> argument controls the labels next to those ticks. The labels can be either overwritten by a vector of the same length as the breaks (as for x in our example) or a function that returns a vector based on the breaks (as for y in our example). There are many more arguments such as <code>expand</code> to control the padding towards the ends of the respective axis or <code>trans</code> to transform the scale. You can read more about how to control <code>scales</code> in Chapter XYZ and about label adjustment and styling in Chapter XYZ.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="walkthrough.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
-<span id="cb36-2"><a href="walkthrough.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb36-3"><a href="walkthrough.html#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color =</span> season), <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">2</span></span>
-<span id="cb36-4"><a href="walkthrough.html#cb36-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb36-5"><a href="walkthrough.html#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(</span>
-<span id="cb36-6"><a href="walkthrough.html#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group =</span> day_night), <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span></span>
-<span id="cb36-7"><a href="walkthrough.html#cb36-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb36-8"><a href="walkthrough.html#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(</span>
-<span id="cb36-9"><a href="walkthrough.html#cb36-9" aria-hidden="true" tabindex="-1"></a>    day_night <span class="sc">~</span> year, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="at">space =</span> <span class="st">&quot;free_y&quot;</span></span>
-<span id="cb36-10"><a href="walkthrough.html#cb36-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb36-11"><a href="walkthrough.html#cb36-11" aria-hidden="true" tabindex="-1"></a>  <span class="do">## x axis: add °C symbol + 5°C spacing</span></span>
-<span id="cb36-12"><a href="walkthrough.html#cb36-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb36-13"><a href="walkthrough.html#cb36-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span><span class="sc">*</span><span class="dv">5</span>, <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">paste0</span>(x, <span class="st">&quot;°C&quot;</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="at">mult =</span> <span class="dv">0</span>, <span class="at">add =</span> <span class="dv">1</span>)</span>
-<span id="cb36-14"><a href="walkthrough.html#cb36-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb36-15"><a href="walkthrough.html#cb36-15" aria-hidden="true" tabindex="-1"></a>  <span class="do">## y axis: add a thousand separator + consistent spacing across rows</span></span>
-<span id="cb36-16"><a href="walkthrough.html#cb36-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
-<span id="cb36-17"><a href="walkthrough.html#cb36-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span><span class="sc">*</span><span class="dv">10000</span>, <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_comma</span>(), <span class="at">expand =</span> <span class="fu">c</span>(<span class="at">mult =</span> .<span class="dv">1</span>, <span class="at">add =</span> <span class="dv">0</span>)</span>
-<span id="cb36-18"><a href="walkthrough.html#cb36-18" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p>For every aesthetic, <strong>ggplot2</strong> applies so-called <em>scales</em> that translate between variable ranges (data) and property ranges (aesthetic). For the positional axes, a set of <code>scale_x_*()</code> and <code>scale_y_*()</code> controls their behavior (Fig. <a href="walkthrough.html#fig:04ggplotLabelsAxes">4.8</a>). The <code>breaks</code> argument defines the placement of the axes ticks while the <code>labels</code> argument controls the labels next to those ticks. The labels can be either overwritten by a vector of the same length as the breaks (as for x in our example) or a function that returns a vector based on the breaks (as for y in our example). There are many more arguments such as <code>expand</code> to control the padding towards the ends of the respective axis or <code>trans</code> to transform the scale. You can read more about how to control <code>scales</code> in Chapter XYZ and about label adjustment and styling in Chapter XYZ.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="walkthrough.html#cb37-1" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
+<span id="cb37-2"><a href="walkthrough.html#cb37-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb37-3"><a href="walkthrough.html#cb37-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color =</span> season), <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">2</span></span>
+<span id="cb37-4"><a href="walkthrough.html#cb37-4" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb37-5"><a href="walkthrough.html#cb37-5" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(</span>
+<span id="cb37-6"><a href="walkthrough.html#cb37-6" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group =</span> day_night), <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span></span>
+<span id="cb37-7"><a href="walkthrough.html#cb37-7" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb37-8"><a href="walkthrough.html#cb37-8" tabindex="-1"></a>  <span class="fu">facet_grid</span>(</span>
+<span id="cb37-9"><a href="walkthrough.html#cb37-9" tabindex="-1"></a>    day_night <span class="sc">~</span> year, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="at">space =</span> <span class="st">&quot;free_y&quot;</span></span>
+<span id="cb37-10"><a href="walkthrough.html#cb37-10" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb37-11"><a href="walkthrough.html#cb37-11" tabindex="-1"></a>  <span class="do">## x axis</span></span>
+<span id="cb37-12"><a href="walkthrough.html#cb37-12" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb37-13"><a href="walkthrough.html#cb37-13" tabindex="-1"></a>    <span class="do">## add °C symbol</span></span>
+<span id="cb37-14"><a href="walkthrough.html#cb37-14" tabindex="-1"></a>    <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">paste0</span>(x, <span class="st">&quot;°C&quot;</span>), </span>
+<span id="cb37-15"><a href="walkthrough.html#cb37-15" tabindex="-1"></a>    <span class="do">## use 5°C spacing</span></span>
+<span id="cb37-16"><a href="walkthrough.html#cb37-16" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span><span class="sc">*</span><span class="dv">5</span><span class="co">#, </span></span>
+<span id="cb37-17"><a href="walkthrough.html#cb37-17" tabindex="-1"></a>    <span class="do">## adjust axis padding</span></span>
+<span id="cb37-18"><a href="walkthrough.html#cb37-18" tabindex="-1"></a>    <span class="co">#expand = c(mult = 0, add = 1)</span></span>
+<span id="cb37-19"><a href="walkthrough.html#cb37-19" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb37-20"><a href="walkthrough.html#cb37-20" tabindex="-1"></a>  <span class="do">## y axis</span></span>
+<span id="cb37-21"><a href="walkthrough.html#cb37-21" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb37-22"><a href="walkthrough.html#cb37-22" tabindex="-1"></a>    <span class="do">## add a thousand separator</span></span>
+<span id="cb37-23"><a href="walkthrough.html#cb37-23" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_comma</span>(), </span>
+<span id="cb37-24"><a href="walkthrough.html#cb37-24" tabindex="-1"></a>    <span class="do">## use consistent spacing across rows</span></span>
+<span id="cb37-25"><a href="walkthrough.html#cb37-25" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span><span class="sc">*</span><span class="dv">10000</span><span class="co">#, </span></span>
+<span id="cb37-26"><a href="walkthrough.html#cb37-26" tabindex="-1"></a>    <span class="do">## adjust axis padding</span></span>
+<span id="cb37-27"><a href="walkthrough.html#cb37-27" tabindex="-1"></a>    <span class="co">#expand = c(mult = .1, add = 0)</span></span>
+<span id="cb37-28"><a href="walkthrough.html#cb37-28" tabindex="-1"></a>  )</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:04ggplotLabelsAxes"></span>
 <img src="bookdown_files/figure-html/04ggplotLabelsAxes-1.png" alt="To adjust the formatting of axis labels, the respective axis needs to be addressed via the `scale_*()` functions." width="864" />
 <p class="caption">
-FIGURE 4.7: To adjust the formatting of axis labels, the respective axis needs to be addressed via the <code>scale_*()</code> functions.
+FIGURE 4.8: To adjust the formatting of axis labels, the respective axis needs to be addressed via the <code>scale_*()</code> functions.
 </p>
 </div>
 </div>
 <div id="color-scaling" class="section level2 hasAnchor" number="4.8">
 <h2><span class="header-section-number">4.8</span> Use a Custom Color Palette<a href="walkthrough.html#color-scaling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>scales</code> do not only control the behavior of the axes but also all other aesthetics such as <code>color</code>, <code>shape</code> or <code>alpha</code>. In case of categorical colors, <code>scale_color_manual()</code> enables us to overwrite the default color set by passing a vector of colors.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="walkthrough.html#cb37-1" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
-<span id="cb37-2"><a href="walkthrough.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb37-3"><a href="walkthrough.html#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color =</span> season), <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">2</span></span>
-<span id="cb37-4"><a href="walkthrough.html#cb37-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb37-5"><a href="walkthrough.html#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(</span>
-<span id="cb37-6"><a href="walkthrough.html#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group =</span> day_night), <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span></span>
-<span id="cb37-7"><a href="walkthrough.html#cb37-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb37-8"><a href="walkthrough.html#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(</span>
-<span id="cb37-9"><a href="walkthrough.html#cb37-9" aria-hidden="true" tabindex="-1"></a>    day_night <span class="sc">~</span> year, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="at">space =</span> <span class="st">&quot;free_y&quot;</span></span>
-<span id="cb37-10"><a href="walkthrough.html#cb37-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb37-11"><a href="walkthrough.html#cb37-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb37-12"><a href="walkthrough.html#cb37-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span><span class="sc">*</span><span class="dv">5</span>, <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">paste0</span>(x, <span class="st">&quot;°C&quot;</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="at">mult =</span> <span class="dv">0</span>, <span class="at">add =</span> <span class="dv">1</span>)</span>
-<span id="cb37-13"><a href="walkthrough.html#cb37-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb37-14"><a href="walkthrough.html#cb37-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
-<span id="cb37-15"><a href="walkthrough.html#cb37-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span><span class="sc">*</span><span class="dv">10000</span>, <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_comma</span>(), <span class="at">expand =</span> <span class="fu">c</span>(<span class="at">mult =</span> .<span class="dv">1</span>, <span class="at">add =</span> <span class="dv">0</span>)</span>
-<span id="cb37-16"><a href="walkthrough.html#cb37-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb37-17"><a href="walkthrough.html#cb37-17" aria-hidden="true" tabindex="-1"></a>  <span class="do">## use a custom color palette for season colors</span></span>
-<span id="cb37-18"><a href="walkthrough.html#cb37-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
-<span id="cb37-19"><a href="walkthrough.html#cb37-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;#3c89d9&quot;</span>, <span class="st">&quot;#1ec99b&quot;</span>, <span class="st">&quot;#F7B01B&quot;</span>, <span class="st">&quot;#a26e7c&quot;</span>)</span>
-<span id="cb37-20"><a href="walkthrough.html#cb37-20" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb37-21"><a href="walkthrough.html#cb37-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-22"><a href="walkthrough.html#cb37-22" aria-hidden="true" tabindex="-1"></a>g1</span></code></pre></div>
+<p>The colors will be applied in order, i.e. the levels of the factor or alphabetical in case of character variables. To ensure correct mapping, one can also use a named vector.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="walkthrough.html#cb38-1" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
+<span id="cb38-2"><a href="walkthrough.html#cb38-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb38-3"><a href="walkthrough.html#cb38-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color =</span> season), <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">2</span></span>
+<span id="cb38-4"><a href="walkthrough.html#cb38-4" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb38-5"><a href="walkthrough.html#cb38-5" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(</span>
+<span id="cb38-6"><a href="walkthrough.html#cb38-6" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group =</span> day_night), <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span></span>
+<span id="cb38-7"><a href="walkthrough.html#cb38-7" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb38-8"><a href="walkthrough.html#cb38-8" tabindex="-1"></a>  <span class="fu">facet_grid</span>(</span>
+<span id="cb38-9"><a href="walkthrough.html#cb38-9" tabindex="-1"></a>    day_night <span class="sc">~</span> year, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="at">space =</span> <span class="st">&quot;free_y&quot;</span></span>
+<span id="cb38-10"><a href="walkthrough.html#cb38-10" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb38-11"><a href="walkthrough.html#cb38-11" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb38-12"><a href="walkthrough.html#cb38-12" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span><span class="sc">*</span><span class="dv">5</span>, <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">paste0</span>(x, <span class="st">&quot;°C&quot;</span>)<span class="co">#, expand = c(mult = 0, add = 1)</span></span>
+<span id="cb38-13"><a href="walkthrough.html#cb38-13" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb38-14"><a href="walkthrough.html#cb38-14" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb38-15"><a href="walkthrough.html#cb38-15" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span><span class="sc">*</span><span class="dv">10000</span>, <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_comma</span>()<span class="co">#, expand = c(mult = .1, add = 0)</span></span>
+<span id="cb38-16"><a href="walkthrough.html#cb38-16" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb38-17"><a href="walkthrough.html#cb38-17" tabindex="-1"></a>  <span class="do">## use a custom color palette for season colors</span></span>
+<span id="cb38-18"><a href="walkthrough.html#cb38-18" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
+<span id="cb38-19"><a href="walkthrough.html#cb38-19" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;#3c89d9&quot;</span>, <span class="st">&quot;#1ec99b&quot;</span>, <span class="st">&quot;#F7B01B&quot;</span>, <span class="st">&quot;#a26e7c&quot;</span>)</span>
+<span id="cb38-20"><a href="walkthrough.html#cb38-20" tabindex="-1"></a>  )</span>
+<span id="cb38-21"><a href="walkthrough.html#cb38-21" tabindex="-1"></a></span>
+<span id="cb38-22"><a href="walkthrough.html#cb38-22" tabindex="-1"></a>g1</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:04ggplotColors"></span>
 <img src="bookdown_files/figure-html/04ggplotColors-1.png" alt="Categorical colors can be customized with the function `scale_color_manual()`." width="864" />
 <p class="caption">
-FIGURE 4.8: Categorical colors can be customized with the function <code>scale_color_manual()</code>.
+FIGURE 4.9: Categorical colors can be customized with the function <code>scale_color_manual()</code>.
 </p>
 </div>
-<p>The colors will be applied in order, i.e. the levels of the factor or alphabetical in case of character variables. To ensure correct mapping, one can also use a named vector.</p>
 <p>You will learn more about the different color and fill scales and how to manipulate colors in Chapter XYZ. The chapter also features an example how to create a corporate color or fill scale to ensure consistent color use.</p>
 <p>Furthermore, we are storing the current plot in an object named <code>g1</code>. This <code>ggplot</code> object can be extended afterwards. Storing intermediate ggplot outputs is especially helpful if the code becomes rather long and in case you have multiple variants of the same chart, for example when building up a chart stepwise. Another common use case is the creation of graphics in multiple languages.</p>
 </div>
 <div id="label-adjustment" class="section level2 hasAnchor" number="4.9">
 <h2><span class="header-section-number">4.9</span> Adjust Labels and Titles<a href="walkthrough.html#label-adjustment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>For now, we have ignored that <strong>ggplot2</strong> uses the variable names as specified in our <code>bikes</code> object for data-related labels. Resist the temptation to change the variable names in your original data set! We can easily overwrite those by referring to the respective aesthetic (<code>x</code>, <code>y</code>, and <code>color</code>) in the <code>labs()</code> function which we add to our plot. Here, we can also specify a title, subtitle, caption, and tag (subtitle and tag are not shown in the following example; Fig. <a href="walkthrough.html#fig:04ggplotLabels">4.9</a>).</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="walkthrough.html#cb38-1" aria-hidden="true" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> g1 <span class="sc">+</span></span>
-<span id="cb38-2"><a href="walkthrough.html#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb38-3"><a href="walkthrough.html#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="do">## overwrite axis and legend titles</span></span>
-<span id="cb38-4"><a href="walkthrough.html#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Average Feels-Like Temperature&quot;</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">color =</span> <span class="cn">NULL</span>,</span>
-<span id="cb38-5"><a href="walkthrough.html#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="do">## add plot title and caption</span></span>
-<span id="cb38-6"><a href="walkthrough.html#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Trends of reported bike rents versus feels-like temperature in London.&quot;</span>,</span>
-<span id="cb38-7"><a href="walkthrough.html#cb38-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Data: TfL (Transport for London), Jan 2015–Dec 2016&quot;</span></span>
-<span id="cb38-8"><a href="walkthrough.html#cb38-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb38-9"><a href="walkthrough.html#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-10"><a href="walkthrough.html#cb38-10" aria-hidden="true" tabindex="-1"></a>g2</span></code></pre></div>
+<p>For now, we have ignored that <strong>ggplot2</strong> uses the variable names as specified in our <code>bikes</code> object for data-related labels. Resist the temptation to change the variable names in your original data set! We can easily overwrite those by referring to the respective aesthetic (<code>x</code>, <code>y</code>, and <code>color</code>) in the <code>labs()</code> function which we add to our plot. Here, we can also specify a title, subtitle, caption, and tag (subtitle and tag are not shown in the following example; Fig. <a href="walkthrough.html#fig:04ggplotLabels">4.10</a>).</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="walkthrough.html#cb39-1" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> g1 <span class="sc">+</span></span>
+<span id="cb39-2"><a href="walkthrough.html#cb39-2" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb39-3"><a href="walkthrough.html#cb39-3" tabindex="-1"></a>    <span class="do">## overwrite axis and legend titles</span></span>
+<span id="cb39-4"><a href="walkthrough.html#cb39-4" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Average Feels-Like Temperature&quot;</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">color =</span> <span class="cn">NULL</span>,</span>
+<span id="cb39-5"><a href="walkthrough.html#cb39-5" tabindex="-1"></a>    <span class="do">## add plot title and caption</span></span>
+<span id="cb39-6"><a href="walkthrough.html#cb39-6" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Trends of reported bike rents versus feels-like temperature in London&quot;</span>,</span>
+<span id="cb39-7"><a href="walkthrough.html#cb39-7" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Data: TfL (Transport for London), Jan 2015–Dec 2016&quot;</span></span>
+<span id="cb39-8"><a href="walkthrough.html#cb39-8" tabindex="-1"></a>  )</span>
+<span id="cb39-9"><a href="walkthrough.html#cb39-9" tabindex="-1"></a></span>
+<span id="cb39-10"><a href="walkthrough.html#cb39-10" tabindex="-1"></a>g2</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:04ggplotLabels"></span>
 <img src="bookdown_files/figure-html/04ggplotLabels-1.png" alt="We can overwrite the default labels with the `labs()` which also allows to add a title, subtitle, caption, and tag to the graphic." width="864" />
 <p class="caption">
-FIGURE 4.9: We can overwrite the default labels with the <code>labs()</code> which also allows to add a title, subtitle, caption, and tag to the graphic.
+FIGURE 4.10: We can overwrite the default labels with the <code>labs()</code> which also allows to add a title, subtitle, caption, and tag to the graphic.
 </p>
 </div>
 <p>Let’s also overwrite the cryptic numeric encoding of the seasons. Similar to the positional scales, we can pass a vector or function to the <code>labels</code> argument in the <code>scale_color_*()</code> component:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="walkthrough.html#cb39-1" aria-hidden="true" tabindex="-1"></a>g3 <span class="ot">&lt;-</span> g2 <span class="sc">+</span></span>
-<span id="cb39-2"><a href="walkthrough.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
-<span id="cb39-3"><a href="walkthrough.html#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;#3c89d9&quot;</span>, <span class="st">&quot;#1ec99b&quot;</span>, <span class="st">&quot;#F7B01B&quot;</span>, <span class="st">&quot;#a26e7c&quot;</span>),</span>
-<span id="cb39-4"><a href="walkthrough.html#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Winter&quot;</span>, <span class="st">&quot;Spring&quot;</span>, <span class="st">&quot;Summer&quot;</span>, <span class="st">&quot;Autumn&quot;</span>)</span>
-<span id="cb39-5"><a href="walkthrough.html#cb39-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb39-6"><a href="walkthrough.html#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-7"><a href="walkthrough.html#cb39-7" aria-hidden="true" tabindex="-1"></a>g3</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="walkthrough.html#cb40-1" tabindex="-1"></a>g3 <span class="ot">&lt;-</span> g2 <span class="sc">+</span></span>
+<span id="cb40-2"><a href="walkthrough.html#cb40-2" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
+<span id="cb40-3"><a href="walkthrough.html#cb40-3" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;#3c89d9&quot;</span>, <span class="st">&quot;#1ec99b&quot;</span>, <span class="st">&quot;#F7B01B&quot;</span>, <span class="st">&quot;#a26e7c&quot;</span>),</span>
+<span id="cb40-4"><a href="walkthrough.html#cb40-4" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Winter&quot;</span>, <span class="st">&quot;Spring&quot;</span>, <span class="st">&quot;Summer&quot;</span>, <span class="st">&quot;Autumn&quot;</span>)</span>
+<span id="cb40-5"><a href="walkthrough.html#cb40-5" tabindex="-1"></a>  )</span>
+<span id="cb40-6"><a href="walkthrough.html#cb40-6" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="walkthrough.html#cb40-7" tabindex="-1"></a>g3</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:04legendLabels"></span>
 <img src="bookdown_files/figure-html/04legendLabels-1.png" alt="We can overwrite the legend text with a set of custom labels by passing a character vector to the `labels` argument of the `scale_color_*()` function." width="864" />
 <p class="caption">
-FIGURE 4.10: We can overwrite the legend text with a set of custom labels by passing a character vector to the <code>labels</code> argument of the <code>scale_color_*()</code> function.
+FIGURE 4.11: We can overwrite the legend text with a set of custom labels by passing a character vector to the <code>labels</code> argument of the <code>scale_color_*()</code> function.
 </p>
 </div>
 <p>Note that the code is returning a message informing you that the present color scale has been replaced. As you can only apply one scale per aesthetic, we also have to pass the color vector again to use the custom colors from before.</p>
@@ -527,48 +551,58 @@ FIGURE 4.10: We can overwrite the legend text with a set of custom labels by pas
 <div id="complete-themes" class="section level2 hasAnchor" number="4.10">
 <h2><span class="header-section-number">4.10</span> Apply a Complete Theme<a href="walkthrough.html#complete-themes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>ggplot2</strong> comes with a set of so-called <em>complete themes</em>. We can add one of these to overwrite the default <code>theme_grey()</code> by one of the others (run <code>?theme_grey</code> for a full list of available complete themes).</p>
-<p>When adding a theme to a ggplot, we can already overwrite the <code>base_size</code> of the theme elements, which translates to the size of text labels and line widths. Furthermore, we can set a non-default typeface by supplying a locally installed typeface in the <code>base_family</code> argument.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="walkthrough.html#cb40-1" aria-hidden="true" tabindex="-1"></a>g3 <span class="sc">+</span></span>
-<span id="cb40-2"><a href="walkthrough.html#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="do">## add theme with a custom font + larger element sizes</span></span>
-<span id="cb40-3"><a href="walkthrough.html#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>(</span>
-<span id="cb40-4"><a href="walkthrough.html#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">base_size =</span> <span class="dv">12</span>, <span class="at">base_family =</span> <span class="st">&quot;Spline Sans&quot;</span></span>
-<span id="cb40-5"><a href="walkthrough.html#cb40-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p>When adding a theme to a ggplot, we can already overwrite the <code>base_size</code> of the theme elements, which translates to the size of text labels and line widths. Furthermore, we can set a non-default typeface by supplying a locally installed typeface in the <code>base_family</code> argument (Fig. <a href="walkthrough.html#fig:04ggplotThemeComplete">4.12</a>).</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="walkthrough.html#cb41-1" tabindex="-1"></a>g3 <span class="sc">+</span></span>
+<span id="cb41-2"><a href="walkthrough.html#cb41-2" tabindex="-1"></a>  <span class="do">## add theme with a custom font + larger element sizes</span></span>
+<span id="cb41-3"><a href="walkthrough.html#cb41-3" tabindex="-1"></a>  <span class="fu">theme_light</span>(</span>
+<span id="cb41-4"><a href="walkthrough.html#cb41-4" tabindex="-1"></a>    <span class="at">base_size =</span> <span class="dv">15</span>, <span class="at">base_family =</span> <span class="st">&quot;Spline Sans&quot;</span></span>
+<span id="cb41-5"><a href="walkthrough.html#cb41-5" tabindex="-1"></a>  )</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:04ggplotThemeComplete"></span>
 <img src="bookdown_files/figure-html/04ggplotThemeComplete-1.png" alt="The graphic now comes with a new look and a non-default font used for all text labels." width="864" />
 <p class="caption">
-FIGURE 4.11: The graphic now comes with a new look and a non-default font used for all text labels.
+FIGURE 4.12: The graphic now comes with a new look and a non-default font used for all text labels.
 </p>
 </div>
 </div>
 <div id="custom-theming" class="section level2 hasAnchor" number="4.11">
 <h2><span class="header-section-number">4.11</span> Customize the Theme<a href="walkthrough.html#custom-theming" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The complete themes follow a set of rules that overwrite the choices made for the default <code>theme_grey()</code>. By using a <code>theme()</code> call <u>after</u> adding a complete theme, one can adjust the appearance of single elements (e.g. <code>plot.title</code> or <code>panel.grid.major.x</code>) as well as set some predefined options such as the positions of titles, captions and legends (<code>plot.title.position</code>, <code>plot.caption.position</code> and <code>legend.position</code>).</p>
-<p>In general, theme elements can be of class text (e.g. <code>plot.title</code>), line (e.g. <code>panel.grid.major.x</code>), or rectangle (e.g. <code>panel.background</code>). In addition, we can use <code>element_blank()</code> to remove an element entirely as set for <code>panel.grid.minor</code> in our example.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="walkthrough.html#cb41-1" aria-hidden="true" tabindex="-1"></a>g3 <span class="sc">+</span></span>
-<span id="cb41-2"><a href="walkthrough.html#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>(</span>
-<span id="cb41-3"><a href="walkthrough.html#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">base_size =</span> <span class="dv">12</span>, <span class="at">base_family =</span> <span class="st">&quot;Spline Sans&quot;</span></span>
-<span id="cb41-4"><a href="walkthrough.html#cb41-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb41-5"><a href="walkthrough.html#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="do">## theme adjustments</span></span>
-<span id="cb41-6"><a href="walkthrough.html#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb41-7"><a href="walkthrough.html#cb41-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">&quot;plot&quot;</span>, <span class="do">## left-align title</span></span>
-<span id="cb41-8"><a href="walkthrough.html#cb41-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.caption.position =</span> <span class="st">&quot;plot&quot;</span>, <span class="do">## right-align caption</span></span>
-<span id="cb41-9"><a href="walkthrough.html#cb41-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">size =</span> <span class="fu">rel</span>(<span class="fl">1.3</span>)), <span class="do">## larger bold title</span></span>
-<span id="cb41-10"><a href="walkthrough.html#cb41-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Spline Sans Mono&quot;</span>), <span class="do">## monospaced font for axes</span></span>
-<span id="cb41-11"><a href="walkthrough.html#cb41-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>( <span class="do">## left-aligned, grey x axis label</span></span>
-<span id="cb41-12"><a href="walkthrough.html#cb41-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">&quot;grey30&quot;</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">12</span>)</span>
-<span id="cb41-13"><a href="walkthrough.html#cb41-13" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb41-14"><a href="walkthrough.html#cb41-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.text =</span> <span class="fu">element_text</span>( <span class="do">## larger bold facet labels</span></span>
-<span id="cb41-15"><a href="walkthrough.html#cb41-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">size =</span> <span class="fu">rel</span>(<span class="fl">1.15</span>)</span>
-<span id="cb41-16"><a href="walkthrough.html#cb41-16" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb41-17"><a href="walkthrough.html#cb41-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(), <span class="do">## no vertical grid lines</span></span>
-<span id="cb41-18"><a href="walkthrough.html#cb41-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(), <span class="do">## no minor grid lines</span></span>
-<span id="cb41-19"><a href="walkthrough.html#cb41-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>, <span class="do">## place legend above plot</span></span>
-<span id="cb41-20"><a href="walkthrough.html#cb41-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="fu">rel</span>(<span class="dv">1</span>)) <span class="do">## larger legend labels</span></span>
-<span id="cb41-21"><a href="walkthrough.html#cb41-21" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p>The complete themes follow a set of rules that overwrite the choices made for the default <code>theme_grey()</code>. By using a <code>theme()</code> call <u>after</u> adding a complete theme, one can adjust the appearance of single elements (e.g. <code>plot.title</code> or <code>panel.grid.major.x</code>) as well as set some predefined options such as the positions of titles, captions, and legends (<code>plot.title.position</code>, <code>plot.caption.position</code> and <code>legend.position</code>).</p>
+<p>In general, theme elements can be of class text (e.g. <code>plot.title</code>), line (e.g. <code>panel.grid.major.x</code>), or rectangle (e.g. <code>panel.background</code>). In addition, we can use <code>element_blank()</code> to remove an element entirely as set for <code>panel.grid.minor</code> in our example (Fig. <a href="walkthrough.html#fig:04ggplotThemeAdjustments">4.13</a>). Other elements expect the input to be presets (e.g. <code>"plot"</code> or <code>"panel"</code> in <code>plot.title.position</code>), unit objects (e.g. <code>panel.spacing</code>), or margin specifications (e.g. <code>plot.margin</code>).</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="walkthrough.html#cb42-1" tabindex="-1"></a>g3 <span class="sc">+</span></span>
+<span id="cb42-2"><a href="walkthrough.html#cb42-2" tabindex="-1"></a>  <span class="fu">theme_light</span>(</span>
+<span id="cb42-3"><a href="walkthrough.html#cb42-3" tabindex="-1"></a>    <span class="at">base_size =</span> <span class="dv">15</span>, <span class="at">base_family =</span> <span class="st">&quot;Spline Sans&quot;</span></span>
+<span id="cb42-4"><a href="walkthrough.html#cb42-4" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb42-5"><a href="walkthrough.html#cb42-5" tabindex="-1"></a>  <span class="do">## theme adjustments</span></span>
+<span id="cb42-6"><a href="walkthrough.html#cb42-6" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb42-7"><a href="walkthrough.html#cb42-7" tabindex="-1"></a>    <span class="do">## left-align title + right-align caption</span></span>
+<span id="cb42-8"><a href="walkthrough.html#cb42-8" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">&quot;plot&quot;</span>, </span>
+<span id="cb42-9"><a href="walkthrough.html#cb42-9" tabindex="-1"></a>    <span class="at">plot.caption.position =</span> <span class="st">&quot;plot&quot;</span>, </span>
+<span id="cb42-10"><a href="walkthrough.html#cb42-10" tabindex="-1"></a>    <span class="do">## larger, bold title</span></span>
+<span id="cb42-11"><a href="walkthrough.html#cb42-11" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">size =</span> <span class="fu">rel</span>(<span class="fl">1.3</span>)), </span>
+<span id="cb42-12"><a href="walkthrough.html#cb42-12" tabindex="-1"></a>    <span class="do">## monospaced font for axes</span></span>
+<span id="cb42-13"><a href="walkthrough.html#cb42-13" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;Spline Sans Mono&quot;</span>), </span>
+<span id="cb42-14"><a href="walkthrough.html#cb42-14" tabindex="-1"></a>    <span class="do">## left-aligned, grey x axis label</span></span>
+<span id="cb42-15"><a href="walkthrough.html#cb42-15" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>( </span>
+<span id="cb42-16"><a href="walkthrough.html#cb42-16" tabindex="-1"></a>      <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">&quot;grey20&quot;</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">12</span>)</span>
+<span id="cb42-17"><a href="walkthrough.html#cb42-17" tabindex="-1"></a>    ),</span>
+<span id="cb42-18"><a href="walkthrough.html#cb42-18" tabindex="-1"></a>    <span class="do">## larger, bold facet labels</span></span>
+<span id="cb42-19"><a href="walkthrough.html#cb42-19" tabindex="-1"></a>    <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">size =</span> <span class="fu">rel</span>(<span class="fl">1.15</span>)),</span>
+<span id="cb42-20"><a href="walkthrough.html#cb42-20" tabindex="-1"></a>    <span class="do">## no vertical major and no minor grid lines</span></span>
+<span id="cb42-21"><a href="walkthrough.html#cb42-21" tabindex="-1"></a>    <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb42-22"><a href="walkthrough.html#cb42-22" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb42-23"><a href="walkthrough.html#cb42-23" tabindex="-1"></a>    <span class="do">## increase white space between panels</span></span>
+<span id="cb42-24"><a href="walkthrough.html#cb42-24" tabindex="-1"></a>    <span class="at">panel.spacing =</span> <span class="fu">unit</span>(<span class="dv">12</span>, <span class="st">&quot;pt&quot;</span>),</span>
+<span id="cb42-25"><a href="walkthrough.html#cb42-25" tabindex="-1"></a>    <span class="do">## place legend above plot</span></span>
+<span id="cb42-26"><a href="walkthrough.html#cb42-26" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>, </span>
+<span id="cb42-27"><a href="walkthrough.html#cb42-27" tabindex="-1"></a>    <span class="do">## larger legend labels</span></span>
+<span id="cb42-28"><a href="walkthrough.html#cb42-28" tabindex="-1"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="fu">rel</span>(<span class="dv">1</span>)), </span>
+<span id="cb42-29"><a href="walkthrough.html#cb42-29" tabindex="-1"></a>    <span class="do">## adjust margin</span></span>
+<span id="cb42-30"><a href="walkthrough.html#cb42-30" tabindex="-1"></a>    <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">2</span>, <span class="at">r =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">0</span>, <span class="at">l =</span> <span class="dv">0</span>)</span>
+<span id="cb42-31"><a href="walkthrough.html#cb42-31" tabindex="-1"></a>  )</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:04ggplotThemeAdjustments"></span>
 <img src="bookdown_files/figure-html/04ggplotThemeAdjustments-1.png" alt="After applying one of the complete themes, the overall appearance can be further modified via the `theme()` function." width="864" />
 <p class="caption">
-FIGURE 4.12: After applying one of the complete themes, the overall appearance can be further modified via the <code>theme()</code> function.
+FIGURE 4.13: After applying one of the complete themes, the overall appearance can be further modified via the <code>theme()</code> function.
 </p>
 </div>
 <p>The book covers themes in full detail in Chapter XYZ. Here you learn how to leverage complete themes, which other complete themes are provided by extension packages, and how to create your own custom, corporate theme to apply a cohesive and easily reproducible style to all of your graphics.</p>

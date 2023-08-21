@@ -93,8 +93,8 @@ ggplot(bikes, aes(x = temp, y = humidity)) +
 Some predefined layers just have subtle differences to accommodate different use cases. For example, you can connect points either in the order of the x variable as a *line graph* or *time series chart* (`geom_line()`) using the shortest path or as a *stairstep plot* (`geom_step()`). Alternatively, you can connect the observations in order they appear in the data object (`geom_path()`) which allows to draw *connected scatter plots* to visualize trajectories.
 
 ```{r, eval=FALSE}
-bikes_jul15 <- bikes %>% 
-  filter(year == 2015, month == 7, day_night == "day") %>% 
+bikes_jul15 <- bikes |> 
+  filter(year == 2015, month == 7, day_night == "day") |> 
   arrange(weather_type)
 
 ggplot(bikes_jul15, aes(x = date, y = temp, color = date)) +
@@ -108,9 +108,9 @@ ggplot(bikes_jul15, aes(x = date, y = temp, color = date)) +
 ```
 
 ```{r 07layerPredefinedDefaultVariants, echo=FALSE, purl=FALSE, fig.cap='The three plots illustrate the different predefined geometrical layers that can be used to draw lines between observations. The colored dots illustrate the order in which the observations have been connected. While `geom_line()` (left) and `geom_step()` (middle) connect the points in order of the x axis, `geom_path()` (right) respects the order of the data and thus allows to move "back" on the x axis.'}
-bikes_07_15 <- bikes %>% 
-  filter(year == 2015, month == 7, day_night == "day") %>% 
-  arrange(weather_type) %>% 
+bikes_07_15 <- bikes |> 
+  filter(year == 2015, month == 7, day_night == "day") |> 
+  arrange(weather_type) |> 
   mutate(id = row_number())
 
 l0 <- ggplot(bikes_07_15, aes(x = date, y = temp)) +
@@ -351,11 +351,11 @@ ggplot(bikes, aes(x = is_weekend)) + geom_bar()
 
 ```{r 07layerPositionalTypeHistogram, echo=FALSE, purl=FALSE, fig.width=9, fig.height=3.7,  fig.cap='A histogram bins a quantitative variable, showing counts of obersvations per group (left). As qualitative data is already grouped, a regular bar chart is used to display counts per category (right).'}
 h1 <- ggplot(bikes, aes(x = temp)) + 
-  geom_histogram(fill = colors["grey"]) +
+  geom_histogram(fill = colors_named["grey"]) +
   theme(panel.grid.major.x = element_blank())
 
 h2 <- ggplot(bikes, aes(x = is_weekend)) + 
-  geom_bar(fill = colors["grey"]) +
+  geom_bar(fill = colors_named["grey"]) +
   theme(panel.grid.major.x = element_blank())
 
 h1 + plot_spacer() + h2 + plot_layout(widths = c(1, .05, .67))
@@ -366,7 +366,7 @@ h1 + plot_spacer() + h2 + plot_layout(widths = c(1, .05, .67))
 Other geometries need more than two positional aesthetics. `geom_linerange()` draws horizontal or vertical lines based on `xmin` and `xmax` or `ymin` and `ymax`, respectively. Let's load some stock data and show the change of opening versus closing price over time:
 
 ```{r 07layerPositionalInputsLinerange}
-coins <- readr::read_rds("./data/crypto_cleaned.rds") %>% 
+coins <- readr::read_rds("./data/crypto_cleaned.rds") |> 
   dplyr::filter(year == 2018, month %in% 5:6, currency == "litecoin")
 
 ggplot(coins, aes(x = date, ymin = open, ymax = close)) +
@@ -390,8 +390,8 @@ The geom `pointrange` (that we have also used in the smoothing example) needs fo
 ```{r}
 library(dplyr)
 bikes_season <- 
-  bikes %>% 
-  group_by(season) %>% 
+  bikes |> 
+  group_by(season) |> 
   summarize(n = mean(count), sd = sd(count))
 
 ggplot(bikes_season, 

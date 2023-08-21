@@ -67,13 +67,13 @@ g + theme_minimal(base_family = "Asap Condensed")
 If you are searching for a specific font, this is my script to return family names that can be used as inputs for text elements in **ggplot2**:
 
 ```{r 05searchFont}
-systemfonts::system_fonts() %>% 
+systemfonts::system_fonts() |> 
   ## filter for a pattern
-  dplyr::filter(stringr::str_detect(name, "Asap")) %>% 
+  dplyr::filter(stringr::str_detect(name, "Asap")) |> 
   ## only keep family column
-  dplyr::pull(family) %>% 
+  dplyr::pull(family) |> 
   ## only keep distinct families and sort them by name
-  unique() %>% 
+  unique() |> 
   sort()
 ```
 

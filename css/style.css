@@ -46,7 +46,8 @@ h1.hasAnchor {
 
 p.caption {
   color: #5A5A5A;
-  margin-top: 10px;
+  padding-top: 5px;
+  padding-bottom: 25px;
 }
 
 p code, pre code {

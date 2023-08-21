@@ -7,22 +7,22 @@ source(here::here("src", "prerequisites.R"))
 [WIP]
 
 ```{r, include=FALSE}
-ggplot(coins, aes(x = date, xend = date, 
-                  y = open, yend = close)) +
-  geom_segment(
-    ## encode segments by trend
-    aes(color = close > open),
-    ## draw arrow heads to indicate direction of change 
-    arrow = arrow(type = "closed",length = unit(.3, "lines"))
-  )
+# ggplot(coins, aes(x = date, xend = date, 
+#                   y = open, yend = close)) +
+#   geom_segment(
+#     ## encode segments by trend
+#     aes(color = close > open),
+#     ## draw arrow heads to indicate direction of change 
+#     arrow = arrow(type = "closed",length = unit(.3, "lines"))
+#   )
 ```
 
 ```{r, echo=FALSE, purl=FALSE, fig.height=4.7, fig.cap='jitter with mean'}
-ggplot(bikes, aes(x = season, y = count, color = day_night)) +
-  geom_point(position = position_jitter(seed = 2, width = .25), alpha = .3, shape = 16, size = 2) +
-  geom_point(stat = "summary", shape = 21, aes(fill = day_night), color = "black", stroke = .6, size = 4) +
-  scale_color_manual(values = col_period, name = NULL) +
-  scale_fill_manual(values = col_period, name = NULL) +
-  theme(panel.grid.major.x = element_blank())
+# ggplot(bikes, aes(x = season, y = count, color = day_night)) +
+#   geom_point(position = position_jitter(seed = 2, width = .25), alpha = .3, shape = 16, size = 2) +
+#   geom_point(stat = "summary", shape = 21, aes(fill = day_night), color = "black", stroke = .6, size = 4) +
+#   scale_color_manual(values = col_period, name = NULL) +
+#   scale_fill_manual(values = col_period, name = NULL) +
+#   theme(panel.grid.major.x = element_blank())
 ```
 

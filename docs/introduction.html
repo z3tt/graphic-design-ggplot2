@@ -23,7 +23,7 @@
 <meta name="author" content="Cédric Scherer" />
 
 
-<meta name="date" content="2023-06-22" />
+<meta name="date" content="2023-08-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -179,7 +179,7 @@ div.csl-indent {
 <li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#coding"><i class="fa fa-check"></i><b>1.2</b> Coding Visualizations</a></li>
 <li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#why"><i class="fa fa-check"></i><b>1.3</b> Why R and <strong>ggplot2</strong></a></li>
 </ul></li>
-<li class="part"><span><b>I General Overiew</b></span></li>
+<li class="part"><span><b>I General Overview</b></span></li>
 <li class="chapter" data-level="2" data-path="grammar.html"><a href="grammar.html"><i class="fa fa-check"></i><b>2</b> The Layered Grammar of Graphics</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="grammar.html"><a href="grammar.html#ggplot"><i class="fa fa-check"></i><b>2.1</b> The ggplot2 Package</a></li>
@@ -197,7 +197,6 @@ div.csl-indent {
 <li class="chapter" data-level="2.4.3" data-path="grammar.html"><a href="grammar.html#facets"><i class="fa fa-check"></i><b>2.4.3</b> Facets</a></li>
 <li class="chapter" data-level="2.4.4" data-path="grammar.html"><a href="grammar.html#themes"><i class="fa fa-check"></i><b>2.4.4</b> Themes</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="grammar.html"><a href="grammar.html#showcase"><i class="fa fa-check"></i><b>2.5</b> Showcase</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="get-started.html"><a href="get-started.html"><i class="fa fa-check"></i><b>3</b> Get Started</a>
 <ul>
@@ -298,15 +297,15 @@ div.csl-indent {
 <h1><span class="header-section-number">Chapter 1</span> Introduction<a href="introduction.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="communication" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> Communicating Data<a href="introduction.html#communication" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Communicating data is critical for many of us, no matter if scientists, journalists, or analysts. How we present data affects the engagement of and interpretation by the audience. Showing data in an honest, meaningful—and maybe sometimes even playful or artistic—way is the art of <strong><em>data visualization</em></strong> or <strong><em>information visualization</em></strong>. Data visualization can be described as the transformation of numbers into visual quantities, encoded by forms, positions, and colors. The transformation allows us to see patterns and trends in data and identify relationships between different variables. In the best case, a well-designed data visualization helps to amplify cognition, facilitate insights, discover, spark curiosity, explain, and make decisions.</p>
-<p>Data visualizations, or broadly speaking <strong><em>information graphics</em></strong>, are often classified as being either exploratory or explanatory. <strong><em>Exploratory graphics</em></strong> are generated to understand the data and search for the relevant information. <strong><em>Explanatory graphics</em></strong> aim to communicate the derived information between people <span class="citation">(<a href="#ref-koponen&amp;hilden2019" role="doc-biblioref">Koponen and Hildén 2019</a>)</span>. In contrast to exploratory graphics, the creation of engaging explanatory graphics involves not only the display of data but also requires many choices with regard to the storytelling and design.</p>
-<p>When designing visualizations myself or looking at the work of others, the most important question to me is the <strong><em>purpose</em></strong> of the graphic. Without a clear understanding of the purpose, it is impossible to design an effective and engaging visualization. The same applies when evaluating a visualization: without the consideration of the purpose—the audience, the message, the mood—the designer had in mind when creating the visualization, the critique of design choices often becomes obsolete. A common assumption is that the single aim of data visualizations is to guide decisions. This might be true for business or scientific applications that aim for precision and accuracy by creating <em>pragmatic visualizations</em> <span class="citation">(<a href="#ref-kosara2007" role="doc-biblioref">Kosara 2007</a>)</span>.</p>
+<p>Communicating data is critical for many of us, no matter if scientists, journalists, or analysts. How we present data affects the engagement of and interpretation by the audience. Showing data in an honest, meaningful—and maybe sometimes even playful or artistic—way is the art of <strong><em>data visualization</em></strong> or <strong><em>information visualization</em></strong>. Data visualization can be described as the transformation of numbers into visual quantities, encoded by forms, positions, and colors. The transformation allows us to see patterns and trends in data and identify relationships between different variables. In the best case, a well-designed data visualization fulfills one or more of the following: amplify cognition, facilitate insight, discover patterns, spark curiosity, explain trends, and make decisions.</p>
+<p>Data visualizations, or broadly speaking <strong><em>information graphics</em></strong>, are often classified as being either exploratory or explanatory. <strong><em>Exploratory graphics</em></strong> are generated to understand the data and search for the relevant information. <strong><em>Explanatory graphics</em></strong> aim to communicate the derived information between people <span class="citation">(<a href="#ref-koponen&amp;hilden2019">Koponen and Hildén 2019</a>)</span>. In contrast to exploratory graphics, the creation of engaging explanatory graphics involves not only the display of data but also requires many choices with regard to the storytelling and design.</p>
+<p>When designing visualizations myself or looking at the work of others, the most important question to me is the <strong><em>purpose</em></strong> of the graphic. Without a clear understanding of the purpose, it is impossible to design an effective and engaging visualization. The same applies when evaluating a visualization: without the consideration of the purpose—the audience, the message, the mood—the designer had in mind when creating the visualization, the critique of design choices often becomes obsolete. A common assumption is that the single aim of data visualizations is to guide decisions. This might be true for business or scientific applications that aim for precision and accuracy by creating <em>pragmatic visualizations</em> <span class="citation">(<a href="#ref-kosara2007">Kosara 2007</a>)</span>.</p>
 <p>At the same time, it is ignorant to assume that efficiency and functionality are the main purpose of every visualization. Many of the great visualizations we have seen and that stick to our mind go beyond the precise, informative display of data<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. They experiment with new approaches, use clever, unusual ways to tell stories or were designed simply to transport joy, curiosity or concern. In some cases, the design and visual novelty may even be the main focus with the aim to create a novel, artistic experience for the viewer. Such artworks are not necessarily created to maximize discovery or communication but to elicit emotions and can be termed <strong><em>affective graphics</em></strong><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
-<p>As a <em>creator</em>, clearly defining the purpose of a visualization helps to make decisions about the data, the chart type, and the design. As a <em>reader</em> or <em>viewer</em>, identifying the purpose helps rating the quality of the presentation. Some people like to think that there is a single best approach to visualize data: the one that has survived the test of time and is the most efficient to quantify information. Some believe that a chart has to be designed in a ‘neutral’ way. I strongly disagree with both opinions, for multiple reasons. The most important: Every time we present the data, we make decisions; and it is not about <em>if</em> we make decisions but <em>which</em>. Chart types are not inherently ‘right’ or ‘wrong’ but might be more or less suitable for the purpose. Colors are associated with some emotional value—how could we pick one that has a neutral meaning, association or emotion for every person that might look at our visualization?</p>
+<p>As a <em>creator</em>, clearly defining the purpose of a visualization helps to make decisions about the data, the chart type, and the design. As a <em>reader</em> or <em>viewer</em>, identifying the purpose helps rating the quality of the presentation. Some people like to think that there is a single best approach to visualize data: the one that has survived the test of time and is the most efficient to quantify information. Some believe that a chart has to be designed in a ‘neutral’ way. I strongly disagree with both opinions, for multiple reasons. The most important: Every time we present the data, we make decisions; and it is not about <em>if</em> we make decisions but <em>which</em>. Also, the tool being used comes with default decisions that may impact the final look—because you don’t want, care or simply can’t change some settings. Chart types are not inherently ‘right’ or ‘wrong’ but might be more or less suitable for the purpose. Colors are associated with some emotional value—how could we pick one that has a ‘neutral’ meaning, association or emotion for every person that might look at our visualization?</p>
 <p>Even if we agree on the ‘right’ decisions—the best chart type and a neutral color encoding, likely some shades of grey—we still can’t ensure that all people interpret it in the same way. People will always find their own message in graphs and the interpretation will likely differ based on individual differences through culture, attitude and mood.</p>
 <p>A quote from Alberto Cairo that is close to my heart sums it up brilliantly:</p>
 <blockquote>
-<p>Visualizations can be designed and experienced in various ways, by people of various backgrounds, and in various circumstances. That’s why reflecting on the purpose of a visualization is paramount before we design it—or before we critique it. <span class="citation">(<a href="#ref-cairo2021" role="doc-biblioref">Cairo 2021</a>)</span></p>
+<p>Visualizations can be designed and experienced in various ways, by people of various backgrounds, and in various circumstances. That’s why reflecting on the purpose of a visualization is paramount before we design it—or before we critique it. <span class="citation">(<a href="#ref-cairo2021">Cairo 2021</a>)</span></p>
 </blockquote>
 <p>In the optimal case, the decisions made by the creator are based on some thoughtful consideration of the following:</p>
 <ul>
@@ -318,6 +317,7 @@ div.csl-indent {
 <li><em>design</em> — how can I facilitate engagement and understanding?</li>
 </ul>
 <p>While some decisions might (and should) be made before crafting the visualization, the creation of purposeful, well-designed graphics is an iterative process. Rarely<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> the first draft is what ends up being printed on physical material or being displayed on your computer or smartphone screen. Nowadays, computational approaches ease the cyclic process of prototyping, exploring, testing, and designing the ‘best’ visual encoding of information for a given purpose.</p>
+<p>[WIP] Include basic business graphic versus artsy + catchy viz -&gt; maybe astronauts?</p>
 </div>
 <div id="coding" class="section level2 hasAnchor" number="1.2">
 <h2><span class="header-section-number">1.2</span> Coding Visualizations<a href="introduction.html#coding" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -329,17 +329,38 @@ div.csl-indent {
 </div>
 <div id="why" class="section level2 hasAnchor" number="1.3">
 <h2><span class="header-section-number">1.3</span> Why R and <strong>ggplot2</strong><a href="introduction.html#why" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>As a computational ecologist, I’ve learned and used a range of different tools and programming languages for various purposes such as data wrangling, statistical analyses, and model building. The open-source language R was and is the programming language most widely used by ecologists to handle and analyze ecological data <span class="citation">(<a href="#ref-sciaini2018" role="doc-biblioref">Sciaini et al. 2018</a>)</span>. Consequently, I was <em>of course</em> using R in my daily life as a scientific researcher.</p>
+<p>As a computational ecologist, I’ve learned and used a range of different tools and programming languages for various purposes such as data wrangling, statistical analyses, and model building. The open-source language R was and is the programming language most widely used by ecologists to handle and analyze ecological data <span class="citation">(<a href="#ref-sciaini2018">Sciaini et al. 2018</a>)</span>. Consequently, I was <em>of course</em> using R in my daily life as a scientific researcher.</p>
 <p>Nowadays, R plays a crucial part in many data-related workflows, no matter if for scientific, educational, or industrial use cases. Thanks to the ever growing R community and the rich collection of libraries that add additional functionality and simplify workflows, R is an attractive programming language that has outgrown of its original purpose: statistical analyses. Today, R can serve as tool to generate automated reports, develop stand-alone web apps, and draft presentation slides, books, and web pages. And to design high-level, publication–ready visualizations.</p>
 <p>Even though R—similar to most programming languages—has a steep learning curve, the level of functionality, flexibility, automation, and reproducibility offered can be a major benefit also in a design context:</p>
 <ul>
-<li>The layered approach of <strong>ggplot2</strong> opens the possibility to build any type of visualization.</li>
+<li>The layered approach of <strong>ggplot2</strong> opens the possibility to build any type of visualization. Even though other tools using similar approaches are becoming popular, <strong>ggplot2</strong> is still the most mature and flexible out there.</li>
+<li>Learning a programming language can be tough. R often feels “easy to learn” for non-programers.</li>
 <li>Various extension packages add missing functionality.</li>
 <li>Script-based workflows instead of <em>point–and–click</em> approaches allow for reproducibility—which means you can run the code again after receiving new data or create thousands of visualizations for various data sets in no time.</li>
 <li>Sharing code is becoming the golden standard in many fields and thus facilitates transparency and credibility as well as reuse and creative advancement.</li>
 <li>A helpful community and many free resources simplify learning experiences and the search for solutions.</li>
 <li>The visualizations created in R can be exported as vector files and thus allow for post–processing with vector graphics software like Adobe Illustrator, Inkscape or Figma.</li>
 </ul>
+<p>The following collection of graphics illustrate the power and versatility of <strong>ggplot2</strong>—and a range of extension packages—to create customized, partly uncommon or complex charts. All these charts are the outcome of 100% R code, making use of multiple layers and customized colors, fonts, and themes.</p>
+<div class="figure"><span style="display:block;" id="fig:02imgVizArtistsUSA"></span>
+<img src="img/artists-tt202239-lee-olney.png" alt="&quot;Artists in the USA&quot; by Lee Olney"  />
+<p class="caption">
+FIGURE 1.1: “Artists in the USA” by Lee Olney
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:02imgVizDoctorWho"></span>
+<img src="img/doctor-who-tanya-shapiro.png" alt="&quot;Doctor Who was the Best?&quot; by Tanya Shapiro"  />
+<p class="caption">
+FIGURE 1.2: “Doctor Who was the Best?” by Tanya Shapiro
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:02imgVizCoffeeRatings"></span>
+<img src="img/coffee-ratings.png" alt="&quot;Not My Cup of Coffee&quot; by myself"  />
+<p class="caption">
+FIGURE 1.3: “Not My Cup of Coffee” by myself
+</p>
+</div>
+<p>These are just a few examples of the many types of charts that you can create using <strong>ggplot2</strong>. With a little creativity and experimentation, you can come up with your own unique and informative visualizations or artful pieces.</p>
 
 </div>
 </div>

@@ -4,7 +4,7 @@
 
 ## Communicating Data {#communication}
 
-Communicating data is critical for many of us, no matter if scientists, journalists, or analysts. How we present data affects the engagement of and interpretation by the audience. Showing data in an honest, meaningful---and maybe sometimes even playful or artistic---way is the art of ***data visualization*** or ***information visualization***. Data visualization can be described as the transformation of numbers into visual quantities, encoded by forms, positions, and colors. The transformation allows us to see patterns and trends in data and identify relationships between different variables. In the best case, a well-designed data visualization helps to amplify cognition, facilitate insights, discover, spark curiosity, explain, and make decisions.
+Communicating data is critical for many of us, no matter if scientists, journalists, or analysts. How we present data affects the engagement of and interpretation by the audience. Showing data in an honest, meaningful---and maybe sometimes even playful or artistic---way is the art of ***data visualization*** or ***information visualization***. Data visualization can be described as the transformation of numbers into visual quantities, encoded by forms, positions, and colors. The transformation allows us to see patterns and trends in data and identify relationships between different variables. In the best case, a well-designed data visualization fulfills one or more of the following: amplify cognition, facilitate insight, discover patterns, spark curiosity, explain trends, and make decisions.
 
 Data visualizations, or broadly speaking ***information graphics***, are often classified as being either exploratory or explanatory. ***Exploratory graphics*** are generated to understand the data and search for the relevant information. ***Explanatory graphics*** aim to communicate the derived information between people [@koponen&hilden2019]. In contrast to exploratory graphics, the creation of engaging explanatory graphics involves not only the display of data but also requires many choices with regard to the storytelling and design.
 
@@ -16,7 +16,7 @@ At the same time, it is ignorant to assume that efficiency and functionality are
 
 [^introduction-2]: Credit to the term 'affective graphics' goes to Alberto Cairo, thank you for sharing your thoughts with me.
 
-As a *creator*, clearly defining the purpose of a visualization helps to make decisions about the data, the chart type, and the design. As a *reader* or *viewer*, identifying the purpose helps rating the quality of the presentation. Some people like to think that there is a single best approach to visualize data: the one that has survived the test of time and is the most efficient to quantify information. Some believe that a chart has to be designed in a 'neutral' way. I strongly disagree with both opinions, for multiple reasons. The most important: Every time we present the data, we make decisions; and it is not about *if* we make decisions but *which*. Chart types are not inherently 'right' or 'wrong' but might be more or less suitable for the purpose. Colors are associated with some emotional value---how could we pick one that has a neutral meaning, association or emotion for every person that might look at our visualization?
+As a *creator*, clearly defining the purpose of a visualization helps to make decisions about the data, the chart type, and the design. As a *reader* or *viewer*, identifying the purpose helps rating the quality of the presentation. Some people like to think that there is a single best approach to visualize data: the one that has survived the test of time and is the most efficient to quantify information. Some believe that a chart has to be designed in a 'neutral' way. I strongly disagree with both opinions, for multiple reasons. The most important: Every time we present the data, we make decisions; and it is not about *if* we make decisions but *which*. Also, the tool being used comes with default decisions that may impact the final look---because you don't want, care or simply can't change some settings. Chart types are not inherently 'right' or 'wrong' but might be more or less suitable for the purpose. Colors are associated with some emotional value---how could we pick one that has a 'neutral' meaning, association or emotion for every person that might look at our visualization?
 
 Even if we agree on the 'right' decisions---the best chart type and a neutral color encoding, likely some shades of grey---we still can't ensure that all people interpret it in the same way. People will always find their own message in graphs and the interpretation will likely differ based on individual differences through culture, attitude and mood.
 
@@ -34,6 +34,8 @@ In the optimal case, the decisions made by the creator are based on some thought
 -   *design* --- how can I facilitate engagement and understanding?
 
 While some decisions might (and should) be made before crafting the visualization, the creation of purposeful, well-designed graphics is an iterative process. Rarely[^introduction-3] the first draft is what ends up being printed on physical material or being displayed on your computer or smartphone screen. Nowadays, computational approaches ease the cyclic process of prototyping, exploring, testing, and designing the 'best' visual encoding of information for a given purpose.
+
+[WIP] Include basic business graphic versus artsy + catchy viz -> maybe astronauts? 
 
 [^introduction-3]: I was very tempted to write "never" but I don't have data to support this claim...
 
@@ -58,9 +60,26 @@ Nowadays, R plays a crucial part in many data-related workflows, no matter if fo
 
 Even though R---similar to most programming languages---has a steep learning curve, the level of functionality, flexibility, automation, and reproducibility offered can be a major benefit also in a design context:
 
-* The layered approach of **ggplot2** opens the possibility to build any type of visualization.
+* The layered approach of **ggplot2** opens the possibility to build any type of visualization. Even though other tools using similar approaches are becoming popular, **ggplot2** is still the most mature and flexible out there.
+* Learning a programming language can be tough. R often feels "easy to learn" for non-programers.
 * Various extension packages add missing functionality.
 * Script-based workflows instead of *point–and–click* approaches allow for reproducibility---which means you can run the code again after receiving new data or create thousands of visualizations for various data sets in no time.
 * Sharing code is becoming the golden standard in many fields and thus facilitates transparency and credibility as well as reuse and creative advancement.
 * A helpful community and many free resources simplify learning experiences and the search for solutions.
 * The visualizations created in R can be exported as vector files and thus allow for post–processing with vector graphics software like Adobe Illustrator, Inkscape or Figma. 
+
+The following collection of graphics illustrate the power and versatility of **ggplot2**---and a range of extension packages---to create customized, partly uncommon or complex charts. All these charts are the outcome of 100% R code, making use of multiple layers and customized colors, fonts, and themes.
+
+```{r 02imgVizArtistsUSA, echo=FALSE, fig.cap='"Artists in the USA" by Lee Olney'}
+knitr::include_graphics("./img/artists-tt202239-lee-olney.png", dpi = NA)
+```
+
+```{r 02imgVizDoctorWho, echo=FALSE, fig.cap='"Doctor Who was the Best?" by Tanya Shapiro'}
+knitr::include_graphics("./img/doctor-who-tanya-shapiro.png", dpi = NA)
+```
+
+```{r 02imgVizCoffeeRatings, echo=FALSE, fig.cap='"Not My Cup of Coffee" by myself'}
+knitr::include_graphics("./img/coffee-ratings.png", dpi = NA)
+```
+
+These are just a few examples of the many types of charts that you can create using **ggplot2**. With a little creativity and experimentation, you can come up with your own unique and informative visualizations or artful pieces.
