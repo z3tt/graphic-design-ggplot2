@@ -71,15 +71,15 @@ Even though R---similar to most programming languages---has a steep learning cur
 The following collection of graphics illustrate the power and versatility of **ggplot2**---and a range of extension packages---to create customized, partly uncommon or complex charts. All these charts are the outcome of 100% R code, making use of multiple layers and customized colors, fonts, and themes.
 
 ```{r 02imgVizArtistsUSA, echo=FALSE, fig.cap='"Artists in the USA" by Lee Olney'}
-knitr::include_graphics("./img/artists-tt202239-lee-olney.png", dpi = NA)
+knitr::include_graphics("./img/showcase/artists-usa-lee-olney.png", dpi = NA)
 ```
 
 ```{r 02imgVizDoctorWho, echo=FALSE, fig.cap='"Doctor Who was the Best?" by Tanya Shapiro'}
-knitr::include_graphics("./img/doctor-who-tanya-shapiro.png", dpi = NA)
+knitr::include_graphics("./img/showcase/doctor-who-tanya-shapiro.png", dpi = NA)
 ```
 
 ```{r 02imgVizCoffeeRatings, echo=FALSE, fig.cap='"Not My Cup of Coffee" by myself'}
-knitr::include_graphics("./img/coffee-ratings.png", dpi = NA)
+knitr::include_graphics("./img/showcase/coffee-ratings-cedric-scherer.png", dpi = NA)
 ```
 
 These are just a few examples of the many types of charts that you can create using **ggplot2**. With a little creativity and experimentation, you can come up with your own unique and informative visualizations or artful pieces.

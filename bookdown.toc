@@ -39,8 +39,8 @@
 \contentsline {section}{\numberline {4.7}Change the Axis Scaling}{42}{section.4.7}%
 \contentsline {section}{\numberline {4.8}Use a Custom Color Palette}{43}{section.4.8}%
 \contentsline {section}{\numberline {4.9}Adjust Labels and Titles}{45}{section.4.9}%
-\contentsline {section}{\numberline {4.10}Apply a Complete Theme}{47}{section.4.10}%
-\contentsline {section}{\numberline {4.11}Customize the Theme}{48}{section.4.11}%
+\contentsline {section}{\numberline {4.10}Apply a Complete Theme}{46}{section.4.10}%
+\contentsline {section}{\numberline {4.11}Customize the Theme}{47}{section.4.11}%
 \contentsline {chapter}{\numberline {5}Tips to Improve Your ggplot Design}{51}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Use a Different Theme}{51}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Use a Custom Font}{52}{section.5.2}%

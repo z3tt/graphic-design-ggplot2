@@ -22,7 +22,7 @@ names(colors_named) <- c("green", "orange", "purple", "blue", "red", "grey")
 
 #col_period <- c(prismatic::clr_desaturate(prismatic::clr_darken(colors[c("orange", "purple")], .05), .5))
 #names(col_period) <- c("day", "night")
-col_period <- c(day = "#e9b86a", night = "#a6aafa")
+#col_period <- c(day = "#e9b86a", night = "#a6aafa")
 col_period <- c(day = "#FFA200", night = "#757bc7") #fbb200
 
 col_season <- c(

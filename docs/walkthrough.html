@@ -23,7 +23,7 @@
 <meta name="author" content="Cédric Scherer" />
 
 
-<meta name="date" content="2023-08-16" />
+<meta name="date" content="2023-08-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -406,25 +406,24 @@ FIGURE 4.5: We can map aesthetics and define properties for each layer individua
 <span id="cb35-5"><a href="walkthrough.html#cb35-5" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(</span>
 <span id="cb35-6"><a href="walkthrough.html#cb35-6" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group =</span> day_night), <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span></span>
 <span id="cb35-7"><a href="walkthrough.html#cb35-7" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb35-8"><a href="walkthrough.html#cb35-8" tabindex="-1"></a>  <span class="do">## small multiples</span></span>
-<span id="cb35-9"><a href="walkthrough.html#cb35-9" tabindex="-1"></a>  <span class="fu">facet_grid</span>(</span>
-<span id="cb35-10"><a href="walkthrough.html#cb35-10" tabindex="-1"></a>    <span class="do">## time of the day (rows) vs year (columns)</span></span>
-<span id="cb35-11"><a href="walkthrough.html#cb35-11" tabindex="-1"></a>    day_night <span class="sc">~</span> year</span>
-<span id="cb35-12"><a href="walkthrough.html#cb35-12" tabindex="-1"></a>  )</span></code></pre></div>
+<span id="cb35-8"><a href="walkthrough.html#cb35-8" tabindex="-1"></a>  <span class="do">## split into small multiples</span></span>
+<span id="cb35-9"><a href="walkthrough.html#cb35-9" tabindex="-1"></a>  <span class="fu">facet_grid</span>(day_night <span class="sc">~</span> year)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:04ggplotFacet"></span>
 <img src="bookdown_files/figure-html/04ggplotFacet-1.png" alt="With the `facet` functions, a visualization can quickly be split into small multiples." width="864" />
 <p class="caption">
 FIGURE 4.6: With the <code>facet</code> functions, a visualization can quickly be split into small multiples.
 </p>
 </div>
+<p>The resulting facet displays the data in a 2x2 grid with year as columns and time of the day as rows
+As the data is now split into subgroups by time of the day, we can remove the grouping inside the smoothing and</p>
 <p>Consistency across axes is considered good practice as varying axis ranges are harder to compare and the potential of misleading viewers increases in case the differences keep unnoticed—or even worse are not noticeable. The implementation of facet in <strong>ggplot2</strong> ensures consistency across all small multiples by default, as illustrated by the empty space in the lower row as there are no values above ~21,000 reported rents during night.</p>
-<p>The <code>facet</code> functionality also comes with the option to overwrite the default behavior by “freeing” the positional scales. Furthermore, one can ensure equal axis spacing by freeing the space as well (Fig. <a href="walkthrough.html#fig:04ggplotFacetGrid">4.7</a>). This setting allows to efficiently use the available space while ensuring comparability across plots and decreasing the potential of misleading the viewer. The differences between the two ways to create small multiples, namely <code>facet_grid()</code> and <code>facet_wrap()</code>, as well as ways to adjust and annotate facets are explained in Chapter XYZ.</p>
+<p>The <code>facet</code> functionality also comes with the option to overwrite the default behavior by “freeing” the positional scales. Furthermore, one can ensure equal axis spacing by freeing the space as well (Fig. <a href="walkthrough.html#fig:04ggplotFacetGrid">4.7</a>). This setting allows to efficiently use the available space while ensuring comparability across plots and decreasing the potential of misleading the viewer.</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="walkthrough.html#cb36-1" tabindex="-1"></a><span class="fu">ggplot</span>(bikes, <span class="fu">aes</span>(<span class="at">x =</span> temp_feel, <span class="at">y =</span> count)) <span class="sc">+</span> </span>
 <span id="cb36-2"><a href="walkthrough.html#cb36-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb36-3"><a href="walkthrough.html#cb36-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color =</span> day_night), <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">2</span></span>
+<span id="cb36-3"><a href="walkthrough.html#cb36-3" tabindex="-1"></a>    <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">2</span></span>
 <span id="cb36-4"><a href="walkthrough.html#cb36-4" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
 <span id="cb36-5"><a href="walkthrough.html#cb36-5" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(</span>
-<span id="cb36-6"><a href="walkthrough.html#cb36-6" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group =</span> day_night), <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span></span>
+<span id="cb36-6"><a href="walkthrough.html#cb36-6" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span></span>
 <span id="cb36-7"><a href="walkthrough.html#cb36-7" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb36-8"><a href="walkthrough.html#cb36-8" tabindex="-1"></a>  <span class="fu">facet_grid</span>(</span>
 <span id="cb36-9"><a href="walkthrough.html#cb36-9" tabindex="-1"></a>    day_night <span class="sc">~</span> year, </span>
@@ -439,6 +438,7 @@ FIGURE 4.6: With the <code>facet</code> functions, a visualization can quickly b
 FIGURE 4.7: ggplot2 even allows to free the axis range—while ensuring equal axis spacing.
 </p>
 </div>
+<p>The differences between the two ways to create small multiples, namely facet_grid() and facet_wrap(), as well as ways to adjust and annotate facets are explained in Chapter XYZ.</p>
 </div>
 <div id="axis-scaling" class="section level2 hasAnchor" number="4.7">
 <h2><span class="header-section-number">4.7</span> Change the Axis Scaling<a href="walkthrough.html#axis-scaling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -458,19 +458,15 @@ FIGURE 4.7: ggplot2 even allows to free the axis range—while ensuring equal ax
 <span id="cb37-13"><a href="walkthrough.html#cb37-13" tabindex="-1"></a>    <span class="do">## add °C symbol</span></span>
 <span id="cb37-14"><a href="walkthrough.html#cb37-14" tabindex="-1"></a>    <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">paste0</span>(x, <span class="st">&quot;°C&quot;</span>), </span>
 <span id="cb37-15"><a href="walkthrough.html#cb37-15" tabindex="-1"></a>    <span class="do">## use 5°C spacing</span></span>
-<span id="cb37-16"><a href="walkthrough.html#cb37-16" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span><span class="sc">*</span><span class="dv">5</span><span class="co">#, </span></span>
-<span id="cb37-17"><a href="walkthrough.html#cb37-17" tabindex="-1"></a>    <span class="do">## adjust axis padding</span></span>
-<span id="cb37-18"><a href="walkthrough.html#cb37-18" tabindex="-1"></a>    <span class="co">#expand = c(mult = 0, add = 1)</span></span>
-<span id="cb37-19"><a href="walkthrough.html#cb37-19" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb37-20"><a href="walkthrough.html#cb37-20" tabindex="-1"></a>  <span class="do">## y axis</span></span>
-<span id="cb37-21"><a href="walkthrough.html#cb37-21" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
-<span id="cb37-22"><a href="walkthrough.html#cb37-22" tabindex="-1"></a>    <span class="do">## add a thousand separator</span></span>
-<span id="cb37-23"><a href="walkthrough.html#cb37-23" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_comma</span>(), </span>
-<span id="cb37-24"><a href="walkthrough.html#cb37-24" tabindex="-1"></a>    <span class="do">## use consistent spacing across rows</span></span>
-<span id="cb37-25"><a href="walkthrough.html#cb37-25" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span><span class="sc">*</span><span class="dv">10000</span><span class="co">#, </span></span>
-<span id="cb37-26"><a href="walkthrough.html#cb37-26" tabindex="-1"></a>    <span class="do">## adjust axis padding</span></span>
-<span id="cb37-27"><a href="walkthrough.html#cb37-27" tabindex="-1"></a>    <span class="co">#expand = c(mult = .1, add = 0)</span></span>
-<span id="cb37-28"><a href="walkthrough.html#cb37-28" tabindex="-1"></a>  )</span></code></pre></div>
+<span id="cb37-16"><a href="walkthrough.html#cb37-16" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span><span class="sc">*</span><span class="dv">5</span></span>
+<span id="cb37-17"><a href="walkthrough.html#cb37-17" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb37-18"><a href="walkthrough.html#cb37-18" tabindex="-1"></a>  <span class="do">## y axis</span></span>
+<span id="cb37-19"><a href="walkthrough.html#cb37-19" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb37-20"><a href="walkthrough.html#cb37-20" tabindex="-1"></a>    <span class="do">## add a thousand separator</span></span>
+<span id="cb37-21"><a href="walkthrough.html#cb37-21" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_comma</span>(), </span>
+<span id="cb37-22"><a href="walkthrough.html#cb37-22" tabindex="-1"></a>    <span class="do">## use consistent spacing across rows</span></span>
+<span id="cb37-23"><a href="walkthrough.html#cb37-23" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span><span class="sc">*</span><span class="dv">10000</span></span>
+<span id="cb37-24"><a href="walkthrough.html#cb37-24" tabindex="-1"></a>  )</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:04ggplotLabelsAxes"></span>
 <img src="bookdown_files/figure-html/04ggplotLabelsAxes-1.png" alt="To adjust the formatting of axis labels, the respective axis needs to be addressed via the `scale_*()` functions." width="864" />
 <p class="caption">
@@ -493,14 +489,14 @@ FIGURE 4.8: To adjust the formatting of axis labels, the respective axis needs t
 <span id="cb38-9"><a href="walkthrough.html#cb38-9" tabindex="-1"></a>    day_night <span class="sc">~</span> year, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="at">space =</span> <span class="st">&quot;free_y&quot;</span></span>
 <span id="cb38-10"><a href="walkthrough.html#cb38-10" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb38-11"><a href="walkthrough.html#cb38-11" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb38-12"><a href="walkthrough.html#cb38-12" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span><span class="sc">*</span><span class="dv">5</span>, <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">paste0</span>(x, <span class="st">&quot;°C&quot;</span>)<span class="co">#, expand = c(mult = 0, add = 1)</span></span>
+<span id="cb38-12"><a href="walkthrough.html#cb38-12" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span><span class="sc">*</span><span class="dv">5</span>, <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">paste0</span>(x, <span class="st">&quot;°C&quot;</span>)</span>
 <span id="cb38-13"><a href="walkthrough.html#cb38-13" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb38-14"><a href="walkthrough.html#cb38-14" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
-<span id="cb38-15"><a href="walkthrough.html#cb38-15" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span><span class="sc">*</span><span class="dv">10000</span>, <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_comma</span>()<span class="co">#, expand = c(mult = .1, add = 0)</span></span>
+<span id="cb38-15"><a href="walkthrough.html#cb38-15" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span><span class="sc">*</span><span class="dv">10000</span>, <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_comma</span>()</span>
 <span id="cb38-16"><a href="walkthrough.html#cb38-16" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb38-17"><a href="walkthrough.html#cb38-17" tabindex="-1"></a>  <span class="do">## use a custom color palette for season colors</span></span>
 <span id="cb38-18"><a href="walkthrough.html#cb38-18" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
-<span id="cb38-19"><a href="walkthrough.html#cb38-19" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;#3c89d9&quot;</span>, <span class="st">&quot;#1ec99b&quot;</span>, <span class="st">&quot;#F7B01B&quot;</span>, <span class="st">&quot;#a26e7c&quot;</span>)</span>
+<span id="cb38-19"><a href="walkthrough.html#cb38-19" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;#3C89D9&quot;</span>, <span class="st">&quot;#1EC99B&quot;</span>, <span class="st">&quot;#F7B01B&quot;</span>, <span class="st">&quot;#A26E7C&quot;</span>)</span>
 <span id="cb38-20"><a href="walkthrough.html#cb38-20" tabindex="-1"></a>  )</span>
 <span id="cb38-21"><a href="walkthrough.html#cb38-21" tabindex="-1"></a></span>
 <span id="cb38-22"><a href="walkthrough.html#cb38-22" tabindex="-1"></a>g1</span></code></pre></div>
@@ -535,7 +531,7 @@ FIGURE 4.10: We can overwrite the default labels with the <code>labs()</code> wh
 <p>Let’s also overwrite the cryptic numeric encoding of the seasons. Similar to the positional scales, we can pass a vector or function to the <code>labels</code> argument in the <code>scale_color_*()</code> component:</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="walkthrough.html#cb40-1" tabindex="-1"></a>g3 <span class="ot">&lt;-</span> g2 <span class="sc">+</span></span>
 <span id="cb40-2"><a href="walkthrough.html#cb40-2" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
-<span id="cb40-3"><a href="walkthrough.html#cb40-3" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;#3c89d9&quot;</span>, <span class="st">&quot;#1ec99b&quot;</span>, <span class="st">&quot;#F7B01B&quot;</span>, <span class="st">&quot;#a26e7c&quot;</span>),</span>
+<span id="cb40-3"><a href="walkthrough.html#cb40-3" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;#3C89D9&quot;</span>, <span class="st">&quot;#1EC99B&quot;</span>, <span class="st">&quot;#F7B01B&quot;</span>, <span class="st">&quot;#A26E7C&quot;</span>),</span>
 <span id="cb40-4"><a href="walkthrough.html#cb40-4" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Winter&quot;</span>, <span class="st">&quot;Spring&quot;</span>, <span class="st">&quot;Summer&quot;</span>, <span class="st">&quot;Autumn&quot;</span>)</span>
 <span id="cb40-5"><a href="walkthrough.html#cb40-5" tabindex="-1"></a>  )</span>
 <span id="cb40-6"><a href="walkthrough.html#cb40-6" tabindex="-1"></a></span>

@@ -185,7 +185,7 @@
 \makeatother
 \subtitle{Create Beautiful and Engaging Data Visualizations in R}
 \author{Cédric Scherer}
-\date{2023-08-16}
+\date{2023-08-22}
 
 \begin{document}
 \maketitle
@@ -480,19 +480,19 @@ The following collection of graphics illustrate the power and versatility of \te
 
 \begin{figure}
 \centering
-\includegraphics{./img/artists-tt202239-lee-olney.png}
+\includegraphics{./img/showcase/artists-usa-lee-olney.png}
 \caption{\label{fig:02imgVizArtistsUSA}``Artists in the USA'' by Lee Olney}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics{./img/doctor-who-tanya-shapiro.png}
+\includegraphics{./img/showcase/doctor-who-tanya-shapiro.png}
 \caption{\label{fig:02imgVizDoctorWho}``Doctor Who was the Best?'' by Tanya Shapiro}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics{./img/coffee-ratings.png}
+\includegraphics{./img/showcase/coffee-ratings-cedric-scherer.png}
 \caption{\label{fig:02imgVizCoffeeRatings}``Not My Cup of Coffee'' by myself}
 \end{figure}
 
@@ -1415,11 +1415,8 @@ A fantastic feature of \textbf{ggplot2} is it's ability to quickly split a singl
   \FunctionTok{stat\_smooth}\NormalTok{(}
     \FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ day\_night), }\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}
 \NormalTok{  ) }\SpecialCharTok{+}
-  \DocumentationTok{\#\# small multiples}
-  \FunctionTok{facet\_grid}\NormalTok{(}
-    \DocumentationTok{\#\# time of the day (rows) vs year (columns)}
-\NormalTok{    day\_night }\SpecialCharTok{\textasciitilde{}}\NormalTok{ year}
-\NormalTok{  )}
+  \DocumentationTok{\#\# split into small multiples}
+  \FunctionTok{facet\_grid}\NormalTok{(day\_night }\SpecialCharTok{\textasciitilde{}}\NormalTok{ year)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1429,18 +1426,21 @@ A fantastic feature of \textbf{ggplot2} is it's ability to quickly split a singl
 \caption{\label{fig:04ggplotFacet}With the \texttt{facet} functions, a visualization can quickly be split into small multiples.}
 \end{figure}
 
+The resulting facet displays the data in a 2x2 grid with year as columns and time of the day as rows
+As the data is now split into subgroups by time of the day, we can remove the grouping inside the smoothing and
+
 Consistency across axes is considered good practice as varying axis ranges are harder to compare and the potential of misleading viewers increases in case the differences keep unnoticed---or even worse are not noticeable. The implementation of facet in \textbf{ggplot2} ensures consistency across all small multiples by default, as illustrated by the empty space in the lower row as there are no values above \textasciitilde21,000 reported rents during night.
 
-The \texttt{facet} functionality also comes with the option to overwrite the default behavior by ``freeing'' the positional scales. Furthermore, one can ensure equal axis spacing by freeing the space as well (Fig. \ref{fig:04ggplotFacetGrid}). This setting allows to efficiently use the available space while ensuring comparability across plots and decreasing the potential of misleading the viewer. The differences between the two ways to create small multiples, namely \texttt{facet\_grid()} and \texttt{facet\_wrap()}, as well as ways to adjust and annotate facets are explained in Chapter XYZ.
+The \texttt{facet} functionality also comes with the option to overwrite the default behavior by ``freeing'' the positional scales. Furthermore, one can ensure equal axis spacing by freeing the space as well (Fig. \ref{fig:04ggplotFacetGrid}). This setting allows to efficiently use the available space while ensuring comparability across plots and decreasing the potential of misleading the viewer.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{ggplot}\NormalTok{(bikes, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ temp\_feel, }\AttributeTok{y =}\NormalTok{ count)) }\SpecialCharTok{+} 
   \FunctionTok{geom\_point}\NormalTok{(}
-    \FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ day\_night), }\AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}
+    \AttributeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}
 \NormalTok{  ) }\SpecialCharTok{+} 
   \FunctionTok{stat\_smooth}\NormalTok{(}
-    \FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ day\_night), }\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}
+    \AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}
 \NormalTok{  ) }\SpecialCharTok{+}
   \FunctionTok{facet\_grid}\NormalTok{(}
 \NormalTok{    day\_night }\SpecialCharTok{\textasciitilde{}}\NormalTok{ year, }
@@ -1457,6 +1457,8 @@ The \texttt{facet} functionality also comes with the option to overwrite the def
 \includegraphics{bookdown_files/figure-latex/04ggplotFacetGrid-1.png}
 \caption{\label{fig:04ggplotFacetGrid}ggplot2 even allows to free the axis range---while ensuring equal axis spacing.}
 \end{figure}
+
+The differences between the two ways to create small multiples, namely facet\_grid() and facet\_wrap(), as well as ways to adjust and annotate facets are explained in Chapter XYZ.
 
 \hypertarget{axis-scaling}{%
 \section{Change the Axis Scaling}\label{axis-scaling}}
@@ -1480,18 +1482,14 @@ For every aesthetic, \textbf{ggplot2} applies so-called \emph{scales} that trans
     \DocumentationTok{\#\# add °C symbol}
     \AttributeTok{labels =} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{paste0}\NormalTok{(x, }\StringTok{"°C"}\NormalTok{), }
     \DocumentationTok{\#\# use 5°C spacing}
-    \AttributeTok{breaks =} \SpecialCharTok{{-}}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\SpecialCharTok{*}\DecValTok{5}\CommentTok{\#, }
-    \DocumentationTok{\#\# adjust axis padding}
-    \CommentTok{\#expand = c(mult = 0, add = 1)}
+    \AttributeTok{breaks =} \SpecialCharTok{{-}}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\SpecialCharTok{*}\DecValTok{5}
 \NormalTok{  ) }\SpecialCharTok{+}
   \DocumentationTok{\#\# y axis}
   \FunctionTok{scale\_y\_continuous}\NormalTok{(}
     \DocumentationTok{\#\# add a thousand separator}
     \AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{label\_comma}\NormalTok{(), }
     \DocumentationTok{\#\# use consistent spacing across rows}
-    \AttributeTok{breaks =} \DecValTok{0}\SpecialCharTok{:}\DecValTok{5}\SpecialCharTok{*}\DecValTok{10000}\CommentTok{\#, }
-    \DocumentationTok{\#\# adjust axis padding}
-    \CommentTok{\#expand = c(mult = .1, add = 0)}
+    \AttributeTok{breaks =} \DecValTok{0}\SpecialCharTok{:}\DecValTok{5}\SpecialCharTok{*}\DecValTok{10000}
 \NormalTok{  )}
 \end{Highlighting}
 \end{Shaded}
@@ -1522,14 +1520,14 @@ The colors will be applied in order, i.e.~the levels of the factor or alphabetic
 \NormalTok{    day\_night }\SpecialCharTok{\textasciitilde{}}\NormalTok{ year, }\AttributeTok{scales =} \StringTok{"free\_y"}\NormalTok{, }\AttributeTok{space =} \StringTok{"free\_y"}
 \NormalTok{  ) }\SpecialCharTok{+}
   \FunctionTok{scale\_x\_continuous}\NormalTok{(}
-    \AttributeTok{breaks =} \SpecialCharTok{{-}}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\SpecialCharTok{*}\DecValTok{5}\NormalTok{, }\AttributeTok{labels =} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{paste0}\NormalTok{(x, }\StringTok{"°C"}\NormalTok{)}\CommentTok{\#, expand = c(mult = 0, add = 1)}
+    \AttributeTok{breaks =} \SpecialCharTok{{-}}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\SpecialCharTok{*}\DecValTok{5}\NormalTok{, }\AttributeTok{labels =} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{paste0}\NormalTok{(x, }\StringTok{"°C"}\NormalTok{)}
 \NormalTok{  ) }\SpecialCharTok{+}
   \FunctionTok{scale\_y\_continuous}\NormalTok{(}
-    \AttributeTok{breaks =} \DecValTok{0}\SpecialCharTok{:}\DecValTok{5}\SpecialCharTok{*}\DecValTok{10000}\NormalTok{, }\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{label\_comma}\NormalTok{()}\CommentTok{\#, expand = c(mult = .1, add = 0)}
+    \AttributeTok{breaks =} \DecValTok{0}\SpecialCharTok{:}\DecValTok{5}\SpecialCharTok{*}\DecValTok{10000}\NormalTok{, }\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{label\_comma}\NormalTok{()}
 \NormalTok{  ) }\SpecialCharTok{+}
   \DocumentationTok{\#\# use a custom color palette for season colors}
   \FunctionTok{scale\_color\_manual}\NormalTok{(}
-    \AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#3c89d9"}\NormalTok{, }\StringTok{"\#1ec99b"}\NormalTok{, }\StringTok{"\#F7B01B"}\NormalTok{, }\StringTok{"\#a26e7c"}\NormalTok{)}
+    \AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#3C89D9"}\NormalTok{, }\StringTok{"\#1EC99B"}\NormalTok{, }\StringTok{"\#F7B01B"}\NormalTok{, }\StringTok{"\#A26E7C"}\NormalTok{)}
 \NormalTok{  )}
 
 \NormalTok{g1}
@@ -1578,7 +1576,7 @@ Let's also overwrite the cryptic numeric encoding of the seasons. Similar to the
 \begin{Highlighting}[]
 \NormalTok{g3 }\OtherTok{\textless{}{-}}\NormalTok{ g2 }\SpecialCharTok{+}
   \FunctionTok{scale\_color\_manual}\NormalTok{(}
-    \AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#3c89d9"}\NormalTok{, }\StringTok{"\#1ec99b"}\NormalTok{, }\StringTok{"\#F7B01B"}\NormalTok{, }\StringTok{"\#a26e7c"}\NormalTok{),}
+    \AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#3C89D9"}\NormalTok{, }\StringTok{"\#1EC99B"}\NormalTok{, }\StringTok{"\#F7B01B"}\NormalTok{, }\StringTok{"\#A26E7C"}\NormalTok{),}
     \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Winter"}\NormalTok{, }\StringTok{"Spring"}\NormalTok{, }\StringTok{"Summer"}\NormalTok{, }\StringTok{"Autumn"}\NormalTok{)}
 \NormalTok{  )}
 

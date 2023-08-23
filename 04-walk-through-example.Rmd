@@ -212,7 +212,7 @@ g1 <- ggplot(bikes, aes(x = temp_feel, y = count)) +
   ) +
   ## use a custom color palette for season colors
   scale_color_manual(
-    values = c("#3c89d9", "#1ec99b", "#F7B01B", "#a26e7c")
+    values = c("#3C89D9", "#1EC99B", "#F7B01B", "#A26E7C")
   )
 
 g1
@@ -244,7 +244,7 @@ Let's also overwrite the cryptic numeric encoding of the seasons. Similar to the
 ```{r 04legendLabels, fig.width=9, fig.height=6, fig.cap="We can overwrite the legend text with a set of custom labels by passing a character vector to the `labels` argument of the `scale_color_*()` function."}
 g3 <- g2 +
   scale_color_manual(
-    values = c("#3c89d9", "#1ec99b", "#F7B01B", "#a26e7c"),
+    values = c("#3C89D9", "#1EC99B", "#F7B01B", "#A26E7C"),
     labels = c("Winter", "Spring", "Summer", "Autumn")
   )
 

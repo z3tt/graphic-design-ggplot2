@@ -1,1 +1,0 @@
-(function () { /*To Germany with Love*/	var country = {'code':'de','id':3,'defaultLangauge':'de'};	if (!window.evidon) window.evidon = {};	if (window.evidon.notice) window.evidon.notice.setLocation(country);	else window.evidon.location = country;})(); 
