@@ -8,7 +8,7 @@ bookdown::gitbook:
       after: |
         <hr class="grey"><li><i><a href="https://bookdown.org" target="blank">Published with bookdown</a></i></li>
     download: [pdf, epub]
-    edit: https://github.com/yihui/bookdown-crc/edit/master/%s
+    edit: https://github.com/z3tt/graphic-design-ggplot2/edit/main/%s
     sharing:
       github: true
       facebook: false

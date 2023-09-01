@@ -31,9 +31,10 @@ If you are saving raster files such as .png and .jpeg, make sure to set the desi
 
 The iterative process of adjusting your graphic, saving it to disk, navigating to the folder, and looking at the plot is a tedious one. To avoid the additional workload, you can optimize your workflow by previewing your graphic in the correct dimensions without leaving RStudio.
 
-***Work in Quarto (.qmd) or Rmarkdown (.rmd) files to inspect your plots in-line:*** In qmd and rmd formats, code is run inside individual chunks for which you can define figure dimensions by setting `fig.width` or `fig.height` as chunk options [^06-tips-1].
+***Work in Quarto (.qmd) or Rmarkdown (.Rmd) files to inspect your plots in-line:*** In qmd and Rmd formats, code is run inside individual chunks for which you can define figure dimensions by setting `fig.width` or `fig.height` as chunk options [^06-tips-1].
 
 ````{verbatim 06chunkSettings}
+
 ```{r, fig.width=12, fig.height=8}
 ```
 ````
@@ -86,7 +87,22 @@ ggsave("plot.png", device = agg_png)
 
 To make fonts work in the RStudio Plots pane, select the AGG device as default for the graphics backend by navigating to `Tools > Global Options... > General > Graphics`.
 
-***If you are saving your graphics as PDF vector graphics use the cairo_pdf device:*** I prefer to dave my files as lossless vector graphics. The device known to work best for rendering is the Cairo device which needs to be secified as `device = cairo_pdf`. Mac users need to install [XQuartz](https://www.xquartz.org/) which is needed to use the Cairo device.
+To make fonts work in Quarto documents, you can add the following to the [yaml header](https://quarto.org/docs/computations/execution-options.html#knitr-options)
+
+```yaml
+knitr:
+  opts_chunk: 
+    dev: ragg_png
+
+```
+
+In R Markdown documents, you have to put the following in a code chunk.
+
+```{r 06rmdAGG, eval=FALSE}
+knitr::opts_chunk$set(dev = "ragg_png")
+```
+
+***If you are saving your graphics as PDF vector graphics use the cairo_pdf device:*** I prefer to save my files as lossless vector graphics. The device known to work best for rendering is the Cairo device which needs to be secified as `device = cairo_pdf`. Mac users need to install [XQuartz](https://www.xquartz.org/) which is needed to use the Cairo device.
 
 ```{r 06ggsaveCairo, eval=FALSE}
 ggsave("plot.pdf", device = cairo_pdf)
